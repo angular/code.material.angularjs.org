@@ -1,0 +1,87 @@
+.icondemoFontIcons {
+  /* Bootstrap Overrides */
+  /* OLD STYLES */ }
+  .icondemoFontIcons .appDemoFontIcons {
+    padding: 25px;
+    width: 100%; }
+  .icondemoFontIcons .appDemoFontIcons, .icondemoFontIcons .appDemoFontIcons *:before, .icondemoFontIcons .appDemoFontIcons *:after {
+    box-sizing: border-box; }
+  .icondemoFontIcons [class^="icon-"]:before, .icondemoFontIcons [class*=" icon-"]:before {
+    font-family: "icomoon";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    speak: none;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  .icondemoFontIcons .icon-home:before {
+    content: "\e900"; }
+  .icondemoFontIcons .icon-clock:before {
+    content: "\e94e"; }
+  .icondemoFontIcons .icon-user-plus:before {
+    content: "\e973"; }
+  .icondemoFontIcons .icon-google-plus2:before {
+    content: "\ea89"; }
+  .icondemoFontIcons .icon-youtube4:before {
+    content: "\ea9a"; }
+  .icondemoFontIcons .icon-settings:before {
+    content: "\e600"; }
+  .icondemoFontIcons md-progress-circular {
+    margin-bottom: 20px; }
+  .icondemoFontIcons header {
+    overflow: hidden; }
+  .icondemoFontIcons header h1 {
+    color: #888;
+    font-size: 36px;
+    font-weight: 300; }
+  .icondemoFontIcons .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 960px;
+    padding: 40px 40px;
+    font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .icondemoFontIcons .glyph {
+    border-bottom: 1px dotted #ccc;
+    padding: 10px 0 20px;
+    margin-bottom: 20px; }
+  .icondemoFontIcons .preview-scale, .icondemoFontIcons .preview-glyphs {
+    display: flex;
+    flex-direction: row; }
+  .icondemoFontIcons .preview-scale {
+    color: #888;
+    font-size: 12px;
+    margin-top: 24px; }
+  .icondemoFontIcons .step {
+    flex-grow: 1;
+    line-height: 0.5; }
+  .icondemoFontIcons .usage {
+    margin-top: 10px; }
+  .icondemoFontIcons .usage input {
+    font-family: monospace;
+    text-align: center; }
+  .icondemoFontIcons .usage .point {
+    width: 150px; }
+  .icondemoFontIcons .usage .class {
+    width: 250px; }
+  .icondemoFontIcons md-radio-button {
+    display: inline-block; }
+  .icondemoFontIcons .loading {
+    background-color: black;
+    filter: alpha(opacity=40);
+    height: 100%;
+    left: 0;
+    opacity: .40;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 90; }
+  .icondemoFontIcons .loading md-progress-circular {
+    left: 50%;
+    position: fixed;
+    top: 48%;
+    z-index: 100; }

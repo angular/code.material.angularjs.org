@@ -1,0 +1,29 @@
+<div ng-controller="AppCtrl" layout="column" layout-margin>
+  <p class="inset">
+    Open a dialog over the app's content. Press escape or click outside to close the dialog and
+    send focus back to the triggering button.
+  </p>
+
+  <div layout="column" layout-align="center" class="dialog-demo-content">
+    <div>
+      <md-button class="md-primary" ng-click="showAlert($event)">
+        Alert Dialog
+      </md-button>
+    </div>
+    <div>
+      <md-button class="md-primary" ng-click="showConfirm($event)">
+        Confirm Dialog
+      </md-button>
+    </div>
+    <div>
+      <md-button class="md-primary" ng-click="showAdvanced($event)">
+        Custom Dialog
+      </md-button>
+    </div>
+  </div>
+  
+  <br/>
+  <b layout="row" layout-align="center center" layout-margin>
+    {{alert}}
+  </b>
+</div>

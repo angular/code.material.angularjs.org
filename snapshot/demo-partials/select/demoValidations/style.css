@@ -1,0 +1,8 @@
+.selectdemoValidations p {
+  padding: 0 20px;
+  text-align: center; }
+.selectdemoValidations p.result {
+  font-size: 0.8em;
+  color: #777; }
+.selectdemoValidations .demo-content {
+  min-height: 348px; }
