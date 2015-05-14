@@ -1,0 +1,155 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header">
+  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>md-icon</code> directive is an markup element useful for showing an icon based on a font-face
+or a SVG. Both external SVGs (via URLs) or cached SVG from icon sets can be
+easily loaded and used.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+ <md-icon md-font-icon="android"          alt="android " ></md-icon>
+ <md-icon md-svg-icon="action:android"    alt="android " ></md-icon>
+ <md-icon md-svg-src="/android.svg"       alt="android " ></md-icon>
+ <md-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md-icon>
+</hljs>
+  
+  </section>
+  
+  <h2>
+    
+      Attributes
+    
+  </h2>
+  
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-svg-src</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>String URL [or expression ] used to load, cache, and display an external SVG.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-svg-icon</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>String name used for lookup of the icon from the internal cache; interpolated strings or
+expressions may also be used. Specific set names can be used with the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
+To use icon sets, developers are required to pre-register the sets using the <code>$mdIconProvider</code> service.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-font-icon</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>String name of CSS icon associated with the font-face will be used
+to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          alt
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Labels icon for accessibility. If an empty string is provided, icon
+will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no alt on the icon
+nor a label on the parent element, a warning will be logged to the console.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+  
+
+
+  
+</div>
+
+
+</div>
