@@ -1,7 +1,7 @@
 .chipsdemoCustomInputs md-content.autocomplete {
   min-height: 200px; }
 .chipsdemoCustomInputs input[type=number] {
-  width: 11rem; }
+  width: 110px; }
 .chipsdemoCustomInputs .veggie-option {
   float: left;
   width: 20%;

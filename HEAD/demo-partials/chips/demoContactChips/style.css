@@ -24,9 +24,9 @@
       float: left;
       width: 33%; } }
 .chipsdemoContactChips md-contact-chips {
-  margin-bottom: 1rem; }
+  margin-bottom: 10px; }
 .chipsdemoContactChips .md-chips {
-  padding: 0.5rem 0 0.8rem; }
+  padding: 5px 0 8px; }
 .chipsdemoContactChips .fixedRows {
   height: 250px;
   overflow: hidden; }
