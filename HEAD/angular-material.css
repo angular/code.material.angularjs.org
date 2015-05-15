@@ -3589,6 +3589,19 @@ md-grid-list {
   md-grid-tile-footer {
     border-top: 1px solid #fff; } }
 
+md-icon {
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: 28px;
+  width: 28px; }
+  md-icon svg {
+    pointer-events: none; }
+  md-icon[md-font-icon] {
+    line-height: 1; }
+
 md-input-container {
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -3883,19 +3896,6 @@ md-list-item.md-2-line .md-list-item-text, md-list-item.md-2-line > .md-no-style
 
 md-list-item.md-3-line > md-icon:first-child, md-list-item.md-3-line > .md-avatar:first-child, md-list-item.md-3-line > .md-no-style > md-icon:first-child, md-list-item.md-3-line > .md-no-style > .md-avatar:first-child {
   margin-top: 16px; }
-
-md-icon {
-  margin: auto;
-  background-repeat: no-repeat no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  fill: currentColor;
-  height: 28px;
-  width: 28px; }
-  md-icon svg {
-    pointer-events: none; }
-  md-icon[md-font-icon] {
-    line-height: 1; }
 
 @-webkit-keyframes outer-rotate {
   100% {
