@@ -23,28 +23,6 @@ DocsApp
     ]
   },
   {
-    "name": "material.components.button",
-    "type": "module",
-    "outputPath": "partials/api/material.components.button/index.html",
-    "url": "api/material.components.button",
-    "label": "material.components.button",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdButton",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.button/directive/mdButton.html",
-        "url": "api/material.components.button/directive/mdButton",
-        "label": "mdButton",
-        "hasDemo": true,
-        "module": "material.components.button",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
-      }
-    ]
-  },
-  {
     "name": "material.components.card",
     "type": "module",
     "outputPath": "partials/api/material.components.card/index.html",
@@ -63,6 +41,28 @@ DocsApp
         "hasDemo": true,
         "module": "material.components.card",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js"
+      }
+    ]
+  },
+  {
+    "name": "material.components.button",
+    "type": "module",
+    "outputPath": "partials/api/material.components.button/index.html",
+    "url": "api/material.components.button",
+    "label": "material.components.button",
+    "hasDemo": false,
+    "module": ".",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "docs": [
+      {
+        "name": "mdButton",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.button/directive/mdButton.html",
+        "url": "api/material.components.button/directive/mdButton",
+        "label": "mdButton",
+        "hasDemo": true,
+        "module": "material.components.button",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
       }
     ]
   },
