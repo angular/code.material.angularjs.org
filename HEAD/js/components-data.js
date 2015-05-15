@@ -23,28 +23,6 @@ DocsApp
     ]
   },
   {
-    "name": "material.components.card",
-    "type": "module",
-    "outputPath": "partials/api/material.components.card/index.html",
-    "url": "api/material.components.card",
-    "label": "material.components.card",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdCard",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.card/directive/mdCard.html",
-        "url": "api/material.components.card/directive/mdCard",
-        "label": "mdCard",
-        "hasDemo": true,
-        "module": "material.components.card",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js"
-      }
-    ]
-  },
-  {
     "name": "material.components.button",
     "type": "module",
     "outputPath": "partials/api/material.components.button/index.html",
@@ -63,6 +41,28 @@ DocsApp
         "hasDemo": true,
         "module": "material.components.button",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
+      }
+    ]
+  },
+  {
+    "name": "material.components.card",
+    "type": "module",
+    "outputPath": "partials/api/material.components.card/index.html",
+    "url": "api/material.components.card",
+    "label": "material.components.card",
+    "hasDemo": false,
+    "module": ".",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "docs": [
+      {
+        "name": "mdCard",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.card/directive/mdCard.html",
+        "url": "api/material.components.card/directive/mdCard",
+        "label": "mdCard",
+        "hasDemo": true,
+        "module": "material.components.card",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js"
       }
     ]
   },
@@ -187,48 +187,6 @@ DocsApp
     ]
   },
   {
-    "name": "material.components.icon",
-    "type": "module",
-    "outputPath": "partials/api/material.components.icon/index.html",
-    "url": "api/material.components.icon",
-    "label": "material.components.icon",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdIcon",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.icon/directive/mdIcon.html",
-        "url": "api/material.components.icon/directive/mdIcon",
-        "label": "mdIcon",
-        "hasDemo": true,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
-      },
-      {
-        "name": "$mdIconProvider",
-        "type": "service",
-        "outputPath": "partials/api/material.components.icon/service/$mdIconProvider.html",
-        "url": "api/material.components.icon/service/$mdIconProvider",
-        "label": "$mdIconProvider",
-        "hasDemo": false,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
-      },
-      {
-        "name": "$mdIcon",
-        "type": "service",
-        "outputPath": "partials/api/material.components.icon/service/$mdIcon.html",
-        "url": "api/material.components.icon/service/$mdIcon",
-        "label": "$mdIcon",
-        "hasDemo": false,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
-      }
-    ]
-  },
-  {
     "name": "material.components.input",
     "type": "module",
     "outputPath": "partials/api/material.components.input/index.html",
@@ -289,6 +247,48 @@ DocsApp
         "hasDemo": true,
         "module": "material.components.list",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js"
+      }
+    ]
+  },
+  {
+    "name": "material.components.icon",
+    "type": "module",
+    "outputPath": "partials/api/material.components.icon/index.html",
+    "url": "api/material.components.icon",
+    "label": "material.components.icon",
+    "hasDemo": false,
+    "module": ".",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "docs": [
+      {
+        "name": "mdIcon",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.icon/directive/mdIcon.html",
+        "url": "api/material.components.icon/directive/mdIcon",
+        "label": "mdIcon",
+        "hasDemo": true,
+        "module": "material.components.icon",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
+      },
+      {
+        "name": "$mdIconProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.components.icon/service/$mdIconProvider.html",
+        "url": "api/material.components.icon/service/$mdIconProvider",
+        "label": "$mdIconProvider",
+        "hasDemo": false,
+        "module": "material.components.icon",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
+      },
+      {
+        "name": "$mdIcon",
+        "type": "service",
+        "outputPath": "partials/api/material.components.icon/service/$mdIcon.html",
+        "url": "api/material.components.icon/service/$mdIcon",
+        "label": "$mdIcon",
+        "hasDemo": false,
+        "module": "material.components.icon",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
       }
     ]
   },
