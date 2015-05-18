@@ -1,0 +1,26 @@
+{
+  "firebase": "material.angularjs.org",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ],
+  "redirects": [{
+    "source": "/",
+    "destination": "/latest",
+    "type": 302
+  },
+  {
+    "source": "/head",
+    "destination": "/HEAD",
+    "type": 302
+  }],
+  "headers": [ {
+    "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+    "headers" : [ {
+      "key" : "Access-Control-Allow-Origin",
+      "value" : "*"
+    } ]
+  }]
+}
