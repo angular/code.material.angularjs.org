@@ -1388,6 +1388,55 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.subheader"
   },
   {
+    "name": "material.components.swipe",
+    "label": "Swipe",
+    "demos": [
+      {
+        "id": "swipedemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/swipe/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [
+          {
+            "name": "readme.html",
+            "label": "readme.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/swipe/demoBasicUsage/readme.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/swipe/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.swipe",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/swipe/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "demoSwipe",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.swipe"
+  },
+  {
     "name": "material.components.switch",
     "label": "Switch",
     "demos": [
