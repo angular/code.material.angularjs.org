@@ -6,6 +6,8 @@ node_js:
 branches:
   only:
     - master
+    
+script: echo 0
 
 after_success:
   - sudo $(which npm) install -g firebase-tools
