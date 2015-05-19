@@ -1,5 +1,5 @@
 {
-  "firebase": "material.angularjs.org",
+  "firebase": "angular-material",
   "public": ".",
   "ignore": [
     "firebase.json",
