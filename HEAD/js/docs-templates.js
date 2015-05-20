@@ -731,8 +731,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/menu-link.tmpl.html',
-    '<md-button ng-class="{\'active\' : isSelected()}"\n' +
-    '  ng-href="#{{section.url}}" ng-click="focusSection()">\n' +
+    '<md-button\n' +
+    '    ng-class="{\'active\' : isSelected()}"\n' +
+    '    ng-href="{{(section.type === \'version\' ? \'\' : \'#\') + section.url}}"\n' +
+    '    ng-click="focusSection()">\n' +
     '  {{section | humanizeDoc}}\n' +
     '  <span class="md-visually-hidden"\n' +
     '    ng-if="isSelected()">\n' +
