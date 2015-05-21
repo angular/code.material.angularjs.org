@@ -1,28 +1,6 @@
 DocsApp
 .constant('COMPONENTS', [
   {
-    "name": "material.components.button",
-    "type": "module",
-    "outputPath": "partials/api/material.components.button/index.html",
-    "url": "api/material.components.button",
-    "label": "material.components.button",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdButton",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.button/directive/mdButton.html",
-        "url": "api/material.components.button/directive/mdButton",
-        "label": "mdButton",
-        "hasDemo": true,
-        "module": "material.components.button",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
-      }
-    ]
-  },
-  {
     "name": "material.components.bottomSheet",
     "type": "module",
     "outputPath": "partials/api/material.components.bottomSheet/index.html",
@@ -41,6 +19,28 @@ DocsApp
         "hasDemo": false,
         "module": "material.components.bottomSheet",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js"
+      }
+    ]
+  },
+  {
+    "name": "material.components.button",
+    "type": "module",
+    "outputPath": "partials/api/material.components.button/index.html",
+    "url": "api/material.components.button",
+    "label": "material.components.button",
+    "hasDemo": false,
+    "module": ".",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "docs": [
+      {
+        "name": "mdButton",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.button/directive/mdButton.html",
+        "url": "api/material.components.button/directive/mdButton",
+        "label": "mdButton",
+        "hasDemo": true,
+        "module": "material.components.button",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
       }
     ]
   },
