@@ -1,28 +1,6 @@
 DocsApp
 .constant('COMPONENTS', [
   {
-    "name": "material.components.bottomSheet",
-    "type": "module",
-    "outputPath": "partials/api/material.components.bottomSheet/index.html",
-    "url": "api/material.components.bottomSheet",
-    "label": "material.components.bottomSheet",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "$mdBottomSheet",
-        "type": "service",
-        "outputPath": "partials/api/material.components.bottomSheet/service/$mdBottomSheet.html",
-        "url": "api/material.components.bottomSheet/service/$mdBottomSheet",
-        "label": "$mdBottomSheet",
-        "hasDemo": false,
-        "module": "material.components.bottomSheet",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js"
-      }
-    ]
-  },
-  {
     "name": "material.components.button",
     "type": "module",
     "outputPath": "partials/api/material.components.button/index.html",
@@ -41,6 +19,28 @@ DocsApp
         "hasDemo": true,
         "module": "material.components.button",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
+      }
+    ]
+  },
+  {
+    "name": "material.components.bottomSheet",
+    "type": "module",
+    "outputPath": "partials/api/material.components.bottomSheet/index.html",
+    "url": "api/material.components.bottomSheet",
+    "label": "material.components.bottomSheet",
+    "hasDemo": false,
+    "module": ".",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "docs": [
+      {
+        "name": "$mdBottomSheet",
+        "type": "service",
+        "outputPath": "partials/api/material.components.bottomSheet/service/$mdBottomSheet.html",
+        "url": "api/material.components.bottomSheet/service/$mdBottomSheet",
+        "label": "$mdBottomSheet",
+        "hasDemo": false,
+        "module": "material.components.bottomSheet",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js"
       }
     ]
   },
