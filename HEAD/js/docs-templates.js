@@ -31,11 +31,16 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          <span flex></span>\n' +
     '          <md-button\n' +
     '            class="md-icon-button"\n' +
+    '            aria-label="View Source"\n' +
     '            ng-click="demoCtrl.$showSource = !demoCtrl.$showSource">\n' +
     '              <md-tooltip md-autohide>View Source</md-tooltip>\n' +
     '              <md-icon md-svg-src="img/icons/ic_code_24px.svg"></md-icon>\n' +
     '          </md-button>\n' +
-    '          <md-button ng-hide="{{exampleNotEditable}}" hide-sm ng-click="demoCtrl.editOnCodepen()"\n' +
+    '          <md-button\n' +
+    '              ng-hide="{{exampleNotEditable}}"\n' +
+    '              hide-sm\n' +
+    '              ng-click="demoCtrl.editOnCodepen()"\n' +
+    '              aria-label="Edit on CodePen"\n' +
     '              class="md-icon-button">\n' +
     '            <md-tooltip md-autohide>Edit on CodePen</md-tooltip>\n' +
     '            <md-icon md-svg-src="img/icons/codepen-logo.svg"></md-icon>\n' +
