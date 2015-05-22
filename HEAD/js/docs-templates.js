@@ -26,18 +26,15 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          <h3>{{demoCtrl.demoTitle}}</h3>\n' +
     '          <span flex></span>\n' +
     '          <md-button\n' +
-    '            style="min-width: 72px; margin-left: auto;"\n' +
+    '            class="md-icon-button"\n' +
     '            ng-click="demoCtrl.$showSource = !demoCtrl.$showSource">\n' +
-    '            <div flex layout="row" layout-align="center center">\n' +
-    '              <md-icon md-svg-src="img/icons/ic_visibility_24px.svg"\n' +
-    '                 style="margin: 0 4px 0 0;">\n' +
-    '              </md-icon>\n' +
-    '              Source\n' +
-    '            </div>\n' +
+    '              <md-tooltip>View Source</md-tooltip>\n' +
+    '              <md-icon md-svg-src="img/icons/ic_code_24px.svg"></md-icon>\n' +
     '          </md-button>\n' +
-    '          <md-button ng-hide="{{exampleNotEditable}}" hide-sm ng-click="demoCtrl.editOnCodepen()">\n' +
+    '          <md-button ng-hide="{{exampleNotEditable}}" hide-sm ng-click="demoCtrl.editOnCodepen()"\n' +
+    '              class="md-icon-button">\n' +
+    '            <md-tooltip>Edit on CodePen</md-tooltip>\n' +
     '            <md-icon md-svg-src="img/icons/codepen-logo.svg"></md-icon>\n' +
-    '            Edit on codepen\n' +
     '          </md-button>\n' +
     '        </div>\n' +
     '      </md-toolbar>\n' +
@@ -118,7 +115,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/home.tmpl.html',
-    '<div ng-controller="HomeCtrl" layout="column" class="doc-content">\n' +
+    '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
     '    <h2 class="md-title" style="margin-top: 0;">What is Angular Material?</h2>\n' +
     '    <p>The Angular Material project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
