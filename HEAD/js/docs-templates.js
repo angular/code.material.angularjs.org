@@ -11,7 +11,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/docs-demo.tmpl.html',
-    '<div layout="column" class="doc-content">\n' +
+    '<div layout="column" class="doc-content" style="padding: 0;">\n' +
     '  <div flex layout="column" style="z-index:1">\n' +
     '\n' +
     '    <div class="doc-description" ng-bind-html="demoCtrl.demoDescription.contents | toHtml"></div>\n' +
@@ -119,79 +119,54 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/home.tmpl.html',
     '<div ng-controller="HomeCtrl" layout="column" class="doc-content">\n' +
-    '    <md-content>\n' +
-    '        <p>The <strong>Angular Material</strong> project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
+    '  <md-content>\n' +
+    '    <h2 class="md-title" style="margin-top: 0;">What is Angular Material?</h2>\n' +
+    '    <p>The Angular Material project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
+    '    <p>Similar to the\n' +
+    '      <a href="http://www.polymer-project.org/">Polymer</a> project\'s\n' +
+    '      <a href="http://www.polymer-project.org/docs/elements/paper-elements.html">Paper elements</a> collection, Angular Material is supported internally at Google by the Angular.js, Material Design UX and other product teams.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="25" flex-md="50" flex-sm="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
+    '        { href: \'demo\', icon: \'play_circle_fill\', text: \'Demos\' },\n' +
+    '        { href: \'CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
+    '        { href: \'api\', icon: \'code\', text: \'API Reference\' }\n' +
+    '      ]">\n' +
+    '        <md-button class="md-primary md-raised" ng-href="#/{{link.href}}" style="{{ index === 3 ? \'margin-right:0;\' : index ? \'\' : \'margin-left:0;\' }}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.text}}\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
     '\n' +
-    '        <p>Similar to the\n' +
-    '            <a href="http://www.polymer-project.org/">Polymer</a> project\'s\n' +
-    '            <a href="http://www.polymer-project.org/docs/elements/paper-elements.html">Paper elements</a> collection, Angular Material is supported internally at Google by the Angular.js, Material Design UX and other product teams.\n' +
-    '        </p>\n' +
+    '    <br/>\n' +
+    '    <h2 class="md-title">What is Material Design?</h2>\n' +
+    '    <p>\n' +
+    '      Material Design is a specification for a\n' +
+    '      unified system of visual, motion, and interaction design that adapts across different devices and different\n' +
+    '      screen sizes.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="50" flex-md="100" flex-sm="100" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video about Material Design\' },\n' +
+    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn more about Material Design\' }\n' +
+    '      ]">\n' +
+    '        <md-button style="margin-{{index ? \'right\' : \'left\'}}: 0" class="md-primary md-raised" ng-href="{{link.href}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.text}}\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
     '\n' +
-    '        <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '          <li flex="25" flex-md="50" flex-sm="50">\n' +
-    '            <md-card>\n' +
-    '              <md-card-content>\n' +
-    '                <a ng-href="#/getting-started">Getting Started</a>\n' +
-    '              </md-card-content>\n' +
-    '            </md-card>\n' +
-    '          </li>\n' +
-    '          <li flex="25" flex-md="50" flex-sm="50">\n' +
-    '            <md-card>\n' +
-    '              <md-card-content>\n' +
-    '                <a ng-href="#/demo/">Demos</a>\n' +
-    '              </md-card-content>\n' +
-    '            </md-card>\n' +
-    '          </li>\n' +
-    '          <li flex="25" flex-md="50" flex-sm="50">\n' +
-    '            <md-card>\n' +
-    '              <md-card-content>\n' +
-    '                <a ng-href="#/CSS/typography">Customization</a>\n' +
-    '              </md-card-content>\n' +
-    '            </md-card>\n' +
-    '          </li>\n' +
-    '          <li flex="25" flex-md="50" flex-sm="50">\n' +
-    '            <md-card>\n' +
-    '              <md-card-content>\n' +
-    '                <a ng-href="#/api/">API Reference</a>\n' +
-    '              </md-card-content>\n' +
-    '            </md-card>\n' +
-    '          </li>\n' +
-    '        </ul>\n' +
-    '\n' +
-    '        <h2 class="md-title">What is Material Design?</h2>\n' +
-    '        <p>\n' +
-    '            <a href="http://www.google.com/design/spec/material-design/">Material Design</a> is a specification for a\n' +
-    '            unified system of visual, motion, and interaction design that adapts across different devices and different\n' +
-    '            screen sizes.\n' +
-    '\n' +
-    '            Below is a brief video that presents the Material Design system:\n' +
-    '        </p>\n' +
-    '\n' +
-    '        <md-content>\n' +
-    '          <div style="max-width: 560px; margin: 0 auto;">\n' +
-    '            <div class="responsive-video">\n' +
-    '              <iframe title="Material Design" src="//www.youtube.com/embed/Q8TXgCzxEnw" frameborder="0" allowfullscreen></iframe>\n' +
-    '            </div>\n' +
-    '          </div>\n' +
-    '        </md-content>\n' +
-    '        <ul>\n' +
-    '            <li>These docs were generated from source in the `master` branch:\n' +
-    '                <ul style="padding-top:5px;">\n' +
-    '                    <li>\n' +
-    '                        at commit <a ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}" target="_blank">\n' +
-    '                        v{{BUILDCONFIG.version}}  -  SHA {{BUILDCONFIG.commit.substring(0,7)}}\n' +
-    '                    </a>.\n' +
-    '                    </li>\n' +
-    '                    <li>\n' +
-    '                        on {{BUILDCONFIG.date}} GMT.\n' +
-    '                    </li>\n' +
-    '                </ul>\n' +
-    '\n' +
-    '            </li>\n' +
-    '        </ul>\n' +
-    '        <br/>\n' +
-    '        <br/>\n' +
-    '    </md-content>\n' +
+    '    <br/>\n' +
+    '    <md-divider></md-divider>\n' +
+    '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
+    '      These docs were generated from\n' +
+    '      (<a ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}" target="_blank">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
+    '      on (<strong>{{BUILDCONFIG.date}}</strong>) GMT.\n' +
+    '    </p>\n' +
+    '  </md-content>\n' +
     '</div>\n' +
     '\n' +
     '');
@@ -199,7 +174,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-alignment.tmpl.html',
-    '<div ng-controller="LayoutCtrl" layout="column" layout-fill class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
     '\n' +
     '  <p>\n' +
     '    The <code>layout-align</code> attribute takes two words.\n' +
@@ -292,7 +267,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-container.tmpl.html',
-    '<div ng-controller="LayoutCtrl" layout="column" layout-fill class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
     '\n' +
     '  <h3>Overview</h3>\n' +
     '  <p>\n' +
@@ -306,7 +281,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    helps us separate concerns: attributes define layout, and classes define styling.\n' +
     '  </p>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
+    '  <br/>\n' +
     '  <h3>Layout Attribute</h3>\n' +
     '  <p>\n' +
     '    Use the <code>layout</code> attribute on an element to arrange its children\n' +
@@ -334,14 +309,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-grid.tmpl.html',
-    '<div ng-controller="LayoutCtrl" layout="column" layout-fill class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
     '\n' +
     '  <p>\n' +
     '    To customize the size and position of elements in a layout, use the\n' +
     '    <code>flex</code>, <code>offset</code>, and <code>flex-order</code> attributes.\n' +
     '  </p>\n' +
-    '\n' +
-    '  <md-divider></md-divider>\n' +
     '\n' +
     '  <docs-demo demo-title="Flex Attribute" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -362,9 +335,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    Add the <code>flex</code> attribute to a layout\'s child element, and it\n' +
     '    will flex (stretch) to fill the available area.\n' +
     '  </p>\n' +
-    '\n' +
-    '\n' +
-    '  <md-divider></md-divider>\n' +
     '\n' +
     '  <docs-demo demo-title="Flex Percent Values" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -387,6 +357,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
+    '\n' +
     '  <p>\n' +
     '    A layout child\'s <code>flex</code> attribute can be given an integer value from 0-100.\n' +
     '    The element will stretch to the percentage of available space matching the value.\n' +
@@ -400,7 +371,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes.\n' +
     '  </p>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
     '  <docs-demo demo-title="Flex Order Attribute" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row" layout-margin>\n' +
@@ -450,7 +420,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <td>Sets element order on devices greater than 1200px wide.</td>\n' +
     '    </tr>\n' +
     '  </table>\n' +
-    '  <md-divider></md-divider>\n' +
+    '\n' +
     '  <docs-demo demo-title="Flex Offset Attribute" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row">\n' +
@@ -505,7 +475,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-options.tmpl.html',
-    '<div ng-controller="LayoutCtrl" layout="column" layout-fill class="layout-content layout-options">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content layout-options">\n' +
     '\n' +
     '  <docs-demo demo-title="Responsive Layout" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -560,7 +530,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </table>\n' +
     '  <br/>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
+    '  <br/>\n' +
     '\n' +
     '  <docs-demo demo-title="Layout Margin, Padding and Fill" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -581,7 +551,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
+    '  <br/>\n' +
     '\n' +
     '  <docs-demo demo-title="Wrap" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -600,7 +570,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
+    '  <br/>\n' +
     '\n' +
     '  <docs-demo demo-title="Responsive Flex & Offset Attributes" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
@@ -651,7 +621,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '  </table>\n' +
     '\n' +
-    '  <md-divider></md-divider>\n' +
+    '  <br/>\n' +
     '\n' +
     '  <docs-demo demo-title="Hide and Show Attributes" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
