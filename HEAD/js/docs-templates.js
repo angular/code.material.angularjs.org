@@ -126,7 +126,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/home.tmpl.html',
     '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
-    '    <h2 class="md-title" style="margin-top: 0;">What is Angular Material?</h2>\n' +
+    '    <h2 class="md-heading" style="margin-top: 0;">What is Angular Material?</h2>\n' +
     '    <p>The Angular Material project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
     '    <p>Similar to the\n' +
     '      <a href="http://www.polymer-project.org/">Polymer</a> project\'s\n' +
@@ -151,7 +151,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-title">What is Material Design?</h2>\n' +
+    '    <h2 class="md-heading">What is Material Design?</h2>\n' +
     '    <p>\n' +
     '      Material Design is a specification for a\n' +
     '      unified system of visual, motion, and interaction design that adapts across different devices and different\n' +
