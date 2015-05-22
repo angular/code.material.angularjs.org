@@ -2,20 +2,13 @@
 <html ng-app="docsApp" ng-controller="DocsCtrl" lang="en" ng-strict-di>
 <head>
 <title ng-bind="(menu.currentSection.name || 'Material Design') + (menu.currentPage ? (' > ' + (menu.currentPage | humanizeDoc)) : '')">Material Design</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico" />
 <meta name="viewport" content="initial-scale=1" />
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
-
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
-
-<script src="docs.js"></script>
-<script src="docs-demo-scripts.js"></script>
+<link rel="stylesheet" href="angular-material.min.css">
 <link rel="stylesheet" href="docs.css">
 </head>
-<body layout="row">
+<body layout="row" ng-cloak>
 
   <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
               md-component-id="left"
@@ -38,7 +31,7 @@
 
     <md-content flex role="navigation">
       <ul class="docs-menu">
-        <li ng-repeat="section in menu.sections" class="parent-list-item" ng-class="{'parentActive' : isSectionSelected(section)}">
+        <li ng-repeat="section in menu.sections" class="parent-list-item {{section.className || ''}}" ng-class="{'parentActive' : isSectionSelected(section)}">
           <h2 class="menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
             {{section.name}}
           </h2>
@@ -80,10 +73,12 @@
           <span flex></span> <!-- use up the empty space -->
 
           <div class="md-toolbar-item docs-tools" layout="column" layout-gt-md="row">
-            <md-button ng-if="!menu.currentPage || menu.currentSection.name === 'Getting Started'"
+            <md-button class="md-icon-button"
+                       aria-label="View on Github"
+                       ng-if="!menu.currentPage || menu.currentSection.name === 'Getting Started'"
                        target="_blank"
-                       ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}" >
-                {{BUILDCONFIG.version}}  -  SHA {{BUILDCONFIG.commit.substring(0,7)}}
+                       ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}">
+              <md-icon md-svg-src="img/icons/github-icon.svg"></md-icon>
             </md-button>
 
             <md-button ng-repeat="doc in currentComponent.docs"
@@ -114,6 +109,18 @@
     <md-content ng-view md-scroll-y flex layout-padding></md-content>
 
   </div>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-messages.min.js"></script>
+
+  <script src="angular-material.min.js"></script>
+  <script src="docs.js"></script>
+  <script src="docs-demo-scripts.js"></script>
+
   <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
           (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
