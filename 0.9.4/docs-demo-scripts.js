@@ -234,7 +234,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 angular.module('cardDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'https://material.angularjs.org/img/washedout.png';
+  $scope.imagePath = 'img/washedout.png';
 });
 
 
@@ -543,7 +543,7 @@ function DialogController($scope, $mdDialog) {
 
 angular.module('dividerDemo1', ['ngMaterial'])
   .controller('AppCtrl', function($scope) {
-    var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+    var imagePath = 'img/list/60.jpeg';
     $scope.messages = [{
       face : imagePath,
       what: 'Brunch this weekend?',
@@ -809,7 +809,7 @@ angular.module('listDemo1', ['ngMaterial'])
     .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
 })
 .controller('AppCtrl', function($scope) {
-    var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+    var imagePath = 'img/list/60.jpeg';
 
     $scope.phones = [
       { type: 'Home', number: '(555) 251-1234' },
@@ -882,9 +882,9 @@ angular.module('listDemo2', ['ngMaterial'])
   ];
 
   $scope.people = [
-    { name: 'Janet Perkins', img: 'https://material.angularjs.org/img/100-0.jpeg', newMessage: true },
-    { name: 'Mary Johnson', img: 'https://material.angularjs.org/img/100-1.jpeg', newMessage: false },
-    { name: 'Peter Carlsson', img: 'https://material.angularjs.org/img/100-2.jpeg', newMessage: false }
+    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
+    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
+    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
   ];
 
   $scope.goToPerson = function(person, event) {
@@ -1122,7 +1122,7 @@ angular.module('sliderDemo1', ['ngMaterial'])
 angular.module('subheaderBasicDemo', ['ngMaterial'])
 
 .controller('SubheaderAppCtrl', function($scope) {
-    var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+    var imagePath = 'img/list/60.jpeg';
     $scope.messages = [
       {
         face : imagePath,
@@ -1345,7 +1345,7 @@ angular.module('toolbarDemo1', ['ngMaterial'])
 var app = angular.module('toolbarDemo2', ['ngMaterial']);
 
 app.controller('AppCtrl', function($scope) {
-  var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+  var imagePath = 'img/list/60.jpeg';
 
   $scope.todos = [];
   for (var i = 0; i < 15; i++) {

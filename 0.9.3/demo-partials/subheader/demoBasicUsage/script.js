@@ -2,7 +2,7 @@
 angular.module('subheaderBasicDemo', ['ngMaterial'])
 
 .controller('SubheaderAppCtrl', function($scope) {
-    var imagePath = 'https://material.angularjs.org/img/list/60.jpeg';
+    var imagePath = 'img/list/60.jpeg';
     $scope.messages = [
       {
         face : imagePath,
