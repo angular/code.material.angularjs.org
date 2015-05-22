@@ -2,7 +2,6 @@
 <html ng-app="docsApp" ng-controller="DocsCtrl" lang="en" ng-strict-di>
 <head>
 <title ng-bind="(menu.currentSection.name || 'Material Design') + (menu.currentPage ? (' > ' + (menu.currentPage | humanizeDoc)) : '')">Material Design</title>
-<link rel="icon" type="image/x-icon" href="favicon.ico" />
 <meta name="viewport" content="initial-scale=1" />
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
@@ -32,7 +31,7 @@
 
     <md-content flex role="navigation">
       <ul class="docs-menu">
-        <li ng-repeat="section in menu.sections" class="parent-list-item {{section.className || ''}}" ng-class="{'parentActive' : isSectionSelected(section)}">
+        <li ng-repeat="section in menu.sections" class="parent-list-item" ng-class="{'parentActive' : isSectionSelected(section)}">
           <h2 class="menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name | nospace }}">
             {{section.name}}
           </h2>
@@ -77,7 +76,7 @@
             <md-button ng-if="!menu.currentPage || menu.currentSection.name === 'Getting Started'"
                        target="_blank"
                        ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}" >
-                Version {{BUILDCONFIG.version}}
+                {{BUILDCONFIG.version}}  -  SHA {{BUILDCONFIG.commit.substring(0,7)}}
             </md-button>
 
             <md-button ng-repeat="doc in currentComponent.docs"
