@@ -4,3 +4,8 @@
   float: left; }
 .checkboxdemoBasicUsage p {
   padding-left: 8px; }
+.checkboxdemoBasicUsage fieldset.standard {
+  border-style: solid;
+  border-width: 1px; }
+.checkboxdemoBasicUsage legend {
+  color: #3F51B5; }

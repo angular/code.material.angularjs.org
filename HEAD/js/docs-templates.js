@@ -1,17 +1,21 @@
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/demo.tmpl.html',
-    '<docs-demo ng-repeat="demo in demos" \n' +
-    '  demo-id="{{demo.id}}" demo-title="{{demo.label}}" demo-module="{{demo.ngModule.module}}">\n' +
-    '  <demo-file ng-repeat="file in demo.$files"\n' +
-    '             name="{{file.name}}" contents="file.httpPromise">\n' +
-    '  </demo-file>\n' +
+    '<docs-demo\n' +
+    '    ng-repeat="demo in demos"\n' +
+    '    demo-id="{{demo.id}}"\n' +
+    '    demo-title="{{demo.label}}"\n' +
+    '    demo-module="{{demo.ngModule.module}}">\n' +
+    '  <demo-file\n' +
+    '      ng-repeat="file in demo.$files"\n' +
+    '      name="{{file.name}}"\n' +
+    '      contents="file.httpPromise"></demo-file>\n' +
     '</docs-demo>\n' +
     '');
 }]);
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/docs-demo.tmpl.html',
-    '<div layout="column" class="doc-content" style="padding: 0;">\n' +
+    '<div layout="column" class="doc-demo-content doc-content">\n' +
     '  <div flex layout="column" style="z-index:1">\n' +
     '\n' +
     '    <div class="doc-description" ng-bind-html="demoCtrl.demoDescription.contents | toHtml"></div>\n' +
@@ -28,12 +32,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          <md-button\n' +
     '            class="md-icon-button"\n' +
     '            ng-click="demoCtrl.$showSource = !demoCtrl.$showSource">\n' +
-    '              <md-tooltip>View Source</md-tooltip>\n' +
+    '              <md-tooltip md-autohide>View Source</md-tooltip>\n' +
     '              <md-icon md-svg-src="img/icons/ic_code_24px.svg"></md-icon>\n' +
     '          </md-button>\n' +
     '          <md-button ng-hide="{{exampleNotEditable}}" hide-sm ng-click="demoCtrl.editOnCodepen()"\n' +
     '              class="md-icon-button">\n' +
-    '            <md-tooltip>Edit on CodePen</md-tooltip>\n' +
+    '            <md-tooltip md-autohide>Edit on CodePen</md-tooltip>\n' +
     '            <md-icon md-svg-src="img/icons/codepen-logo.svg"></md-icon>\n' +
     '          </md-button>\n' +
     '        </div>\n' +
@@ -130,7 +134,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        { href: \'CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
     '        { href: \'api\', icon: \'code\', text: \'API Reference\' }\n' +
     '      ]">\n' +
-    '        <md-button class="md-primary md-raised" ng-href="#/{{link.href}}" style="{{ index === 3 ? \'margin-right:0;\' : index ? \'\' : \'margin-left:0;\' }}">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            ng-href="#/{{link.href}}"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            style="{{ index === 3 ? \'margin-right:0;\' : index ? \'\' : \'margin-left:0;\' }}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}\n' +
     '        </md-button>\n' +
@@ -149,7 +157,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video about Material Design\' },\n' +
     '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn more about Material Design\' }\n' +
     '      ]">\n' +
-    '        <md-button style="margin-{{index ? \'right\' : \'left\'}}: 0" class="md-primary md-raised" ng-href="{{link.href}}">\n' +
+    '        <md-button\n' +
+    '            style="margin-{{index ? \'right\' : \'left\'}}: 0"\n' +
+    '            class="md-primary md-raised"\n' +
+    '            target="_blank"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            ng-href="{{link.href}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}\n' +
     '        </md-button>\n' +
