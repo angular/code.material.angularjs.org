@@ -1,14 +1,44 @@
 DocsApp
 .constant('COMPONENTS', [
   {
+    "name": "material.components.autocomplete",
+    "type": "module",
+    "outputPath": "partials/api/material.components.autocomplete/index.html",
+    "url": "api/material.components.autocomplete",
+    "label": "material.components.autocomplete",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/autocomplete.js",
+    "docs": [
+      {
+        "name": "mdAutocomplete",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.autocomplete/directive/mdAutocomplete.html",
+        "url": "api/material.components.autocomplete/directive/mdAutocomplete",
+        "label": "mdAutocomplete",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/js/autocompleteDirective.js",
+        "hasDemo": true
+      },
+      {
+        "name": "mdHighlightText",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.autocomplete/directive/mdHighlightText.html",
+        "url": "api/material.components.autocomplete/directive/mdHighlightText",
+        "label": "mdHighlightText",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/js/highlightDirective.js"
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.bottomSheet",
     "type": "module",
     "outputPath": "partials/api/material.components.bottomSheet/index.html",
     "url": "api/material.components.bottomSheet",
     "label": "material.components.bottomSheet",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js",
     "docs": [
       {
         "name": "$mdBottomSheet",
@@ -16,11 +46,12 @@ DocsApp
         "outputPath": "partials/api/material.components.bottomSheet/service/$mdBottomSheet.html",
         "url": "api/material.components.bottomSheet/service/$mdBottomSheet",
         "label": "$mdBottomSheet",
-        "hasDemo": false,
-        "module": "material.components.bottomSheet",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js",
+        "hasDemo": false
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.button",
@@ -28,9 +59,8 @@ DocsApp
     "outputPath": "partials/api/material.components.button/index.html",
     "url": "api/material.components.button",
     "label": "material.components.button",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js",
     "docs": [
       {
         "name": "mdButton",
@@ -38,11 +68,12 @@ DocsApp
         "outputPath": "partials/api/material.components.button/directive/mdButton.html",
         "url": "api/material.components.button/directive/mdButton",
         "label": "mdButton",
-        "hasDemo": true,
-        "module": "material.components.button",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.card",
@@ -50,9 +81,8 @@ DocsApp
     "outputPath": "partials/api/material.components.card/index.html",
     "url": "api/material.components.card",
     "label": "material.components.card",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js",
     "docs": [
       {
         "name": "mdCard",
@@ -60,11 +90,12 @@ DocsApp
         "outputPath": "partials/api/material.components.card/directive/mdCard.html",
         "url": "api/material.components.card/directive/mdCard",
         "label": "mdCard",
-        "hasDemo": true,
-        "module": "material.components.card",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/card/card.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.checkbox",
@@ -72,9 +103,8 @@ DocsApp
     "outputPath": "partials/api/material.components.checkbox/index.html",
     "url": "api/material.components.checkbox",
     "label": "material.components.checkbox",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/checkbox/checkbox.js",
     "docs": [
       {
         "name": "mdCheckbox",
@@ -82,11 +112,61 @@ DocsApp
         "outputPath": "partials/api/material.components.checkbox/directive/mdCheckbox.html",
         "url": "api/material.components.checkbox/directive/mdCheckbox",
         "label": "mdCheckbox",
-        "hasDemo": true,
-        "module": "material.components.checkbox",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/checkbox/checkbox.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/checkbox/checkbox.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.chips",
+    "type": "module",
+    "outputPath": "partials/api/material.components.chips/index.html",
+    "url": "api/material.components.chips",
+    "label": "material.components.chips",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/chips.js",
+    "docs": [
+      {
+        "name": "mdChip",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.chips/directive/mdChip.html",
+        "url": "api/material.components.chips/directive/mdChip",
+        "label": "mdChip",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipDirective.js",
+        "hasDemo": true
+      },
+      {
+        "name": "mdChipRemove",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.chips/directive/mdChipRemove.html",
+        "url": "api/material.components.chips/directive/mdChipRemove",
+        "label": "mdChipRemove",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipRemoveDirective.js"
+      },
+      {
+        "name": "mdChips",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.chips/directive/mdChips.html",
+        "url": "api/material.components.chips/directive/mdChips",
+        "label": "mdChips",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipsDirective.js"
+      },
+      {
+        "name": "mdContactChips",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.chips/directive/mdContactChips.html",
+        "url": "api/material.components.chips/directive/mdContactChips",
+        "label": "mdContactChips",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/contactChipsDirective.js"
+      }
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.content",
@@ -94,9 +174,8 @@ DocsApp
     "outputPath": "partials/api/material.components.content/index.html",
     "url": "api/material.components.content",
     "label": "material.components.content",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/content/content.js",
     "docs": [
       {
         "name": "mdContent",
@@ -104,11 +183,12 @@ DocsApp
         "outputPath": "partials/api/material.components.content/directive/mdContent.html",
         "url": "api/material.components.content/directive/mdContent",
         "label": "mdContent",
-        "hasDemo": true,
-        "module": "material.components.content",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/content/content.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/content/content.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.dialog",
@@ -116,9 +196,8 @@ DocsApp
     "outputPath": "partials/api/material.components.dialog/index.html",
     "url": "api/material.components.dialog",
     "label": "material.components.dialog",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
     "docs": [
       {
         "name": "$mdDialog",
@@ -126,11 +205,12 @@ DocsApp
         "outputPath": "partials/api/material.components.dialog/service/$mdDialog.html",
         "url": "api/material.components.dialog/service/$mdDialog",
         "label": "$mdDialog",
-        "hasDemo": false,
-        "module": "material.components.dialog",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
+        "hasDemo": false
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.divider",
@@ -138,9 +218,8 @@ DocsApp
     "outputPath": "partials/api/material.components.divider/index.html",
     "url": "api/material.components.divider",
     "label": "material.components.divider",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/divider/divider.js",
     "docs": [
       {
         "name": "mdDivider",
@@ -148,11 +227,12 @@ DocsApp
         "outputPath": "partials/api/material.components.divider/directive/mdDivider.html",
         "url": "api/material.components.divider/directive/mdDivider",
         "label": "mdDivider",
-        "hasDemo": true,
-        "module": "material.components.divider",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/divider/divider.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/divider/divider.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.gridList",
@@ -160,9 +240,8 @@ DocsApp
     "outputPath": "partials/api/material.components.gridList/index.html",
     "url": "api/material.components.gridList",
     "label": "material.components.gridList",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js",
     "docs": [
       {
         "name": "mdGridList",
@@ -170,9 +249,9 @@ DocsApp
         "outputPath": "partials/api/material.components.gridList/directive/mdGridList.html",
         "url": "api/material.components.gridList/directive/mdGridList",
         "label": "mdGridList",
-        "hasDemo": true,
-        "module": "material.components.gridList",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js",
+        "hasDemo": true
       },
       {
         "name": "mdGridTile",
@@ -180,11 +259,11 @@ DocsApp
         "outputPath": "partials/api/material.components.gridList/directive/mdGridTile.html",
         "url": "api/material.components.gridList/directive/mdGridTile",
         "label": "mdGridTile",
-        "hasDemo": true,
-        "module": "material.components.gridList",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.icon",
@@ -192,9 +271,8 @@ DocsApp
     "outputPath": "partials/api/material.components.icon/index.html",
     "url": "api/material.components.icon",
     "label": "material.components.icon",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconDirective.js",
     "docs": [
       {
         "name": "mdIcon",
@@ -202,9 +280,9 @@ DocsApp
         "outputPath": "partials/api/material.components.icon/directive/mdIcon.html",
         "url": "api/material.components.icon/directive/mdIcon",
         "label": "mdIcon",
-        "hasDemo": true,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconDirective.js",
+        "hasDemo": true
       },
       {
         "name": "$mdIconProvider",
@@ -212,9 +290,8 @@ DocsApp
         "outputPath": "partials/api/material.components.icon/service/$mdIconProvider.html",
         "url": "api/material.components.icon/service/$mdIconProvider",
         "label": "$mdIconProvider",
-        "hasDemo": false,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconService.js"
       },
       {
         "name": "$mdIcon",
@@ -222,11 +299,11 @@ DocsApp
         "outputPath": "partials/api/material.components.icon/service/$mdIcon.html",
         "url": "api/material.components.icon/service/$mdIcon",
         "label": "$mdIcon",
-        "hasDemo": false,
-        "module": "material.components.icon",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconService.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.input",
@@ -234,9 +311,8 @@ DocsApp
     "outputPath": "partials/api/material.components.input/index.html",
     "url": "api/material.components.input",
     "label": "material.components.input",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js",
     "docs": [
       {
         "name": "mdInputContainer",
@@ -244,9 +320,9 @@ DocsApp
         "outputPath": "partials/api/material.components.input/directive/mdInputContainer.html",
         "url": "api/material.components.input/directive/mdInputContainer",
         "label": "mdInputContainer",
-        "hasDemo": true,
-        "module": "material.components.input",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js",
+        "hasDemo": true
       },
       {
         "name": "mdInput",
@@ -254,11 +330,11 @@ DocsApp
         "outputPath": "partials/api/material.components.input/directive/mdInput.html",
         "url": "api/material.components.input/directive/mdInput",
         "label": "mdInput",
-        "hasDemo": true,
-        "module": "material.components.input",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.list",
@@ -266,9 +342,8 @@ DocsApp
     "outputPath": "partials/api/material.components.list/index.html",
     "url": "api/material.components.list",
     "label": "material.components.list",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js",
     "docs": [
       {
         "name": "mdList",
@@ -276,9 +351,9 @@ DocsApp
         "outputPath": "partials/api/material.components.list/directive/mdList.html",
         "url": "api/material.components.list/directive/mdList",
         "label": "mdList",
-        "hasDemo": true,
-        "module": "material.components.list",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js",
+        "hasDemo": true
       },
       {
         "name": "mdListItem",
@@ -286,11 +361,11 @@ DocsApp
         "outputPath": "partials/api/material.components.list/directive/mdListItem.html",
         "url": "api/material.components.list/directive/mdListItem",
         "label": "mdListItem",
-        "hasDemo": true,
-        "module": "material.components.list",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.progressCircular",
@@ -298,9 +373,8 @@ DocsApp
     "outputPath": "partials/api/material.components.progressCircular/index.html",
     "url": "api/material.components.progressCircular",
     "label": "material.components.progressCircular",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progressCircular.js",
     "docs": [
       {
         "name": "mdProgressCircular",
@@ -308,11 +382,12 @@ DocsApp
         "outputPath": "partials/api/material.components.progressCircular/directive/mdProgressCircular.html",
         "url": "api/material.components.progressCircular/directive/mdProgressCircular",
         "label": "mdProgressCircular",
-        "hasDemo": true,
-        "module": "material.components.progressCircular",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progressCircular.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progressCircular.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.progressLinear",
@@ -320,9 +395,8 @@ DocsApp
     "outputPath": "partials/api/material.components.progressLinear/index.html",
     "url": "api/material.components.progressLinear",
     "label": "material.components.progressLinear",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progressLinear.js",
     "docs": [
       {
         "name": "mdProgressLinear",
@@ -330,11 +404,12 @@ DocsApp
         "outputPath": "partials/api/material.components.progressLinear/directive/mdProgressLinear.html",
         "url": "api/material.components.progressLinear/directive/mdProgressLinear",
         "label": "mdProgressLinear",
-        "hasDemo": true,
-        "module": "material.components.progressLinear",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progressLinear.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progressLinear.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.radioButton",
@@ -342,9 +417,8 @@ DocsApp
     "outputPath": "partials/api/material.components.radioButton/index.html",
     "url": "api/material.components.radioButton",
     "label": "material.components.radioButton",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js",
     "docs": [
       {
         "name": "mdRadioGroup",
@@ -352,9 +426,9 @@ DocsApp
         "outputPath": "partials/api/material.components.radioButton/directive/mdRadioGroup.html",
         "url": "api/material.components.radioButton/directive/mdRadioGroup",
         "label": "mdRadioGroup",
-        "hasDemo": true,
-        "module": "material.components.radioButton",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js",
+        "hasDemo": true
       },
       {
         "name": "mdRadioButton",
@@ -362,11 +436,11 @@ DocsApp
         "outputPath": "partials/api/material.components.radioButton/directive/mdRadioButton.html",
         "url": "api/material.components.radioButton/directive/mdRadioButton",
         "label": "mdRadioButton",
-        "hasDemo": true,
-        "module": "material.components.radioButton",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.select",
@@ -374,9 +448,8 @@ DocsApp
     "outputPath": "partials/api/material.components.select/index.html",
     "url": "api/material.components.select",
     "label": "material.components.select",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js",
     "docs": [
       {
         "name": "mdSelect",
@@ -384,11 +457,12 @@ DocsApp
         "outputPath": "partials/api/material.components.select/directive/mdSelect.html",
         "url": "api/material.components.select/directive/mdSelect",
         "label": "mdSelect",
-        "hasDemo": true,
-        "module": "material.components.select",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.sidenav",
@@ -396,9 +470,8 @@ DocsApp
     "outputPath": "partials/api/material.components.sidenav/index.html",
     "url": "api/material.components.sidenav",
     "label": "material.components.sidenav",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js",
     "docs": [
       {
         "name": "$mdSidenav",
@@ -406,9 +479,9 @@ DocsApp
         "outputPath": "partials/api/material.components.sidenav/service/$mdSidenav.html",
         "url": "api/material.components.sidenav/service/$mdSidenav",
         "label": "$mdSidenav",
-        "hasDemo": false,
-        "module": "material.components.sidenav",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js",
+        "hasDemo": false
       },
       {
         "name": "mdSidenavFocus",
@@ -416,8 +489,7 @@ DocsApp
         "outputPath": "partials/api/material.components.sidenav/directive/mdSidenavFocus.html",
         "url": "api/material.components.sidenav/directive/mdSidenavFocus",
         "label": "mdSidenavFocus",
-        "hasDemo": true,
-        "module": "material.components.sidenav",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js"
       },
       {
@@ -426,11 +498,11 @@ DocsApp
         "outputPath": "partials/api/material.components.sidenav/directive/mdSidenav.html",
         "url": "api/material.components.sidenav/directive/mdSidenav",
         "label": "mdSidenav",
-        "hasDemo": true,
-        "module": "material.components.sidenav",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.slider",
@@ -438,9 +510,8 @@ DocsApp
     "outputPath": "partials/api/material.components.slider/index.html",
     "url": "api/material.components.slider",
     "label": "material.components.slider",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
     "docs": [
       {
         "name": "mdSlider",
@@ -448,11 +519,12 @@ DocsApp
         "outputPath": "partials/api/material.components.slider/directive/mdSlider.html",
         "url": "api/material.components.slider/directive/mdSlider",
         "label": "mdSlider",
-        "hasDemo": true,
-        "module": "material.components.slider",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.subheader",
@@ -460,9 +532,8 @@ DocsApp
     "outputPath": "partials/api/material.components.subheader/index.html",
     "url": "api/material.components.subheader",
     "label": "material.components.subheader",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/subheader/subheader.js",
     "docs": [
       {
         "name": "mdSubheader",
@@ -470,11 +541,12 @@ DocsApp
         "outputPath": "partials/api/material.components.subheader/directive/mdSubheader.html",
         "url": "api/material.components.subheader/directive/mdSubheader",
         "label": "mdSubheader",
-        "hasDemo": true,
-        "module": "material.components.subheader",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/subheader/subheader.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/subheader/subheader.js",
+        "hasDemo": true
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.swipe",
@@ -482,9 +554,8 @@ DocsApp
     "outputPath": "partials/api/material.components.swipe/index.html",
     "url": "api/material.components.swipe",
     "label": "material.components.swipe",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js",
     "docs": [
       {
         "name": "mdSwipeLeft",
@@ -492,9 +563,9 @@ DocsApp
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeLeft.html",
         "url": "api/material.components.swipe/directive/mdSwipeLeft",
         "label": "mdSwipeLeft",
-        "hasDemo": true,
-        "module": "material.components.swipe",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js",
+        "hasDemo": true
       },
       {
         "name": "mdSwipeRight",
@@ -502,11 +573,11 @@ DocsApp
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeRight.html",
         "url": "api/material.components.swipe/directive/mdSwipeRight",
         "label": "mdSwipeRight",
-        "hasDemo": true,
-        "module": "material.components.swipe",
+        "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
       }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.switch",
@@ -514,9 +585,8 @@ DocsApp
     "outputPath": "partials/api/material.components.switch/index.html",
     "url": "api/material.components.switch",
     "label": "material.components.switch",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/switch/switch.js",
     "docs": [
       {
         "name": "mdSwitch",
@@ -524,161 +594,12 @@ DocsApp
         "outputPath": "partials/api/material.components.switch/directive/mdSwitch.html",
         "url": "api/material.components.switch/directive/mdSwitch",
         "label": "mdSwitch",
-        "hasDemo": true,
-        "module": "material.components.switch",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/switch/switch.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/switch/switch.js",
+        "hasDemo": true
       }
-    ]
-  },
-  {
-    "name": "material.components.toast",
-    "type": "module",
-    "outputPath": "partials/api/material.components.toast/index.html",
-    "url": "api/material.components.toast",
-    "label": "material.components.toast",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "$mdToast",
-        "type": "service",
-        "outputPath": "partials/api/material.components.toast/service/$mdToast.html",
-        "url": "api/material.components.toast/service/$mdToast",
-        "label": "$mdToast",
-        "hasDemo": false,
-        "module": "material.components.toast",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/toast/toast.js"
-      }
-    ]
-  },
-  {
-    "name": "material.components.toolbar",
-    "type": "module",
-    "outputPath": "partials/api/material.components.toolbar/index.html",
-    "url": "api/material.components.toolbar",
-    "label": "material.components.toolbar",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdToolbar",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.toolbar/directive/mdToolbar.html",
-        "url": "api/material.components.toolbar/directive/mdToolbar",
-        "label": "mdToolbar",
-        "hasDemo": true,
-        "module": "material.components.toolbar",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/toolbar/toolbar.js"
-      }
-    ]
-  },
-  {
-    "name": "material.components.tooltip",
-    "type": "module",
-    "outputPath": "partials/api/material.components.tooltip/index.html",
-    "url": "api/material.components.tooltip",
-    "label": "material.components.tooltip",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdTooltip",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.tooltip/directive/mdTooltip.html",
-        "url": "api/material.components.tooltip/directive/mdTooltip",
-        "label": "mdTooltip",
-        "hasDemo": true,
-        "module": "material.components.tooltip",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tooltip/tooltip.js"
-      }
-    ]
-  },
-  {
-    "name": "material.components.autocomplete",
-    "type": "module",
-    "outputPath": "partials/api/material.components.autocomplete/index.html",
-    "url": "api/material.components.autocomplete",
-    "label": "material.components.autocomplete",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdAutocomplete",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.autocomplete/directive/mdAutocomplete.html",
-        "url": "api/material.components.autocomplete/directive/mdAutocomplete",
-        "label": "mdAutocomplete",
-        "hasDemo": true,
-        "module": "material.components.autocomplete",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/autocomplete.js"
-      },
-      {
-        "name": "mdHighlightText",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.autocomplete/directive/mdHighlightText.html",
-        "url": "api/material.components.autocomplete/directive/mdHighlightText",
-        "label": "mdHighlightText",
-        "hasDemo": true,
-        "module": "material.components.autocomplete",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/autocomplete.js"
-      }
-    ]
-  },
-  {
-    "name": "material.components.chips",
-    "type": "module",
-    "outputPath": "partials/api/material.components.chips/index.html",
-    "url": "api/material.components.chips",
-    "label": "material.components.chips",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
-    "docs": [
-      {
-        "name": "mdChip",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.chips/directive/mdChip.html",
-        "url": "api/material.components.chips/directive/mdChip",
-        "label": "mdChip",
-        "hasDemo": true,
-        "module": "material.components.chips",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/chips.js"
-      },
-      {
-        "name": "mdChipRemove",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.chips/directive/mdChipRemove.html",
-        "url": "api/material.components.chips/directive/mdChipRemove",
-        "label": "mdChipRemove",
-        "hasDemo": true,
-        "module": "material.components.chips",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/chips.js"
-      },
-      {
-        "name": "mdChips",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.chips/directive/mdChips.html",
-        "url": "api/material.components.chips/directive/mdChips",
-        "label": "mdChips",
-        "hasDemo": true,
-        "module": "material.components.chips",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/chips.js"
-      },
-      {
-        "name": "mdContactChips",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.chips/directive/mdContactChips.html",
-        "url": "api/material.components.chips/directive/mdContactChips",
-        "label": "mdContactChips",
-        "hasDemo": true,
-        "module": "material.components.chips",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/chips.js"
-      }
-    ]
+    ],
+    "hasDemo": false
   },
   {
     "name": "material.components.tabs",
@@ -686,9 +607,8 @@ DocsApp
     "outputPath": "partials/api/material.components.tabs/index.html",
     "url": "api/material.components.tabs",
     "label": "material.components.tabs",
-    "hasDemo": false,
-    "module": ".",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/./..js",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/tabs.js",
     "docs": [
       {
         "name": "mdTab",
@@ -696,9 +616,9 @@ DocsApp
         "outputPath": "partials/api/material.components.tabs/directive/mdTab.html",
         "url": "api/material.components.tabs/directive/mdTab",
         "label": "mdTab",
-        "hasDemo": true,
-        "module": "material.components.tabs",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/tabs.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/js/tabDirective.js",
+        "hasDemo": true
       },
       {
         "name": "mdTabs",
@@ -706,10 +626,76 @@ DocsApp
         "outputPath": "partials/api/material.components.tabs/directive/mdTabs.html",
         "url": "api/material.components.tabs/directive/mdTabs",
         "label": "mdTabs",
-        "hasDemo": true,
-        "module": "material.components.tabs",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/tabs.js"
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/js/tabsDirective.js"
       }
-    ]
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.toast",
+    "type": "module",
+    "outputPath": "partials/api/material.components.toast/index.html",
+    "url": "api/material.components.toast",
+    "label": "material.components.toast",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/toast/toast.js",
+    "docs": [
+      {
+        "name": "$mdToast",
+        "type": "service",
+        "outputPath": "partials/api/material.components.toast/service/$mdToast.html",
+        "url": "api/material.components.toast/service/$mdToast",
+        "label": "$mdToast",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/toast/toast.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.toolbar",
+    "type": "module",
+    "outputPath": "partials/api/material.components.toolbar/index.html",
+    "url": "api/material.components.toolbar",
+    "label": "material.components.toolbar",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/toolbar/toolbar.js",
+    "docs": [
+      {
+        "name": "mdToolbar",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.toolbar/directive/mdToolbar.html",
+        "url": "api/material.components.toolbar/directive/mdToolbar",
+        "label": "mdToolbar",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/toolbar/toolbar.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.tooltip",
+    "type": "module",
+    "outputPath": "partials/api/material.components.tooltip/index.html",
+    "url": "api/material.components.tooltip",
+    "label": "material.components.tooltip",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/tooltip/tooltip.js",
+    "docs": [
+      {
+        "name": "mdTooltip",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.tooltip/directive/mdTooltip.html",
+        "url": "api/material.components.tooltip/directive/mdTooltip",
+        "label": "mdTooltip",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tooltip/tooltip.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
   }
 ]);
