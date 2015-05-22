@@ -9961,9 +9961,10 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
         '</div>' +
       '</h2>',
     compile: function(element, attr, transclude) {
-      var outerHTML = element[0].outerHTML;
       return function postLink(scope, element, attr) {
         $mdTheming(element);
+        var outerHTML = element[0].outerHTML;
+
         function getContent(el) {
           return angular.element(el[0].querySelector('.md-subheader-content'));
         }
@@ -9979,7 +9980,6 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming) {
         if (!element.hasClass('md-no-sticky')) {
           transclude(scope, function(clone) {
             var stickyClone = $compile(angular.element(outerHTML))(scope);
-            $mdTheming(stickyClone);
             getContent(stickyClone).append(clone);
             $mdSticky(scope, element, stickyClone);
           });
