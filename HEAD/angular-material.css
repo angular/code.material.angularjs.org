@@ -3620,7 +3620,8 @@ md-icon {
   md-icon svg {
     pointer-events: none; }
   md-icon[md-font-icon] {
-    line-height: 1; }
+    line-height: 1;
+    width: auto; }
 
 md-input-container {
   display: -webkit-flex;
