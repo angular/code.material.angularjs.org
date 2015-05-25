@@ -3388,10 +3388,10 @@ md-checkbox {
     .md-chips .md-chip-input-container md-autocomplete, .md-chips .md-chip-input-container md-autocomplete-wrap {
       background: transparent;
       height: 32px; }
-    .md-chips .md-chip-input-container md-autocomplete {
+    .md-chips .md-chip-input-container md-autocomplete md-autocomplete-wrap {
       box-shadow: none; }
-      .md-chips .md-chip-input-container md-autocomplete input {
-        position: relative; }
+    .md-chips .md-chip-input-container md-autocomplete input {
+      position: relative; }
     .md-chips .md-chip-input-container input {
       border: 0;
       height: 32px;
