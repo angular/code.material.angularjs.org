@@ -15,7 +15,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/docs-demo.tmpl.html',
-    '<div layout="column" class="doc-demo-content doc-content">\n' +
+    '<div class="doc-demo-content doc-content">\n' +
     '  <div flex layout="column" style="z-index:1">\n' +
     '\n' +
     '    <div class="doc-description" ng-bind-html="demoCtrl.demoDescription.contents | toHtml"></div>\n' +
@@ -25,13 +25,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <section class="demo-container md-whiteframe-z1"\n' +
     '      ng-class="{\'show-source\': demoCtrl.$showSource}" >\n' +
     '\n' +
-    '      <md-toolbar class="demo-toolbar">\n' +
+    '      <md-toolbar class="demo-toolbar md-primary">\n' +
     '        <div class="md-toolbar-tools">\n' +
     '          <h3>{{demoCtrl.demoTitle}}</h3>\n' +
     '          <span flex></span>\n' +
     '          <md-button\n' +
     '            class="md-icon-button"\n' +
     '            aria-label="View Source"\n' +
+    '            ng-class="{ active: demoCtrl.$showSource }"\n' +
     '            ng-click="demoCtrl.$showSource = !demoCtrl.$showSource">\n' +
     '              <md-tooltip md-autohide>View Source</md-tooltip>\n' +
     '              <md-icon md-svg-src="img/icons/ic_code_24px.svg"></md-icon>\n' +
@@ -49,7 +50,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </md-toolbar>\n' +
     '\n' +
     '      <!-- Source views -->\n' +
-    '      <md-tabs class="demo-source-tabs" ng-show="demoCtrl.$showSource" style="min-height: 0;">\n' +
+    '      <md-tabs class="demo-source-tabs md-primary" ng-show="demoCtrl.$showSource" style="min-height: 0;">\n' +
     '        <md-tab ng-repeat="file in demoCtrl.orderedFiles" label="{{file.name}}">\n' +
     '          <md-content md-scroll-y class="demo-source-container">\n' +
     '            <hljs class="no-header" code="file.contentsPromise" lang="{{file.fileType}}" should-interpolate="demoCtrl.interpolateCode">\n' +
@@ -70,7 +71,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/getting-started.tmpl.html',
-    '<div ng-controller="GuideCtrl" layout="column" class="doc-content">\n' +
+    '<div ng-controller="GuideCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
     '    <p><em>New to Angular.js? Before getting into Angular Material, it might be helpful to\n' +
     '      <a href="https://egghead.io/articles/new-to-angularjs-start-learning-here" target="_blank"\n' +
@@ -126,7 +127,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/home.tmpl.html',
     '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
-    '    <h2 class="md-heading" style="margin-top: 0;">What is Angular Material?</h2>\n' +
+    '    <h2 class="md-headline" style="margin-top: 0;">What is Angular Material?</h2>\n' +
     '    <p>The Angular Material project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
     '    <p>Similar to the\n' +
     '      <a href="http://www.polymer-project.org/">Polymer</a> project\'s\n' +
@@ -142,8 +143,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
     '            ng-href="#/{{link.href}}"\n' +
-    '            aria-label="{{link.text}}"\n' +
-    '            style="{{ index === 3 ? \'margin-right:0;\' : index ? \'\' : \'margin-left:0;\' }}">\n' +
+    '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}\n' +
     '        </md-button>\n' +
@@ -151,7 +151,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-heading">What is Material Design?</h2>\n' +
+    '    <h2 class="md-headline">What is Material Design?</h2>\n' +
     '    <p>\n' +
     '      Material Design is a specification for a\n' +
     '      unified system of visual, motion, and interaction design that adapts across different devices and different\n' +
@@ -163,7 +163,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn more about Material Design\' }\n' +
     '      ]">\n' +
     '        <md-button\n' +
-    '            style="margin-{{index ? \'right\' : \'left\'}}: 0"\n' +
     '            class="md-primary md-raised"\n' +
     '            target="_blank"\n' +
     '            aria-label="{{link.text}}"\n' +
