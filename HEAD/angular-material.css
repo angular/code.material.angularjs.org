@@ -6367,6 +6367,8 @@ md-tabs {
     border-style: solid; }
     md-tabs[md-border-bottom] md-tabs-wrapper .md-tab {
       padding-bottom: 11px; }
+  md-tabs[md-border-bottom]:not([md-dynamic-height]) md-tabs-content-wrapper {
+    top: 49px; }
 
 md-tabs-wrapper {
   display: block;
