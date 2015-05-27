@@ -17,7 +17,7 @@
               md-component-id="left"
               md-is-locked-open="$mdMedia('gt-sm')">
 
-    <header class="nav-header md-whiteframe-glow-z1">
+    <header class="nav-header">
       <a ng-href="#/" class="docs-logo">
         <img src="img/icons/angular-logo.svg"/>
         <h1 class="docs-logotype md-heading">Angular Material</h1>
@@ -108,13 +108,24 @@
                 ng-model="relatedPage"
                 placeholder="API Reference"
                 class="md-body-1">
-              <md-option
-                  ng-repeat="doc in currentComponent.docs"
-                  ng-value="doc.url"
-                  ng-click="redirectToUrl(doc.url)"
-                  aria-label="{{ doc | humanizeDoc }}">
-                {{doc | humanizeDoc | directiveBrackets}}
-              </md-option>
+              <md-optgroup label="Directives" ng-if="(currentComponent.docs | filter: { type: 'directive' }).length">
+                <md-option
+                    ng-repeat="doc in currentComponent.docs | filter: { type: 'directive' }"
+                    ng-value="doc.url"
+                    ng-click="redirectToUrl(doc.url)"
+                    aria-label="{{ doc | humanizeDoc }}">
+                  {{doc | humanizeDoc | directiveBrackets}}
+                </md-option>
+              </md-optgroup>
+              <md-optgroup label="Services" ng-if="(currentComponent.docs | filter: { type: 'service' }).length">
+                <md-option
+                    ng-repeat="doc in currentComponent.docs | filter: { type: 'service' }"
+                    ng-value="doc.url"
+                    ng-click="redirectToUrl(doc.url)"
+                    aria-label="{{ doc | humanizeDoc }}">
+                  {{doc | humanizeDoc | directiveBrackets}}
+                </md-option>
+              </md-optgroup>
             </md-select>
 
             <md-button

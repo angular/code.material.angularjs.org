@@ -5808,11 +5808,13 @@ md-optgroup {
   display: block; }
   md-optgroup label {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     text-transform: uppercase;
-    padding: 16px 8px; }
+    padding: 16px;
+    font-weight: 500; }
   md-optgroup md-option {
-    padding-left: 24px; }
+    padding-left: 32px;
+    padding-right: 32px; }
 
 @media screen and (-ms-high-contrast: active) {
   .md-select-backdrop {
@@ -6443,7 +6445,8 @@ md-tabs-canvas {
 md-pagination-wrapper {
   height: 48px;
   display: block;
-  transition: left 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  transition: -webkit-transform 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  transition: transform 0.5s cubic-bezier(0.35, 0, 0.25, 1);
   position: absolute;
   width: 999999px;
   left: 0;
