@@ -1,0 +1,486 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header">
+  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdIconProvider</code> is used only to register icon IDs with URLs. These configuration features allow
+icons and icon sets to be pre-registered and associated with source URLs <strong>before</strong> the <code>&lt;md-icon /&gt;</code>
+directives are compiled.</p>
+<p>Loading of the actual svg files are deferred to on-demand requests and are loaded
+internally by the <code>$mdIcon</code> service using the <code>$http</code> service. When an SVG is requested by name/ID,
+the <code>$mdIcon</code> service searches its registry for the associated source URL;
+that URL is used to on-demand load and parse the SVG dynamically.</p>
+<hljs lang="js">
+  app.config(function($mdIconProvider) {
+
+    // Configure URLs for icons specified by [set:]id.
+
+    $mdIconProvider
+         .defaultIconSet(&#39;my/app/icons.svg&#39;)       // Register a default set of SVG icons
+         .iconSet(&#39;social&#39;, &#39;my/app/social.svg&#39;)   // Register a named icon set of SVGs
+         .icon(&#39;android&#39;, &#39;my/app/android.svg&#39;)    // Register a specific icon (by name)
+         .icon(&#39;work:chair&#39;, &#39;my/app/chair.svg&#39;);  // Register icon in a specific set
+  });
+</hljs>
+
+<p>SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
+<strong>startup</strong> process (shown below):</p>
+<hljs lang="js">
+  app.config(function($mdIconProvider) {
+
+    // Register a default set of SVG icon definitions
+    $mdIconProvider.defaultIconSet(&#39;my/app/icons.svg&#39;)
+
+  })
+  .run(function($http, $templateCache){
+
+    // Pre-fetch icons sources by URL and cache in the $templateCache...
+    // subsequent $http calls will look there first.
+
+    var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
+
+    angular.forEach(urls, function(url) {
+      $http.get(url, {cache: $templateCache});
+    });
+
+  });
+
+</hljs>
+
+<p>NOTE: the loaded SVG data is subsequently cached internally for future requests.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+    
+      <code>$mdIconProvider();
+</code>
+    
+  </section>
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <ul class="methods">
+    <li id="icon">
+      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdIconProvider.icon(id, url, [iconSize]);
+</code></h3>
+      <div><p>Register a source URL for a specific icon name; the name may include optional &#39;icon set&#39; name prefix.
+These icons  will later be retrieved from the cache using <code>$mdIcon( &lt;icon name&gt; )</code></p>
+</div>
+
+      
+      
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* id</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Icon name/id used to register the icon</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
+data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          iconSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Number indicating the width and height of the icons in the set. All icons
+in the icon set must be the same size. Default size is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="no-style">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+    </li>
+    
+    <li id="iconSet">
+      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdIconProvider.iconSet(id, url, [iconSize]);
+</code></h3>
+      <div><p>Register a source URL for a &#39;named&#39; set of icons; group of SVG definitions where each definition
+has an icon id. Individual icons can be subsequently retrieved from this cached set using
+<code>$mdIcon( &lt;icon set name&gt;:&lt;icon name&gt; )</code></p>
+</div>
+
+      
+      
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* id</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Icon name/id used to register the iconset</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
+data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          iconSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Number indicating the width and height of the icons in the set. All icons
+in the icon set must be the same size. Default size is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="no-style">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+    </li>
+    
+    <li id="defaultIconSet">
+      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdIconProvider.defaultIconSet(url, [iconSize]);
+</code></h3>
+      <div><p>Register a source URL for the default &#39;named&#39; set of icons. Unless explicitly registered,
+subsequent lookups of icons will failover to search this &#39;default&#39; icon set.
+Icon can be retrieved from this cached, default set using <code>$mdIcon( &lt;icon name&gt; )</code></p>
+</div>
+
+      
+      
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
+data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          iconSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Number indicating the width and height of the icons in the set. All icons
+in the icon set must be the same size. Default size is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="no-style">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+    </li>
+    
+    <li id="defaultIconSize">
+      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdIconProvider.defaultIconSize(iconSize);
+</code></h3>
+      <div><p>While <code>&lt;md-icon /&gt;</code> markup can also be style with sizing CSS, this method configures
+the default width <strong>and</strong> height used for all icons; unless overridden by specific CSS.
+The default sizing is (24px, 24px).</p>
+</div>
+
+      
+      
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* iconSize</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Number indicating the width and height of the icons in the set. All icons
+in the icon set must be the same size. Default size is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="no-style">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

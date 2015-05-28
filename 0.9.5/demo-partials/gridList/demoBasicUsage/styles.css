@@ -1,0 +1,16 @@
+.gridListdemoBasicUsage md-grid-list {
+  margin: 8px; }
+.gridListdemoBasicUsage .gray {
+  background: #f5f5f5; }
+.gridListdemoBasicUsage .green {
+  background: #b9f6ca; }
+.gridListdemoBasicUsage .yellow {
+  background: #ffff8d; }
+.gridListdemoBasicUsage .blue {
+  background: #84ffff; }
+.gridListdemoBasicUsage .purple {
+  background: #b388ff; }
+.gridListdemoBasicUsage .red {
+  background: #ff8a80; }
+.gridListdemoBasicUsage md-grid-tile {
+  transition: all 400ms ease-out 50ms; }
