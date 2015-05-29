@@ -1010,23 +1010,38 @@ angular
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
 
-angular.module('selectDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-});
+(function () {
+  'use strict';
+  angular
+      .module('selectDemoBasic', ['ngMaterial'])
+      .controller('AppCtrl', function() {
+        this.userState = '';
+        this.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+            'WY').split(' ').map(function (state) { return { abbrev: state }; });
+      });
+})();
 
-angular.module('selectDemoOptGroups', ['ngMaterial'])
-.controller('SelectOptGroupController', function($scope) {
-  $scope.toppings = [
-    { category: 'meat', name: 'Pepperoni' },
-    { category: 'meat', name: 'Sausage' },
-    { category: 'meat', name: 'Ground Beef' },
-    { category: 'meat', name: 'Bacon' },
-    { category: 'veg', name: 'Mushrooms' },
-    { category: 'veg', name: 'Onion' },
-    { category: 'veg', name: 'Green Pepper' },
-    { category: 'veg', name: 'Green Olives' },
-  ];
-});
+angular
+    .module('selectDemoOptGroups', ['ngMaterial'])
+    .controller('SelectOptGroupController', function($scope) {
+      $scope.sizes = [
+          "small (12-inch)",
+          "medium (14-inch)",
+          "large (16-inch)",
+          "insane (42-inch)"
+      ];
+      $scope.toppings = [
+        { category: 'meat', name: 'Pepperoni' },
+        { category: 'meat', name: 'Sausage' },
+        { category: 'meat', name: 'Ground Beef' },
+        { category: 'meat', name: 'Bacon' },
+        { category: 'veg', name: 'Mushrooms' },
+        { category: 'veg', name: 'Onion' },
+        { category: 'veg', name: 'Green Pepper' },
+        { category: 'veg', name: 'Green Olives' }
+      ];
+    });
 
 angular.module('selectDemoOptionsAsync', ['ngMaterial'])
 .controller('SelectAsyncController', function($timeout, $scope) {
@@ -1046,7 +1061,7 @@ angular.module('selectDemoOptionsAsync', ['ngMaterial'])
   };
 });
 
-angular.module('selectDemoBasic', ['ngMaterial', 'ngMessages'])
+angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function($scope) {
   $scope.clearValue = function() {
     $scope.myModel = undefined;

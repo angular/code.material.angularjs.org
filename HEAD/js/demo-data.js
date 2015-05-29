@@ -1126,14 +1126,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "id": "selectdemoBasicUsage",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/select/demoBasicUsage/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
@@ -1161,14 +1154,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "id": "selectdemoOptionGroups",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/select/demoOptionGroups/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
@@ -1196,14 +1182,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "id": "selectdemoOptionsWithAsyncSearch",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/select/demoOptionsWithAsyncSearch/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
@@ -1231,14 +1210,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "id": "selectdemoValidations",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/select/demoValidations/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
@@ -1258,7 +1230,7 @@ angular.module('docsApp').constant('DEMOS', [
           "outputPath": "demo-partials/select/demoValidations/index.html"
         },
         "ngModule": {
-          "module": "selectDemoBasic",
+          "module": "selectDemoValidation",
           "dependencies": [
             "ngMaterial",
             "ngMessages"
