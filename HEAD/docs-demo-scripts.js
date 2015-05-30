@@ -1246,8 +1246,6 @@ angular.module('switchDemo1', ['ngMaterial'])
   };
 });
 
-angular.module('tabsDemoDynamicHeight', ['ngMaterial'] );
-
 (function () {
   'use strict';
   angular
