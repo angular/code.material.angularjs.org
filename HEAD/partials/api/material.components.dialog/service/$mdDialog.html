@@ -41,9 +41,9 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 
   
 
+
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
-    
       <hljs lang="html">
 <div  ng-app="demoApp" ng-controller="EmployeeController">
   <div>
@@ -257,8 +257,8 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 
 })(angular);
 </hljs>
-    
   </section>
+
 
   
 
@@ -267,8 +267,10 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
   <h2>Methods</h2>
   <ul class="methods">
     <li id="alert">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdDialog.alert();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.alert();
+</code>
+      </h3>
       <div><p>Builds a preconfigured dialog with the specified message.</p>
 </div>
 
@@ -304,8 +306,10 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
     </li>
     
     <li id="confirm">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdDialog.confirm();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.confirm();
+</code>
+      </h3>
       <div><p>Builds a preconfigured dialog with the specified message. You can call show and the promise returned
 will be resolved only if the user clicks the confirm action on the dialog.</p>
 </div>
@@ -344,8 +348,10 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
     </li>
     
     <li id="show">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdDialog.show(optionsOrPreset);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.show(optionsOrPreset);
+</code>
+      </h3>
       <div><p>Show a dialog with the specified options.</p>
 </div>
 
@@ -453,8 +459,10 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
     </li>
     
     <li id="hide">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdDialog.hide([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.hide([response]);
+</code>
+      </h3>
       <div><p>Hide an existing dialog and resolve the promise returned from <code>$mdDialog.show()</code>.</p>
 </div>
 
@@ -505,8 +513,10 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
     </li>
     
     <li id="cancel">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdDialog.cancel([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.cancel([response]);
+</code>
+      </h3>
       <div><p>Hide an existing dialog and reject the promise returned from <code>$mdDialog.show()</code>.</p>
 </div>
 

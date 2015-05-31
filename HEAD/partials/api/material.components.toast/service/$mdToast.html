@@ -32,9 +32,9 @@ on the screen with an optional duration, and provides a simple promise API.</p>
 
   
 
+
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
-    
       <hljs lang="html">
 <div ng-controller="MyController">
   <md-button ng-click="openToast()">
@@ -52,8 +52,8 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
   };
 });
 </hljs>
-    
   </section>
+
 
   
 
@@ -62,8 +62,10 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
   <h2>Methods</h2>
   <ul class="methods">
     <li id="showSimple">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.showSimple();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.showSimple();
+</code>
+      </h3>
       <div><p>Convenience method which builds and shows a simple toast.</p>
 </div>
 
@@ -94,8 +96,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="simple">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.simple();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.simple();
+</code>
+      </h3>
       <div><p>Builds a preconfigured toast.</p>
 </div>
 
@@ -132,8 +136,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="updateContent">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.updateContent();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.updateContent();
+</code>
+      </h3>
       <div><p>Updates the content of an existing toast. Useful for updating things like counts, etc.</p>
 </div>
 
@@ -146,8 +152,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="build">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.build();
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.build();
+</code>
+      </h3>
       <div><p>Creates a custom <code>$mdToastPreset</code> that you can configure.</p>
 </div>
 
@@ -177,8 +185,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="show">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.show(optionsOrPreset);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.show(optionsOrPreset);
+</code>
+      </h3>
       <div><p>Shows the toast.</p>
 </div>
 
@@ -276,8 +286,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="hide">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.hide([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.hide([response]);
+</code>
+      </h3>
       <div><p>Hide an existing toast and resolve the promise returned from <code>$mdToast.show()</code>.</p>
 </div>
 
@@ -345,8 +357,10 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     </li>
     
     <li id="cancel">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdToast.cancel([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.cancel([response]);
+</code>
+      </h3>
       <div><p>Hide the existing toast and reject the promise returned from
 <code>$mdToast.show()</code>.</p>
 </div>

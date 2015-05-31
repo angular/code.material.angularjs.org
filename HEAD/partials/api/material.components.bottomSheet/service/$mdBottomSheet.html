@@ -31,9 +31,9 @@
 
   
 
+
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
-    
       <hljs lang="html">
 <div ng-controller="MyController">
   <md-button ng-click="openBottomSheet()">
@@ -51,8 +51,8 @@ app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
   };
 });
 </hljs>
-    
   </section>
+
 
   
 
@@ -61,8 +61,10 @@ app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
   <h2>Methods</h2>
   <ul class="methods">
     <li id="show">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdBottomSheet.show(options);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.show(options);
+</code>
+      </h3>
       <div><p>Show a bottom sheet with the specified options.</p>
 </div>
 
@@ -157,8 +159,10 @@ rejected with <code>$mdBottomSheet.cancel()</code>.</p>
     </li>
     
     <li id="hide">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdBottomSheet.hide([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.hide([response]);
+</code>
+      </h3>
       <div><p>Hide the existing bottom sheet and resolve the promise returned from
 <code>$mdBottomSheet.show()</code>. This call will close the most recently opened/current bottomsheet (if any).</p>
 </div>
@@ -210,8 +214,10 @@ rejected with <code>$mdBottomSheet.cancel()</code>.</p>
     </li>
     
     <li id="cancel">
-      <h3 class="method-function-syntax"><code class="method-function-syntax">$mdBottomSheet.cancel([response]);
-</code></h3>
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.cancel([response]);
+</code>
+      </h3>
       <div><p>Hide the existing bottom sheet and reject the promise returned from
 <code>$mdBottomSheet.show()</code>.</p>
 </div>
