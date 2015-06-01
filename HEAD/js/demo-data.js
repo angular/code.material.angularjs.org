@@ -55,7 +55,8 @@ angular.module('docsApp').constant('DEMOS', [
         "ngModule": {
           "module": "autocompleteFloatingLabelDemo",
           "dependencies": [
-            "ngMaterial"
+            "ngMaterial",
+            "ngMessages"
           ]
         }
       }

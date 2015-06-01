@@ -20,6 +20,17 @@ The content inside <code>md-autocomplete</code> will be treated as a template.</
 <p>In more complex cases, you may want to include other content such as a message to display when
 no matches were found.  You can do this by wrapping your template in <code>md-item-template</code> and adding
 a tag for <code>md-not-found</code>.  An example of this is shown below.</p>
+<h3 id="validation">Validation</h3>
+<p>You can use <code>ng-messages</code> to include validation the same way that you would normally validate;
+however, if you want to replicate a standard input with a floating label, you will have to do the
+following:</p>
+<ul>
+<li>Make sure that your template is wrapped in <code>md-item-template</code></li>
+<li>Add your <code>ng-messages</code> code inside of <code>md-autocomplete</code></li>
+<li>Add your validation properties to <code>md-autocomplete</code> (ie. <code>required</code>)</li>
+<li>Add a <code>name</code> to <code>md-autocomplete</code> (to be used on the generated <code>input</code>)</li>
+</ul>
+<p>There is an example below of how this should look.</p>
 
 </div>
 
@@ -58,6 +69,28 @@ a tag for <code>md-not-found</code>.  An example of this is shown below.</p>
     No matches found.
   </md-not-found>
 </md-autocomplete>
+</hljs>
+
+<p>In this example, our code utilizes <code>md-item-template</code> and <code>md-not-found</code> to specify the different
+parts that make up our component.</p>
+<h3 id="example-with-validation">Example with validation</h3>
+<hljs lang="html">
+<form name="autocompleteForm">
+  <md-autocomplete
+      required
+      input-name="autocomplete"
+      md-selected-item="selectedItem"
+      md-search-text="searchText"
+      md-items="item in getMatches(searchText)"
+      md-item-text="item.display">
+    <md-item-template>
+      <span md-highlight-text="searchText">{{item.display}}</span>
+    </md-item-template>
+    <div ng-messages="autocompleteForm.autocomplete.$error">
+      <div ng-message="required">This field is required</div>
+    </div>
+  </md-autocomplete>
+</form>
 </hljs>
 
 <p>In this example, our code utilizes <code>md-item-template</code> and <code>md-not-found</code> to specify the different
