@@ -667,13 +667,13 @@ angular.module('docsApp').constant('DEMOS', [
     "label": "Icon",
     "demos": [
       {
-        "id": "icondemoFontIcons",
+        "id": "icondemoFontIconsWithClassnames",
         "css": [
           {
             "name": "style.css",
             "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/icon/demoFontIcons/style.css"
+            "outputPath": "demo-partials/icon/demoFontIconsWithClassnames/style.css"
           }
         ],
         "html": [],
@@ -682,20 +682,55 @@ angular.module('docsApp').constant('DEMOS', [
             "name": "script.js",
             "label": "script.js",
             "fileType": "js",
-            "outputPath": "demo-partials/icon/demoFontIcons/script.js"
+            "outputPath": "demo-partials/icon/demoFontIconsWithClassnames/script.js"
           }
         ],
         "moduleName": "material.components.icon",
-        "name": "demoFontIcons",
-        "label": "Font Icons",
+        "name": "demoFontIconsWithClassnames",
+        "label": "Font Icons With Classnames",
         "index": {
           "name": "index.html",
           "label": "index.html",
           "fileType": "html",
-          "outputPath": "demo-partials/icon/demoFontIcons/index.html"
+          "outputPath": "demo-partials/icon/demoFontIconsWithClassnames/index.html"
         },
         "ngModule": {
-          "module": "appDemoFontIcons",
+          "module": "appDemoFontIconsWithClassnames",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
+        "id": "icondemoFontIconsWithLigatures",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/icon/demoFontIconsWithLigatures/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/icon/demoFontIconsWithLigatures/script.js"
+          }
+        ],
+        "moduleName": "material.components.icon",
+        "name": "demoFontIconsWithLigatures",
+        "label": "Font Icons With Ligatures",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/icon/demoFontIconsWithLigatures/index.html"
+        },
+        "ngModule": {
+          "module": "appDemoFontIconsWithLigatures",
           "dependencies": [
             "ngMaterial"
           ]

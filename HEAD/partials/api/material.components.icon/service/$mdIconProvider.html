@@ -22,7 +22,19 @@ directives are compiled.</p>
 internally by the <code>$mdIcon</code> service using the <code>$http</code> service. When an SVG is requested by name/ID,
 the <code>$mdIcon</code> service searches its registry for the associated source URL;
 that URL is used to on-demand load and parse the SVG dynamically.</p>
-<hljs lang="js">
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
   app.config(function($mdIconProvider) {
 
     // Configure URLs for icons specified by [set:]id.
@@ -61,14 +73,7 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
 
 <p>NOTE: the loaded SVG data is subsequently cached internally for future requests.</p>
 
-</div>
-
-
-<div>
-  
-
-  
-
+  </section>
 
 
   
@@ -203,7 +208,7 @@ in the icon set must be the same size. Default size is 24.</p>
       </h3>
       <div><p>Register a source URL for a &#39;named&#39; set of icons; group of SVG definitions where each definition
 has an icon id. Individual icons can be subsequently retrieved from this cached set using
-<code>$mdIcon( &lt;icon set name&gt;:&lt;icon name&gt; )</code></p>
+<code>$mdIcon(&lt;icon set name&gt;:&lt;icon name&gt;)</code></p>
 </div>
 
       <div class="method-param-table">
@@ -322,7 +327,7 @@ in the icon set must be the same size. Default size is 24.</p>
       </h3>
       <div><p>Register a source URL for the default &#39;named&#39; set of icons. Unless explicitly registered,
 subsequent lookups of icons will failover to search this &#39;default&#39; icon set.
-Icon can be retrieved from this cached, default set using <code>$mdIcon( &lt;icon name&gt; )</code></p>
+Icon can be retrieved from this cached, default set using <code>$mdIcon(&lt;name&gt;)</code></p>
 </div>
 
       <div class="method-param-table">
