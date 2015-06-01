@@ -6675,7 +6675,7 @@ md-toolbar {
   max-height: 64px;
   padding: 0 16px;
   margin: 0; }
-  .md-toolbar-tools h2, .md-toolbar-tools h3 {
+  .md-toolbar-tools h1, .md-toolbar-tools h2, .md-toolbar-tools h3 {
     font-size: inherit;
     font-weight: inherit;
     margin: inherit; }
