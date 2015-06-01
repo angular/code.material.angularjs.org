@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header">
-  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  <h2 class="md-display-1" style="margin: 0;">&lt;{{menu.currentPage|humanizeDoc}} /&gt;</h2>
   
   
 
@@ -265,6 +265,7 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
   
 <section class="api-section">
   <h2>Methods</h2>
+  <br/>
   <ul class="methods">
     <li id="alert">
       <h3 class="method-function-syntax">
@@ -273,6 +274,8 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
       </h3>
       <div><p>Builds a preconfigured dialog with the specified message.</p>
 </div>
+
+      <div class="method-param-table">
 
       
 
@@ -303,6 +306,8 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="confirm">
@@ -313,6 +318,8 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
       <div><p>Builds a preconfigured dialog with the specified message. You can call show and the promise returned
 will be resolved only if the user clicks the confirm action on the dialog.</p>
 </div>
+
+      <div class="method-param-table">
 
       
 
@@ -345,6 +352,8 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="show">
@@ -354,6 +363,8 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
       </h3>
       <div><p>Show a dialog with the specified options.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -456,6 +467,8 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="hide">
@@ -465,6 +478,8 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
       </h3>
       <div><p>Hide an existing dialog and resolve the promise returned from <code>$mdDialog.show()</code>.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -510,6 +525,8 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
 
       
 
+      </div>
+
     </li>
     
     <li id="cancel">
@@ -519,6 +536,8 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
       </h3>
       <div><p>Hide an existing dialog and reject the promise returned from <code>$mdDialog.show()</code>.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -563,6 +582,8 @@ rejected with <code>$mdDialog.cancel()</code>.</p>
       
 
       
+
+      </div>
 
     </li>
     </ul>

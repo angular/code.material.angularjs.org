@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header">
-  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  <h2 class="md-display-1" style="margin: 0;">&lt;{{menu.currentPage|humanizeDoc}} /&gt;</h2>
   
   
 
@@ -76,6 +76,7 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
   
 <section class="api-section">
   <h2>Methods</h2>
+  <br/>
   <ul class="methods">
     <li id="icon">
       <h3 class="method-function-syntax">
@@ -85,6 +86,8 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
       <div><p>Register a source URL for a specific icon name; the name may include optional &#39;icon set&#39; name prefix.
 These icons  will later be retrieved from the cache using <code>$mdIcon( &lt;icon name&gt; )</code></p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -189,6 +192,8 @@ in the icon set must be the same size. Default size is 24.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="iconSet">
@@ -200,6 +205,8 @@ in the icon set must be the same size. Default size is 24.</p>
 has an icon id. Individual icons can be subsequently retrieved from this cached set using
 <code>$mdIcon( &lt;icon set name&gt;:&lt;icon name&gt; )</code></p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -304,6 +311,8 @@ in the icon set must be the same size. Default size is 24.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="defaultIconSet">
@@ -315,6 +324,8 @@ in the icon set must be the same size. Default size is 24.</p>
 subsequent lookups of icons will failover to search this &#39;default&#39; icon set.
 Icon can be retrieved from this cached, default set using <code>$mdIcon( &lt;icon name&gt; )</code></p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -399,6 +410,8 @@ in the icon set must be the same size. Default size is 24.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="defaultIconSize">
@@ -410,6 +423,8 @@ in the icon set must be the same size. Default size is 24.</p>
 the default width <strong>and</strong> height used for all icons; unless overridden by specific CSS.
 The default sizing is (24px, 24px).</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -472,6 +487,8 @@ in the icon set must be the same size. Default size is 24.</p>
   </tbody>
 </table>
       
+
+      </div>
 
     </li>
     </ul>

@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header">
-  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  <h2 class="md-display-1" style="margin: 0;">&lt;{{menu.currentPage|humanizeDoc}} /&gt;</h2>
   
 </header>
 
@@ -55,12 +55,14 @@ current page, and show relevant action buttons for that page.</p>
   
   </section>
   
-  <h2>
-    
-      Attributes
-    
-  </h2>
-  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
 <table class="no-style">
   <thead>
     <tr>
@@ -122,6 +124,8 @@ at one fourth the rate at which the user scrolls down. Default 0.5.</p>
   </tbody>
 </table>
 
+    </div>
+  </div>
   
 
 

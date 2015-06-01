@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header">
-  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  <h2 class="md-display-1" style="margin: 0;">&lt;{{menu.currentPage|humanizeDoc}} /&gt;</h2>
   
   
 
@@ -60,6 +60,7 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
   
 <section class="api-section">
   <h2>Methods</h2>
+  <br/>
   <ul class="methods">
     <li id="showSimple">
       <h3 class="method-function-syntax">
@@ -68,6 +69,8 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
       </h3>
       <div><p>Convenience method which builds and shows a simple toast.</p>
 </div>
+
+      <div class="method-param-table">
 
       
 
@@ -93,6 +96,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="simple">
@@ -102,6 +107,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       </h3>
       <div><p>Builds a preconfigured toast.</p>
 </div>
+
+      <div class="method-param-table">
 
       
 
@@ -133,6 +140,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="updateContent">
@@ -143,11 +152,15 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       <div><p>Updates the content of an existing toast. Useful for updating things like counts, etc.</p>
 </div>
 
-      
+      <div class="method-param-table">
 
       
 
       
+
+      
+
+      </div>
 
     </li>
     
@@ -158,6 +171,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       </h3>
       <div><p>Creates a custom <code>$mdToastPreset</code> that you can configure.</p>
 </div>
+
+      <div class="method-param-table">
 
       
 
@@ -182,6 +197,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="show">
@@ -191,6 +208,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       </h3>
       <div><p>Shows the toast.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -283,6 +302,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="hide">
@@ -292,6 +313,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       </h3>
       <div><p>Hide an existing toast and resolve the promise returned from <code>$mdToast.show()</code>.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -354,6 +377,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 </table>
       
 
+      </div>
+
     </li>
     
     <li id="cancel">
@@ -364,6 +389,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       <div><p>Hide the existing toast and reject the promise returned from
 <code>$mdToast.show()</code>.</p>
 </div>
+
+      <div class="method-param-table">
 
       
       
@@ -425,6 +452,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
   </tbody>
 </table>
       
+
+      </div>
 
     </li>
     </ul>

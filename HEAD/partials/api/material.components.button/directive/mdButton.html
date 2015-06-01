@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header">
-  <h2 class="md-display-1" style="margin: 0;">{{menu.currentPage|humanizeDoc}}</h2>
+  <h2 class="md-display-1" style="margin: 0;">&lt;{{menu.currentPage|humanizeDoc}} /&gt;</h2>
   
 </header>
 
@@ -15,9 +15,8 @@
 <div class="api-profile-description">
   <p><code>&lt;md-button&gt;</code> is a button directive with optional ink ripples (default enabled).</p>
 <p>If you supply a <code>href</code> or <code>ng-href</code> attribute, it will become an <code>&lt;a&gt;</code> element. Otherwise, it will
-become a <code>&lt;button&gt;</code> element.</p>
-<p>As per the <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application">material design spec</a>
-the FAB button is in the accent color by default. The primary color palette may be used with
+become a <code>&lt;button&gt;</code> element. As per the <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application">Material Design specifications</a>
+the FAB button background is filled with the accent color [by default]. The primary color palette may be used with
 the <code>md-primary</code> class.</p>
 
 </div>
@@ -32,25 +31,28 @@ the <code>md-primary</code> class.</p>
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
   
-    <hljs lang="html">
+    <p>Regular buttons:</p>
+<hljs lang="html">
+ <md-button> Flat Button </md-button>
+ <md-button href="http://google.com"> Flat link </md-button>
+ <md-button class="md-raised"> Raised Button </md-button>
+ <md-button ng-disabled="true"> Disabled Button </md-button>
  <md-button>
-   Flat Button
+   <md-icon md-svg-src="your/icon.svg"></md-icon>
+   Register Now
  </md-button>
- <md-button href="http://google.com">
-   Flat link
- </md-button>
- <md-button class="md-raised">
-   Raised Button
- </md-button>
- <md-button ng-disabled="true">
-   Disabled Button
- </md-button>
+</hljs>
+
+<p>FAB buttons:</p>
+<hljs lang="html">
  <md-button class="md-fab" aria-label="FAB">
    <md-icon md-svg-src="your/icon.svg"></md-icon>
  </md-button>
+ <!-- mini-FAB -->
  <md-button class="md-fab md-mini" aria-label="Mini FAB">
    <md-icon md-svg-src="your/icon.svg"></md-icon>
  </md-button>
+ <!-- Button with SVG Icon -->
  <md-button class="md-icon-button" aria-label="Custom Icon Button">
    <md-icon md-svg-icon="path/to/your.svg"></md-icon>
  </md-button>
@@ -58,12 +60,14 @@ the <code>md-primary</code> class.</p>
   
   </section>
   
-  <h2>
-    
-      Attributes
-    
-  </h2>
-  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
 <table class="no-style">
   <thead>
     <tr>
@@ -161,6 +165,8 @@ If no default text is found, a warning will be logged.</p>
   </tbody>
 </table>
 
+    </div>
+  </div>
   
 
 
