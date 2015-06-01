@@ -11213,7 +11213,8 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $timeout, $
       cache     = {},
       noBlur    = false,
       selectedItemWatchers = [],
-      hasFocus  = false;
+      hasFocus  = false,
+      lastCount = 0;
 
   //-- public variables
 
@@ -11535,6 +11536,8 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $timeout, $
   }
 
   function getCountMessage () {
+    if (lastCount === self.matches.length) return '';
+    lastCount = self.matches.length;
     switch (self.matches.length) {
       case 1:  return 'There is 1 match available.';
       default: return 'There are ' + self.matches.length + ' matches available.';
