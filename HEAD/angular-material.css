@@ -5982,7 +5982,8 @@ md-slider {
       top: 19px;
       border-left: 14px solid transparent;
       border-right: 14px solid transparent;
-      border-top: 16px solid;
+      border-top-width: 16px;
+      border-top-style: solid;
       opacity: 0;
       -webkit-transform: translate3d(0, -8px, 0);
               transform: translate3d(0, -8px, 0);
