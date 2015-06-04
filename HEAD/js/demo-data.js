@@ -32,6 +32,41 @@ angular.module('docsApp').constant('DEMOS', [
         }
       },
       {
+        "id": "autocompletedemoCustomTemplate",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/script.js"
+          }
+        ],
+        "moduleName": "material.components.autocomplete",
+        "name": "demoCustomTemplate",
+        "label": "Custom Template",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/autocomplete/demoCustomTemplate/index.html"
+        },
+        "ngModule": {
+          "module": "autocompleteCustomTemplateDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
         "id": "autocompletedemoFloatingLabel",
         "css": [],
         "html": [],
