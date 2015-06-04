@@ -2,6 +2,12 @@ DocsApp
 .constant('PAGES', {
   "CSS": [
     {
+      "name": "button",
+      "outputPath": "partials/CSS/button.html",
+      "url": "/CSS/button",
+      "label": "button"
+    },
+    {
       "name": "Typography",
       "outputPath": "partials/CSS/typography.html",
       "url": "/CSS/typography",
