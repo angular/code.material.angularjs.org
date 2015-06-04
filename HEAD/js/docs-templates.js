@@ -747,7 +747,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </span>\n' +
     '</md-button>\n' +
     '\n' +
-    '<ul ng-show="isOpen()" id="docs-menu-{{section.name | nospace}}" class="menu-toggle-list">\n' +
+    '<ul id="docs-menu-{{section.name | nospace}}" class="menu-toggle-list">\n' +
     '  <li ng-repeat="page in section.pages">\n' +
     '    <menu-link section="page"></menu-link>\n' +
     '  </li>\n' +
