@@ -96,18 +96,31 @@ svg iconsets.</p>
 <p>When using Font Icons with classnames:</p>
 <hljs lang="html">
 
- <md-icon md-font-icon="android" alt="android" ></md-icon>
- <md-icon md-font-icon="fa-magic" class="fa" alt="magic wand"></md-icon>
+ <md-icon md-font-icon="android" aria-label="android" ></md-icon>
+ <md-icon class="icon_home"      aria-label="Home"    ></md-icon>
 
 </hljs>
 
-<p>When using Font Icons with ligatures:</p>
+<p>When using Material Font Icons with ligatures:</p>
 <hljs lang="html">
+ <!-- For Material Design Icons -->
+ <!-- The class '.material-icons' is auto-added. -->
+ <md-icon> face </md-icon>
+ <md-icon class="md-light md-48"> face </md-icon>
+ <md-icon md-font-set="material-icons"> face </md-icon>
+ <md-icon> #xE87C; </md-icon>
+</hljs>
 
- <md-icon md-font-library="material-icons">face</md-icon>
- <md-icon md-font-library="material-icons">#xE87C;</md-icon>
- <md-icon md-font-library="material-icons" class="md-light md-48">face</md-icon>
+<p>When using other Font-Icon libraries:</p>
+<hljs lang="js">
+ // Specify a font-icon style alias
+ angular.config(function($mdIconProvider) {
+   $mdIconProvider.fontSet(&#39;fa&#39;, &#39;fontawesome&#39;);
+ });
+</hljs>
 
+<hljs lang="html">
+ <md-icon md-font-set="fa">email</md-icon>
 </hljs>
   
   </section>
