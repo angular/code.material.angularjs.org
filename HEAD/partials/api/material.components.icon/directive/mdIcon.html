@@ -49,7 +49,7 @@ determine its textual name and character reference code. Click on any icon to se
 panel with details regarding a SVG download or information on the font-icon usage.</p>
 <p><a href="https://www.google.com/design/icons/#ic_accessibility" target="_blank" style="border-bottom:none;">
 <img src="https://cloud.githubusercontent.com/assets/210413/7902490/fe8dd14c-0780-11e5-98fb-c821cc6475e6.png"
-     alt="Material Design Icon-Selector" style="max-width:75%;padding-left:10%">
+     aria-label="Material Design Icon-Selector" style="max-width:75%;padding-left:10%">
 </a></p>
 <p><span class="image_caption">
  Click on the image above to link to the
@@ -72,11 +72,11 @@ panel with details regarding a SVG download or information on the font-icon usag
 <hljs lang="html">
 
  <!-- Icon ID; may contain optional icon set prefix; icons must registered using $mdIconProvider -->
- <md-icon md-svg-icon="social:android"    alt="android " ></md-icon>
+ <md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
 
  <!-- Icon urls; may be preloaded in templateCache -->
- <md-icon md-svg-src="/android.svg"       alt="android " ></md-icon>
- <md-icon md-svg-src="{{ getAndroid() }}" alt="android " ></md-icon>
+ <md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
+ <md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
 
 </hljs>
 
@@ -234,7 +234,7 @@ To use icon sets, developers are required to pre-register the sets using the <co
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          alt
+          aria-label
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -243,7 +243,7 @@ To use icon sets, developers are required to pre-register the sets using the <co
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Labels icon for accessibility. If an empty string is provided, icon
-will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no alt on the icon
+will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no aria-label on the icon
 nor a label on the parent element, a warning will be logged to the console.</p>
 
           
