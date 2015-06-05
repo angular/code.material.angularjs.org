@@ -25,8 +25,8 @@ easily loaded and used.When use font-icons, developers must following three (3) 
 </li>
 <li> Use either (a) font-icon class names or (b) font ligatures to render the font glyph by using its textual name</li>
 <li> Use &lt;md-icon md-font-icon=&quot;classname&quot; /&gt; or <br/>
-    use &lt;md-icon md-font-library=&quot;library_style_name&quot;&gt; textual_name &lt;/md-icon&gt; or <br/>
-    use &lt;md-icon md-font-library=&quot;library_style_name&quot;&gt; numerical_character_reference &lt;/md-icon&gt;
+    use &lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt; textual_name &lt;/md-icon&gt; or <br/>
+    use &lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt; numerical_character_reference &lt;/md-icon&gt;
 </li>
 </ol>
 
@@ -166,7 +166,7 @@ to render the icon. Requires the fonts and the named CSS styles to be preloaded.
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* md-font-library</b>
+          <b>* md-font-set</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -174,8 +174,9 @@ to render the icon. Requires the fonts and the named CSS styles to be preloaded.
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>String name of CSS icon associated with the font-face will be used
-to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
+          <p>String CSS style name associated with the font library; which will be assigned as
+the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
+internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine the style name.</p>
 
           
         </td>
