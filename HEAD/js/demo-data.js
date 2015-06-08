@@ -594,6 +594,90 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.divider"
   },
   {
+    "name": "material.components.fabSpeedDial",
+    "label": "Fab Speed Dial",
+    "demos": [
+      {
+        "id": "fabSpeedDialdemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.fabSpeedDial",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "fabSpeedDialBasicUsageDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.fabSpeedDial"
+  },
+  {
+    "name": "material.components.fabToolbar",
+    "label": "Fab Toolbar",
+    "demos": [
+      {
+        "id": "fabToolbardemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/fabToolbar/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/fabToolbar/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.fabToolbar",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/fabToolbar/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "fabToolbarBasicUsageDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.fabToolbar"
+  },
+  {
     "name": "material.components.gridList",
     "label": "Grid List",
     "demos": [
