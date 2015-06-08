@@ -1086,8 +1086,8 @@ angular.module('listDemo2', ['ngMaterial'])
 angular.module('menuDemoBasic', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
-    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
 })
 .controller('BasicDemoCtrl', DemoCtrl);
 
@@ -1115,8 +1115,8 @@ function DemoCtrl($mdDialog) {
 angular.module('menuDemoPosition', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
-    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
 })
 .controller('PositionDemoCtrl', DemoCtrl);
 
@@ -1138,8 +1138,8 @@ function DemoCtrl($mdDialog) {
 angular.module('menuDemoWidth', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
-    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
 })
 .controller('WidthDemoCtrl', DemoCtrl);
 
