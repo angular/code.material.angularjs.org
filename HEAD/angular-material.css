@@ -3028,7 +3028,7 @@ md-bottom-sheet {
   position: relative;
   outline: none;
   border: 0;
-  display: inline-block;
+  display: inline-table;
   padding: 0 6px;
   margin: 6px 8px;
   line-height: 36px;
