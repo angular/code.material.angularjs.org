@@ -1049,6 +1049,80 @@ angular.module('listDemo2', ['ngMaterial'])
 
 });
 
+angular.module('menuDemoBasic', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+})
+.controller('BasicDemoCtrl', DemoCtrl);
+
+function DemoCtrl($mdDialog) {
+  var vm = this;
+  vm.notificationsEnabled = true;
+  vm.toggleNotifications = function() {
+    vm.notificationsEnabled = !vm.notificationsEnabled;
+  };
+
+  vm.redial = function(e) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Suddenly, a redial')
+        .content('You just called someone back. They told you the most amazing story that has ever been told. Have a cookie.')
+        .ok('That was easy')
+    );
+  };
+
+  vm.checkVoicemail = function() {
+    // This never happens.
+  };
+}
+
+angular.module('menuDemoPosition', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+})
+.controller('PositionDemoCtrl', DemoCtrl);
+
+function DemoCtrl($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .content('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+}
+
+
+
+angular.module('menuDemoWidth', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", '/img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", '/img/icons/sets/social-icons.svg', 24);
+})
+.controller('WidthDemoCtrl', DemoCtrl);
+
+function DemoCtrl($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .content('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+}
+
+
 angular.module('progressCircularDemo1', ['ngMaterial'])
   .controller('AppCtrl', ['$scope', '$interval',
     function($scope, $interval) {

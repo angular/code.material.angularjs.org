@@ -1066,6 +1066,118 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.list"
   },
   {
+    "name": "material.components.menu",
+    "label": "Menu",
+    "demos": [
+      {
+        "id": "menudemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoBasic",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
+        "id": "menudemoMenuPositionModes",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoMenuPositionModes/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoMenuPositionModes/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoMenuPositionModes",
+        "label": "Menu Position Modes",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoMenuPositionModes/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoPosition",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
+        "id": "menudemoMenuWidth",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoMenuWidth/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoMenuWidth/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoMenuWidth",
+        "label": "Menu Width",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoMenuWidth/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoWidth",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.menu"
+  },
+  {
     "name": "material.components.progressCircular",
     "label": "Progress Circular",
     "demos": [
