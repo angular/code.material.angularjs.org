@@ -177,7 +177,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <md-divider></md-divider>\n' +
     '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
     '      These docs were generated from\n' +
-    '      (<a ng-href="{{BUILDCONFIG.repository}}/commit/{{BUILDCONFIG.commit}}" target="_blank">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
+    '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
     '      on (<strong>{{BUILDCONFIG.date}}</strong>) GMT.\n' +
     '    </p>\n' +
     '  </md-content>\n' +
