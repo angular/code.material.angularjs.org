@@ -81,6 +81,68 @@
 (function () {
   'use strict';
   angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : [];
+      return results;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -173,68 +235,6 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : [];
-      return results;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -810,30 +810,6 @@ angular.module('gridListDemo1', ['ngMaterial'])
 
 
 angular
-  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
-  .controller('DemoCtrl', function( $scope ) {
-      // Specify a list of font-icons with ligatures and color overrides
-      var iconData = [
-            {name: 'accessibility'  , color: "#777" },
-            {name: 'question_answer', color: "rgb(89, 226, 168)" },
-            {name: 'backup'         , color: "#A00" },
-            {name: 'email'          , color: "#00A" }
-          ];
-
-      $scope.fonts = [].concat(iconData);
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:"md-18",padding:0},
-        {size:"md-24",padding:2},
-        {size:"md-36",padding:6},
-        {size:"md-48",padding:10}
-      ];
-
-  });
-
-
-angular
   .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
   .controller('DemoCtrl', function( $scope ) {
       // Create list of font-icon names with color overrides
@@ -865,6 +841,30 @@ angular
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');
+  });
+
+
+angular
+  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
+  .controller('DemoCtrl', function( $scope ) {
+      // Specify a list of font-icons with ligatures and color overrides
+      var iconData = [
+            {name: 'accessibility'  , color: "#777" },
+            {name: 'question_answer', color: "rgb(89, 226, 168)" },
+            {name: 'backup'         , color: "#A00" },
+            {name: 'email'          , color: "#00A" }
+          ];
+
+      $scope.fonts = [].concat(iconData);
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:"md-18",padding:0},
+        {size:"md-24",padding:2},
+        {size:"md-36",padding:6},
+        {size:"md-48",padding:10}
+      ];
+
   });
 
 
@@ -1194,6 +1194,18 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     }, 7200, 0, true);
   }]);
 
+(function () {
+  'use strict';
+  angular
+      .module('selectDemoBasic', ['ngMaterial'])
+      .controller('AppCtrl', function() {
+        this.userState = '';
+        this.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+            'WY').split(' ').map(function (state) { return { abbrev: state }; });
+      });
+})();
+
 
 angular
   .module('radioDemo1', ['ngMaterial'])
@@ -1244,18 +1256,6 @@ angular
   .config(function($mdIconProvider) {
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
-
-(function () {
-  'use strict';
-  angular
-      .module('selectDemoBasic', ['ngMaterial'])
-      .controller('AppCtrl', function() {
-        this.userState = '';
-        this.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
-            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
-            'WY').split(' ').map(function (state) { return { abbrev: state }; });
-      });
-})();
 
 angular
     .module('selectDemoOptGroups', ['ngMaterial'])

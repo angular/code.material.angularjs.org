@@ -16,16 +16,16 @@
   <p>Menus are elements that open when clicked. They are useful for displaying
 additional options within the context of an action.</p>
 <p>Every <code>md-menu</code> must specify exactly two child elements. The first element is what is
-left in the DOM and is used to open the menu. This element is called the origin element.
-The origin element&#39;s scope has access to <code>$mdOpenMenu()</code>
+left in the DOM and is used to open the menu. This element is called the trigger element.
+The trigger element&#39;s scope has access to <code>$mdOpenMenu()</code>
 which it may call to open the menu.</p>
 <p>The second element is the <code>md-menu-content</code> element which represents the
 contents of the menu when it is open. Typically this will contain <code>md-menu-item</code>s,
 but you can do custom content as well.</p>
 <hljs lang="html">
 <md-menu>
- <!-- Origin element is a md-button with an icon -->
- <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
+ <!-- Trigger element is a md-button with an icon -->
+ <md-button ng-click="$mdOpenMenu()" class="md-icon-button" aria-label="Open sample menu">
    <md-icon md-svg-icon="call:phone"></md-icon>
  </md-button>
  <md-menu-content>
@@ -40,29 +40,29 @@ attribute on the <code>md-menu-content</code> element.
 See the <a href="http://www.google.com/design/spec/components/menus.html#menus-specs">Material Design Spec</a>
 for more information.</p>
 <h2 id="aligning-menus">Aligning Menus</h2>
-<p>When a menu opens, it is important that the content aligns with the origin element.
+<p>When a menu opens, it is important that the content aligns with the trigger element.
 Failure to align menus can result in jarring experiences for users as content
 suddenly shifts. To help with this, <code>md-menu</code> provides serveral APIs to help
 with alignment.</p>
 <h3 id="target-mode">Target Mode</h3>
 <p>By default, <code>md-menu</code> will attempt to align the <code>md-menu-content</code> by aligning
-designated child elements in both the origin and the menu content.</p>
-<p>To specify the alignment element in the <code>origin</code> you can use the <code>md-menu-origin</code>
+designated child elements in both the trigger and the menu content.</p>
+<p>To specify the alignment element in the <code>trigger</code> you can use the <code>md-menu-origin</code>
 attribute on a child element. If no <code>md-menu-origin</code> is specified, the <code>md-menu</code>
 will be used as the origin element.</p>
 <p>Similarly, the <code>md-menu-content</code> may specify a <code>md-menu-align-target</code> for a
-<code>md-menu-item</code> to specify the node that it should try and allign with.</p>
+<code>md-menu-item</code> to specify the node that it should try and align with.</p>
 <p>In this example code, we specify an icon to be our origin element, and an
 icon in our menu content to be our alignment target. This ensures that both
 icons are aligned when the menu opens.</p>
 <hljs lang="html">
 <md-menu>
- <md-button ng-click="$mdOpenMenu()" class="md-icon-button">
+ <md-button ng-click="$mdOpenMenu()" class="md-icon-button" aria-label="Open some menu">
    <md-icon md-menu-origin md-svg-icon="call:phone"></md-icon>
  </md-button>
  <md-menu-content>
    <md-menu-item>
-     <md-button ng-click="doSomething()">
+     <md-button ng-click="doSomething()" aria-label="Do something">
        <md-icon md-menu-align-target md-svg-icon="call:phone"></md-icon>
        Do Something
      </md-button>

@@ -595,7 +595,7 @@ angular.module('docsApp').constant('DEMOS', [
   },
   {
     "name": "material.components.fabSpeedDial",
-    "label": "Fab Speed Dial",
+    "label": "FAB Speed Dial",
     "demos": [
       {
         "id": "fabSpeedDialdemoBasicUsage",
@@ -637,7 +637,7 @@ angular.module('docsApp').constant('DEMOS', [
   },
   {
     "name": "material.components.fabToolbar",
-    "label": "Fab Toolbar",
+    "label": "FAB Toolbar",
     "demos": [
       {
         "id": "fabToolbardemoBasicUsage",
