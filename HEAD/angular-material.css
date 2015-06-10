@@ -3301,7 +3301,6 @@ md-checkbox {
     display: inline-block;
     vertical-align: middle;
     white-space: normal;
-    pointer-events: none;
     -webkit-user-select: text;
        -moz-user-select: text;
         -ms-user-select: text;
