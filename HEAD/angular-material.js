@@ -14607,6 +14607,7 @@ function MdTabsController ($scope, $element, $window, $timeout, $mdConstant, $md
       updateHeightFromContent();
       adjustOffset();
       updatePagination();
+      ctrl.tabs[$scope.selectedIndex] && ctrl.tabs[$scope.selectedIndex].scope.select();
       loaded = true;
     });
   }
