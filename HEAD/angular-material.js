@@ -8690,7 +8690,7 @@ MenuProvider.$inject = ["$$interimElementProvider"];
 // Annoying method to copy nodes to an array, thanks to IE
 function nodesToArray(nodes) {
   var results = [];
-  for (var i = nodes.length; i--; results.unshift(nodes[i]))
+  for (var i = nodes.length; i--; results.unshift(nodes[i])) {}
   return results;
 }
 
