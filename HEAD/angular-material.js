@@ -8366,7 +8366,7 @@ function MenuProvider($$interimElementProvider) {
       themable: true
     };
 
-    /** 
+    /**
      * Boilerplate interimElement onShow function
      * Handles inserting the menu into the DOM, positioning it, and wiring up
      * various interaction events
@@ -8578,6 +8578,7 @@ function MenuProvider($$interimElementProvider) {
      * @param {object} opts - the interim element options object
      */
     function positionMenu(el, opts) {
+      debugger;
       if (opts.isRemoved) return;
 
       var containerNode = el[0],
@@ -8608,8 +8609,8 @@ function MenuProvider($$interimElementProvider) {
         alignTargetRect = alignTarget.getBoundingClientRect();
 
         existingOffsets = {
-          top: containerNode.style.top,
-          left: containerNode.style.left
+          top: parseFloat(containerNode.style.top || 0),
+          left: parseFloat(containerNode.style.left || 0)
         };
       }
 
