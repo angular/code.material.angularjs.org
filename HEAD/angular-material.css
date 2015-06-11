@@ -5947,7 +5947,8 @@ md-radio-button, .md-switch-thumb {
     left: 0;
     width: 16px;
     height: 16px;
-    border: solid 2px;
+    border-style: solid;
+    border-width: 2px;
     border-radius: 50%;
     transition: border-color ease 0.28s; }
   md-radio-button .md-on, .md-switch-thumb .md-on {
