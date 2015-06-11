@@ -6674,7 +6674,11 @@ md-tabs-canvas {
     display: flex;
     -webkit-flex-direction: column;
         -ms-flex-direction: column;
-            flex-direction: column; }
+            flex-direction: column;
+    text-align: center; }
+    md-tabs-canvas.md-center-tabs .md-tab {
+      float: none;
+      display: inline-block; }
 
 md-pagination-wrapper {
   height: 48px;
