@@ -368,6 +368,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.menu",
+    "type": "module",
+    "outputPath": "partials/api/material.components.menu/index.html",
+    "url": "api/material.components.menu",
+    "label": "material.components.menu",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/_menu.js",
+    "docs": [
+      {
+        "name": "mdMenu",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.menu/directive/mdMenu.html",
+        "url": "api/material.components.menu/directive/mdMenu",
+        "label": "mdMenu",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/_menu.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.progressCircular",
     "type": "module",
     "outputPath": "partials/api/material.components.progressCircular/index.html",

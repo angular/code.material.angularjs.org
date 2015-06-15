@@ -594,6 +594,90 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.divider"
   },
   {
+    "name": "material.components.fabSpeedDial",
+    "label": "FAB Speed Dial",
+    "demos": [
+      {
+        "id": "fabSpeedDialdemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.fabSpeedDial",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/fabSpeedDial/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "fabSpeedDialBasicUsageDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.fabSpeedDial"
+  },
+  {
+    "name": "material.components.fabToolbar",
+    "label": "FAB Toolbar",
+    "demos": [
+      {
+        "id": "fabToolbardemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/fabToolbar/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/fabToolbar/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.fabToolbar",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/fabToolbar/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "fabToolbarBasicUsageDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.fabToolbar"
+  },
+  {
     "name": "material.components.gridList",
     "label": "Grid List",
     "demos": [
@@ -1064,6 +1148,118 @@ angular.module('docsApp').constant('DEMOS', [
       }
     ],
     "url": "/demo/material.components.list"
+  },
+  {
+    "name": "material.components.menu",
+    "label": "Menu",
+    "demos": [
+      {
+        "id": "menudemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoBasicUsage/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoBasic",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
+        "id": "menudemoMenuPositionModes",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoMenuPositionModes/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoMenuPositionModes/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoMenuPositionModes",
+        "label": "Menu Position Modes",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoMenuPositionModes/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoPosition",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      },
+      {
+        "id": "menudemoMenuWidth",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoMenuWidth/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoMenuWidth/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoMenuWidth",
+        "label": "Menu Width",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoMenuWidth/index.html"
+        },
+        "ngModule": {
+          "module": "menuDemoWidth",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        }
+      }
+    ],
+    "url": "/demo/material.components.menu"
   },
   {
     "name": "material.components.progressCircular",

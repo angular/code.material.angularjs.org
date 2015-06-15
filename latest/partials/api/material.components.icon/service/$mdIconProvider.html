@@ -87,7 +87,7 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
   <ul class="methods">
     <li id="icon">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdIconProvider.icon(id, url, [iconSize]);
+        <code class="method-function-syntax">$mdIconProvider.icon(id, url, [viewBoxSize]);
 </code>
       </h3>
       <div class="service-desc"><p>Register a source URL for a specific icon name; the name may include optional &#39;icon set&#39; name prefix.
@@ -156,16 +156,16 @@ data or as part of the lookup in <code>$templateCache</code> if pre-loading was 
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          iconSize
+          viewBoxSize
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
-          <p>Number indicating the width and height of the icons in the set. All icons
-in the icon set must be the same size. Default size is 24.</p>
+          <p>Sets the width and height the icon&#39;s viewBox.
+It is ignored for icons with an existing viewBox. Default size is 24.</p>
 
           
         </td>
@@ -205,7 +205,7 @@ in the icon set must be the same size. Default size is 24.</p>
     
     <li id="iconSet">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdIconProvider.iconSet(id, url, [iconSize]);
+        <code class="method-function-syntax">$mdIconProvider.iconSet(id, url, [viewBoxSize]);
 </code>
       </h3>
       <div class="service-desc"><p>Register a source URL for a &#39;named&#39; set of icons; group of SVG definitions where each definition
@@ -275,16 +275,17 @@ data or as part of the lookup in <code>$templateCache</code> if pre-loading was 
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          iconSize
+          viewBoxSize
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
-          <p>Number indicating the width and height of the icons in the set. All icons
-in the icon set must be the same size. Default size is 24.</p>
+          <p>Sets the width and height of the viewBox of all icons in the set. 
+It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+Default value is 24.</p>
 
           
         </td>
@@ -324,7 +325,7 @@ in the icon set must be the same size. Default size is 24.</p>
     
     <li id="defaultIconSet">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdIconProvider.defaultIconSet(url, [iconSize]);
+        <code class="method-function-syntax">$mdIconProvider.defaultIconSet(url, [viewBoxSize]);
 </code>
       </h3>
       <div class="service-desc"><p>Register a source URL for the default &#39;named&#39; set of icons. Unless explicitly registered,
@@ -374,16 +375,17 @@ data or as part of the lookup in <code>$templateCache</code> if pre-loading was 
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          iconSize
+          viewBoxSize
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
-          <p>Number indicating the width and height of the icons in the set. All icons
-in the icon set must be the same size. Default size is 24.</p>
+          <p>Sets the width and height of the viewBox of all icons in the set. 
+It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+Default value is 24.</p>
 
           
         </td>
@@ -490,9 +492,9 @@ class style that should be applied to the <code>&lt;md-icon&gt;</code>.</p>
 
     </li>
     
-    <li id="defaultIconSize">
+    <li id="defaultViewBoxSize">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdIconProvider.defaultIconSize(iconSize);
+        <code class="method-function-syntax">$mdIconProvider.defaultViewBoxSize([viewBoxSize]);
 </code>
       </h3>
       <div class="service-desc"><p>While <code>&lt;md-icon /&gt;</code> markup can also be style with sizing CSS, this method configures
@@ -516,25 +518,25 @@ The default sizing is (24px, 24px).</p>
   
   
     
+  
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* iconSize</b>
+          viewBoxSize
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
-          <p>Number indicating the width and height of the icons in the set. All icons
-in the icon set must be the same size. Default size is 24.</p>
+          <p>Sets the width and height of the viewBox for an icon or an icon set.
+All icons in a set should be the same size. The default value is 24.</p>
 
           
         </td>
       </tr>
-    
-  
-  
     
   
 
