@@ -736,7 +736,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  aria-expanded="{{isOpen()}}">\n' +
     '  <div flex layout="row">\n' +
     '    {{section.name}}\n' +
-    '    <span flex=""></span>\n' +
+    '    <span flex></span>\n' +
     '    <span aria-hidden="true" class="md-toggle-icon"\n' +
     '    ng-class="{\'toggled\' : isOpen()}">\n' +
     '      <md-icon md-svg-src="md-toggle-arrow"></md-icon>\n' +
