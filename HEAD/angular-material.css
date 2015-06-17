@@ -3133,8 +3133,6 @@ md-bottom-sheet {
       background-clip: padding-box;
       overflow: hidden;
       -webkit-mask-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC'); }
-    .md-button.md-fab md-icon {
-      margin-top: 0; }
     .md-button.md-fab.md-mini {
       line-height: 40px;
       width: 40px;
@@ -3997,7 +3995,13 @@ md-list-item.md-no-proxy, md-list-item .md-no-style {
     text-align: left;
     text-transform: none;
     width: 100%;
-    white-space: normal; }
+    white-space: normal;
+    -webkit-flex-direction: inherit;
+        -ms-flex-direction: inherit;
+            flex-direction: inherit;
+    -webkit-align-items: inherit;
+        -ms-flex-align: inherit;
+            align-items: inherit; }
   md-list-item.md-no-proxy:focus, md-list-item .md-no-style:focus {
     outline: none; }
 md-list-item.md-with-secondary {
