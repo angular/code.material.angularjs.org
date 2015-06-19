@@ -2005,7 +2005,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "dataTableDemo",
+          "module": "virtualRepeatVerticalDemo",
           "dependencies": [
             "ngMaterial"
           ]

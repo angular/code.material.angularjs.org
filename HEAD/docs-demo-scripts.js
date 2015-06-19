@@ -1629,14 +1629,18 @@ angular.module('tooltipDemo1', ['ngMaterial'])
   $scope.demo = {};
 });
 
+(function () {
+  'use strict';
 
+    angular
+      .module('virtualRepeatVerticalDemo', ['ngMaterial'])
+      .controller('AppCtrl', function() {
+        this.items = [];
+        for (var i = 0; i < 1000; i++) {
+          this.items.push(i);
+        }
+      });
 
-angular.module('dataTableDemo', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  this.items = []
-  for (var i = 0; i < 1000; i++) {
-    this.items.push(i);
-  }
-});
+})();
 
 angular.module('whiteframeBasicUsage', ['ngMaterial']);
