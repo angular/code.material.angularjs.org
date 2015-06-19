@@ -2010,13 +2010,13 @@ angular.module('docsApp').constant('DEMOS', [
             "ngMaterial"
           ]
         },
-        "id": "virtualRepeatdemoVertical",
+        "id": "virtualRepeatdemoVerticalUsage",
         "css": [
           {
             "name": "style.css",
             "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/virtualRepeat/demoVertical/style.css"
+            "outputPath": "demo-partials/virtualRepeat/demoVerticalUsage/style.css"
           }
         ],
         "html": [],
@@ -2025,17 +2025,17 @@ angular.module('docsApp').constant('DEMOS', [
             "name": "script.js",
             "label": "script.js",
             "fileType": "js",
-            "outputPath": "demo-partials/virtualRepeat/demoVertical/script.js"
+            "outputPath": "demo-partials/virtualRepeat/demoVerticalUsage/script.js"
           }
         ],
         "moduleName": "material.components.virtualRepeat",
-        "name": "demoVertical",
-        "label": "Vertical",
+        "name": "demoVerticalUsage",
+        "label": "Vertical Usage",
         "index": {
           "name": "index.html",
           "label": "index.html",
           "fileType": "html",
-          "outputPath": "demo-partials/virtualRepeat/demoVertical/index.html"
+          "outputPath": "demo-partials/virtualRepeat/demoVerticalUsage/index.html"
         }
       }
     ],
