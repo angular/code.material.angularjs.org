@@ -2000,6 +2000,48 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.tooltip"
   },
   {
+    "name": "material.components.virtualRepeat",
+    "label": "Virtual Repeat",
+    "demos": [
+      {
+        "ngModule": {
+          "module": "dataTableDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "virtualRepeatdemoVertical",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/virtualRepeat/demoVertical/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/virtualRepeat/demoVertical/script.js"
+          }
+        ],
+        "moduleName": "material.components.virtualRepeat",
+        "name": "demoVertical",
+        "label": "Vertical",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/virtualRepeat/demoVertical/index.html"
+        }
+      }
+    ],
+    "url": "/demo/material.components.virtualRepeat"
+  },
+  {
     "name": "material.components.whiteframe",
     "label": "Whiteframe",
     "demos": [

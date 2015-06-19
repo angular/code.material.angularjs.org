@@ -1,0 +1,14 @@
+.virtualRepeatdemoVertical #vertical-container {
+  height: 292px;
+  width: 400px; }
+.virtualRepeatdemoVertical .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 40px;
+  padding-top: 10px; }
+.virtualRepeatdemoVertical md-content {
+  margin: 16px; }
+.virtualRepeatdemoVertical md-virtual-repeat-container {
+  border: solid 1px grey; }
+.virtualRepeatdemoVertical .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+  padding-left: 16px; }
