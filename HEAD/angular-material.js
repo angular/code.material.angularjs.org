@@ -542,6 +542,8 @@ angular.module('material.core')
 
       // Annoying method to copy nodes to an array, thanks to IE
       nodesToArray: function (nodes) {
+        nodes = nodes || [ ];
+
         var results = [];
         for (var i = 0; i < nodes.length; ++i) {
           results.push(nodes.item(i));
@@ -566,7 +568,7 @@ angular.module('material.core')
         // Creates a virtual scrolling mask to absorb touchmove, keyboard, scrollbar clicking, and wheel events
         function disableElementScroll() {
           var zIndex = $window.getComputedStyle(element[0]).zIndex - 1;
-          if (isNaN(zIndex)) zIndex = 99;
+          if (isNaN(zIndex)) zIndex = 50;
           var scrollMask = angular.element(
             '<div class="md-scroll-mask" style="z-index: ' + zIndex + '">' +
             '  <div class="md-scroll-mask-bar"></div>' +
@@ -605,7 +607,9 @@ angular.module('material.core')
         // Converts the body to a position fixed block and translate it to the proper scroll
         // position
         function disableBodyScroll() {
-          var restoreStyle = body.getAttribute('style') || '';
+          var htmlNode = body.parentNode;
+          var restoreHtmlStyle = htmlNode.getAttribute('style') || '';
+          var restoreBodyStyle = body.getAttribute('style') || '';
           var scrollOffset = body.scrollTop + body.parentElement.scrollTop;
           var clientWidth = body.clientWidth;
 
@@ -616,10 +620,15 @@ angular.module('material.core')
             top: -scrollOffset + 'px'
           });
 
+          applyStyles(htmlNode, {
+            overflowY: 'hidden'
+          });
+
           if (body.clientWidth < clientWidth) applyStyles(body, {overflow: 'hidden'});
 
           return function restoreScroll() {
-            body.setAttribute('style', restoreStyle);
+            body.setAttribute('style', restoreBodyStyle);
+            htmlNode.setAttribute('style', restoreHtmlStyle);
             body.scrollTop = scrollOffset;
           };
         }
@@ -3543,6 +3552,9 @@ function ThemingProvider($mdColorPalette) {
         if (oldTheme) el.removeClass('md-' + oldTheme +'-theme');
         el.addClass('md-' + theme + '-theme');
         el.data('$mdThemeName', theme);
+        if (ctrl) {
+          el.data('$mdThemeController', ctrl);
+        }
       }
     };
 
@@ -8253,7 +8265,6 @@ function MenuDirective($mdMenu) {
   }
 
   function link(scope, element, attrs, mdMenuCtrl) {
-
     // Move everything into a md-menu-container and pass it to the controller
     var menuContainer = angular.element(
       '<div class="md-open-menu-container md-whiteframe-z2"></div>'
@@ -8293,6 +8304,7 @@ function MenuController($mdMenu, $attrs, $element, $scope) {
     ctrl.isOpen = true;
     triggerElement.setAttribute('aria-expanded', 'true');
     $mdMenu.show({
+      scope: $scope,
       mdMenuCtrl: ctrl,
       element: menuContainer,
       target: $element[0]
@@ -8386,6 +8398,7 @@ function MenuProvider($$interimElementProvider) {
       hasBackdrop: true,
       disableParentScroll: true,
       skipCompile: true,
+      preserveScope: true,
       themable: true
     };
 
@@ -8395,7 +8408,6 @@ function MenuProvider($$interimElementProvider) {
      * various interaction events
      */
     function onShow(scope, element, opts) {
-
       // Sanitize and set defaults on opts
       buildOpts(opts);
 
@@ -8484,7 +8496,9 @@ function MenuProvider($$interimElementProvider) {
         opts.backdrop && opts.backdrop.on('click', function(e) {
           e.preventDefault();
           e.stopPropagation();
-          opts.mdMenuCtrl.close(true);
+          scope.$apply(function() {
+            opts.mdMenuCtrl.close(true);
+          });
         });
 
         // Wire up keyboard listeners.
@@ -8505,18 +8519,29 @@ function MenuProvider($$interimElementProvider) {
           // Traverse up the event until we get to the menuContentEl to see if
           // there is an ng-click and that the ng-click is not disabled
           do {
-            if (target && target.hasAttribute('ng-click')) {
+            if (target == opts.menuContentEl[0]) return;
+            if (hasAnyAttribute(target, ['ng-click', 'data-ng-click', 'x-ng-click'])) {
               if (!target.hasAttribute('disabled')) {
                 close();
               }
               break;
             }
-          } while ((target = target.parentNode) && target != opts.menuContentEl)
+          } while (target = target.parentNode)
 
           function close() {
             scope.$apply(function() {
               opts.mdMenuCtrl.close();
             });
+          }
+
+          function hasAnyAttribute(target, attrs) {
+            if (!target) return false;
+            for (var i = 0, attr; attr = attrs[i]; ++i) {
+              if (target.hasAttribute(attr)) {
+                return true;
+              }
+            }
+            return false;
           }
         });
 
@@ -9527,6 +9552,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $interpolate, 
         selectEl.data('$ngModelController', ngModel);
         selectEl.data('$mdSelectController', mdSelectCtrl);
         selectScope = scope.$new();
+        $mdTheming.inherit(selectContainer, element);
         selectContainer = $compile(selectContainer)(selectScope);
         selectMenuCtrl = selectContainer.find('md-select-menu').controller('mdSelectMenu');
       }
@@ -10004,7 +10030,7 @@ function SelectProvider($$interimElementProvider) {
       $timeout(activateInteraction, 75, false);
 
       if (opts.backdrop) {
-        $mdTheming.inherit(opts.backdrop, opts.parent);
+        $mdTheming.inherit(opts.backdrop, opts.target);
         opts.parent.append(opts.backdrop);
       }
       opts.parent.append(element);
