@@ -29,20 +29,24 @@
   
     <p>With a placeholder (label and aria-label are added dynamically)</p>
 <hljs lang="html">
-  <md-select
-    ng-model="someModel"
-    placeholder="Select a state">
-    <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
-  </md-select>
+  <md-input-container>
+    <md-select
+      ng-model="someModel"
+      placeholder="Select a state">
+      <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+    </md-select>
+  </md-input-container>
 </hljs>
 
 <p>With an explicit label</p>
 <hljs lang="html">
-  <md-select
-    ng-model="someModel">
-    <md-select-label>Select a state</md-select-label>
-    <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
-  </md-select>
+  <md-input-container>
+    <label>State</label>
+    <md-select
+      ng-model="someModel">
+      <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+    </md-select>
+  </md-input-container>
 </hljs>
   
   </section>
@@ -98,24 +102,6 @@
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          md-on-close
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-expression">expression</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-expression">expression</code></td>
-        <td class="description">
-          <p>expression to be evaluated when the select is closed</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
           multiple
           
           <span hide show-sm>
@@ -125,6 +111,24 @@
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether it&#39;s multiple.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-close
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>expression to be evaluated when the select is closed</p>
 
           
         </td>
