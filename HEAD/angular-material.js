@@ -5081,14 +5081,6 @@ function MdDialogProvider($$interimElementProvider) {
       }
     };
 
-    function trapFocus(ev) {
-      var dialog = document.querySelector('md-dialog');
-
-      if (dialog && !dialog.contains(ev.target)) {
-        ev.stopImmediatePropagation();
-        dialog.focus();
-      }
-    }
 
     // On show method for dialogs
     function onShow(scope, element, options) {
@@ -5123,11 +5115,9 @@ function MdDialogProvider($$interimElementProvider) {
 
       configureAria(element.find('md-dialog'), role, options);
 
-      document.addEventListener('focus', trapFocus, true);
 
       if (options.disableParentScroll) {
-        options.lastOverflow = options.parent.css('overflow');
-        options.parent.css('overflow', 'hidden');
+        options.restoreScroll = $mdUtil.disableScrollAround(element);
       }
 
       return dialogPopIn(
@@ -5185,8 +5175,7 @@ function MdDialogProvider($$interimElementProvider) {
         $animate.leave(options.backdrop);
       }
       if (options.disableParentScroll) {
-        options.parent.css('overflow', options.lastOverflow);
-        delete options.lastOverflow;
+        options.restoreScroll();
       }
       if (options.escapeToClose) {
         $rootElement.off('keyup', options.rootElementKeyupCallback);
@@ -5197,7 +5186,6 @@ function MdDialogProvider($$interimElementProvider) {
 
       applyAriaToSiblings(element, false);
 
-      document.removeEventListener('focus', trapFocus, true);
 
       return dialogPopOut(
         element,
@@ -7821,10 +7809,12 @@ function placeholderDirective($log) {
     element.removeAttr('placeholder');
 
     if ( inputContainer.element.find('label').length == 0 ) {
-      var placeholder = '<label ng-click="delegateClick()">' + placeholderText + '</label>';
+      if (inputContainer.input && inputContainer.input[0].nodeName != 'MD-SELECT') {
+        var placeholder = '<label ng-click="delegateClick()">' + placeholderText + '</label>';
 
-      inputContainer.element.addClass('md-icon-float');
-      inputContainer.element.prepend(placeholder);
+        inputContainer.element.addClass('md-icon-float');
+        inputContainer.element.prepend(placeholder);
+      }
     } else if (element[0].nodeName != 'MD-SELECT') {
       $log.warn("The placeholder='" + placeholderText + "' will be ignored since this md-input-container has a child label element.");
     }
@@ -9446,13 +9436,11 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $interpolate, 
       }
 
 
-      ngModelCtrl.$parsers.push(ngModelPipelineCheckValue);
-      ngModelCtrl.$formatters.push(ngModelPipelineCheckValue);
-
       var originalRender = ngModelCtrl.$render;
       ngModelCtrl.$render = function() {
         originalRender();
         syncLabelText();
+        inputCheckValue();
       };
 
       mdSelectCtrl.setLabelText = function(text) {
@@ -9504,8 +9492,8 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $interpolate, 
 
       function setAriaLabel() {
         var labelText = element.attr('placeholder');
-        if (!labelText) {
-          labelText = containerCtrl.element.find('label').text();
+        if (!labelText && containerCtrl && containerCtrl.label) {
+          labelText = containerCtrl.label.text();
         }
         $mdAria.expect(element, 'aria-label', labelText);
       }
@@ -9590,11 +9578,6 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $interpolate, 
           containerCtrl.input = null;
         }
       });
-
-      function ngModelPipelineCheckValue(arg) {
-        containerCtrl && containerCtrl.setHasValue(!ngModelCtrl.$isEmpty(arg));
-        return arg;
-      }
 
       function inputCheckValue() {
         // The select counts as having a value if one or more options are selected,
@@ -9932,6 +9915,7 @@ function OptionDirective($mdButtonInkRipple, $mdUtil) {
     scope.$$postDigest(function() {
       attr.$observe('selected', function(selected) {
         if (!angular.isDefined(selected)) return;
+        if (typeof selected == 'string') selected = true;
         if (selected) {
           if (!selectCtrl.isMultiple) {
             selectCtrl.deselect( Object.keys(selectCtrl.selected)[0] );
