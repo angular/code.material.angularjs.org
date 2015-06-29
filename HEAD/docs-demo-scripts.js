@@ -684,19 +684,41 @@ angular.module('dividerDemo1', ['ngMaterial'])
   'use strict';
 
   angular.module('fabSpeedDialBasicUsageDemo', ['ngMaterial'])
-    .controller('AppCtrl', function($scope) {
-      $scope.demo = {
-        topDirections: ['left', 'up'],
-        bottomDirections: ['down', 'right'],
+    .controller('DemoCtrl', function() {
+      this.topDirections = ['left', 'up'];
+      this.bottomDirections = ['down', 'right'];
 
-        isOpen: false,
+      this.isOpen = false;
 
-        availableModes: ['md-fling', 'md-scale'],
-        selectedMode: 'md-fling',
+      this.availableModes = ['md-fling', 'md-scale'];
+      this.selectedMode = 'md-fling';
 
-        availableDirections: ['up', 'down', 'left', 'right'],
-        selectedDirection: 'up'
-      };
+      this.availableDirections = ['up', 'down', 'left', 'right'];
+      this.selectedDirection = 'up';
+    });
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('fabSpeedDialModalDemo', ['ngMaterial'])
+    .controller('DemoCtrl', function($mdDialog) {
+      this.openDialog = function($event) {
+        $mdDialog.show({
+          clickOutsideToClose: true,
+          controller: function($mdDialog) {
+            this.close = function() {
+              $mdDialog.cancel();
+            };
+            this.submit = function() {
+              $mdDialog.hide();
+            };
+          },
+          controllerAs: 'dialog',
+          templateUrl: 'dialog.html',
+          targetEvent: $event
+        });
+      }
     });
 })();
 

@@ -1,0 +1,17 @@
+.fabSpeedDialdemoTooltips .text-capitalize {
+  text-transform: capitalize; }
+.fabSpeedDialdemoTooltips .md-fab:hover, .fabSpeedDialdemoTooltips .md-fab.md-focused {
+  background-color: #000 !important; }
+.fabSpeedDialdemoTooltips p.note {
+  font-size: 1.2rem; }
+.fabSpeedDialdemoTooltips .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+.fabSpeedDialdemoTooltips .md-fab.demo-fab.trigger-fab:hover, .fabSpeedDialdemoTooltips .md-fab.demo-fab.trigger-fab.md-focused, .fabSpeedDialdemoTooltips .md-fab.demo-fab.action-fab:hover, .fabSpeedDialdemoTooltips .md-fab.demo-fab.action-fab.md-focused {
+  background-color: #333; }
+.fabSpeedDialdemoTooltips .md-fab.demo-fab.action-fab {
+  background-color: #aaa; }

@@ -5503,11 +5503,24 @@ MdDividerDirective.$inject = ["$mdTheming"];
       // Define our open/close functions
       // Note: Used by fabTrigger and fabActions directives
       vm.open = function() {
-        $scope.$apply('vm.isOpen = true');
+        // Async eval to avoid conflicts with existing digest loops
+        $scope.$evalAsync("vm.isOpen = true");
       };
 
       vm.close = function() {
-        $scope.$apply('vm.isOpen = false');
+        // Async eval to avoid conflicts with existing digest loops
+        // Only close if we do not currently have mouse focus (since child elements can call this)
+        !vm.moused && $scope.$evalAsync("vm.isOpen = false");
+      };
+
+      vm.mouseenter = function() {
+        vm.moused = true;
+        vm.open();
+      };
+
+      vm.mouseleave = function() {
+        vm.moused = false;
+        vm.close();
       };
 
       setupDefaults();
@@ -5525,8 +5538,8 @@ MdDividerDirective.$inject = ["$mdTheming"];
 
       // Setup our event listeners
       function setupListeners() {
-        $element.on('mouseenter', vm.open);
-        $element.on('mouseleave', vm.close);
+        $element.on('mouseenter', vm.mouseenter);
+        $element.on('mouseleave', vm.mouseleave);
       }
 
       // Setup our watchers
@@ -5566,18 +5579,19 @@ MdDividerDirective.$inject = ["$mdTheming"];
       angular.forEach(items, function(item, index) {
         var styles = item.style;
 
-        styles.transform = '';
+        styles.transform = styles.webkitTransform = '';
         styles.transitionDelay = '';
         styles.opacity = 1;
 
         // Make the items closest to the trigger have the highest z-index
-        item.style.zIndex = (items.length - index) + startZIndex;
+        styles.zIndex = (items.length - index) + startZIndex;
       });
 
       // If the control is closed, hide the items behind the trigger
       if (!ctrl.isOpen) {
         angular.forEach(items, function(item, index) {
           var newPosition, axis;
+          var styles = item.style;
 
           switch (ctrl.direction) {
             case 'up':
@@ -5598,7 +5612,9 @@ MdDividerDirective.$inject = ["$mdTheming"];
               break;
           }
 
-          item.style.transform = 'translate' + axis + '(' + newPosition + 'px)';
+          var newTranslate = 'translate' + axis + '(' + newPosition + 'px)';
+
+          styles.transform = styles.webkitTransform = newTranslate;
         });
       }
     }
@@ -5629,7 +5645,7 @@ MdDividerDirective.$inject = ["$mdTheming"];
           offsetDelay = index * delay;
 
         styles.opacity = ctrl.isOpen ? 1 : 0;
-        styles.transform = ctrl.isOpen ? 'scale(1)' : 'scale(0)';
+        styles.transform = styles.webkitTransform = ctrl.isOpen ? 'scale(1)' : 'scale(0)';
         styles.transitionDelay = (ctrl.isOpen ?  offsetDelay : (items.length - offsetDelay)) + 'ms';
       });
     }
