@@ -7184,6 +7184,7 @@ mdIconDirective.$inject = ["$mdIcon", "$mdTheming", "$mdAria", "$interpolate"];
       alias : alias,
       fontSet : className || alias
     });
+    return this;
    },
 
    /**
