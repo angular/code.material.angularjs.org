@@ -3860,7 +3860,7 @@ md-input-container {
     resize: none;
     overflow: hidden; }
   md-input-container textarea.md-input {
-    min-height: 56px;
+    min-height: 26px;
     -ms-flex-preferred-size: auto; }
   md-input-container label {
     position: relative;
