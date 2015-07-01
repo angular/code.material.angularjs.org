@@ -33,7 +33,7 @@ Track by, as alias, and (key, value) syntax are not supported.</p>
   
     <hljs lang="html">
 <md-virtual-repeat-container>
-  <div md-virtual-repeat="i in items" md-item-size="10">Hello {{i}}!</div>
+  <div md-virtual-repeat="i in items">Hello {{i}}!</div>
 </md-virtual-repeat-container>
 
 <md-virtual-repeat-container md-orient-horizontal>
@@ -63,9 +63,14 @@ Track by, as alias, and (key, value) syntax are not supported.</p>
   
   
     
+  
+    
+  
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* md-item-size</b>
+          md-item-size
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-number">number</code></span>
@@ -74,16 +79,13 @@ Track by, as alias, and (key, value) syntax are not supported.</p>
 <code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
           <p>The height or width of the repeated elements (which
-    must be identical for each element). Required.</p>
+    must be identical for each element). Optional. Will attempt to read the size
+    from the dom if missing, but still assumes that all repeated nodes have same
+    height or width.</p>
 
           
         </td>
       </tr>
-    
-  
-    
-  
-  
     
   
     

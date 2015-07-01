@@ -30,9 +30,8 @@ enough dom nodes to fill the container and recycling them as the user scrolls.</
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-<md-virtual-repeat-container></md-virtual-repeat-container>
 
-<md-virtual-repeat-container md-orient-horizontal>
+<md-virtual-repeat-container>
   <div md-virtual-repeat="i in items" md-item-size="20">Hello {{i}}!</div>
 </md-virtual-repeat-container>
 </hljs>
@@ -77,7 +76,7 @@ enough dom nodes to fill the container and recycling them as the user scrolls.</
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether the container should scroll horizontally
-    (defaults to scrolling vertically).</p>
+    (defaults to orientation and scrolling vertically).</p>
 
           
         </td>
