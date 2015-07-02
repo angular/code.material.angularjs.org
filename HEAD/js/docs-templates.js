@@ -100,22 +100,29 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <md-divider></md-divider>\n' +
     '\n' +
+    '    <br/>\n' +
     '    <h2>Contributing to Angular Material</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
-    '      <li>To contribute, fork our GitHub <a href="https://github.com/angular/material">repository</a>.</li>\n' +
     '      <li>Please read our <a href="https://github.com/angular/material#contributing">contributor guidelines</a>.</li>\n' +
+    '      <li>To contribute, fork our GitHub <a href="https://github.com/angular/material">repository</a>.</li>\n' +
     '      <li>For problems,\n' +
     '          <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen" target="_blank">\n' +
-    '              search the issues\n' +
+    '              search the GitHub Issues\n' +
     '          </a> and/or\n' +
     '          <a href="https://github.com/angular/material/issues/new" target="_blank">\n' +
-    '              create a new issue\n' +
+    '              create a New Issue\n' +
     '          </a>.\n' +
     '      </li>\n' +
     '      <li>For questions,\n' +
     '          <a href="https://groups.google.com/forum/#!forum/ngmaterial" target="_blank">\n' +
-    '              search the forum\n' +
+    '              search the Forum\n' +
     '          </a> and/or post a new message.\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        Join the\n' +
+    '        <a href="https://gitter.im/angular/material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge" target="_blank">\n' +
+    '          Gitter Chat\n' +
+    '        </a>\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '  </md-content>\n' +
