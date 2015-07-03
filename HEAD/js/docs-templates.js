@@ -386,7 +386,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    The <code>flex</code> attribute value is restricted to 33, 66, and multiples\n' +
     '    of five.\n' +
     '    <br/>\n' +
-    '    For example: <code>flex="5", flex="20", "flex="33", flex="50", flex="66", flex="75", ...</code>.\n' +
+    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="66", flex="75", ...</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
     '  See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes.\n' +
