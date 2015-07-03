@@ -13,9 +13,28 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>&lt;md-icon&gt;</code> directive is an markup element useful for showing an icon based on a font-icon
-or a SVG. Icons are view-only elements that should not be used directly as buttons; instead nest a <code>&lt;md-icon&gt;</code>
+  <p>The <code>md-icon</code> directive makes it easier to use vector-based icons in your app (as opposed to
+raster-based icons types like PNG). The directive supports both icon fonts and SVG icons.</p>
+<p>Icons should be consider view-only elements that should not be used directly as buttons; instead nest a <code>&lt;md-icon&gt;</code>
 inside a <code>md-button</code> to add hover and click features.</p>
+<h3 id="icon-fonts">Icon fonts</h3>
+<p>Icon fonts are a technique in which you use a font where the glyphs in the font are
+your icons instead of text. Benefits include a straightforward way to bundle everything into a
+single HTTP request, simple scaling, easy color changing, and more.</p>
+<p><code>md-icon</code> let&#39;s you consume an icon font by letting you reference specific icons in that font
+by name rather than character code.</p>
+<h3 id="svg">SVG</h3>
+<p>For SVGs, the problem with using <code>&lt;img&gt;</code> or a CSS <code>background-image</code> is that you can&#39;t take
+advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
+animation.</p>
+<p><code>md-icon</code> makes it easier to use SVG icons by <em>inlining</em> the SVG into an <code>&lt;svg&gt;</code> element in the
+document. The most straightforward way of referencing an SVG icon is via URL, just like a
+traditional <code>&lt;img&gt;</code>. <code>$mdIconProvider</code>, as a convenience, let&#39;s you <em>name</em> an icon so you can
+reference it by name instead of URL throughout your templates.</p>
+<p>Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
+your SVG icons together and pre-load them with $mdIconProvider as an icon set. An icon set can
+also be given a name, which acts as a namespace for individual icons, so you can reference them
+like <code>&quot;social:cake&quot;</code>.</p>
 <p>When using SVGs, both external SVGs (via URLs) or sets of SVGs [from icon sets] can be
 easily loaded and used.When use font-icons, developers must following three (3) simple steps:</p>
 <ol>
@@ -156,7 +175,7 @@ svg iconsets.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Name of CSS icon associated with the font-face will be used
+          <p>String name of CSS icon associated with the font-face will be used
 to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
 
           
@@ -195,7 +214,8 @@ internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine 
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>URL [or expression ] used to load, cache, and display an external SVG.</p>
+          <p>String URL (or expression) used to load, cache, and display an
+    external SVG.</p>
 
           
         </td>
@@ -213,13 +233,16 @@ internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine 
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Name used for lookup of the icon from the internal cache; interpolated strings or
-expressions may also be used. Specific set names can be used with the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
+          <p>md-svg-icon String name used for lookup of the icon from the internal cache;
+    interpolated strings or expressions may also be used. Specific set names can be used with
+    the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
 To use icon sets, developers are required to pre-register the sets using the <code>$mdIconProvider</code> service.</p>
 
           
         </td>
       </tr>
+    
+  
     
   
     
@@ -247,6 +270,26 @@ To use icon sets, developers are required to pre-register the sets using the <co
           <p>Labels icon for accessibility. If an empty string is provided, icon
 will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no aria-label on the icon
 nor a label on the parent element, a warning will be logged to the console.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          alt
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Labels icon for accessibility. If an empty string is provided, icon
+will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no alt on the icon
+nor a label on the parent element, a warning will be logged to the console. *</p>
 
           
         </td>
