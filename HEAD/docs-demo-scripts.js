@@ -589,6 +589,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
     $mdDialog.show(
       $mdDialog.alert()
         .parent(angular.element(document.body))
+        .clickOutsideToClose(true)
         .title('This is an alert title')
         .content('You can specify some description text in here.')
         .ariaLabel('Alert Dialog Demo')
@@ -600,13 +601,13 @@ angular.module('dialogDemo1', ['ngMaterial'])
   $scope.showConfirm = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
-      .parent(angular.element(document.body))
-      .title('Would you like to delete your debt?')
-      .content('All of the banks have agreed to forgive you your debts.')
-      .ariaLabel('Lucky day')
-      .ok('Please do it!')
-      .cancel('Sounds like a scam')
-      .targetEvent(ev);
+          .parent(angular.element(document.body))
+          .title('Would you like to delete your debt?')
+          .content('All of the banks have agreed to forgive you your debts.')
+          .ariaLabel('Lucky day')
+          .ok('Please do it!')
+          .cancel('Sounds like a scam')
+          .targetEvent(ev);
 
     $mdDialog.show(confirm).then(function() {
       $scope.alert = 'You decided to get rid of your debt.';
