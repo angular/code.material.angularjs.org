@@ -11225,7 +11225,10 @@ function SliderDirective($$rAF, $window, $mdAria, $mdUtil, $mdConstant, $mdThemi
         }
 
       } else {
-        $log.error('Slider step value must be greater than zero when in discrete mode');
+        var msg = 'Slider step value must be greater than zero when in discrete mode';
+
+        $log.error(msg);
+        throw new Error(msg);
       }
     }
 
