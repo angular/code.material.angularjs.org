@@ -599,7 +599,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "fabSpeedDialBasicUsageDemo",
+          "module": "fabSpeedDialDemoBasicUsage",
           "dependencies": [
             "ngMaterial"
           ]
@@ -634,18 +634,18 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "fabSpeedDialModalDemo",
+          "module": "fabSpeedDialDemoMoreOptions",
           "dependencies": [
             "ngMaterial"
           ]
         },
-        "id": "fabSpeedDialdemoTooltips",
+        "id": "fabSpeedDialdemoMoreOptions",
         "css": [
           {
             "name": "style.css",
             "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/fabSpeedDial/demoTooltips/style.css"
+            "outputPath": "demo-partials/fabSpeedDial/demoMoreOptions/style.css"
           }
         ],
         "html": [],
@@ -654,17 +654,17 @@ angular.module('docsApp').constant('DEMOS', [
             "name": "script.js",
             "label": "script.js",
             "fileType": "js",
-            "outputPath": "demo-partials/fabSpeedDial/demoTooltips/script.js"
+            "outputPath": "demo-partials/fabSpeedDial/demoMoreOptions/script.js"
           }
         ],
         "moduleName": "material.components.fabSpeedDial",
-        "name": "demoTooltips",
-        "label": "Tooltips",
+        "name": "demoMoreOptions",
+        "label": "More Options",
         "index": {
           "name": "index.html",
           "label": "index.html",
           "fileType": "html",
-          "outputPath": "demo-partials/fabSpeedDial/demoTooltips/index.html"
+          "outputPath": "demo-partials/fabSpeedDial/demoMoreOptions/index.html"
         }
       }
     ],
