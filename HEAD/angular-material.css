@@ -6148,6 +6148,9 @@ md-select {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
+    -webkit-flex-grow: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
     -webkit-order: 1;
         -ms-flex-order: 1;
             order: 1;
