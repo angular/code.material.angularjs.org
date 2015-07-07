@@ -2807,7 +2807,7 @@ md-autocomplete {
 md-backdrop {
   z-index: 50;
   background-color: transparent;
-  position: absolute;
+  position: fixed;
   height: 100%;
   left: 0;
   right: 0; }
@@ -3482,7 +3482,7 @@ md-content {
   -webkit-align-items: center;
       -ms-flex-align: center;
           align-items: center;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
