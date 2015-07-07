@@ -1,0 +1,132 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >API Reference</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-fab-speed-dial&gt;</code> directive is used to present a series of popup elements (usually
+<code>&lt;md-button&gt;</code>s) for quick access to common actions.</p>
+<p>There are currently two animations available by applying one of the following classes to
+the component:</p>
+<ul>
+<li><code>md-fling</code> - The speed dial items appear from underneath the trigger and move into their
+appropriate positions.</li>
+<li><code>md-scale</code> - The speed dial items appear in their proper places by scaling from 0% to 100%.</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-fab-speed-dial direction="up" class="md-fling">
+  <md-fab-trigger>
+    <md-button aria-label="Add..."><md-icon icon="/img/icons/plus.svg"></md-icon></md-button>
+  </md-fab-trigger>
+
+  <md-fab-actions>
+    <md-button aria-label="Add User">
+      <md-icon icon="/img/icons/user.svg"></md-icon>
+    </md-button>
+
+    <md-button aria-label="Add Group">
+      <md-icon icon="/img/icons/group.svg"></md-icon>
+    </md-button>
+  </md-fab-actions>
+</md-fab-speed-dial>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="no-style">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-direction
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>From which direction you would like the speed dial to appear
+relative to the trigger element.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-open
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Programmatically control whether or not the speed-dial is visible.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
