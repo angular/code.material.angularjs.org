@@ -78,7 +78,7 @@ parts that make up our component.</p>
 <form name="autocompleteForm">
   <md-autocomplete
       required
-      input-name="autocomplete"
+      md-input-name="autocomplete"
       md-selected-item="selectedItem"
       md-search-text="searchText"
       md-items="item in getMatches(searchText)"
@@ -134,6 +134,12 @@ parts that make up our component.</p>
           
         </td>
       </tr>
+    
+  
+    
+  
+    
+  
     
   
     
@@ -413,6 +419,60 @@ parts that make up our component.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>This will add a floating label to autocomplete and wrap it in <code>md-input-container</code></p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-input-name
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The name attribute given to the input element to be used with FormController</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-input-minlength
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The minimum length for the input&#39;s value for validation</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-input-maxlength
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The maximum length for the input&#39;s value for validation</p>
 
           
         </td>
