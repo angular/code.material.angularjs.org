@@ -13784,7 +13784,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $timeout, $
    * Use the user-defined expression to announce changes each time a new item is selected
    */
   function announceItemChange() {
-    angular.isFunction($scope.itemChange) &&  $scope.itemChange();
+    angular.isFunction($scope.itemChange) && $scope.itemChange(getItemAsNameVal($scope.selectedItem));
   }
 
   function announceTextChange() {
