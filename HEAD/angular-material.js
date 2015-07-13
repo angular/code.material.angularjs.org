@@ -892,8 +892,6 @@ angular.module('material.core')
         //-- set default value for digest to true
         if (digest == null) digest = true;
 
-        console.log(callback, digest, arguments);
-
         //-- store updated digest value
         nextTick.digest = nextTick.digest || digest;
 
@@ -921,8 +919,6 @@ angular.module('material.core')
           nextTick.timeout = false;
           nextTick.digest = false;
 
-          console.log('batch size', queue.length);
-          console.log('digest', digest);
           //-- process the existing queue
           queue.forEach(function (callback) { callback(); });
 
