@@ -6960,7 +6960,9 @@ md-tab {
   text-transform: uppercase;
   float: left;
   font-weight: 500;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis; }
   .md-tab.md-focused {
     box-shadow: none;
     outline: none; }
