@@ -2040,6 +2040,41 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "module": "virtualRepeatHorizontalDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "virtualRepeatdemoHorizontalUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/virtualRepeat/demoHorizontalUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/virtualRepeat/demoHorizontalUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.virtualRepeat",
+        "name": "demoHorizontalUsage",
+        "label": "Horizontal Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/virtualRepeat/demoHorizontalUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "module": "virtualRepeatVerticalDemo",
           "dependencies": [
             "ngMaterial"
