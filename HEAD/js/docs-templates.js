@@ -205,7 +205,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <p><code>layout="column" layout-align="center end"</code> would make\n' +
     '    children align along the center vertically and along the end (right) horizontally.</p>\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>layout-align</td>\n' +
     '      <td>Sets child alignment.</td>\n' +
@@ -519,7 +519,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    other <code>layout</code> attributes available:\n' +
     '  </p>\n' +
     '\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>layout</td>\n' +
     '      <td>Sets the default layout on all devices.</td>\n' +
@@ -611,7 +611,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    of flex and offset attributes.\n' +
     '  </p>\n' +
     '\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>flex</td>\n' +
     '      <td>Sets flex.</td>\n' +
@@ -657,7 +657,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '  <br/>\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>hide</td>\n' +
     '      <td><code>display: none</code></td>\n' +

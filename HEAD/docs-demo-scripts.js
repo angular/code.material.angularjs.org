@@ -1643,8 +1643,10 @@ angular.module('toastDemo1', ['ngMaterial'])
           .highlightAction(false)
           .position($scope.getToastPosition());
 
-    $mdToast.show(toast).then(function() {
-      alert('You clicked \'OK\'.');
+    $mdToast.show(toast).then(function(response) {
+      if ( response == 'ok' ) {
+        alert('You clicked \'OK\'.');
+      }
     });
   };
 
