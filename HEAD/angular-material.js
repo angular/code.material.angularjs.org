@@ -2203,6 +2203,9 @@ function InterimElementProvider() {
         processTemplate  = usesStandardSymbols ? angular.identity : replaceInterpolationSymbols;
 
     return function createInterimElementService() {
+      var SHOW_CANCELLED = false;
+      var SHOW_CLOSED = true;
+
       /*
        * @ngdoc service
        * @name $$interimElement.$service
@@ -2273,14 +2276,17 @@ function InterimElementProvider() {
        */
       function hide(reason) {
         var interim = stack.shift();
+        if ( interim ) {
 
-        interim
-          .remove(reason || true, false)
-          .catch(function( reason ) {
-            $log.error("InterimElement.hide() error: " + reason );
-          });
+          interim
+            .remove(reason || SHOW_CLOSED, false)
+            .catch(function( reason ) {
+              $log.error("InterimElement.hide() error: " + reason );
+            });
 
-        return !interim ? $q.when(reason) : interim.deferred.promise;
+          return interim.deferred.promise;
+        }
+        return $q.when(reason);
       }
 
       /*
@@ -2297,14 +2303,17 @@ function InterimElementProvider() {
        */
       function cancel(reason) {
         var interim = stack.shift();
+        if ( interim ) {
 
-        interim
-          .remove(reason || false, true)
-          .catch(function( reason ) {
-            $log.error("InterimElement.cancel() error: " + reason );
-          });
+          interim
+            .remove(reason || SHOW_CANCELLED, true)
+            .catch(function( reason ) {
+              $log.error("InterimElement.cancel() error: " + reason );
+            });
 
-        return !interim ? $q.when(reason) : interim.deferred.promise;
+          return interim.deferred.promise;
+        }
+        return $q.when(reason);
       }
 
 
