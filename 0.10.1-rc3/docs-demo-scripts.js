@@ -253,6 +253,13 @@ angular.module('buttonsDemo1', ['ngMaterial'])
 
 });
 
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -344,10 +351,17 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
+angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
 });
 
 
@@ -367,6 +381,13 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
+});
+
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
 });
 
 (function () {
@@ -472,20 +493,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 
 })();
 
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
-});
-
 (function () {
   'use strict';
   angular
@@ -570,13 +577,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
   }
 })();
 
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
@@ -588,7 +588,7 @@ angular.module('dialogDemo1', ['ngMaterial'])
     // to prevent interaction outside of dialog
     $mdDialog.show(
       $mdDialog.alert()
-        .parent(angular.element(document.body))
+        .parent(angular.element(document.querySelector('#popupContainer')))
         .clickOutsideToClose(true)
         .title('This is an alert title')
         .content('You can specify some description text in here.')
@@ -601,7 +601,6 @@ angular.module('dialogDemo1', ['ngMaterial'])
   $scope.showConfirm = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
-          .parent(angular.element(document.body))
           .title('Would you like to delete your debt?')
           .content('All of the banks have agreed to forgive you your debts.')
           .ariaLabel('Lucky day')
@@ -925,6 +924,32 @@ angular.module('appSvgIconSets', ['ngMaterial'])
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
   });
 
+angular
+  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      title: 'Developer',
+      email: 'ipsum@lorem.com',
+      firstName: '',
+      lastName: '' ,
+      company: 'Google' ,
+      address: '1600 Amphitheatre Pkwy' ,
+      city: 'Mountain View' ,
+      state: 'CA' ,
+      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
+      postalCode : '94043'
+    };
+  })
+  .config( function($mdThemingProvider){
+
+    // Configure a dark theme with primary foreground yellow
+
+    $mdThemingProvider.theme('docs-dark', 'default')
+        .primaryPalette('yellow')
+        .dark();
+
+  });
+
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {})
@@ -956,32 +981,6 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
   })
   ;
 
-angular
-  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      title: 'Developer',
-      email: 'ipsum@lorem.com',
-      firstName: '',
-      lastName: '' ,
-      company: 'Google' ,
-      address: '1600 Amphitheatre Pkwy' ,
-      city: 'Mountain View' ,
-      state: 'CA' ,
-      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
-      postalCode : '94043'
-    };
-  })
-  .config( function($mdThemingProvider){
-
-    // Configure a dark theme with primary foreground yellow
-
-    $mdThemingProvider.theme('docs-dark', 'default')
-        .primaryPalette('yellow')
-        .dark();
-
-  });
-
 angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
 
 .controller('AppCtrl', function($scope) {
@@ -990,6 +989,17 @@ angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
     rate: 500
   };
 });
+
+angular
+  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      name: 'John Doe',
+      email: '',
+      phone: '',
+      address: 'Mountain View, CA'
+    };
+  });
 
 
 angular.module('listDemo1', ['ngMaterial'])
@@ -1147,17 +1157,6 @@ angular
 
     this.checkVoicemail = function() {
       // This never happens.
-    };
-  });
-
-angular
-  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      name: 'John Doe',
-      email: '',
-      phone: '',
-      address: 'Mountain View, CA'
     };
   });
 
@@ -1681,6 +1680,11 @@ app.controller('AppCtrl', function($scope) {
   }
 });
 
+angular.module('tooltipDemo1', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.demo = {};
+});
+
 (function () {
   'use strict';
 
@@ -1694,11 +1698,6 @@ app.controller('AppCtrl', function($scope) {
       });
 
 })();
-
-angular.module('tooltipDemo1', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.demo = {};
-});
 
 (function () {
   'use strict';
