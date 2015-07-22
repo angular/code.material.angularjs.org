@@ -4184,6 +4184,7 @@ md-menu-item {
   -webkit-flex-direction: row;
       -ms-flex-direction: row;
           flex-direction: row;
+  min-height: 48px;
   height: 48px;
   -webkit-align-content: center;
       -ms-flex-line-pack: center;
