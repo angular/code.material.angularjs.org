@@ -3364,7 +3364,7 @@ md-checkbox {
       padding-right: 4px;
       float: left;
       white-space: nowrap;
-      max-width: calc(100% - 31px);
+      max-width: 100%;
       overflow: hidden;
       text-overflow: ellipsis; }
       .md-chips .md-chip .md-chip-content:focus {
