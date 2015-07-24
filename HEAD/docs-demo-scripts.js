@@ -580,7 +580,7 @@ angular.module('contentDemo1', ['ngMaterial'])
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
-  $scope.alert = '';
+  $scope.status = '  ';
 
   $scope.showAlert = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
@@ -609,9 +609,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
           .targetEvent(ev);
 
     $mdDialog.show(confirm).then(function() {
-      $scope.alert = 'You decided to get rid of your debt.';
+      $scope.status = 'You decided to get rid of your debt.';
     }, function() {
-      $scope.alert = 'You decided to keep your debt.';
+      $scope.status = 'You decided to keep your debt.';
     });
   };
 
@@ -624,9 +624,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.alert = 'You said the information was "' + answer + '".';
+      $scope.status = 'You said the information was "' + answer + '".';
     }, function() {
-      $scope.alert = 'You cancelled the dialog.';
+      $scope.status = 'You cancelled the dialog.';
     });
   };
 });
