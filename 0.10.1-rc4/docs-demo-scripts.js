@@ -241,25 +241,6 @@
   }
 })();
 
-
-angular.module('buttonsDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-
-  $scope.googleUrl = 'http://google.com';
-
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -351,17 +332,22 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
-angular.module('checkboxDemo1', ['ngMaterial'])
+angular.module('buttonsDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
 
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
+  $scope.googleUrl = 'http://google.com';
 
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
 });
 
 
@@ -384,9 +370,16 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 });
 
 
-angular.module('contentDemo1', ['ngMaterial'])
+angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
 
 });
 
@@ -577,10 +570,17 @@ angular.module('contentDemo1', ['ngMaterial'])
   }
 })();
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
-  $scope.alert = '';
+  $scope.status = '  ';
 
   $scope.showAlert = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
@@ -609,9 +609,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
           .targetEvent(ev);
 
     $mdDialog.show(confirm).then(function() {
-      $scope.alert = 'You decided to get rid of your debt.';
+      $scope.status = 'You decided to get rid of your debt.';
     }, function() {
-      $scope.alert = 'You decided to keep your debt.';
+      $scope.status = 'You decided to keep your debt.';
     });
   };
 
@@ -624,9 +624,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
       clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.alert = 'You said the information was "' + answer + '".';
+      $scope.status = 'You said the information was "' + answer + '".';
     }, function() {
-      $scope.alert = 'You cancelled the dialog.';
+      $scope.status = 'You cancelled the dialog.';
     });
   };
 });
@@ -924,32 +924,6 @@ angular.module('appSvgIconSets', ['ngMaterial'])
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
   });
 
-angular
-  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      title: 'Developer',
-      email: 'ipsum@lorem.com',
-      firstName: '',
-      lastName: '' ,
-      company: 'Google' ,
-      address: '1600 Amphitheatre Pkwy' ,
-      city: 'Mountain View' ,
-      state: 'CA' ,
-      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
-      postalCode : '94043'
-    };
-  })
-  .config( function($mdThemingProvider){
-
-    // Configure a dark theme with primary foreground yellow
-
-    $mdThemingProvider.theme('docs-dark', 'default')
-        .primaryPalette('yellow')
-        .dark();
-
-  });
-
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {})
@@ -980,6 +954,32 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
 
   })
   ;
+
+angular
+  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      title: 'Developer',
+      email: 'ipsum@lorem.com',
+      firstName: '',
+      lastName: '' ,
+      company: 'Google' ,
+      address: '1600 Amphitheatre Pkwy' ,
+      city: 'Mountain View' ,
+      state: 'CA' ,
+      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
+      postalCode : '94043'
+    };
+  })
+  .config( function($mdThemingProvider){
+
+    // Configure a dark theme with primary foreground yellow
+
+    $mdThemingProvider.theme('docs-dark', 'default')
+        .primaryPalette('yellow')
+        .dark();
+
+  });
 
 angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
 
@@ -1189,6 +1189,21 @@ angular
 
 
 
+angular.module('progressCircularDemo1', ['ngMaterial'])
+  .controller('AppCtrl', ['$scope', '$interval',
+    function($scope, $interval) {
+      $scope.mode = 'query';
+      $scope.determinateValue = 30;
+
+      $interval(function() {
+        $scope.determinateValue += 1;
+        if ($scope.determinateValue > 100) {
+          $scope.determinateValue = 30;
+        }
+      }, 100, 0, true);
+    }
+  ]);
+
 angular.module('menuDemoWidth', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
@@ -1210,21 +1225,6 @@ function DemoCtrl($mdDialog) {
   };
 }
 
-
-angular.module('progressCircularDemo1', ['ngMaterial'])
-  .controller('AppCtrl', ['$scope', '$interval',
-    function($scope, $interval) {
-      $scope.mode = 'query';
-      $scope.determinateValue = 30;
-
-      $interval(function() {
-        $scope.determinateValue += 1;
-        if ($scope.determinateValue > 100) {
-          $scope.determinateValue = 30;
-        }
-      }, 100, 0, true);
-    }
-  ]);
 
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
@@ -1360,6 +1360,26 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
   };
 });
 
+
+angular.module('sliderDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.color = {
+    red: Math.floor(Math.random() * 255),
+    green: Math.floor(Math.random() * 255),
+    blue: Math.floor(Math.random() * 255)
+  };
+
+  $scope.rating1 = 3;
+  $scope.rating2 = 2;
+  $scope.rating3 = 4;
+
+  $scope.disabled1 = 0;
+  $scope.disabled2 = 70;
+
+});
+
 angular
   .module('sidenavDemo1', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
@@ -1401,26 +1421,6 @@ angular
         });
     };
   });
-
-
-angular.module('sliderDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.color = {
-    red: Math.floor(Math.random() * 255),
-    green: Math.floor(Math.random() * 255),
-    blue: Math.floor(Math.random() * 255)
-  };
-
-  $scope.rating1 = 3;
-  $scope.rating2 = 2;
-  $scope.rating3 = 4;
-
-  $scope.disabled1 = 0;
-  $scope.disabled2 = 70;
-
-});
 
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
