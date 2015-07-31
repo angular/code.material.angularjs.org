@@ -355,6 +355,20 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
 
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
+
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
     $scope.items = [1,2,3,4,5];
       $scope.selected = [];
 
@@ -367,20 +381,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
-});
-
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
 });
 
 (function () {
@@ -1189,21 +1189,6 @@ angular
 
 
 
-angular.module('progressCircularDemo1', ['ngMaterial'])
-  .controller('AppCtrl', ['$scope', '$interval',
-    function($scope, $interval) {
-      $scope.mode = 'query';
-      $scope.determinateValue = 30;
-
-      $interval(function() {
-        $scope.determinateValue += 1;
-        if ($scope.determinateValue > 100) {
-          $scope.determinateValue = 30;
-        }
-      }, 100, 0, true);
-    }
-  ]);
-
 angular.module('menuDemoWidth', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
@@ -1225,6 +1210,21 @@ function DemoCtrl($mdDialog) {
   };
 }
 
+
+angular.module('progressCircularDemo1', ['ngMaterial'])
+  .controller('AppCtrl', ['$scope', '$interval',
+    function($scope, $interval) {
+      $scope.mode = 'query';
+      $scope.determinateValue = 30;
+
+      $interval(function() {
+        $scope.determinateValue += 1;
+        if ($scope.determinateValue > 100) {
+          $scope.determinateValue = 30;
+        }
+      }, 100, 0, true);
+    }
+  ]);
 
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
@@ -1360,26 +1360,6 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
   };
 });
 
-
-angular.module('sliderDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.color = {
-    red: Math.floor(Math.random() * 255),
-    green: Math.floor(Math.random() * 255),
-    blue: Math.floor(Math.random() * 255)
-  };
-
-  $scope.rating1 = 3;
-  $scope.rating2 = 2;
-  $scope.rating3 = 4;
-
-  $scope.disabled1 = 0;
-  $scope.disabled2 = 70;
-
-});
-
 angular
   .module('sidenavDemo1', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $mdUtil, $log) {
@@ -1421,6 +1401,26 @@ angular
         });
     };
   });
+
+
+angular.module('sliderDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.color = {
+    red: Math.floor(Math.random() * 255),
+    green: Math.floor(Math.random() * 255),
+    blue: Math.floor(Math.random() * 255)
+  };
+
+  $scope.rating1 = 3;
+  $scope.rating2 = 2;
+  $scope.rating3 = 4;
+
+  $scope.disabled1 = 0;
+  $scope.disabled2 = 70;
+
+});
 
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
