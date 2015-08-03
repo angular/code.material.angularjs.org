@@ -8413,7 +8413,7 @@ function inputTextareaDirective($mdUtil, $window, $mdAria) {
           if(!lineHeight) {
             node.style.minHeight = '0';
 
-            lineHeight = element.height();
+            lineHeight = element.prop('clientHeight');
 
             node.style.minHeight = null;
           }
