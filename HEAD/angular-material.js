@@ -2943,7 +2943,7 @@ function InkRippleService($window, $timeout, $mdUtil) {
       scope.$watch(isActiveExpr, function watchActive(newValue) {
         isActive = newValue;
         if (isActive && !ripples.length) {
-          mdUtil.nextTick(function () { createRipple(0, 0); });
+          $mdUtil.nextTick(function () { createRipple(0, 0); });
         }
         angular.forEach(ripples, updateElement);
       });
