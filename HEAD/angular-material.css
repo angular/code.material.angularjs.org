@@ -4108,7 +4108,8 @@ md-list-item.md-2-line, md-list-item.md-2-line > .md-no-style, md-list-item.md-3
       font-weight: 500;
       letter-spacing: 0.01em;
       line-height: 24px;
-      margin: 0 0 0px 0;
+      margin: 0 0 0 0;
+      /* @alternate */
       line-height: 1.6em; }
 
 md-list-item.md-2-line > .md-avatar:first-child, md-list-item.md-2-line > .md-no-style > .md-avatar:first-child {
