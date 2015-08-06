@@ -1,5 +1,5 @@
 language: node_js
-sudo: true
+sudo: false
 node_js:
   - '0.12'
 
@@ -11,5 +11,5 @@ script:
   - echo 0
 
 after_success:
-  - sudo $(which npm) install -g firebase-tools
+  - $(which npm) install -g firebase-tools
   - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then firebase deploy --email $FIREBASE_EMAIL --password $FIREBASE_PASSWORD; fi
