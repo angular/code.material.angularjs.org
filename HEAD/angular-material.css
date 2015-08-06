@@ -3581,7 +3581,7 @@ md-fab-speed-dial {
     display: -webkit-flex;
     display: -ms-flexbox;
     display: flex;
-    height: initial; }
+    height: auto; }
     md-fab-speed-dial md-fab-actions .md-fab-action-item {
       visibility: hidden;
       transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2); }
@@ -3705,6 +3705,7 @@ md-fab-toolbar {
       margin-right: 8px; }
   md-fab-toolbar md-toolbar {
     background-color: transparent !important;
+    pointer-events: none;
     z-index: 23; }
     md-fab-toolbar md-toolbar .md-toolbar-tools {
       padding: 0 20px;
