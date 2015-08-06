@@ -3943,9 +3943,9 @@ md-input-container.md-icon-float {
   md-input-container.md-icon-float > md-icon {
     top: 26px;
     left: 2px; }
-    md-input-container.md-icon-float > md-icon + input {
+    md-input-container.md-icon-float > md-icon + input, md-input-container.md-icon-float > md-icon + textarea {
       margin-left: 36px; }
-  md-input-container.md-icon-float > input {
+  md-input-container.md-icon-float > input, md-input-container.md-icon-float > textarea {
     padding-top: 24px; }
   md-input-container.md-icon-float.md-input-focused, md-input-container.md-icon-float.md-input-has-value {
     margin-top: -8px; }
