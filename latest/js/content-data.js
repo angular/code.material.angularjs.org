@@ -8,6 +8,12 @@ DocsApp
       "label": "button"
     },
     {
+      "name": "checkbox",
+      "outputPath": "partials/CSS/checkbox.html",
+      "url": "/CSS/checkbox",
+      "label": "checkbox"
+    },
+    {
       "name": "Typography",
       "outputPath": "partials/CSS/typography.html",
       "url": "/CSS/typography",

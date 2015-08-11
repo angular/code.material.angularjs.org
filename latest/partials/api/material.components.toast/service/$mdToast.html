@@ -77,7 +77,7 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -115,7 +115,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -129,10 +129,11 @@ rejected with <code>$mdToast.cancel()</code>.</p>
     <td class="description"><p>a <code>$mdToastPreset</code> with the chainable configuration methods:</p>
 <ul>
 <li>$mdToastPreset#content(string) - sets toast content to string</li>
-<li>$mdToastPreset#action(string) - adds an action button, which resolves the promise returned from <code>show()</code> if clicked.</li>
+<li>$mdToastPreset#action(string) - adds an action button. If clicked the promise (returned from <code>show()</code>) will resolve
+with value &#39;ok&#39;; otherwise it promise is resolved with &#39;true&#39; after a hideDelay timeout.</li>
 <li>$mdToastPreset#highlightAction(boolean) - sets action button to be highlighted</li>
 <li>$mdToastPreset#capsule(boolean) - adds &#39;md-capsule&#39; class to the toast (curved corners)</li>
-<li>$mdToastPreset#theme(boolean) - sets the theme on the toast to theme (default is <code>$mdThemingProvider</code>&#39;s default theme)</li>
+<li>$mdToastPreset#theme(string) - sets the theme on the toast to theme (default is <code>$mdThemingProvider</code>&#39;s default theme)</li>
 </ul>
 </td>
   </tr>
@@ -179,7 +180,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -213,7 +214,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 
       
       
-<table class="no-style">
+<table class="md-api-table">
   <thead>
     <tr>
       <th>Parameter</th>
@@ -283,7 +284,7 @@ to the root element of the application.</li>
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -295,7 +296,9 @@ to the root element of the application.</li>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
     <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
-rejected with <code>$mdToast.cancel()</code>.</p>
+rejected with <code>$mdToast.cancel()</code>. <code>$mdToast.hide()</code> will resolve either with a Boolean
+value == &#39;true&#39; or the value passed as an argument to <code>$mdToast.hide()</code>.
+And <code>$mdToast.cancel()</code> will resolve the promise with a Boolean value == &#39;false&#39;</p>
 </td>
   </tr>
   </tbody>
@@ -318,7 +321,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 
       
       
-<table class="no-style">
+<table class="md-api-table">
   <thead>
     <tr>
       <th>Parameter</th>
@@ -359,7 +362,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -370,7 +373,9 @@ rejected with <code>$mdToast.cancel()</code>.</p>
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>a promise that is called when the existing element is removed from the DOM</p>
+    <td class="description"><p>a promise that is called when the existing element is removed from the DOM.
+The promise is resolved with either a Boolean value == &#39;true&#39; or the value passed as the
+argument to <code>.hide()</code>.</p>
 </td>
   </tr>
   </tbody>
@@ -394,7 +399,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 
       
       
-<table class="no-style">
+<table class="md-api-table">
   <thead>
     <tr>
       <th>Parameter</th>
@@ -435,7 +440,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
       
 
       
-      <table class="no-style">
+      <table class="md-api-table">
   <thead>
   <tr>
     <th>Returns</th>
@@ -446,7 +451,8 @@ rejected with <code>$mdToast.cancel()</code>.</p>
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>a promise that is called when the existing element is removed from the DOM</p>
+    <td class="description"><p>a promise that is called when the existing element is removed from the DOM
+The promise is resolved with a Boolean value == &#39;false&#39;.</p>
 </td>
   </tr>
   </tbody>

@@ -100,22 +100,29 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <md-divider></md-divider>\n' +
     '\n' +
+    '    <br/>\n' +
     '    <h2>Contributing to Angular Material</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
-    '      <li>To contribute, fork our GitHub <a href="https://github.com/angular/material">repository</a>.</li>\n' +
     '      <li>Please read our <a href="https://github.com/angular/material#contributing">contributor guidelines</a>.</li>\n' +
+    '      <li>To contribute, fork our GitHub <a href="https://github.com/angular/material">repository</a>.</li>\n' +
     '      <li>For problems,\n' +
     '          <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen" target="_blank">\n' +
-    '              search the issues\n' +
+    '              search the GitHub Issues\n' +
     '          </a> and/or\n' +
     '          <a href="https://github.com/angular/material/issues/new" target="_blank">\n' +
-    '              create a new issue\n' +
+    '              create a New Issue\n' +
     '          </a>.\n' +
     '      </li>\n' +
     '      <li>For questions,\n' +
     '          <a href="https://groups.google.com/forum/#!forum/ngmaterial" target="_blank">\n' +
-    '              search the forum\n' +
+    '              search the Forum\n' +
     '          </a> and/or post a new message.\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        Join the\n' +
+    '        <a href="https://gitter.im/angular/material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge" target="_blank">\n' +
+    '          Gitter Chat\n' +
+    '        </a>\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '  </md-content>\n' +
@@ -198,7 +205,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <p><code>layout="column" layout-align="center end"</code> would make\n' +
     '    children align along the center vertically and along the end (right) horizontally.</p>\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>layout-align</td>\n' +
     '      <td>Sets child alignment.</td>\n' +
@@ -379,7 +386,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    The <code>flex</code> attribute value is restricted to 33, 66, and multiples\n' +
     '    of five.\n' +
     '    <br/>\n' +
-    '    For example: <code>flex="5", flex="20", "flex="33", flex="50", flex="66", flex="75", ...</code>.\n' +
+    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="66", flex="75", ...</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
     '  See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes.\n' +
@@ -512,7 +519,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    other <code>layout</code> attributes available:\n' +
     '  </p>\n' +
     '\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>layout</td>\n' +
     '      <td>Sets the default layout on all devices.</td>\n' +
@@ -604,7 +611,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    of flex and offset attributes.\n' +
     '  </p>\n' +
     '\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>flex</td>\n' +
     '      <td>Sets flex.</td>\n' +
@@ -650,7 +657,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '  <br/>\n' +
-    '  <table>\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>hide</td>\n' +
     '      <td><code>display: none</code></td>\n' +
@@ -736,7 +743,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  aria-expanded="{{isOpen()}}">\n' +
     '  <div flex layout="row">\n' +
     '    {{section.name}}\n' +
-    '    <span flex=""></span>\n' +
+    '    <span flex></span>\n' +
     '    <span aria-hidden="true" class="md-toggle-icon"\n' +
     '    ng-class="{\'toggled\' : isOpen()}">\n' +
     '      <md-icon md-svg-src="md-toggle-arrow"></md-icon>\n' +

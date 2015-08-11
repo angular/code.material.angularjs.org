@@ -4,7 +4,7 @@
     border: 1px solid #e1e1e1; }
     .tabsdemoDynamicTabs md-content md-tabs md-tab-content {
       background: #f6f6f6; }
-    .tabsdemoDynamicTabs md-content md-tabs md-tabs-canvas {
+    .tabsdemoDynamicTabs md-content md-tabs md-tabs-wrapper {
       background: white; }
   .tabsdemoDynamicTabs md-content h1:first-child {
     margin-top: 0; }

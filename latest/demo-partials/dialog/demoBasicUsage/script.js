@@ -1,7 +1,7 @@
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
-  $scope.alert = '';
+  $scope.status = '  ';
 
   $scope.showAlert = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
@@ -9,7 +9,8 @@ angular.module('dialogDemo1', ['ngMaterial'])
     // to prevent interaction outside of dialog
     $mdDialog.show(
       $mdDialog.alert()
-        .parent(angular.element(document.body))
+        .parent(angular.element(document.querySelector('#popupContainer')))
+        .clickOutsideToClose(true)
         .title('This is an alert title')
         .content('You can specify some description text in here.')
         .ariaLabel('Alert Dialog Demo')
@@ -21,18 +22,17 @@ angular.module('dialogDemo1', ['ngMaterial'])
   $scope.showConfirm = function(ev) {
     // Appending dialog to document.body to cover sidenav in docs app
     var confirm = $mdDialog.confirm()
-      .parent(angular.element(document.body))
-      .title('Would you like to delete your debt?')
-      .content('All of the banks have agreed to forgive you your debts.')
-      .ariaLabel('Lucky day')
-      .ok('Please do it!')
-      .cancel('Sounds like a scam')
-      .targetEvent(ev);
+          .title('Would you like to delete your debt?')
+          .content('All of the banks have agreed to forgive you your debts.')
+          .ariaLabel('Lucky day')
+          .ok('Please do it!')
+          .cancel('Sounds like a scam')
+          .targetEvent(ev);
 
     $mdDialog.show(confirm).then(function() {
-      $scope.alert = 'You decided to get rid of your debt.';
+      $scope.status = 'You decided to get rid of your debt.';
     }, function() {
-      $scope.alert = 'You decided to keep your debt.';
+      $scope.status = 'You decided to keep your debt.';
     });
   };
 
@@ -42,11 +42,12 @@ angular.module('dialogDemo1', ['ngMaterial'])
       templateUrl: 'dialog1.tmpl.html',
       parent: angular.element(document.body),
       targetEvent: ev,
+      clickOutsideToClose:true
     })
     .then(function(answer) {
-      $scope.alert = 'You said the information was "' + answer + '".';
+      $scope.status = 'You said the information was "' + answer + '".';
     }, function() {
-      $scope.alert = 'You cancelled the dialog.';
+      $scope.status = 'You cancelled the dialog.';
     });
   };
 });

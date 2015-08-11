@@ -719,5 +719,36 @@ DocsApp
       }
     ],
     "hasDemo": false
+  },
+  {
+    "name": "material.components.virtualRepeat",
+    "type": "module",
+    "outputPath": "partials/api/material.components.virtualRepeat/index.html",
+    "url": "api/material.components.virtualRepeat",
+    "label": "material.components.virtualRepeat",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js",
+    "docs": [
+      {
+        "name": "mdVirtualRepeatContainer",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.virtualRepeat/directive/mdVirtualRepeatContainer.html",
+        "url": "api/material.components.virtualRepeat/directive/mdVirtualRepeatContainer",
+        "label": "mdVirtualRepeatContainer",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js",
+        "hasDemo": true
+      },
+      {
+        "name": "mdVirtualRepeat",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.virtualRepeat/directive/mdVirtualRepeat.html",
+        "url": "api/material.components.virtualRepeat/directive/mdVirtualRepeat",
+        "label": "mdVirtualRepeat",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js"
+      }
+    ],
+    "hasDemo": false
   }
 ]);
