@@ -3605,6 +3605,7 @@ md-calendar {
 
 .md-datepicker-triangle-button.md-button.md-icon-button {
   height: 100%;
+  width: 36px;
   position: absolute; }
 
 md-datepicker[disabled] .md-datepicker-input-container {
