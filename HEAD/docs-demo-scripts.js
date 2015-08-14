@@ -255,7 +255,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
       .icon('facebook', 'img/icons/facebook.svg', 24)
       .icon('twitter', 'img/icons/twitter.svg', 24);
   })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet) {
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
   $scope.alert = '';
 
   $scope.showListBottomSheet = function($event) {
@@ -276,7 +276,12 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
       controller: 'GridBottomSheetCtrl',
       targetEvent: $event
     }).then(function(clickedItem) {
-      $scope.alert = clickedItem.name + ' clicked!';
+      $mdToast.show(
+            $mdToast.simple()
+              .content(clickedItem.name + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
     });
   };
 })
@@ -577,6 +582,18 @@ angular.module('contentDemo1', ['ngMaterial'])
 
 });
 
+angular.module('datepickerBasicUsage', ['ngMaterial'])
+    .controller('AppCtrl', function($scope) {
+      $scope.myDate = new Date();
+
+      $scope.adjustMonth = function(delta) {
+        $scope.myDate = new Date(
+            $scope.myDate.getFullYear(),
+            $scope.myDate.getMonth() + delta,
+            $scope.myDate.getDate());
+      };
+    });
+
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
@@ -604,9 +621,9 @@ angular.module('dialogDemo1', ['ngMaterial'])
           .title('Would you like to delete your debt?')
           .content('All of the banks have agreed to forgive you your debts.')
           .ariaLabel('Lucky day')
+          .targetEvent(ev)
           .ok('Please do it!')
-          .cancel('Sounds like a scam')
-          .targetEvent(ev);
+          .cancel('Sounds like a scam');
 
     $mdDialog.show(confirm).then(function() {
       $scope.status = 'You decided to get rid of your debt.';

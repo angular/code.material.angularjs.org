@@ -503,6 +503,48 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.content"
   },
   {
+    "name": "material.components.datepicker",
+    "label": "Datepicker",
+    "demos": [
+      {
+        "ngModule": {
+          "module": "datepickerBasicUsage",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "datepickerdemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/datepicker/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/datepicker/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.datepicker",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/datepicker/demoBasicUsage/index.html"
+        }
+      }
+    ],
+    "url": "/demo/material.components.datepicker"
+  },
+  {
     "name": "material.components.dialog",
     "label": "Dialog",
     "demos": [

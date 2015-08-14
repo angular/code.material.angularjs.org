@@ -191,6 +191,37 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.datepicker",
+    "type": "module",
+    "outputPath": "partials/api/material.components.datepicker/index.html",
+    "url": "api/material.components.datepicker",
+    "label": "material.components.datepicker",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/calendar.js",
+    "docs": [
+      {
+        "name": "$mdDateLocaleProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.components.datepicker/service/$mdDateLocaleProvider.html",
+        "url": "api/material.components.datepicker/service/$mdDateLocaleProvider",
+        "label": "$mdDateLocaleProvider",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/dateLocaleProvider.js",
+        "hasDemo": false
+      },
+      {
+        "name": "mdDatepicker",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.datepicker/directive/mdDatepicker.html",
+        "url": "api/material.components.datepicker/directive/mdDatepicker",
+        "label": "mdDatepicker",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/datePicker.js"
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.dialog",
     "type": "module",
     "outputPath": "partials/api/material.components.dialog/index.html",
