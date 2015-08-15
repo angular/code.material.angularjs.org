@@ -15,7 +15,6 @@ angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","materia
 (function(){
 "use strict";
 
-
 /**
  * Initialization function that validates environment
  * requirements.
@@ -27,8 +26,8 @@ angular
     'material.core.gestures',
     'material.core.theming'
   ])
-  .config( MdCoreConfigure );
-
+  .directive('mdTemplate', MdTemplateDirective)
+  .config(MdCoreConfigure);
 
 function MdCoreConfigure($provide, $mdThemingProvider) {
 
@@ -42,7 +41,36 @@ function MdCoreConfigure($provide, $mdThemingProvider) {
 }
 MdCoreConfigure.$inject = ["$provide", "$mdThemingProvider"];
 
-function rAFDecorator( $delegate ) {
+function MdTemplateDirective($compile) {
+  return {
+    restrict: 'A',
+    scope: {
+      template: '=mdTemplate'
+    },
+    link: function postLink(scope, element) {
+      scope.$watch('template', assignSafeHTML);
+
+      /**
+       * To add safe HTML: assign and compile in
+       * isolated scope.
+       */
+      function assignSafeHTML(value) {
+        // when the 'compile' expression changes
+        // assign it into the current DOM
+        element.html(value);
+
+        // Compile the new DOM and link it to the current scope.
+        // NOTE: we only compile .childNodes so that we don't get
+        //       into infinite loop compiling ourselves
+        $compile(element.contents())(scope);
+      }
+    }
+  };
+
+}
+MdTemplateDirective.$inject = ["$compile"];
+
+function rAFDecorator($delegate) {
   /**
    * Use this to throttle events that come in often.
    * The throttled function will always use the *last* invocation before the
@@ -7281,10 +7309,11 @@ function iosScrollFix(node) {
  * @ngdoc module
  * @name material.components.dialog
  */
-angular.module('material.components.dialog', [
-  'material.core',
-  'material.components.backdrop'
-])
+angular
+  .module('material.components.dialog', [
+    'material.core',
+    'material.components.backdrop'
+  ])
   .directive('mdDialog', MdDialogDirective)
   .provider('$mdDialog', MdDialogProvider);
 
@@ -7311,8 +7340,6 @@ function MdDialogDirective($$rAF, $mdTheming) {
   };
 }
 MdDialogDirective.$inject = ["$$rAF", "$mdTheming"];
-
-
 
 /**
  * @ngdoc service
@@ -7690,7 +7717,7 @@ function MdDialogProvider($$interimElementProvider) {
         '<md-dialog md-theme="{{ dialog.theme }}" aria-label="{{ dialog.ariaLabel }}">',
         ' <md-dialog-content role="document" tabIndex="-1">',
         '   <h2 class="md-title">{{ dialog.title }}</h2>',
-        '   <p>{{ dialog.content }}</p>',
+        '   <div class="md-dialog-content-body" md-template="::dialog.content"></div>',
         ' </md-dialog-content>',
         ' <div class="md-actions">',
         '   <md-button ng-if="dialog.$type == \'confirm\'"' +
@@ -7741,6 +7768,8 @@ function MdDialogProvider($$interimElementProvider) {
       element = $mdUtil.extractElementByName(element, 'md-dialog');
       angular.element($document[0].body).addClass('md-dialog-is-showing');
 
+      wrapSimpleContent();
+
       captureSourceAndParent(element, options);
       configureAria(element.find('md-dialog'), options);
       showBackdrop(scope, element, options);
@@ -7773,6 +7802,26 @@ function MdDialogProvider($$interimElementProvider) {
             closeButton = actionButtons[actionButtons.length - 1];
           }
           return angular.element(closeButton);
+        }
+      }
+
+      /**
+       * Wrap any simple content [specified via .content("")] in <p></p> tags.
+       * otherwise accept HTML content within the dialog content area...
+       * NOTE: Dialog uses the md-template directive to safely inject HTML content.
+       */
+      function wrapSimpleContent() {
+        if ( controller ) {
+          var HTML_END_TAG = /<\/[\w-]*>/gm;
+          var content = controller.content;
+
+          var hasHTML = HTML_END_TAG.test(content);
+          if (!hasHTML) {
+            content = $mdUtil.supplant("<p>{0}</p>", [content]);
+          }
+
+          // Publish updated dialog content body... to be compiled by mdTemplate directive
+          controller.content = content;
         }
       }
 
@@ -7819,8 +7868,6 @@ function MdDialogProvider($$interimElementProvider) {
 
       // In case the user provides a raw dom element, always wrap it in jqLite
       options.parent = angular.element(options.parent || $rootElement);
-
-
 
     }
 
@@ -19810,7 +19857,7 @@ function MdTabs () {
                   ng-disabled="tab.scope.disabled"\
                   md-swipe-left="$mdTabsCtrl.nextPage()"\
                   md-swipe-right="$mdTabsCtrl.previousPage()"\
-                  md-template="::tab.label"\
+                  md-tabs-template="::tab.label"\
                   md-scope="::tab.parent"></md-tab-item>\
               <md-ink-bar></md-ink-bar>\
             </md-pagination-wrapper>\
@@ -19826,7 +19873,7 @@ function MdTabs () {
                   ng-focus="$mdTabsCtrl.hasFocus = true"\
                   ng-blur="$mdTabsCtrl.hasFocus = false"\
                   ng-repeat="tab in $mdTabsCtrl.tabs"\
-                  md-template="::tab.label"\
+                  md-tabs-template="::tab.label"\
                   md-scope="::tab.parent"></md-dummy-tab>\
             </div>\
           </md-tabs-canvas>\
@@ -19848,7 +19895,7 @@ function MdTabs () {
                 \'md-no-scroll\':     $mdTabsCtrl.dynamicHeight\
               }">\
             <div\
-                md-template="::tab.template"\
+                md-tabs-template="::tab.template"\
                 md-connected-if="tab.isActive()"\
                 md-scope="::tab.parent"\
                 ng-if="$mdTabsCtrl.enableDisconnect || tab.shouldRender()"></div>\
@@ -19868,14 +19915,14 @@ function MdTabs () {
 
 angular
     .module('material.components.tabs')
-    .directive('mdTemplate', MdTemplate);
+    .directive('mdTabsTemplate', MdTabsTemplate);
 
-function MdTemplate ($compile, $mdUtil) {
+function MdTabsTemplate ($compile, $mdUtil) {
   return {
     restrict: 'A',
     link:     link,
     scope:    {
-      template:     '=mdTemplate',
+      template:     '=mdTabsTemplate',
       connected:    '=?mdConnectedIf',
       compileScope: '=mdScope'
     },
@@ -19906,7 +19953,7 @@ function MdTemplate ($compile, $mdUtil) {
     }
   }
 }
-MdTemplate.$inject = ["$compile", "$mdUtil"];
+MdTabsTemplate.$inject = ["$compile", "$mdUtil"];
 
 })();
 (function(){ 

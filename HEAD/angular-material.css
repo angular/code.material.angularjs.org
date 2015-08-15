@@ -3699,6 +3699,8 @@ md-dialog {
       md-dialog md-dialog-content.sticky-container > div {
         padding: 24px;
         padding-top: 0; }
+    md-dialog md-dialog-content .md-dialog-content-body {
+      width: 100%; }
   md-dialog .md-actions {
     display: -webkit-flex;
     display: -ms-flexbox;
