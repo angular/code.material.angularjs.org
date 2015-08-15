@@ -5099,8 +5099,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
       $mdTheming.inherit(bottomSheet.element, options.parent);
 
       if (options.disableParentScroll) {
-        options.lastOverflow = options.parent.css('overflow');
-        options.parent.css('overflow', 'hidden');
+        options.restoreScroll = $mdUtil.disableScrollAround(options.parent);
       }
 
       return $animate.enter(bottomSheet.element, options.parent)
@@ -5131,8 +5130,8 @@ function MdBottomSheetProvider($$interimElementProvider) {
       $animate.leave(backdrop);
       return $animate.leave(bottomSheet.element).then(function() {
         if (options.disableParentScroll) {
-          options.parent.css('overflow', options.lastOverflow);
-          delete options.lastOverflow;
+          options.restoreScroll();
+          delete options.restoreScroll;
         }
 
         bottomSheet.cleanup();
