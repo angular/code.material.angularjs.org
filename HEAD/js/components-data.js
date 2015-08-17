@@ -266,6 +266,81 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.fabActions",
+    "type": "module",
+    "outputPath": "partials/api/material.components.fabActions/index.html",
+    "url": "api/material.components.fabActions",
+    "label": "material.components.fabActions",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabActions/fabActions.js",
+    "docs": [
+      {
+        "name": "mdFabActions",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.fabActions/directive/mdFabActions.html",
+        "url": "api/material.components.fabActions/directive/mdFabActions",
+        "label": "mdFabActions",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabActions/fabActions.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.fabSpeedDial",
+    "type": "module",
+    "outputPath": "partials/api/material.components.fabSpeedDial/index.html",
+    "url": "api/material.components.fabSpeedDial",
+    "label": "material.components.fabSpeedDial",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabSpeedDial/fabSpeedDial.js",
+    "docs": [
+      {
+        "name": "mdFabSpeedDial",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.fabSpeedDial/directive/mdFabSpeedDial.html",
+        "url": "api/material.components.fabSpeedDial/directive/mdFabSpeedDial",
+        "label": "mdFabSpeedDial",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabSpeedDial/fabSpeedDial.js",
+        "hasDemo": true
+      },
+      {
+        "name": "mdFabTrigger",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.fabSpeedDial/directive/mdFabTrigger.html",
+        "url": "api/material.components.fabSpeedDial/directive/mdFabTrigger",
+        "label": "mdFabTrigger",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabTrigger/fabTrigger.js"
+      }
+    ],
+    "hasDemo": false
+  },
+  {
+    "name": "material.components.fabToolbar",
+    "type": "module",
+    "outputPath": "partials/api/material.components.fabToolbar/index.html",
+    "url": "api/material.components.fabToolbar",
+    "label": "material.components.fabToolbar",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabToolbar/fabToolbar.js",
+    "docs": [
+      {
+        "name": "mdFabToolbar",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.fabToolbar/directive/mdFabToolbar.html",
+        "url": "api/material.components.fabToolbar/directive/mdFabToolbar",
+        "label": "mdFabToolbar",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabToolbar/fabToolbar.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.gridList",
     "type": "module",
     "outputPath": "partials/api/material.components.gridList/index.html",

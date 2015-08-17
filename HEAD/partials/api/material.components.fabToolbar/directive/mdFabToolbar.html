@@ -16,6 +16,16 @@
   <p>The <code>&lt;md-fab-toolbar&gt;</code> directive is used present a toolbar of elements (usually <code>&lt;md-button&gt;</code>s)
 for quick access to common actions when a floating action button is activated (via click or
 keyboard navigation).</p>
+<p>You may also easily position the trigger by applying one one of the following classes to the
+<code>&lt;md-fab-toolbar&gt;</code> element:</p>
+<ul>
+<li><code>md-fab-top-left</code></li>
+<li><code>md-fab-top-right</code></li>
+<li><code>md-fab-bottom-left</code></li>
+<li><code>md-fab-bottom-right</code></li>
+</ul>
+<p>These CSS classes use <code>position: absolute</code>, so you need to ensure that the container element
+also uses <code>position: absolute</code> or <code>position: relative</code> in order for them to work.</p>
 
 </div>
 
@@ -30,7 +40,7 @@ keyboard navigation).</p>
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-<md-fab-toolbar>
+<md-fab-toolbar md-direction='left'>
   <md-fab-trigger>
     <md-button aria-label="Add..."><md-icon icon="/img/icons/plus.svg"></md-icon></md-button>
   </md-fab-trigger>
