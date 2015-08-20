@@ -1054,7 +1054,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "inputdemoBasicUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/input/demoBasicUsage/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {
