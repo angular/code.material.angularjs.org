@@ -2089,6 +2089,41 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "module": "virtualRepeatDeferredLoadingDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "virtualRepeatdemoDeferredLoading",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/virtualRepeat/demoDeferredLoading/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/virtualRepeat/demoDeferredLoading/script.js"
+          }
+        ],
+        "moduleName": "material.components.virtualRepeat",
+        "name": "demoDeferredLoading",
+        "label": "Deferred Loading",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/virtualRepeat/demoDeferredLoading/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "module": "virtualRepeatHorizontalDemo",
           "dependencies": [
             "ngMaterial"
@@ -2120,6 +2155,41 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/virtualRepeat/demoHorizontalUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "module": "virtualRepeatInfiniteScrollDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "virtualRepeatdemoInfiniteScroll",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/virtualRepeat/demoInfiniteScroll/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/virtualRepeat/demoInfiniteScroll/script.js"
+          }
+        ],
+        "moduleName": "material.components.virtualRepeat",
+        "name": "demoInfiniteScroll",
+        "label": "Infinite Scroll",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/virtualRepeat/demoInfiniteScroll/index.html"
         }
       },
       {
