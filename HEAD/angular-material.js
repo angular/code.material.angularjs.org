@@ -893,6 +893,22 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
     },
 
     /**
+     * Create an implicit getter that caches its `getter()`
+     * lookup value
+     */
+    valueOnUse : function (scope, key, getter) {
+      var value = null, args = Array.prototype.slice.call(arguments);
+      var params = (args.length > 3) ? args.slice(3) : [ ];
+
+      Object.defineProperty(scope, key, {
+        get: function () {
+          if (value === null) value = getter.apply(scope, params);
+          return value;
+        }
+      });
+    },
+
+    /**
      * Get a unique ID.
      *
      * @returns {string} an unique numeric string
@@ -2914,9 +2930,9 @@ function InkRippleCtrl ($scope, $element, rippleOptions, $window, $timeout, $mdU
   this.timeout    = null; // Stores a reference to the most-recent ripple timeout
   this.lastRipple = null;
 
-  this.valueOnUse('container', angular.bind(this, this.createContainer));
-  this.valueOnUse('color', angular.bind(this, this.getColor, 1));
-  this.valueOnUse('background', angular.bind(this, this.getColor, 0.5));
+  $mdUtil.valueOnUse(this, 'container', this.createContainer);
+  $mdUtil.valueOnUse(this, 'color', this.getColor, 1);
+  $mdUtil.valueOnUse(this, 'background', this.getColor, 0.5);
 
   // attach method for unit tests
   ($element.controller('mdInkRipple') || {}).createRipple = angular.bind(this, this.createRipple);
@@ -2924,16 +2940,6 @@ function InkRippleCtrl ($scope, $element, rippleOptions, $window, $timeout, $mdU
   this.bindEvents();
 }
 InkRippleCtrl.$inject = ["$scope", "$element", "rippleOptions", "$window", "$timeout", "$mdUtil"];
-
-InkRippleCtrl.prototype.valueOnUse = function (key, getter) {
-  var value = null;
-  Object.defineProperty(this, key, {
-    get: function () {
-      if (value === null) value = getter();
-      return value;
-    }
-  });
-};
 
 /**
  * Returns the color that the ripple should be (either based on CSS or hard-coded)
