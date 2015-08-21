@@ -30,4 +30,4 @@
       .chipsdemoBasicUsage .custom-chips .md-chip .md-chip-remove-container button.vegetablechip:hover, .chipsdemoBasicUsage .custom-chips .md-chip .md-chip-remove-container button.vegetablechip:focus {
         background: rgba(255, 0, 0, 0.8); }
   .chipsdemoBasicUsage .custom-chips .md-chip:not(.md-readonly) md-chip-template {
-    padding-right: 20px; }
+    padding-right: 5px; }
