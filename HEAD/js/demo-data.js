@@ -1346,6 +1346,48 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "/demo/material.components.menu"
   },
   {
+    "name": "material.components.menuBar",
+    "label": "Menu Bar",
+    "demos": [
+      {
+        "ngModule": {
+          "module": "menuBarDemoBasic",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "menuBardemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menuBar/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menuBar/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.menuBar",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menuBar/demoBasicUsage/index.html"
+        }
+      }
+    ],
+    "url": "/demo/material.components.menuBar"
+  },
+  {
     "name": "material.components.progressCircular",
     "label": "Progress Circular",
     "demos": [

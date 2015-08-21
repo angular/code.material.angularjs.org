@@ -496,6 +496,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.menu-bar",
+    "type": "module",
+    "outputPath": "partials/api/material.components.menu-bar/index.html",
+    "url": "api/material.components.menu-bar",
+    "label": "material.components.menu-bar",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/menuBar/menu-bar.js",
+    "docs": [
+      {
+        "name": "mdMenuBar",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.menu-bar/directive/mdMenuBar.html",
+        "url": "api/material.components.menu-bar/directive/mdMenuBar",
+        "label": "mdMenuBar",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menuBar/menu-bar.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.progressCircular",
     "type": "module",
     "outputPath": "partials/api/material.components.progressCircular/index.html",
