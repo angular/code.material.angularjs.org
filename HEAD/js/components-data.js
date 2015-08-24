@@ -38,7 +38,7 @@ DocsApp
     "url": "api/material.components.bottomSheet",
     "label": "material.components.bottomSheet",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottom-sheet.js",
     "docs": [
       {
         "name": "$mdBottomSheet",
@@ -47,7 +47,7 @@ DocsApp
         "url": "api/material.components.bottomSheet/service/$mdBottomSheet",
         "label": "$mdBottomSheet",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottomSheet.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/bottomSheet/bottom-sheet.js",
         "hasDemo": false
       }
     ],
@@ -347,7 +347,7 @@ DocsApp
     "url": "api/material.components.gridList",
     "label": "material.components.gridList",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/grid-list.js",
     "docs": [
       {
         "name": "mdGridList",
@@ -356,7 +356,7 @@ DocsApp
         "url": "api/material.components.gridList/directive/mdGridList",
         "label": "mdGridList",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/grid-list.js",
         "hasDemo": true
       },
       {
@@ -366,7 +366,7 @@ DocsApp
         "url": "api/material.components.gridList/directive/mdGridTile",
         "label": "mdGridTile",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/gridList.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/grid-list.js"
       }
     ],
     "hasDemo": false
@@ -378,7 +378,7 @@ DocsApp
     "url": "api/material.components.icon",
     "label": "material.components.icon",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconDirective.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/icon.js",
     "docs": [
       {
         "name": "mdIcon",
@@ -387,7 +387,7 @@ DocsApp
         "url": "api/material.components.icon/directive/mdIcon",
         "label": "mdIcon",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconDirective.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconDirective.js",
         "hasDemo": true
       },
       {
@@ -397,7 +397,7 @@ DocsApp
         "url": "api/material.components.icon/service/$mdIconProvider",
         "label": "$mdIconProvider",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconService.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js"
       },
       {
         "name": "$mdIcon",
@@ -406,7 +406,7 @@ DocsApp
         "url": "api/material.components.icon/service/$mdIcon",
         "label": "$mdIcon",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/iconService.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js"
       }
     ],
     "hasDemo": false
@@ -480,7 +480,7 @@ DocsApp
     "url": "api/material.components.menu",
     "label": "material.components.menu",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/_menu.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/menu.js",
     "docs": [
       {
         "name": "mdMenu",
@@ -489,7 +489,7 @@ DocsApp
         "url": "api/material.components.menu/directive/mdMenu",
         "label": "mdMenu",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/_menu.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menu/js/menuDirective.js",
         "hasDemo": true
       }
     ],
@@ -511,7 +511,7 @@ DocsApp
         "url": "api/material.components.menu-bar/directive/mdMenuBar",
         "label": "mdMenuBar",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menuBar/menu-bar.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/menuBar/js/menuBarDirective.js",
         "hasDemo": true
       }
     ],
@@ -524,7 +524,7 @@ DocsApp
     "url": "api/material.components.progressCircular",
     "label": "material.components.progressCircular",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progressCircular.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progress-circular.js",
     "docs": [
       {
         "name": "mdProgressCircular",
@@ -533,7 +533,7 @@ DocsApp
         "url": "api/material.components.progressCircular/directive/mdProgressCircular",
         "label": "mdProgressCircular",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progressCircular.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progress-circular.js",
         "hasDemo": true
       }
     ],
@@ -546,7 +546,7 @@ DocsApp
     "url": "api/material.components.progressLinear",
     "label": "material.components.progressLinear",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progressLinear.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progress-linear.js",
     "docs": [
       {
         "name": "mdProgressLinear",
@@ -555,7 +555,7 @@ DocsApp
         "url": "api/material.components.progressLinear/directive/mdProgressLinear",
         "label": "mdProgressLinear",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progressLinear.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressLinear/progress-linear.js",
         "hasDemo": true
       }
     ],
@@ -568,7 +568,7 @@ DocsApp
     "url": "api/material.components.radioButton",
     "label": "material.components.radioButton",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radio-button.js",
     "docs": [
       {
         "name": "mdRadioGroup",
@@ -577,7 +577,7 @@ DocsApp
         "url": "api/material.components.radioButton/directive/mdRadioGroup",
         "label": "mdRadioGroup",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radio-button.js",
         "hasDemo": true
       },
       {
@@ -587,7 +587,7 @@ DocsApp
         "url": "api/material.components.radioButton/directive/mdRadioButton",
         "label": "mdRadioButton",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radioButton.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radio-button.js"
       }
     ],
     "hasDemo": false
@@ -855,7 +855,7 @@ DocsApp
     "url": "api/material.components.virtualRepeat",
     "label": "material.components.virtualRepeat",
     "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js",
     "docs": [
       {
         "name": "mdVirtualRepeatContainer",
@@ -864,7 +864,7 @@ DocsApp
         "url": "api/material.components.virtualRepeat/directive/mdVirtualRepeatContainer",
         "label": "mdVirtualRepeatContainer",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js",
         "hasDemo": true
       },
       {
@@ -874,7 +874,7 @@ DocsApp
         "url": "api/material.components.virtualRepeat/directive/mdVirtualRepeat",
         "label": "mdVirtualRepeat",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtualRepeater.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js"
       }
     ],
     "hasDemo": false
