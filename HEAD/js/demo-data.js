@@ -5,10 +5,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "autocompleteDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "autocompletedemoBasicUsage",
         "css": [],
@@ -33,10 +31,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "autocompleteCustomTemplateDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "autocompletedemoCustomTemplate",
         "css": [
@@ -68,11 +64,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "autocompleteFloatingLabelDemo",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "autocompletedemoFloatingLabel",
         "css": [],
@@ -104,10 +97,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "bottomSheetDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "bottomSheetdemoBasicUsage",
         "css": [
@@ -165,10 +156,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "buttonsDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "buttondemoBasicUsage",
         "css": [
@@ -207,10 +196,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "cardDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "carddemoBasicUsage",
         "css": [
@@ -249,10 +236,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "checkboxDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "checkboxdemoBasicUsage",
         "css": [
@@ -284,10 +269,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "checkboxDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "checkboxdemoSyncing",
         "css": [
@@ -326,10 +309,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "chipsDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "chipsdemoBasicUsage",
         "css": [
@@ -361,10 +342,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "contactChipsDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "chipsdemoContactChips",
         "css": [
@@ -396,10 +375,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "chipsCustomInputDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "chipsdemoCustomInputs",
         "css": [
@@ -431,10 +408,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "staticChipsDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "chipsdemoStaticChips",
         "css": [
@@ -473,10 +448,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "contentDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "contentdemoBasicUsage",
         "css": [],
@@ -508,10 +481,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "datepickerBasicUsage",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "datepickerdemoBasicUsage",
         "css": [
@@ -550,10 +521,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "dialogDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "dialogdemoBasicUsage",
         "css": [
@@ -599,10 +568,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "dividerDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "dividerdemoBasicUsage",
         "css": [
@@ -641,10 +608,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "fabSpeedDialDemoBasicUsage",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "fabSpeedDialdemoBasicUsage",
         "css": [
@@ -676,10 +641,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "fabSpeedDialDemoMoreOptions",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "fabSpeedDialdemoMoreOptions",
         "css": [
@@ -718,10 +681,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "fabToolbarBasicUsageDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "fabToolbardemoBasicUsage",
         "css": [
@@ -760,10 +721,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "gridListDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "gridListdemoBasicUsage",
         "css": [
@@ -795,10 +754,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "gridListDemoApp",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "gridListdemoDynamicTiles",
         "css": [
@@ -830,10 +787,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "gridListDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "gridListdemoResponsiveUsage",
         "css": [],
@@ -865,10 +820,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "appDemoFontIconsWithClassnames",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "icondemoFontIconsWithClassnames",
         "css": [
@@ -900,10 +853,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "appDemoFontIconsWithLigatures",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "icondemoFontIconsWithLigatures",
         "css": [
@@ -935,10 +886,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "appDemoSvgIcons",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "icondemoLoadSvgIconsFromUrl",
         "css": [
@@ -970,10 +919,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "appSvgIconSets",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "icondemoSvgIconSets",
         "css": [
@@ -1005,10 +952,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "appUsingTemplateCache",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "icondemoUsingTemplateCache",
         "css": [
@@ -1047,11 +992,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "inputBasicDemo",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "inputdemoBasicUsage",
         "css": [
@@ -1083,11 +1025,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "inputErrorsApp",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "inputdemoErrors",
         "css": [
@@ -1119,11 +1058,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "inputIconDemo",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "inputdemoIcons",
         "css": [
@@ -1162,10 +1098,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "listDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "listdemoBasicUsage",
         "css": [
@@ -1197,10 +1131,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "listDemo2",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "listdemoListControls",
         "css": [
@@ -1239,10 +1171,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "menuDemoBasic",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "menudemoBasicUsage",
         "css": [
@@ -1274,10 +1204,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "menuDemoPosition",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "menudemoMenuPositionModes",
         "css": [
@@ -1309,10 +1237,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "menuDemoWidth",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "menudemoMenuWidth",
         "css": [
@@ -1351,10 +1277,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "menuBarDemoBasic",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "menuBardemoBasicUsage",
         "css": [
@@ -1393,10 +1317,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "progressCircularDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "progressCirculardemoBasicUsage",
         "css": [
@@ -1435,10 +1357,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "progressLinearDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "progressLineardemoBasicUsage",
         "css": [
@@ -1477,10 +1397,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "radioDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "radioButtondemoBasicUsage",
         "css": [
@@ -1519,10 +1437,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "selectDemoBasic",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "selectdemoBasicUsage",
         "css": [
@@ -1554,10 +1470,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "selectDemoOptGroups",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "selectdemoOptionGroups",
         "css": [],
@@ -1582,10 +1496,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "selectDemoOptionsAsync",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "selectdemoOptionsWithAsyncSearch",
         "css": [],
@@ -1610,11 +1522,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "selectDemoValidation",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "selectdemoValidations",
         "css": [],
@@ -1646,10 +1555,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "sidenavDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "sidenavdemoBasicUsage",
         "css": [],
@@ -1681,10 +1588,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "sliderDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "sliderdemoBasicUsage",
         "css": [
@@ -1723,10 +1628,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "subheaderBasicDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "subheaderdemoBasicUsage",
         "css": [
@@ -1765,10 +1668,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "demoSwipe",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "swipedemoBasicUsage",
         "css": [
@@ -1814,10 +1715,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "switchDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "switchdemoBasicUsage",
         "css": [
@@ -1886,10 +1785,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "tabsDemoDynamicTabs",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "tabsdemoDynamicTabs",
         "css": [
@@ -1928,10 +1825,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "tabsDemoStaticTabs",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "tabsdemoStaticTabs",
         "css": [
@@ -1977,10 +1872,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "toastDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "toastdemoBasicUsage",
         "css": [],
@@ -2019,10 +1912,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "toolbarDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "toolbardemoBasicUsage",
         "css": [
@@ -2054,10 +1945,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "toolbarDemo2",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "toolbardemoScrollShrink",
         "css": [
@@ -2096,10 +1985,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "tooltipDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "tooltipdemoBasicUsage",
         "css": [
@@ -2138,10 +2025,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "virtualRepeatDeferredLoadingDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "virtualRepeatdemoDeferredLoading",
         "css": [
@@ -2173,10 +2058,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "virtualRepeatHorizontalDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "virtualRepeatdemoHorizontalUsage",
         "css": [
@@ -2208,10 +2091,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "virtualRepeatInfiniteScrollDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "virtualRepeatdemoInfiniteScroll",
         "css": [
@@ -2243,10 +2124,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "module": "virtualRepeatVerticalDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "virtualRepeatdemoVerticalUsage",
         "css": [
@@ -2285,10 +2164,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "module": "whiteframeBasicUsage",
-          "dependencies": [
-            "ngMaterial"
-          ]
+          "module": "",
+          "dependencies": []
         },
         "id": "whiteframedemoBasicUsage",
         "css": [
