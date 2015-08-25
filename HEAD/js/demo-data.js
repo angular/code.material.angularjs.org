@@ -5,6 +5,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "autocompleteDemo",
           "module": "autocompleteDemo",
           "dependencies": [
             "ngMaterial"
@@ -33,6 +34,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "autocompleteCustomTemplateDemo",
           "module": "autocompleteCustomTemplateDemo",
           "dependencies": [
             "ngMaterial"
@@ -68,6 +70,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "autocompleteFloatingLabelDemo",
           "module": "autocompleteFloatingLabelDemo",
           "dependencies": [
             "ngMaterial",
@@ -104,6 +107,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "bottomSheetDemo1",
           "module": "bottomSheetDemo1",
           "dependencies": [
             "ngMaterial"
@@ -165,6 +169,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "buttonsDemo1",
           "module": "buttonsDemo1",
           "dependencies": [
             "ngMaterial"
@@ -207,6 +212,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "cardDemo1",
           "module": "cardDemo1",
           "dependencies": [
             "ngMaterial"
@@ -249,6 +255,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "checkboxDemo1",
           "module": "checkboxDemo1",
           "dependencies": [
             "ngMaterial"
@@ -284,6 +291,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "checkboxDemo1",
           "module": "checkboxDemo1",
           "dependencies": [
             "ngMaterial"
@@ -326,6 +334,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "chipsDemo",
           "module": "chipsDemo",
           "dependencies": [
             "ngMaterial"
@@ -361,6 +370,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "contactChipsDemo",
           "module": "contactChipsDemo",
           "dependencies": [
             "ngMaterial"
@@ -396,6 +406,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "chipsCustomInputDemo",
           "module": "chipsCustomInputDemo",
           "dependencies": [
             "ngMaterial"
@@ -431,6 +442,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "staticChipsDemo",
           "module": "staticChipsDemo",
           "dependencies": [
             "ngMaterial"
@@ -473,6 +485,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "contentDemo1",
           "module": "contentDemo1",
           "dependencies": [
             "ngMaterial"
@@ -508,6 +521,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "datepickerBasicUsage",
           "module": "datepickerBasicUsage",
           "dependencies": [
             "ngMaterial"
@@ -550,6 +564,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "dialogDemo1",
           "module": "dialogDemo1",
           "dependencies": [
             "ngMaterial"
@@ -599,6 +614,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "dividerDemo1",
           "module": "dividerDemo1",
           "dependencies": [
             "ngMaterial"
@@ -641,6 +657,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "fabSpeedDialDemoBasicUsage",
           "module": "fabSpeedDialDemoBasicUsage",
           "dependencies": [
             "ngMaterial"
@@ -676,6 +693,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "fabSpeedDialDemoMoreOptions",
           "module": "fabSpeedDialDemoMoreOptions",
           "dependencies": [
             "ngMaterial"
@@ -718,6 +736,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "fabToolbarBasicUsageDemo",
           "module": "fabToolbarBasicUsageDemo",
           "dependencies": [
             "ngMaterial"
@@ -760,6 +779,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "gridListDemo1",
           "module": "gridListDemo1",
           "dependencies": [
             "ngMaterial"
@@ -795,6 +815,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "gridListDemoApp",
           "module": "gridListDemoApp",
           "dependencies": [
             "ngMaterial"
@@ -830,6 +851,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "gridListDemo1",
           "module": "gridListDemo1",
           "dependencies": [
             "ngMaterial"
@@ -865,6 +887,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "appDemoFontIconsWithClassnames",
           "module": "appDemoFontIconsWithClassnames",
           "dependencies": [
             "ngMaterial"
@@ -900,6 +923,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "appDemoFontIconsWithLigatures",
           "module": "appDemoFontIconsWithLigatures",
           "dependencies": [
             "ngMaterial"
@@ -935,6 +959,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "appDemoSvgIcons",
           "module": "appDemoSvgIcons",
           "dependencies": [
             "ngMaterial"
@@ -970,6 +995,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "appSvgIconSets",
           "module": "appSvgIconSets",
           "dependencies": [
             "ngMaterial"
@@ -1005,6 +1031,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "appUsingTemplateCache",
           "module": "appUsingTemplateCache",
           "dependencies": [
             "ngMaterial"
@@ -1047,6 +1074,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "inputBasicDemo",
           "module": "inputBasicDemo",
           "dependencies": [
             "ngMaterial",
@@ -1083,6 +1111,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "inputErrorsApp",
           "module": "inputErrorsApp",
           "dependencies": [
             "ngMaterial",
@@ -1119,6 +1148,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "inputIconDemo",
           "module": "inputIconDemo",
           "dependencies": [
             "ngMaterial",
@@ -1162,6 +1192,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "listDemo1",
           "module": "listDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1197,6 +1228,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "listDemo2",
           "module": "listDemo2",
           "dependencies": [
             "ngMaterial"
@@ -1239,6 +1271,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "menuDemoBasic",
           "module": "menuDemoBasic",
           "dependencies": [
             "ngMaterial"
@@ -1274,6 +1307,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "menuDemoPosition",
           "module": "menuDemoPosition",
           "dependencies": [
             "ngMaterial"
@@ -1309,6 +1343,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "menuDemoWidth",
           "module": "menuDemoWidth",
           "dependencies": [
             "ngMaterial"
@@ -1351,6 +1386,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "menuBarDemoBasic",
           "module": "menuBarDemoBasic",
           "dependencies": [
             "ngMaterial"
@@ -1393,6 +1429,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "progressCircularDemo1",
           "module": "progressCircularDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1435,6 +1472,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "progressLinearDemo1",
           "module": "progressLinearDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1477,6 +1515,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "radioDemo1",
           "module": "radioDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1519,6 +1558,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "selectDemoBasic",
           "module": "selectDemoBasic",
           "dependencies": [
             "ngMaterial"
@@ -1554,6 +1594,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "selectDemoOptGroups",
           "module": "selectDemoOptGroups",
           "dependencies": [
             "ngMaterial"
@@ -1582,6 +1623,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "selectDemoOptionsAsync",
           "module": "selectDemoOptionsAsync",
           "dependencies": [
             "ngMaterial"
@@ -1610,6 +1652,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "selectDemoValidation",
           "module": "selectDemoValidation",
           "dependencies": [
             "ngMaterial",
@@ -1646,6 +1689,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "sidenavDemo1",
           "module": "sidenavDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1681,6 +1725,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "sliderDemo1",
           "module": "sliderDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1723,6 +1768,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "subheaderBasicDemo",
           "module": "subheaderBasicDemo",
           "dependencies": [
             "ngMaterial"
@@ -1765,6 +1811,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "demoSwipe",
           "module": "demoSwipe",
           "dependencies": [
             "ngMaterial"
@@ -1814,6 +1861,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "switchDemo1",
           "module": "switchDemo1",
           "dependencies": [
             "ngMaterial"
@@ -1886,6 +1934,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "tabsDemoDynamicTabs",
           "module": "tabsDemoDynamicTabs",
           "dependencies": [
             "ngMaterial"
@@ -1928,6 +1977,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "tabsDemoStaticTabs",
           "module": "tabsDemoStaticTabs",
           "dependencies": [
             "ngMaterial"
@@ -1977,6 +2027,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "toastDemo1",
           "module": "toastDemo1",
           "dependencies": [
             "ngMaterial"
@@ -2019,6 +2070,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "toolbarDemo1",
           "module": "toolbarDemo1",
           "dependencies": [
             "ngMaterial"
@@ -2054,6 +2106,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "toolbarDemo2",
           "module": "toolbarDemo2",
           "dependencies": [
             "ngMaterial"
@@ -2096,6 +2149,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "tooltipDemo1",
           "module": "tooltipDemo1",
           "dependencies": [
             "ngMaterial"
@@ -2138,6 +2192,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "virtualRepeatDeferredLoadingDemo",
           "module": "virtualRepeatDeferredLoadingDemo",
           "dependencies": [
             "ngMaterial"
@@ -2173,6 +2228,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "virtualRepeatHorizontalDemo",
           "module": "virtualRepeatHorizontalDemo",
           "dependencies": [
             "ngMaterial"
@@ -2208,6 +2264,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "virtualRepeatInfiniteScrollDemo",
           "module": "virtualRepeatInfiniteScrollDemo",
           "dependencies": [
             "ngMaterial"
@@ -2243,6 +2300,7 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "virtualRepeatVerticalDemo",
           "module": "virtualRepeatVerticalDemo",
           "dependencies": [
             "ngMaterial"
@@ -2285,6 +2343,7 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "whiteframeBasicUsage",
           "module": "whiteframeBasicUsage",
           "dependencies": [
             "ngMaterial"

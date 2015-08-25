@@ -677,6 +677,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.sticky",
+    "type": "module",
+    "outputPath": "partials/api/material.components.sticky/index.html",
+    "url": "api/material.components.sticky",
+    "label": "material.components.sticky",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/sticky/sticky.js",
+    "docs": [
+      {
+        "name": "$mdSticky",
+        "type": "service",
+        "outputPath": "partials/api/material.components.sticky/service/$mdSticky.html",
+        "url": "api/material.components.sticky/service/$mdSticky",
+        "label": "$mdSticky",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sticky/sticky.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.subheader",
     "type": "module",
     "outputPath": "partials/api/material.components.subheader/index.html",
