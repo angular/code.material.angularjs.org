@@ -2781,7 +2781,8 @@ function InterimElementProvider() {
           element.addClass(className + "-" + attr[directive].replace(/\s+/g, "-"));
         }
 
-        element.removeAttr(className);
+        // Remove deprecated layout attribute selector
+        // element.removeAttr(className);
       }
     }
 
@@ -2808,7 +2809,9 @@ function InterimElementProvider() {
      */
     function attributeToClass(scope, element) {
       element.addClass(className);
-      element.removeAttr(className);
+
+      // Remove deprecated layout attribute selector
+      // element.removeAttr(className);
     }
   }
 })();
