@@ -16348,7 +16348,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
   }
 
   function notFoundVisible () {
-    return !ctrl.matches.length && !ctrl.loading && ctrl.scope.searchText;
+    return !ctrl.matches.length && !ctrl.loading && ctrl.scope.searchText && hasFocus && !ctrl.scope.selectedItem;
   }
 
   /**
