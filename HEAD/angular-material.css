@@ -227,7 +227,8 @@ select, button, textarea, input {
   display: -webkit-flex;
   display: -moz-flex;
   display: -ms-flexbox;
-  display: flex; }
+  display: flex;
+  height: inherit; }
 
 .layout-column {
   -ms-flex-direction: column;
