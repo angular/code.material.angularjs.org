@@ -1,0 +1,6 @@
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+.dialogdemoBasicUsage .debt-be-gone {
+  font-weight: bold;
+  color: blue;
+  text-decoration: underline; }
