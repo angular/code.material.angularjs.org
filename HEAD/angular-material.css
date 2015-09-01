@@ -4536,6 +4536,8 @@ md-menu-item {
     md-menu-item > .md-button span {
       margin-top: auto;
       margin-bottom: auto; }
+    md-menu-item > .md-button .md-ripple-container {
+      border-radius: inherit; }
 
 .md-menu {
   padding: 8px 0; }
