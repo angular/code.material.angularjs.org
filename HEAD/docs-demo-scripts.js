@@ -1282,8 +1282,7 @@ angular
     function($scope, $interval) {
       var self = this,  j= 0, counter = 0;
 
-      self.mode = 'query';
-      self.modes = new Array(4);
+      self.modes = [ ];
       self.activated = true;
       self.determinateValue = 30;
 
@@ -1291,8 +1290,8 @@ angular
        * Turn off or on the 5 themed loaders
        */
       self.toggleActivation = function() {
-        if ( !self.activated ) self.modes = [ ];
-        if (  self.activated ) j = counter = 0;
+          if ( !self.activated ) self.modes = [ ];
+          if (  self.activated ) j = counter = 0;
       };
 
       // Iterate every 100ms, non-stop
