@@ -1775,6 +1775,10 @@ angular.module('toolbarDemo1', ['ngMaterial'])
 
 var app = angular.module('toolbarDemo2', ['ngMaterial']);
 
+app.controller('TitleController', function($scope) {
+  $scope.title = 'My App Title';
+});
+
 app.controller('AppCtrl', function($scope) {
   var imagePath = 'img/list/60.jpeg';
 

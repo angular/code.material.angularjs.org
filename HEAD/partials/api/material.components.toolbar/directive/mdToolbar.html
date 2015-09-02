@@ -92,8 +92,10 @@ current page, and show relevant action buttons for that page.</p>
         <td class="description">
           <p>Whether the header should shrink away as
 the user scrolls down, and reveal itself as the user scrolls up.
-Note: for scrollShrink to work, the toolbar must be a sibling of a
-<code>md-content</code> element, placed before it. See the scroll shrink demo.</p>
+<em><strong>Note (1):</strong> for scrollShrink to work, the toolbar must be a sibling of a
+<code>md-content</code> element, placed before it. See the scroll shrink demo.</em>
+<em><strong>Note (2):</strong> The <code>md-scroll-shrink</code> attribute is only parsed on component
+initialization, it does not watch for scope changes.</em></p>
 
           
         </td>
