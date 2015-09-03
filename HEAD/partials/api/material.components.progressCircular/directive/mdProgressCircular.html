@@ -76,9 +76,11 @@ indeterminate indicator.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Select from one of two modes: <strong>&#39;determinate&#39;</strong> and <strong>&#39;indeterminate&#39;</strong>.<br/>
-Note: if the <code>md-mode</code> value is undefined or not 1 of the two (2) valid modes, then <code>.ng-hide</code>
+          <p>Select from one of two modes: <strong>&#39;determinate&#39;</strong> and <strong>&#39;indeterminate&#39;</strong>.</p>
+<p>Note: if the <code>md-mode</code> value is set as undefined or specified as not 1 of the two (2) valid modes, then <code>.ng-hide</code>
 will be auto-applied as a style to the component.</p>
+<p>Note: if not configured, the <code>md-mode=&quot;indeterminate&quot;</code> will be auto injected as an attribute.
+If <code>value=&quot;&quot;</code> is also specified, however, then <code>md-mode=&quot;determinate&quot;</code> would be auto-injected instead.</p>
 
           
         </td>
