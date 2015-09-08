@@ -1,6 +1,11 @@
-
 <div ng-controller="SubheaderAppCtrl" layout="column" flex layout-fill>
+
+  <md-toolbar md-scroll-shrink>
+    <div class="md-toolbar-tools">My Messages</div>
+  </md-toolbar>
+
   <md-content style="height: 600px;" md-theme="altTheme">
+
     <section>
       <md-subheader class="md-primary">Unread Messages</md-subheader>
       <md-list layout-padding>
@@ -16,6 +21,7 @@
         </md-list-item>
       </md-list>
     </section>
+
     <section>
       <md-subheader class="md-warn">Late Messages</md-subheader>
       <md-list layout="column" layout-padding>
@@ -31,6 +37,7 @@
         </md-list-item>
       </md-list>
     </section>
+
     <section>
       <md-subheader>Read Messages</md-subheader>
       <md-list layout="column" layout-padding>
@@ -46,6 +53,7 @@
         </md-list-item>
       </md-list>
     </section>
+
     <section>
       <md-subheader class="md-accent">Archived messages</md-subheader>
       <md-list layout="column" layout-padding>
@@ -61,5 +69,6 @@
         </md-list-item>
       </md-list>
     </section>
+
   </md-content>
 </div>

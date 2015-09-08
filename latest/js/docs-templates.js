@@ -370,9 +370,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          [flex]\n' +
     '        </div>\n' +
     '        <div flex="66">\n' +
-    '          [flex]\n' +
+    '          [flex="66"]\n' +
     '        </div>\n' +
-    '        <div flex="33">\n' +
+    '        <div flex=>\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '      </div>\n' +
