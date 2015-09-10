@@ -40,6 +40,9 @@ components that that deal with dates.</p>
     $mdDateLocaleProvider.days = [&#39;dimanche&#39;, &#39;lundi&#39;, &#39;mardi&#39;, ...];
     $mdDateLocaleProvider.shortDays = [&#39;Di&#39;, &#39;Lu&#39;, &#39;Ma&#39;, ...];
 
+    // Can change week display to start on Monday.
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
+
     // Optional.
     $mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
 
@@ -53,7 +56,7 @@ components that that deal with dates.</p>
     };
 
     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
-      myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
+      return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
     };
 
     // In addition to date display, date components also need localized messages
@@ -90,6 +93,8 @@ components that that deal with dates.</p>
   </thead>
   <tbody>
   
+  
+    
   
     
   
@@ -199,6 +204,25 @@ components that that deal with dates.</p>
         <td class="description">
           <p>Array of dates of the month. Only necessary for locales
     using a numeral system other than [1, 2, 3...].</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          firstDayOfWeek
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>The first day of the week. Sunday = 0, Monday = 1,
+   etc.</p>
 
           
         </td>
