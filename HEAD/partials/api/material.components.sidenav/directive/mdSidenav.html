@@ -16,7 +16,7 @@
   <p>A Sidenav component that can be opened and closed programatically.</p>
 <p>By default, upon opening it will slide out on top of the main content area.</p>
 <p>For keyboard and screen reader accessibility, focus is sent to the sidenav wrapper by default.
-It can be overridden with the <code>md-sidenav-focus</code> directive on the child element you want focused.</p>
+It can be overridden with the <code>md-autofocus</code> directive on the child element you want focused.</p>
 
 </div>
 
@@ -50,7 +50,7 @@ It can be overridden with the <code>md-sidenav-focus</code> directive on the chi
       <md-input-container>
         <label for="testInput">Test input</label>
         <input id="testInput" type="text"
-               ng-model="data" md-sidenav-focus>
+               ng-model="data" md-autofocus>
       </md-input-container>
     </form>
   </md-sidenav>
