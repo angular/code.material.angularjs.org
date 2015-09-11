@@ -3020,6 +3020,9 @@ md-datepicker[disabled] .md-datepicker-triangle-button {
 .md-datepicker-open .md-datepicker-triangle-button {
   display: none; }
 
+.md-datepicker-pos-adjusted .md-datepicker-input-mask {
+  display: none; }
+
 .md-datepicker-calendar-pane .md-calendar {
   -webkit-transform: translateY(150px);
           transform: translateY(150px);
