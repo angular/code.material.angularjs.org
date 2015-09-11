@@ -7464,10 +7464,6 @@ function iosScrollFix(node) {
     });
   };
 
-  DatePickerCtrl.prototype.positionCalendarPane = function() {
-
-  };
-
   /** Detach the floating calendar pane from the document. */
   DatePickerCtrl.prototype.detachCalendarPane = function() {
     this.$element.removeClass('md-datepicker-open');
