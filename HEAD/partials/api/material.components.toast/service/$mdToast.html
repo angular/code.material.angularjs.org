@@ -253,7 +253,7 @@ closed manually. Default: 3000.</li>
 <li><code>position</code> - <code>{string=}</code>: Where to place the toast. Available: any combination
 of &#39;bottom&#39;, &#39;left&#39;, &#39;top&#39;, &#39;right&#39;, &#39;fit&#39;. Default: &#39;bottom left&#39;.</li>
 <li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
-The controller will be injected the local <code>$hideToast</code>, which is a function
+The controller will be injected the local <code>$mdToast.hide( )</code>, which is a function
 used to hide the toast.</li>
 <li><code>locals</code> - <code>{string=}</code>: An object containing key/value pairs. The keys will
 be used as names of values to inject into the controller. For example,
