@@ -3393,12 +3393,23 @@ InkRippleCtrl.prototype.clearTimeout = function () {
   }
 };
 
+InkRippleCtrl.prototype.isRippleAllowed = function () {
+  var element = this.$element[0];
+  do {
+    if (element.tagName && element.tagName !== 'BODY') break;
+    if (element && element.hasAttribute && element.hasAttribute('disabled')) return false;
+  } while (element = element.parentNode);
+  return true;
+};
+
 /**
  * Creates a new ripple and adds it to the container.  Also tracks ripple in `this.ripples`.
  * @param left
  * @param top
  */
 InkRippleCtrl.prototype.createRipple = function (left, top) {
+  if (!this.isRippleAllowed()) return;
+
   var ctrl        = this;
   var ripple      = angular.element('<div class="md-ripple"></div>');
   var width       = this.$element.prop('clientWidth');
