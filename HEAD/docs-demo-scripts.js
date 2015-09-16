@@ -704,6 +704,24 @@ angular.module('dividerDemo1', ['ngMaterial'])
 (function() {
   'use strict';
 
+  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
+    .controller('DemoCtrl', function() {
+      this.topDirections = ['left', 'up'];
+      this.bottomDirections = ['down', 'right'];
+
+      this.isOpen = false;
+
+      this.availableModes = ['md-fling', 'md-scale'];
+      this.selectedMode = 'md-fling';
+
+      this.availableDirections = ['up', 'down', 'left', 'right'];
+      this.selectedDirection = 'up';
+    });
+})();
+
+(function() {
+  'use strict';
+
   angular.module('fabSpeedDialDemoMoreOptions', ['ngMaterial'])
     .controller('DemoCtrl', function($mdDialog) {
       var self = this;
@@ -737,24 +755,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
           targetEvent: $event
         });
       }
-    });
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
-    .controller('DemoCtrl', function() {
-      this.topDirections = ['left', 'up'];
-      this.bottomDirections = ['down', 'right'];
-
-      this.isOpen = false;
-
-      this.availableModes = ['md-fling', 'md-scale'];
-      this.selectedMode = 'md-fling';
-
-      this.availableDirections = ['up', 'down', 'left', 'right'];
-      this.selectedDirection = 'up';
     });
 })();
 
@@ -1366,18 +1366,6 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     }, 7200, 0, true);
   }]);
 
-(function () {
-  'use strict';
-  angular
-      .module('selectDemoBasic', ['ngMaterial'])
-      .controller('AppCtrl', function() {
-        this.userState = '';
-        this.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
-            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
-            'WY').split(' ').map(function (state) { return { abbrev: state }; });
-      });
-})();
-
 
 angular
   .module('radioDemo1', ['ngMaterial'])
@@ -1428,6 +1416,18 @@ angular
   .config(function($mdIconProvider) {
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
+
+(function () {
+  'use strict';
+  angular
+      .module('selectDemoBasic', ['ngMaterial'])
+      .controller('AppCtrl', function() {
+        this.userState = '';
+        this.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+            'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+            'WY').split(' ').map(function (state) { return { abbrev: state }; });
+      });
+})();
 
 angular
     .module('selectDemoOptGroups', ['ngMaterial'])
@@ -1901,6 +1901,20 @@ angular.module('tooltipDemo1', ['ngMaterial'])
   'use strict';
 
     angular
+      .module('virtualRepeatHorizontalDemo', ['ngMaterial'])
+      .controller('AppCtrl', function() {
+        this.items = [];
+        for (var i = 0; i < 1000; i++) {
+          this.items.push(i);
+        }
+      });
+
+})();
+
+(function () {
+  'use strict';
+
+    angular
       .module('virtualRepeatInfiniteScrollDemo', ['ngMaterial'])
       .controller('AppCtrl', function($timeout) {
 
@@ -1941,20 +1955,6 @@ angular.module('tooltipDemo1', ['ngMaterial'])
             }
           }
         };
-      });
-
-})();
-
-(function () {
-  'use strict';
-
-    angular
-      .module('virtualRepeatHorizontalDemo', ['ngMaterial'])
-      .controller('AppCtrl', function() {
-        this.items = [];
-        for (var i = 0; i < 1000; i++) {
-          this.items.push(i);
-        }
       });
 
 })();
