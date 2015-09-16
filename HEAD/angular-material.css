@@ -3788,7 +3788,6 @@ md-list-item.md-3-line > md-icon:first-child, md-list-item.md-3-line > .md-avata
     margin-top: 4px;
     margin-bottom: 4px;
     height: 1px;
-    min-height: 1px;
     width: 100%; }
   .md-open-menu-container md-menu-content > * {
     opacity: 0; }
