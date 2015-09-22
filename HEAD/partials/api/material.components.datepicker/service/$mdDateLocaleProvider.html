@@ -48,7 +48,8 @@ components that that deal with dates.</p>
 
     // Example uses moment.js to parse and format dates.
     $mdDateLocaleProvider.parseDate = function(dateString) {
-      return moment(dateString).toDate();
+      var m = moment(dateString, &#39;L&#39;, true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
     };
 
     $mdDateLocaleProvider.formatDate = function(date) {
