@@ -3078,7 +3078,8 @@ function InterimElementProvider() {
       // Perform a read-once (1x) check for the `md-css-only` class on the BODY
 
       if ( angular.isUndefined(disablePostLinks) ) {
-        disablePostLinks = document.body.classList.contains('md-css-only');
+        var body = document.body;
+        if (body) disablePostLinks = body.classList.contains('md-css-only');
       }
 
       return $$mdLayout.disablePostLinks = disablePostLinks;
