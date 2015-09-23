@@ -524,7 +524,8 @@ angular.module('docsApp').constant('DEMOS', [
           "name": "datepickerBasicUsage",
           "module": "datepickerBasicUsage",
           "dependencies": [
-            "ngMaterial"
+            "ngMaterial",
+            "ngMessages"
           ]
         },
         "id": "datepickerdemoBasicUsage",

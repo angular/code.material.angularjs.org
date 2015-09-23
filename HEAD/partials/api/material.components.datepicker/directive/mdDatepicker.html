@@ -16,6 +16,13 @@
   <p><code>&lt;md-datepicker&gt;</code> is a component used to select a single date.
 For information on how to configure internationalization for the date picker,
 see <code>$mdDateLocaleProvider</code>.</p>
+<p>This component supports <a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages">ngMessages</a>.
+Supported attributes are:</p>
+<ul>
+<li><code>required</code>: whether a required date is not set.</li>
+<li><code>mindate</code>: whether the selected date is before the minimum allowed date.</li>
+<li><code>maxdate</code>: whether the selected date is after the maximum allowed date.</li>
+</ul>
 
 </div>
 
@@ -70,6 +77,8 @@ see <code>$mdDateLocaleProvider</code>.</p>
           
         </td>
       </tr>
+    
+  
     
   
     
@@ -149,6 +158,24 @@ see <code>$mdDateLocaleProvider</code>.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether the datepicker is disabled.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          required
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether a value is required for the datepicker.</p>
 
           
         </td>
