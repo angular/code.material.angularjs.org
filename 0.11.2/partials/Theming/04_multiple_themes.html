@@ -1,0 +1,65 @@
+<div class="doc-content theming">
+    
+    <p>In most applications, declaring multiple themes is <strong>not</strong> necessary. Instead,
+you should configure the <code>default</code> theme for your needs. If you need multiple
+themes in a single application, Angular Material does provide tools
+to make this possible.</p>
+<h3 id="registering-another-theme">Registering another theme</h3>
+<p>Use the <code>$mdThemingProvider</code> to register a second theme within your application.
+By default all themes will inherit from the <code>default</code> theme. Once you have
+registered the second theme, you can configure it with the same chainable
+interface used on the default theme.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme(&#39;altTheme&#39;)
+    .primaryPalette(&#39;purple&#39;) // specify primary color, all
+                            // other color intentions will be inherited
+                            // from default
+});
+</hljs>
+
+<h3 id="using-another-theme">Using another theme</h3>
+<h4 id="via-the-provider">Via the Provider</h4>
+<p>You can change the default theme to be used across your entire application using
+the provider:</p>
+<hljs lang="js">
+$mdThemingProvider.setDefaultTheme(&#39;altTheme&#39;);
+</hljs>
+
+<h4 id="via-a-directive">Via a Directive</h4>
+<p>Angular Material also exposes the <code>md-theme</code> directive which will set the theme
+on an element and all child elements.</p>
+<p>In the following example, the application will use the <code>default</code> theme, while
+the second child <code>div</code> will use the <code>altTheme</code>. This allows you to theme
+different parts of your application differently.</p>
+<hljs lang="html">
+<div>
+  <md-button class="md-primary">I will be blue (by default)</md-button>
+  <div md-theme="altTheme">
+    <md-button class="md-primary">I will be purple (altTheme)</md-button>
+  </div>
+</div>
+</hljs>
+
+<h4 id="dynamic-themes">Dynamic Themes</h4>
+<p>By default, to save on performance, theming directives will <strong>not</strong> watch
+<code>md-theme</code> for changes. If you need themes to be dynamically modified, you will
+need to use the <code>md-theme-watch</code> directive.</p>
+<hljs lang="html">
+<div>
+  <md-button ng-click="dynamicTheme = 'default'">Default</md-button>
+  <md-button ng-click="dynamicTheme = 'altTheme'">altTheme</md-button>
+  <div md-theme="{{ dynamicTheme }}" md-theme-watch>
+    <md-button class="md-primary">I&#39;m dynamic</md-button>
+  </div>
+</div>
+</hljs>
+
+<p>If you need this behavior in your entire application (ie. on all <code>md-theme</code>
+directives) you can use the <code>$mdThemingProvider</code> to enable it.</p>
+<hljs lang="js">
+$mdThemingProvider.alwaysWatchTheme(true);
+</hljs>
+    
+</div>
