@@ -195,7 +195,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-alignment.tmpl.html',
-    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content" ng-cloak>\n' +
     '\n' +
     '  <p>\n' +
     '    The <code>layout-align</code> attribute takes two words.\n' +
@@ -243,7 +243,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <div ng-panel="layoutDemo">\n' +
     '      <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}"\' class="small-demo" interpolate-code="true">\n' +
     '        <demo-file name="index.html">\n' +
-    '          <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}">\n' +
+    '          <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}" class="colorNested">\n' +
     '            <div>one</div>\n' +
     '            <div>two</div>\n' +
     '            <div>three</div>\n' +
@@ -288,7 +288,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-container.tmpl.html',
-    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content" ng-cloak>\n' +
     '\n' +
     '  <h3>Overview</h3>\n' +
     '  <p>\n' +
@@ -311,11 +311,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <hljs lang="html">\n' +
-    '    <div layout="row">\n' +
+    '    <div layout="row" class="colorNested">\n' +
     '      <div>I\'m left.</div>\n' +
     '      <div>I\'m right.</div>\n' +
     '    </div>\n' +
-    '    <div layout="column">\n' +
+    '    <div layout="column" class="colorNested">\n' +
     '      <div>I\'m above.</div>\n' +
     '      <div>I\'m below.</div>\n' +
     '    </div>\n' +
@@ -330,20 +330,20 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-grid.tmpl.html',
-    '<div ng-controller="LayoutCtrl" class="layout-content">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content" ng-cloak>\n' +
     '\n' +
     '  <p>\n' +
     '    To customize the size and position of elements in a layout, use the\n' +
     '    <code>flex</code>, <code>offset</code>, and <code>flex-order</code> attributes.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Attribute" class="small-demo">\n' +
+    '  <docs-demo demo-title="Flex Attribute" class="small-demo" >\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row">\n' +
+    '      <div layout="row" class="colorNested">\n' +
     '        <div flex>\n' +
     '          [flex]\n' +
     '        </div>\n' +
-    '        <div flex>\n' +
+    '        <div flex style="color:white">\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '        <div flex hide-sm>\n' +
@@ -359,11 +359,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Flex Percent Values" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-wrap>\n' +
+    '      <div layout="row" layout-wrap class="colorNested">\n' +
     '        <div flex="33">\n' +
-    '          [flex="33"]\n' +
+    '          [flex="34"]\n' +
     '        </div>\n' +
-    '        <div flex="55">\n' +
+    '        <div flex="55" style="color:white">\n' +
     '          [flex="55"]\n' +
     '        </div>\n' +
     '        <div flex>\n' +
@@ -394,15 +394,17 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Flex Order Attribute" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-margin>\n' +
-    '        <div flex flex-order="3">\n' +
-    '          [flex-order="3"]\n' +
+    '      <div layout="row" layout-margin class="colorNested">\n' +
+    '        <div flex flex-order="1" flex-order-gt-md="3" layout-padding>\n' +
+    '          <p show hide-gt-md>[flex-order="1"]</p>\n' +
+    '          <p hide show-gt-md>[flex-order-gt-sm="3"]</p>\n' +
     '        </div>\n' +
-    '        <div flex flex-order="2">\n' +
-    '          [flex-order="2"]\n' +
+    '        <div flex flex-order="2" layout-padding style="color:white">\n' +
+    '          <p>[flex-order="2"]</p>\n' +
     '        </div>\n' +
-    '        <div flex flex-order="1">\n' +
-    '          [flex-order="1"]\n' +
+    '        <div flex flex-order="3" flex-order-gt-md="1" layout-padding>\n' +
+    '          <p show hide-gt-md>[flex-order="3"]</p>\n' +
+    '          <p hide show-gt-md>[flex-order-gt-sm="1"]</p>\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -444,11 +446,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Flex Offset Attribute" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row">\n' +
+    '      <div layout="row" class="colorNested">\n' +
     '        <div flex offset="33">\n' +
     '          [flex offset="33"]\n' +
     '        </div>\n' +
-    '        <div flex>\n' +
+    '        <div flex style="color:white">\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '      </div>\n' +
@@ -496,11 +498,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-options.tmpl.html',
-    '<div ng-controller="LayoutCtrl" class="layout-content layout-options">\n' +
+    '<div ng-controller="LayoutCtrl" class="layout-content layout-options" ng-cloak>\n' +
     '\n' +
     '  <docs-demo demo-title="Responsive Layout" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-sm="column">\n' +
+    '      <div layout="row" layout-sm="column" class="colorNested">\n' +
     '        <div flex>\n' +
     '          I\'m above on mobile, and to the left on larger devices.\n' +
     '        </div>\n' +
@@ -555,7 +557,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Layout Margin, Padding and Fill" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-margin layout-fill layout-padding>\n' +
+    '      <div layout="row" layout-margin layout-fill layout-padding class="colorNested">\n' +
     '        <div flex>I\'m on the left, and there\'s an empty area around me.</div>\n' +
     '        <div flex>I\'m on the right, and there\'s an empty area around me.</div>\n' +
     '      </div>\n' +
@@ -576,10 +578,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Wrap" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-wrap>\n' +
+    '      <div layout="row" layout-wrap class="colorNested">\n' +
     '        <div flex="33">[flex=33]</div>\n' +
-    '        <div flex="66">[flex=66]</div>\n' +
-    '        <div flex="66">[flex=66]</div>\n' +
+    '        <div flex="66">[flex=67]</div>\n' +
+    '        <div flex="66">[flex=67]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -595,7 +597,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Responsive Flex & Offset Attributes" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row">\n' +
+    '      <div layout="row" class="colorNested">\n' +
     '        <div flex="66" flex-sm="33">\n' +
     '          I flex to one-third of the space on mobile, and two-thirds on other devices.\n' +
     '        </div>\n' +
@@ -646,11 +648,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Hide and Show Attributes" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout layout-align="center center">\n' +
-    '        <md-subheader hide-sm>\n' +
+    '      <div layout layout-align="center center" class="colorNested">\n' +
+    '        <md-subheader show hide-gt-sm>\n' +
     '          I\'m hidden on mobile and shown on larger devices.\n' +
     '        </md-subheader>\n' +
-    '        <md-subheader hide-gt-sm>\n' +
+    '        <md-subheader show-sm hide>\n' +
     '          I\'m shown on mobile and hidden on larger devices.\n' +
     '        </md-subheader>\n' +
     '      </div>\n' +
