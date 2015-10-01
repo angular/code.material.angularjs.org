@@ -578,7 +578,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <docs-demo demo-title="Wrap" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-wrap class="colorNested">\n' +
+    '      <div layout="row" layout-wrap class="colorNested-noPad">\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '        <div flex="66">[flex=67]</div>\n' +
     '        <div flex="66">[flex=67]</div>\n' +
