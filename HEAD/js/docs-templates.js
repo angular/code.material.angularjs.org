@@ -397,14 +397,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <div layout="row" layout-margin class="colorNested">\n' +
     '        <div flex flex-order="1" flex-order-gt-md="3" layout-padding>\n' +
     '          <p show hide-gt-md>[flex-order="1"]</p>\n' +
-    '          <p hide show-gt-md>[flex-order-gt-sm="3"]</p>\n' +
+    '          <p hide show-gt-md>[flex-order-gt-md="3"]</p>\n' +
     '        </div>\n' +
     '        <div flex flex-order="2" layout-padding style="color:white">\n' +
     '          <p>[flex-order="2"]</p>\n' +
     '        </div>\n' +
     '        <div flex flex-order="3" flex-order-gt-md="1" layout-padding>\n' +
     '          <p show hide-gt-md>[flex-order="3"]</p>\n' +
-    '          <p hide show-gt-md>[flex-order-gt-sm="1"]</p>\n' +
+    '          <p hide show-gt-md>[flex-order-gt-md="1"]</p>\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
