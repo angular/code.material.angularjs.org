@@ -7348,7 +7348,6 @@ md-sidenav {
   min-width: 304px;
   max-width: 304px;
   bottom: 0;
-  background-color: white;
   overflow: auto; }
   md-sidenav ul {
     list-style: none; }
