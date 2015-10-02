@@ -4828,6 +4828,9 @@ md-bottom-sheet {
   md-bottom-sheet {
     border: 1px solid #fff; } }
 
+button.md-button::-moz-focus-inner {
+  border: 0; }
+
 .md-button {
   border-radius: 3px;
   box-sizing: border-box;
