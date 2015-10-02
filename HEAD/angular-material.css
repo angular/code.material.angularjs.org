@@ -5014,6 +5014,7 @@ md-card {
       margin-right: 4px;
       margin-left: 4px; }
   md-card md-card-footer {
+    margin-top: auto;
     padding: 16px; }
 
 @media screen and (-ms-high-contrast: active) {
