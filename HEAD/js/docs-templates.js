@@ -399,7 +399,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          <p show hide-gt-md>[flex-order="1"]</p>\n' +
     '          <p hide show-gt-md>[flex-order-gt-md="3"]</p>\n' +
     '        </div>\n' +
-    '        <div flex flex-order="2" layout-padding style="color:white">\n' +
+    '        <div flex flex-order="2" layout-padding>\n' +
     '          <p>[flex-order="2"]</p>\n' +
     '        </div>\n' +
     '        <div flex flex-order="3" flex-order-gt-md="1" layout-padding>\n' +
@@ -450,7 +450,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <div flex offset="33">\n' +
     '          [flex offset="33"]\n' +
     '        </div>\n' +
-    '        <div flex style="color:white">\n' +
+    '        <div flex >\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '      </div>\n' +
