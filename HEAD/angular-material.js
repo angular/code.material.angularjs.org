@@ -19530,7 +19530,7 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria ) {
     *  Define the Icon class
     */
    function Icon(el, config) {
-     if (el.tagName != 'svg') {
+     if (el && el.tagName != 'svg') {
        el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el)[0];
      }
 
