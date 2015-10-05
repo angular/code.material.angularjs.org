@@ -7979,9 +7979,6 @@ md-pagination-wrapper {
   md-pagination-wrapper.md-center-tabs {
     position: relative;
     width: initial;
-    -webkit-flex: 1;
-        -ms-flex: 1;
-            flex: 1;
     margin: 0 auto; }
 
 md-tabs-content-wrapper {
