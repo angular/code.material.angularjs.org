@@ -16,9 +16,11 @@
   <p><code>&lt;md-chips&gt;</code> is an input component for building lists of strings or objects. The list items are
 displayed as &#39;chips&#39;. This component can make use of an <code>&lt;input&gt;</code> element or an
 <code>&lt;md-autocomplete&gt;</code> element.</p>
-<p><strong>Custom <code>&lt;md-chip-template&gt;</code> template</strong>
-A custom template may be provided to render the content of each chip. This is achieved by
-specifying an <code>&lt;md-chip-template&gt;</code> element as a child of <code>&lt;md-chips&gt;</code>. Note: Any attributes on
+<h3 id="custom-templates">Custom templates</h3>
+<p>A custom template may be provided to render the content of each chip. This is achieved by
+specifying an <code>&lt;md-chip-template&gt;</code> element containing the custom content as a child of
+<code>&lt;md-chips&gt;</code>.</p>
+<p>Note: Any attributes on
 <code>&lt;md-chip-template&gt;</code> will be dropped as only the innerHTML is used for the chip template. The
 variables <code>$chip</code> and <code>$index</code> are available in the scope of <code>&lt;md-chip-template&gt;</code>, representing
 the chip object and its index in the list of chips, respectively.
