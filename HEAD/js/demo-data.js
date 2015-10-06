@@ -2308,6 +2308,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "virtualRepeatScrollToDemo",
+          "module": "virtualRepeatScrollToDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "virtualRepeatdemoScrollTo",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/virtualRepeat/demoScrollTo/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/virtualRepeat/demoScrollTo/script.js"
+          }
+        ],
+        "moduleName": "material.components.virtualRepeat",
+        "name": "demoScrollTo",
+        "label": "Scroll To",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/virtualRepeat/demoScrollTo/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "virtualRepeatVerticalDemo",
           "module": "virtualRepeatVerticalDemo",
           "dependencies": [

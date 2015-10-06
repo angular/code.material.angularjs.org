@@ -31,7 +31,7 @@ enough dom nodes to fill the container and recycling them as the user scrolls.</
   
     <hljs lang="html">
 
-<md-virtual-repeat-container>
+<md-virtual-repeat-container md-top-index="topIndex">
   <div md-virtual-repeat="i in items" md-item-size="20">Hello {{i}}!</div>
 </md-virtual-repeat-container>
 </hljs>
@@ -63,6 +63,27 @@ enough dom nodes to fill the container and recycling them as the user scrolls.</
   
     
   
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-top-index
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Binds the index of the item that is at the top of the scroll
+    container to $scope. It can both read and set the scroll position.</p>
+
+          
+        </td>
+      </tr>
+    
   
     
       <tr class="api-params-item">
