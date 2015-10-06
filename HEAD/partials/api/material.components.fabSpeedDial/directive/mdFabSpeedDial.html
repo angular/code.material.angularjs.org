@@ -32,6 +32,10 @@ appropriate positions.</li>
 </ul>
 <p>These CSS classes use <code>position: absolute</code>, so you need to ensure that the container element
 also uses <code>position: absolute</code> or <code>position: relative</code> in order for them to work.</p>
+<p>Additionally, you may use the standard <code>ng-mouseenter</code> and <code>ng-mouseleave</code> directives to
+open or close the speed dial. However, if you wish to allow users to hover over the empty
+space where the actions will appear, you must also add the <code>md-hover-full</code> class to the speed
+dial element. Without this, the hover effect will only occur on top of the trigger.</p>
 
 </div>
 
