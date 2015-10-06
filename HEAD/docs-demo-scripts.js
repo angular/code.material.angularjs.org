@@ -1694,8 +1694,10 @@ angular.module('switchDemo1', ['ngMaterial'])
     cb5: false
   };
 
+  $scope.message = 'false';
+
   $scope.onChange = function(cbState) {
-  	$scope.message = "The switch is now: " + cbState;
+  	$scope.message = cbState;
   };
 });
 
