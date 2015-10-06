@@ -1044,7 +1044,8 @@ angular
       name: 'John Doe',
       email: '',
       phone: '',
-      address: 'Mountain View, CA'
+      address: 'Mountain View, CA',
+      donation: 19.99
     };
   });
 
