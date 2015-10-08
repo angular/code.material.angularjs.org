@@ -14,6 +14,10 @@
 
 <div class="api-profile-description">
   <p>The <code>&lt;md-list-item&gt;</code> directive is a container intended for row items in a <code>&lt;md-list&gt;</code> container.</p>
+<h2 id="css">CSS</h2>
+<p><code>.md-avatar</code> - class for image avatars</p>
+<p><code>.md-avatar-icon</code> - class for icon avatars</p>
+<p><code>.md-offset</code> - on content without an avatar</p>
 
 </div>
 
@@ -30,7 +34,12 @@
     <hljs lang="html">
  <md-list>
    <md-list-item>
-           Item content in list
+     <img class="md-avatar" ng-src="path/to/img"/>
+     <span>Item content in list</span>
+   </md-list-item>
+   <md-list-item>
+     <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
+     <span>Item content in list</span>
    </md-list-item>
  </md-list>
 </hljs>
