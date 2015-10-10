@@ -241,9 +241,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <section class="layout-panel-parent">\n' +
     '    <div ng-panel="layoutDemo">\n' +
-    '      <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}"\' class="small-demo" interpolate-code="true">\n' +
+    '      <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}"\'\n' +
+    '                 class="small-demo colorNested" interpolate-code="true">\n' +
     '        <demo-file name="index.html">\n' +
-    '          <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}" class="colorNested">\n' +
+    '          <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}">\n' +
     '            <div>one</div>\n' +
     '            <div>two</div>\n' +
     '            <div>three</div>\n' +
@@ -298,31 +299,49 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    The layout system is based upon element attributes rather than CSS classes.\n' +
-    '    Attributes provide an easy way to set a value (eg <code>layout="row"</code>), and additionally\n' +
-    '    helps us separate concerns: attributes define layout, and classes define styling.\n' +
+    '    Attributes provide an easy way to set a value (eg. <code>layout="row"</code>) and\n' +
+    '    help us separate concerns: attributes define layout, and classes define styling.\n' +
+    '  </p>\n' +
+    '  <p>\n' +
+    '    <i>\n' +
+    '      Note: Due to performance problems related to attribute selectors in IE11, our attributes are converted\n' +
+    '      to class selectors at runtime. You should continue to use layout attribute selectors in your code.\n' +
+    '    </i>\n' +
     '  </p>\n' +
     '\n' +
-    '  <br/>\n' +
     '  <h3>Layout Attribute</h3>\n' +
     '  <p>\n' +
     '    Use the <code>layout</code> attribute on an element to arrange its children\n' +
-    '    horizontally in a row (<code>layout="row"</code>), or vertically in\n' +
-    '    a column (<code>layout="column"</code>). \n' +
+    '    horizontally in a row (<code>layout="row"</code>) or vertically in a column (<code>layout="column"</code>).\n' +
+    '    Row layout is the default if you specify the <code>layout</code> attribute without a value.\n' +
     '  </p>\n' +
     '\n' +
-    '  <hljs lang="html">\n' +
-    '    <div layout="row" class="colorNested">\n' +
-    '      <div>I\'m left.</div>\n' +
-    '      <div>I\'m right.</div>\n' +
+    '  <table>\n' +
+    '    <tr>\n' +
+    '      <td style="font-weight: bold; background-color: #DBEEF5">row</td>\n' +
+    '      <td style="padding-left: 10px;">Items arranged horizontally. <code>max-height = 100%</code> and <code>max-width</code>  is the width of the items in the container.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td style="font-weight: bold; background-color: #DBEEF5 ">column</td>\n' +
+    '      <td style="padding-left: 10px;">Items arranged vertically. <code>max-width = 100%</code>  and <code>max-height</code> is the height of the items in the container.</td>\n' +
+    '    </tr>\n' +
+    '  </table>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Layout Attribute" class="small-demo colorNested">\n' +
+    '    <demo-file name="index.html">\n' +
+    '    <div layout="row">\n' +
+    '      <div flex>First item in row</div>\n' +
+    '      <div flex>Second item in row</div>\n' +
     '    </div>\n' +
-    '    <div layout="column" class="colorNested">\n' +
-    '      <div>I\'m above.</div>\n' +
-    '      <div>I\'m below.</div>\n' +
+    '    <div layout="column">\n' +
+    '      <div flex>First item in column</div>\n' +
+    '      <div flex>Second item in column</div>\n' +
     '    </div>\n' +
-    '  </hljs>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See <a href="#/layout/options">Layout Options</a> for information on responsive layouts and other options.\n' +
+    '    See the <a href="#/layout/options">layout options page</a> for information on responsive layouts and other options.\n' +
     '  </p>\n' +
     '</div>\n' +
     '');
@@ -334,16 +353,16 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    To customize the size and position of elements in a layout, use the\n' +
-    '    <code>flex</code>, <code>offset</code>, and <code>flex-order</code> attributes.\n' +
+    '    <code>flex</code>, <code>flex-order</code>, and <code>offset</code> attributes.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Attribute" class="small-demo" >\n' +
+    '  <docs-demo demo-title="Flex Attribute" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" class="colorNested">\n' +
+    '      <div layout="row">\n' +
     '        <div flex>\n' +
     '          [flex]\n' +
     '        </div>\n' +
-    '        <div flex style="color:white">\n' +
+    '        <div flex>\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '        <div flex hide-sm>\n' +
@@ -353,26 +372,33 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '  <p>\n' +
-    '    Add the <code>flex</code> attribute to a layout\'s child element, and it\n' +
-    '    will flex (stretch) to fill the available area.\n' +
+    '    Add the <code>flex</code> attribute to a layout\'s child element and the element will flex (grow or shrink) to fit\n' +
+    '    the area unused by other elements. <code>flex</code> defines how the element will ajust its size with respect to its\n' +
+    '    parent container and the other other elements within the container.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Percent Values" class="small-demo">\n' +
+    '  <docs-demo demo-title="Flex Percent Values" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-wrap class="colorNested">\n' +
-    '        <div flex="33">\n' +
-    '          [flex="34"]\n' +
+    '      <div layout="row" layout-wrap>\n' +
+    '        <div flex="30">\n' +
+    '          [flex="30"]\n' +
     '        </div>\n' +
-    '        <div flex="55" style="color:white">\n' +
-    '          [flex="55"]\n' +
+    '        <div flex="45">\n' +
+    '          [flex="45"]\n' +
+    '        </div>\n' +
+    '        <div flex="25">\n' +
+    '          [flex="25"]\n' +
+    '        </div>\n' +
+    '        <div flex="33">\n' +
+    '          [flex="33"]\n' +
+    '        </div>\n' +
+    '        <div flex="67">\n' +
+    '          [flex="67"]\n' +
+    '        </div>\n' +
+    '        <div flex="50">\n' +
+    '          [flex="50"]\n' +
     '        </div>\n' +
     '        <div flex>\n' +
-    '          [flex]\n' +
-    '        </div>\n' +
-    '        <div flex="66">\n' +
-    '          [flex="66"]\n' +
-    '        </div>\n' +
-    '        <div flex=>\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '      </div>\n' +
@@ -383,27 +409,90 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    A layout child\'s <code>flex</code> attribute can be given an integer value from 0-100.\n' +
     '    The element will stretch to the percentage of available space matching the value.\n' +
     '    <br/><br/>\n' +
-    '    The <code>flex</code> attribute value is restricted to 33, 66, and multiples\n' +
-    '    of five.\n' +
+    '    Currently, the <code>flex</code> attribute value is restricted to multiples of five and 33, 34, 66, and 67.\n' +
     '    <br/>\n' +
-    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="66", flex="75", ...</code>.\n' +
+    '    For example: <code>flex="0", flex="5", flex="20", flex="33", flex="50", flex="67", flex="75", ... flex="100"</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
-    '  See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes.\n' +
+    '    See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes like\n' +
+    '    <code>hide-sm</code> and <code>layout-wrap</code> used in the above examples.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Order Attribute" class="small-demo">\n' +
+    '  <docs-demo demo-title="Other Flex Values" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-margin class="colorNested">\n' +
-    '        <div flex flex-order="1" flex-order-gt-md="3" layout-padding>\n' +
-    '          <p show hide-gt-md>[flex-order="1"]</p>\n' +
+    '      <div layout="row" layout-wrap>\n' +
+    '        <div flex="0">\n' +
+    '          [flex="0"]\n' +
+    '        </div>\n' +
+    '        <div flex="none">\n' +
+    '          [flex="none"]\n' +
+    '        </div>\n' +
+    '        <div flex>\n' +
+    '          [flex]\n' +
+    '        </div>\n' +
+    '        <div flex="grow">\n' +
+    '          [flex="grow"]\n' +
+    '        </div>\n' +
+    '        <div flex="auto">\n' +
+    '          [flex="auto"]\n' +
+    '        </div>\n' +
+    '        <div flex="auto">\n' +
+    '          [flex="auto"]\n' +
+    '        </div>\n' +
+    '        <div flex="initial">\n' +
+    '          [flex="initial"]\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    There are additional flex values provided by Angular Material to improve flexibility and to make the API\n' +
+    '    easier to understand.\n' +
+    '  </p>\n' +
+    '  <table class="attributes">\n' +
+    '    <tr>\n' +
+    '      <td >flex</td>\n' +
+    '      <td >Will grow and shrink as needed. Starts with a size of 0%.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="0"</td>\n' +
+    '      <td >Will not grow or shrink. Size of 0%. I.e. not visible, but still on the page.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="none"</td>\n' +
+    '      <td >Will not grow or shrink. Sized based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="initial"</td>\n' +
+    '      <td >Will shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="auto"</td>\n' +
+    '      <td >Will grow and shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="grow"</td>\n' +
+    '      <td >Will grow and shrink as needed. Starts with a size of 100%.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td >flex="100"</td>\n' +
+    '      <td >Will not grow or shrink. Size of 100%.</td>\n' +
+    '    </tr>\n' +
+    '  </table>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Flex Order Attribute" class="small-demo colorNested">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="row">\n' +
+    '        <div flex flex-order="1" flex-order-gt-md="3">\n' +
+    '          <p hide-gt-md>[flex-order="1"]</p>\n' +
     '          <p hide show-gt-md>[flex-order-gt-md="3"]</p>\n' +
     '        </div>\n' +
-    '        <div flex flex-order="2" layout-padding>\n' +
+    '        <div flex flex-order="2">\n' +
     '          <p>[flex-order="2"]</p>\n' +
     '        </div>\n' +
-    '        <div flex flex-order="3" flex-order-gt-md="1" layout-padding>\n' +
-    '          <p show hide-gt-md>[flex-order="3"]</p>\n' +
+    '        <div flex flex-order="3" flex-order-gt-md="1">\n' +
+    '          <p hide-gt-md>[flex-order="3"]</p>\n' +
     '          <p hide show-gt-md>[flex-order-gt-md="1"]</p>\n' +
     '        </div>\n' +
     '      </div>\n' +
@@ -413,7 +502,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    Add the <code>flex-order</code> attribute to a layout child to set its\n' +
     '    position within the layout. Any value from 0-9 is accepted.\n' +
     '  </p>\n' +
-    '  <table>\n' +
+    '  <table class="attributes">\n' +
     '    <tr>\n' +
     '      <td>flex-order</td>\n' +
     '      <td>Sets element order.</td>\n' +
@@ -443,14 +532,18 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <td>Sets element order on devices greater than 1200px wide.</td>\n' +
     '    </tr>\n' +
     '  </table>\n' +
+    '  <p>\n' +
+    '    See the <a href="#/layout/options">layout options page</a> for more information on attributes like\n' +
+    '    <code>hide</code>, <code>hide-gt-md</code>, and <code>show-gt-md</code> used in the above examples.\n' +
+    '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Offset Attribute" class="small-demo">\n' +
+    '  <docs-demo demo-title="Flex Offset Attribute" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" class="colorNested">\n' +
+    '      <div layout="row">\n' +
     '        <div flex offset="33">\n' +
     '          [flex offset="33"]\n' +
     '        </div>\n' +
-    '        <div flex >\n' +
+    '        <div flex>\n' +
     '          [flex]\n' +
     '        </div>\n' +
     '      </div>\n' +
@@ -461,7 +554,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    offset percentage within the layout. Values must be multiples \n' +
     '    of <code>5</code>, or <code>33</code>, <code>34</code>, <code>66</code>, <code>67</code>.\n' +
     '  </p>\n' +
-    '  <table>\n' +
+    '  <table class="attributes">\n' +
     '    <tr>\n' +
     '      <td>offset</td>\n' +
     '      <td>Sets element offset.</td>\n' +
@@ -500,9 +593,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/layout-options.tmpl.html',
     '<div ng-controller="LayoutCtrl" class="layout-content layout-options" ng-cloak>\n' +
     '\n' +
-    '  <docs-demo demo-title="Responsive Layout" class="small-demo">\n' +
+    '  <docs-demo demo-title="Responsive Layout" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-sm="column" class="colorNested">\n' +
+    '      <div layout="row" layout-sm="column">\n' +
     '        <div flex>\n' +
     '          I\'m above on mobile, and to the left on larger devices.\n' +
     '        </div>\n' +
@@ -514,10 +607,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/container">Layout Container</a> page for a basic explanation\n' +
+    '    See the <a href="#/layout/container">Container Elements</a> page for a basic explanation\n' +
     '    of layout attributes.\n' +
     '    <br/>\n' +
-    '    To make your layout change depending upon the device size, there are\n' +
+    '    To make your layout change depending upon the device screen size, there are\n' +
     '    other <code>layout</code> attributes available:\n' +
     '  </p>\n' +
     '\n' +
@@ -555,11 +648,19 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <docs-demo demo-title="Layout Margin, Padding and Fill" class="small-demo">\n' +
+    '  <docs-demo demo-title="Layout Margin, Padding, and Fill" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-margin layout-fill layout-padding class="colorNested">\n' +
-    '        <div flex>I\'m on the left, and there\'s an empty area around me.</div>\n' +
-    '        <div flex>I\'m on the right, and there\'s an empty area around me.</div>\n' +
+    '      <div layout="row" layout-margin>\n' +
+    '        <div flex>Parent layout and this element have margins.</div>\n' +
+    '      </div>\n' +
+    '      <div layout="row" layout-padding>\n' +
+    '        <div flex>Parent layout and this element have padding.</div>\n' +
+    '      </div>\n' +
+    '      <div layout="row" layout-fill style="min-height: 224px;">\n' +
+    '        <div flex>Parent layout is set to fill available space.</div>\n' +
+    '      </div>\n' +
+    '      <div layout="row" layout-padding layout-margin layout-fill style="min-height: 224px;">\n' +
+    '        <div flex>I am using all three at once.</div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
@@ -576,12 +677,15 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <docs-demo demo-title="Wrap" class="small-demo">\n' +
+    '  <docs-demo demo-title="Wrap" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" layout-wrap class="colorNested-noPad">\n' +
+    '      <div layout="row" layout-wrap>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '        <div flex="67">[flex=67]</div>\n' +
     '        <div flex="67">[flex=67]</div>\n' +
+    '        <div flex="33">[flex=33]</div>\n' +
+    '        <div flex="33">[flex=33]</div>\n' +
+    '        <div flex="34">[flex=34]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -595,13 +699,13 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <docs-demo demo-title="Responsive Flex & Offset Attributes" class="small-demo">\n' +
+    '  <docs-demo demo-title="Responsive Flex Attributes" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="row" class="colorNested">\n' +
-    '        <div flex="66" flex-sm="34">\n' +
+    '      <div layout="row">\n' +
+    '        <div flex="67" flex-sm="33">\n' +
     '          I flex to one-third of the space on mobile, and two-thirds on other devices.\n' +
     '        </div>\n' +
-    '        <div flex="34" flex-sm="66">\n' +
+    '        <div flex="33" flex-sm="67">\n' +
     '          I flex to two-thirds of the space on mobile, and one-third on other devices.\n' +
     '        </div>\n' +
     '      </div>\n' +
@@ -609,7 +713,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/grid">Layout Grid</a> page for a basic explanation\n' +
+    '    See the <a href="#/layout/grid">Grid System</a> page for a basic explanation\n' +
     '    of flex and offset attributes.\n' +
     '  </p>\n' +
     '\n' +
@@ -646,15 +750,24 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <br/>\n' +
     '\n' +
-    '  <docs-demo demo-title="Hide and Show Attributes" class="small-demo">\n' +
+    '  <docs-demo demo-title="Hide and Show Attributes" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout layout-align="center center" class="colorNested">\n' +
-    '        <md-subheader show hide-gt-sm>\n' +
-    '          I\'m hidden on mobile and shown on larger devices.\n' +
-    '        </md-subheader>\n' +
-    '        <md-subheader show-sm hide>\n' +
-    '          I\'m shown on mobile and hidden on larger devices.\n' +
-    '        </md-subheader>\n' +
+    '      <div layout="row">\n' +
+    '        <div hide show-gt-sm flex>\n' +
+    '          Hidden on small and shown on larger devices.\n' +
+    '        </div>\n' +
+    '        <div hide-gt-sm flex>\n' +
+    '          Shown on small and hidden on larger devices.\n' +
+    '        </div>\n' +
+    '        <div hide-gt-md flex>\n' +
+    '          Shown on small and medium size devices.\n' +
+    '        </div>\n' +
+    '        <div hide show-md flex>\n' +
+    '          Shown on medium size devices only.\n' +
+    '        </div>\n' +
+    '        <div hide show-gt-lg flex>\n' +
+    '          Shown on devices larger than 1200px wide only.\n' +
+    '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
