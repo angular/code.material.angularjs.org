@@ -580,8 +580,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <demo-file name="index.html">\n' +
     '      <div layout="row" layout-wrap class="colorNested-noPad">\n' +
     '        <div flex="33">[flex=33]</div>\n' +
-    '        <div flex="66">[flex=67]</div>\n' +
-    '        <div flex="66">[flex=67]</div>\n' +
+    '        <div flex="67">[flex=67]</div>\n' +
+    '        <div flex="67">[flex=67]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -598,10 +598,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <docs-demo demo-title="Responsive Flex & Offset Attributes" class="small-demo">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row" class="colorNested">\n' +
-    '        <div flex="66" flex-sm="33">\n' +
+    '        <div flex="66" flex-sm="34">\n' +
     '          I flex to one-third of the space on mobile, and two-thirds on other devices.\n' +
     '        </div>\n' +
-    '        <div flex="33" flex-sm="66">\n' +
+    '        <div flex="34" flex-sm="66">\n' +
     '          I flex to two-thirds of the space on mobile, and one-third on other devices.\n' +
     '        </div>\n' +
     '      </div>\n' +
