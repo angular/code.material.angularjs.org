@@ -6,21 +6,41 @@
     "**/.*",
     "**/node_modules/**"
   ],
-  "redirects": [{
-    "source": "/",
-    "destination": "/latest",
-    "type": 302
-  },
-  {
-    "source": "/head",
-    "destination": "/HEAD",
-    "type": 302
-  }],
-  "headers": [ {
-    "source" : "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-    "headers" : [ {
-      "key" : "Access-Control-Allow-Origin",
-      "value" : "*"
-    } ]
-  }]
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/latest",
+      "type": 302
+    },
+    {
+      "source": "/head",
+      "destination": "/HEAD",
+      "type": 302
+    }
+  ],
+  "headers": [
+    {
+      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/HEAD/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/HEAD/index.html"
+    },
+    {
+      "source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/latest/index.html"
+    },
+    {
+      "source": "/0.11.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/0.11.3/index.html"
+    }
+  ]
 }
