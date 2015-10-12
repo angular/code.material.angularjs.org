@@ -1556,6 +1556,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/radioButton/demoBasicUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "radioDemo2",
+          "module": "radioDemo2",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "radioButtondemoMultiColumn",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/radioButton/demoMultiColumn/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/radioButton/demoMultiColumn/script.js"
+          }
+        ],
+        "moduleName": "material.components.radioButton",
+        "name": "demoMultiColumn",
+        "label": "Multi Column",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/radioButton/demoMultiColumn/index.html"
+        }
       }
     ],
     "url": "/demo/material.components.radioButton"

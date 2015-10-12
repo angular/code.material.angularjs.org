@@ -204,7 +204,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <p>Only one word is required for the attribute. For example, <code>layout="row" layout-align="center"</code> would make the elements center horizontally and use the default behavior vertically.</p>\n' +
     '\n' +
     '    <p><code>layout="column" layout-align="center end"</code> would make\n' +
-    '    children align along the center vertically and along the end (right) horizontally.</p>\n' +
+    '    children align along the center vertically and along the end (right) horizontally. </p>\n' +
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>layout-align</td>\n' +
@@ -450,7 +450,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    There are additional flex values provided by Angular Material to improve flexibility and to make the API\n' +
     '    easier to understand.\n' +
     '  </p>\n' +
-    '  <table class="attributes">\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td >flex</td>\n' +
     '      <td >Will grow and shrink as needed. Starts with a size of 0%.</td>\n' +
@@ -502,7 +502,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    Add the <code>flex-order</code> attribute to a layout child to set its\n' +
     '    position within the layout. Any value from 0-9 is accepted.\n' +
     '  </p>\n' +
-    '  <table class="attributes">\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>flex-order</td>\n' +
     '      <td>Sets element order.</td>\n' +
@@ -554,7 +554,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    offset percentage within the layout. Values must be multiples \n' +
     '    of <code>5</code>, or <code>33</code>, <code>34</code>, <code>66</code>, <code>67</code>.\n' +
     '  </p>\n' +
-    '  <table class="attributes">\n' +
+    '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>offset</td>\n' +
     '      <td>Sets element offset.</td>\n' +
