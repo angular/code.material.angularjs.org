@@ -341,7 +341,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/options">layout options page</a> for information on responsive layouts and other options.\n' +
+    '    See the <a href="layout/options">layout options page</a> for information on responsive layouts and other options.\n' +
     '  </p>\n' +
     '</div>\n' +
     '');
@@ -414,7 +414,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    For example: <code>flex="0", flex="5", flex="20", flex="33", flex="50", flex="67", flex="75", ... flex="100"</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/options">layout options page</a> for more information on responsive flex attributes like\n' +
+    '    See the <a href="layout/options">layout options page</a> for more information on responsive flex attributes like\n' +
     '    <code>hide-sm</code> and <code>layout-wrap</code> used in the above examples.\n' +
     '  </p>\n' +
     '\n' +
@@ -533,7 +533,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '  </table>\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/options">layout options page</a> for more information on attributes like\n' +
+    '    See the <a href="layout/options">layout options page</a> for more information on attributes like\n' +
     '    <code>hide</code>, <code>hide-gt-md</code>, and <code>show-gt-md</code> used in the above examples.\n' +
     '  </p>\n' +
     '\n' +
@@ -607,7 +607,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/container">Container Elements</a> page for a basic explanation\n' +
+    '    See the <a href="layout/container">Container Elements</a> page for a basic explanation\n' +
     '    of layout attributes.\n' +
     '    <br/>\n' +
     '    To make your layout change depending upon the device screen size, there are\n' +
@@ -713,7 +713,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="#/layout/grid">Grid System</a> page for a basic explanation\n' +
+    '    See the <a href="layout/grid">Grid System</a> page for a basic explanation\n' +
     '    of flex and offset attributes.\n' +
     '  </p>\n' +
     '\n' +
