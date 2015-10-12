@@ -353,7 +353,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    To customize the size and position of elements in a layout, use the\n' +
-    '    <code>flex</code>, <code>flex-order</code>, and <code>offset</code> attributes.\n' +
+    '    <code>flex</code>, <code>flex-order</code>, and <code>flex-offset</code> attributes.\n' +
     '  </p>\n' +
     '\n' +
     '  <docs-demo demo-title="Flex Attribute" class="small-demo colorNested">\n' +
@@ -540,7 +540,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <docs-demo demo-title="Flex Offset Attribute" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row">\n' +
-    '        <div flex offset="33">\n' +
+    '        <div flex flex-offset="33">\n' +
     '          [flex offset="33"]\n' +
     '        </div>\n' +
     '        <div flex>\n' +
@@ -550,37 +550,37 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '  <p>\n' +
-    '    Add the <code>offset</code> attribute to a layout child to set its\n' +
+    '    Add the <code>flex-offset</code> attribute to a layout child to set its\n' +
     '    offset percentage within the layout. Values must be multiples \n' +
     '    of <code>5</code>, or <code>33</code>, <code>34</code>, <code>66</code>, <code>67</code>.\n' +
     '  </p>\n' +
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
-    '      <td>offset</td>\n' +
+    '      <td>flex-offset</td>\n' +
     '      <td>Sets element offset.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-sm</td>\n' +
+    '      <td>flex-offset-sm</td>\n' +
     '      <td>Sets element offset on devices less than 600px wide.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-gt-sm</td>\n' +
+    '      <td>flex-offset-gt-sm</td>\n' +
     '      <td>Sets element offset on devices greater than 600px wide.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-md</td>\n' +
+    '      <td>flex-offset-md</td>\n' +
     '      <td>Sets element offset on devices between 600px and 960px wide.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-gt-md</td>\n' +
+    '      <td>flex-offset-gt-md</td>\n' +
     '      <td>Sets element offset on devices greater than 960px wide.\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-lg</td>\n' +
+    '      <td>flex-offset-lg</td>\n' +
     '      <td>Sets element offset on devices between 960px and 1200px wide.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td>offset-gt-lg</td>\n' +
+    '      <td>flex-offset-gt-lg</td>\n' +
     '      <td>Sets element offset on devices greater than 1200px wide.</td>\n' +
     '    </tr>\n' +
     '  </table>\n' +
