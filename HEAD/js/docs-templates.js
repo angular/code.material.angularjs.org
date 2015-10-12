@@ -142,14 +142,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="25" flex-md="50" flex-sm="50" ng-repeat="(index, link) in [\n' +
-    '        { href: \'getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
-    '        { href: \'demo\', icon: \'play_circle_fill\', text: \'Demos\' },\n' +
-    '        { href: \'CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
-    '        { href: \'api\', icon: \'code\', text: \'API Reference\' }\n' +
+    '        { href: \'./getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
+    '        { href: \'./demo\', icon: \'play_circle_fill\', text: \'Demos\' },\n' +
+    '        { href: \'./CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
+    '        { href: \'./api\', icon: \'code\', text: \'API Reference\' }\n' +
     '      ]">\n' +
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
-    '            ng-href="#/{{link.href}}"\n' +
+    '            ng-href="{{link.href}}"\n' +
     '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}\n' +
@@ -839,7 +839,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/menu-link.tmpl.html',
     '<md-button\n' +
     '    ng-class="{\'active\' : isSelected()}"\n' +
-    '    ng-href="{{(section.type === \'version\' ? \'\' : \'#\') + section.url}}"\n' +
+    '    ng-href="{{section.url}}"\n' +
     '    ng-click="focusSection()">\n' +
     '  {{section | humanizeDoc}}\n' +
     '  <span class="md-visually-hidden"\n' +

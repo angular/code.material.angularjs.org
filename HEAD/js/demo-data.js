@@ -1,6 +1,7 @@
 angular.module('docsApp').constant('DEMOS', [
   {
-    "name": "material.components.autocomplete",
+    "name": "autocomplete",
+    "moduleName": "material.components.autocomplete",
     "label": "Autocomplete",
     "demos": [
       {
@@ -99,10 +100,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.autocomplete"
+    "url": "demo/autocomplete"
   },
   {
-    "name": "material.components.bottomSheet",
+    "name": "bottomSheet",
+    "moduleName": "material.components.bottomSheet",
     "label": "Bottom Sheet",
     "demos": [
       {
@@ -161,10 +163,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.bottomSheet"
+    "url": "demo/bottomSheet"
   },
   {
-    "name": "material.components.button",
+    "name": "button",
+    "moduleName": "material.components.button",
     "label": "Button",
     "demos": [
       {
@@ -204,10 +207,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.button"
+    "url": "demo/button"
   },
   {
-    "name": "material.components.card",
+    "name": "card",
+    "moduleName": "material.components.card",
     "label": "Card",
     "demos": [
       {
@@ -247,10 +251,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.card"
+    "url": "demo/card"
   },
   {
-    "name": "material.components.checkbox",
+    "name": "checkbox",
+    "moduleName": "material.components.checkbox",
     "label": "Checkbox",
     "demos": [
       {
@@ -326,10 +331,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.checkbox"
+    "url": "demo/checkbox"
   },
   {
-    "name": "material.components.chips",
+    "name": "chips",
+    "moduleName": "material.components.chips",
     "label": "Chips",
     "demos": [
       {
@@ -477,10 +483,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.chips"
+    "url": "demo/chips"
   },
   {
-    "name": "material.components.content",
+    "name": "content",
+    "moduleName": "material.components.content",
     "label": "Content",
     "demos": [
       {
@@ -520,10 +527,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.content"
+    "url": "demo/content"
   },
   {
-    "name": "material.components.datepicker",
+    "name": "datepicker",
+    "moduleName": "material.components.datepicker",
     "label": "Datepicker",
     "demos": [
       {
@@ -564,10 +572,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.datepicker"
+    "url": "demo/datepicker"
   },
   {
-    "name": "material.components.dialog",
+    "name": "dialog",
+    "moduleName": "material.components.dialog",
     "label": "Dialog",
     "demos": [
       {
@@ -614,10 +623,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.dialog"
+    "url": "demo/dialog"
   },
   {
-    "name": "material.components.divider",
+    "name": "divider",
+    "moduleName": "material.components.divider",
     "label": "Divider",
     "demos": [
       {
@@ -657,10 +667,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.divider"
+    "url": "demo/divider"
   },
   {
-    "name": "material.components.fabSpeedDial",
+    "name": "fabSpeedDial",
+    "moduleName": "material.components.fabSpeedDial",
     "label": "FAB Speed Dial",
     "demos": [
       {
@@ -736,10 +747,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.fabSpeedDial"
+    "url": "demo/fabSpeedDial"
   },
   {
-    "name": "material.components.fabToolbar",
+    "name": "fabToolbar",
+    "moduleName": "material.components.fabToolbar",
     "label": "FAB Toolbar",
     "demos": [
       {
@@ -779,10 +791,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.fabToolbar"
+    "url": "demo/fabToolbar"
   },
   {
-    "name": "material.components.gridList",
+    "name": "gridList",
+    "moduleName": "material.components.gridList",
     "label": "Grid List",
     "demos": [
       {
@@ -887,10 +900,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.gridList"
+    "url": "demo/gridList"
   },
   {
-    "name": "material.components.icon",
+    "name": "icon",
+    "moduleName": "material.components.icon",
     "label": "Icon",
     "demos": [
       {
@@ -1074,10 +1088,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.icon"
+    "url": "demo/icon"
   },
   {
-    "name": "material.components.input",
+    "name": "input",
+    "moduleName": "material.components.input",
     "label": "Input",
     "demos": [
       {
@@ -1192,10 +1207,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.input"
+    "url": "demo/input"
   },
   {
-    "name": "material.components.list",
+    "name": "list",
+    "moduleName": "material.components.list",
     "label": "List",
     "demos": [
       {
@@ -1271,10 +1287,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.list"
+    "url": "demo/list"
   },
   {
-    "name": "material.components.menu",
+    "name": "menu",
+    "moduleName": "material.components.menu",
     "label": "Menu",
     "demos": [
       {
@@ -1386,10 +1403,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.menu"
+    "url": "demo/menu"
   },
   {
-    "name": "material.components.menuBar",
+    "name": "menuBar",
+    "moduleName": "material.components.menuBar",
     "label": "Menu Bar",
     "demos": [
       {
@@ -1429,10 +1447,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.menuBar"
+    "url": "demo/menuBar"
   },
   {
-    "name": "material.components.progressCircular",
+    "name": "progressCircular",
+    "moduleName": "material.components.progressCircular",
     "label": "Progress Circular",
     "demos": [
       {
@@ -1472,10 +1491,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.progressCircular"
+    "url": "demo/progressCircular"
   },
   {
-    "name": "material.components.progressLinear",
+    "name": "progressLinear",
+    "moduleName": "material.components.progressLinear",
     "label": "Progress Linear",
     "demos": [
       {
@@ -1515,10 +1535,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.progressLinear"
+    "url": "demo/progressLinear"
   },
   {
-    "name": "material.components.radioButton",
+    "name": "radioButton",
+    "moduleName": "material.components.radioButton",
     "label": "Radio Button",
     "demos": [
       {
@@ -1594,10 +1615,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.radioButton"
+    "url": "demo/radioButton"
   },
   {
-    "name": "material.components.select",
+    "name": "select",
+    "moduleName": "material.components.select",
     "label": "Select",
     "demos": [
       {
@@ -1725,10 +1747,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.select"
+    "url": "demo/select"
   },
   {
-    "name": "material.components.sidenav",
+    "name": "sidenav",
+    "moduleName": "material.components.sidenav",
     "label": "Sidenav",
     "demos": [
       {
@@ -1761,10 +1784,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.sidenav"
+    "url": "demo/sidenav"
   },
   {
-    "name": "material.components.slider",
+    "name": "slider",
+    "moduleName": "material.components.slider",
     "label": "Slider",
     "demos": [
       {
@@ -1804,10 +1828,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.slider"
+    "url": "demo/slider"
   },
   {
-    "name": "material.components.subheader",
+    "name": "subheader",
+    "moduleName": "material.components.subheader",
     "label": "Subheader",
     "demos": [
       {
@@ -1847,10 +1872,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.subheader"
+    "url": "demo/subheader"
   },
   {
-    "name": "material.components.swipe",
+    "name": "swipe",
+    "moduleName": "material.components.swipe",
     "label": "Swipe",
     "demos": [
       {
@@ -1897,10 +1923,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.swipe"
+    "url": "demo/swipe"
   },
   {
-    "name": "material.components.switch",
+    "name": "switch",
+    "moduleName": "material.components.switch",
     "label": "Switch",
     "demos": [
       {
@@ -1940,10 +1967,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.switch"
+    "url": "demo/switch"
   },
   {
-    "name": "material.components.tabs",
+    "name": "tabs",
+    "moduleName": "material.components.tabs",
     "label": "Tabs",
     "demos": [
       {
@@ -2063,10 +2091,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.tabs"
+    "url": "demo/tabs"
   },
   {
-    "name": "material.components.toast",
+    "name": "toast",
+    "moduleName": "material.components.toast",
     "label": "Toast",
     "demos": [
       {
@@ -2106,10 +2135,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.toast"
+    "url": "demo/toast"
   },
   {
-    "name": "material.components.toolbar",
+    "name": "toolbar",
+    "moduleName": "material.components.toolbar",
     "label": "Toolbar",
     "demos": [
       {
@@ -2185,10 +2215,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.toolbar"
+    "url": "demo/toolbar"
   },
   {
-    "name": "material.components.tooltip",
+    "name": "tooltip",
+    "moduleName": "material.components.tooltip",
     "label": "Tooltip",
     "demos": [
       {
@@ -2228,10 +2259,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.tooltip"
+    "url": "demo/tooltip"
   },
   {
-    "name": "material.components.virtualRepeat",
+    "name": "virtualRepeat",
+    "moduleName": "material.components.virtualRepeat",
     "label": "Virtual Repeat",
     "demos": [
       {
@@ -2415,10 +2447,11 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.virtualRepeat"
+    "url": "demo/virtualRepeat"
   },
   {
-    "name": "material.components.whiteframe",
+    "name": "whiteframe",
+    "moduleName": "material.components.whiteframe",
     "label": "Whiteframe",
     "demos": [
       {
@@ -2458,6 +2491,6 @@ angular.module('docsApp').constant('DEMOS', [
         }
       }
     ],
-    "url": "/demo/material.components.whiteframe"
+    "url": "demo/whiteframe"
   }
 ]);
