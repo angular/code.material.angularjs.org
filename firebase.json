@@ -36,7 +36,7 @@
     },
     {
       "source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/0.11.3/index.html"
+      "destination": "/latest/index.html"
     },
     {
       "source": "/0.11.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
