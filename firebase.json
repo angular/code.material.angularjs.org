@@ -9,7 +9,12 @@
   "redirects": [
     {
       "source": "/",
-      "destination": "/latest",
+      "destination": "/0.11.3",
+      "type": 302
+    },
+    {
+      "source": "/latest/**",
+      "destination": "/0.11.3",
       "type": 302
     },
     {
