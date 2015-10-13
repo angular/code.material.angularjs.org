@@ -247,18 +247,6 @@
   }
 })();
 
-
-angular.module('buttonsDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-
-  $scope.googleUrl = 'http://google.com';
-
-});
-
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -356,6 +344,32 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
+angular.module('buttonsDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+
+  $scope.googleUrl = 'http://google.com';
+
+});
+
+
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
+
 angular.module('cardDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -379,20 +393,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
-});
-
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
 });
 
 (function () {
@@ -947,15 +947,6 @@ angular
   });
 
 
-angular.module('appSvgIconSets', ['ngMaterial'])
-  .controller('DemoCtrl', function($scope) {})
-  .config(['$mdIconProvider', function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  }]);
-
-
 angular.module('appDemoSvgIcons', ['ngMaterial'])
 .controller('DemoCtrl', function( $scope ) {
 
@@ -964,6 +955,15 @@ angular.module('appDemoSvgIcons', ['ngMaterial'])
       return 'img/icons/android.svg';
     }
 });
+
+
+angular.module('appSvgIconSets', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {})
+  .config(['$mdIconProvider', function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  }]);
 
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
@@ -1305,6 +1305,46 @@ angular
   });
 
 
+angular
+  .module('progressCircularDemo1', ['ngMaterial'])
+  .controller('AppCtrl', ['$scope', '$interval',
+    function($scope, $interval) {
+      var self = this,  j= 0, counter = 0;
+
+      self.modes = [ ];
+      self.activated = true;
+      self.determinateValue = 30;
+
+      /**
+       * Turn off or on the 5 themed loaders
+       */
+      self.toggleActivation = function() {
+          if ( !self.activated ) self.modes = [ ];
+          if (  self.activated ) j = counter = 0;
+      };
+
+      // Iterate every 100ms, non-stop
+      $interval(function() {
+
+        // Increment the Determinate loader
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+        // Incrementally start animation the five (5) Indeterminate,
+        // themed progress circular bars
+
+        if ( (j < 5) && !self.modes[j] && self.activated ) {
+          self.modes[j] = 'indeterminate';
+        }
+        if ( counter++ % 4 == 0 ) j++;
+
+      }, 100, 0, true);
+    }
+  ]);
+
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
   })
@@ -1437,46 +1477,6 @@ angular
       return self.contacts[self.selectedIndex].lastName;
     }
   });
-
-angular
-  .module('progressCircularDemo1', ['ngMaterial'])
-  .controller('AppCtrl', ['$scope', '$interval',
-    function($scope, $interval) {
-      var self = this,  j= 0, counter = 0;
-
-      self.modes = [ ];
-      self.activated = true;
-      self.determinateValue = 30;
-
-      /**
-       * Turn off or on the 5 themed loaders
-       */
-      self.toggleActivation = function() {
-          if ( !self.activated ) self.modes = [ ];
-          if (  self.activated ) j = counter = 0;
-      };
-
-      // Iterate every 100ms, non-stop
-      $interval(function() {
-
-        // Increment the Determinate loader
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-        // Incrementally start animation the five (5) Indeterminate,
-        // themed progress circular bars
-
-        if ( (j < 5) && !self.modes[j] && self.activated ) {
-          self.modes[j] = 'indeterminate';
-        }
-        if ( counter++ % 4 == 0 ) j++;
-
-      }, 100, 0, true);
-    }
-  ]);
 
 (function () {
   'use strict';
