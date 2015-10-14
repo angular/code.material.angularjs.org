@@ -1,0 +1,2 @@
+Sitemap: https://material.angularjs.org/sitemap.xml
+Disallow: /HEAD/
