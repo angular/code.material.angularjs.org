@@ -403,6 +403,12 @@ of the dialog.</li>
 <li><code>targetEvent</code> - <code>{DOMClickEvent=}</code>: A click&#39;s event object. When passed in as an option,
 the location of the click will be used as the starting point for the opening animation
 of the the dialog.</li>
+<li><code>openFrom</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) from which the Dialog will
+originate.</li>
+<li><code>closeTo</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) to which the Dialog will
+target.</li>
 <li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified,
 it will create a new isolate scope.
 This scope will be destroyed when the dialog is removed unless <code>preserveScope</code> is set to true.</li>

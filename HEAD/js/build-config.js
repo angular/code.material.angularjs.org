@@ -2,6 +2,6 @@ DocsApp.constant('BUILDCONFIG', {
   "ngVersion": "1.4.6",
   "version": "0.11.4",
   "repository": "https://github.com/angular/material",
-  "commit": "2ecbb8f7635e78b79e7d94e0e9efd7ef89f1eb82",
-  "date": "2015-10-14 15:13:34 -0700"
+  "commit": "71e23e5b86e81d00e31130432bb51e0d4c955328",
+  "date": "2015-10-14 17:45:36 -0500"
 });
