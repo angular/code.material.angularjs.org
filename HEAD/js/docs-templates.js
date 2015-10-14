@@ -91,6 +91,22 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <li><a href="https://github.com/angular/material#cdn">Using a CDN</a> (example below)</li>\n' +
     '    </ul>\n' +
     '\n' +
+    '    <h3>Include Optional Dependencies</h3>\n' +
+    '    <p>\n' +
+    '      Angular Material integrates with some additional libraries which you may optionally include:\n' +
+    '    </p>\n' +
+    '    <ul style="margin-bottom: 2em;">\n' +
+    '      <li>\n' +
+    '        <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>\n' +
+    '        - Provides a consistent mechanism for displaying form errors and other messages.\n' +
+    '      </li>\n' +
+    '\n' +
+    '      <li>\n' +
+    '        <a href="https://docs.angularjs.org/api/ngRoute">ngRoute</a>\n' +
+    '        - Provides a clean routing system for your application.\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '\n' +
     '    <iframe height=\'272\' scrolling=\'no\' data-default-tab="html"\n' +
     '            src=\'//codepen.io/marcysutton/embed/OPbpKm?height=272&theme-id=11083\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
