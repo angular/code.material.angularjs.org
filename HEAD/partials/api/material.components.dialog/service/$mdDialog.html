@@ -400,6 +400,9 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
 of the dialog.</li>
 <li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual template string.</li>
+<li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template with a
+<code>&lt;md-dialog&gt;</code> tag if one is not provided. Defaults to true. Can be disabled if you provide a
+custom dialog directive.</li>
 <li><code>targetEvent</code> - <code>{DOMClickEvent=}</code>: A click&#39;s event object. When passed in as an option,
 the location of the click will be used as the starting point for the opening animation
 of the the dialog.</li>
@@ -441,7 +444,7 @@ to the root element of the application.</li>
 starting.</li>
 <li><code>onComplete</code> <code>{function=}</code>: Callback function used to announce when the show() action is
 finished.</li>
-<li><code>onRemoving</code> `{function=} Callback function used to announce the close/hide() action is
+<li><code>onRemoving</code> <code>{function=}</code>: Callback function used to announce the close/hide() action is
 starting. This allows developers to run custom animations in parallel the close animations.</li>
 </ul>
 
