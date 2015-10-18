@@ -602,6 +602,12 @@ angular.module('docsApp').constant('DEMOS', [
             "label": "dialog1.tmpl.html",
             "fileType": "html",
             "outputPath": "demo-partials/dialog/demoBasicUsage/dialog1.tmpl.html"
+          },
+          {
+            "name": "tabDialog.tmpl.html",
+            "label": "tabDialog.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/dialog/demoBasicUsage/tabDialog.tmpl.html"
           }
         ],
         "js": [
