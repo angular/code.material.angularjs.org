@@ -1,0 +1,206 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Grid lists are an alternative to standard list views. Grid lists are distinct
+from grids used for layouts and other visual presentations.</p>
+<p>A grid list is best suited to presenting a homogenous data type, typically
+images, and is optimized for visual comprehension and differentiating between
+like data types.</p>
+<p>A grid list is a continuous element consisting of tessellated, regular
+subdivisions called cells that contain tiles (<code>md-grid-tile</code>).</p>
+<p><img src="//material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7OVlEaXZ5YmU1Xzg/components_grids_usage2.png"
+   style="width: 300px; height: auto; margin-right: 16px;" alt="Concept of grid explained visually">
+<img src="//material-design.storage.googleapis.com/publish/v_2/material_ext_publish/0Bx4BSt6jniD7VGhsOE5idWlJWXM/components_grids_usage3.png"
+   style="width: 300px; height: auto;" alt="Grid concepts legend"></p>
+<p>Cells are arrayed vertically and horizontally within the grid.</p>
+<p>Tiles hold content and can span one or more cells vertically or horizontally.</p>
+<h3 id="responsive-attributes">Responsive Attributes</h3>
+<p>The <code>md-grid-list</code> directive supports &quot;responsive&quot; attributes, which allow
+different <code>md-cols</code>, <code>md-gutter</code> and <code>md-row-height</code> values depending on the
+currently matching media query (as defined in <code>$mdConstant.MEDIA</code>).</p>
+<p>In order to set a responsive attribute, first define the fallback value with
+the standard attribute name, then add additional attributes with the
+following convention: <code>{base-attribute-name}-{media-query-name}=&quot;{value}&quot;</code>
+(ie. <code>md-cols-lg=&quot;8&quot;</code>)</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <p>Basic:</p>
+<hljs lang="html">
+<md-grid-list md-cols="5" md-gutter="1em" md-row-height="4:3">
+  <md-grid-tile></md-grid-tile>
+</md-grid-list>
+</hljs>
+
+<p>Fixed-height rows:</p>
+<hljs lang="html">
+<md-grid-list md-cols="4" md-row-height="200px" ...>
+  <md-grid-tile></md-grid-tile>
+</md-grid-list>
+</hljs>
+
+<p>Fit rows:</p>
+<hljs lang="html">
+<md-grid-list md-cols="4" md-row-height="fit" style="height: 400px;" ...>
+  <md-grid-tile></md-grid-tile>
+</md-grid-list>
+</hljs>
+
+<p>Using responsive attributes:</p>
+<hljs lang="html">
+<md-grid-list
+    md-cols-sm="2"
+    md-cols-md="4"
+    md-cols-lg="8"
+    md-cols-gt-lg="12"
+    ...>
+  <md-grid-tile></md-grid-tile>
+</md-grid-list>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-cols</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Number of columns in the grid.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-row-height</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>One of</p>
+<ul>
+  <li>CSS length - Fixed height rows (eg. <code>8px</code> or <code>1rem</code>)</li>
+  <li><code>{width}:{height}</code> - Ratio of width to height (eg.
+  <code>md-row-height=&quot;16:9&quot;</code>)</li>
+  <li><code>&quot;fit&quot;</code> - Height will be determined by subdividing the available
+  height by the number of rows</li>
+</ul>
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-gutter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The amount of space between tiles in CSS units
+    (default 1px)</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-layout
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression to evaluate after layout. Event
+    object is available as <code>$event</code>, and contains performance information.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

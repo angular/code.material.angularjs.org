@@ -1,0 +1,211 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Use the <code>&lt;input&gt;</code> or the  <code>&lt;textarea&gt;</code> as a child of an <code>&lt;md-input-container&gt;</code>.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-input-container>
+  <label>Color</label>
+  <input type="text" ng-model="color" required md-maxlength="10">
+</md-input-container>
+</hljs>
+<h3>With Errors</h3>
+
+<hljs lang="html">
+<form name="userForm">
+  <md-input-container>
+    <label>Last Name</label>
+    <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
+    <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That&#39;s too long!</div>
+      <div ng-message="minlength">That&#39;s too short!</div>
+    </div>
+  </md-input-container>
+  <md-input-container>
+    <label>Biography</label>
+    <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
+    <div ng-messages="userForm.bio.$error" ng-show="userForm.bio.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That&#39;s too long!</div>
+    </div>
+  </md-input-container>
+  <md-input-container>
+    <input aria-label='title' ng-model='title'>
+  </md-input-container>
+  <md-input-container>
+    <input placeholder='title' ng-model='title'>
+  </md-input-container>
+</form>
+</hljs>
+
+<p>Requires <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>.
+Behaves like the <a href="https://docs.angularjs.org/api/ng/directive/input">AngularJS input directive</a>.</p>
+
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-maxlength
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The maximum number of characters allowed in this input. If this is
+  specified, a character counter will be shown underneath the input.<br/><br/>
+  The purpose of <strong><code>md-maxlength</code></strong> is exactly to show the max length counter text. If you don&#39;t
+  want the counter text and only need &quot;plain&quot; validation, you can use the &quot;simple&quot; <code>ng-maxlength</code>
+  or maxlength attributes.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Aria-label is required when no label is present.  A warning message
+  will be logged in the console if not present.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>An alternative approach to using aria-label when the label is not
+  PRESENT. The placeholder text is copied to the aria-label attribute.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-autogrow
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, textareas will not grow automatically.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-detect-hidden
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, textareas will be sized properly when they are revealed after being hidden. This is off by default for performance reasons because it guarantees a reflow every digest cycle.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

@@ -1,0 +1,138 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>md-toolbar</code> is used to place a toolbar in your app.</p>
+<p>Toolbars are usually used above a content area to display the title of the
+current page, and show relevant action buttons for that page.</p>
+<p>You can change the height of the toolbar by adding either the
+<code>md-medium-tall</code> or <code>md-tall</code> class to the toolbar.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<div layout="column" layout-fill>
+  <md-toolbar>
+
+    <div class="md-toolbar-tools">
+      <span>My App&#39;s Title</span>
+
+      <!-- fill up the space between left and right area -->
+      <span flex></span>
+
+      <md-button>
+        Right Bar Button
+      </md-button>
+    </div>
+
+  </md-toolbar>
+  <md-content>
+    Hello!
+  </md-content>
+</div>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-scroll-shrink
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the header should shrink away as
+the user scrolls down, and reveal itself as the user scrolls up.</p>
+<p><em><strong>Note (1):</strong> for scrollShrink to work, the toolbar must be a sibling of a
+<code>md-content</code> element, placed before it. See the scroll shrink demo.</em></p>
+<p><em><strong>Note (2):</strong> The <code>md-scroll-shrink</code> attribute is only parsed on component
+initialization, it does not watch for scope changes.</em></p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-shrink-speed-factor
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>How much to change the speed of the toolbar&#39;s
+shrinking by. For example, if 0.25 is given then the toolbar will shrink
+at one fourth the rate at which the user scrolls down. Default 0.5.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

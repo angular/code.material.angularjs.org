@@ -1,0 +1,52 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>In some scenarios on Mobile devices (without jQuery), the click events should NOT be hijacked.
+<code>$mdGestureProvider</code> is used to configure the Gesture module to ignore or skip click hijacking on mobile
+devices.</p>
+<hljs lang="js">
+  app.config(function($mdGestureProvider) {
+
+    // For mobile devices without jQuery loaded, do not
+    // intercept click events during the capture phase.
+    $mdGestureProvider.skipClickHijack();
+
+  });
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
