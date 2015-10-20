@@ -427,7 +427,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <br/><br/>\n' +
     '    Currently, the <code>flex</code> attribute value is restricted to multiples of five and 33, 34, 66, and 67.\n' +
     '    <br/>\n' +
-    '    For example: <code>flex="0", flex="5", flex="20", flex="33", flex="50", flex="67", flex="75", ... flex="100"</code>.\n' +
+    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="67", flex="75", ... flex="100"</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
     '    See the <a href="layout/options">layout options page</a> for more information on responsive flex attributes like\n' +
@@ -468,32 +468,24 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
-    '      <td >flex</td>\n' +
-    '      <td >Will grow and shrink as needed. Starts with a size of 0%.</td>\n' +
+    '      <td>flex</td>\n' +
+    '      <td>Will grow and shrink as needed. Starts with a size of 0%. Same as <code>flex="0"</code>.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td >flex="0"</td>\n' +
-    '      <td >Will not grow or shrink. Size of 0%. I.e. not visible, but still on the page.</td>\n' +
+    '      <td>flex="none"</td>\n' +
+    '      <td>Will not grow or shrink. Sized based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td >flex="none"</td>\n' +
-    '      <td >Will not grow or shrink. Sized based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>flex="initial"</td>\n' +
+    '      <td>Will shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td >flex="initial"</td>\n' +
-    '      <td >Will shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>flex="auto"</td>\n' +
+    '      <td>Will grow and shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
-    '      <td >flex="auto"</td>\n' +
-    '      <td >Will grow and shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
-    '    </tr>\n' +
-    '    <tr>\n' +
-    '      <td >flex="grow"</td>\n' +
-    '      <td >Will grow and shrink as needed. Starts with a size of 100%.</td>\n' +
-    '    </tr>\n' +
-    '    <tr>\n' +
-    '      <td >flex="100"</td>\n' +
-    '      <td >Will not grow or shrink. Size of 100%.</td>\n' +
+    '      <td>flex="grow"</td>\n' +
+    '      <td>Will grow and shrink as needed. Starts with a size of 100%. Same as <code>flex="100"</code>.</td>\n' +
     '    </tr>\n' +
     '  </table>\n' +
     '\n' +
