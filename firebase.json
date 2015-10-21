@@ -41,6 +41,14 @@
     {
       "source": "/0.11.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/0.11.3/index.html"
+    },
+    {
+      "source": "/0.11.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/0.11.4/index.html"
+    },
+    {
+      "source": "/1.0.0-rc1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.0-rc1/index.html"
     }
   ]
 }
