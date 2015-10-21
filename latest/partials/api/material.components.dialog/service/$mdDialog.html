@@ -3,7 +3,7 @@
 
 
 <header class="api-profile-header" >
-  <h2 class="md-display-1" >API Reference</h2>
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
   
   
 
@@ -400,9 +400,18 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
 of the dialog.</li>
 <li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual template string.</li>
+<li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template with a
+<code>&lt;md-dialog&gt;</code> tag if one is not provided. Defaults to true. Can be disabled if you provide a
+custom dialog directive.</li>
 <li><code>targetEvent</code> - <code>{DOMClickEvent=}</code>: A click&#39;s event object. When passed in as an option,
 the location of the click will be used as the starting point for the opening animation
 of the the dialog.</li>
+<li><code>openFrom</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) from which the Dialog will
+originate.</li>
+<li><code>closeTo</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) to which the Dialog will
+target.</li>
 <li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified,
 it will create a new isolate scope.
 This scope will be destroyed when the dialog is removed unless <code>preserveScope</code> is set to true.</li>
@@ -435,7 +444,7 @@ to the root element of the application.</li>
 starting.</li>
 <li><code>onComplete</code> <code>{function=}</code>: Callback function used to announce when the show() action is
 finished.</li>
-<li><code>onRemoving</code> `{function=} Callback function used to announce the close/hide() action is
+<li><code>onRemoving</code> <code>{function=}</code>: Callback function used to announce the close/hide() action is
 starting. This allows developers to run custom animations in parallel the close animations.</li>
 </ul>
 

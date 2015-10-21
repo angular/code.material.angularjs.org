@@ -602,6 +602,12 @@ angular.module('docsApp').constant('DEMOS', [
             "label": "dialog1.tmpl.html",
             "fileType": "html",
             "outputPath": "demo-partials/dialog/demoBasicUsage/dialog1.tmpl.html"
+          },
+          {
+            "name": "tabDialog.tmpl.html",
+            "label": "tabDialog.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/dialog/demoBasicUsage/tabDialog.tmpl.html"
           }
         ],
         "js": [
@@ -620,6 +626,35 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/dialog/demoBasicUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "dialogDemo2",
+          "module": "dialogDemo2",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "dialogdemoOpenFromCloseTo",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/dialog/demoOpenFromCloseTo/script.js"
+          }
+        ],
+        "moduleName": "material.components.dialog",
+        "name": "demoOpenFromCloseTo",
+        "label": "Open From Close To",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/dialog/demoOpenFromCloseTo/index.html"
         }
       }
     ],
