@@ -408,8 +408,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <div flex="33">\n' +
     '          [flex="33"]\n' +
     '        </div>\n' +
-    '        <div flex="67">\n' +
-    '          [flex="67"]\n' +
+    '        <div flex="66">\n' +
+    '          [flex="66"]\n' +
     '        </div>\n' +
     '        <div flex="50">\n' +
     '          [flex="50"]\n' +
@@ -425,9 +425,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    A layout child\'s <code>flex</code> attribute can be given an integer value from 0-100.\n' +
     '    The element will stretch to the percentage of available space matching the value.\n' +
     '    <br/><br/>\n' +
-    '    Currently, the <code>flex</code> attribute value is restricted to multiples of five and 33, 34, 66, and 67.\n' +
+    '    Currently, the <code>flex</code> attribute value is restricted to multiples of five and 33 or 66.\n' +
     '    <br/>\n' +
-    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="67", flex="75", ... flex="100"</code>.\n' +
+    '    For example: <code>flex="5", flex="20", flex="33", flex="50", flex="66", flex="75", ... flex="100"</code>.\n' +
     '  </p>\n' +
     '  <p>\n' +
     '    See the <a href="layout/options">layout options page</a> for more information on responsive flex attributes like\n' +
@@ -560,7 +560,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <p>\n' +
     '    Add the <code>flex-offset</code> attribute to a layout child to set its\n' +
     '    offset percentage within the layout. Values must be multiples \n' +
-    '    of <code>5</code>, or <code>33</code>, <code>34</code>, <code>66</code>, <code>67</code>.\n' +
+    '    of <code>5</code> or <code>33</code> / <code>66</code>.\n' +
     '  </p>\n' +
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
@@ -689,11 +689,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <demo-file name="index.html">\n' +
     '      <div layout="row" layout-wrap>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
-    '        <div flex="67">[flex=67]</div>\n' +
-    '        <div flex="67">[flex=67]</div>\n' +
+    '        <div flex="66">[flex=66]</div>\n' +
+    '        <div flex="66">[flex=66]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
-    '        <div flex="34">[flex=34]</div>\n' +
+    '        <div flex="33">[flex=33]</div>\n' +
     '        <div flex="33">[flex=33]</div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -710,10 +710,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <docs-demo demo-title="Responsive Flex Attributes" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row">\n' +
-    '        <div flex="67" flex-sm="33">\n' +
+    '        <div flex="66" flex-sm="33">\n' +
     '          I flex to one-third of the space on mobile, and two-thirds on other devices.\n' +
     '        </div>\n' +
-    '        <div flex="33" flex-sm="67">\n' +
+    '        <div flex="33" flex-sm="66">\n' +
     '          I flex to two-thirds of the space on mobile, and one-third on other devices.\n' +
     '        </div>\n' +
     '      </div>\n' +
