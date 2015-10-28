@@ -107,14 +107,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
-    '    <iframe height=\'272\' scrolling=\'no\' data-default-tab="html"\n' +
-    '            src=\'//codepen.io/marcysutton/embed/OPbpKm?height=272&theme-id=11083\'\n' +
-    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
-    '      See the Pen <a href=\'http://codepen.io/marcysutton/pen/OPbpKm/\'>Angular Material Dependencies</a>\n' +
-    '      on <a href=\'http://codepen.io\'>CodePen</a>.\n' +
-    '    </iframe>\n' +
     '\n' +
-    '    <md-divider></md-divider>\n' +
+    '    <iframe height=\'412\' scrolling=\'no\'\n' +
+    '            src=\'//codepen.io/team/AngularMaterial/embed/JYvaxJ/?height=412&theme-id=20485&default-tab=result\'\n' +
+    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
+    '      See the Pen <a href=\'http://codepen.io/team/AngularMaterial/pen/JYvaxJ/\'>Angular Material Basic App</a>\n' +
+    '      by Angular Material (<a href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on\n' +
+    '      <a href=\'http://codepen.io\'>CodePen</a>.\n' +
+    '    </iframe>\n' +
     '\n' +
     '    <br/>\n' +
     '    <h2>Contributing to Angular Material</h2>\n' +
@@ -132,11 +132,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <li>For questions,\n' +
     '          <a href="https://groups.google.com/forum/#!forum/ngmaterial" target="_blank">\n' +
     '              search the Forum\n' +
-    '          </a> and/or post a new message.\n' +
+    '          </a> and/or post a new question.\n' +
     '      </li>\n' +
     '      <li>\n' +
     '        Join the\n' +
-    '        <a href="https://gitter.im/angular/material?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge" target="_blank">\n' +
+    '        <a href="https://gitter.im/angular/material" target="_blank">\n' +
     '          Gitter Chat\n' +
     '        </a>\n' +
     '      </li>\n' +
