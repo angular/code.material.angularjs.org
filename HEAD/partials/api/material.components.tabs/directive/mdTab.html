@@ -19,8 +19,6 @@ complex tab header markup. If neither the <strong>label</strong> nor the <strong
 markup of the <code>&lt;md-tab&gt;</code> is used as the tab header markup.</p>
 <p>Please note that if you use <code>&lt;md-tab-label&gt;</code>, your content <strong>MUST</strong> be wrapped in the <code>&lt;md-tab-body&gt;</code> tag.  This
 is to define a clear separation between the tab content and the tab label.</p>
-<p>If a tab <strong>label</strong> has been identified, then any <strong>non-</strong><code>&lt;md-tab-label&gt;</code> markup
-will be considered tab content and will be transcluded to the internal <code>&lt;div class=&quot;md-tabs-content&quot;&gt;</code> container.</p>
 <p>This container is used by the TabsController to show/hide the active tab&#39;s content view. This synchronization is
 automatically managed by the internal TabsController whenever the tab selection changes. Selection changes can
 be initiated via data binding changes, programmatic invocation, or user gestures.</p>
