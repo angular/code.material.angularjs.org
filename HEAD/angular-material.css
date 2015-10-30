@@ -6749,6 +6749,7 @@ md-input-container {
     padding-right: 2px;
     border-width: 0 0 1px 0;
     line-height: 26px;
+    height: 30px;
     -ms-flex-preferred-size: 26px;
     border-radius: 0;
     border-style: solid;
