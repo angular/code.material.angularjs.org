@@ -3149,7 +3149,10 @@ function InterimElementProvider() {
       updateFn(getNormalizedAttrValue(className, attrs, ""));
       scope.$on("$destroy", function() { unwatch() });
 
-      if (config.removeAttributes) element.removeAttr(className);
+
+      if (config.removeAttributes && (element[0].nodeName != "#comment")) {
+        element.removeAttr(className);
+      }
     }
   }
 
