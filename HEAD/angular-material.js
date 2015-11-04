@@ -13088,11 +13088,11 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
     // and values matching every option's controller.
     self.options = {};
 
-    $scope.$watch(function() {
+    $scope.$watchCollection(function() {
       return self.options;
     }, function() {
       self.ngModel.$render();
-    }, true);
+    });
 
     var deregisterCollectionWatch;
     var defaultIsEmpty;
@@ -13239,6 +13239,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdTheming) {
         }
       }
       self.ngModel.$setViewValue(self.isMultiple ? values : values[0]);
+      self.ngModel.$render();
     };
 
     function renderMultiple() {
