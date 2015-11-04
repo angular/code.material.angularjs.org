@@ -23,7 +23,7 @@
 <li>The dialog is always given an isolate scope.</li>
 <li>The dialog&#39;s template must have an outer <code>&lt;md-dialog&gt;</code> element.
 Inside, use an <code>&lt;md-dialog-content&gt;</code> element for the dialog&#39;s content, and use
-an element with class <code>md-actions</code> for the dialog&#39;s actions.</li>
+an <code>&lt;md-dialog-actions&gt;</code> element for the dialog&#39;s actions.</li>
 <li>Dialogs must cover the entire application to keep interactions inside of them.
 Use the <code>parent</code> option to change where dialogs are appended.</li>
 </ul>
@@ -117,11 +117,11 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
            &#39;      </md-item>&#39;+
            &#39;    </md-list>&#39;+
            &#39;  </md-dialog-content>&#39; +
-           &#39;  <div class="md-actions">&#39; +
+           &#39;  <md-dialog-actions>&#39; +
            &#39;    <md-button ng-click="closeDialog()" class="md-primary">&#39; +
            &#39;      Close Dialog&#39; +
            &#39;    </md-button>&#39; +
-           &#39;  </div>&#39; +
+           &#39;  </md-dialog-actions>&#39; +
            &#39;</md-dialog>&#39;,
          locals: {
            items: $scope.items
@@ -196,11 +196,11 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 
             &#39;  <md-dialog-content>Hello {{ employee }}!</md-dialog-content>&#39; +
 
-            &#39;  <div class="md-actions">&#39; +
+            &#39;  <md-dialog-actions>&#39; +
             &#39;    <md-button ng-click="closeDialog()" class="md-primary">&#39; +
             &#39;      Close Greeting&#39; +
             &#39;    </md-button>&#39; +
-            &#39;  </div>&#39; +
+            &#39;  </md-dialog-actions>&#39; +
             &#39;</md-dialog>&#39;,
           controller: &#39;GreetingController&#39;,
           onComplete: afterShowAnimation,

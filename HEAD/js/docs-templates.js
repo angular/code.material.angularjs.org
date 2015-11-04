@@ -906,11 +906,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </div>\n' +
     '  </md-dialog-content>\n' +
     '\n' +
-    '  <div class="md-actions" layout="horizontal">\n' +
+    '  <md-dialog-actions layout="horizontal">\n' +
     '    <md-button class="md-primary" ng-click="$hideDialog()">\n' +
     '      Done\n' +
     '    </md-button>\n' +
-    '  </div>\n' +
+    '  </md-dialog-actions>\n' +
     '</md-dialog>\n' +
     '');
 }]);

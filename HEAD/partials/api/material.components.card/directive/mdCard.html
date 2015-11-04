@@ -17,7 +17,7 @@
 <p>An image included as a direct descendant will fill the card&#39;s width, while the <code>&lt;md-card-content&gt;</code>
 container will wrap text content and provide padding. An <code>&lt;md-card-footer&gt;</code> element can be
 optionally included to put content flush against the bottom edge of the card.</p>
-<p>Action buttons can be included in an element with the <code>.md-actions</code> class, also used in <code>md-dialog</code>.
+<p>Action buttons can be included in an <code>&lt;md-card-actions&gt;</code> element, similar to <code>&lt;md-dialog-actions&gt;</code>.
 You can then position buttons using layout attributes.</p>
 <p>Cards have constant width and variable heights; where the maximum height is limited to what can
 fit within a single view on a platform, but it can temporarily expand as needed.</p>
@@ -56,10 +56,10 @@ fit within a single view on a platform, but it can temporarily expand as needed.
    <h2>Card headline</h2>
    <p>Card content</p>
  </md-card-content>
- <div class="md-actions" layout="row" layout-align="end center">
+ <md-card-actions layout="row" layout-align="end center">
    <md-button>Action 1</md-button>
    <md-button>Action 2</md-button>
- </div>
+ </md-card-actions>
 </md-card>
 </hljs>
   
