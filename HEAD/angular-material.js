@@ -12755,6 +12755,8 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
     return function postLink(scope, element, attr, ctrls) {
       var isDisabled;
 
+      var firstOpen = true;
+
       var containerCtrl = ctrls[0];
       var mdSelectCtrl = ctrls[1];
       var ngModelCtrl = ctrls[2];
@@ -12807,6 +12809,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
       };
 
       attr.$observe('placeholder', ngModelCtrl.$render);
+
 
       mdSelectCtrl.setLabelText = function(text) {
         mdSelectCtrl.setIsPlaceholder(!text);
@@ -12922,6 +12925,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
         element.on('keydown', handleKeypress);
       }
 
+
       var ariaAttrs = {
         role: 'combobox',
         'aria-expanded': 'false'
@@ -12995,6 +12999,10 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
 
       function openSelect() {
         selectScope.isOpen = true;
+        if (firstOpen) {
+          element.on('blur', setUntouched);
+          firstOpen = false;
+        }
 
         $mdSelect.show({
           scope: selectScope,
@@ -13004,9 +13012,15 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
           target: element[0],
           hasBackdrop: true,
           loadingAsync: attr.mdOnOpen ? scope.$eval(attr.mdOnOpen) || true : false
-        }).then(function() {
+        }).finally(function() {
           selectScope.isOpen = false;
+          ngModelCtrl.$setTouched();
         });
+
+        function setUntouched() {
+          ngModelCtrl.$setUntouched();
+          element.off('blur', setUntouched);
+        }
       }
     };
   }
