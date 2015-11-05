@@ -492,6 +492,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <docs-demo demo-title="Flex Order Attribute" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row">\n' +
+    '        <div flex flex-order="-1">\n' +
+    '          <p>[flex-order="-1"]</p>\n' +
+    '        </div>\n' +
     '        <div flex flex-order="1" flex-order-gt-md="3">\n' +
     '          <p hide-gt-md>[flex-order="1"]</p>\n' +
     '          <p hide show-gt-md>[flex-order-gt-md="3"]</p>\n' +
@@ -508,7 +511,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '  <p>\n' +
     '    Add the <code>flex-order</code> attribute to a layout child to set its\n' +
-    '    position within the layout. Any value from 0-9 is accepted.\n' +
+    '    position within the layout. Any value from -9 to 9 is accepted.\n' +
     '  </p>\n' +
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
