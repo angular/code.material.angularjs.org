@@ -344,13 +344,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
 angular.module('buttonsDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -360,6 +353,13 @@ angular.module('buttonsDemo1', ['ngMaterial'])
 
   $scope.googleUrl = 'http://google.com';
 
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
 });
 
 

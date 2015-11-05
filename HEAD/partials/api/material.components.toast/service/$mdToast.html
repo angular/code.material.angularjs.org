@@ -126,14 +126,25 @@ rejected with <code>$mdToast.cancel()</code>.</p>
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-obj">obj</code></td>
-    <td class="description"><p>a <code>$mdToastPreset</code> with the chainable configuration methods:</p>
+    <td class="description"><p>a <code>$mdToastPreset</code> with the following chainable configuration methods.</p>
+<p><em><strong>Note:</strong> These configuration methods are provided in addition to the methods provided by
+  the <code>build()</code> and <code>show()</code> methods below.</em></p>
 <ul>
-<li>$mdToastPreset#content(string) - sets toast content to string</li>
-<li>$mdToastPreset#action(string) - adds an action button. If clicked the promise (returned from <code>show()</code>) will resolve
-with value &#39;ok&#39;; otherwise it promise is resolved with &#39;true&#39; after a hideDelay timeout.</li>
-<li>$mdToastPreset#highlightAction(boolean) - sets action button to be highlighted</li>
-<li>$mdToastPreset#capsule(boolean) - adds &#39;md-capsule&#39; class to the toast (curved corners)</li>
-<li>$mdToastPreset#theme(string) - sets the theme on the toast to theme (default is <code>$mdThemingProvider</code>&#39;s default theme)</li>
+<li><p><code>.content(string)</code> - Sets the toast content to the specified string.</p>
+</li>
+<li><p><code>.action(string)</code> - Adds an action button. If clicked, the promise (returned from <code>show()</code>)
+will resolve with the value <code>&#39;ok&#39;</code>; otherwise, it is resolved with <code>true</code> after a <code>hideDelay</code>
+timeout.</p>
+</li>
+<li><p><code>.highlightAction(boolean)</code> - Whether or not the action button will have an additional
+highlight class.</p>
+</li>
+<li><p><code>.capsule(boolean)</code> - Whether or not to add the <code>md-capsule</code> class to the toast to provide
+rounded corners.</p>
+</li>
+<li><p><code>.theme(string)</code> - Sets the theme on the toast to the requested theme. Default is
+<code>$mdThemingProvider</code>&#39;s default.</p>
+</li>
 </ul>
 </td>
   </tr>
