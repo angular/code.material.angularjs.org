@@ -130,7 +130,7 @@ avoid a nested ng-click situation.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* md-on-append</b>
+          <b>* md-transform-chip</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-expression">expression</code></span>
@@ -138,8 +138,13 @@ avoid a nested ng-click situation.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>An expression that when called expects you to return an object
-   representation of the chip input string.</p>
+          <p>An expression of form <code>myFunction($chip)</code> that when called
+   expects one of the following return values:</p>
+<ul>
+<li>an object representing the <code>$chip</code> input string</li>
+<li><code>undefined</code> to simply add the <code>$chip</code> input string, or</li>
+<li><code>null</code> to prevent the chip from being appended</li>
+</ul>
 
           
         </td>
@@ -148,6 +153,27 @@ avoid a nested ng-click situation.</p>
   
     
   
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-require-match</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If true, and the chips template contains an autocomplete,
+   only allow selection of pre-defined chips (i.e. you cannot add new ones).</p>
+
+          
+        </td>
+      </tr>
     
   
     
@@ -218,6 +244,25 @@ avoid a nested ng-click situation.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          md-on-add
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip has been
+   added.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           md-on-remove
           
           <span hide show-sm>
@@ -250,6 +295,8 @@ avoid a nested ng-click situation.</p>
           
         </td>
       </tr>
+    
+  
     
   
     

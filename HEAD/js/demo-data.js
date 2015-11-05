@@ -98,6 +98,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/autocomplete/demoFloatingLabel/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "autocompleteDemoInsideDialog",
+          "module": "autocompleteDemoInsideDialog",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "autocompletedemoInsideDialog",
+        "css": [],
+        "html": [
+          {
+            "name": "dialog.tmpl.html",
+            "label": "dialog.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/autocomplete/demoInsideDialog/dialog.tmpl.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/autocomplete/demoInsideDialog/script.js"
+          }
+        ],
+        "moduleName": "material.components.autocomplete",
+        "name": "demoInsideDialog",
+        "label": "Inside Dialog",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/autocomplete/demoInsideDialog/index.html"
+        }
       }
     ],
     "url": "demo/autocomplete"

@@ -1,5 +1,7 @@
 .chipsdemoContactChips md-content.autocomplete {
   min-height: 250px; }
+  .chipsdemoContactChips md-content.autocomplete input {
+    min-width: 400px; }
 .chipsdemoContactChips .md-item-text.compact {
   padding-top: 8px;
   padding-bottom: 8px; }
@@ -10,7 +12,8 @@
     .chipsdemoContactChips .contact-item.selected h3 {
       opacity: 0.5; }
   .chipsdemoContactChips .contact-item .md-list-item-text {
-    padding: 14px 0; }
+    padding: 14px 0;
+    max-width: 190px; }
     .chipsdemoContactChips .contact-item .md-list-item-text h3 {
       margin: 0 !important;
       padding: 0;
