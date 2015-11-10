@@ -402,7 +402,10 @@ argument to <code>.hide()</code>.</p>
         <code class="method-function-syntax">$mdToast.cancel([response]);
 </code>
       </h3>
-      <div class="service-desc"><p>Hide the existing toast and reject the promise returned from
+      <div class="service-desc"><p><code>DEPRECATED</code> - The promise returned from opening a toast is used only to notify about the closing of the toast.
+As such, there isn&#39;t any reason to also allow that promise to be rejected,
+since it&#39;s not clear what the difference between resolve and reject would be.</p>
+<p>Hide the existing toast and reject the promise returned from
 <code>$mdToast.show()</code>.</p>
 </div>
 
