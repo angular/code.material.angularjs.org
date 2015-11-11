@@ -7135,7 +7135,8 @@ md-menu-item {
 
 md-toolbar .md-menu {
   height: auto;
-  margin: auto; }
+  margin: auto;
+  padding: 0; }
 
 @media (max-width: 599px) {
   md-menu-content {
