@@ -900,5 +900,36 @@ DocsApp
       }
     ],
     "hasDemo": false
+  },
+  {
+    "name": "material.core.ripple",
+    "type": "module",
+    "outputPath": "partials/api/material.core.ripple/index.html",
+    "url": "api/material.core.ripple",
+    "label": "material.core.ripple",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js",
+    "docs": [
+      {
+        "name": "mdInkRipple",
+        "type": "directive",
+        "outputPath": "partials/api/material.core.ripple/directive/mdInkRipple.html",
+        "url": "api/directive/mdInkRipple",
+        "label": "mdInkRipple",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js",
+        "hasDemo": true
+      },
+      {
+        "name": "$mdInkRipple",
+        "type": "service",
+        "outputPath": "partials/api/material.core.ripple/service/$mdInkRipple.html",
+        "url": "api/service/$mdInkRipple",
+        "label": "$mdInkRipple",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js"
+      }
+    ],
+    "hasDemo": false
   }
 ]);
