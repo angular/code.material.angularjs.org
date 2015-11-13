@@ -6667,6 +6667,7 @@ md-input-container {
   position: relative;
   padding: 2px;
   margin: 18px 0;
+  overflow: hidden;
   /*
    * The .md-input class is added to the input/textarea
    */ }
@@ -6758,7 +6759,8 @@ md-input-container {
     border-radius: 0;
     border-style: solid;
     width: 100%;
-    box-sizing: border-box; }
+    box-sizing: border-box;
+    float: left; }
     md-input-container .md-input:focus {
       outline: none; }
     md-input-container .md-input:invalid {
