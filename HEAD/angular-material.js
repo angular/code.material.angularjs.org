@@ -10,7 +10,7 @@
 (function(){
 "use strict";
 
-angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.layout","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.fabTrigger","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.virtualRepeat","material.components.whiteframe"]);
+angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.layout","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.fabTrigger","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.showHide","material.components.select","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.virtualRepeat","material.components.whiteframe"]);
 })();
 (function(){
 "use strict";
@@ -12777,6 +12777,45 @@ mdRadioButtonDirective.$inject = ["$mdAria", "$mdUtil", "$mdTheming"];
 
 /**
  * @ngdoc module
+ * @name material.components.showHide
+ */
+
+// Add additional handlers to ng-show and ng-hide that notify directives
+// contained within that they should recompute their size.
+// These run in addition to Angular's built-in ng-hide and ng-show directives.
+angular.module('material.components.showHide', [
+  'material.core'
+])
+  .directive('ngShow', createDirective('ngShow', true))
+  .directive('ngHide', createDirective('ngHide', false));
+
+
+function createDirective(name, targetValue) {
+  return ['$mdUtil', function($mdUtil) {
+    return {
+      restrict: 'A',
+      multiElement: true,
+      link: function($scope, $element, $attr) {
+        $scope.$watch($attr[name], function(value) {
+          if (!!value === targetValue) {
+            $mdUtil.nextTick(function() {
+              $scope.$broadcast('$md-resize');
+            });
+            $mdUtil.dom.animator.waitTransitionEnd($element).then(function() {
+              $scope.$broadcast('$md-resize');
+            });
+          }
+        });
+      }
+    };
+  }];
+}
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
  * @name material.components.select
  */
 
@@ -14210,45 +14249,6 @@ function SelectProvider($$interimElementProvider) {
 SelectProvider.$inject = ["$$interimElementProvider"];
 
 
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
- * @name material.components.showHide
- */
-
-// Add additional handlers to ng-show and ng-hide that notify directives
-// contained within that they should recompute their size.
-// These run in addition to Angular's built-in ng-hide and ng-show directives.
-angular.module('material.components.showHide', [
-  'material.core'
-])
-  .directive('ngShow', createDirective('ngShow', true))
-  .directive('ngHide', createDirective('ngHide', false));
-
-
-function createDirective(name, targetValue) {
-  return ['$mdUtil', function($mdUtil) {
-    return {
-      restrict: 'A',
-      multiElement: true,
-      link: function($scope, $element, $attr) {
-        $scope.$watch($attr[name], function(value) {
-          if (!!value === targetValue) {
-            $mdUtil.nextTick(function() {
-              $scope.$broadcast('$md-resize');
-            });
-            $mdUtil.dom.animator.waitTransitionEnd($element).then(function() {
-              $scope.$broadcast('$md-resize');
-            });
-          }
-        });
-      }
-    };
-  }];
-}
 })();
 (function(){
 "use strict";
@@ -17437,9 +17437,10 @@ angular
     .module('material.components.autocomplete')
     .controller('MdAutocompleteCtrl', MdAutocompleteCtrl);
 
-var ITEM_HEIGHT  = 41,
-    MAX_HEIGHT   = 5.5 * ITEM_HEIGHT,
-    MENU_PADDING = 8;
+var ITEM_HEIGHT   = 41,
+    MAX_HEIGHT    = 5.5 * ITEM_HEIGHT,
+    MENU_PADDING  = 8,
+    INPUT_PADDING = 2; // Padding provided by `md-input-container`
 
 function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming, $window,
                              $animate, $rootElement, $attrs, $q) {
@@ -17519,11 +17520,17 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
         left   = hrect.left - root.left,
         width  = hrect.width,
         offset = getVerticalOffset(),
-        styles = {
-          left:     left + 'px',
-          minWidth: width + 'px',
-          maxWidth: Math.max(hrect.right - root.left, root.right - hrect.left) - MENU_PADDING + 'px'
-        };
+        styles;
+    // Adjust the width to account for the padding provided by `md-input-container`
+    if ($attrs.mdFloatingLabel) {
+      left += INPUT_PADDING;
+      width -= INPUT_PADDING * 2;
+    }
+    styles = {
+      left:     left + 'px',
+      minWidth: width + 'px',
+      maxWidth: Math.max(hrect.right - root.left, root.right - hrect.left) - MENU_PADDING + 'px'
+    };
     if (top > bot && root.height - hrect.bottom - MENU_PADDING < MAX_HEIGHT) {
       styles.top       = 'auto';
       styles.bottom    = bot + 'px';
@@ -17549,6 +17556,8 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
         offset = inputContainer.prop('offsetHeight');
         offset -= input.prop('offsetTop');
         offset -= input.prop('offsetHeight');
+        // add in the height left up top for the floating label text
+        offset += inputContainer.prop('offsetTop');
       }
       return offset;
     }
@@ -18344,6 +18353,7 @@ function MdAutocomplete () {
             role="listbox">\
           ' + getInputElement() + '\
           <md-progress-linear\
+              class="' + (attr.mdFloatingLabel ? 'md-inline' : '') + '"\
               ng-if="$mdAutocompleteCtrl.loadingIsVisible()"\
               md-mode="indeterminate"></md-progress-linear>\
           <md-virtual-repeat-container\

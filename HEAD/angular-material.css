@@ -5175,6 +5175,11 @@ md-autocomplete {
       position: absolute;
       bottom: -2px;
       left: 0; }
+      md-autocomplete md-autocomplete-wrap md-progress-linear.md-inline {
+        bottom: 40px;
+        right: 2px;
+        left: 2px;
+        width: auto; }
       md-autocomplete md-autocomplete-wrap md-progress-linear .md-mode-indeterminate {
         position: absolute;
         top: 0;
