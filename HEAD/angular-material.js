@@ -16039,6 +16039,12 @@ function MdToastProvider($$interimElementProvider) {
 
       // 'top left' -> 'md-top md-left'
       options.parent.addClass(options.openClass);
+
+      // static is the default position
+      if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
+        options.parent.css('position', 'relative');
+      }
+
       element.on(SWIPE_EVENTS, options.onSwipe);
       element.addClass(options.position.split(' ').map(function(pos) {
         return 'md-' + pos;
@@ -16051,7 +16057,12 @@ function MdToastProvider($$interimElementProvider) {
       element.off(SWIPE_EVENTS, options.onSwipe);
       if (options.openClass) options.parent.removeClass(options.openClass);
 
-      return (options.$destroy == true) ? element.remove() : $animate.leave(element);
+      return ((options.$destroy == true) ? element.remove() : $animate.leave(element))
+        .then(function () {
+          if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
+            options.parent.css('position', '');
+          }
+        });
     }
 
     function toastOpenClass(position) {
