@@ -484,6 +484,35 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "chipsCustomSeparatorDemo",
+          "module": "chipsCustomSeparatorDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "chipsdemoCustomSeparatorKeys",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/chips/demoCustomSeparatorKeys/script.js"
+          }
+        ],
+        "moduleName": "material.components.chips",
+        "name": "demoCustomSeparatorKeys",
+        "label": "Custom Separator Keys",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/chips/demoCustomSeparatorKeys/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "staticChipsDemo",
           "module": "staticChipsDemo",
           "dependencies": [
