@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.0-rc3
+ * v1.0.0-rc4
  */
 html, body {
   height: 100%;
@@ -5300,6 +5300,40 @@ md-autocomplete {
   md-autocomplete, .md-autocomplete-suggestions {
     border: 1px solid #fff; } }
 
+md-backdrop {
+  transition: opacity 450ms;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50; }
+  md-backdrop.md-menu-backdrop {
+    position: fixed !important;
+    z-index: 94; }
+  md-backdrop.md-select-backdrop {
+    z-index: 81;
+    transition-duration: 0; }
+  md-backdrop.md-dialog-backdrop {
+    z-index: 79; }
+  md-backdrop.md-bottom-sheet-backdrop {
+    z-index: 69; }
+  md-backdrop.md-sidenav-backdrop {
+    z-index: 59; }
+  md-backdrop.md-click-catcher {
+    position: absolute; }
+  md-backdrop.md-opaque {
+    opacity: .48; }
+    md-backdrop.md-opaque.ng-enter {
+      opacity: 0; }
+    md-backdrop.md-opaque.ng-enter.md-opaque.ng-enter-active {
+      opacity: .48; }
+    md-backdrop.md-opaque.ng-leave {
+      opacity: .48;
+      transition: opacity 400ms; }
+    md-backdrop.md-opaque.ng-leave.md-opaque.ng-leave-active {
+      opacity: 0; }
+
 md-bottom-sheet {
   position: absolute;
   left: 0;
@@ -5629,40 +5663,6 @@ button.md-button::-moz-focus-inner {
 @media screen and (-ms-high-contrast: active) {
   .md-button.md-raised, .md-button.md-fab {
     border: 1px solid #fff; } }
-
-md-backdrop {
-  transition: opacity 450ms;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  z-index: 50; }
-  md-backdrop.md-menu-backdrop {
-    position: fixed !important;
-    z-index: 94; }
-  md-backdrop.md-select-backdrop {
-    z-index: 81;
-    transition-duration: 0; }
-  md-backdrop.md-dialog-backdrop {
-    z-index: 79; }
-  md-backdrop.md-bottom-sheet-backdrop {
-    z-index: 69; }
-  md-backdrop.md-sidenav-backdrop {
-    z-index: 59; }
-  md-backdrop.md-click-catcher {
-    position: absolute; }
-  md-backdrop.md-opaque {
-    opacity: .48; }
-    md-backdrop.md-opaque.ng-enter {
-      opacity: 0; }
-    md-backdrop.md-opaque.ng-enter.md-opaque.ng-enter-active {
-      opacity: .48; }
-    md-backdrop.md-opaque.ng-leave {
-      opacity: .48;
-      transition: opacity 400ms; }
-    md-backdrop.md-opaque.ng-leave.md-opaque.ng-leave-active {
-      opacity: 0; }
 
 md-card {
   box-sizing: border-box;
@@ -9098,6 +9098,47 @@ md-tooltip {
     -webkit-transform: translate3d(0, 0, 0);
             transform: translate3d(0, 0, 0); }
 
+.md-virtual-repeat-container {
+  box-sizing: border-box;
+  display: block;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: relative; }
+  .md-virtual-repeat-container .md-virtual-repeat-scroller {
+    bottom: 0;
+    box-sizing: border-box;
+    left: 0;
+    margin: 0;
+    overflow-x: hidden;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0; }
+  .md-virtual-repeat-container .md-virtual-repeat-sizer {
+    box-sizing: border-box;
+    height: 1px;
+    display: block;
+    margin: 0;
+    padding: 0;
+    width: 1px; }
+  .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+    box-sizing: border-box;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    right: 0;
+    top: 0; }
+
+.md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {
+  overflow-x: auto;
+  overflow-y: hidden; }
+.md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-offsetter {
+  bottom: 16px;
+  right: auto;
+  white-space: nowrap; }
+
 .md-whiteframe-1dp, .md-whiteframe-z1 {
   box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
 
@@ -9173,44 +9214,3 @@ md-tooltip {
 @media screen and (-ms-high-contrast: active) {
   md-whiteframe {
     border: 1px solid #fff; } }
-
-.md-virtual-repeat-container {
-  box-sizing: border-box;
-  display: block;
-  margin: 0;
-  overflow: hidden;
-  padding: 0;
-  position: relative; }
-  .md-virtual-repeat-container .md-virtual-repeat-scroller {
-    bottom: 0;
-    box-sizing: border-box;
-    left: 0;
-    margin: 0;
-    overflow-x: hidden;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0; }
-  .md-virtual-repeat-container .md-virtual-repeat-sizer {
-    box-sizing: border-box;
-    height: 1px;
-    display: block;
-    margin: 0;
-    padding: 0;
-    width: 1px; }
-  .md-virtual-repeat-container .md-virtual-repeat-offsetter {
-    box-sizing: border-box;
-    left: 0;
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    right: 0;
-    top: 0; }
-
-.md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-scroller {
-  overflow-x: auto;
-  overflow-y: hidden; }
-.md-virtual-repeat-container.md-orient-horizontal .md-virtual-repeat-offsetter {
-  bottom: 16px;
-  right: auto;
-  white-space: nowrap; }
