@@ -299,10 +299,12 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 <code class="api-type label type-hint type-hint-obj">obj</code></td>
     <td class="description"><p>an <code>$mdDialogPreset</code> with the chainable configuration methods:</p>
 <ul>
-<li>$mdDialogPreset#title(string) - sets title to string</li>
-<li>$mdDialogPreset#content(string) - sets content / message to string</li>
-<li>$mdDialogPreset#ok(string) - sets okay button text to string</li>
-<li>$mdDialogPreset#theme(string) - sets the theme of the dialog</li>
+<li>$mdDialogPreset#title(string) - Sets the alert title.</li>
+<li>$mdDialogPreset#textContent(string) - Sets the alert message.</li>
+<li>$mdDialogPreset#htmlContent(string) - Sets the alert message as HTML. Requires ngSanitize
+  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+<li>$mdDialogPreset#ok(string) - Sets the alert &quot;Okay&quot; button text.</li>
+<li>$mdDialogPreset#theme(string) - Sets the theme of the alert dialog.</li>
 </ul>
 </td>
   </tr>
@@ -344,11 +346,13 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
     <td class="description"><p>an <code>$mdDialogPreset</code> with the chainable configuration methods:</p>
 <p>Additionally, it supports the following methods:</p>
 <ul>
-<li>$mdDialogPreset#title(string) - sets title to string</li>
-<li>$mdDialogPreset#content(string) - sets content / message to string</li>
-<li>$mdDialogPreset#ok(string) - sets okay button text to string</li>
-<li>$mdDialogPreset#cancel(string) - sets cancel button text to string</li>
-<li>$mdDialogPreset#theme(string) - sets the theme of the dialog</li>
+<li>$mdDialogPreset#title(string) - Sets the confirm title.</li>
+<li>$mdDialogPreset#textContent(string) - Sets the confirm message.</li>
+<li>$mdDialogPreset#htmlContent(string) - Sets the confirm message as HTML. Requires ngSanitize
+  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+<li>$mdDialogPreset#ok(string) - Sets the confirm &quot;Okay&quot; button text.</li>
+<li>$mdDialogPreset#cancel(string) - Sets the confirm &quot;Cancel&quot; button text.</li>
+<li>$mdDialogPreset#theme(string) - Sets the theme of the confirm dialog.</li>
 </ul>
 </td>
   </tr>
@@ -399,7 +403,9 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
 <ul>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
 of the dialog.</li>
-<li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual template string.</li>
+<li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This <strong>must</strong> be trusted HTML
+ with respect to Angular&#39;s <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
+ This template should <strong>never</strong> be constructed with any kind of user input or user data.</li>
 <li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template with a
 <code>&lt;md-dialog&gt;</code> tag if one is not provided. Defaults to true. Can be disabled if you provide a
 custom dialog directive.</li>
