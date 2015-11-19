@@ -47,7 +47,7 @@ on the screen with an optional duration, and provides a simple promise API.</p>
 var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
 app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
   $scope.openToast = function($event) {
-    $mdToast.show($mdToast.simple().content(&#39;Hello!&#39;));
+    $mdToast.show($mdToast.simple().textContent(&#39;Hello!&#39;));
     // Could also do $mdToast.showSimple(&#39;Hello&#39;);
   };
 });
@@ -130,7 +130,7 @@ rejected with <code>$mdToast.cancel()</code>.</p>
 <p><em><strong>Note:</strong> These configuration methods are provided in addition to the methods provided by
   the <code>build()</code> and <code>show()</code> methods below.</em></p>
 <ul>
-<li><p><code>.content(string)</code> - Sets the toast content to the specified string.</p>
+<li><p><code>.textContent(string)</code> - Sets the toast content to the specified string.</p>
 </li>
 <li><p><code>.action(string)</code> - Adds an action button. If clicked, the promise (returned from <code>show()</code>)
 will resolve with the value <code>&#39;ok&#39;</code>; otherwise, it is resolved with <code>true</code> after a <code>hideDelay</code>
@@ -156,9 +156,9 @@ rounded corners.</p>
 
     </li>
     
-    <li id="updateContent">
+    <li id="updateTextContent">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdToast.updateContent();
+        <code class="method-function-syntax">$mdToast.updateTextContent();
 </code>
       </h3>
       <div class="service-desc"><p>Updates the content of an existing toast. Useful for updating things like counts, etc.</p>
