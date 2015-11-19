@@ -818,7 +818,7 @@ angular.module('dialogDemo2', ['ngMaterial'])
       $mdDialog.alert()
         .clickOutsideToClose(true)
         .title('Opening from the left')
-        .content('Closing to the right!')
+        .textContent('Closing to the right!')
         .ariaLabel('Left to right demo')
         .ok('Nice!')
         // You can specify either sting with query selector
@@ -833,7 +833,7 @@ angular.module('dialogDemo2', ['ngMaterial'])
       $mdDialog.alert()
         .clickOutsideToClose(true)
         .title('Opening from offscreen')
-        .content('Closing to offscreen')
+        .textContent('Closing to offscreen')
         .ariaLabel('Offscreen Demo')
         .ok('Amazing!')
         // Or you can specify the rect to do the transition from
@@ -1316,7 +1316,7 @@ angular.module('listDemo2', ['ngMaterial'])
     $mdDialog.show(
       $mdDialog.alert()
         .title('Navigating')
-        .content('Inspect ' + person)
+        .textContent('Inspect ' + person)
         .ariaLabel('Person inspect demo')
         .ok('Neat!')
         .targetEvent(event)
@@ -1327,9 +1327,20 @@ angular.module('listDemo2', ['ngMaterial'])
     $mdDialog.show(
       $mdDialog.alert()
         .title('Navigating')
-        .content('Imagine being taken to ' + to)
+        .textContent('Imagine being taken to ' + to)
         .ariaLabel('Navigation demo')
         .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doPrimaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Primary Action')
+        .textContent('Primary actions can be used for one click actions')
+        .ariaLabel('Primary click demo')
+        .ok('Awesome!')
         .targetEvent(event)
     );
   };
@@ -1338,7 +1349,7 @@ angular.module('listDemo2', ['ngMaterial'])
     $mdDialog.show(
       $mdDialog.alert()
         .title('Secondary Action')
-        .content('Secondary actions can be used for one click actions')
+        .textContent('Secondary actions can be used for one click actions')
         .ariaLabel('Secondary click demo')
         .ok('Neat!')
         .targetEvent(event)
@@ -1374,7 +1385,7 @@ angular
           .clickOutsideToClose(true)
           .parent('body')
           .title('Suddenly, a redial')
-          .content('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
           .ok('That was easy')
       );
 
@@ -1405,7 +1416,7 @@ angular
       $mdDialog.show(
         $mdDialog.alert()
           .title('You clicked!')
-          .content('You clicked the menu item at index ' + index)
+          .textContent('You clicked the menu item at index ' + index)
           .ok('Nice')
           .targetEvent(originatorEv)
       );
@@ -1430,7 +1441,7 @@ function DemoCtrl($mdDialog) {
     $mdDialog.show(
       $mdDialog.alert()
         .title('You clicked!')
-        .content('You clicked the menu item at index ' + index)
+        .textContent('You clicked the menu item at index ' + index)
         .ok('Nice')
     );
   };
@@ -1474,7 +1485,7 @@ angular
     this.sampleAction = function(name, ev) {
       $mdDialog.show($mdDialog.alert()
         .title(name)
-        .content('You triggered the "' + name + '" action')
+        .textContent('You triggered the "' + name + '" action')
         .ok('Great')
         .targetEvent(ev)
       );
