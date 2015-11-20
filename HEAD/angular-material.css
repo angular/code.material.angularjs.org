@@ -5277,6 +5277,9 @@ md-autocomplete {
   max-height: 225.5px;
   z-index: 100; }
 
+.md-virtual-repeat-container.md-not-found {
+  height: 48px; }
+
 .md-autocomplete-suggestions {
   margin: 0;
   list-style: none;
