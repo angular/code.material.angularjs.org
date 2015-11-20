@@ -44,6 +44,12 @@ DocsApp
       "outputPath": "partials/Theming/04_multiple_themes.html",
       "url": "/Theming/04_multiple_themes",
       "label": "Multiple Themes"
+    },
+    {
+      "name": "Theming under the hood",
+      "outputPath": "partials/Theming/05_under_the_hood.html",
+      "url": "/Theming/05_under_the_hood",
+      "label": "Theming under the hood"
     }
   ]
 });
