@@ -13067,6 +13067,8 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
         $mdAria.expect(element, 'aria-label', labelText);
       }
 
+      scope.$watch(selectMenuCtrl.selectedLabels, syncLabelText);
+
       function syncLabelText() {
         if (selectContainer) {
           selectMenuCtrl = selectMenuCtrl || selectContainer.find('md-select-menu').controller('mdSelectMenu');
