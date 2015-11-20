@@ -7272,7 +7272,8 @@ md-progress-circular {
   padding-top: 0 !important;
   margin-bottom: 0 !important;
   -webkit-transform: scale(0.5);
-          transform: scale(0.5); }
+          transform: scale(0.5);
+  z-index: 2; }
   md-progress-circular .md-spinner-wrapper {
     display: block;
     position: relative;
