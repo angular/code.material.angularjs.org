@@ -443,7 +443,11 @@ function mdMediaFactory($mdConstant, $rootScope, $window) {
   }
 
   function add(query) {
-    var result = mqls[query] = $window.matchMedia(query);
+    var result = mqls[query];
+    if ( !result ) {
+      result = mqls[query] = $window.matchMedia(query);
+    }
+
     result.addListener(onQueryChange);
     return (results[result.media] = !!result.matches);
   }
@@ -8902,7 +8906,7 @@ MdDialogDirective.$inject = ["$$rAF", "$mdTheming", "$mdDialog"];
  *     finished.
  *   - `onRemoving` `{function=}`: Callback function used to announce the close/hide() action is
  *     starting. This allows developers to run custom animations in parallel the close animations.
- *
+ *   - `fullscreen` `{boolean=}`: An option to apply `.md-dialog-fullscreen` class on open.
  * @returns {promise} A promise that can be resolved with `$mdDialog.hide()` or
  * rejected with `$mdDialog.cancel()`.
  */
@@ -8937,7 +8941,7 @@ function MdDialogProvider($$interimElementProvider) {
   dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector"];
   return $$interimElementProvider('$mdDialog')
     .setDefaults({
-      methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent', 'closeTo', 'openFrom', 'parent'],
+      methods: ['disableParentScroll', 'hasBackdrop', 'clickOutsideToClose', 'escapeToClose', 'targetEvent', 'closeTo', 'openFrom', 'parent', 'fullscreen'],
       options: dialogDefaultOptions
     })
     .addPreset('alert', {
@@ -9003,6 +9007,7 @@ function MdDialogProvider($$interimElementProvider) {
       focusOnOpen: true,
       disableParentScroll: true,
       autoWrap: true,
+      fullscreen: false,
       transformTemplate: function(template, options) {
         return '<div class="md-dialog-container">' + validatedTemplate(template) + '</div>';
 
@@ -9407,6 +9412,10 @@ function MdDialogProvider($$interimElementProvider) {
       var translateOptions = {transitionInClass: 'md-transition-in', transitionOutClass: 'md-transition-out'};
       var from = animator.toTransformCss(buildTranslateToOrigin(dialogEl, options.openFrom || options.origin));
       var to = animator.toTransformCss("");  // defaults to center display (or parent or $rootElement)
+
+      if (options.fullscreen) {
+        dialogEl.addClass('md-dialog-fullscreen');
+      }
 
       return animator
         .translate3d(dialogEl, from, to, translateOptions)
