@@ -747,6 +747,24 @@ DocsApp
         "label": "mdSwipeRight",
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+      },
+      {
+        "name": "mdSwipeUp",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.swipe/directive/mdSwipeUp.html",
+        "url": "api/directive/mdSwipeUp",
+        "label": "mdSwipeUp",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+      },
+      {
+        "name": "mdSwipeDown",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.swipe/directive/mdSwipeDown.html",
+        "url": "api/directive/mdSwipeDown",
+        "label": "mdSwipeDown",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
       }
     ],
     "hasDemo": false
