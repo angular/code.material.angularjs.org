@@ -5,7 +5,9 @@
   .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures {
     padding: 25px;
     width: 100%; }
-  .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures, .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures *:before, .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures *:after {
+  .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures,
+  .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures *:before,
+  .icondemoFontIconsWithLigatures .appDemoFontIconsWithLigatures *:after {
     box-sizing: border-box; }
   .icondemoFontIconsWithLigatures header {
     overflow: hidden; }
@@ -23,7 +25,8 @@
     border-bottom: 1px dotted #ccc;
     padding: 10px 0 20px;
     margin-bottom: 20px; }
-  .icondemoFontIconsWithLigatures .preview-scale, .icondemoFontIconsWithLigatures .preview-glyphs {
+  .icondemoFontIconsWithLigatures .preview-scale,
+  .icondemoFontIconsWithLigatures .preview-glyphs {
     display: flex;
     flex-direction: row; }
   .icondemoFontIconsWithLigatures .preview-scale {

@@ -4,9 +4,12 @@
   .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames {
     padding: 25px;
     width: 100%; }
-  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames, .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:before, .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:after {
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames,
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:before,
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:after {
     box-sizing: border-box; }
-  .icondemoFontIconsWithClassnames [class^="icon-"]:before, .icondemoFontIconsWithClassnames [class*=" icon-"]:before {
+  .icondemoFontIconsWithClassnames [class^="icon-"]:before,
+  .icondemoFontIconsWithClassnames [class*=" icon-"]:before {
     font-family: "icomoon";
     display: inline-block;
     vertical-align: middle;
@@ -48,7 +51,8 @@
     border-bottom: 1px dotted #ccc;
     padding: 10px 0 20px;
     margin-bottom: 20px; }
-  .icondemoFontIconsWithClassnames .preview-scale, .icondemoFontIconsWithClassnames .preview-glyphs {
+  .icondemoFontIconsWithClassnames .preview-scale,
+  .icondemoFontIconsWithClassnames .preview-glyphs {
     display: flex;
     flex-direction: row; }
   .icondemoFontIconsWithClassnames .preview-scale {

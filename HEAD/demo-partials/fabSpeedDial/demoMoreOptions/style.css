@@ -1,15 +1,20 @@
 .fabSpeedDialdemoMoreOptions .md-fab-top-right {
   top: 16px; }
+
 @media only screen and (max-device-width: 600px) {
   .fabSpeedDialdemoMoreOptions .md-fab-top-right {
     top: 9px;
     right: 9px; } }
+
 .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.trigger-fab:hover, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.trigger-fab.md-focused, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab:hover, .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab.md-focused {
   background-color: #333; }
+
 .fabSpeedDialdemoMoreOptions .md-fab.demo-fab.action-fab {
   background-color: #aaa; }
+
 .fabSpeedDialdemoMoreOptions md-content div[flex="50"] {
   padding: 15px; }
+
 .fabSpeedDialdemoMoreOptions md-fab-speed-dial {
   margin-top: 89px; }
   .fabSpeedDialdemoMoreOptions md-fab-speed-dial md-fab-trigger {
@@ -19,5 +24,6 @@
     display: flex !important; }
     .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide md-fab-trigger, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide md-fab-trigger {
       transform: scale(0); }
+
 .fabSpeedDialdemoMoreOptions .intro {
   padding-left: 5px; }

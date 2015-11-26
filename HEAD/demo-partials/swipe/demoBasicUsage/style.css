@@ -1,5 +1,6 @@
 .swipedemoBasicUsage .demo-swipe {
   padding: 20px 10px; }
+
 .swipedemoBasicUsage .no-select {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

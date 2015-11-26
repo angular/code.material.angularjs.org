@@ -2,9 +2,11 @@
   min-height: 250px; }
   .chipsdemoContactChips md-content.autocomplete input {
     min-width: 400px; }
+
 .chipsdemoContactChips .md-item-text.compact {
   padding-top: 8px;
   padding-bottom: 8px; }
+
 .chipsdemoContactChips .contact-item {
   box-sizing: border-box; }
   .chipsdemoContactChips .contact-item.selected {
@@ -26,10 +28,13 @@
     .chipsdemoContactChips .contact-item {
       float: left;
       width: 33%; } }
+
 .chipsdemoContactChips md-contact-chips {
   margin-bottom: 10px; }
+
 .chipsdemoContactChips .md-chips {
   padding: 5px 0 8px; }
+
 .chipsdemoContactChips .fixedRows {
   height: 250px;
   overflow: hidden; }

@@ -1,6 +1,7 @@
 .virtualRepeatdemoHorizontalUsage #horizontal-container {
   height: 100px;
   width: 830px; }
+
 .virtualRepeatdemoHorizontalUsage .repeated-item {
   border-right: 1px solid #ddd;
   box-sizing: border-box;
@@ -9,7 +10,9 @@
   padding-top: 35px;
   text-align: center;
   width: 50px; }
+
 .virtualRepeatdemoHorizontalUsage md-content {
   margin: 16px; }
+
 .virtualRepeatdemoHorizontalUsage md-virtual-repeat-container {
   border: solid 1px grey; }

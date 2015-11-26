@@ -1,9 +1,12 @@
 .fabSpeedDialdemoBasicUsage .text-capitalize {
   text-transform: capitalize; }
+
 .fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
   background-color: #000 !important; }
+
 .fabSpeedDialdemoBasicUsage p.note {
   font-size: 1.2rem; }
+
 .fabSpeedDialdemoBasicUsage .lock-size {
   min-width: 300px;
   min-height: 300px;
