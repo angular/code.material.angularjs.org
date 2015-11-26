@@ -285,6 +285,64 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/card/demoBasicUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "cardDemo1",
+          "module": "cardDemo1",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "carddemoCardActionButtons",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/card/demoCardActionButtons/script.js"
+          }
+        ],
+        "moduleName": "material.components.card",
+        "name": "demoCardActionButtons",
+        "label": "Card Action Buttons",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/card/demoCardActionButtons/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "cardDemo1",
+          "module": "cardDemo1",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "carddemoInCardActions",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/card/demoInCardActions/script.js"
+          }
+        ],
+        "moduleName": "material.components.card",
+        "name": "demoInCardActions",
+        "label": "In Card Actions",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/card/demoInCardActions/index.html"
+        }
       }
     ],
     "url": "demo/card"

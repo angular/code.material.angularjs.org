@@ -287,6 +287,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <md-radio-button value="end">end</md-radio-button>\n' +
     '        <md-radio-button value="space-around">space-around</md-radio-button>\n' +
     '        <md-radio-button value="space-between">space-between</md-radio-button>\n' +
+    '        <md-radio-button value="stretch">stretch</md-radio-button>\n' +
     '      </md-radio-group>\n' +
     '    </div>\n' +
     '    <div>\n' +
@@ -295,6 +296,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <md-radio-button value="start">start</md-radio-button>\n' +
     '        <md-radio-button value="center">center</md-radio-button>\n' +
     '        <md-radio-button value="end">end</md-radio-button>\n' +
+    '        <md-radio-button value="stretch">stretch</md-radio-button>\n' +
     '      </md-radio-group>\n' +
     '    </div>\n' +
     '\n' +

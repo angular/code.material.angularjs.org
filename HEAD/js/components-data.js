@@ -949,5 +949,27 @@ DocsApp
       }
     ],
     "hasDemo": false
+  },
+  {
+    "name": "material.core.util",
+    "type": "module",
+    "outputPath": "partials/api/material.core.util/index.html",
+    "url": "api/material.core.util",
+    "label": "material.core.util",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/util.js",
+    "docs": [
+      {
+        "name": "mdAutofocus",
+        "type": "directive",
+        "outputPath": "partials/api/material.core.util/directive/mdAutofocus.html",
+        "url": "api/directive/mdAutofocus",
+        "label": "mdAutofocus",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/util.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
   }
 ]);

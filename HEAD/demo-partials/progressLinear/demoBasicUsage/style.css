@@ -10,10 +10,10 @@
   margin-left: 10px;
   margin-top: -10px; }
 .progressLineardemoBasicUsage #loaders > h5 {
-  padding-top: 4px; }
+  margin-top: 0; }
 .progressLineardemoBasicUsage #loaders > p {
   margin-right: 20px;
-  font-size: 0.9em; }
+  margin-bottom: 24px; }
 .progressLineardemoBasicUsage p.small {
   font-size: 0.8em;
   margin-top: -18px; }

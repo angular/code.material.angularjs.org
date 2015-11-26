@@ -311,7 +311,7 @@ content that will be associated with each tab button.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          md-no-disconnect
+          md-enable-disconnect
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></span>
@@ -319,7 +319,7 @@ content that will be associated with each tab button.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If your tab content has background tasks (ie. event listeners), you will want to include this to prevent the scope from being disconnected</p>
+          <p>When enabled, scopes will be disconnected for tabs that are not being displayed.  This provides a performance boost, but may also cause unexpected issues and is not recommended for most users.</p>
 
           
         </td>
