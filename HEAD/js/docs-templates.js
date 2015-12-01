@@ -725,7 +725,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="layout/grid">Grid System</a> page for a basic explanation\n' +
+    '    See the <a href="layout/grid">Layout System</a> page for a basic explanation\n' +
     '    of flex and offset attributes.\n' +
     '  </p>\n' +
     '\n' +
