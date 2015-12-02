@@ -12520,6 +12520,9 @@ md-toast {
   md-toast {
     border: 1px solid #fff; } }
 
+.md-toast-animating {
+  overflow: hidden !important; }
+
 md-toolbar {
   box-sizing: border-box;
   display: -webkit-flex;

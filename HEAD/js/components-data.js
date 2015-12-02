@@ -231,14 +231,23 @@ DocsApp
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
     "docs": [
       {
+        "name": "mdDialog",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.dialog/directive/mdDialog.html",
+        "url": "api/directive/mdDialog",
+        "label": "mdDialog",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
+        "hasDemo": true
+      },
+      {
         "name": "$mdDialog",
         "type": "service",
         "outputPath": "partials/api/material.components.dialog/service/$mdDialog.html",
         "url": "api/service/$mdDialog",
         "label": "$mdDialog",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
-        "hasDemo": false
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js"
       }
     ],
     "hasDemo": false

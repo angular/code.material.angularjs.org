@@ -32,7 +32,7 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 <li>Complex dialogs can be sized with <code>flex=&quot;percentage&quot;</code>, i.e. <code>flex=&quot;66&quot;</code>.</li>
 <li>Default max-width is 80% of the <code>rootElement</code> or <code>parent</code>.</li>
 </ul>
-<h2 id="css">Css</h2>
+<h2 id="css">CSS</h2>
 <ul>
 <li><code>.md-dialog-content</code> - class that sets the padding on the content as the spec file</li>
 </ul>
@@ -439,7 +439,7 @@ Default true.</li>
 <li><code>focusOnOpen</code> - <code>{boolean=}</code>: An option to override focus behavior on open. Only disable if
 focusing some other way, as focus management is required for dialogs to be accessible.
 Defaults to true.</li>
-<li><code>controller</code> - <code>{string=}</code>: The controller to associate with the dialog. The controller
+<li><code>controller</code> - <code>{function|string=}</code>: The controller to associate with the dialog. The controller
 will be injected with the local <code>$mdDialog</code>, which passes along a scope for the dialog.</li>
 <li><code>locals</code> - <code>{object=}</code>: An object containing key/value pairs. The keys will be used as names
 of values to inject into the controller. For example, <code>locals: {three: 3}</code> would inject
