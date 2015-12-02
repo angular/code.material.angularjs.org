@@ -873,6 +873,208 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
 }]);
 
 angular.module('docsApp').run(['$templateCache', function($templateCache) {
+  $templateCache.put('partials/layout-tips.tmpl.html',
+    '<style>\n' +
+    '  ul.spaced li {\n' +
+    '    margin-bottom: 15px;\n' +
+    '  }\n' +
+    '</style>\n' +
+    '<div ng-controller="LayoutTipsCtrl as tips" class="layout-content">\n' +
+    '  <h3>Overview</h3>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    The Angular Material layout system relies very heavily on the new\n' +
+    '    <a href="http://www.w3.org/TR/css3-flexbox/">Flexbox</a> standard. This is an incredibly\n' +
+    '    powerful layout system that gives developers a whole new level of flexibility with your web\n' +
+    '    apps.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    However, Flexbox is also relatively new and most browsers are still trying to work out the kinks\n' +
+    '    while the standard is being finalized.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Below, you will find solutions to some of the common scenarios and problems that may arise when\n' +
+    '    dealing with flex. Additionally, if you are experiencing an issue in a particular browser, we\n' +
+    '    highly recommend checking out the excellent\n' +
+    '    <a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> project to see if your problem\n' +
+    '    is a known issue that has a workaround available.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Lastly, Angular Material provides a robust and full-featured layout system based on HTML, CSS\n' +
+    '    and Javascript that allows easy implementation of common scenarios. However, every application\n' +
+    '    is unique and may have different use-cases that Angular Material may not yet handle.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    If you have a use-case that is not yet covered, we encourage you to visit the\n' +
+    '    <a href="https://groups.google.com/forum/#!forum/ngmaterial">forums</a> and see how other\n' +
+    '    developers have achieved something similar, or search our\n' +
+    '    <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen">open issues</a> to\n' +
+    '    see if someone else has already requested the same functionality.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    But ultimately, Angular Material can only provide a foundation for your application. There may\n' +
+    '    be cases where you need to add custom HTML, CSS and Javascript to achieve your desired results.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <h3>General</h3>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    The following are some general guidelines and tips when using the flex and layout attributes\n' +
+    '    within your own applications.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <ul class="spaced">\n' +
+    '    <li>\n' +
+    '      When building your application\'s layout, it is usually best to start with a mobile version\n' +
+    '      that looks and works correctly, and then apply styling for larger devices using the\n' +
+    '      <code>flex-gt-*</code> or <code>hide-gt-*</code> attributes. This approach typically leads\n' +
+    '      to less frustration than starting big and attempting to fix issues on smaller devices.\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '      Some elements like <code>&lt;fieldset&gt;</code> and <code>&lt;button&gt;</code> do not always\n' +
+    '      work correctly with flex. Additionally, some of the Angular Material components provide their\n' +
+    '      own styles. If you are having difficulty with a specific element/component, but not\n' +
+    '      others, try applying the flex attributes to a parent or child <code>&lt;div&gt;</code> of the\n' +
+    '      element instead.\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '      Many Flexbox properties such as <code>flex-direction</code>, and most of the alignment\n' +
+    '      properties are not animatable. If you need to animate those, you should choose a different\n' +
+    '      layout system.\n' +
+    '    </li>\n' +
+    '\n' +
+    '    <li>\n' +
+    '      Flexbox can behave differently on different browsers. You should test as many as possible on\n' +
+    '      a regular basis so that you can catch and fix layout issues more quickly.\n' +
+    '    </li>\n' +
+    '  </ul>\n' +
+    '\n' +
+    '  <h3>Chrome Flex Height</h3>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    In Flexbox, some browsers will determine size of the flex containers based on the size of their\n' +
+    '    content. This is particularly noticable if you have a non-flex item (say a toolbar), followed by\n' +
+    '    two flex items in a column layout.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Chrome Flex Height - Odd" class="small-demo colorNested">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="column" style="height: 450px !important;">\n' +
+    '        <div style="height: 50px;">Toolbar</div>\n' +
+    '\n' +
+    '        <div flex layout="column" style="overflow: auto;">\n' +
+    '          <md-content flex layout-margin>\n' +
+    '            <p>Flex with smaller content...</p>\n' +
+    '\n' +
+    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
+    '          </md-content>\n' +
+    '\n' +
+    '          <md-content flex layout-margin>\n' +
+    '            <p>\n' +
+    '              Flex with larger content...\n' +
+    '            </p>\n' +
+    '\n' +
+    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
+    '\n' +
+    '            <div id="toHide">\n' +
+    '              <p ng-repeat="i in [5,6,7,8,9]">Line {{i}}</p>\n' +
+    '            </div>\n' +
+    '          </md-content>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Notice how in Chrome the second scrollable area is nearly twice as tall as the first. This is\n' +
+    '    because we are using nested flex items and the contents of the second\n' +
+    '    <code>&lt;md-content&gt;</code> are twice as large as the first. Try clicking the button below\n' +
+    '    to toggle the light blue box; this will make the containers the same size.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p layout="row" layout-align="center center">\n' +
+    '    <md-button class="md-raised" ng-click="tips.toggleContentSize()">\n' +
+    '      {{tips.toggleButtonText}} Blue Box\n' +
+    '    </md-button>\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    In order to fix this, we must specify the height of the outer flex item. The easiest way to\n' +
+    '    achieve this is to simply set the height to <code>100%</code>. When paired with the\n' +
+    '    <code>flex</code> attribute, this achieves the desired result.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    <em>\n' +
+    '      <strong>Note:</strong> When <code>height: 100%</code> is used without the <code>flex</code>\n' +
+    '      attribute, the container will take up as much space as available and squish the toolbar which\n' +
+    '      has been set to a height of <code>50px</code>.\n' +
+    '    </em>\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Chrome Flex Height - Fixed" class="small-demo colorNested">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="column" style="height: 450px !important;">\n' +
+    '        <div style="height: 50px;">Toolbar</div>\n' +
+    '\n' +
+    '        <div flex layout="column" style="overflow: auto; height: 100%;">\n' +
+    '          <md-content flex layout-margin>\n' +
+    '            <p>Flex with smaller content...</p>\n' +
+    '\n' +
+    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
+    '          </md-content>\n' +
+    '\n' +
+    '          <md-content flex layout-margin>\n' +
+    '            <p>\n' +
+    '              Flex with larger content...\n' +
+    '            </p>\n' +
+    '\n' +
+    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
+    '\n' +
+    '            <div>\n' +
+    '              <p ng-repeat="i in [5,6,7,8,9]">Line {{i}}</p>\n' +
+    '            </div>\n' +
+    '          </md-content>\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
+    '\n' +
+    '\n' +
+    '  <h3>Firefox <code>md-content</code> Height Calculation</h3>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Firefox currently has an issue calculating the proper height of flex containers whose children\n' +
+    '    are flex, but have more content than can properly fit within the container.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    This is particularly problematic if the flex children are <code>md-content</code> components as\n' +
+    '    it will prevent the content from scrolling correctly, instead scrolling the entire body.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    <a href="http://codepen.io/topherfangio/pen/gampyP">http://codepen.io/topherfangio/pen/gampyP</a>\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Notice in the above Codepen how we must set <code>overflow: auto</code> on the div with the\n' +
+    '    <code>change-my-css</code> class in order for Firefox to properly calculate the height and\n' +
+    '    shrink to the available space.\n' +
+    '  </p>\n' +
+    '\n' +
+    '</div>\n' +
+    '');
+}]);
+
+angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/menu-link.tmpl.html',
     '<md-button\n' +
     '    ng-class="{\'active\' : isSelected()}"\n' +
