@@ -91,6 +91,17 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <li><a href="https://github.com/angular/material#cdn">Using a CDN</a> (example below)</li>\n' +
     '    </ul>\n' +
     '\n' +
+    '    <iframe height=\'412\' scrolling=\'no\'\n' +
+    '            src=\'//codepen.io/team/AngularMaterial/embed/JYvaxJ/?height=412&theme-id=20485&default-tab=result\'\n' +
+    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
+    '      See the Pen <a href=\'http://codepen.io/team/AngularMaterial/pen/JYvaxJ/\'>Angular Material Basic App</a>\n' +
+    '      by Angular Material (<a href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on\n' +
+    '      <a href=\'http://codepen.io\'>CodePen</a>.\n' +
+    '    </iframe>\n' +
+    '    <br/>\n' +
+    '    <br/>\n' +
+    '\n' +
+    '\n' +
     '    <h3>Include Optional Dependencies</h3>\n' +
     '    <p>\n' +
     '      Angular Material integrates with some additional libraries which you may optionally include:\n' +
@@ -100,6 +111,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>\n' +
     '        - Provides a consistent mechanism for displaying form errors and other messages.\n' +
     '      </li>\n' +
+    '      <li>\n' +
+    '        <a href="https://docs.angularjs.org/api/ngSanitize">ngSanitize</a>\n' +
+    '        - The ngSanitize module provides functionality to sanitize HTML content in Material components.\n' +
+    '      </li>\n' +
     '\n' +
     '      <li>\n' +
     '        <a href="https://docs.angularjs.org/api/ngRoute">ngRoute</a>\n' +
@@ -107,14 +122,22 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
+    '    <h3>Unsupported Integrations</h3>\n' +
+    '    <p>\n' +
+    '      Angular Material v1.0 has a few known integration issues with the following libraries:\n' +
+    '    </p>\n' +
+    '    <ul style="margin-bottom: 2em;">\n' +
+    '      <li>\n' +
+    '        <a href="https://docs.angularjs.org/api/ngTouch">ngTouchs</a>\n' +
+    '        - This module interferes with ngMaterial\'s click, tap, and swipe support for touch-enabled devices.\n' +
+    '      </li>\n' +
     '\n' +
-    '    <iframe height=\'412\' scrolling=\'no\'\n' +
-    '            src=\'//codepen.io/team/AngularMaterial/embed/JYvaxJ/?height=412&theme-id=20485&default-tab=result\'\n' +
-    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
-    '      See the Pen <a href=\'http://codepen.io/team/AngularMaterial/pen/JYvaxJ/\'>Angular Material Basic App</a>\n' +
-    '      by Angular Material (<a href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on\n' +
-    '      <a href=\'http://codepen.io\'>CodePen</a>.\n' +
-    '    </iframe>\n' +
+    '      <li>\n' +
+    '        <a href="http://ionicframework.com/">Ionic</a>\n' +
+    '        - Open-source SDK for developing hybrid mobile apps with Web technologies has touch support\n' +
+    '        that interferes with ngMaterial\'s mobile gesture features.\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
     '    <h2>Contributing to Angular Material</h2>\n' +
