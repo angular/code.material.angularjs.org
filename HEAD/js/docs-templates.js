@@ -305,7 +305,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <div>\n' +
     '      <md-subheader>Alignment in Layout Direction ({{layoutDemo.direction == \'row\' ? \'horizontal\' : \'vertical\'}})</md-subheader>\n' +
     '      <md-radio-group ng-model="layoutDemo.mainAxis">\n' +
-    '        <md-radio-button value="start">start</md-radio-button>\n' +
+    '        <md-radio-button value="">none</md-radio-button>\n' +
+    '        <md-radio-button value="start">start (default)</md-radio-button>\n' +
     '        <md-radio-button value="center">center</md-radio-button>\n' +
     '        <md-radio-button value="end">end</md-radio-button>\n' +
     '        <md-radio-button value="space-around">space-around</md-radio-button>\n' +
@@ -315,10 +316,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <div>\n' +
     '      <md-subheader>Alignment in Perpendicular Direction ({{layoutDemo.direction == \'column\' ? \'horizontal\' : \'vertical\'}})</md-subheader>\n' +
     '      <md-radio-group ng-model="layoutDemo.crossAxis">\n' +
+    '        <md-radio-button value="none"><em>none</em></md-radio-button>\n' +
     '        <md-radio-button value="start">start</md-radio-button>\n' +
     '        <md-radio-button value="center">center</md-radio-button>\n' +
     '        <md-radio-button value="end">end</md-radio-button>\n' +
-    '        <md-radio-button value="stretch">stretch</md-radio-button>\n' +
+    '        <md-radio-button value="stretch">stretch (default)</md-radio-button>\n' +
     '      </md-radio-group>\n' +
     '    </div>\n' +
     '\n' +
