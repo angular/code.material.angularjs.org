@@ -883,54 +883,48 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <h3>Overview</h3>\n' +
     '\n' +
     '  <p>\n' +
-    '    The Angular Material layout system relies very heavily on the new\n' +
-    '    <a href="http://www.w3.org/TR/css3-flexbox/">Flexbox</a> standard. This is an incredibly\n' +
-    '    powerful layout system that gives developers a whole new level of flexibility with your web\n' +
-    '    apps.\n' +
+    '    The Angular Material Layout system uses the current\n' +
+    '    <a href="http://www.w3.org/TR/css3-flexbox/">Flexbox</a> feature set. More importantly, it also\n' +
+    '    adds syntactic sugar to allow developers to easily and quickly add Responsive features to HTML\n' +
+    '    containers and elements.\n' +
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    However, Flexbox is also relatively new and most browsers are still trying to work out the kinks\n' +
-    '    while the standard is being finalized.\n' +
+    '    As you use the Layout features, you may encounter scenarios where the layouts do not render as\n' +
+    '    expected; especially with IE 10 and 11 browsers. There may also be cases where you need to add\n' +
+    '    custom HTML, CSS and Javascript to achieve your desired results.\n' +
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    Below, you will find solutions to some of the common scenarios and problems that may arise when\n' +
-    '    dealing with flex. Additionally, if you are experiencing an issue in a particular browser, we\n' +
-    '    highly recommend checking out the excellent\n' +
-    '    <a href="https://github.com/philipwalton/flexbugs">Flexbugs</a> project to see if your problem\n' +
-    '    is a known issue that has a workaround available.\n' +
+    '    Below, you will find solutions to some of the more common scenarios and problems that may arise\n' +
+    '    when using Material\'s Layout system.\n' +
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    Lastly, Angular Material provides a robust and full-featured layout system based on HTML, CSS\n' +
-    '    and Javascript that allows easy implementation of common scenarios. However, every application\n' +
-    '    is unique and may have different use-cases that Angular Material may not yet handle.\n' +
+    '    If you are experiencing an issue in a particular browser, we highly recommend using the\n' +
+    '    following resources for known issues and workarounds.\n' +
     '  </p>\n' +
     '\n' +
-    '  <p>\n' +
-    '    If you have a use-case that is not yet covered, we encourage you to visit the\n' +
-    '    <a href="https://groups.google.com/forum/#!forum/ngmaterial">forums</a> and see how other\n' +
-    '    developers have achieved something similar, or search our\n' +
-    '    <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen">open issues</a> to\n' +
-    '    see if someone else has already requested the same functionality.\n' +
-    '  </p>\n' +
+    '  <ul>\n' +
+    '    <li>\n' +
+    '      <a href="https://github.com/philipwalton/flexbugs">Flexbox Bugs</a>\n' +
+    '    </li>\n' +
     '\n' +
-    '  <p>\n' +
-    '    But ultimately, Angular Material can only provide a foundation for your application. There may\n' +
-    '    be cases where you need to add custom HTML, CSS and Javascript to achieve your desired results.\n' +
-    '  </p>\n' +
+    '    <li>\n' +
+    '      <a href="https://groups.google.com/forum/#!forum/ngmaterial">Angular Material Forum</a>\n' +
+    '    </li>\n' +
+    '  </ul>\n' +
     '\n' +
     '  <h3>General</h3>\n' +
     '\n' +
     '  <p>\n' +
-    '    The following are some general guidelines and tips when using the flex and layout attributes\n' +
+    '    The following are some general guidelines and tips when using the flex and Layout attributes\n' +
     '    within your own applications.\n' +
     '  </p>\n' +
     '\n' +
     '  <ul class="spaced">\n' +
     '    <li>\n' +
-    '      When building your application\'s layout, it is usually best to start with a mobile version\n' +
+    '      When building your application\'s Layout, it is usually best to start with a mobile version\n' +
     '      that looks and works correctly, and then apply styling for larger devices using the\n' +
     '      <code>flex-gt-*</code> or <code>hide-gt-*</code> attributes. This approach typically leads\n' +
     '      to less frustration than starting big and attempting to fix issues on smaller devices.\n' +
@@ -945,9 +939,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
-    '      Many Flexbox properties such as <code>flex-direction</code>, and most of the alignment\n' +
-    '      properties are not animatable. If you need to animate those, you should choose a different\n' +
-    '      layout system.\n' +
+    '      Some Flexbox properties such as <code>flex-direction</code> can not be animated.\n' +
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
@@ -1060,9 +1052,15 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    it will prevent the content from scrolling correctly, instead scrolling the entire body.\n' +
     '  </p>\n' +
     '\n' +
-    '  <p>\n' +
-    '    <a href="http://codepen.io/topherfangio/pen/gampyP">http://codepen.io/topherfangio/pen/gampyP</a>\n' +
-    '  </p>\n' +
+    '  <div class="md-whiteframe-3dp">\n' +
+    '    <iframe height=\'376\' scrolling=\'no\'\n' +
+    '            src=\'//codepen.io/team/AngularMaterial/embed/NxKBwW/?height=376&theme-id=0&default-tab=result\'\n' +
+    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
+    '      See the Pen <a href=\'http://codepen.io/team/AngularMaterial/pen/NxKBwW/\'>Angular Material Basic App</a>\n' +
+    '      by Angular Material (<a href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>)\n' +
+    '      on <a href=\'http://codepen.io\'>CodePen</a>.\n' +
+    '    </iframe>\n' +
+    '  </div>\n' +
     '\n' +
     '  <p>\n' +
     '    Notice in the above Codepen how we must set <code>overflow: auto</code> on the div with the\n' +
