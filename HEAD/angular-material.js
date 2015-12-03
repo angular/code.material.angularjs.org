@@ -2,7 +2,7 @@
  * Angular Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.0.0-rc5
+ * v1.0.0-rc6
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -13592,7 +13592,6 @@ function SelectDirective($mdSelect, $mdUtil, $mdTheming, $mdAria, $compile, $par
           element: selectContainer,
           target: element[0],
           preserveElement: true,
-          parent: element,
           hasBackdrop: true,
           loadingAsync: attr.mdOnOpen ? scope.$eval(attr.mdOnOpen) || true : false
         }).finally(function() {
@@ -14385,7 +14384,7 @@ function SelectProvider($$interimElementProvider) {
      * trigger the [optional] user-defined expression
      */
     function announceClosed(opts) {
-      var mdSelect = opts.selectEl.controller('mdSelect');
+      var mdSelect = opts.target.controller('mdSelect');
       if (mdSelect) {
         var menuController = opts.selectEl.controller('mdSelectMenu');
         mdSelect.setLabelText(menuController.selectedLabels());
@@ -14400,7 +14399,7 @@ function SelectProvider($$interimElementProvider) {
     function calculateMenuPositions(scope, element, opts) {
       var 
         containerNode = element[0],
-        targetNode = opts.target[0].children[1], // target the label
+        targetNode = opts.target[0].children[0], // target the label
         parentNode = $document[0].body,
         selectNode = opts.selectEl[0],
         contentNode = opts.contentEl[0],
@@ -23818,4 +23817,4 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 })();
 
 
-})(window, window.angular);;window.ngMaterial={version:{full: "1.0.0-rc5"}};
+})(window, window.angular);;window.ngMaterial={version:{full: "1.0.0-rc6"}};
