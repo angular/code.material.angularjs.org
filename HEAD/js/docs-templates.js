@@ -305,7 +305,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <div>\n' +
     '      <md-subheader>Alignment in Layout Direction ({{layoutDemo.direction == \'row\' ? \'horizontal\' : \'vertical\'}})</md-subheader>\n' +
     '      <md-radio-group ng-model="layoutDemo.mainAxis">\n' +
-    '        <md-radio-button value="">none</md-radio-button>\n' +
+    '        <md-radio-button value="none">none</md-radio-button>\n' +
     '        <md-radio-button value="start">start (default)</md-radio-button>\n' +
     '        <md-radio-button value="center">center</md-radio-button>\n' +
     '        <md-radio-button value="end">end</md-radio-button>\n' +
