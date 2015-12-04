@@ -24,7 +24,7 @@
       text-overflow: ellipsis;
       white-space: nowrap;
       overflow: hidden; }
-  @media (min-width: 900px) {
+  @media screen and (min-width: 960px) {
     .chipsdemoContactChips .contact-item {
       float: left;
       width: 33%; } }
