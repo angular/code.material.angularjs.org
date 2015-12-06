@@ -136,15 +136,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '                     title="Link opens in a new window">CodePen Community</a> to explore more samples and ideas.\n' +
     '    </p>\n' +
     '      <div layout-align="center" style="width: 100%">\n' +
-    '      <a href="http://codepen.io/team/AngularMaterial/" target="_blank"\n' +
+    '      <a href="http://codepen.io/collection/XExqGz/" target="_blank"\n' +
     '                     title="Link opens in a new window" style="text-decoration:none; border: 0 none;">\n' +
-    '      <img  src="https://cloud.githubusercontent.com/assets/210413/11569469/ada7de16-99b7-11e5-91b5-cf252a7d9122.png" style="text-decoration:none; border: 0 none;">\n' +
+    '      <img  src="https://cloud.githubusercontent.com/assets/210413/11613879/544f0b1e-9bf6-11e5-9923-27dd0d891bfd.png" style="text-decoration:none; border: 0 none;width: 100%">\n' +
     '      </a>\n' +
     '      </div>\n' +
     '\n' +
     '\n' +
     '    <br/><br/>\n' +
-    '\n' +
     '    <hr>\n' +
     '\n' +
     '    <h3>Installing the Angular Material Libraries</h3>\n' +
