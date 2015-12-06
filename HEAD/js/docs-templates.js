@@ -88,18 +88,23 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2>How do I start with Angular Material?</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
     '      <li><a href="https://codepen.io/collection/AxKKgY/" target="_blank"\n' +
-    '             title="Link opens in a new window">Visit CodePen Community </a></li>\n' +
+    '             title="Link opens in a new window">Visit the Angular Material CodePen Community </a></li>\n' +
     '\n' +
     '      <li><a href="https://github.com/angular/material-start/tree/es5-tutorial" target="_blank"\n' +
-    '                   title="Link opens in a new window">Learn using an 8-step Tutorial</a></li>\n' +
-    '      <li><a href="https://github.com/angular/material-start" target="_blank"\n' +
+    '                   title="Link opens in a new window">Learn with Material-Start: 8-step Tutorial (es5)</a></li>\n' +
+    '      <li><a href="https://github.com/angular/material-start/tree/master" target="_blank"\n' +
+    '                         title="Link opens in a new window">Learn with Material-Start: Completed (es5)</a></li>\n' +
+    '      <li><a href="https://github.com/angular/material-start/tree/es6" target="_blank"\n' +
+    '                               title="Link opens in a new window">Learn with Material-Start: Completed (es6)</a></li>\n' +
+    '      <li style="font-weight: 400;color: #106CC8;"><a href="http://codepen.io/team/AngularMaterial/pen/RrbXyW" target="_blank">Start with a blank CodePen Material Application</a></li>\n' +
+    '      <li style="margin-bottom: 30px;"><a href="https://github.com/angular/material-start" target="_blank"\n' +
     '             title="Link opens in a new window">Use the Github Starter Project</a></li>\n' +
     '\n' +
     '      <li style="font-weight: 400;color: #106CC8;">Use \'Edit on CodePen\' button on any of our Demos<br/>\n' +
     '        <img src="https://cloud.githubusercontent.com/assets/210413/11568997/ed86795a-99b4-11e5-898e-1da172be80da.png" style="width:75%;margin: 10px 30px 0 0">\n' +
     '      </li>\n' +
     '\n' +
-    '      <li>Easily build a Material application from scratch (below)</li>\n' +
+    '\n' +
     '    </ul>\n' +
     '\n' +
     '    <p></p>\n' +
@@ -1135,12 +1140,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    Due to performance problems when using Attribute Selectors with <b>Internet Explore</b> browsers; see the following for more details:\n' +
     '  </p>\n' +
     '\n' +
-    '  <ul>\n' +
-    '    <li><a href="https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers" target="_blank">FlexBugs</a></li>\n' +
-    '    <li><a href="http://philipwalton.com/articles/normalizing-cross-browser-flexbox-bugs/" target="_blank">Normalizing Cross-browser Flexbox Bugs</a></li>\n' +
-    '    <li><a href="http://caniuse.com/#search=flex" target="_blank">Can I Use <code>flex</code>: see the <code>Known Issues</code> tab.</a></li>\n' +
-    '  </ul>\n' +
-    '\n' +
     '  <p>\n' +
     '    Layout directives dynamically generate class selectors at runtime. And the Layout CSS classNames and styles have each been\n' +
     '    predefined in the <code>angular-material.css</code> stylesheet.\n' +
@@ -1511,10 +1510,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    custom HTML, CSS and Javascript to achieve your desired results.\n' +
     '  </p>\n' +
     '\n' +
-    '  <p>\n' +
-    '    Below, you will find solutions to some of the more common scenarios and problems that may arise\n' +
-    '    when using Material\'s Layout system.\n' +
-    '  </p>\n' +
+    '\n' +
+    '  <br/>\n' +
+    '  <hr/>\n' +
+    '\n' +
+    '  <h3>Resources</h3>\n' +
     '\n' +
     '  <p>\n' +
     '    If you are experiencing an issue in a particular browser, we highly recommend using the\n' +
@@ -1522,20 +1522,25 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <ul>\n' +
-    '    <li>\n' +
-    '      <a href="https://github.com/philipwalton/flexbugs">Flexbox Bugs</a>\n' +
-    '    </li>\n' +
-    '\n' +
-    '    <li>\n' +
-    '      <a href="https://groups.google.com/forum/#!forum/ngmaterial">Angular Material Forum</a>\n' +
-    '    </li>\n' +
+    '    <li><a href="https://github.com/philipwalton/flexbugs#flexbugs" target="_blank">FlexBugs</a></li>\n' +
+    '    <li><a href="https://philipwalton.github.io/solved-by-flexbox/" target="_blank">Solved by FlexBugs</a></li>\n' +
+    '    <li><a href="http://philipwalton.com/articles/normalizing-cross-browser-flexbox-bugs/" target="_blank">Normalizing Cross-browser Flexbox Bugs</a></li>\n' +
+    '    <li style="margin-bottom: 20px;"><a href="http://caniuse.com/#search=flex" target="_blank">Can I use flexbox...? ( see the <code>Known Issues</code> tab)</a></li>\n' +
+    '    <li><a href="https://groups.google.com/forum/#!forum/ngmaterial">Angular Material Forum</a></li>\n' +
+    '    <li style="margin-top: 20px;"><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">A Complete Guide to Flexbox</a></li>\n' +
+    '    <li style="margin-bottom: 20px;"><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties" target="_blank">A Visual Guide to CSS3 Flexbox Properties</a></li>\n' +
     '  </ul>\n' +
     '\n' +
-    '  <h3>General</h3>\n' +
+    '\n' +
+    '  <br/>\n' +
+    '  <hr/>\n' +
+    '\n' +
+    '  <h3>General Tips</h3>\n' +
     '\n' +
     '  <p>\n' +
-    '    The following are some general guidelines and tips when using the flex and Layout attributes\n' +
-    '    within your own applications.\n' +
+    '    Below, you will find solutions to some of the more common scenarios and problems that may arise\n' +
+    '    when using Material\'s Layout system. The following sections offer general guidelines and tips when using the <code>flex</code> and\n' +
+    '        <code>layout</code> directives within your own applications.\n' +
     '  </p>\n' +
     '\n' +
     '  <ul class="spaced">\n' +
@@ -1555,7 +1560,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
-    '      Some Flexbox properties such as <code>flex-direction</code> can not be animated.\n' +
+    '      Some Flexbox properties such as <code>flex-direction</code> <u>cannot</u> be animated.\n' +
     '    </li>\n' +
     '\n' +
     '    <li>\n' +
@@ -1564,7 +1569,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </li>\n' +
     '  </ul>\n' +
     '\n' +
-    '  <h3>Chrome Flex Height</h3>\n' +
+    '  <br/>\n' +
+    '  <hr/>\n' +
+    '\n' +
+    '  <h3>Layout Container Heights</h3>\n' +
     '\n' +
     '  <p>\n' +
     '    In Flexbox, some browsers will determine size of the flex containers based on the size of their\n' +
@@ -1572,7 +1580,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    two flex items in a column layout.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Chrome Flex Height - Odd" class="small-demo colorNested">\n' +
+    '  <docs-demo demo-title="Flex Height - Odd (Chrome )" class="small-demo colorNested">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="column" style="height: 450px !important;">\n' +
     '        <div style="height: 50px;">Toolbar</div>\n' +
@@ -1656,7 +1664,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '\n' +
-    '  <h3>Firefox <code>md-content</code> Height Calculation</h3>\n' +
+    '  <br/>\n' +
+    '  <hr/>\n' +
+    '\n' +
+    '  <h3>Flex Element Heights</h3>\n' +
     '\n' +
     '  <p>\n' +
     '    Firefox currently has an issue calculating the proper height of flex containers whose children\n' +
@@ -1664,7 +1675,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    This is particularly problematic if the flex children are <code>md-content</code> components as\n' +
+    '    This is particularly problematic if the <code>flex</code> children are <code>md-content</code> components as\n' +
     '    it will prevent the content from scrolling correctly, instead scrolling the entire body.\n' +
     '  </p>\n' +
     '\n' +
