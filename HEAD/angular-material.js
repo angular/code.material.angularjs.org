@@ -3474,7 +3474,8 @@ function InterimElementProvider() {
     }, values;
 
     attrValue = (attrValue || "");
-    if ( attrValue.indexOf("-") == 0 ) {
+
+    if ( attrValue.indexOf("-") == 0 || attrValue.indexOf(" ") == 0) {
       // For missing main-axis values
       attrValue = "none" + attrValue;
     }

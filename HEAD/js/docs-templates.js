@@ -124,7 +124,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </iframe>\n' +
     '\n' +
     '\n' +
-    '    <p>Now just you add your Angular Material components and other HTML content to your Blank starter app.</p>\n' +
+    '    <p>Now just your add your Angular Material components and other HTML content to your Blank starter app.</p>\n' +
     '\n' +
     '    <br/>\n' +
     '\n' +
@@ -149,7 +149,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h3>Installing the Angular Material Libraries</h3>\n' +
     '\n' +
     '    <br/>\n' +
-    '    You can install the Angular Material library (and it\'s dependent library) in your local project using either\n' +
+    '    You can install the Angular Material library (and its dependent libraries) in your local project using either\n' +
     '    <a href="https://github.com/angular/bower-material/#installing-angular-material">NPM, JSPM, or Bower</a>.\n' +
     '\n' +
     '    <p>\n' +
@@ -177,13 +177,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <h3>Unsupported Integrations</h3>\n' +
     '    <p>\n' +
-    '      Angular Material v1.0 has a few known integration issues\n' +
-    '      with the following libraries:\n' +
+    '      Angular Material v1.0 has known integration issues with the following libraries:\n' +
     '    </p>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
     '      <li>\n' +
     '        <a href="https://docs.angularjs.org/api/ngTouch">ngTouch</a>\n' +
-    '        - This Angular.js Touch module interferes with ngMaterial\'s click, tap, and swipe support for touch-enabled devices.\n' +
+    '        - ngMaterial conflicts with ngTouch for click, tap, and swipe support on touch-enabled devices.\n' +
     '      </li>\n' +
     '\n' +
     '      <li>\n' +
@@ -358,7 +357,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <section class="layout-panel-parent">\n' +
-    '    <div ng-panel="layoutDemo">\n' +
+    '    <div >\n' +
     '      <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" &nbsp; &nbsp; &nbsp; layout-align="{{layoutAlign()}}"\'\n' +
     '                 class="small-demo colorNested" interpolate-code="true">\n' +
     '        <demo-file name="index.html">\n' +
@@ -384,7 +383,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <div>\n' +
     '      <md-subheader>Alignment in Layout Direction ({{layoutDemo.direction == \'row\' ? \'horizontal\' : \'vertical\'}})</md-subheader>\n' +
     '      <md-radio-group ng-model="layoutDemo.mainAxis">\n' +
-    '        <md-radio-button value="none">none</md-radio-button>\n' +
+    '        <md-radio-button value="">none</md-radio-button>\n' +
     '        <md-radio-button value="start">start (default)</md-radio-button>\n' +
     '        <md-radio-button value="center">center</md-radio-button>\n' +
     '        <md-radio-button value="end">end</md-radio-button>\n' +
@@ -1136,7 +1135,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <h3>Under-the-Hood</h3>\n' +
     '\n' +
     '  <p>\n' +
-    '    Due to performance problems when using Attribute Selectors with <b>Internet Explore</b> browsers; see the following for more details:\n' +
+    '    Due to performance problems when using Attribute Selectors with <b>Internet Explorer</b> browsers; see the following for more details:\n' +
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
