@@ -40,17 +40,6 @@ container itself does not scroll.</p>
   </md-content>
 </div>
 </hljs>
-
-<p>Additionally, during animation, we will add the <code>md-toast-animating</code> class to the parent
-container. This defines a simple rule of <code>overflow: hidden !important;</code> to ensure that
-scrollbars are not visible on the parent during animation if you use a different overflow style.</p>
-<p>If you need to override this, you can use the following CSS, but be aware that it may cause
-scrollbars to intermittently appear.</p>
-<hljs lang="css">
-  .md-toast-animating {
-    overflow: auto !important;
-  }
-</hljs>
 </div>
 
 
