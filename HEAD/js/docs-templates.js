@@ -557,6 +557,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <td>flex="grow"</td>\n' +
     '      <td>Will grow and shrink as needed. Starts with a size of 100%. Same as <code>flex="100"</code>.</td>\n' +
     '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td>flex="noshrink"</td>\n' +
+    '      <td>Will grow as needed, but won\'t shrink. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '    </tr>\n' +
     '  </table>\n' +
     '\n' +
     '\n' +
