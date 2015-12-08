@@ -1574,7 +1574,28 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <br/>\n' +
     '  <hr/>\n' +
     '\n' +
-    '  <h3>Layout Container Heights</h3>\n' +
+    '  <h3>Layout Column</h3>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    In some scenarios <code>layout="column"</code> and breakpoints (xs, gt-xs, xs, gt-sm, etc.) may not work\n' +
+    '    as expected due to CSS specificity rules.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <div class="md-whiteframe-3dp">\n' +
+    '    <iframe height=\'459\' scrolling=\'no\'\n' +
+    '            src=\'//codepen.io/team/AngularMaterial/embed/obgapg/?height=459&theme-id=21180&default-tab=result\'\n' +
+    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>See the Pen <a\n' +
+    '        href=\'http://codepen.io/team/AngularMaterial/pen/obgapg/\'>Card Layouts (corrected)</a> by Angular Material (<a\n' +
+    '        href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a href=\'http://codepen.io\'>CodePen</a>.\n' +
+    '    </iframe>\n' +
+    '  </div>\n' +
+    '\n' +
+    '    <p>This is easily fixed simply by inverting the layout logic so that the default is <code>layout=\'row\'</code> </p>\n' +
+    '\n' +
+    '  <br/>\n' +
+    '  <hr/>\n' +
+    '\n' +
+    '  <h3>Layout Column and Container Heights</h3>\n' +
     '\n' +
     '  <p>\n' +
     '    In Flexbox, some browsers will determine size of the flex containers based on the size of their\n' +
