@@ -1582,15 +1582,21 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <div class="md-whiteframe-3dp">\n' +
-    '    <iframe height=\'459\' scrolling=\'no\'\n' +
-    '            src=\'//codepen.io/team/AngularMaterial/embed/obgapg/?height=459&theme-id=21180&default-tab=result\'\n' +
+    '\n' +
+    '    <iframe height=\'700\' scrolling=\'no\'\n' +
+    '            src=\'//codepen.io/team/AngularMaterial/embed/obgapg/?height=700&theme-id=21180&default-tab=result\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>See the Pen <a\n' +
     '        href=\'http://codepen.io/team/AngularMaterial/pen/obgapg/\'>Card Layouts (corrected)</a> by Angular Material (<a\n' +
     '        href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a href=\'http://codepen.io\'>CodePen</a>.\n' +
     '    </iframe>\n' +
+    '\n' +
     '  </div>\n' +
     '\n' +
-    '    <p>This is easily fixed simply by inverting the layout logic so that the default is <code>layout=\'row\'</code> </p>\n' +
+    '    <p>\n' +
+    '      This is easily fixed simply by inverting the layout logic so that the default is <code>layout=\'row\'</code>.\n' +
+    '      To see how the layout changes, shrink the browser window its width is <600px;\n' +
+    '    </p>\n' +
+    '\n' +
     '\n' +
     '  <br/>\n' +
     '  <hr/>\n' +
