@@ -13,7 +13,8 @@
 
 
 <div class="api-profile-description">
-  <p>Use the <code>&lt;input&gt;</code> or the  <code>&lt;textarea&gt;</code> as a child of an <code>&lt;md-input-container&gt;</code>.</p>
+  <p>You can use any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element as a child of an <code>&lt;md-input-container&gt;</code>. This
+allows you to build complex forms for data entry.</p>
 
 </div>
 
@@ -33,8 +34,39 @@
   <input type="text" ng-model="color" required md-maxlength="10">
 </md-input-container>
 </hljs>
+
 <h3>With Errors</h3>
 
+<p><code>md-input-container</code> also supports errors using the standard <code>ng-messages</code> directives and
+animates the messages when they become visible using from the <code>ngEnter</code>/<code>ngLeave</code> events or
+the <code>ngShow</code>/<code>ngHide</code> events.</p>
+<p>By default, the messages will be hidden until the input is in an error state. This is based off
+of the <code>md-is-error</code> expression of the <code>md-input-container</code>. This gives the user a chance to
+fill out the form before the errors become visible.</p>
+<hljs lang="html">
+<form name="colorForm">
+  <md-input-container>
+    <label>Favorite Color</label>
+    <input name="favoriteColor" ng-model="favoriteColor" required>
+    <div ng-messages="userForm.lastName.$error">
+      <div ng-message="required">This is required!</div>
+    </div>
+  </md-input-container>
+</form>
+</hljs>
+
+<p>We automatically disable this auto-hiding functionality if you provide any of the following
+visibility directives on the <code>ng-messages</code> container:</p>
+<ul>
+<li><code>ng-if</code></li>
+<li><code>ng-show</code>/<code>ng-hide</code></li>
+<li><code>ng-switch-when</code>/<code>ng-switch-default</code></li>
+</ul>
+<p>You can also disable this functionality manually by adding the <code>md-auto-hide=&quot;false&quot;</code> expression
+to the <code>ng-messages</code> container. This may be helpful if you always want to see the error messages
+or if you are building your own visibilty directive.</p>
+<p><em><b>Note:</b> The <code>md-auto-hide</code> attribute is a static string that is  only checked upon
+initialization of the <code>ng-messages</code> directive to see if it equals the string <code>false</code>.</em></p>
 <hljs lang="html">
 <form name="userForm">
   <md-input-container>
@@ -63,8 +95,15 @@
 </form>
 </hljs>
 
-<p>Requires <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>.
-Behaves like the <a href="https://docs.angularjs.org/api/ng/directive/input">AngularJS input directive</a>.</p>
+<h3>Notes</h3>
+
+<ul>
+<li>Requires <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>.</li>
+<li>Behaves like the <a href="https://docs.angularjs.org/api/ng/directive/input">AngularJS input directive</a>.</li>
+</ul>
+<p>The <code>md-input</code> and <code>md-input-container</code> directives use very specific positioning to achieve the
+error animation effects. Therefore, it is <em>not</em> advised to use the Layout system inside of the
+<code>&lt;md-input-container&gt;</code> tags. Instead, use relative or absolute positioning.</p>
 
   
   </section>
@@ -188,7 +227,9 @@ Behaves like the <a href="https://docs.angularjs.org/api/ng/directive/input">Ang
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, textareas will be sized properly when they are revealed after being hidden. This is off by default for performance reasons because it guarantees a reflow every digest cycle.</p>
+          <p>When present, textareas will be sized properly when they are
+  revealed after being hidden. This is off by default for performance reasons because it
+  guarantees a reflow every digest cycle.</p>
 
           
         </td>

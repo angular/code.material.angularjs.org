@@ -1306,10 +1306,22 @@ angular.module('docsApp').constant('DEMOS', [
             "label": "style.css",
             "fileType": "css",
             "outputPath": "demo-partials/input/demoErrors/style.css"
+          },
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/input/demoErrors/style.css"
           }
         ],
         "html": [],
         "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/input/demoErrors/script.js"
+          },
           {
             "name": "script.js",
             "label": "script.js",
@@ -1325,6 +1337,43 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/input/demoErrors/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "inputErrorsAdvancedApp",
+          "module": "inputErrorsAdvancedApp",
+          "dependencies": [
+            "ngMaterial",
+            "ngMessages"
+          ]
+        },
+        "id": "inputdemoErrorsAdvanced",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/input/demoErrorsAdvanced/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/input/demoErrorsAdvanced/script.js"
+          }
+        ],
+        "moduleName": "material.components.input",
+        "name": "demoErrorsAdvanced",
+        "label": "Errors Advanced",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/input/demoErrorsAdvanced/index.html"
         }
       },
       {
