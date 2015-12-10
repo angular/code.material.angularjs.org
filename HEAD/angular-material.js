@@ -3017,7 +3017,7 @@ function InterimElementProvider() {
   var SUFFIXES = /(-gt)?-(sm|md|lg)/g;
   var WHITESPACE = /\s+/g;
 
-  var FLEX_OPTIONS = ['grow', 'initial', 'auto', 'none', 'noshrink'];
+  var FLEX_OPTIONS = ['grow', 'initial', 'auto', 'none', 'noshrink', 'nogrow' ];
   var LAYOUT_OPTIONS = ['row', 'column'];
   var ALIGNMENT_MAIN_AXIS= [ "", "start", "center", "end", "stretch", "space-around", "space-between" ];
   var ALIGNMENT_CROSS_AXIS= [ "", "start", "center", "end", "stretch" ];
