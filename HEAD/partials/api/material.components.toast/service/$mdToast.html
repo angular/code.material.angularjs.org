@@ -309,6 +309,9 @@ be used as the content of the toast. Restrictions: the template must
 have an outer <code>md-toast</code> element.</li>
 <li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual
 template string.</li>
+<li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template content with a
+<code>&lt;div class=&quot;md-toast-content&quot;&gt;</code> if one is not provided. Defaults to true. Can be disabled if you provide a
+custom toast directive.</li>
 <li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified, it will create a new child scope.
 This scope will be destroyed when the toast is removed unless <code>preserveScope</code> is set to true.</li>
 <li><code>preserveScope</code> - <code>{boolean=}</code>: whether to preserve the scope when the element is removed. Default is false</li>
