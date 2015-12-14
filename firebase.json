@@ -57,6 +57,10 @@
     {
       "source": "/1.0.0-rc7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.0.0-rc7/index.html"
+    },
+    {
+      "source": "/1.0.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.0/index.html"
     }
   ]
 }
