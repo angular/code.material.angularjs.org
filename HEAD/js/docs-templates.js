@@ -227,11 +227,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
     '    <h2 class="md-headline" style="margin-top: 0;">What is Angular Material?</h2>\n' +
-    '    <p>The Angular Material project is an implementation of Material Design in Angular.js. This project provides a set of reusable, well-tested, and accessible UI components based on the Material Design system.</p>\n' +
-    '    <p>Similar to the\n' +
-    '      <a href="http://www.polymer-project.org/">Polymer</a> project\'s\n' +
-    '      <a href="https://elements.polymer-project.org/">Paper elements</a> collection, Angular Material is supported internally at Google by the Angular.js, Material Design UX and other product teams.\n' +
-    '    </p>\n' +
+    '    <p>For developers using AngularJS, Angular Material is the reference implementation of Google\'s Material Design Specification. This project provides a set of reusable, well-tested, and accessible UI components based on Material Design.</p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="25" flex-md="50" flex-sm="50" ng-repeat="(index, link) in [\n' +
     '        { href: \'./getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
