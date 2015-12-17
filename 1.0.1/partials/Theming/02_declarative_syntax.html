@@ -1,0 +1,37 @@
+<div class="doc-content theming">
+    
+    <p>Theming in angular material uses classes to apply an intention group to a given
+component. Most components in Angular Material support intention classes 
+as expected, including:</p>
+<ul>
+<li>md-button</li>
+<li>md-checkbox</li>
+<li>md-progress-circular</li>
+<li>md-progress-linear</li>
+<li>md-radio-button</li>
+<li>md-slider</li>
+<li>md-switch</li>
+<li>md-tabs</li>
+<li>md-text-float</li>
+<li>md-toolbar</li>
+</ul>
+<h3 id="specifying-intention-group">Specifying intention group</h3>
+<p>The classes to apply the color intention for a given component are as follows:
+<code>md-primary</code>, <code>md-accent</code>, <code>md-warn</code>.</p>
+<hljs lang="html">
+<md-button class="md-primary">Click me</md-button>
+<md-button class="md-accent">or maybe me</md-button>
+<md-button class="md-warn">Careful</md-button>
+</hljs>
+
+<h3 id="differentiating-within-an-intention-group-">Differentiating within an intention group.</h3>
+<p>If you need to slightly differentiate an element, you can specify an additional
+class of <code>md-hue-1</code>, <code>md-hue-2</code>, or <code>md-hue-3</code>. Use these classes sparingly
+in your application to avoid overwhelming users.</p>
+<hljs lang="html">
+<md-button class="md-primary">Click me</md-button>
+<md-button class="md-primary md-hue-1">Click me</md-button>
+<md-button class="md-primary md-hue-2">Click me</md-button>
+</hljs>
+    
+</div>
