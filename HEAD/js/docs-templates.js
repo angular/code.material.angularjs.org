@@ -506,26 +506,29 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <docs-demo demo-title="Other Flex Values" class="small-demo colorNested-noPad">\n' +
     '    <demo-file name="index.html">\n' +
     '      <div layout="row" layout-wrap>\n' +
-    '        <div flex="0">\n' +
-    '          [flex="0"]\n' +
-    '        </div>\n' +
     '        <div flex="none">\n' +
     '          [flex="none"]\n' +
     '        </div>\n' +
     '        <div flex>\n' +
     '          [flex]\n' +
     '        </div>\n' +
+    '        <div flex="nogrow">\n' +
+    '          [flex="nogrow"]\n' +
+    '        </div>\n' +
     '        <div flex="grow">\n' +
     '          [flex="grow"]\n' +
     '        </div>\n' +
-    '        <div flex="auto">\n' +
-    '          [flex="auto"]\n' +
-    '        </div>\n' +
-    '        <div flex="auto">\n' +
-    '          [flex="auto"]\n' +
-    '        </div>\n' +
     '        <div flex="initial">\n' +
     '          [flex="initial"]\n' +
+    '        </div>\n' +
+    '        <div flex="auto">\n' +
+    '          [flex="auto"]\n' +
+    '        </div>\n' +
+    '        <div flex="noshrink">\n' +
+    '          [flex="noshrink"]\n' +
+    '        </div>\n' +
+    '        <div flex="0">\n' +
+    '          [flex="0"]\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
@@ -552,6 +555,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <tr>\n' +
     '      <td>flex="grow"</td>\n' +
     '      <td>Will grow and shrink as needed. Starts with a size of 100%. Same as <code>flex="100"</code>.</td>\n' +
+    '    </tr>\n' +
+    '    <tr>\n' +
+    '      <td>flex="nogrow"</td>\n' +
+    '      <td>Will shrink as needed, but won\'t grow. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="noshrink"</td>\n' +
