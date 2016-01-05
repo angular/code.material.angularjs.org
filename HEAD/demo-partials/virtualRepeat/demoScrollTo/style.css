@@ -23,5 +23,5 @@
 .virtualRepeatdemoScrollTo md-virtual-repeat-container {
   border: solid 1px grey; }
 
-.virtualRepeatdemoScrollTo .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+.virtualRepeatdemoScrollTo .md-virtual-repeat-container .md-virtual-repeat-offsetter div:not(.header) {
   padding-left: 16px; }

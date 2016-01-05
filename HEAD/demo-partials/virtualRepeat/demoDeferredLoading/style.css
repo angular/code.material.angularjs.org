@@ -14,5 +14,5 @@
 .virtualRepeatdemoDeferredLoading md-virtual-repeat-container {
   border: solid 1px grey; }
 
-.virtualRepeatdemoDeferredLoading .md-virtual-repeat-container .md-virtual-repeat-offsetter {
+.virtualRepeatdemoDeferredLoading .md-virtual-repeat-container .md-virtual-repeat-offsetter div {
   padding-left: 16px; }
