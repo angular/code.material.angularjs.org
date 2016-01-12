@@ -87,7 +87,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <p></p>\n' +
     '    <h2>How do I start with Angular Material?</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
-    '      <li><a href="https://codepen.io/collection/AxKKgY/" target="_blank"\n' +
+    '      <li><a href="http://codepen.io/team/AngularMaterial/" target="_blank"\n' +
     '             title="Link opens in a new window">Visit the Angular Material CodePen Community </a></li>\n' +
     '\n' +
     '      <li><a href="https://github.com/angular/material-start/tree/es5-tutorial" target="_blank"\n' +
