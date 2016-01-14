@@ -1,0 +1,147 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Tiles contain the content of an <code>md-grid-list</code>. They span one or more grid
+cells vertically or horizontally, and use <code>md-grid-tile-{footer,header}</code> to
+display secondary content.</p>
+<h3 id="responsive-attributes">Responsive Attributes</h3>
+<p>The <code>md-grid-tile</code> directive supports &quot;responsive&quot; attributes, which allow
+different <code>md-rowspan</code> and <code>md-colspan</code> values depending on the currently
+matching media query (as defined in <code>$mdConstant.MEDIA</code>).</p>
+<p>In order to set a responsive attribute, first define the fallback value with
+the standard attribute name, then add additional attributes with the
+following convention: <code>{base-attribute-name}-{media-query-name}=&quot;{value}&quot;</code>
+(ie. <code>md-colspan-sm=&quot;4&quot;</code>)</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <p>With header:</p>
+<hljs lang="html">
+<md-grid-tile>
+  <md-grid-tile-header>
+    <h3>This is a header</h3>
+  </md-grid-tile-header>
+</md-grid-tile>
+</hljs>
+
+<p>With footer:</p>
+<hljs lang="html">
+<md-grid-tile>
+  <md-grid-tile-footer>
+    <h3>This is a footer</h3>
+  </md-grid-tile-footer>
+</md-grid-tile>
+</hljs>
+
+<p>Spanning multiple rows/columns:</p>
+<hljs lang="html">
+<md-grid-tile md-colspan="2" md-rowspan="3">
+</md-grid-tile>
+</hljs>
+
+<p>Responsive attributes:</p>
+<hljs lang="html">
+<md-grid-tile md-colspan="1" md-colspan-sm="3" md-colspan-md="5">
+</md-grid-tile>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-colspan
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The number of columns to span (default 1). Cannot
+   exceed the number of columns in the grid. Supports interpolation.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-rowspan
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The number of rows to span (default 1). Supports
+    interpolation.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

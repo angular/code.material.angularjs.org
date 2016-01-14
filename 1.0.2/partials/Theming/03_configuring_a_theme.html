@@ -1,0 +1,122 @@
+<div class="doc-content theming">
+    
+    <h2 id="configuring-a-theme">Configuring a theme</h2>
+<p>By default your Angular Material application will use the default theme, a theme
+that is pre-configured with the following palettes for intention groups:</p>
+<ul>
+<li><em>primary</em> - indigo</li>
+<li><em>accent</em> - pink</li>
+<li><em>warn</em> - red</li>
+<li><em>background</em> - grey (note that white is in this palette)</li>
+</ul>
+<p>Configuring of the default theme is done by using the <code>$mdThemingProvider</code>
+during application configuration.</p>
+<h3 id="configuring-color-intentions">Configuring Color Intentions</h3>
+<p>You can specify a color palette for a given color intention by calling the
+appropriate configuration method (<code>theme.primaryPalette</code>, <code>theme.accentPalette</code>,
+<code>theme.warnPalette</code>, <code>theme.backgroundPalette</code>).</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;pink&#39;)
+    .accentPalette(&#39;orange&#39;);
+});
+</hljs>
+
+<h3 id="specifying-dark-themes">Specifying Dark Themes</h3>
+<p>You can mark a theme as dark by calling <code>theme.dark()</code>. </p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .dark();
+});
+</hljs>
+
+<h3 id="specifying-custom-hues-for-color-intentions">Specifying Custom Hues For Color Intentions</h3>
+<p>You can specify the hues from a palette that will be used by an intention group
+by default and for the <code>md-hue-1</code>, <code>md-hue-2</code>, <code>md-hue-3</code> classes. </p>
+<p>By default, shades <code>500</code>, <code>300</code> <code>800</code> and <code>A100</code> are used for <code>primary</code> and
+<code>warn</code> intentions, while <code>A200</code>, <code>A100</code>, <code>A400</code> and <code>A700</code> are used for <code>accent</code>.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;pink&#39;, {
+      &#39;default&#39;: &#39;400&#39;, // by default use shade 400 from the pink palette for primary intentions
+      &#39;hue-1&#39;: &#39;100&#39;, // use shade 100 for the <code>md-hue-1</code> class
+      &#39;hue-2&#39;: &#39;600&#39;, // use shade 600 for the <code>md-hue-2</code> class
+      &#39;hue-3&#39;: &#39;A100&#39; // use shade A100 for the <code>md-hue-3</code> class
+    })
+    // If you specify less than all of the keys, it will inherit from the
+    // default shades
+    .accentPalette(&#39;purple&#39;, {
+      &#39;default&#39;: &#39;200&#39; // use shade 200 for default, and keep all other shades the same
+    });
+
+});
+</hljs>
+
+<h3 id="defining-custom-palettes">Defining Custom Palettes</h3>
+<p>As mentioned before, Angular Material ships with the Material Design
+Spec&#39;s color palettes built in. In the event that you need to define a custom color palette, you can use <code>$mdThemingProvider</code> to define it, thereby making 
+it available to your theme for use in its intention groups. Note that you must
+specify all hues in the definition map.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+
+  $mdThemingProvider.definePalette(&#39;amazingPaletteName&#39;, {
+    &#39;50&#39;: &#39;ffebee&#39;,
+    &#39;100&#39;: &#39;ffcdd2&#39;,
+    &#39;200&#39;: &#39;ef9a9a&#39;,
+    &#39;300&#39;: &#39;e57373&#39;,
+    &#39;400&#39;: &#39;ef5350&#39;,
+    &#39;500&#39;: &#39;f44336&#39;,
+    &#39;600&#39;: &#39;e53935&#39;,
+    &#39;700&#39;: &#39;d32f2f&#39;,
+    &#39;800&#39;: &#39;c62828&#39;,
+    &#39;900&#39;: &#39;b71c1c&#39;,
+    &#39;A100&#39;: &#39;ff8a80&#39;,
+    &#39;A200&#39;: &#39;ff5252&#39;,
+    &#39;A400&#39;: &#39;ff1744&#39;,
+    &#39;A700&#39;: &#39;d50000&#39;,
+    &#39;contrastDefaultColor&#39;: &#39;light&#39;,    // whether, by default, text (contrast) 
+                                        // on this palette should be dark or light
+
+    &#39;contrastDarkColors&#39;: [&#39;50&#39;, &#39;100&#39;, //hues which contrast should be &#39;dark&#39; by default
+     &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;],
+    &#39;contrastLightColors&#39;: undefined    // could also specify this if default was &#39;dark&#39;
+  });
+
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;amazingPaletteName&#39;)
+
+});
+</hljs>
+
+<p>Sometimes it is easier to extend an existing color palette to overwrite a few
+colors than define a whole new one. You can use <code>$mdThemingProvider.extendPalette</code> 
+to quickly extend an existing color palette.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+
+  // Extend the red theme with a few different colors
+  var neonRedMap = $mdThemingProvider.extendPalette(&#39;red&#39;, {
+    &#39;500&#39;: &#39;ff0000&#39;
+  });
+
+  // Register the new color palette map with the name <code>neonRed</code>
+  $mdThemingProvider.definePalette(&#39;neonRed&#39;, neonRedMap);
+
+  // Use that theme for the primary intentions
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;neonRed&#39;)
+
+});
+</hljs>
+    
+</div>

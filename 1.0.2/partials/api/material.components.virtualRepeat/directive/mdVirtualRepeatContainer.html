@@ -1,0 +1,158 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>md-virtual-repeat-container</code> provides the scroll container for md-virtual-repeat.</p>
+<p>Virtual repeat is a limited substitute for ng-repeat that renders only
+enough dom nodes to fill the container and recycling them as the user scrolls.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+
+<md-virtual-repeat-container md-top-index="topIndex">
+  <div md-virtual-repeat="i in items" md-item-size="20">Hello {{i}}!</div>
+</md-virtual-repeat-container>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-top-index
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Binds the index of the item that is at the top of the scroll
+    container to $scope. It can both read and set the scroll position.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-orient-horizontal
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the container should scroll horizontally
+    (defaults to orientation and scrolling vertically).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-auto-shrink
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, the container will shrink to fit
+    the number of items when that number is less than its original size.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-auto-shrink-min
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Minimum number of items that md-auto-shrink
+    will shrink to (default: 0).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
