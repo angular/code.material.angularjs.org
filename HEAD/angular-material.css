@@ -11061,7 +11061,8 @@ md-icon {
   height: 24px;
   width: 24px; }
   md-icon svg {
-    pointer-events: none; }
+    pointer-events: none;
+    display: block; }
   md-icon[md-font-icon] {
     line-height: 1;
     width: auto; }
