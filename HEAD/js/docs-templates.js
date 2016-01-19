@@ -1488,7 +1488,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>hide-gt-sm</td>\n' +
-    '      <td>hide-gt-sm</td>\n' +
+    '      <td>show-gt-sm</td>\n' +
     '      <td>width &gt;= <b>960</b>px</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
@@ -1509,7 +1509,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <tr>\n' +
     '      <td>hide-gt-lg</td>\n' +
     '      <td>show-gt-lg</td>\n' +
-    '      <td>width &gt;= <b>1920/b>px</td>\n' +
+    '      <td>width &gt;= <b>1920</b>px</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>hide-xl</td>\n' +
