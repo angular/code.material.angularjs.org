@@ -228,9 +228,13 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
     '    <h2 class="md-headline" style="margin-top: 0;">What is Angular Material?</h2>\n' +
-    '    <p>For developers using AngularJS, Angular Material is the reference implementation of Google\'s Material Design Specification. This project provides a set of reusable, well-tested, and accessible UI components based on Material Design.</p>\n' +
+    '    <p>\n' +
+    '      For developers using AngularJS, Angular Material is the reference implementation of Google\'s\n' +
+    '      Material Design Specification. This project provides a set of reusable, well-tested, and\n' +
+    '      accessible UI components based on Material Design.\n' +
+    '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '      <li flex="25" flex-md="50" flex-sm="50" ng-repeat="(index, link) in [\n' +
+    '      <li flex="50" flex-gt-md="25" ng-repeat="(index, link) in [\n' +
     '        { href: \'./getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
     '        { href: \'./demo\', icon: \'play_circle_fill\', text: \'Demos\' },\n' +
     '        { href: \'./CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
@@ -249,14 +253,13 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <br/>\n' +
     '    <h2 class="md-headline">What is Material Design?</h2>\n' +
     '    <p>\n' +
-    '      Material Design is a specification for a\n' +
-    '      unified system of visual, motion, and interaction design that adapts across different devices and different\n' +
-    '      screen sizes.\n' +
+    '      Material Design is a specification for a unified system of visual, motion, and interaction\n' +
+    '      design that adapts across different devices and different screen sizes.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '      <li flex="50" flex-md="100" flex-sm="100" ng-repeat="(index, link) in [\n' +
-    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video about Material Design\' },\n' +
-    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn more about Material Design\' }\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video\' },\n' +
+    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn More\' }\n' +
     '      ]">\n' +
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
@@ -270,10 +273,37 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
+    '    <h2 class="md-headline">What is the current project status?</h2>\n' +
+    '    <p>\n' +
+    '      Angular Material recently released Version 1 which we consider to be stable and ready for\n' +
+    '      production use. Efforts are currently being focused on fixing bugs and other minor\n' +
+    '      improvements.\n' +
+    '    </p>\n' +
+    '     <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        {\n' +
+    '          href: \'https://github.com/angular/material/blob/master/CHANGELOG.md\',\n' +
+    '          icon: \'access_time\',\n' +
+    '          text: \'Changelog\'\n' +
+    '        }\n' +
+    '      ]">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            ng-href="{{link.href}}"\n' +
+    '            aria-label="{{link.text}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.text}}\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '\n' +
+    '\n' +
+    '    <br/>\n' +
     '    <md-divider></md-divider>\n' +
     '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
     '      These docs were generated from\n' +
-    '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
+    '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank">\n' +
+    '      v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
     '      on (<strong>{{BUILDCONFIG.date}}</strong>) GMT.\n' +
     '    </p>\n' +
     '  </md-content>\n' +
