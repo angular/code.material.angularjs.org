@@ -20,10 +20,10 @@
   .fabSpeedDialdemoMoreOptions md-fab-speed-dial md-fab-trigger {
     transition: all 0.3s ease-in-out;
     transform: scale(1); }
-  .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide {
+  .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide-add.ng-hide-add-active, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide-add.ng-hide-add-active {
     display: flex !important; }
-    .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide md-fab-trigger, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide md-fab-trigger {
-      transform: scale(0); }
+  .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-scale.ng-hide md-fab-trigger, .fabSpeedDialdemoMoreOptions md-fab-speed-dial.md-fling.ng-hide md-fab-trigger {
+    transform: scale(0); }
 
 .fabSpeedDialdemoMoreOptions .intro {
   padding-left: 5px; }

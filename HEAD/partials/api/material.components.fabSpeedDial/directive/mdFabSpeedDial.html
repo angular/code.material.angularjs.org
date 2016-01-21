@@ -36,6 +36,11 @@ also uses <code>position: absolute</code> or <code>position: relative</code> in 
 open or close the speed dial. However, if you wish to allow users to hover over the empty
 space where the actions will appear, you must also add the <code>md-hover-full</code> class to the speed
 dial element. Without this, the hover effect will only occur on top of the trigger.</p>
+<p>See the demos for more information.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If your speed dial shows the closing animation upon launch, you may need to use <code>ng-cloak</code> on
+the parent container to ensure that it is only visible once ready. We have plans to remove this
+necessity in the future.</p>
 
 </div>
 
