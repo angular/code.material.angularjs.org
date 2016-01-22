@@ -1,0 +1,77 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdSidenav</code> makes it easy to interact with multiple sidenavs
+in an app.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+// Async lookup for sidenav instance; will resolve when the instance is available
+$mdSidenav(componentId).then(function(instance) {
+  $log.debug( componentId + &quot;is now ready&quot; );
+});
+// Async toggle the given sidenav;
+// when instance is known ready and lazy lookup is not needed.
+$mdSidenav(componentId)
+   .toggle()
+   .then(function(){
+     $log.debug(&#39;toggled&#39;);
+   });
+// Async open the given sidenav
+$mdSidenav(componentId)
+   .open()
+   .then(function(){
+     $log.debug(&#39;opened&#39;);
+   });
+// Async close the given sidenav
+$mdSidenav(componentId)
+   .close()
+   .then(function(){
+     $log.debug(&#39;closed&#39;);
+   });
+// Sync check to see if the specified sidenav is set to be open
+$mdSidenav(componentId).isOpen();
+// Sync check to whether given sidenav is locked open
+// If this is true, the sidenav will be open regardless of close()
+$mdSidenav(componentId).isLockedOpen();
+</hljs>
+  </section>
+
+
+  
+
+  
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

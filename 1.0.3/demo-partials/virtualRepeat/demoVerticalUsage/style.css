@@ -1,0 +1,18 @@
+.virtualRepeatdemoVerticalUsage #vertical-container {
+  height: 292px;
+  width: 400px; }
+
+.virtualRepeatdemoVerticalUsage .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 40px;
+  padding-top: 10px; }
+
+.virtualRepeatdemoVerticalUsage md-content {
+  margin: 16px; }
+
+.virtualRepeatdemoVerticalUsage md-virtual-repeat-container {
+  border: solid 1px grey; }
+
+.virtualRepeatdemoVerticalUsage .md-virtual-repeat-container .md-virtual-repeat-offsetter div {
+  padding-left: 16px; }

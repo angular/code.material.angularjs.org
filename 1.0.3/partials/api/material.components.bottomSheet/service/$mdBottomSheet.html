@@ -1,0 +1,295 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdBottomSheet</code> opens a bottom sheet over the app and provides a simple promise API.</p>
+<h2 id="restrictions">Restrictions</h2>
+<ul>
+<li>The bottom sheet&#39;s template must have an outer <code>&lt;md-bottom-sheet&gt;</code> element.</li>
+<li>Add the <code>md-grid</code> class to the bottom sheet for a grid layout.</li>
+<li>Add the <code>md-list</code> class to the bottom sheet for a list layout.</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="html">
+<div ng-controller="MyController">
+  <md-button ng-click="openBottomSheet()">
+    Open a Bottom Sheet!
+  </md-button>
+</div>
+</hljs>
+<hljs lang="js">
+var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
+app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
+  $scope.openBottomSheet = function() {
+    $mdBottomSheet.show({
+      template: &#39;<md-bottom-sheet>Hello!</md-bottom-sheet>&#39;
+    });
+  };
+});
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="show">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.show(options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Show a bottom sheet with the specified options.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>An options object, with the following properties:</p>
+<ul>
+<li><code>templateUrl</code> - <code>{string=}</code>: The url of an html template file that will
+be used as the content of the bottom sheet. Restrictions: the template must
+have an outer <code>md-bottom-sheet</code> element.</li>
+<li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual
+template string.</li>
+<li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified, it will create a new child scope.
+This scope will be destroyed when the bottom sheet is removed unless <code>preserveScope</code> is set to true.</li>
+<li><code>preserveScope</code> - <code>{boolean=}</code>: whether to preserve the scope when the element is removed. Default is false</li>
+<li><code>controller</code> - <code>{string=}</code>: The controller to associate with this bottom sheet.</li>
+<li><code>locals</code> - <code>{string=}</code>: An object containing key/value pairs. The keys will
+be used as names of values to inject into the controller. For example,
+<code>locals: {three: 3}</code> would inject <code>three</code> into the controller with the value
+of 3.</li>
+<li><code>clickOutsideToClose</code> - <code>{boolean=}</code>: Whether the user can click outside the bottom sheet to
+close it. Default true.</li>
+<li><code>escapeToClose</code> - <code>{boolean=}</code>: Whether the user can press escape to close the bottom sheet.
+Default true.</li>
+<li><code>resolve</code> - <code>{object=}</code>: Similar to locals, except it takes promises as values
+and the bottom sheet will not open until the promises resolve.</li>
+<li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
+<li><code>parent</code> - <code>{element=}</code>: The element to append the bottom sheet to. The <code>parent</code> may be a <code>function</code>, <code>string</code>,
+<code>object</code>, or null. Defaults to appending to the body of the root element (or the root element) of the application.
+e.g. angular.element(document.getElementById(&#39;content&#39;)) or &quot;#content&quot;</li>
+<li><code>disableParentScroll</code> - <code>{boolean=}</code>: Whether to disable scrolling while the bottom sheet is open.
+Default true.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that can be resolved with <code>$mdBottomSheet.hide()</code> or
+rejected with <code>$mdBottomSheet.cancel()</code>.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="hide">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.hide([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Hide the existing bottom sheet and resolve the promise returned from
+<code>$mdBottomSheet.show()</code>. This call will close the most recently opened/current bottomsheet (if any).</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the resolved promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="cancel">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdBottomSheet.cancel([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Hide the existing bottom sheet and reject the promise returned from
+<code>$mdBottomSheet.show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the rejected promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
