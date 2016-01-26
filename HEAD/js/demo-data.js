@@ -2170,7 +2170,13 @@ angular.module('docsApp').constant('DEMOS', [
     "label": "Tabs",
     "demos": [
       {
-        "ngModule": "",
+        "ngModule": {
+          "name": "tabsDemoDynamicHeight",
+          "module": "tabsDemoDynamicHeight",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
         "id": "tabsdemoDynamicHeight",
         "css": [
           {
@@ -2188,7 +2194,14 @@ angular.module('docsApp').constant('DEMOS', [
             "outputPath": "demo-partials/tabs/demoDynamicHeight/readme.html"
           }
         ],
-        "js": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/tabs/demoDynamicHeight/script.js"
+          }
+        ],
         "moduleName": "material.components.tabs",
         "name": "demoDynamicHeight",
         "label": "Dynamic Height",
