@@ -1255,16 +1255,16 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    }\n' +
     '\n' +
     '    .layout-row .flex-33 {\n' +
-    '      -webkit-flex: 1 1 33%;\n' +
-    '          -ms-flex: 1 1 33%;\n' +
-    '              flex: 1 1 33%;\n' +
+    '      -webkit-flex: 1 1 calc(100% / 3);\n' +
+    '          -ms-flex: 1 1 calc(100% / 3);\n' +
+    '              flex: 1 1 calc(100% / 3);\n' +
     '      box-sizing: border-box;\n' +
     '    }\n' +
     '\n' +
     '    .layout-row  .flex-66 {\n' +
-    '      -webkit-flex: 1 1 66%;\n' +
-    '          -ms-flex: 1 1 66%;\n' +
-    '              flex: 1 1 66%;\n' +
+    '      -webkit-flex: 1 1 calc(200% / 3);\n' +
+    '          -ms-flex: 1 1 calc(200% / 3);\n' +
+    '              flex: 1 1 calc(200% / 3);\n' +
     '      box-sizing: border-box;\n' +
     '    }\n' +
     '\n' +
