@@ -318,7 +318,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    The <code>layout-align</code> directive takes two words.\n' +
-    '    The first word says how the children will be aligned in the lay3ut\'s direction, and the second word says how the children will be aligned perpendicular to the layout\'s direction.</p>\n' +
+    '    The first word says how the children will be aligned in the layout\'s direction, and the second word says how the children will be aligned perpendicular to the layout\'s direction.</p>\n' +
     '\n' +
     '    <p>Only one value is required for this directive.\n' +
     '    For example, <code>layout="row" layout-align="center"</code> would make the elements\n' +
