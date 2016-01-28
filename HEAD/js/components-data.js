@@ -975,7 +975,7 @@ DocsApp
         "url": "api/directive/mdAutofocus",
         "label": "mdAutofocus",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/util.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/autofocus.js",
         "hasDemo": true
       }
     ],
