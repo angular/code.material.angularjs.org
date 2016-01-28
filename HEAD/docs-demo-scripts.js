@@ -2345,3 +2345,5 @@ angular.module('tooltipDemo1', ['ngMaterial'])
 })();
 
 angular.module('whiteframeBasicUsage', ['ngMaterial']);
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial']);

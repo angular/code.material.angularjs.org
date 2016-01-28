@@ -929,6 +929,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.whiteframe",
+    "type": "module",
+    "outputPath": "partials/api/material.components.whiteframe/index.html",
+    "url": "api/material.components.whiteframe",
+    "label": "material.components.whiteframe",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/whiteframe/whiteframe.js",
+    "docs": [
+      {
+        "name": "mdWhiteframe",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.whiteframe/directive/mdWhiteframe.html",
+        "url": "api/directive/mdWhiteframe",
+        "label": "mdWhiteframe",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/whiteframe/whiteframe.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.ripple",
     "type": "module",
     "outputPath": "partials/api/material.core.ripple/index.html",

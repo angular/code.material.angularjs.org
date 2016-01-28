@@ -2670,13 +2670,13 @@ angular.module('docsApp').constant('DEMOS', [
             "ngMaterial"
           ]
         },
-        "id": "whiteframedemoBasicUsage",
+        "id": "whiteframedemoBasicClassUsage",
         "css": [
           {
             "name": "style.css",
             "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/whiteframe/demoBasicUsage/style.css"
+            "outputPath": "demo-partials/whiteframe/demoBasicClassUsage/style.css"
           }
         ],
         "html": [],
@@ -2685,17 +2685,53 @@ angular.module('docsApp').constant('DEMOS', [
             "name": "script.js",
             "label": "script.js",
             "fileType": "js",
-            "outputPath": "demo-partials/whiteframe/demoBasicUsage/script.js"
+            "outputPath": "demo-partials/whiteframe/demoBasicClassUsage/script.js"
           }
         ],
         "moduleName": "material.components.whiteframe",
-        "name": "demoBasicUsage",
-        "label": "Basic Usage",
+        "name": "demoBasicClassUsage",
+        "label": "Basic Class Usage",
         "index": {
           "name": "index.html",
           "label": "index.html",
           "fileType": "html",
-          "outputPath": "demo-partials/whiteframe/demoBasicUsage/index.html"
+          "outputPath": "demo-partials/whiteframe/demoBasicClassUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "whiteframeDirectiveUsage",
+          "module": "whiteframeDirectiveUsage",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "whiteframedemoDirectiveAttributeUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/whiteframe/demoDirectiveAttributeUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/whiteframe/demoDirectiveAttributeUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.whiteframe",
+        "name": "demoDirectiveAttributeUsage",
+        "label": "Directive Attribute Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/whiteframe/demoDirectiveAttributeUsage/index.html"
         }
       }
     ],
