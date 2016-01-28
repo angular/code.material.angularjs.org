@@ -1,0 +1,252 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>You can use any <code>&lt;input&gt;</code> or <code>&lt;textarea&gt;</code> element as a child of an <code>&lt;md-input-container&gt;</code>. This
+allows you to build complex forms for data entry.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-input-container>
+  <label>Color</label>
+  <input type="text" ng-model="color" required md-maxlength="10">
+</md-input-container>
+</hljs>
+
+<h3>With Errors</h3>
+
+<p><code>md-input-container</code> also supports errors using the standard <code>ng-messages</code> directives and
+animates the messages when they become visible using from the <code>ngEnter</code>/<code>ngLeave</code> events or
+the <code>ngShow</code>/<code>ngHide</code> events.</p>
+<p>By default, the messages will be hidden until the input is in an error state. This is based off
+of the <code>md-is-error</code> expression of the <code>md-input-container</code>. This gives the user a chance to
+fill out the form before the errors become visible.</p>
+<hljs lang="html">
+<form name="colorForm">
+  <md-input-container>
+    <label>Favorite Color</label>
+    <input name="favoriteColor" ng-model="favoriteColor" required>
+    <div ng-messages="userForm.lastName.$error">
+      <div ng-message="required">This is required!</div>
+    </div>
+  </md-input-container>
+</form>
+</hljs>
+
+<p>We automatically disable this auto-hiding functionality if you provide any of the following
+visibility directives on the <code>ng-messages</code> container:</p>
+<ul>
+<li><code>ng-if</code></li>
+<li><code>ng-show</code>/<code>ng-hide</code></li>
+<li><code>ng-switch-when</code>/<code>ng-switch-default</code></li>
+</ul>
+<p>You can also disable this functionality manually by adding the <code>md-auto-hide=&quot;false&quot;</code> expression
+to the <code>ng-messages</code> container. This may be helpful if you always want to see the error messages
+or if you are building your own visibilty directive.</p>
+<p><em><b>Note:</b> The <code>md-auto-hide</code> attribute is a static string that is  only checked upon
+initialization of the <code>ng-messages</code> directive to see if it equals the string <code>false</code>.</em></p>
+<hljs lang="html">
+<form name="userForm">
+  <md-input-container>
+    <label>Last Name</label>
+    <input name="lastName" ng-model="lastName" required md-maxlength="10" minlength="4">
+    <div ng-messages="userForm.lastName.$error" ng-show="userForm.lastName.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That&#39;s too long!</div>
+      <div ng-message="minlength">That&#39;s too short!</div>
+    </div>
+  </md-input-container>
+  <md-input-container>
+    <label>Biography</label>
+    <textarea name="bio" ng-model="biography" required md-maxlength="150"></textarea>
+    <div ng-messages="userForm.bio.$error" ng-show="userForm.bio.$dirty">
+      <div ng-message="required">This is required!</div>
+      <div ng-message="md-maxlength">That&#39;s too long!</div>
+    </div>
+  </md-input-container>
+  <md-input-container>
+    <input aria-label='title' ng-model='title'>
+  </md-input-container>
+  <md-input-container>
+    <input placeholder='title' ng-model='title'>
+  </md-input-container>
+</form>
+</hljs>
+
+<h3>Notes</h3>
+
+<ul>
+<li>Requires <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>.</li>
+<li>Behaves like the <a href="https://docs.angularjs.org/api/ng/directive/input">AngularJS input directive</a>.</li>
+</ul>
+<p>The <code>md-input</code> and <code>md-input-container</code> directives use very specific positioning to achieve the
+error animation effects. Therefore, it is <em>not</em> advised to use the Layout system inside of the
+<code>&lt;md-input-container&gt;</code> tags. Instead, use relative or absolute positioning.</p>
+
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-maxlength
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The maximum number of characters allowed in this input. If this is
+  specified, a character counter will be shown underneath the input.<br/><br/>
+  The purpose of <strong><code>md-maxlength</code></strong> is exactly to show the max length counter text. If you don&#39;t
+  want the counter text and only need &quot;plain&quot; validation, you can use the &quot;simple&quot; <code>ng-maxlength</code>
+  or maxlength attributes.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Aria-label is required when no label is present.  A warning message
+  will be logged in the console if not present.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>An alternative approach to using aria-label when the label is not
+  PRESENT. The placeholder text is copied to the aria-label attribute.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-autogrow
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, textareas will not grow automatically.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-detect-hidden
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, textareas will be sized properly when they are
+  revealed after being hidden. This is off by default for performance reasons because it
+  guarantees a reflow every digest cycle.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

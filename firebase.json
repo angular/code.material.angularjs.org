@@ -73,6 +73,10 @@
     {
       "source": "/1.0.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.0.3/index.html"
+    },
+    {
+      "source": "/1.0.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.4/index.html"
     }
   ]
 }

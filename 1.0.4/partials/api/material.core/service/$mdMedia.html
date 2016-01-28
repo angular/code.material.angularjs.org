@@ -1,0 +1,137 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdMedia</code> is used to evaluate whether a given media query is true or false given the
+current device&#39;s screen / window size. The media query will be re-evaluated on resize, allowing
+you to register a watch.</p>
+<p><code>$mdMedia</code> also has pre-programmed support for media queries that match the layout breakpoints:</p>
+ <table class="md-api-table">
+   <thead>
+   <tr>
+     <th>Breakpoint</th>
+     <th>mediaQuery</th>
+   </tr>
+   </thead>
+   <tbody>
+   <tr>
+     <td>xs</td>
+     <td>(max-width: 599px)</td>
+   </tr>
+   <tr>
+     <td>gt-xs</td>
+     <td>(min-width: 600px)</td>
+   </tr>
+   <tr>
+     <td>sm</td>
+     <td>(min-width: 600px) and (max-width: 959px)</td>
+   </tr>
+   <tr>
+     <td>gt-sm</td>
+     <td>(min-width: 960px)</td>
+   </tr>
+   <tr>
+     <td>md</td>
+     <td>(min-width: 960px) and (max-width: 1279px)</td>
+   </tr>
+   <tr>
+     <td>gt-md</td>
+     <td>(min-width: 1280px)</td>
+   </tr>
+   <tr>
+     <td>lg</td>
+     <td>(min-width: 1280px) and (max-width: 1919px)</td>
+   </tr>
+   <tr>
+     <td>gt-lg</td>
+     <td>(min-width: 1920px)</td>
+   </tr>
+   <tr>
+     <td>xl</td>
+     <td>(min-width: 1920px)</td>
+   </tr>
+   </tbody>
+ </table>
+
+<p> See Material Design&#39;s <a href="https://www.google.com/design/spec/layout/adaptive-ui.html">Layout - Adaptive UI</a> for more details.</p>
+<p> <a href="https://www.google.com/design/spec/layout/adaptive-ui.html">
+ <img src="https://material-design.storage.googleapis.com/publish/material_v_4/material_ext_publish/0B8olV15J7abPSGFxemFiQVRtb1k/layout_adaptive_breakpoints_01.png" width="100%" height="100%"></img>
+ </a></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+app.controller(&#39;MyController&#39;, function($mdMedia, $scope) {
+  $scope.$watch(function() { return $mdMedia(&#39;lg&#39;); }, function(big) {
+    $scope.bigScreen = big;
+  });
+
+  $scope.screenIsSmall = $mdMedia(&#39;sm&#39;);
+  $scope.customQuery = $mdMedia(&#39;(min-width: 1234px)&#39;);
+  $scope.anotherCustom = $mdMedia(&#39;max-width: 300px&#39;);
+});
+</hljs>
+  </section>
+
+
+  <section class="api-section">
+      
+      <section class="api-section">
+  
+</section>
+
+
+      <div class="api-param-table">
+  <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+    <td class="description"><p>a boolean representing whether or not the given media query is true or false.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    </section>
+
+  
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

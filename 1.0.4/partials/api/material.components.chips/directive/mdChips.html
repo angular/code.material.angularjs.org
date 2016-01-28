@@ -1,0 +1,373 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-chips&gt;</code> is an input component for building lists of strings or objects. The list items are
+displayed as &#39;chips&#39;. This component can make use of an <code>&lt;input&gt;</code> element or an 
+<code>&lt;md-autocomplete&gt;</code> element.</p>
+<h3 id="custom-templates">Custom templates</h3>
+<p>A custom template may be provided to render the content of each chip. This is achieved by
+specifying an <code>&lt;md-chip-template&gt;</code> element containing the custom content as a child of
+<code>&lt;md-chips&gt;</code>.</p>
+<p>Note: Any attributes on
+<code>&lt;md-chip-template&gt;</code> will be dropped as only the innerHTML is used for the chip template. The
+variables <code>$chip</code> and <code>$index</code> are available in the scope of <code>&lt;md-chip-template&gt;</code>, representing
+the chip object and its index in the list of chips, respectively.
+To override the chip delete control, include an element (ideally a button) with the attribute
+<code>md-chip-remove</code>. A click listener to remove the chip will be added automatically. The element
+is also placed as a sibling to the chip content (on which there are also click listeners) to
+avoid a nested ng-click situation.</p>
+<p><h3> Pending Features </h3></p>
+<ul style="padding-left:20px;">
+
+  <ul>Style
+    <li>Colours for hover, press states (ripple?).</li>
+  </ul>
+
+  <ul>Validation
+    <li>allow a validation callback</li>
+    <li>hilighting style for invalid chips</li>
+  </ul>
+
+  <ul>Item mutation
+    <li>Support <code>&lt;md-chip-edit&gt;</code> template, show/hide the edit element on tap/click? double tap/double
+      click?
+    </li>
+  </ul>
+
+  <ul>Truncation and Disambiguation (?)
+    <li>Truncate chip text where possible, but do not truncate entries such that two are
+    indistinguishable.</li>
+  </ul>
+
+  <ul>Drag and Drop
+    <li>Drag and drop chips between related <code>&lt;md-chips&gt;</code> elements.
+    </li>
+  </ul>
+</ul>
+
+<p> <span style="font-size:.8em;text-align:center">
+   Warning: This component is a WORK IN PROGRESS. If you use it now,
+   it will probably break on you in the future.
+ </span></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+  <md-chips
+      ng-model="myItems"
+      placeholder="Add an item"
+      readonly="isReadOnly">
+  </md-chips>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* ng-model</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>A model to bind the list of items to</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-transform-chip</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression of form <code>myFunction($chip)</code> that when called
+   expects one of the following return values:</p>
+<ul>
+<li>an object representing the <code>$chip</code> input string</li>
+<li><code>undefined</code> to simply add the <code>$chip</code> input string, or</li>
+<li><code>null</code> to prevent the chip from being appended</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-require-match</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If true, and the chips template contains an autocomplete,
+   only allow selection of pre-defined chips (i.e. you cannot add new ones).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Placeholder text that will be forwarded to the input.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          secondary-placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Placeholder text that will be forwarded to the input,
+   displayed when there is at least on item in the list</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          readonly
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Disables list manipulation (deleting or adding list items), hiding
+   the input and delete buttons</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-add
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip has been
+   added.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-remove
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip has been
+   removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-select
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip is selected.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          delete-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers instructing users that pressing
+   the delete key will remove the chip.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          delete-button-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A label for the delete button. Also hidden and read by
+   screen readers.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-separator-keys
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An array of key codes used to separate chips.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
