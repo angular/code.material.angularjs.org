@@ -1660,6 +1660,9 @@ md-dialog {
         padding-top: 0; }
     md-dialog md-dialog-content .md-dialog-content-body {
       width: 100%; }
+    md-dialog md-dialog-content .md-prompt-input-container {
+      width: 100%;
+      box-sizing: border-box; }
   md-dialog .md-actions, md-dialog md-dialog-actions {
     display: -webkit-flex;
     display: -ms-flexbox;

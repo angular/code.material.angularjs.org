@@ -370,6 +370,58 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
 
     </li>
     
+    <li id="prompt">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.prompt();
+</code>
+      </h3>
+      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message and input box. You can call show and the promise returned
+will be resolved only if the user clicks the prompt action on the dialog, passing the input value as the first argument.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdDialogPreset</code> with the chainable configuration methods:</p>
+<p>Additionally, it supports the following methods:</p>
+<ul>
+<li>$mdDialogPreset#title(string) - Sets the prompt title.</li>
+<li>$mdDialogPreset#textContent(string) - Sets the prompt message.</li>
+<li>$mdDialogPreset#htmlContent(string) - Sets the prompt message as HTML. Requires ngSanitize
+  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+<li>$mdDialogPreset#placeholder(string) - Sets the placeholder text for the input.</li>
+<li>$mdDialogPreset#ok(string) - Sets the prompt &quot;Okay&quot; button text.</li>
+<li>$mdDialogPreset#cancel(string) - Sets the prompt &quot;Cancel&quot; button text.</li>
+<li>$mdDialogPreset#theme(string) - Sets the theme of the prompt dialog.</li>
+<li>$mdDialogPreset#targetEvent(DOMClickEvent=) - A click&#39;s event object. When passed in as an option,
+  the location of the click will be used as the starting point for the opening animation
+  of the the dialog.</li>
+</ul>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
     <li id="show">
       <h3 class="method-function-syntax">
         <code class="method-function-syntax">$mdDialog.show(optionsOrPreset);
