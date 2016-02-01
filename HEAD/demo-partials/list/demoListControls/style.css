@@ -17,3 +17,5 @@
     /* Likely future */ }
   .listdemoListControls .secondary-button-padding p {
     padding-right: 100px; }
+  .listdemoListControls .noright .md-secondary-container {
+    right: 0 !important; }
