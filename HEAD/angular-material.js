@@ -3456,7 +3456,7 @@ function InterimElementProvider() {
         case 'layout-fill'    :
         case 'layout-wrap'    :
         case 'layout-nowrap'  :
-        case 'layout-no-wrap' :
+        case 'layout-nowrap' :
           value = '';
           break;
       }
