@@ -571,15 +571,15 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="none"</td>\n' +
-    '      <td>Will not grow or shrink. Sized based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>Will not grow or shrink. Sized based on its <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="initial"</td>\n' +
-    '      <td>Will shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>Will shrink as needed. Starts with a size based on its <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="auto"</td>\n' +
-    '      <td>Will grow and shrink as needed. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>Will grow and shrink as needed. Starts with a size based on its <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="grow"</td>\n' +
@@ -587,11 +587,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="nogrow"</td>\n' +
-    '      <td>Will shrink as needed, but won\'t grow. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>Will shrink as needed, but won\'t grow. Starts with a size based on its <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="noshrink"</td>\n' +
-    '      <td>Will grow as needed, but won\'t shrink. Starts with a size based on it\'s <code>width</code> and <code>height</code> values.</td>\n' +
+    '      <td>Will grow as needed, but won\'t shrink. Starts with a size based on its <code>width</code> and <code>height</code> values.</td>\n' +
     '    </tr>\n' +
     '  </table>\n' +
     '\n' +
@@ -676,7 +676,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '           <td>width &gt;= <b>1920</b>px</td>\n' +
     '         </tr>\n' +
     '     </table>\n' +
-    '  \n' +
+    '\n' +
     '\n' +
     '  <p>\n' +
     '    See the <a href="layout/options">layout options page</a> for more information on directives like\n' +
@@ -766,7 +766,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '\n' +
     '</div>\n' +
-    '\n' +
     '');
 }]);
 
@@ -1185,7 +1184,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    Let\'s see how this directive-to-className transformation works. Consider the simply use of the <code>layout</code> and <code>flex</code> directives (API):\n' +
+    '    Let\'s see how this directive-to-className transformation works. Consider the simple use of the <code>layout</code> and <code>flex</code> directives (API):\n' +
     '  </p>\n' +
     '\n' +
     '  <hljs lang="html">\n' +
