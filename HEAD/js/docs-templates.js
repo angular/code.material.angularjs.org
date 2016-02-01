@@ -339,7 +339,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            <td>layout-align</td>\n' +
     '            <td>Sets default alignment unless overridden by another breakpoint.</td>\n' +
     '          </tr>\n' +
-    '    <tr>\n' +
+    '          <tr>\n' +
     '           <td>layout-align-xs</td>\n' +
     '           <td>width &lt; <b>600</b>px</td>\n' +
     '         </tr>\n' +
@@ -383,20 +383,18 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '   Below is an interactive demo that lets you explore the visual results of the different settings:\n' +
     '  </p>\n' +
     '\n' +
-    '  <section class="layout-panel-parent">\n' +
-    '    <div >\n' +
-    '      <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" &nbsp; &nbsp; &nbsp; layout-align="{{layoutAlign()}}"\'\n' +
-    '                 class="small-demo colorNested" interpolate-code="true">\n' +
-    '        <demo-file name="index.html">\n' +
-    '          <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}">\n' +
-    '            <div>one</div>\n' +
-    '            <div>two</div>\n' +
-    '            <div>three</div>\n' +
-    '          </div>\n' +
-    '        </demo-file>\n' +
-    '      </docs-demo>\n' +
-    '    </div>\n' +
-    '  </section>\n' +
+    '  <div>\n' +
+    '    <docs-demo demo-title=\'layout="{{layoutDemo.direction}}" &nbsp; &nbsp; &nbsp; layout-align="{{layoutAlign()}}"\'\n' +
+    '               class="small-demo colorNested" interpolate-code="true">\n' +
+    '      <demo-file name="index.html">\n' +
+    '        <div layout="{{layoutDemo.direction}}" layout-align="{{layoutAlign()}}">\n' +
+    '          <div>one</div>\n' +
+    '          <div>two</div>\n' +
+    '          <div>three</div>\n' +
+    '        </div>\n' +
+    '      </demo-file>\n' +
+    '    </docs-demo>\n' +
+    '  </div>\n' +
     '\n' +
     '  <div layout="column" layout-gt-sm="row" layout-align="space-around">\n' +
     '\n' +
