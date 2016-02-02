@@ -461,7 +461,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    Add the <code>flex</code> directive to a layout\'s child element and the element will flex (grow or shrink) to fit\n' +
-    '    the area unused by other elements. <code>flex</code> defines how the element will ajust its size with respect to its\n' +
+    '    the area unused by other elements. <code>flex</code> defines how the element will adjust its size with respect to its\n' +
     '    <u>parent</u> container and the other elements within the container.\n' +
     '  </p>\n' +
     '\n' +
