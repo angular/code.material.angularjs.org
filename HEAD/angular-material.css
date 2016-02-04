@@ -2065,7 +2065,7 @@ md-input-container {
       unicode-bidi: bidi-override; }
   md-input-container > md-icon {
     position: absolute;
-    top: 5px;
+    top: 8px;
     left: 2px;
     right: auto; }
     html[dir=rtl] md-input-container > md-icon {
@@ -2477,7 +2477,7 @@ md-input-container {
       pointer-events: none;
       position: absolute; }
     md-input-container.md-icon-float > md-icon {
-      top: 2px;
+      top: 8px;
       left: 2px;
       right: auto; }
       html[dir=rtl] md-input-container.md-icon-float > md-icon {
@@ -4944,7 +4944,9 @@ md-toolbar {
   z-index: 2;
   font-size: 20px;
   min-height: 64px;
-  width: 100%; }
+  width: 100%;
+  transition: all 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+  transition-property: background-color, fill, color; }
   md-toolbar.md-whiteframe-z1-add, md-toolbar.md-whiteframe-z1-remove {
     transition: box-shadow 0.5s linear; }
   md-toolbar md-toolbar-filler {
@@ -5008,6 +5010,9 @@ md-toolbar {
   .md-toolbar-tools .md-button {
     margin-top: 0;
     margin-bottom: 0; }
+    .md-toolbar-tools .md-button, .md-toolbar-tools .md-button.md-icon-button md-icon {
+      transition: all 0.5s cubic-bezier(0.35, 0, 0.25, 1);
+      transition-property: background-color, fill, color; }
   .md-toolbar-tools > .md-button:first-child {
     margin-left: -8px; }
   .md-toolbar-tools > .md-button:last-child {
