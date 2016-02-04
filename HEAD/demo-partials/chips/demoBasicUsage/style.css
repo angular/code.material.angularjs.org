@@ -1,3 +1,8 @@
+.chipsdemoBasicUsage .errors {
+  font-size: 12px;
+  color: #dd2c00;
+  margin-top: 10px; }
+
 .chipsdemoBasicUsage .custom-chips .md-chip {
   position: relative; }
   .chipsdemoBasicUsage .custom-chips .md-chip .md-chip-remove-container {

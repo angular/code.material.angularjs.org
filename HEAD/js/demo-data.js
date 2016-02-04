@@ -437,7 +437,8 @@ angular.module('docsApp').constant('DEMOS', [
           "name": "chipsDemo",
           "module": "chipsDemo",
           "dependencies": [
-            "ngMaterial"
+            "ngMaterial",
+            "ngMessages"
           ]
         },
         "id": "chipsdemoBasicUsage",
