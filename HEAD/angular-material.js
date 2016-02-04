@@ -6384,6 +6384,7 @@ angular
  * the `md-primary` class.
  *
  * @param {boolean=} md-no-ink If present, disable ripple ink effects.
+ * @param {boolean=} md-no-focus-style If present, disable focus style on button
  * @param {expression=} ng-disabled En/Disable based on the expression
  * @param {string=} md-ripple-size Overrides the default ripple size logic. Options: `full`, `partial`, `auto`
  * @param {string=} aria-label Adds alternative text to button for accessibility, useful for icon buttons.
@@ -6467,9 +6468,10 @@ function MdButtonDirective($mdButtonInkRipple, $mdTheming, $mdAria, $timeout) {
       }
     });
 
-    // restrict focus styles to the keyboard
-    scope.mouseActive = false;
-    element.on('mousedown', function() {
+    if (!angular.isDefined(attr.mdNoFocusStyle)) {
+      // restrict focus styles to the keyboard
+      scope.mouseActive = false;
+      element.on('mousedown', function() {
         scope.mouseActive = true;
         $timeout(function(){
           scope.mouseActive = false;
@@ -6483,6 +6485,7 @@ function MdButtonDirective($mdButtonInkRipple, $mdTheming, $mdAria, $timeout) {
       .on('blur', function(ev) {
         element.removeClass('md-focused');
       });
+    }
   }
 
 }
@@ -12543,9 +12546,19 @@ function mdListItemDirective($mdAria, $mdConstant, $mdUtil, $timeout) {
           container.append(tEl.contents());
           tEl.addClass('md-proxy-focus');
         } else {
-          container = angular.element('<md-button class="md-no-style"><div class="md-list-item-inner"></div></md-button>');
-          copyAttributes(tEl[0], container[0]);
-          container.children().eq(0).append(tEl.contents());
+          // Element which holds the default list-item content.
+          container = angular.element('<div class="md-button md-no-style"><div class="md-list-item-inner"></div></div>');
+
+          // Button which shows ripple and executes primary action.
+          var buttonWrap = angular.element('<md-button class="md-no-style" md-no-focus-style></md-button>');
+          buttonWrap[0].setAttribute('aria-label', tEl[0].textContent);
+          copyAttributes(tEl[0], buttonWrap[0]);
+
+          // Append the button wrap before our list-item content, because it will overlay in relative.
+          container.prepend(buttonWrap);
+          container.children().eq(1).append(tEl.contents());
+          
+          tEl.addClass('md-button-wrap');
         }
 
         tEl[0].setAttribute('tabindex', '-1');
@@ -12586,7 +12599,11 @@ function mdListItemDirective($mdAria, $mdConstant, $mdUtil, $timeout) {
                 ( tAttrs.ngClick &&
                 isProxiedElement(secondaryItem) )
             )) {
-          secondaryItem.classList.remove('md-secondary');
+          // When using multiple secondary items we need to remove their secondary class to be
+          // orderd correctly in the list-item
+          if (hasSecondaryItemsWrapper) {
+            secondaryItem.classList.remove('md-secondary');
+          }
           tEl.addClass('md-with-secondary');
           container.append(secondaryItem);
         }
