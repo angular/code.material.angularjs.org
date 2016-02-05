@@ -1,0 +1,114 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Menu bars are containers that hold multiple menus. They change the behavior and appearence
+of the <code>md-menu</code> directive to behave similar to an operating system provided menu.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-menu-bar>
+  <md-menu>
+    <button ng-click="$mdOpenMenu()">
+      File
+    </button>
+    <md-menu-content>
+      <md-menu-item>
+        <md-button ng-click="ctrl.sampleAction('share', $event)">
+          Share...
+        </md-button>
+      </md-menu-item>
+      <md-menu-divider></md-menu-divider>
+      <md-menu-item>
+      <md-menu-item>
+        <md-menu>
+          <md-button ng-click="$mdOpenMenu()">New</md-button>
+          <md-menu-content>
+            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+            <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+          </md-menu-content>
+        </md-menu>
+      </md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</md-menu-bar>
+</hljs>
+
+<h2 id="menu-bar-controls">Menu Bar Controls</h2>
+<p>You may place <code>md-menu-items</code> that function as controls within menu bars.
+There are two modes that are exposed via the <code>type</code> attribute of the <code>md-menu-item</code>.
+<code>type=&quot;checkbox&quot;</code> will function as a boolean control for the <code>ng-model</code> attribute of the
+<code>md-menu-item</code>. <code>type=&quot;radio&quot;</code> will function like a radio button, setting the <code>ngModel</code>
+to the <code>string</code> value of the <code>value</code> attribute. If you need non-string values, you can use
+<code>ng-value</code> to provide an expression (this is similar to how angular&#39;s native <code>input[type=radio]</code> works.</p>
+<hljs lang="html">
+<md-menu-bar>
+ <md-menu>
+   <button ng-click="$mdOpenMenu()">
+     Sample Menu
+   </button>
+   <md-menu-content>
+     <md-menu-item type="checkbox" ng-model="settings.allowChanges">Allow changes</md-menu-item>
+     <md-menu-divider></md-menu-divider>
+     <md-menu-item type="radio" ng-model="settings.mode" ng-value="1">Mode 1</md-menu-item>
+     <md-menu-item type="radio" ng-model="settings.mode" ng-value="1">Mode 2</md-menu-item>
+     <md-menu-item type="radio" ng-model="settings.mode" ng-value="1">Mode 3</md-menu-item>
+   </md-menu-content>
+ </md-menu>
+</md-menu-bar>
+</hljs>
+
+
+<h3 id="nesting-menus">Nesting Menus</h3>
+<p>Menus may be nested within menu bars. This is commonly called cascading menus.
+To nest a menu place the nested menu inside the content of the <code>md-menu-item</code>.</p>
+<hljs lang="html">
+<md-menu-item>
+  <md-menu>
+    <button ng-click="$mdOpenMenu()">New</md-button>
+    <md-menu-content>
+      <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
+      <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
+      <md-menu-item><md-button ng-click="ctrl.sampleAction('New Presentation', $event)">Presentation</md-button></md-menu-item>
+      <md-menu-item><md-button ng-click="ctrl.sampleAction('New Form', $event)">Form</md-button></md-menu-item>
+      <md-menu-item><md-button ng-click="ctrl.sampleAction('New Drawing', $event)">Drawing</md-button></md-menu-item>
+    </md-menu-content>
+  </md-menu>
+</md-menu-item>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>

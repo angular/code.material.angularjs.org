@@ -1,0 +1,62 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-dialog&gt;</code> - The dialog&#39;s template must be inside this element.</p>
+<p>Inside, use an <code>&lt;md-dialog-content&gt;</code> element for the dialog&#39;s content, and use
+an <code>&lt;md-dialog-actions&gt;</code> element for the dialog&#39;s actions.</p>
+<ul>
+<li><h2 id="css">CSS</h2>
+</li>
+<li><code>.md-dialog-content</code> - class that sets the padding on the content as the spec file</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="dialog-template">Dialog template</h3>
+<hljs lang="html">
+<md-dialog aria-label="List dialog">
+  <md-dialog-content>
+    <md-list>
+      <md-list-item ng-repeat="item in items">
+        <p>Number {{item}}</p>
+      </md-list-item>
+    </md-list>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()" class="md-primary">Close Dialog</md-button>
+  </md-dialog-actions>
+</md-dialog>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
