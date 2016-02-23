@@ -2317,14 +2317,7 @@ angular.module('docsApp').constant('DEMOS', [
         },
         "id": "toastdemoBasicUsage",
         "css": [],
-        "html": [
-          {
-            "name": "toast-template.html",
-            "label": "toast-template.html",
-            "fileType": "html",
-            "outputPath": "demo-partials/toast/demoBasicUsage/toast-template.html"
-          }
-        ],
+        "html": [],
         "js": [
           {
             "name": "script.js",
@@ -2341,6 +2334,42 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/toast/demoBasicUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "toastDemo2",
+          "module": "toastDemo2",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "toastdemoCustomUsage",
+        "css": [],
+        "html": [
+          {
+            "name": "toast-template.html",
+            "label": "toast-template.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/toast/demoCustomUsage/toast-template.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/toast/demoCustomUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.toast",
+        "name": "demoCustomUsage",
+        "label": "Custom Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/toast/demoCustomUsage/index.html"
         }
       }
     ],

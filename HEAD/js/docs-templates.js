@@ -495,7 +495,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '\n' +
     '  <p>\n' +
-    '    A layout child\'s <code>flex</code> directrive can be given an integer value from 0-100.\n' +
+    '    A layout child\'s <code>flex</code> directive can be given an integer value from 0-100.\n' +
     '    The element will stretch to the percentage of available space matching the value. Currently, the <code>flex</code>\n' +
     '    directive value is restricted to multiples of five, 33 or 66.\n' +
     '  </p>\n' +

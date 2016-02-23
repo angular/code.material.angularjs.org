@@ -439,6 +439,27 @@ angular.module('buttonsDemo1', ['ngMaterial'])
 });
 
 
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
 angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -469,27 +490,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
 });
 
 (function () {
@@ -2066,7 +2066,7 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
 angular.module('toastDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdToast, $document) {
+.controller('AppCtrl', function($scope, $mdToast) {
   var last = {
       bottom: false,
       top: true,
@@ -2095,31 +2095,24 @@ angular.module('toastDemo1', ['ngMaterial'])
     last = angular.extend({},current);
   }
 
-  $scope.showCustomToast = function() {
-    $mdToast.show({
-      controller: 'ToastCtrl',
-      templateUrl: 'toast-template.html',
-      parent : $document[0].querySelector('#toastBounds'),
-      hideDelay: 6000,
-      position: $scope.getToastPosition()
-    });
-  };
-
   $scope.showSimpleToast = function() {
+    var pinTo = $scope.getToastPosition();
+
     $mdToast.show(
       $mdToast.simple()
         .textContent('Simple Toast!')
-        .position($scope.getToastPosition())
+        .position(pinTo )
         .hideDelay(3000)
     );
   };
 
   $scope.showActionToast = function() {
+    var pinTo = $scope.getToastPosition();
     var toast = $mdToast.simple()
           .textContent('Action Toast!')
           .action('OK')
           .highlightAction(false)
-          .position($scope.getToastPosition());
+          .position(pinTo);
 
     $mdToast.show(toast).then(function(response) {
       if ( response == 'ok' ) {
@@ -2135,6 +2128,55 @@ angular.module('toastDemo1', ['ngMaterial'])
     $mdToast.hide();
   };
 });
+
+(function() {
+
+  var isDlgOpen;
+
+  angular
+    .module('toastDemo2', ['ngMaterial'])
+    .controller('AppCtrl', function($scope, $mdToast) {
+      $scope.showCustomToast = function() {
+        $mdToast.show({
+          hideDelay   : 3000,
+          position    : 'top right',
+          controller  : 'ToastCtrl',
+          templateUrl : 'toast-template.html'
+        });
+      };
+    })
+    .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
+
+      $scope.closeToast = function() {
+        if (isDlgOpen) return;
+
+        $mdToast
+          .hide()
+          .then(function() {
+            isDlgOpen = false;
+          });
+      };
+
+      $scope.openMoreInfo = function(e) {
+        if ( isDlgOpen ) return;
+        isDlgOpen = true;
+
+        $mdDialog
+          .show($mdDialog
+            .alert()
+            .title('More info goes here.')
+            .textContent('Something witty.')
+            .ariaLabel('More info')
+            .ok('Got it')
+            .targetEvent(e)
+          )
+          .then(function() {
+            isDlgOpen = false;
+          })
+      };
+    });
+
+})();
 
 
 angular.module('toolbarDemo1', ['ngMaterial'])
