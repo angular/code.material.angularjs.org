@@ -16,7 +16,8 @@
 
 <div class="api-profile-description">
   <p>The <code>$mdSticky</code>service provides a mixin to make elements sticky.</p>
-<p>By default the <code>$mdSticky</code> service compiles the cloned element in the same scope as the actual element lives.</p>
+<p>By default the <code>$mdSticky</code> service compiles the cloned element, when not specified through the <code>elementClone</code>
+parameter, in the same scope as the actual element lives.</p>
 <p><h3>Notes</h3>
 When using an element which is containing a compiled directive, which changed its DOM structure during compilation,
 you should compile the clone yourself using the plain template.<br/><br/>
@@ -90,7 +91,7 @@ See the right usage below:</p>
 <li><code>element</code>: The element that will be &#39;sticky&#39;</li>
 <li><code>elementClone</code>: A clone of the element, that will be shown
 when the user starts scrolling past the original element.
-If not provided, it will use the result of <code>element.clone()</code>.</li>
+If not provided, it will use the result of <code>element.clone()</code> and compiles it in the given scope.</li>
 </ul>
 </td>
   </tr>
