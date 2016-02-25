@@ -11,5 +11,5 @@ script:
   - echo 0
 
 after_success:
-  - $(which npm) install -g firebase-tools@2.2.0
+  - $(which npm) install -g firebase-tools
   - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then firebase deploy --token $FIREBASE_TOKEN; fi
