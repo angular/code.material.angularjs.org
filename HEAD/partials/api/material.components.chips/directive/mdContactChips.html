@@ -98,7 +98,8 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>An expression expected to return contacts matching the search
-   test, <code>$query</code>.</p>
+   test, <code>$query</code>. If this expression involves a promise, a loading bar is displayed while
+   waiting for it to resolve.</p>
 
           
         </td>
@@ -156,7 +157,6 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
         <td class="description">
           <p>The field name of the contact object representing the
    contact&#39;s image.</p>
-<p>// The following attribute has been removed but may come back.</p>
 
           
         </td>
@@ -225,7 +225,7 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>Whether to filter selected contacts from the list of
-   suggestions shown in the autocomplete.</p>
+   suggestions shown in the autocomplete. This attribute has been removed but may come back.</p>
 
           
         </td>
