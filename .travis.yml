@@ -12,4 +12,4 @@ script:
 
 after_success:
   - $(which npm) install -g firebase-tools
-  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then firebase --non-interactive ; firebase deploy --token $FIREBASE_TOKEN; fi
+  - if [[ "${TRAVIS_PULL_REQUEST}" == "false" ]]; then firebase deploy --non-interactive --token $FIREBASE_TOKEN; fi
