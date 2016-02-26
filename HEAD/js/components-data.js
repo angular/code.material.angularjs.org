@@ -447,6 +447,15 @@ DocsApp
         "label": "mdInput",
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
+      },
+      {
+        "name": "mdSelectOnFocus",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.input/directive/mdSelectOnFocus.html",
+        "url": "api/directive/mdSelectOnFocus",
+        "label": "mdSelectOnFocus",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
       }
     ],
     "hasDemo": false
