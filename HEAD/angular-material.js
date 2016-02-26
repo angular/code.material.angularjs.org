@@ -14414,7 +14414,7 @@ function OptionDirective($mdButtonInkRipple, $mdUtil) {
       setOptionValue(attr.value);
     } else {
       scope.$watch(function() {
-        return element.text();
+        return element.text().trim();
       }, setOptionValue);
     }
 
