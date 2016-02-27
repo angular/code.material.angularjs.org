@@ -224,6 +224,7 @@ function MdConstantFactory($sniffer) {
   return {
     KEY_CODE: {
       COMMA: 188,
+      SEMICOLON : 186,
       ENTER: 13,
       ESCAPE: 27,
       SPACE: 32,
@@ -10934,7 +10935,7 @@ angular.module('material.components.gridList', ['material.core'])
  *
  * The `md-grid-list` directive supports "responsive" attributes, which allow
  * different `md-cols`, `md-gutter` and `md-row-height` values depending on the
- * currently matching media query (as defined in `$mdConstant.MEDIA`).
+ * currently matching media query.
  *
  * In order to set a responsive attribute, first define the fallback value with
  * the standard attribute name, then add additional attributes with the
@@ -11553,7 +11554,7 @@ GridLayoutFactory.$inject = ["$mdUtil"];
  *
  * The `md-grid-tile` directive supports "responsive" attributes, which allow
  * different `md-rowspan` and `md-colspan` values depending on the currently
- * matching media query (as defined in `$mdConstant.MEDIA`).
+ * matching media query.
  *
  * In order to set a responsive attribute, first define the fallback value with
  * the standard attribute name, then add additional attributes with the
