@@ -1,0 +1,547 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdToast</code> is a service to build a toast notification on any position
+on the screen with an optional duration, and provides a simple promise API.</p>
+<h2 id="restrictions-on-custom-toasts">Restrictions on custom toasts</h2>
+<ul>
+<li>The toast&#39;s template must have an outer <code>&lt;md-toast&gt;</code> element.</li>
+<li>For a toast action, use element with class <code>md-action</code>.</li>
+<li>Add the class <code>md-capsule</code> for curved corners.</li>
+</ul>
+<h2 id="parent-container-notes">Parent container notes</h2>
+<p>The toast is positioned using absolute positioning relative to it&#39;s first non-static parent
+container. Thus, if the requested parent container uses static positioning, we will temporarily
+set it&#39;s positioning to <code>relative</code> while the toast is visible and reset it when the toast is
+hidden.</p>
+<p>Because of this, it is usually best to ensure that the parent container has a fixed height and
+prevents scrolling by setting the <code>overflow: hidden;</code> style. Since the position is based off of
+the parent&#39;s height, the toast may be mispositioned if you allow the parent to scroll.</p>
+<p>You can, however, have a scrollable element inside of the container; just make sure the
+container itself does not scroll.</p>
+<hljs lang="html">
+<div layout-fill id="toast-container">
+  <md-content>
+    I can have lots of content and scroll!
+  </md-content>
+</div>
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="html">
+<div ng-controller="MyController">
+  <md-button ng-click="openToast()">
+    Open a Toast!
+  </md-button>
+</div>
+</hljs>
+
+<hljs lang="js">
+var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
+app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
+  $scope.openToast = function($event) {
+    $mdToast.show($mdToast.simple().textContent(&#39;Hello!&#39;));
+    // Could also do $mdToast.showSimple(&#39;Hello&#39;);
+  };
+});
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="showSimple">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.showSimple(message);
+</code>
+      </h3>
+      <div class="service-desc"><p>Convenience method which builds and shows a simple toast.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* message</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The message to display inside the toast</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
+rejected with <code>$mdToast.cancel()</code>.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="simple">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.simple();
+</code>
+      </h3>
+      <div class="service-desc"><p>Builds a preconfigured toast.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>a <code>$mdToastPreset</code> with the following chainable configuration methods.</p>
+<p><em><strong>Note:</strong> These configuration methods are provided in addition to the methods provided by
+  the <code>build()</code> and <code>show()</code> methods below.</em></p>
+<ul>
+<li><p><code>.textContent(string)</code> - Sets the toast content to the specified string.</p>
+</li>
+<li><p><code>.action(string)</code> - Adds an action button. If clicked, the promise (returned from <code>show()</code>)
+will resolve with the value <code>&#39;ok&#39;</code>; otherwise, it is resolved with <code>true</code> after a <code>hideDelay</code>
+timeout.</p>
+</li>
+<li><p><code>.highlightAction(boolean)</code> - Whether or not the action button will have an additional
+highlight class.</p>
+</li>
+<li><p><code>.capsule(boolean)</code> - Whether or not to add the <code>md-capsule</code> class to the toast to provide
+rounded corners.</p>
+</li>
+<li><p><code>.theme(string)</code> - Sets the theme on the toast to the requested theme. Default is
+<code>$mdThemingProvider</code>&#39;s default.</p>
+</li>
+</ul>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="updateTextContent">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.updateTextContent();
+</code>
+      </h3>
+      <div class="service-desc"><p>Updates the content of an existing toast. Useful for updating things like counts, etc.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="build">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.build();
+</code>
+      </h3>
+      <div class="service-desc"><p>Creates a custom <code>$mdToastPreset</code> that you can configure.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>a <code>$mdToastPreset</code> with the chainable configuration methods for shows&#39; options (see below).</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="show">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.show(optionsOrPreset);
+</code>
+      </h3>
+      <div class="service-desc"><p>Shows the toast.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* optionsOrPreset</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Either provide an <code>$mdToastPreset</code> returned from <code>simple()</code>
+and <code>build()</code>, or an options object with the following properties:</p>
+<ul>
+<li><code>templateUrl</code> - <code>{string=}</code>: The url of an html template file that will
+be used as the content of the toast. Restrictions: the template must
+have an outer <code>md-toast</code> element.</li>
+<li><code>template</code> - <code>{string=}</code>: Same as templateUrl, except this is an actual
+template string.</li>
+<li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template content with a
+<code>&lt;div class=&quot;md-toast-content&quot;&gt;</code> if one is not provided. Defaults to true. Can be disabled if you provide a
+custom toast directive.</li>
+<li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified, it will create a new child scope.
+This scope will be destroyed when the toast is removed unless <code>preserveScope</code> is set to true.</li>
+<li><code>preserveScope</code> - <code>{boolean=}</code>: whether to preserve the scope when the element is removed. Default is false</li>
+<li><code>hideDelay</code> - <code>{number=}</code>: How many milliseconds the toast should stay
+active before automatically closing.  Set to 0 or false to have the toast stay open until
+closed manually. Default: 3000.</li>
+<li><code>position</code> - <code>{string=}</code>: Where to place the toast. Available: any combination
+of &#39;bottom&#39;, &#39;left&#39;, &#39;top&#39;, &#39;right&#39;. Default: &#39;bottom left&#39;.</li>
+<li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
+The controller will be injected the local <code>$mdToast.hide( )</code>, which is a function
+used to hide the toast.</li>
+<li><code>locals</code> - <code>{string=}</code>: An object containing key/value pairs. The keys will
+be used as names of values to inject into the controller. For example,
+<code>locals: {three: 3}</code> would inject <code>three</code> into the controller with the value
+of 3.</li>
+<li><code>bindToController</code> - <code>bool</code>: bind the locals to the controller, instead of passing them in.</li>
+<li><code>resolve</code> - <code>{object=}</code>: Similar to locals, except it takes promises as values
+and the toast will not open until the promises resolve.</li>
+<li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
+<li><code>parent</code> - <code>{element=}</code>: The element to append the toast to. Defaults to appending
+to the root element of the application.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
+rejected with <code>$mdToast.cancel()</code>. <code>$mdToast.hide()</code> will resolve either with a Boolean
+value == &#39;true&#39; or the value passed as an argument to <code>$mdToast.hide()</code>.
+And <code>$mdToast.cancel()</code> will resolve the promise with a Boolean value == &#39;false&#39;</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="hide">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.hide([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Hide an existing toast and resolve the promise returned from <code>$mdToast.show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the resolved promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>a promise that is called when the existing element is removed from the DOM.
+The promise is resolved with either a Boolean value == &#39;true&#39; or the value passed as the
+argument to <code>.hide()</code>.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="cancel">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdToast.cancel([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p><code>DEPRECATED</code> - The promise returned from opening a toast is used only to notify about the closing of the toast.
+As such, there isn&#39;t any reason to also allow that promise to be rejected,
+since it&#39;s not clear what the difference between resolve and reject would be.</p>
+<p>Hide the existing toast and reject the promise returned from
+<code>$mdToast.show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the rejected promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>a promise that is called when the existing element is removed from the DOM
+The promise is resolved with a Boolean value == &#39;false&#39;.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

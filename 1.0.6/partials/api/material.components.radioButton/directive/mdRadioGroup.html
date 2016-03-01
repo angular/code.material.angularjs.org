@@ -1,0 +1,128 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-radio-group&gt;</code> directive identifies a grouping
+container for the 1..n grouped radio buttons; specified using nested
+<code>&lt;md-radio-button&gt;</code> tags.</p>
+<p>As per the <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application">material design spec</a>
+the radio button is in the accent color by default. The primary color palette may be used with
+the <code>md-primary</code> class.</p>
+<p>Note: <code>&lt;md-radio-group&gt;</code> and <code>&lt;md-radio-button&gt;</code> handle tabindex differently
+than the native <code>&lt;input type=&#39;radio&#39;&gt;</code> controls. Whereas the native controls
+force the user to tab through all the radio buttons, <code>&lt;md-radio-group&gt;</code>
+is focusable, and by default the <code>&lt;md-radio-button&gt;</code>s are not.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-radio-group ng-model="selected">
+
+  <md-radio-button
+       ng-repeat="d in colorOptions"
+       ng-value="d.value" aria-label="{{ d.label }}">
+
+         {{ d.label }}
+
+  </md-radio-button>
+
+</md-radio-group>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* ng-model</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Assignable angular expression to data-bind to.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-ink
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Use of attribute indicates flag to disable ink ripple effects.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

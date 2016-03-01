@@ -1,0 +1,663 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdDialog</code> opens a dialog over the app to inform users about critical information or require
+ them to make decisions. There are two approaches for setup: a simple promise API
+ and regular object syntax.</p>
+<h2 id="restrictions">Restrictions</h2>
+<ul>
+<li>The dialog is always given an isolate scope.</li>
+<li>The dialog&#39;s template must have an outer <code>&lt;md-dialog&gt;</code> element.
+Inside, use an <code>&lt;md-dialog-content&gt;</code> element for the dialog&#39;s content, and use
+an <code>&lt;md-dialog-actions&gt;</code> element for the dialog&#39;s actions.</li>
+<li>Dialogs must cover the entire application to keep interactions inside of them.
+Use the <code>parent</code> option to change where dialogs are appended.</li>
+</ul>
+<h2 id="sizing">Sizing</h2>
+<ul>
+<li>Complex dialogs can be sized with <code>flex=&quot;percentage&quot;</code>, i.e. <code>flex=&quot;66&quot;</code>.</li>
+<li>Default max-width is 80% of the <code>rootElement</code> or <code>parent</code>.</li>
+</ul>
+<h2 id="css">CSS</h2>
+<ul>
+<li><code>.md-dialog-content</code> - class that sets the padding on the content as the spec file</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="html">
+<div  ng-app="demoApp" ng-controller="EmployeeController">
+  <div>
+    <md-button ng-click="showAlert()" class="md-raised md-warn">
+      Employee Alert!
+      </md-button>
+  </div>
+  <div>
+    <md-button ng-click="showDialog($event)" class="md-raised">
+      Custom Dialog
+      </md-button>
+  </div>
+  <div>
+    <md-button ng-click="closeAlert()" ng-disabled="!hasAlert()" class="md-raised">
+      Close Alert
+    </md-button>
+  </div>
+  <div>
+    <md-button ng-click="showGreeting($event)" class="md-raised md-primary" >
+      Greet Employee
+      </md-button>
+  </div>
+</div>
+</hljs>
+
+<h3 id="javascript-object-syntax">JavaScript: object syntax</h3>
+<hljs lang="js">
+(function(angular, undefined){
+  &quot;use strict&quot;;
+
+  angular
+   .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
+   .controller(&#39;AppCtrl&#39;, AppController);
+
+  function AppController($scope, $mdDialog) {
+    var alert;
+    $scope.showAlert = showAlert;
+    $scope.showDialog = showDialog;
+    $scope.items = [1, 2, 3];
+
+    // Internal method
+    function showAlert() {
+      alert = $mdDialog.alert({
+        title: &#39;Attention&#39;,
+        textContent: &#39;This is an example of how easy dialogs can be!&#39;,
+        ok: &#39;Close&#39;
+      });
+
+      $mdDialog
+        .show( alert )
+        .finally(function() {
+          alert = undefined;
+        });
+    }
+
+    function showDialog($event) {
+       var parentEl = angular.element(document.body);
+       $mdDialog.show({
+         parent: parentEl,
+         targetEvent: $event,
+         template:
+           &#39;<md-dialog aria-label="List dialog">&#39; +
+           &#39;  <md-dialog-content>&#39;+
+           &#39;    <md-list>&#39;+
+           &#39;      <md-list-item ng-repeat="item in items">&#39;+
+           &#39;       <p>Number {{item}}</p>&#39; +
+           &#39;      </md-item>&#39;+
+           &#39;    </md-list>&#39;+
+           &#39;  </md-dialog-content>&#39; +
+           &#39;  <md-dialog-actions>&#39; +
+           &#39;    <md-button ng-click="closeDialog()" class="md-primary">&#39; +
+           &#39;      Close Dialog&#39; +
+           &#39;    </md-button>&#39; +
+           &#39;  </md-dialog-actions>&#39; +
+           &#39;</md-dialog>&#39;,
+         locals: {
+           items: $scope.items
+         },
+         controller: DialogController
+      });
+      function DialogController($scope, $mdDialog, items) {
+        $scope.items = items;
+        $scope.closeDialog = function() {
+          $mdDialog.hide();
+        }
+      }
+    }
+  }
+})(angular);
+</hljs>
+
+<h3 id="javascript-promise-api-syntax-custom-dialog-template">JavaScript: promise API syntax, custom dialog template</h3>
+<hljs lang="js">
+(function(angular, undefined){
+  &quot;use strict&quot;;
+
+  angular
+    .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
+    .controller(&#39;EmployeeController&#39;, EmployeeEditor)
+    .controller(&#39;GreetingController&#39;, GreetingController);
+
+  // Fictitious Employee Editor to show how to use simple and complex dialogs.
+
+  function EmployeeEditor($scope, $mdDialog) {
+    var alert;
+
+    $scope.showAlert = showAlert;
+    $scope.closeAlert = closeAlert;
+    $scope.showGreeting = showCustomGreeting;
+
+    $scope.hasAlert = function() { return !!alert };
+    $scope.userName = $scope.userName || &#39;Bobby&#39;;
+
+    // Dialog #1 - Show simple alert dialog and cache
+    // reference to dialog instance
+
+    function showAlert() {
+      alert = $mdDialog.alert()
+        .title(&#39;Attention, &#39; + $scope.userName)
+        .textContent(&#39;This is an example of how easy dialogs can be!&#39;)
+        .ok(&#39;Close&#39;);
+
+      $mdDialog
+          .show( alert )
+          .finally(function() {
+            alert = undefined;
+          });
+    }
+
+    // Close the specified dialog instance and resolve with &#39;finished&#39; flag
+    // Normally this is not needed, just use &#39;$mdDialog.hide()&#39; to close
+    // the most recent dialog popup.
+
+    function closeAlert() {
+      $mdDialog.hide( alert, &quot;finished&quot; );
+      alert = undefined;
+    }
+
+    // Dialog #2 - Demonstrate more complex dialogs construction and popup.
+
+    function showCustomGreeting($event) {
+        $mdDialog.show({
+          targetEvent: $event,
+          template:
+            &#39;<md-dialog>&#39; +
+
+            &#39;  <md-dialog-content>Hello {{ employee }}!</md-dialog-content>&#39; +
+
+            &#39;  <md-dialog-actions>&#39; +
+            &#39;    <md-button ng-click="closeDialog()" class="md-primary">&#39; +
+            &#39;      Close Greeting&#39; +
+            &#39;    </md-button>&#39; +
+            &#39;  </md-dialog-actions>&#39; +
+            &#39;</md-dialog>&#39;,
+          controller: &#39;GreetingController&#39;,
+          onComplete: afterShowAnimation,
+          locals: { employee: $scope.userName }
+        });
+
+        // When the &#39;enter&#39; animation finishes...
+
+        function afterShowAnimation(scope, element, options) {
+           // post-show code here: DOM element focus, etc.
+        }
+    }
+
+    // Dialog #3 - Demonstrate use of ControllerAs and passing $scope to dialog
+    //             Here we used ng-controller=&quot;GreetingController as vm&quot; and
+    //             $scope.vm === <controller instance>
+
+    function showCustomGreeting() {
+
+       $mdDialog.show({
+          clickOutsideToClose: true,
+
+          scope: $scope,        // use parent scope in template
+          preserveScope: true,  // do not forget this if use parent scope
+
+          // Since GreetingController is instantiated with ControllerAs syntax
+          // AND we are passing the parent &#39;$scope&#39; to the dialog, we MUST
+          // use &#39;vm.<xxx>&#39; in the template markup
+
+          template: &#39;<md-dialog>&#39; +
+                    &#39;  <md-dialog-content>&#39; +
+                    &#39;     Hi There {{vm.employee}}&#39; +
+                    &#39;  </md-dialog-content>&#39; +
+                    &#39;</md-dialog>&#39;,
+
+          controller: function DialogController($scope, $mdDialog) {
+            $scope.closeDialog = function() {
+              $mdDialog.hide();
+            }
+          }
+       });
+    }
+
+  }
+
+  // Greeting controller used with the more complex &#39;showCustomGreeting()&#39; custom dialog
+
+  function GreetingController($scope, $mdDialog, employee) {
+    // Assigned from construction <code>locals</code> options...
+    $scope.employee = employee;
+
+    $scope.closeDialog = function() {
+      // Easily hides most recent dialog shown...
+      // no specific instance reference is needed.
+      $mdDialog.hide();
+    };
+  }
+
+})(angular);
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="alert">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.alert();
+</code>
+      </h3>
+      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdDialogPreset</code> with the chainable configuration methods:</p>
+<ul>
+<li>$mdDialogPreset#title(string) - Sets the alert title.</li>
+<li>$mdDialogPreset#textContent(string) - Sets the alert message.</li>
+<li>$mdDialogPreset#htmlContent(string) - Sets the alert message as HTML. Requires ngSanitize
+  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+<li>$mdDialogPreset#ok(string) - Sets the alert &quot;Okay&quot; button text.</li>
+<li>$mdDialogPreset#theme(string) - Sets the theme of the alert dialog.</li>
+<li>$mdDialogPreset#targetEvent(DOMClickEvent=) - A click&#39;s event object. When passed in as an option,
+  the location of the click will be used as the starting point for the opening animation
+  of the the dialog.</li>
+</ul>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="confirm">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.confirm();
+</code>
+      </h3>
+      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message. You can call show and the promise returned
+will be resolved only if the user clicks the confirm action on the dialog.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdDialogPreset</code> with the chainable configuration methods:</p>
+<p>Additionally, it supports the following methods:</p>
+<ul>
+<li>$mdDialogPreset#title(string) - Sets the confirm title.</li>
+<li>$mdDialogPreset#textContent(string) - Sets the confirm message.</li>
+<li>$mdDialogPreset#htmlContent(string) - Sets the confirm message as HTML. Requires ngSanitize
+  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+<li>$mdDialogPreset#ok(string) - Sets the confirm &quot;Okay&quot; button text.</li>
+<li>$mdDialogPreset#cancel(string) - Sets the confirm &quot;Cancel&quot; button text.</li>
+<li>$mdDialogPreset#theme(string) - Sets the theme of the confirm dialog.</li>
+<li>$mdDialogPreset#targetEvent(DOMClickEvent=) - A click&#39;s event object. When passed in as an option,
+  the location of the click will be used as the starting point for the opening animation
+  of the the dialog.</li>
+</ul>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="show">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.show(optionsOrPreset);
+</code>
+      </h3>
+      <div class="service-desc"><p>Show a dialog with the specified options.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* optionsOrPreset</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Either provide an <code>$mdDialogPreset</code> returned from <code>alert()</code>, and
+<code>confirm()</code>, or an options object with the following properties:</p>
+<ul>
+<li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
+of the dialog.</li>
+<li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This <strong>must</strong> be trusted HTML
+ with respect to Angular&#39;s <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
+ This template should <strong>never</strong> be constructed with any kind of user input or user data.</li>
+<li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template with a
+<code>&lt;md-dialog&gt;</code> tag if one is not provided. Defaults to true. Can be disabled if you provide a
+custom dialog directive.</li>
+<li><code>targetEvent</code> - <code>{DOMClickEvent=}</code>: A click&#39;s event object. When passed in as an option,
+the location of the click will be used as the starting point for the opening animation
+of the the dialog.</li>
+<li><code>openFrom</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) from which the Dialog will
+originate.</li>
+<li><code>closeTo</code> - <code>{string|Element|object}</code>: The query selector, DOM element or the Rect object
+that is used to determine the bounds (top, left, height, width) to which the Dialog will
+target.</li>
+<li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified,
+it will create a new isolate scope.
+This scope will be destroyed when the dialog is removed unless <code>preserveScope</code> is set to true.</li>
+<li><code>preserveScope</code> - <code>{boolean=}</code>: whether to preserve the scope when the element is removed. Default is false</li>
+<li><code>disableParentScroll</code> - <code>{boolean=}</code>: Whether to disable scrolling while the dialog is open.
+Default true.</li>
+<li><code>hasBackdrop</code> - <code>{boolean=}</code>: Whether there should be an opaque backdrop behind the dialog.
+Default true.</li>
+<li><code>clickOutsideToClose</code> - <code>{boolean=}</code>: Whether the user can click outside the dialog to
+close it. Default false.</li>
+<li><code>escapeToClose</code> - <code>{boolean=}</code>: Whether the user can press escape to close the dialog.
+Default true.</li>
+<li><code>focusOnOpen</code> - <code>{boolean=}</code>: An option to override focus behavior on open. Only disable if
+focusing some other way, as focus management is required for dialogs to be accessible.
+Defaults to true.</li>
+<li><code>controller</code> - <code>{function|string=}</code>: The controller to associate with the dialog. The controller
+will be injected with the local <code>$mdDialog</code>, which passes along a scope for the dialog.</li>
+<li><code>locals</code> - <code>{object=}</code>: An object containing key/value pairs. The keys will be used as names
+of values to inject into the controller. For example, <code>locals: {three: 3}</code> would inject
+<code>three</code> into the controller, with the value 3. If <code>bindToController</code> is true, they will be
+copied to the controller instead.</li>
+<li><code>bindToController</code> - <code>bool</code>: bind the locals to the controller, instead of passing them in.</li>
+<li><code>resolve</code> - <code>{object=}</code>: Similar to locals, except it takes promises as values, and the
+dialog will not open until all of the promises resolve.</li>
+<li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
+<li><code>parent</code> - <code>{element=}</code>: The element to append the dialog to. Defaults to appending
+to the root element of the application.</li>
+<li><code>onShowing</code> `{function=} Callback function used to announce the show() action is
+starting.</li>
+<li><code>onComplete</code> <code>{function=}</code>: Callback function used to announce when the show() action is
+finished.</li>
+<li><code>onRemoving</code> <code>{function=}</code>: Callback function used to announce the close/hide() action is
+starting. This allows developers to run custom animations in parallel the close animations.</li>
+<li><code>fullscreen</code> <code>{boolean=}</code>: An option to apply <code>.md-dialog-fullscreen</code> class on open.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that can be resolved with <code>$mdDialog.hide()</code> or
+rejected with <code>$mdDialog.cancel()</code>.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="hide">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.hide([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Hide an existing dialog and resolve the promise returned from <code>$mdDialog.show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the resolved promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that is resolved when the dialog has been closed.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="cancel">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDialog.cancel([response]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Hide an existing dialog and reject the promise returned from <code>$mdDialog.show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          response
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>An argument for the rejected promise.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">promise</code></td>
+    <td class="description"><p>A promise that is resolved when the dialog has been closed.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

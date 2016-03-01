@@ -1,0 +1,177 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-button&gt;</code> is a button directive with optional ink ripples (default enabled).</p>
+<p>If you supply a <code>href</code> or <code>ng-href</code> attribute, it will become an <code>&lt;a&gt;</code> element. Otherwise, it will
+become a <code>&lt;button&gt;</code> element. As per the <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application">Material Design specifications</a>
+the FAB button background is filled with the accent color [by default]. The primary color palette may be used with
+the <code>md-primary</code> class.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <p>Regular buttons:</p>
+<hljs lang="html">
+ <md-button> Flat Button </md-button>
+ <md-button href="http://google.com"> Flat link </md-button>
+ <md-button class="md-raised"> Raised Button </md-button>
+ <md-button ng-disabled="true"> Disabled Button </md-button>
+ <md-button>
+   <md-icon md-svg-src="your/icon.svg"></md-icon>
+   Register Now
+ </md-button>
+</hljs>
+
+<p>FAB buttons:</p>
+<hljs lang="html">
+ <md-button class="md-fab" aria-label="FAB">
+   <md-icon md-svg-src="your/icon.svg"></md-icon>
+ </md-button>
+ <!-- mini-FAB -->
+ <md-button class="md-fab md-mini" aria-label="Mini FAB">
+   <md-icon md-svg-src="your/icon.svg"></md-icon>
+ </md-button>
+ <!-- Button with SVG Icon -->
+ <md-button class="md-icon-button" aria-label="Custom Icon Button">
+   <md-icon md-svg-icon="path/to/your.svg"></md-icon>
+ </md-button>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-ink
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If present, disable ripple ink effects.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-disabled
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>En/Disable based on the expression</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-ripple-size
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Overrides the default ripple size logic. Options: <code>full</code>, <code>partial</code>, <code>auto</code></p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Adds alternative text to button for accessibility, useful for icon buttons.
+If no default text is found, a warning will be logged.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

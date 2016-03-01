@@ -1,0 +1,64 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-list-item&gt;</code> directive is a container intended for row items in a <code>&lt;md-list&gt;</code> container.
+The <code>md-2-line</code> and <code>md-3-line</code> classes can be added to a <code>&lt;md-list-item&gt;</code> 
+to increase the height with 22px and 40px respectively.</p>
+<h2 id="css">CSS</h2>
+<p><code>.md-avatar</code> - class for image avatars</p>
+<p><code>.md-avatar-icon</code> - class for icon avatars</p>
+<p><code>.md-offset</code> - on content without an avatar</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+ <md-list>
+   <md-list-item>
+     <img class="md-avatar" ng-src="path/to/img"/>
+     <span>Item content in list</span>
+   </md-list-item>
+   <md-list-item>
+     <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
+     <span>Item content in list</span>
+   </md-list-item>
+ </md-list>
+</hljs>
+
+<p><em><strong>Note:</strong> We automatically apply special styling when the inner contents are wrapped inside
+of a <code>&lt;md-button&gt;</code> tag. This styling is automatically ignored for <code>class=&quot;md-secondary&quot;</code> buttons
+and you can include a class of <code>class=&quot;md-exclude&quot;</code> if you need to use a non-secondary button
+that is inside the list, but does not wrap the contents.</em></p>
+
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>

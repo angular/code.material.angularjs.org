@@ -81,6 +81,10 @@
     {
       "source": "/1.0.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.0.5/index.html"
+    },
+    {
+      "source": "/1.0.6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.6/index.html"
     }
   ]
 }

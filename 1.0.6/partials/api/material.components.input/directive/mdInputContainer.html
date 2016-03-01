@@ -1,0 +1,132 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-input-container&gt;</code> is the parent of any input or textarea element.</p>
+<p>Input and textarea elements will not behave properly unless the md-input-container
+parent is provided.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+
+<md-input-container>
+  <label>Username</label>
+  <input type="text" ng-model="user.name">
+</md-input-container>
+
+<md-input-container>
+  <label>Description</label>
+  <textarea ng-model="user.description"></textarea>
+</md-input-container>
+
+</hljs>
+
+<p><h3>When disabling floating labels</h3></p>
+<hljs lang="html">
+
+<md-input-container md-no-float>
+  <input type="text" placeholder="Non-Floating Label">
+</md-input-container>
+
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-is-error
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>When the given expression evaluates to true, the input container
+  will go into error state. Defaults to erroring if the input has been touched and is invalid.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-float
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, <code>placeholder</code> attributes on the input will not be converted to floating
+  labels.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
