@@ -2893,7 +2893,7 @@ md-icon {
     pointer-events: none;
     display: block; }
   md-icon[md-font-icon] {
-    line-height: 1;
+    line-height: 24px;
     width: auto; }
 
 md-input-container {
