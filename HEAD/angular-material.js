@@ -2760,7 +2760,7 @@ function InterimElementProvider() {
        *
        */
       function cancel(reason, options) {
-        var interim = stack.shift();
+        var interim = stack.pop();
         if ( !interim ) return $q.when(reason);
 
         interim
