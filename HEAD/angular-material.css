@@ -1221,7 +1221,8 @@ md-checkbox {
     box-sizing: border-box;
     display: inline-block;
     width: 20px;
-    height: 20px; }
+    height: 20px;
+    pointer-events: none; }
     html[dir=ltr] md-checkbox ._md-container {
       left: 0;
       unicode-bidi: embed; }
