@@ -321,9 +321,7 @@ md-autocomplete {
     background: transparent;
     height: auto; }
     md-autocomplete[md-floating-label] md-input-container {
-      padding-bottom: 26px; }
-      md-autocomplete[md-floating-label] md-input-container.md-input-has-messages {
-        padding-bottom: 2px; }
+      padding-bottom: 0px; }
     md-autocomplete[md-floating-label] md-autocomplete-wrap {
       height: auto; }
     md-autocomplete[md-floating-label] button {
