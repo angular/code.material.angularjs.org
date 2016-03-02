@@ -471,27 +471,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       };
 });
 
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
 (function () {
   'use strict';
   angular
@@ -755,6 +734,27 @@ angular.module('cardDemo1', ['ngMaterial'])
     this.chipText = 'Football';
   }
 })();
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -1654,7 +1654,7 @@ angular
         if ( (j < 5) && !self.modes[j] && self.activated ) {
           self.modes[j] = 'indeterminate';
         }
-        if ( counter++ % 4 == 0 ) j++;
+        if ( counter++ % 4 === 0 ) j++;
 
       }, 100, 0, true);
     }
@@ -1763,7 +1763,7 @@ angular
 
 angular
   .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope) {
+  .controller('ContactController', function($scope, $filter) {
     var self = this;
 
     self.contacts = [{
@@ -1787,9 +1787,9 @@ angular
       'lastName': 'Castel',
       'title': "Security"
     }];
-    self.selectedIndex = 2;
+    self.selectedId = 2;
     self.selectedUser = function() {
-      return self.contacts[self.selectedIndex].lastName;
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
     }
   });
 

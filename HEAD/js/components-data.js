@@ -551,8 +551,17 @@ DocsApp
         "url": "api/directive/mdProgressCircular",
         "label": "mdProgressCircular",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progress-circular.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularDirective.js",
         "hasDemo": true
+      },
+      {
+        "name": "$mdProgressCircular",
+        "type": "service",
+        "outputPath": "partials/api/material.components.progressCircular/service/$mdProgressCircular.html",
+        "url": "api/service/$mdProgressCircular",
+        "label": "$mdProgressCircular",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularProvider.js"
       }
     ],
     "hasDemo": false
