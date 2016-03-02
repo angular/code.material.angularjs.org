@@ -427,6 +427,27 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
 angular.module('buttonsDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -734,27 +755,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
     this.chipText = 'Football';
   }
 })();
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -1929,7 +1929,10 @@ angular
 
 
 angular.module('sliderDemo1', ['ngMaterial'])
-
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('device', 'img/icons/sets/device-icons.svg', 24);
+  })
 .controller('AppCtrl', function($scope) {
 
   $scope.color = {
@@ -1942,9 +1945,21 @@ angular.module('sliderDemo1', ['ngMaterial'])
   $scope.rating2 = 2;
   $scope.rating3 = 4;
 
-  $scope.disabled1 = 0;
-  $scope.disabled2 = 70;
+  $scope.disabled1 = Math.floor(Math.random() * 100);
+  $scope.disabled2 = 0;
+  $scope.disabled3 = 70;
 
+  $scope.isDisabled = true;
+});
+
+
+angular.module('sliderDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.vol = Math.floor(Math.random() * 100);
+  $scope.bass = Math.floor(Math.random() * 100);
+  $scope.master = Math.floor(Math.random() * 100);
 });
 
 
