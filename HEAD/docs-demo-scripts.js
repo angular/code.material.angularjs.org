@@ -439,27 +439,6 @@ angular.module('buttonsDemo1', ['ngMaterial'])
 });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
 angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -490,6 +469,27 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
 });
 
 (function () {
@@ -1763,7 +1763,7 @@ angular
 
 angular
   .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
+  .controller('ContactController', function($scope) {
     var self = this;
 
     self.contacts = [{
@@ -1787,9 +1787,9 @@ angular
       'lastName': 'Castel',
       'title': "Security"
     }];
-    self.selectedId = 2;
+    self.selectedIndex = 2;
     self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+      return self.contacts[self.selectedIndex].lastName;
     }
   });
 
