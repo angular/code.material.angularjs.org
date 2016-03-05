@@ -507,7 +507,8 @@ code:not(.highlight) {
   width: 100%;
 }
 
-[dir=rtl] .docs-menu .md-button {
+html[dir=rtl] .docs-menu .md-button,
+body[dir=rtl] .docs-menu .md-button {
   unicode-bidi: embed;
   text-align: right;
 }
@@ -561,7 +562,8 @@ code:not(.highlight) {
 }
 
 
-[dir=rtl] .menu-heading {
+html[dir=rtl] .menu-heading,
+body[dir=rtl] .menu-heading {
   unicode-bidi: embed;
   text-align: right;
 }
