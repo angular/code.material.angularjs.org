@@ -798,14 +798,7 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "dividerdemoBasicUsage",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/divider/demoBasicUsage/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
