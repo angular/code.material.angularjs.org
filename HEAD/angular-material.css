@@ -1590,7 +1590,7 @@ md-datepicker[disabled] .md-datepicker-triangle-button {
 .md-dialog-is-showing {
   max-height: 100%; }
 
-._md-dialog-container {
+.md-dialog-container {
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
