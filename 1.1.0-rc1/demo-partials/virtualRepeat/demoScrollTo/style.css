@@ -1,0 +1,27 @@
+.virtualRepeatdemoScrollTo .wrapper {
+  width: 400px; }
+
+.virtualRepeatdemoScrollTo #vertical-container {
+  height: 292px;
+  width: 400px; }
+
+.virtualRepeatdemoScrollTo #vertical-container .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 40px;
+  padding-top: 10px; }
+
+.virtualRepeatdemoScrollTo #vertical-container .repeated-item.header {
+  background-color: #106CC8;
+  color: white;
+  text-align: center;
+  font-weight: bold; }
+
+.virtualRepeatdemoScrollTo #vertical-container md-content {
+  margin: 16px; }
+
+.virtualRepeatdemoScrollTo md-virtual-repeat-container {
+  border: solid 1px grey; }
+
+.virtualRepeatdemoScrollTo .md-virtual-repeat-container .md-virtual-repeat-offsetter div:not(.header) {
+  padding-left: 16px; }
