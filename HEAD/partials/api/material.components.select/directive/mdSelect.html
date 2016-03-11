@@ -71,7 +71,7 @@ angular.controller(&#39;MyCtrl&#39;, function($scope) {
 </hljs>
 
 <p>At first one might expect that the select should be populated with &quot;Bob&quot; as the selected user. However,
-this is not true. To determine whether something is selected, 
+this is not true. To determine whether something is selected,
 <code>ngModelController</code> is looking at whether <code>$scope.selectedUser == (any user in $scope.users);</code>;</p>
 <p>Javascript&#39;s <code>==</code> operator does not check for deep equality (ie. that all properties
 on the object are the same), but instead whether the objects are <em>the same object in memory</em>.
@@ -80,7 +80,7 @@ entities. Because of this, the select will have no value populated for a selecte
 <p>To get around this, <code>ngModelController</code> provides a <code>track by</code> option that allows us to specify a different
 expression which will be used for the equality operator. As such, we can update our <code>html</code> to
 make use of this by specifying the <code>ng-model-options=&quot;{trackBy: &#39;$value.id&#39;}&quot;</code> on the <code>md-select</code>
-element. This converts our equality expression to be 
+element. This converts our equality expression to be
 <code>$scope.selectedUser.id == (any id in $scope.users.map(function(u) { return u.id; }));</code>
 which results in Bob being selected as desired.</p>
 <p>Working HTML:</p>

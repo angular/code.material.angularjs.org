@@ -983,8 +983,8 @@ DocsApp
     "outputPath": "partials/api/material.core.ripple/index.html",
     "url": "api/material.core.ripple",
     "label": "material.core.ripple",
-    "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js",
     "docs": [
       {
         "name": "mdInkRipple",
@@ -992,8 +992,8 @@ DocsApp
         "outputPath": "partials/api/material.core.ripple/directive/mdInkRipple.html",
         "url": "api/directive/mdInkRipple",
         "label": "mdInkRipple",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js",
         "hasDemo": true
       },
       {
@@ -1002,8 +1002,8 @@ DocsApp
         "outputPath": "partials/api/material.core.ripple/service/$mdInkRipple.html",
         "url": "api/service/$mdInkRipple",
         "label": "$mdInkRipple",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/services/ripple/ripple.js"
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js"
       }
     ],
     "hasDemo": false
@@ -1014,8 +1014,8 @@ DocsApp
     "outputPath": "partials/api/material.core.util/index.html",
     "url": "api/material.core.util",
     "label": "material.core.util",
-    "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/util.js",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/util/util.js",
     "docs": [
       {
         "name": "mdAutofocus",
@@ -1023,8 +1023,8 @@ DocsApp
         "outputPath": "partials/api/material.core.util/directive/mdAutofocus.html",
         "url": "api/directive/mdAutofocus",
         "label": "mdAutofocus",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/uild/angular/material/src/core/util/autofocus.js",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/util/autofocus.js",
         "hasDemo": true
       }
     ],

@@ -1,8 +1,10 @@
 .listdemoListControls {
   /* Add some right padding so that the text doesn't overlap the buttons */ }
   .listdemoListControls md-divider {
-    margin-top: 10px;
-    margin-bottom: 10px; }
+    margin-top: 0;
+    margin-bottom: 0; }
+  .listdemoListControls md-list {
+    padding-top: 0; }
   .listdemoListControls md-list-item > p,
   .listdemoListControls md-list-item > ._md-list-item-inner > p,
   .listdemoListControls md-list-item ._md-list-item-inner > p,

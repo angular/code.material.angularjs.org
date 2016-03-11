@@ -36,7 +36,7 @@ be initiated via data binding changes, programmatic invocation, or user gestures
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-<md-tab label="" disabled="" md-on-select="" md-on-deselect="" >
+<md-tab label="" ng-disabled md-on-select="" md-on-deselect="" >
   <h3>My Tab content</h3>
 </md-tab>
 
@@ -116,7 +116,7 @@ be initiated via data binding changes, programmatic invocation, or user gestures
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If present, disabled tab selection.</p>
+          <p>If present and expression evaluates to truthy, disabled tab selection.</p>
 
           
         </td>

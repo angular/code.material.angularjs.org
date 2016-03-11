@@ -126,7 +126,6 @@ hljs .hljs-constant,
 
 demo-include {
   display: block;
-  background-color:white;
 }
 
 .colorNested .demo-content > div div  {
@@ -271,21 +270,13 @@ body.docs-body {
  * TYPE DEFAULTS
  ***************/
 a {
-  color: #106CC8;
   text-decoration: none;
   font-weight: 400;
-  border-bottom: 1px solid rgba(64, 84, 178, 0.25);
   -webkit-transition: border-bottom 0.35s;
   -moz-transition: border-bottom 0.35s;
   -ms-transition: border-bottom 0.35s;
   -o-transition: border-bottom 0.35s;
   transition: border-bottom 0.35s;
-}
-a:hover, a:focus {
-  border-bottom: 1px solid #4054B2;
-}
-a.md-button {
-  border-bottom: none;
 }
 h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
@@ -665,6 +656,7 @@ a.docs-logo {
 }
 .md-breadcrumb md-icon {
   color: #666 !important;
+  fill: #666 !important;
 }
 .md-breadcrumb-page {
   display: inline-block;
@@ -778,6 +770,7 @@ md-tabs.demo-source-tabs .active md-tab-label {
   -ms-flex: 1 1 0%;
   flex: 1 1 0%;
 }
+
 .demo-content > div[layout-fill] {
   min-height: 448px;
 }

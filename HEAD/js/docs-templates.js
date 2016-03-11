@@ -229,7 +229,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <md-content>\n' +
     '    <h2 class="md-headline" style="margin-top: 0;">What is Angular Material?</h2>\n' +
     '    <p>\n' +
-    '      For developers using AngularJS, Angular Material is the reference implementation of Google\'s\n' +
+    '      For developers using AngularJS, Angular Material is both a UI Component framework and a reference implementation of Google\'s\n' +
     '      Material Design Specification. This project provides a set of reusable, well-tested, and\n' +
     '      accessible UI components based on Material Design.\n' +
     '    </p>\n' +
@@ -246,6 +246,27 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '\n' +
+    '    <br/>\n' +
+    '    <h2 class="md-headline">Angular Material Training Videos?</h2>\n' +
+    '    <p>\n' +
+    '      Here are some free video courses that will help jump start your development with Angular Material.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://egghead.io/series/angular-material-introduction\', icon: \'ondemand_video\', text: \'Introduction to Angular Material\', site : \'EggHead\'},\n' +
+    '        { href: \'https://app.pluralsight.com/player?author=ajden-towfeek&name=angular-material-fundamentals-m0&mode=live&clip=0&course=angular-material-fundamentals\', icon: \'ondemand_video\', text: \'Angular Material Fundamentals\', site : \'Pluralsight\'},\n' +
+    '      ]">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            target="_blank"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            ng-href="{{link.href}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.site}} | <span style="color: rgb(255,82,82); text-transform: none;">{{link.text}}</span>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -273,11 +294,17 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-headline">What is the current project status?</h2>\n' +
+    '    <h2 class="md-headline">What about Angular 2?</h2>\n' +
     '    <p>\n' +
     '      Angular Material recently released Version 1 which we consider to be stable and ready for\n' +
-    '      production use. Efforts are currently being focused on fixing bugs and other minor\n' +
-    '      improvements.\n' +
+    '      production use. Developers should note that Angular Material v1 works only with Angular 1.x.\n' +
+    '    </p>\n' +
+    '    <ul>\n' +
+    '      <li>Current Angular Material v1.x development efforts are focused on bug fixes and minor improvements.</li>\n' +
+    '      <li>Angular Material v2 development is also in-progress at the <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.</li>\n' +
+    '    </ul>\n' +
+    '    <p>\n' +
+    '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking changes.\n' +
     '    </p>\n' +
     '     <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
@@ -292,7 +319,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            ng-href="{{link.href}}"\n' +
     '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
-    '          {{link.text}}\n' +
+    '          {{link.text}}<br/>\n' +
+    '          <div style="text-transform: none;margin-top:-15px;font-size:1.0em;">Angular Material v1.x </div>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -326,8 +354,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <p><code>layout="column" layout-align="center end"</code> would make\n' +
     '    children align along the center vertically and along the end (right) horizontally. </p>\n' +
-    '  \n' +
-    '  \n' +
+    '\n' +
+    '\n' +
     '  <table class="md-api-table">\n' +
     '         <thead>\n' +
     '           <tr>\n' +
