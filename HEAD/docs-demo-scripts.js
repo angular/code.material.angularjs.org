@@ -494,6 +494,13 @@ angular.module('checkboxDemo1', ['ngMaterial'])
       };
 });
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 (function () {
   'use strict';
   angular
@@ -757,13 +764,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
     this.chipText = 'Football';
   }
 })();
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
 
 angular.module('datepickerBasicUsage',
     ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
