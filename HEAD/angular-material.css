@@ -1059,8 +1059,7 @@ md-checkbox {
     width: 20px;
     height: 20px;
     left: 0;
-    right: auto;
-    pointer-events: none; }
+    right: auto; }
     [dir=rtl] md-checkbox ._md-container {
       left: auto; }
     [dir=rtl] md-checkbox ._md-container {
