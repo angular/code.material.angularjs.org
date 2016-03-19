@@ -390,8 +390,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "checkboxDemo1",
-          "module": "checkboxDemo1",
+          "name": "checkboxDemo2",
+          "module": "checkboxDemo2",
           "dependencies": [
             "ngMaterial"
           ]
