@@ -16,6 +16,9 @@
   <p><code>&lt;md-input-container&gt;</code> is the parent of any input or textarea element.</p>
 <p>Input and textarea elements will not behave properly unless the md-input-container
 parent is provided.</p>
+<p>A single <code>&lt;md-input-container&gt;</code> should contain only one <code>&lt;input&gt;</code> element, otherwise it will throw an error.</p>
+<p><b>Exception:</b> Hidden inputs (<code>&lt;input type=&quot;hidden&quot; /&gt;</code>) are ignored and will not throw an error, so
+you may combine these with other inputs.</p>
 
 </div>
 

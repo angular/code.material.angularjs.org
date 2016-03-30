@@ -448,14 +448,14 @@ angular.module('cardDemo1', ['ngMaterial'])
 });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
+angular.module('cardDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
 });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
+angular.module('cardDemo3', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
@@ -476,6 +476,44 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 });
 
 
+angular.module('checkboxDemo3', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
+});
+
+
 angular.module('checkboxDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -485,8 +523,12 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
       $scope.toggle = function (item, list) {
         var idx = list.indexOf(item);
-        if (idx > -1) list.splice(idx, 1);
-        else list.push(item);
+        if (idx > -1) {
+          list.splice(idx, 1);
+        }
+        else {
+          list.push(item);
+        }
       };
 
       $scope.exists = function (item, list) {
@@ -1847,6 +1889,20 @@ angular.module('selectDemoOptionsAsync', ['ngMaterial'])
     }, 650);
   };
 });
+
+angular
+    .module('selectDemoSelectedText', ['ngMaterial'])
+    .controller('SelectedTextController', function($scope) {
+      $scope.items = [1, 2, 3, 4, 5, 6, 7];
+      $scope.selectedItem;
+      $scope.getSelectedText = function() {
+        if ($scope.selectedItem !== undefined) {
+          return "You have selected: Item " + $scope.selectedItem;
+        } else {
+          return "Please select an item";
+        }
+      };
+    });
 
 angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function($scope) {

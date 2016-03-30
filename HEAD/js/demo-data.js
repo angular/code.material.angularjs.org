@@ -288,8 +288,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "cardDemo1",
-          "module": "cardDemo1",
+          "name": "cardDemo2",
+          "module": "cardDemo2",
           "dependencies": [
             "ngMaterial"
           ]
@@ -317,8 +317,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "cardDemo1",
-          "module": "cardDemo1",
+          "name": "cardDemo3",
+          "module": "cardDemo3",
           "dependencies": [
             "ngMaterial"
           ]
@@ -386,6 +386,42 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/checkbox/demoBasicUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "checkboxDemo3",
+          "module": "checkboxDemo3",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "checkboxdemoSelectAll",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/checkbox/demoSelectAll/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/checkbox/demoSelectAll/script.js"
+          }
+        ],
+        "moduleName": "material.components.checkbox",
+        "name": "demoSelectAll",
+        "label": "Select All",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/checkbox/demoSelectAll/index.html"
         }
       },
       {
@@ -1903,6 +1939,35 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/select/demoOptionsWithAsyncSearch/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "selectDemoSelectedText",
+          "module": "selectDemoSelectedText",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "selectdemoSelectedText",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/select/demoSelectedText/script.js"
+          }
+        ],
+        "moduleName": "material.components.select",
+        "name": "demoSelectedText",
+        "label": "Selected Text",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/select/demoSelectedText/index.html"
         }
       },
       {

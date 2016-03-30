@@ -96,6 +96,8 @@ the <code>md-primary</code> class.</p>
   
     
   
+    
+  
   
     
   
@@ -201,7 +203,29 @@ the <code>md-primary</code> class.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Adds label to checkbox for accessibility.
-Defaults to checkbox&#39;s text. If no default text is found, a warning will be logged.</p>
+    Defaults to checkbox&#39;s text. If no default text is found, a warning will be logged.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-indeterminate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>This determines when the checkbox should be rendered as &#39;indeterminate&#39;.
+    If a truthy expression or no value is passed in the checkbox renders in the md-indeterminate state.
+    If falsy expression is passed in it just looks like a normal unchecked checkbox.
+    The indeterminate, checked, and unchecked states are mutually exclusive. A box cannot be in any two states at the same time. 
+    When a checkbox is indeterminate that overrides any checked/unchecked rendering logic.</p>
 
           
         </td>

@@ -29,10 +29,10 @@
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
-  myAppModule.config(function($mdProgressCircular) {
+  myAppModule.config(function($mdProgressCircularProvider) {
 
     // Example of changing the default progress options.
-    $mdProgressCircular.configure({
+    $mdProgressCircularProvider.configure({
       progressSize: 100,
       strokeWidth: 20,
       duration: 800
@@ -42,103 +42,7 @@
   </section>
 
 
-  <section class="api-section">
-      
-  <div class="api-param-section">
-    <h2>
-      
-        Arguments
-      
-    </h2>
-    <div class="api-param-table">
-      
-<table class="md-api-table">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
   
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* endIndeterminate</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-number">number</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-number">number</code></td>
-        <td class="description">
-          <p>Indeterminate animation end point.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* rotationDurationIndeterminate</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-number">number</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-number">number</code></td>
-        <td class="description">
-          <p>Duration of the indeterminate rotating animation.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* easeFnIndeterminate</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-function">function</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-function">function</code></td>
-        <td class="description">
-          <p>Easing function to be used when animating
-between the indeterminate values.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-  
-    
-  
-    
-  
-    
-  
-
-  </tbody>
-</table>
-
-    </div>
-  </div>
-      <section class="api-section">
-  
-</section>
-
-
-      
-
-    </section>
 
   
   
@@ -287,6 +191,61 @@ between the indeterminate values.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          <b>* endIndeterminate</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Indeterminate animation end point.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* rotationDurationIndeterminate</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Duration of the indeterminate rotating animation.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* easeFnIndeterminate</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function</code></td>
+        <td class="description">
+          <p>Easing function to be used when animating
+between the indeterminate values.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           <b>* configure</b>
           
           <span hide show-sm>
@@ -302,6 +261,12 @@ between the indeterminate values.</p>
       </tr>
     
   
+  
+    
+  
+    
+  
+    
   
     
   

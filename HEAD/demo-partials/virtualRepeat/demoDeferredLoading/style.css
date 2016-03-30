@@ -1,6 +1,7 @@
 .virtualRepeatdemoDeferredLoading #vertical-container {
   height: 292px;
-  width: 400px; }
+  width: 100%;
+  max-width: 400px; }
 
 .virtualRepeatdemoDeferredLoading .repeated-item {
   border-bottom: 1px solid #ddd;
