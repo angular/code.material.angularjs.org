@@ -23,6 +23,17 @@ directives are compiled.</p>
 internally by the <code>$mdIcon</code> service using the <code>$http</code> service. When an SVG is requested by name/ID,
 the <code>$mdIcon</code> service searches its registry for the associated source URL;
 that URL is used to on-demand load and parse the SVG dynamically.</p>
+<p><strong>Notice:</strong> Most font-icons libraries do not support ligatures (for example <code>fontawesome</code>).<br/>
+ In such cases you are not able to use the icon&#39;s ligature name - Like so:</p>
+ <hljs lang="html">
+   <md-icon md-font-set="fa">fa-bell</md-icon>
+ </hljs>
+
+<p>You should instead use the given unicode, instead of the ligature name.</p>
+<p><p ng-hide="true"> ##// Notice we can&#39;t use a hljs element here, because the characters will be escaped.</p></p>
+<pre><code class="lang-html">&lt;md-icon md-font-set=&quot;fa&quot;&gt;&amp;#xf0f3&lt;/md-icon&gt;
+</code></pre>
+<p>All unicode ligatures are prefixed with the <code>&amp;#x</code> string.</p>
 
 </div>
 
@@ -41,7 +52,7 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
     // Configure URLs for icons specified by [set:]id.
 
     $mdIconProvider
-         .defaultFontSet( &#39;fontawesome&#39; )
+         .defaultFontSet( &#39;fa&#39; )                   // This sets our default fontset className.
          .defaultIconSet(&#39;my/app/icons.svg&#39;)       // Register a default set of SVG icons
          .iconSet(&#39;social&#39;, &#39;my/app/social.svg&#39;)   // Register a named icon set of SVGs
          .icon(&#39;android&#39;, &#39;my/app/android.svg&#39;)    // Register a specific icon (by name)
@@ -475,6 +486,86 @@ class style that should be applied to the <code>&lt;md-icon&gt;</code>.</p>
       </tr>
     
   
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="fontSet">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.fontSet(alias, className);
+</code>
+      </h3>
+      <div class="service-desc"><p>When using a font set for <code>&lt;md-icon&gt;</code> you must specify the correct font classname in the <code>md-font-set</code>
+attribute. If the fonset className is really long, your markup may become cluttered... an easy
+solution is to define an <code>alias</code> for your fontset:</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* alias</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>of the specified fontset.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* className</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>of the fontset.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
   
     
   
