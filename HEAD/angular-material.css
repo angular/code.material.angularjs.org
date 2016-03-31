@@ -2981,14 +2981,6 @@ md-menu-content._md-menu-bar-menu.md-dense {
           right: auto;
           left: 28px; }
 
-md-progress-circular {
-  position: relative; }
-  md-progress-circular svg {
-    position: absolute;
-    overflow: visible;
-    top: 0;
-    left: 0; }
-
 md-progress-linear {
   display: block;
   position: relative;
@@ -3238,6 +3230,14 @@ md-progress-linear {
             animation-timing-function: cubic-bezier(0.4, 0.62703, 0.6, 0.90203); }
   100% {
     left: 117.38889%; } }
+
+md-progress-circular {
+  position: relative; }
+  md-progress-circular svg {
+    position: absolute;
+    overflow: visible;
+    top: 0;
+    left: 0; }
 
 md-radio-button {
   box-sizing: border-box;
