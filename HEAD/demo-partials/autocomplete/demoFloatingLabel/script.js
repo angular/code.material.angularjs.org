@@ -22,10 +22,8 @@
      * remote dataservice call.
      */
     function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
+      var results = query ? self.states.filter( createFilterFor(query) ) : [];
+      return results;
     }
 
     /**

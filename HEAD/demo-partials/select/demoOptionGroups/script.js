@@ -17,14 +17,4 @@ angular
         { category: 'veg', name: 'Green Pepper' },
         { category: 'veg', name: 'Green Olives' }
       ];
-      $scope.selectedToppings = [];
-      $scope.printSelectedToppings = function printSelectedToppings(){
-        // If there is more than one topping, we add an 'and' and an oxford
-        // comma to be gramatically correct.
-        if (this.selectedToppings.length > 1) {
-          var lastTopping = ', and ' + this.selectedToppings.slice(-1)[0];
-          return this.selectedToppings.slice(0,-1).join(', ') + lastTopping;
-        }
-        return this.selectedToppings.join('');
-      };
     });

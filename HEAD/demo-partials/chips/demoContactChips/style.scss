@@ -34,7 +34,7 @@ md-content.autocomplete {
     }
   }
 
-  @media (min-width: 960px) {
+  @media screen and (min-width: 960px) {
     float: left;
     width: 33%;
   }

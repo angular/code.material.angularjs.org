@@ -1,7 +1,7 @@
 
 angular.module('toastDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdToast) {
+.controller('AppCtrl', function($scope, $mdToast, $document) {
   var last = {
       bottom: false,
       top: true,
@@ -30,29 +30,35 @@ angular.module('toastDemo1', ['ngMaterial'])
     last = angular.extend({},current);
   }
 
-  $scope.showSimpleToast = function() {
-    var pinTo = $scope.getToastPosition();
+  $scope.showCustomToast = function() {
+    $mdToast.show({
+      controller: 'ToastCtrl',
+      templateUrl: 'toast-template.html',
+      parent : $document[0].querySelector('#toastBounds'),
+      hideDelay: 6000,
+      position: $scope.getToastPosition()
+    });
+  };
 
+  $scope.showSimpleToast = function() {
     $mdToast.show(
       $mdToast.simple()
         .textContent('Simple Toast!')
-        .position(pinTo )
+        .position($scope.getToastPosition())
         .hideDelay(3000)
     );
   };
 
   $scope.showActionToast = function() {
-    var pinTo = $scope.getToastPosition();
     var toast = $mdToast.simple()
-      .textContent('Marked as read')
-      .action('UNDO')
-      .highlightAction(true)
-      .highlightClass('md-accent')// Accent is used by default, this just demonstrates the usage.
-      .position(pinTo);
+          .textContent('Action Toast!')
+          .action('OK')
+          .highlightAction(false)
+          .position($scope.getToastPosition());
 
     $mdToast.show(toast).then(function(response) {
       if ( response == 'ok' ) {
-        alert('You clicked the \'UNDO\' action.');
+        alert('You clicked \'OK\'.');
       }
     });
   };

@@ -1,6 +1,9 @@
 .checkboxdemoSyncing .checkboxDemo1 div {
   clear: both; }
 
+.checkboxdemoSyncing .checkboxDemo1 md-checkbox {
+  float: left; }
+
 .checkboxdemoSyncing legend {
   color: #3F51B5; }
 

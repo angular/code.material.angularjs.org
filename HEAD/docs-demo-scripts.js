@@ -209,10 +209,8 @@
      * remote dataservice call.
      */
     function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
+      var results = query ? self.states.filter( createFilterFor(query) ) : [];
+      return results;
     }
 
     /**
@@ -476,44 +474,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 });
 
 
-angular.module('checkboxDemo3', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.items = [1,2,3,4,5];
-  $scope.selected = [1];
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminate = function() {
-    return ($scope.selected.length !== 0 &&
-        $scope.selected.length !== $scope.items.length);
-  };
-
-  $scope.isChecked = function() {
-    return $scope.selected.length === $scope.items.length;
-  };
-
-  $scope.toggleAll = function() {
-    if ($scope.selected.length === $scope.items.length) {
-      $scope.selected = [];
-    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-      $scope.selected = $scope.items.slice(0);
-    }
-  };
-});
-
-
 angular.module('checkboxDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -523,12 +483,8 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
       $scope.toggle = function (item, list) {
         var idx = list.indexOf(item);
-        if (idx > -1) {
-          list.splice(idx, 1);
-        }
-        else {
-          list.push(item);
-        }
+        if (idx > -1) list.splice(idx, 1);
+        else list.push(item);
       };
 
       $scope.exists = function (item, list) {
@@ -550,8 +506,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     // Lists of fruit names and Vegetable objects
     self.fruitNames = ['Apple', 'Banana', 'Orange'];
     self.roFruitNames = angular.copy(self.fruitNames);
-    self.editableFruitNames = angular.copy(self.fruitNames);
-
     self.tags = [];
     self.vegObjs = [
       {
@@ -865,24 +819,6 @@ angular.module('dialogDemo1', ['ngMaterial'])
       $scope.status = 'You decided to get rid of your debt.';
     }, function() {
       $scope.status = 'You decided to keep your debt.';
-    });
-  };
-
-  $scope.showPrompt = function(ev) {
-    // Appending dialog to document.body to cover sidenav in docs app
-    var confirm = $mdDialog.prompt()
-          .title('What would you name your dog?')
-          .textContent('Bowser is a common name.')
-          .placeholder('dog name')
-          .ariaLabel('Dog name')
-          .targetEvent(ev)
-          .ok('Okay!')
-          .cancel('I\'m a cat person');
-
-    $mdDialog.show(confirm).then(function(result) {
-      $scope.status = 'You decided to name your dog ' + result + '.';
-    }, function() {
-      $scope.status = 'You didn\'t name your dog.';
     });
   };
 
@@ -1330,7 +1266,7 @@ angular
     'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
     'WY').split(' ').map(function(state) {
         return {abbrev: state};
-      });
+      })
   })
   .config(function($mdThemingProvider) {
 
@@ -1386,36 +1322,9 @@ angular.module('listDemo1', ['ngMaterial'])
     var imagePath = 'img/list/60.jpeg';
 
     $scope.phones = [
-      {
-        type: 'Home',
-        number: '(555) 251-1234',
-        options: {
-          icon: 'communication:phone'
-        }
-      },
-      {
-        type: 'Cell',
-        number: '(555) 786-9841',
-        options: {
-          icon: 'communication:phone',
-          avatarIcon: true
-        }
-      },
-      {
-        type: 'Office',
-        number: '(555) 314-1592',
-        options: {
-          face : imagePath
-        }
-      },
-      {
-        type: 'Offset',
-        number: '(555) 192-2010',
-        options: {
-          offset: true,
-          actionIcon: 'communication:phone'
-        }
-      }
+      { type: 'Home', number: '(555) 251-1234' },
+      { type: 'Cell', number: '(555) 786-9841' },
+      { type: 'Office', number: '(555) 314-1592' }
     ];
     $scope.todos = [
       {
@@ -1672,23 +1581,41 @@ angular
 
 angular
   .module('progressCircularDemo1', ['ngMaterial'])
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
+  .controller('AppCtrl', ['$scope', '$interval',
+    function($scope, $interval) {
+      var self = this,  j= 0, counter = 0;
 
+      self.modes = [ ];
       self.activated = true;
       self.determinateValue = 30;
 
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
+      /**
+       * Turn off or on the 5 themed loaders
+       */
+      self.toggleActivation = function() {
+          if ( !self.activated ) self.modes = [ ];
+          if (  self.activated ) j = counter = 0;
+      };
+
+      // Iterate every 100ms, non-stop
       $interval(function() {
+
+        // Increment the Determinate loader
 
         self.determinateValue += 1;
         if (self.determinateValue > 100) {
           self.determinateValue = 30;
         }
 
-      }, 100);
+        // Incrementally start animation the five (5) Indeterminate,
+        // themed progress circular bars
+
+        if ( (j < 5) && !self.modes[j] && self.activated ) {
+          self.modes[j] = 'indeterminate';
+        }
+        if ( counter++ % 4 == 0 ) j++;
+
+      }, 100, 0, true);
     }
   ]);
 
@@ -1703,13 +1630,13 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     self.determinateValue = 30;
     self.determinateValue2 = 30;
 
-    self.showList = [ ];
+    self.modes = [ ];
 
     /**
      * Turn off or on the 5 themed loaders
      */
     self.toggleActivation = function() {
-        if ( !self.activated ) self.showList = [ ];
+        if ( !self.activated ) self.modes = [ ];
         if (  self.activated ) {
           j = counter = 0;
           self.determinateValue = 30;
@@ -1727,8 +1654,8 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
         // Incrementally start animation the five (5) Indeterminate,
         // themed progress circular bars
 
-        if ( (j < 2) && !self.showList[j] && self.activated ) {
-          self.showList[j] = true;
+        if ( (j < 2) && !self.modes[j] && self.activated ) {
+          self.modes[j] = (j==0) ? 'buffer' : 'query';
         }
         if ( counter++ % 4 == 0 ) j++;
 
@@ -1856,16 +1783,6 @@ angular
         { category: 'veg', name: 'Green Pepper' },
         { category: 'veg', name: 'Green Olives' }
       ];
-      $scope.selectedToppings = [];
-      $scope.printSelectedToppings = function printSelectedToppings(){
-        // If there is more than one topping, we add an 'and' and an oxford
-        // comma to be gramatically correct.
-        if (this.selectedToppings.length > 1) {
-          var lastTopping = ', and ' + this.selectedToppings.slice(-1)[0];
-          return this.selectedToppings.slice(0,-1).join(', ') + lastTopping;
-        }
-        return this.selectedToppings.join('');
-      };
     });
 
 angular.module('selectDemoOptionsAsync', ['ngMaterial'])
@@ -1889,20 +1806,6 @@ angular.module('selectDemoOptionsAsync', ['ngMaterial'])
     }, 650);
   };
 });
-
-angular
-    .module('selectDemoSelectedText', ['ngMaterial'])
-    .controller('SelectedTextController', function($scope) {
-      $scope.items = [1, 2, 3, 4, 5, 6, 7];
-      $scope.selectedItem;
-      $scope.getSelectedText = function() {
-        if ($scope.selectedItem !== undefined) {
-          return "You have selected: Item " + $scope.selectedItem;
-        } else {
-          return "Please select an item";
-        }
-      };
-    });
 
 angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function($scope) {
@@ -1985,10 +1888,7 @@ angular
 
 
 angular.module('sliderDemo1', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('device', 'img/icons/sets/device-icons.svg', 24);
-  })
+
 .controller('AppCtrl', function($scope) {
 
   $scope.color = {
@@ -2001,21 +1901,9 @@ angular.module('sliderDemo1', ['ngMaterial'])
   $scope.rating2 = 2;
   $scope.rating3 = 4;
 
-  $scope.disabled1 = Math.floor(Math.random() * 100);
-  $scope.disabled2 = 0;
-  $scope.disabled3 = 70;
+  $scope.disabled1 = 0;
+  $scope.disabled2 = 70;
 
-  $scope.isDisabled = true;
-});
-
-
-angular.module('sliderDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.vol = Math.floor(Math.random() * 100);
-  $scope.bass = Math.floor(Math.random() * 100);
-  $scope.master = Math.floor(Math.random() * 100);
 });
 
 
@@ -2208,7 +2096,7 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 
 angular.module('toastDemo1', ['ngMaterial'])
 
-.controller('AppCtrl', function($scope, $mdToast) {
+.controller('AppCtrl', function($scope, $mdToast, $document) {
   var last = {
       bottom: false,
       top: true,
@@ -2237,29 +2125,35 @@ angular.module('toastDemo1', ['ngMaterial'])
     last = angular.extend({},current);
   }
 
-  $scope.showSimpleToast = function() {
-    var pinTo = $scope.getToastPosition();
+  $scope.showCustomToast = function() {
+    $mdToast.show({
+      controller: 'ToastCtrl',
+      templateUrl: 'toast-template.html',
+      parent : $document[0].querySelector('#toastBounds'),
+      hideDelay: 6000,
+      position: $scope.getToastPosition()
+    });
+  };
 
+  $scope.showSimpleToast = function() {
     $mdToast.show(
       $mdToast.simple()
         .textContent('Simple Toast!')
-        .position(pinTo )
+        .position($scope.getToastPosition())
         .hideDelay(3000)
     );
   };
 
   $scope.showActionToast = function() {
-    var pinTo = $scope.getToastPosition();
     var toast = $mdToast.simple()
-      .textContent('Marked as read')
-      .action('UNDO')
-      .highlightAction(true)
-      .highlightClass('md-accent')// Accent is used by default, this just demonstrates the usage.
-      .position(pinTo);
+          .textContent('Action Toast!')
+          .action('OK')
+          .highlightAction(false)
+          .position($scope.getToastPosition());
 
     $mdToast.show(toast).then(function(response) {
       if ( response == 'ok' ) {
-        alert('You clicked the \'UNDO\' action.');
+        alert('You clicked \'OK\'.');
       }
     });
   };
@@ -2271,55 +2165,6 @@ angular.module('toastDemo1', ['ngMaterial'])
     $mdToast.hide();
   };
 });
-
-(function() {
-
-  var isDlgOpen;
-
-  angular
-    .module('toastDemo2', ['ngMaterial'])
-    .controller('AppCtrl', function($scope, $mdToast) {
-      $scope.showCustomToast = function() {
-        $mdToast.show({
-          hideDelay   : 3000,
-          position    : 'top right',
-          controller  : 'ToastCtrl',
-          templateUrl : 'toast-template.html'
-        });
-      };
-    })
-    .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
-
-      $scope.closeToast = function() {
-        if (isDlgOpen) return;
-
-        $mdToast
-          .hide()
-          .then(function() {
-            isDlgOpen = false;
-          });
-      };
-
-      $scope.openMoreInfo = function(e) {
-        if ( isDlgOpen ) return;
-        isDlgOpen = true;
-
-        $mdDialog
-          .show($mdDialog
-            .alert()
-            .title('More info goes here.')
-            .textContent('Something witty.')
-            .ariaLabel('More info')
-            .ok('Got it')
-            .targetEvent(e)
-          )
-          .then(function() {
-            isDlgOpen = false;
-          })
-      };
-    });
-
-})();
 
 
 angular.module('toolbarDemo1', ['ngMaterial'])
@@ -2354,11 +2199,6 @@ angular.module('tooltipDemo1', ['ngMaterial'])
     showTooltip : false,
     tipDirection : ''
   };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip',function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
 
   $scope.$watch('demo.tipDirection',function(val) {
     if (val && val.length ) {
