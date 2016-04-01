@@ -4,3 +4,11 @@
   border: none;
   transform: none;
   -webkit-transform: none; }
+
+.tooltipdemoBasicUsage .left {
+  top: 70px !important;
+  left: 56px !important; }
+
+.tooltipdemoBasicUsage .right {
+  top: 70px !important;
+  right: 56px !important; }
