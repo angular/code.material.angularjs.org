@@ -551,8 +551,17 @@ DocsApp
         "url": "api/directive/mdProgressCircular",
         "label": "mdProgressCircular",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/progress-circular.js",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularDirective.js",
         "hasDemo": true
+      },
+      {
+        "name": "$mdProgressCircular",
+        "type": "service",
+        "outputPath": "partials/api/material.components.progressCircular/service/$mdProgressCircular.html",
+        "url": "api/service/$mdProgressCircular",
+        "label": "$mdProgressCircular",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularProvider.js"
       }
     ],
     "hasDemo": false
@@ -682,14 +691,23 @@ DocsApp
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
     "docs": [
       {
+        "name": "mdSliderContainer",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.slider/directive/mdSliderContainer.html",
+        "url": "api/directive/mdSliderContainer",
+        "label": "mdSliderContainer",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
+        "hasDemo": true
+      },
+      {
         "name": "mdSlider",
         "type": "directive",
         "outputPath": "partials/api/material.components.slider/directive/mdSlider.html",
         "url": "api/directive/mdSlider",
         "label": "mdSlider",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
-        "hasDemo": true
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js"
       }
     ],
     "hasDemo": false
