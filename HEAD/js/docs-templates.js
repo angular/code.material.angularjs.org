@@ -354,8 +354,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <p><code>layout="column" layout-align="center end"</code> would make\n' +
     '    children align along the center vertically and along the end (right) horizontally. </p>\n' +
-    '\n' +
-    '\n' +
+    '  \n' +
+    '  \n' +
     '  <table class="md-api-table">\n' +
     '         <thead>\n' +
     '           <tr>\n' +
@@ -1832,7 +1832,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    ng-href="{{section.url}}"\n' +
     '    ng-click="focusSection()">\n' +
     '  {{section | humanizeDoc}}\n' +
-    '  <span class="_md-visually-hidden"\n' +
+    '  <span class="md-visually-hidden"\n' +
     '    ng-if="isSelected()">\n' +
     '    current page\n' +
     '  </span>\n' +

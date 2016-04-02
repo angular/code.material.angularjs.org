@@ -390,42 +390,6 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "checkboxDemo3",
-          "module": "checkboxDemo3",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "checkboxdemoSelectAll",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/checkbox/demoSelectAll/style.css"
-          }
-        ],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/checkbox/demoSelectAll/script.js"
-          }
-        ],
-        "moduleName": "material.components.checkbox",
-        "name": "demoSelectAll",
-        "label": "Select All",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/checkbox/demoSelectAll/index.html"
-        }
-      },
-      {
-        "ngModule": {
           "name": "checkboxDemo2",
           "module": "checkboxDemo2",
           "dependencies": [
@@ -834,7 +798,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "dividerdemoBasicUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/divider/demoBasicUsage/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {
@@ -1943,35 +1914,6 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "selectDemoSelectedText",
-          "module": "selectDemoSelectedText",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "selectdemoSelectedText",
-        "css": [],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/select/demoSelectedText/script.js"
-          }
-        ],
-        "moduleName": "material.components.select",
-        "name": "demoSelectedText",
-        "label": "Selected Text",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/select/demoSelectedText/index.html"
-        }
-      },
-      {
-        "ngModule": {
           "name": "selectDemoValidation",
           "module": "selectDemoValidation",
           "dependencies": [
@@ -2054,7 +1996,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "sliderdemoBasicUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/slider/demoBasicUsage/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {
@@ -2072,35 +2021,6 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/slider/demoBasicUsage/index.html"
-        }
-      },
-      {
-        "ngModule": {
-          "name": "sliderDemo2",
-          "module": "sliderDemo2",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "sliderdemoVertical",
-        "css": [],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/slider/demoVertical/script.js"
-          }
-        ],
-        "moduleName": "material.components.slider",
-        "name": "demoVertical",
-        "label": "Vertical",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/slider/demoVertical/index.html"
         }
       }
     ],
@@ -2397,7 +2317,14 @@ angular.module('docsApp').constant('DEMOS', [
         },
         "id": "toastdemoBasicUsage",
         "css": [],
-        "html": [],
+        "html": [
+          {
+            "name": "toast-template.html",
+            "label": "toast-template.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/toast/demoBasicUsage/toast-template.html"
+          }
+        ],
         "js": [
           {
             "name": "script.js",
@@ -2414,42 +2341,6 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/toast/demoBasicUsage/index.html"
-        }
-      },
-      {
-        "ngModule": {
-          "name": "toastDemo2",
-          "module": "toastDemo2",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "toastdemoCustomUsage",
-        "css": [],
-        "html": [
-          {
-            "name": "toast-template.html",
-            "label": "toast-template.html",
-            "fileType": "html",
-            "outputPath": "demo-partials/toast/demoCustomUsage/toast-template.html"
-          }
-        ],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/toast/demoCustomUsage/script.js"
-          }
-        ],
-        "moduleName": "material.components.toast",
-        "name": "demoCustomUsage",
-        "label": "Custom Usage",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/toast/demoCustomUsage/index.html"
         }
       }
     ],
