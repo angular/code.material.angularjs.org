@@ -1,0 +1,358 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>$mdDateLocaleProvider</code> is the provider that creates the <code>$mdDateLocale</code> service.
+This provider that allows the user to specify messages, formatters, and parsers for date
+internationalization. The <code>$mdDateLocale</code> service itself is consumed by Angular Material
+components that deal with dates.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+  myAppModule.config(function($mdDateLocaleProvider) {
+
+    // Example of a French localization.
+    $mdDateLocaleProvider.months = [&#39;janvier&#39;, &#39;février&#39;, &#39;mars&#39;, ...];
+    $mdDateLocaleProvider.shortMonths = [&#39;janv&#39;, &#39;févr&#39;, &#39;mars&#39;, ...];
+    $mdDateLocaleProvider.days = [&#39;dimanche&#39;, &#39;lundi&#39;, &#39;mardi&#39;, ...];
+    $mdDateLocaleProvider.shortDays = [&#39;Di&#39;, &#39;Lu&#39;, &#39;Ma&#39;, ...];
+
+    // Can change week display to start on Monday.
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
+
+    // Optional.
+    $mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
+
+    // Example uses moment.js to parse and format dates.
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, &#39;L&#39;, true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return moment(date).format(&#39;L&#39;);
+    };
+
+    $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+      return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
+    };
+
+    // In addition to date display, date components also need localized messages
+    // for aria-labels for screen-reader users.
+
+    $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+      return &#39;Semaine &#39; + weekNumber;
+    };
+
+    $mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
+    $mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
+
+});
+</hljs>
+  </section>
+
+
+  
+
+  
+  
+  
+<section class="api-section">
+  <h2>Properties</h2>
+  <div class="api-param-table">
+    
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Property</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          months
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>Array of month names (in order).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          shortMonths
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>Array of abbreviated month names.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          days
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>Array of the days of the week (in order).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          shortDays
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>Array of abbreviated dayes of the week.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          dates
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>Array of dates of the month. Only necessary for locales
+    using a numeral system other than [1, 2, 3...].</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          firstDayOfWeek
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-array">Array.&lt;string&gt;</code></td>
+        <td class="description">
+          <p>The first day of the week. Sunday = 0, Monday = 1,
+   etc.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          parseDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(string): Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(string): Date</code></td>
+        <td class="description">
+          <p>Function to parse a date object from a string.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          formatDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(Date): string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(Date): string</code></td>
+        <td class="description">
+          <p>Function to format a date object to a string.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          monthHeaderFormatter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(Date): string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(Date): string</code></td>
+        <td class="description">
+          <p>Function that returns the label for
+    a month given a date.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          weekNumberFormatter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(number): string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(number): string</code></td>
+        <td class="description">
+          <p>Function that returns a label for
+    a week given the week number.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          msgCalendar
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Translation of the label &quot;Calendar&quot; for the current locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          msgOpenCalendar
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Translation of the button label &quot;Open calendar&quot; for the
+    current locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+  </div>
+  </ul>
+</section>
+
+
+
+  
+</div>
+
+
+</div>
