@@ -251,49 +251,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-headline">Angular Material Training Videos?</h2>\n' +
-    '    <p>\n' +
-    '      Here are some free video courses that will help jump start your development with Angular Material.\n' +
-    '    </p>\n' +
-    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
-    '        { href: \'https://egghead.io/series/angular-material-introduction\', icon: \'ondemand_video\', text: \'Introduction to Angular Material\', site : \'EggHead\'},\n' +
-    '        { href: \'https://app.pluralsight.com/player?author=ajden-towfeek&name=angular-material-fundamentals-m0&mode=live&clip=0&course=angular-material-fundamentals\', icon: \'ondemand_video\', text: \'Angular Material Fundamentals\', site : \'Pluralsight\'},\n' +
-    '      ]">\n' +
-    '        <md-button\n' +
-    '            class="md-primary md-raised"\n' +
-    '            target="_blank"\n' +
-    '            aria-label="{{link.text}}"\n' +
-    '            ng-href="{{link.href}}">\n' +
-    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
-    '          {{link.site}} | <span style="color: rgb(255,82,82); text-transform: none;">{{link.text}}</span>\n' +
-    '        </md-button>\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '\n' +
-    '    <br/>\n' +
-    '    <h2 class="md-headline">What is Material Design?</h2>\n' +
-    '    <p>\n' +
-    '      Material Design is a specification for a unified system of visual, motion, and interaction\n' +
-    '      design that adapts across different devices and different screen sizes.\n' +
-    '    </p>\n' +
-    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
-    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video\' },\n' +
-    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn More\' }\n' +
-    '      ]">\n' +
-    '        <md-button\n' +
-    '            class="md-primary md-raised"\n' +
-    '            target="_blank"\n' +
-    '            aria-label="{{link.text}}"\n' +
-    '            ng-href="{{link.href}}">\n' +
-    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
-    '          {{link.text}}\n' +
-    '        </md-button>\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '\n' +
-    '    <br/>\n' +
     '    <h2 class="md-headline">What about Angular 2?</h2>\n' +
     '    <p>\n' +
     '      Angular Material recently released Version 1 which we consider to be stable and ready for\n' +
@@ -324,10 +281,75 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
+    '    <md-divider></md-divider>\n' +
+    '\n' +
+    '    <br/>\n' +
+    '    <h2 class="md-headline">Training Videos:</h2>\n' +
+    '    <p>\n' +
+    '      Here are some video courses that will help jump start your development with Angular Material.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://egghead.io/series/angular-material-introduction\', icon: \'ondemand_video\', text: \'Introduction to Angular Material\', site : \'EggHead\', access : \'free\'},\n' +
+    '        { href: \'https://app.pluralsight.com/player?author=ajden-towfeek&name=angular-material-fundamentals-m0&mode=live&clip=0&course=angular-material-fundamentals\', icon: \'ondemand_video\', text: \'Angular Material Fundamentals\', site : \'Pluralsight\', access: \'member\'},\n' +
+    '      ]">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            target="_blank"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            ng-href="{{link.href}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.site}} | <span style="color: rgb(255,82,82); text-transform: none;">{{link.text}}</span> | <span class="training_info">{{link.access}}</span>\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
     '\n' +
     '\n' +
     '    <br/>\n' +
-    '    <md-divider></md-divider>\n' +
+    '    <h2 class="md-headline">Conference Presentations:</h2>\n' +
+    '    <p>\n' +
+    '      Here are some conference presentations that will provide overviews for your development with Angular Material.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://www.youtube.com/watch?v=Qi31oO5u33U\', icon: \'ondemand_video\', text: \'Building with Angular Material\', site : \'ng-conf\',  date: \'2015\'},\n' +
+    '        { href: \'https://www.youtube.com/watch?v=363o4i0rdvU\', icon: \'ondemand_video\', text: \'Angular Material in Practice\', site : \'AngularConnect\', date:\'2015\'},\n' +
+    '      ]">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            target="_blank"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            ng-href="{{link.href}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          <span class="training_site">{{link.site}}</span> | <span class="training_link">{{link.text}}</span> | <span class="training_info">{{link.date}}</span>\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '\n' +
+    '\n' +
+    '    <br/>\n' +
+    '    <h2 class="md-headline">Google\'s Material Design</h2>\n' +
+    '    <p>\n' +
+    '      Material Design is a specification for a unified system of visual, motion, and interaction\n' +
+    '      design that adapts across different devices and different screen sizes.\n' +
+    '    </p>\n' +
+    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
+    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video\', site : \'Google\' },\n' +
+    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn More\', site : \'Google\' }\n' +
+    '      ]">\n' +
+    '        <md-button\n' +
+    '            class="md-primary md-raised"\n' +
+    '            target="_blank"\n' +
+    '            aria-label="{{link.text}}"\n' +
+    '            ng-href="{{link.href}}">\n' +
+    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
+    '          {{link.site}} | <span class="training_link"> {{link.text}} </span>\n' +
+    '        </md-button>\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '\n' +
+    '    <br/>\n' +
     '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
     '      These docs were generated from\n' +
     '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank" class="md-accent" >\n' +
