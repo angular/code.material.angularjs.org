@@ -829,42 +829,6 @@ angular.module('datepickerBasicUsage',
   }
 });
 
-angular.module('dividerDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-    var imagePath = 'img/list/60.jpeg';
-    $scope.messages = [{
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }];
-  });
-
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog, $mdMedia) {
@@ -1017,6 +981,42 @@ angular.module('dialogDemo2', ['ngMaterial'])
     );
   };
 });
+
+angular.module('dividerDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+    var imagePath = 'img/list/60.jpeg';
+    $scope.messages = [{
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }];
+  });
 
 (function() {
   'use strict';
@@ -1857,13 +1857,20 @@ angular
         { category: 'veg', name: 'Green Olives' }
       ];
       $scope.selectedToppings = [];
-      $scope.printSelectedToppings = function printSelectedToppings(){
-        // If there is more than one topping, we add an 'and' and an oxford
-        // comma to be gramatically correct.
-        if (this.selectedToppings.length > 1) {
-          var lastTopping = ', and ' + this.selectedToppings.slice(-1)[0];
-          return this.selectedToppings.slice(0,-1).join(', ') + lastTopping;
+      $scope.printSelectedToppings = function printSelectedToppings() {
+        var numberOfToppings = this.selectedToppings.length;
+
+        // If there is more than one topping, we add an 'and'
+        // to be gramatically correct. If there are 3+ toppings
+        // we also add an oxford comma.
+        if (numberOfToppings > 1) {
+          var needsOxfordComma = numberOfToppings > 2;
+          var lastToppingConjunction = (needsOxfordComma ? ',' : '') + ' and ';
+          var lastTopping = lastToppingConjunction +
+              this.selectedToppings[this.selectedToppings.length - 1];
+          return this.selectedToppings.slice(0, -1).join(', ') + lastTopping;
         }
+
         return this.selectedToppings.join('');
       };
     });
