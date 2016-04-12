@@ -178,6 +178,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.colors",
+    "type": "module",
+    "outputPath": "partials/api/material.components.colors/index.html",
+    "url": "api/material.components.colors",
+    "label": "material.components.colors",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
+    "docs": [
+      {
+        "name": "mdColors",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.colors/directive/mdColors.html",
+        "url": "api/directive/mdColors",
+        "label": "mdColors",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.content",
     "type": "module",
     "outputPath": "partials/api/material.components.content/index.html",

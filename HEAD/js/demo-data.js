@@ -646,6 +646,106 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "demo/chips"
   },
   {
+    "name": "colors",
+    "moduleName": "material.components.colors",
+    "label": "Colors",
+    "demos": [
+      {
+        "ngModule": {
+          "name": "colorsDemo",
+          "module": "colorsDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "colorsdemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/colors/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [
+          {
+            "name": "regularCard.tmpl.html",
+            "label": "regularCard.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/colors/demoBasicUsage/regularCard.tmpl.html"
+          },
+          {
+            "name": "userCard.tmpl.html",
+            "label": "userCard.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/colors/demoBasicUsage/userCard.tmpl.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/colors/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.colors",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/colors/demoBasicUsage/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "colorsThemePickerDemo",
+          "module": "colorsThemePickerDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "colorsdemoThemePicker",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/colors/demoThemePicker/style.css"
+          }
+        ],
+        "html": [
+          {
+            "name": "themePreview.tmpl.html",
+            "label": "themePreview.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/colors/demoThemePicker/themePreview.tmpl.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/colors/demoThemePicker/script.js"
+          }
+        ],
+        "moduleName": "material.components.colors",
+        "name": "demoThemePicker",
+        "label": "Theme Picker",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/colors/demoThemePicker/index.html"
+        }
+      }
+    ],
+    "url": "demo/colors"
+  },
+  {
     "name": "content",
     "moduleName": "material.components.content",
     "label": "Content",
