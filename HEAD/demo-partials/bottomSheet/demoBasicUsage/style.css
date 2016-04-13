@@ -7,7 +7,8 @@
   vertical-align: middle; }
 
 .bottomSheetdemoBasicUsage .md-grid-item-content {
-  height: 96px; }
+  height: 90px;
+  padding-top: 10px; }
 
 .bottomSheetdemoBasicUsage .md-grid-item-content md-icon {
   height: 48px;
