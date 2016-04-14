@@ -18187,12 +18187,13 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
       if (parent[0] && 'MutationObserver' in $window) {
         // use an mutationObserver to tackle #2602
         var attributeObserver = new MutationObserver(function(mutations) {
-          mutations.forEach(function (mutation) {
-            if (mutation.attributeName === 'disabled' && parent[0].disabled) {
-              setVisible(false);
-              scope.$digest(); // make sure the elements gets updated
-            }
-          });
+          if (mutations.some(function (mutation) {
+              return (mutation.attributeName === 'disabled' && parent[0].disabled);
+            })) {
+              $mdUtil.nextTick(function() {
+                setVisible(false);
+              });
+          }
         });
 
         attributeObserver.observe(parent[0], { attributes: true});
