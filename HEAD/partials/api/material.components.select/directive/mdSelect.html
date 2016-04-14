@@ -49,6 +49,24 @@
   </md-input-container>
 </hljs>
 
+<p>With a select-header</p>
+<p>When a developer needs to put more than just a text label in the
+md-select-menu, they should use the md-select-header.
+The user can put custom HTML inside of the header and style it to their liking.
+One common use case of this would be a sticky search bar.</p>
+<p>When using the md-select-header the labels that would previously be added to the
+OptGroupDirective are ignored.</p>
+<hljs lang="html">
+  <md-input-container>
+    <md-select ng-model="someModel">
+      <md-select-header>
+        <span> Neighborhoods - </span>
+      </md-select-header>
+      <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
+    </md-select>
+  </md-input-container>
+</hljs>
+
 <h2 id="selects-and-object-equality">Selects and object equality</h2>
 <p>When using a <code>md-select</code> to pick from a list of objects, it is important to realize how javascript handles
 equality. Consider the following example:</p>

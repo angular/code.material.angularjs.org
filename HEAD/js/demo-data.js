@@ -2043,6 +2043,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "selectDemoSelectHeader",
+          "module": "selectDemoSelectHeader",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "selectdemoSelectHeader",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/select/demoSelectHeader/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/select/demoSelectHeader/script.js"
+          }
+        ],
+        "moduleName": "material.components.select",
+        "name": "demoSelectHeader",
+        "label": "Select Header",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/select/demoSelectHeader/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "selectDemoSelectedText",
           "module": "selectDemoSelectedText",
           "dependencies": [
