@@ -23013,7 +23013,7 @@ function MenuController($mdMenu, $attrs, $element, $scope, $mdUtil, $timeout, $r
       deregisterScopeListeners.shift()();
     }
     menuItems && menuItems.off('mouseenter', self.handleMenuItemHover);
-    menuItems && menuItems.off('mouseleave', self.handleMenuMouseLeave);
+    menuItems && menuItems.off('mouseleave', self.handleMenuItemMouseLeave);
   };
 
   this.handleMenuItemHover = function(event) {
