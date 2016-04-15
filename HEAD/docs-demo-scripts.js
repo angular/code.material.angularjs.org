@@ -2034,8 +2034,7 @@ angular
     $scope.toggleLeft = buildDelayedToggler('left');
     $scope.toggleRight = buildToggler('right');
     $scope.isOpenRight = function(){
-      var right = $mdSidenav('right');
-      return right && right.isOpen();
+      return $mdSidenav('right').isOpen();
     };
 
     /**
