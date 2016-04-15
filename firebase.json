@@ -105,6 +105,10 @@
     {
       "source": "/1.1.0-rc3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.1.0-rc3/index.html"
+    },
+    {
+      "source": "/1.1.0-rc4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.1.0-rc4/index.html"
     }
   ]
 }
