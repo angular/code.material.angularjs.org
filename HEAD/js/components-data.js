@@ -187,14 +187,23 @@ DocsApp
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
     "docs": [
       {
+        "name": "$mdColors",
+        "type": "service",
+        "outputPath": "partials/api/material.components.colors/service/$mdColors.html",
+        "url": "api/service/$mdColors",
+        "label": "$mdColors",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
+        "hasDemo": false
+      },
+      {
         "name": "mdColors",
         "type": "directive",
         "outputPath": "partials/api/material.components.colors/directive/mdColors.html",
         "url": "api/directive/mdColors",
         "label": "mdColors",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
-        "hasDemo": true
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js"
       }
     ],
     "hasDemo": false
