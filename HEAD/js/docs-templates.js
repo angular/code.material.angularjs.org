@@ -236,6 +236,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="50" flex-gt-md="25" ng-repeat="(index, link) in [\n' +
     '        { href: \'./getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
+    '        { href: \'./contributors\', icon: \'school\', text: \'Contributors\' },\n' +
     '        { href: \'./demo\', icon: \'play_circle_fill\', text: \'Demos\' },\n' +
     '        { href: \'./CSS/typography\', icon: \'build\', text: \'Customization\' },\n' +
     '        { href: \'./api\', icon: \'code\', text: \'API Reference\' }\n' +
@@ -281,6 +282,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
+    '\n' +
     '    <md-divider></md-divider>\n' +
     '\n' +
     '    <br/>\n' +
