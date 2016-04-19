@@ -63,23 +63,14 @@ DocsApp
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js",
     "docs": [
       {
-        "name": "a",
-        "type": "directive",
-        "outputPath": "partials/api/material.components.button/directive/a.html",
-        "url": "api/directive/a",
-        "label": "a",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js",
-        "hasDemo": true
-      },
-      {
         "name": "mdButton",
         "type": "directive",
         "outputPath": "partials/api/material.components.button/directive/mdButton.html",
         "url": "api/directive/mdButton",
         "label": "mdButton",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/button/button.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
