@@ -8323,7 +8323,8 @@ function iosScrollFix(node) {
    *     };
    *
    *     $mdDateLocaleProvider.formatDate = function(date) {
-   *       return moment(date).format('L');
+   *       var m = moment(date);
+   *       return m.isValid() ? m.format('L') : '';
    *     };
    *
    *     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
@@ -25547,7 +25548,7 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
       case $mdConstant.KEY_CODE.SPACE:
       case $mdConstant.KEY_CODE.ENTER:
         event.preventDefault();
-        if (!locked) ctrl.selectedIndex = ctrl.focusIndex;
+        if (!locked) select(ctrl.focusIndex);
         break;
     }
     ctrl.lastClick = false;

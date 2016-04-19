@@ -53,7 +53,8 @@ components that deal with dates.</p>
     };
 
     $mdDateLocaleProvider.formatDate = function(date) {
-      return moment(date).format(&#39;L&#39;);
+      var m = moment(date);
+      return m.isValid() ? m.format(&#39;L&#39;) : &#39;&#39;;
     };
 
     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
