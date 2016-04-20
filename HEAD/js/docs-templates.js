@@ -1051,7 +1051,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex</td>\n' +
-    '      <td> integer (increments of 5 for 0%->100%)</td>\n' +
+    '      <td> integer (increments of 5 for 0%->100%, 100%/3, 200%/3)</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex-order</td>\n' +
@@ -1059,7 +1059,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex-offset</td>\n' +
-    '      <td>integer (increments of 5 for 0%->100%, 100%/3, 200%/3)</td>\n' +
+    '      <td>integer (increments of 5 for 0%->95%, 100%/3, 200%/3)</td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>layout-align</td>\n' +
