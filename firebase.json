@@ -109,6 +109,10 @@
     {
       "source": "/1.1.0-rc4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.1.0-rc4/index.html"
+    },
+    {
+      "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.8/index.html"
     }
   ]
 }
