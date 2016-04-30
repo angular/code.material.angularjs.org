@@ -567,46 +567,6 @@ DocsApp
     "hasDemo": false
   },
   {
-    "name": "material.components.panel",
-    "type": "module",
-    "outputPath": "partials/api/material.components.panel/index.html",
-    "url": "api/material.components.panel",
-    "label": "material.components.panel",
-    "module": "material.components",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
-    "docs": [
-      {
-        "name": "$mdPanel",
-        "type": "service",
-        "outputPath": "partials/api/material.components.panel/service/$mdPanel.html",
-        "url": "api/service/$mdPanel",
-        "label": "$mdPanel",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
-        "hasDemo": false
-      },
-      {
-        "name": "MdPanelRef",
-        "type": "type",
-        "outputPath": "partials/api/material.components.panel/type/MdPanelRef.html",
-        "url": "api/type/MdPanelRef",
-        "label": "MdPanelRef",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js"
-      },
-      {
-        "name": "MdPanelPosition",
-        "type": "type",
-        "outputPath": "partials/api/material.components.panel/type/MdPanelPosition.html",
-        "url": "api/type/MdPanelPosition",
-        "label": "MdPanelPosition",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js"
-      }
-    ],
-    "hasDemo": false
-  },
-  {
     "name": "material.components.progressCircular",
     "type": "module",
     "outputPath": "partials/api/material.components.progressCircular/index.html",
