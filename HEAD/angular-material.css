@@ -3098,7 +3098,6 @@ md-menu-content._md-menu-bar-menu.md-dense {
 
 .md-panel {
   opacity: 0;
-  overflow: auto;
   position: fixed; }
   .md-panel._md-panel-shown {
     opacity: 1;

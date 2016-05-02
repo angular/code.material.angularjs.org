@@ -140,6 +140,9 @@ fields passed in through locals or resolve will be bound to the
 controller.</li>
 <li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on
 the scope.</li>
+<li><code>bindToController</code> - <code>{boolean=}</code>: Binds locals to the controller
+instead of passing them in. Defaults to true, as this is a best
+practice.</li>
 <li><code>locals</code> - <code>{Object=}</code>: An object containing key/value pairs. The keys
 will be used as names of values to inject into the controller. For
 example, <code>locals: {three: 3}</code> would inject <code>three</code> into the controller,
@@ -151,6 +154,8 @@ attach the panel to. Defaults to appending to the root element of the
 application.</li>
 <li><code>panelClass</code> - <code>{string=}</code>: A css class to apply to the panel element.
 This class should define any borders, box-shadow, etc. for the panel.</li>
+<li><code>zIndex</code> - <code>{number=}</code>: The z-index to place the panel at.
+Defaults to 80.</li>
 <li><code>position</code> - <code>{MdPanelPosition=}</code>: An MdPanelPosition object that
 specifies the alignment of the panel. For more information, see
 <code>MdPanelPosition</code>.</li>
