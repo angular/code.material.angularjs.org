@@ -13758,7 +13758,7 @@ angular
  * @ngdoc method
  * @name MdPanelRef#destroy
  * @description
- * Destorys the panel. The panel cannot be opened again after this is called.
+ * Destroys the panel. The panel cannot be opened again after this is called.
  */
 
 /**
