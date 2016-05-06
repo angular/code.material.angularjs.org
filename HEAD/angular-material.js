@@ -14102,16 +14102,16 @@ function MdPanelService($rootElement, $rootScope, $injector, $window) {
   this._config = {};
 
   /** @private @const */
-  this._$rootScope = $rootScope;
+  this._$rootElement = $rootElement;
 
   /** @private @const */
-  this._$rootElement = $rootElement;
+  this._$rootScope = $rootScope;
 
   /** @private @const */
   this._$injector = $injector;
 
-  /** @private @const {!angular.$window} */
-  this._$window = $injector.get('$window');
+  /** @private @const */
+  this._$window = $window;
 
 
   /**
@@ -14983,10 +14983,13 @@ MdPanelRef.prototype._done = function(callback, self) {
  *   position: panelPosition
  * });
  *
- * @param @const {!angular.$window}
+ * @param {!angular.$window} $window
  * @final @constructor
  */
 function MdPanelPosition($window) {
+  /** @private @const */
+  this._$window = $window;
+
   /** @private {boolean} */
   this._absolute = false;
 
@@ -15013,8 +15016,6 @@ function MdPanelPosition($window) {
 
   /** @private {!Array<{x:string, y:string}>} */
   this._positions = [];
-
-  this._$window = $window;
 
   /** @private {?{x:string, y:string}} */
   this._actualPosition;
