@@ -1775,6 +1775,43 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "demo/menuBar"
   },
   {
+    "name": "navBar",
+    "moduleName": "material.components.navBar",
+    "label": "Nav Bar",
+    "demos": [
+      {
+        "ngModule": {
+          "name": "navBarDemoBasicUsage",
+          "module": "navBarDemoBasicUsage",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "navBardemoBasicUsage",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/navBar/demoBasicUsage/script.js"
+          }
+        ],
+        "moduleName": "material.components.navBar",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/navBar/demoBasicUsage/index.html"
+        }
+      }
+    ],
+    "url": "demo/navBar"
+  },
+  {
     "name": "panel",
     "moduleName": "material.components.panel",
     "label": "Panel",

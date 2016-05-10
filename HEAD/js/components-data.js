@@ -567,6 +567,37 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.navBar",
+    "type": "module",
+    "outputPath": "partials/api/material.components.navBar/index.html",
+    "url": "api/material.components.navBar",
+    "label": "material.components.navBar",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/navBar/navBar.js",
+    "docs": [
+      {
+        "name": "mdNavBar",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.navBar/directive/mdNavBar.html",
+        "url": "api/directive/mdNavBar",
+        "label": "mdNavBar",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/navBar/navBar.js",
+        "hasDemo": true
+      },
+      {
+        "name": "mdNavItem",
+        "type": "directive",
+        "outputPath": "partials/api/material.components.navBar/directive/mdNavItem.html",
+        "url": "api/directive/mdNavItem",
+        "label": "mdNavItem",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/navBar/navBar.js"
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.panel",
     "type": "module",
     "outputPath": "partials/api/material.components.panel/index.html",
