@@ -13619,7 +13619,8 @@ angular
  *     panel is removed from the DOM.
  *   - `origin` - `{(string|!angular.JQLite|!Element)=}`: The element to
  *     focus on when the panel closes. This is commonly the element which triggered
- *     the opening of the panel.
+ *     the opening of the panel. If you do not use `origin`, you need to control
+ *     the focus manually.
  *
  * TODO(ErinCoughlan): Add the following config options.
  *   - `groupName` - `{string=}`: Name of panel groups. This group name is
