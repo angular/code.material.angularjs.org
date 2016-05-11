@@ -48,7 +48,7 @@ those values to element as CSS property values.</p>
   <ul class="methods">
     <li id="applyThemeColors">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdColors.applyThemeColors(element, scope, colorExpression);
+        <code class="method-function-syntax">$mdColors.applyThemeColors(element, colorExpression);
 </code>
       </h3>
       <div class="service-desc"><p>Convert the color expression into an object with scope-interpolated values
@@ -91,43 +91,22 @@ Then calculate the rgba() values based on the theme color parts</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* scope</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-scope">scope</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-scope">scope</code></td>
-        <td class="description">
-          <p>a scope is needed in case there are interpolated values in the expression.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
           <b>* colorExpression</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></span>
+<code class="api-type label type-hint type-hint-object">object</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
+<code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
           <p>json object, keys are css properties and values are string of the wanted color,
-for example: <code>{color: &#39;red-A200-0.3&#39;}</code>. Note that the color keys must be upperCamelCase instead of snake-case.
-e.g. <code>{background-color: &#39;grey-300&#39;}</code> --&gt; <code>{backgroundColor: &#39;grey-300&#39;}</code></p>
+for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
 
           
         </td>
       </tr>
     
   
-  
-    
   
     
   
