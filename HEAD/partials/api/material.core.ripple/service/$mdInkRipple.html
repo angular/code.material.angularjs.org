@@ -46,6 +46,15 @@ app.controller(&#39;myController&#39;, function ($scope, $element, $myElementInk
   }
 });
 </hljs>
+
+<h3 id="disabling-ripples-globally">Disabling ripples globally</h3>
+<p>If you want to disable ink ripples globally, for all components, you can call the
+<code>disableInkRipple</code> method in your app&#39;s config.</p>
+<p><hljs lang="js">
+app.config(function ($mdInkRippleProvider) {
+  $mdInkRippleProvider.disableInkRipple();
+});</p>
+
   </section>
 
 
@@ -149,6 +158,26 @@ app.controller(&#39;myController&#39;, function ($scope, $element, $myElementInk
 
   </tbody>
 </table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="disableInkRipple">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdInkRipple.disableInkRipple();
+</code>
+      </h3>
+      <div class="service-desc"><p>A config-time method that, when called, disables ripples globally.</p>
+</div>
+
+      <div class="method-param-table">
 
       
 
