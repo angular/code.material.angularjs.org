@@ -1827,10 +1827,10 @@ angular.module('docsApp').constant('DEMOS', [
         "id": "paneldemoBasicUsage",
         "css": [
           {
-            "name": "style.css",
-            "label": "style.css",
+            "name": "style.global.css",
+            "label": "style.global.css",
             "fileType": "css",
-            "outputPath": "demo-partials/panel/demoBasicUsage/style.css"
+            "outputPath": "demo-partials/panel/demoBasicUsage/style.global.css"
           }
         ],
         "html": [
@@ -1870,10 +1870,10 @@ angular.module('docsApp').constant('DEMOS', [
         "id": "paneldemoPanelAnimations",
         "css": [
           {
-            "name": "style.css",
-            "label": "style.css",
+            "name": "style.global.css",
+            "label": "style.global.css",
             "fileType": "css",
-            "outputPath": "demo-partials/panel/demoPanelAnimations/style.css"
+            "outputPath": "demo-partials/panel/demoPanelAnimations/style.global.css"
           }
         ],
         "html": [
