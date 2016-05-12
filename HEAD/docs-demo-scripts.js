@@ -407,7 +407,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     $mdBottomSheet.hide(clickedItem);
   };
 })
-.run(function($http, $templateCache) {
+.run(function($templateResult) {
 
     var urls = [
       'img/icons/share-arrow.svg',
@@ -423,7 +423,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     ];
 
     angular.forEach(urls, function(url) {
-      $http.get(url, {cache: $templateCache});
+      $templateResult(url);
     });
 
   });
@@ -1377,14 +1377,14 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
   .config(function($mdIconProvider) {
 
     // Register icon IDs with sources. Future $mdIcon( <id> ) lookups
-    // will load by url and retrieve the data via the $http and $templateCache
+    // will load by url and retrieve the data via the $templateRequest
 
     $mdIconProvider
       .iconSet('core', 'img/icons/sets/core-icons.svg',24)
       .icon('social:cake', 'img/icons/cake.svg',24);
 
   })
-  .run(function($http, $templateCache) {
+  .run(function($templateRequest) {
 
     var urls = [
       'img/icons/sets/core-icons.svg',
@@ -1393,10 +1393,10 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
     ];
 
     // Pre-fetch icons sources by URL and cache in the $templateCache...
-    // subsequent $http calls will look there first.
+    // subsequent $templateRequest calls will look there first.
 
     angular.forEach(urls, function(url) {
-      $http.get(url, {cache: $templateCache});
+      $templateRequest(url);
     });
 
   })

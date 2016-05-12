@@ -1347,13 +1347,13 @@ angular.module('docsApp').constant('DEMOS', [
             "ngMaterial"
           ]
         },
-        "id": "icondemoUsingTemplateCache",
+        "id": "icondemoUsingTemplateRequest",
         "css": [
           {
             "name": "style.css",
             "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/icon/demoUsingTemplateCache/style.css"
+            "outputPath": "demo-partials/icon/demoUsingTemplateRequest/style.css"
           }
         ],
         "html": [],
@@ -1362,17 +1362,17 @@ angular.module('docsApp').constant('DEMOS', [
             "name": "script.js",
             "label": "script.js",
             "fileType": "js",
-            "outputPath": "demo-partials/icon/demoUsingTemplateCache/script.js"
+            "outputPath": "demo-partials/icon/demoUsingTemplateRequest/script.js"
           }
         ],
         "moduleName": "material.components.icon",
-        "name": "demoUsingTemplateCache",
-        "label": "Using Template Cache",
+        "name": "demoUsingTemplateRequest",
+        "label": "Using Template Request",
         "index": {
           "name": "index.html",
           "label": "index.html",
           "fileType": "html",
-          "outputPath": "demo-partials/icon/demoUsingTemplateCache/index.html"
+          "outputPath": "demo-partials/icon/demoUsingTemplateRequest/index.html"
         }
       }
     ],

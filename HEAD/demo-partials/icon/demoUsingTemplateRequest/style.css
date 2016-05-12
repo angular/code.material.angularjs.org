@@ -1,19 +1,19 @@
-.icondemoUsingTemplateCache md-progress-circular {
+.icondemoUsingTemplateRequest md-progress-circular {
   margin-bottom: 20px; }
 
-.icondemoUsingTemplateCache md-icon {
+.icondemoUsingTemplateRequest md-icon {
   margin: 20px;
   margin-top: 0;
   width: 24px;
   height: 24px; }
 
-.icondemoUsingTemplateCache .demo-content {
+.icondemoUsingTemplateRequest .demo-content {
   min-height: 210px; }
 
-.icondemoUsingTemplateCache .appUsingTemplateCache {
+.icondemoUsingTemplateRequest .appUsingTemplateCache {
   padding: 25px; }
 
-.icondemoUsingTemplateCache .note {
+.icondemoUsingTemplateRequest .note {
   font-size: 12px;
   display: block;
   margin-top: -2px;

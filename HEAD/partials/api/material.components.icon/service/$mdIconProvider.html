@@ -20,8 +20,8 @@ icons and icon sets to be pre-registered and associated with source URLs <strong
 directives are compiled.</p>
 <p>If using font-icons, the developer is responsible for loading the fonts.</p>
 <p>If using SVGs, loading of the actual svg files are deferred to on-demand requests and are loaded
-internally by the <code>$mdIcon</code> service using the <code>$http</code> service. When an SVG is requested by name/ID,
-the <code>$mdIcon</code> service searches its registry for the associated source URL;
+internally by the <code>$mdIcon</code> service using the <code>$templateRequest</code> service. When an SVG is
+requested by name/ID, the <code>$mdIcon</code> service searches its registry for the associated source URL;
 that URL is used to on-demand load and parse the SVG dynamically.</p>
 <p><strong>Notice:</strong> Most font-icons libraries do not support ligatures (for example <code>fontawesome</code>).<br/>
  In such cases you are not able to use the icon&#39;s ligature name - Like so:</p>
@@ -69,15 +69,15 @@ that URL is used to on-demand load and parse the SVG dynamically.</p>
     $mdIconProvider.defaultIconSet(&#39;my/app/icons.svg&#39;)
 
   })
-  .run(function($http, $templateCache){
+  .run(function($templateRequest){
 
     // Pre-fetch icons sources by URL and cache in the $templateCache...
-    // subsequent $http calls will look there first.
+    // subsequent $templateRequest calls will look there first.
 
     var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
 
     angular.forEach(urls, function(url) {
-      $http.get(url, {cache: $templateCache});
+      $templateRequest(url);
     });
 
   });
@@ -149,8 +149,9 @@ These icons  will later be retrieved from the cache using <code>$mdIcon( &lt;ico
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
-data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
 
           
         </td>
@@ -268,8 +269,9 @@ has an icon id. Individual icons can be subsequently retrieved from this cached 
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
-data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
 
           
         </td>
@@ -370,8 +372,9 @@ Icon can be retrieved from this cached, default set using <code>$mdIcon(&lt;name
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>specifies the external location for the data file. Used internally by <code>$http</code> to load the
-data or as part of the lookup in <code>$templateCache</code> if pre-loading was configured.</p>
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
 
           
         </td>
