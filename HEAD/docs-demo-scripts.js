@@ -407,7 +407,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     $mdBottomSheet.hide(clickedItem);
   };
 })
-.run(function($templateResult) {
+.run(function($templateRequest) {
 
     var urls = [
       'img/icons/share-arrow.svg',
@@ -423,7 +423,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     ];
 
     angular.forEach(urls, function(url) {
-      $templateResult(url);
+      $templateRequest(url);
     });
 
   });
