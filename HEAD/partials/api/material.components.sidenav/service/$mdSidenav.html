@@ -16,7 +16,9 @@
 
 <div class="api-profile-description">
   <p><code>$mdSidenav</code> makes it easy to interact with multiple sidenavs
-in an app.</p>
+in an app. When looking up a sidenav instance, you can either look
+it up synchronously or wait for it to be initializied asynchronously.
+This is done by passing the second argument to <code>$mdSidenav</code>.</p>
 
 </div>
 
@@ -31,6 +33,10 @@ in an app.</p>
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
 // Async lookup for sidenav instance; will resolve when the instance is available
+$mdSidenav(componentId, true).then(function(instance) {
+  $log.debug( componentId + &quot;is now ready&quot; );
+});
+// Sync lookup for sidenav instance; this will resolve immediately.
 $mdSidenav(componentId).then(function(instance) {
   $log.debug( componentId + &quot;is now ready&quot; );
 });
