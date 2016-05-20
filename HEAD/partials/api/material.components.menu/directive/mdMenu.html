@@ -93,6 +93,19 @@ in both the <code>x</code> and <code>y</code> axis.</p>
 </md-menu>
 </hljs>
 
+<h3 id="auto-focus">Auto Focus</h3>
+<p>By default, when a menu opens, <code>md-menu</code> focuses the first button in the menu content.</p>
+<p>But sometimes you would like to focus another specific menu item instead of the first.<br/>
+This can be done by applying the <code>md-autofocus</code> directive on the given element.</p>
+<hljs lang="html">
+<md-menu-item>
+  <md-button md-autofocus ng-click="doSomething()">
+    Auto Focus
+  </md-button>
+</md-menu-item>
+</hljs>
+
+
 <h3 id="preventing-close">Preventing close</h3>
 <p>Sometimes you would like to be able to click on a menu item without having the menu
 close. To do this, ngMaterial exposes the <code>md-prevent-menu-close</code> attribute which

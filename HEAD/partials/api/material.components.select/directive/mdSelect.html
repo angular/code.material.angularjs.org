@@ -14,6 +14,9 @@
 
 <div class="api-profile-description">
   <p>Displays a select box, bound to an ng-model.</p>
+<p>When the select is required and uses a floating label, then the label will automatically contain
+an asterisk (<code>*</code>).<br/>
+This behavior can be disabled by using the <code>md-no-asterisk</code> attribute.</p>
 
 </div>
 
@@ -163,6 +166,8 @@ which results in Bob being selected as desired.</p>
   
     
   
+    
+  
   
     
   
@@ -252,6 +257,24 @@ to be displayed as a placeholder in the select input box when it is closed.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Placeholder hint text.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-asterisk
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When set to true, an asterisk will not be appended to the floating label.</p>
 
           
         </td>
