@@ -5313,6 +5313,10 @@ md-tooltip {
   md-whiteframe {
     border: 1px solid #fff; } }
 
+@media print {
+  md-whiteframe, [md-whiteframe] {
+    background-color: #ffffff; } }
+
 /*
 * Since Layout API uses ng-cloak to hide the dom elements while layouts are adjusted
 *
