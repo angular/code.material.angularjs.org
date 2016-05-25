@@ -1446,6 +1446,8 @@ md-calendar {
   padding: 0 0 0 24px; }
   [dir=rtl] .md-calendar-month-label {
     padding: 0 24px 0 0; }
+  md-calendar-month .md-calendar-month-label:not(.md-calendar-month-label-disabled) {
+    cursor: pointer; }
 
 .md-calendar-day-header {
   table-layout: fixed;
