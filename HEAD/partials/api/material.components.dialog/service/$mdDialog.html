@@ -139,6 +139,37 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 })(angular);
 </hljs>
 
+<h3 id="pre-rendered-dialogs">Pre-Rendered Dialogs</h3>
+<p>By using the <code>contentElement</code> option, it is possible to use an already existing element in the DOM.</p>
+<hljs lang="js">
+  $scope.showPrerenderedDialog = function() {
+    $mdDialog.show({
+      contentElement: &#39;#myStaticDialog&#39;
+      parent: angular.element(document.body)
+    });
+  };
+</hljs>
+
+<p>When using a string as value, <code>$mdDialog</code> will automatically query the DOM for the specified CSS selector.</p>
+<hljs lang="html">
+  <div style="visibility: hidden">
+    <div class="md-dialog-container" id="myStaticDialog">
+      <md-dialog>
+        This is a pre-rendered dialog.
+      </md-dialog>
+    </div>
+  </div>
+</hljs>
+
+<p><strong>Notice</strong>: It is important, to use the <code>.md-dialog-container</code> as the content element, otherwise the dialog
+will not show up.</p>
+<p>It also possible to use a DOM element for the <code>contentElement</code> option.</p>
+<ul>
+<li><code>contentElement: document.querySelector(&#39;#myStaticDialog&#39;)</code></li>
+<li><code>contentElement: angular.element(TEMPLATE)</code></li>
+</ul>
+<p>When using a <code>template</code> as content element, it will be not compiled upon open.
+This allows you to compile the element yourself and use it each time the dialog opens.</p>
 <h3 id="javascript-promise-api-syntax-custom-dialog-template">JavaScript: promise API syntax, custom dialog template</h3>
 <hljs lang="js">
 (function(angular, undefined){
@@ -464,6 +495,13 @@ of the dialog.</li>
 <li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This <strong>must</strong> be trusted HTML
  with respect to Angular&#39;s <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
  This template should <strong>never</strong> be constructed with any kind of user input or user data.</li>
+<li><code>contentElement</code> - <code>{string|Element}</code>: Instead of using a template, which will be compiled each time a
+dialog opens, you can also use a DOM element.<br/><ul>
+<li>When specifying an element, which is present on the DOM, <code>$mdDialog</code> will temporary fetch the element into
+the dialog and restores it at the old DOM position upon close.</li>
+<li>When specifying a string, the string be used as a CSS selector, to lookup for the element in the DOM.</li>
+</ul>
+</li>
 <li><code>autoWrap</code> - <code>{boolean=}</code>: Whether or not to automatically wrap the template with a
 <code>&lt;md-dialog&gt;</code> tag if one is not provided. Defaults to true. Can be disabled if you provide a
 custom dialog directive.</li>

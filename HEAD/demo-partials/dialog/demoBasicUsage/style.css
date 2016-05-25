@@ -15,3 +15,6 @@
 
 .dialogdemoBasicUsage div#status {
   color: #c60008; }
+
+.dialogdemoBasicUsage .dialog-demo-prerendered md-checkbox {
+  margin-bottom: 0; }

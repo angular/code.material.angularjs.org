@@ -1080,6 +1080,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.core.theming",
+    "type": "module",
+    "outputPath": "partials/api/material.core.theming/index.html",
+    "url": "api/material.core.theming",
+    "label": "material.core.theming",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/theming/theming.js",
+    "docs": [
+      {
+        "name": "$mdThemingProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.core.theming/service/$mdThemingProvider.html",
+        "url": "api/service/$mdThemingProvider",
+        "label": "$mdThemingProvider",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/theming/theming.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.util",
     "type": "module",
     "outputPath": "partials/api/material.core.util/index.html",
