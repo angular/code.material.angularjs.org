@@ -1,0 +1,238 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-datepicker&gt;</code> is a component used to select a single date.
+For information on how to configure internationalization for the date picker,
+see <code>$mdDateLocaleProvider</code>.</p>
+<p>This component supports <a href="https://docs.angularjs.org/api/ngMessages/directive/ngMessages">ngMessages</a>.
+Supported attributes are:</p>
+<ul>
+<li><code>required</code>: whether a required date is not set.</li>
+<li><code>mindate</code>: whether the selected date is before the minimum allowed date.</li>
+<li><code>maxdate</code>: whether the selected date is after the maximum allowed date.</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+  <md-datepicker ng-model="birthday"></md-datepicker>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* ng-model</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>The component&#39;s model. Expects a JavaScript Date object.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-change
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression evaluated when the model value changes.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-min-date
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>Expression representing a min date (inclusive).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-max-date
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>Expression representing a max date (inclusive).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-date-filter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(Date): boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(Date): boolean</code></td>
+        <td class="description">
+          <p>Function expecting a date and returning a boolean whether it can be selected or not.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">String</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">String</code></td>
+        <td class="description">
+          <p>The date input placeholder value.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-disabled
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the datepicker is disabled.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-required
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether a value is required for the datepicker.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

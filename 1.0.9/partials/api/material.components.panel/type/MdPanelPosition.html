@@ -1,0 +1,854 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Object for configuring the position of the panel. Examples:</p>
+<p>Centering the panel:
+<code>new MdPanelPosition().absolute().center();</code></p>
+<p>Overlapping the panel with an element:
+<code>new MdPanelPosition()
+    .relativeTo(someElement)
+    .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.ALIGN_TOPS);</code></p>
+<p>Aligning the panel with the bottom of an element:
+`new MdPanelPosition()
+    .relativeTo(someElement)
+    .addPanelPosition($mdPanel.xPosition.CENTER, $mdPanel.yPosition.BELOW);</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="absolute">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.absolute();
+</code>
+      </h3>
+      <div class="service-desc"><p>Positions the panel absolutely relative to the parent element. If the parent
+is document.body, this is equivalent to positioning the panel absolutely
+within the viewport.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="relativeTo">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.relativeTo(element);
+</code>
+      </h3>
+      <div class="service-desc"><p>Positions the panel relative to a specific element.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* element</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-angular">angular.JQLite</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-angular">angular.JQLite</code></td>
+        <td class="description">
+          <p>Query selector,
+    DOM element, or angular element to position the panel with respect to.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="top">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.top([opt_top]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of <code>top</code> for the panel. Clears any previously set
+vertical position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_top
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of <code>top</code>. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="bottom">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.bottom([opt_bottom]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of <code>bottom</code> for the panel. Clears any previously set
+vertical position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_bottom
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of <code>bottom</code>. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="left">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.left([opt_left]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of <code>left</code> for the panel. Clears any previously set
+horizontal position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_left
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of <code>left</code>. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="right">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.right([opt_right]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of <code>right</code> for the panel. Clears any previously set
+horizontal position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_right
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Value of <code>right</code>. Defaults to &#39;0&#39;.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="centerHorizontally">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.centerHorizontally();
+</code>
+      </h3>
+      <div class="service-desc"><p>Centers the panel horizontally in the viewport. Clears any previously set
+horizontal position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="centerVertically">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.centerVertically();
+</code>
+      </h3>
+      <div class="service-desc"><p>Centers the panel vertically in the viewport. Clears any previously set
+vertical position.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="center">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.center();
+</code>
+      </h3>
+      <div class="service-desc"><p>Centers the panel horizontally and vertically in the viewport. This is
+equivalent to calling both <code>centerHorizontally</code> and <code>centerVertically</code>.
+Clears any previously set horizontal and vertical positions.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="addPanelPosition">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.addPanelPosition(xPosition, yPosition);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the x and y position for the panel relative to another element. Can be
+called multiple times to specify an ordered list of panel positions. The
+first position which allows the panel to be completely on-screen will be
+chosen; the last position will be chose whether it is on-screen or not.</p>
+<p>xPosition must be one of the following values available on
+$mdPanel.xPosition:</p>
+<p>CENTER | ALIGN_START | ALIGN_END | OFFSET_START | OFFSET_END</p>
+<hr>
+<ul>
+<li>*</li>
+<li>PANEL   *</li>
+<li>*</li>
+</ul>
+<hr>
+<p>  A B    C    D E</p>
+<p>A: OFFSET_START (for LTR displays)
+B: ALIGN_START (for LTR displays)
+C: CENTER
+D: ALIGN_END (for LTR displays)
+E: OFFSET_END (for LTR displays)</p>
+<p>yPosition must be one of the following values available on
+$mdPanel.yPosition:</p>
+<p>CENTER | ALIGN_TOPS | ALIGN_BOTTOMS | ABOVE | BELOW</p>
+<p>  F
+  G <strong><strong><strong>*</strong></strong></strong></p>
+<pre><code>*           *
+</code></pre>
+<p>  H <em>   PANEL   </em></p>
+<pre><code>*           *
+</code></pre>
+<p>  I <strong><strong><strong>*</strong></strong></strong>
+  J</p>
+<p>F: BELOW
+G: ALIGN_TOPS
+H: CENTER
+I: ALIGN_BOTTOMS
+J: ABOVE</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* xPosition</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* yPosition</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="withOffsetX">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.withOffsetX(offsetX);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of the offset in the x-direction.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* offsetX</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="withOffsetY">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelPosition.withOffsetY(offsetY);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the value of the offset in the y-direction.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* offsetY</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

@@ -1,0 +1,107 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>md-ink-ripple</code> directive allows you to specify the ripple color or id a ripple is allowed.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="string-values">String values</h3>
+<hljs lang="html">
+  <ANY md-ink-ripple="#FF0000">
+    Ripples in red
+  </ANY>
+
+  <ANY md-ink-ripple="false">
+    Not rippling
+  </ANY>
+</hljs>
+
+<h3 id="interpolated-values">Interpolated values</h3>
+<hljs lang="html">
+  <ANY md-ink-ripple="{{ randomColor() }}">
+    Ripples with the return value of &#39;randomColor&#39; function
+  </ANY>
+
+  <ANY md-ink-ripple="{{ canRipple() }}">
+    Ripples if &#39;canRipple&#39; function return value is not &#39;false&#39; or &#39;0&#39;
+  </ANY>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-ink-ripple</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>A color string <code>#FF0000</code> or boolean (<code>false</code> or <code>0</code>) for preventing ripple</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

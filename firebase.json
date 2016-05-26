@@ -87,16 +87,24 @@
       "destination": "/1.0.6/index.html"
     },
     {
+      "source": "/1.0.7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.7/index.html"
+    },
+    {
+      "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.8/index.html"
+    },
+    {
+      "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+      "destination": "/1.0.8/index.html"
+    },
+    {
       "source": "/1.1.0-rc1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.1.0-rc1/index.html"
     },
     {
       "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.1.0-rc2/index.html"
-    },
-    {
-      "source": "/1.0.7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.7/index.html"
     },
     {
       "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
@@ -109,10 +117,6 @@
     {
       "source": "/1.1.0-rc4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
       "destination": "/1.1.0-rc4/index.html"
-    },
-    {
-      "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.8/index.html"
     }
   ]
 }

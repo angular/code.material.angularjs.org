@@ -1,0 +1,149 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The circular progress directive is used to make loading content in your app as delightful and
+painless as possible by minimizing the amount of visual change a user sees before they can view
+and interact with content.</p>
+<p>For operations where the percentage of the operation completed can be determined, use a
+determinate indicator. They give users a quick sense of how long an operation will take.</p>
+<p>For operations where the user is asked to wait a moment while something finishes up, and it’s
+not necessary to expose what&#39;s happening behind the scenes and how long it will take, use an
+indeterminate indicator.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-progress-circular md-mode="determinate" value="..."></md-progress-circular>
+
+<md-progress-circular md-mode="determinate" ng-value="..."></md-progress-circular>
+
+<md-progress-circular md-mode="determinate" value="..." md-diameter="100"></md-progress-circular>
+
+<md-progress-circular md-mode="indeterminate"></md-progress-circular>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-mode</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Select from one of two modes: <strong>&#39;determinate&#39;</strong> and <strong>&#39;indeterminate&#39;</strong>.</p>
+<p>Note: if the <code>md-mode</code> value is set as undefined or specified as not 1 of the two (2) valid modes, then <code>.ng-hide</code>
+will be auto-applied as a style to the component.</p>
+<p>Note: if not configured, the <code>md-mode=&quot;indeterminate&quot;</code> will be auto injected as an attribute.
+If <code>value=&quot;&quot;</code> is also specified, however, then <code>md-mode=&quot;determinate&quot;</code> would be auto-injected instead.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          value
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>In determinate mode, this number represents the percentage of the
+    circular progress. Default: 0</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-diameter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>This specifies the diameter of the circular progress. The value
+may be a percentage (eg &#39;25%&#39;) or a pixel-size value (eg &#39;48&#39;). If this attribute is
+not present then a default value of &#39;48px&#39; is assumed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
