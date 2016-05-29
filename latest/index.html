@@ -1,5 +1,5 @@
 <!doctype html>
-<html ng-app="docsApp" ng-controller="DocsCtrl" lang="en" ng-strict-di>
+<html ng-app="docsApp" ng-controller="DocsCtrl" lang="en" ng-strict-di >
 <head>
 <base href="/latest/">
 <title ng-bind="'Angular Material - ' + menu.currentSection.name +
@@ -65,7 +65,7 @@
             <span ng-if="menu.currentPage.name !== menu.currentSection.name">
               <span hide-sm hide-md>{{menu.currentSection.name}}</span>
               <span class="docs-menu-separator-icon" hide-sm hide-md style="transform: translate3d(0, 1px, 0)">
-                <span class="md-visually-hidden">-</span>
+                <span class="_md-visually-hidden">-</span>
                 <md-icon
                     aria-hidden="true"
                     md-svg-src="img/icons/ic_chevron_right_24px.svg"
@@ -156,12 +156,12 @@
     <md-content md-scroll-y layout="column" flex>
       <div ng-view layout-padding flex="noshrink"></div>
 
-      <div layout="row" flex="noshrink">
-        <div id="license-footer">
+      <div layout="row" flex="noshrink" layout-align="center center">
+        <div id="license-footer" flex>
           Powered by Google &copy;2014&#8211;{{thisYear}}.
-          Code licensed under the <a href="./license">MIT License</a>.
+          Code licensed under the <a href="./license"  class="md-accent">MIT License</a>.
           Documentation licensed under
-          <a href="http://creativecommons.org/licenses/by/4.0/" target="_blank">CC BY 4.0</a>.
+          <a href="http://creativecommons.org/licenses/by/4.0/"  target="_blank" class="md-default-theme md-accent">CC BY 4.0</a>.
         </div>
       </div>
     </md-content>

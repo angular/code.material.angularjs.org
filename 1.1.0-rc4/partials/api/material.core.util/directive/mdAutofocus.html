@@ -1,0 +1,112 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>[md-autofocus]</code> provides an optional way to identify the focused element when a <code>$mdDialog</code>,
+<code>$mdBottomSheet</code>, or <code>$mdSidenav</code> opens or upon page load for input-like elements.</p>
+<p>When one of these opens, it will find the first nested element with the <code>[md-autofocus]</code>
+attribute directive and optional expression. An expression may be specified as the directive
+value to enable conditional activation of the autofocus.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="dialog">Dialog</h3>
+<hljs lang="html">
+<md-dialog>
+  <form>
+    <md-input-container>
+      <label for="testInput">Label</label>
+      <input id="testInput" type="text" md-autofocus>
+    </md-input-container>
+  </form>
+</md-dialog>
+</hljs>
+
+<h3 id="bottomsheet">Bottomsheet</h3>
+<hljs lang="html">
+<md-bottom-sheet class="md-list md-has-header">
+ <md-subheader>Comment Actions</md-subheader>
+ <md-list>
+   <md-list-item ng-repeat="item in items">
+
+     <md-button md-autofocus="$index == 2">
+       <md-icon md-svg-src="{{item.icon}}"></md-icon>
+       <span class="md-inline-list-icon-label">{{ item.name }}</span>
+     </md-button>
+
+   </md-list-item>
+ </md-list>
+</md-bottom-sheet>
+</hljs>
+
+<h3 id="autocomplete">Autocomplete</h3>
+<hljs lang="html">
+  <md-autocomplete
+      md-autofocus
+      md-selected-item="selectedItem"
+      md-search-text="searchText"
+      md-items="item in getMatches(searchText)"
+      md-item-text="item.display">
+    <span md-highlight-text="searchText">{{item.display}}</span>
+  </md-autocomplete>
+</hljs>
+
+<h3 id="sidenav">Sidenav</h3>
+<hljs lang="html">
+<div layout="row" ng-controller="MyController">
+  <md-sidenav md-component-id="left" class="md-sidenav-left">
+    Left Nav!
+  </md-sidenav>
+
+  <md-content>
+    Center Content
+    <md-button ng-click="openLeftMenu()">
+      Open Left Menu
+    </md-button>
+  </md-content>
+
+  <md-sidenav md-component-id="right"
+    md-is-locked-open="$mdMedia('min-width: 333px')"
+    class="md-sidenav-right">
+    <form>
+      <md-input-container>
+        <label for="testInput">Test input</label>
+        <input id="testInput" type="text"
+               ng-model="data" md-autofocus>
+      </md-input-container>
+    </form>
+  </md-sidenav>
+</div>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
