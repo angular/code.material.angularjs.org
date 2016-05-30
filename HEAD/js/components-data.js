@@ -12,6 +12,12 @@ DocsApp
       {
         "name": "mdAutocomplete",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.autocomplete/directive/mdAutocomplete.html",
         "url": "api/directive/mdAutocomplete",
         "label": "mdAutocomplete",
@@ -22,6 +28,12 @@ DocsApp
       {
         "name": "mdHighlightText",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.autocomplete/directive/mdHighlightText.html",
         "url": "api/directive/mdHighlightText",
         "label": "mdHighlightText",
@@ -65,6 +77,12 @@ DocsApp
       {
         "name": "mdButton",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.button/directive/mdButton.html",
         "url": "api/directive/mdButton",
         "label": "mdButton",
@@ -87,6 +105,12 @@ DocsApp
       {
         "name": "mdCard",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.card/directive/mdCard.html",
         "url": "api/directive/mdCard",
         "label": "mdCard",
@@ -109,6 +133,12 @@ DocsApp
       {
         "name": "mdCheckbox",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.checkbox/directive/mdCheckbox.html",
         "url": "api/directive/mdCheckbox",
         "label": "mdCheckbox",
@@ -131,6 +161,12 @@ DocsApp
       {
         "name": "mdChip",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.chips/directive/mdChip.html",
         "url": "api/directive/mdChip",
         "label": "mdChip",
@@ -141,6 +177,12 @@ DocsApp
       {
         "name": "mdChipRemove",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.chips/directive/mdChipRemove.html",
         "url": "api/directive/mdChipRemove",
         "label": "mdChipRemove",
@@ -150,6 +192,12 @@ DocsApp
       {
         "name": "mdChips",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.chips/directive/mdChips.html",
         "url": "api/directive/mdChips",
         "label": "mdChips",
@@ -159,6 +207,12 @@ DocsApp
       {
         "name": "mdContactChips",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.chips/directive/mdContactChips.html",
         "url": "api/directive/mdContactChips",
         "label": "mdContactChips",
@@ -190,6 +244,12 @@ DocsApp
       {
         "name": "mdColors",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.colors/directive/mdColors.html",
         "url": "api/directive/mdColors",
         "label": "mdColors",
@@ -211,6 +271,12 @@ DocsApp
       {
         "name": "mdContent",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.content/directive/mdContent.html",
         "url": "api/directive/mdContent",
         "label": "mdContent",
@@ -243,6 +309,12 @@ DocsApp
       {
         "name": "mdDatepicker",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.datepicker/directive/mdDatepicker.html",
         "url": "api/directive/mdDatepicker",
         "label": "mdDatepicker",
@@ -264,6 +336,12 @@ DocsApp
       {
         "name": "mdDialog",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.dialog/directive/mdDialog.html",
         "url": "api/directive/mdDialog",
         "label": "mdDialog",
@@ -295,6 +373,12 @@ DocsApp
       {
         "name": "mdDivider",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.divider/directive/mdDivider.html",
         "url": "api/directive/mdDivider",
         "label": "mdDivider",
@@ -317,6 +401,12 @@ DocsApp
       {
         "name": "mdFabActions",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.fabActions/directive/mdFabActions.html",
         "url": "api/directive/mdFabActions",
         "label": "mdFabActions",
@@ -339,6 +429,12 @@ DocsApp
       {
         "name": "mdFabSpeedDial",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.fabSpeedDial/directive/mdFabSpeedDial.html",
         "url": "api/directive/mdFabSpeedDial",
         "label": "mdFabSpeedDial",
@@ -349,6 +445,12 @@ DocsApp
       {
         "name": "mdFabTrigger",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.fabSpeedDial/directive/mdFabTrigger.html",
         "url": "api/directive/mdFabTrigger",
         "label": "mdFabTrigger",
@@ -370,6 +472,12 @@ DocsApp
       {
         "name": "mdFabToolbar",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.fabToolbar/directive/mdFabToolbar.html",
         "url": "api/directive/mdFabToolbar",
         "label": "mdFabToolbar",
@@ -392,6 +500,12 @@ DocsApp
       {
         "name": "mdGridList",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.gridList/directive/mdGridList.html",
         "url": "api/directive/mdGridList",
         "label": "mdGridList",
@@ -402,6 +516,12 @@ DocsApp
       {
         "name": "mdGridTile",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.gridList/directive/mdGridTile.html",
         "url": "api/directive/mdGridTile",
         "label": "mdGridTile",
@@ -423,6 +543,12 @@ DocsApp
       {
         "name": "mdIcon",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.icon/directive/mdIcon.html",
         "url": "api/directive/mdIcon",
         "label": "mdIcon",
@@ -463,6 +589,12 @@ DocsApp
       {
         "name": "mdInputContainer",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.input/directive/mdInputContainer.html",
         "url": "api/directive/mdInputContainer",
         "label": "mdInputContainer",
@@ -473,6 +605,12 @@ DocsApp
       {
         "name": "mdInput",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.input/directive/mdInput.html",
         "url": "api/directive/mdInput",
         "label": "mdInput",
@@ -482,6 +620,12 @@ DocsApp
       {
         "name": "mdSelectOnFocus",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.input/directive/mdSelectOnFocus.html",
         "url": "api/directive/mdSelectOnFocus",
         "label": "mdSelectOnFocus",
@@ -503,6 +647,12 @@ DocsApp
       {
         "name": "mdList",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.list/directive/mdList.html",
         "url": "api/directive/mdList",
         "label": "mdList",
@@ -513,6 +663,12 @@ DocsApp
       {
         "name": "mdListItem",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.list/directive/mdListItem.html",
         "url": "api/directive/mdListItem",
         "label": "mdListItem",
@@ -534,6 +690,12 @@ DocsApp
       {
         "name": "mdMenu",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.menu/directive/mdMenu.html",
         "url": "api/directive/mdMenu",
         "label": "mdMenu",
@@ -556,6 +718,12 @@ DocsApp
       {
         "name": "mdMenuBar",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.menu-bar/directive/mdMenuBar.html",
         "url": "api/directive/mdMenuBar",
         "label": "mdMenuBar",
@@ -578,6 +746,12 @@ DocsApp
       {
         "name": "mdNavBar",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.navBar/directive/mdNavBar.html",
         "url": "api/directive/mdNavBar",
         "label": "mdNavBar",
@@ -588,6 +762,12 @@ DocsApp
       {
         "name": "mdNavItem",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.navBar/directive/mdNavItem.html",
         "url": "api/directive/mdNavItem",
         "label": "mdNavItem",
@@ -649,6 +829,12 @@ DocsApp
       {
         "name": "mdProgressCircular",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.progressCircular/directive/mdProgressCircular.html",
         "url": "api/directive/mdProgressCircular",
         "label": "mdProgressCircular",
@@ -680,6 +866,12 @@ DocsApp
       {
         "name": "mdProgressLinear",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.progressLinear/directive/mdProgressLinear.html",
         "url": "api/directive/mdProgressLinear",
         "label": "mdProgressLinear",
@@ -702,6 +894,12 @@ DocsApp
       {
         "name": "mdRadioGroup",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.radioButton/directive/mdRadioGroup.html",
         "url": "api/directive/mdRadioGroup",
         "label": "mdRadioGroup",
@@ -712,6 +910,12 @@ DocsApp
       {
         "name": "mdRadioButton",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.radioButton/directive/mdRadioButton.html",
         "url": "api/directive/mdRadioButton",
         "label": "mdRadioButton",
@@ -733,6 +937,12 @@ DocsApp
       {
         "name": "mdSelect",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.select/directive/mdSelect.html",
         "url": "api/directive/mdSelect",
         "label": "mdSelect",
@@ -765,6 +975,12 @@ DocsApp
       {
         "name": "mdSidenavFocus",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.sidenav/directive/mdSidenavFocus.html",
         "url": "api/directive/mdSidenavFocus",
         "label": "mdSidenavFocus",
@@ -774,6 +990,12 @@ DocsApp
       {
         "name": "mdSidenav",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.sidenav/directive/mdSidenav.html",
         "url": "api/directive/mdSidenav",
         "label": "mdSidenav",
@@ -795,6 +1017,12 @@ DocsApp
       {
         "name": "mdSliderContainer",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.slider/directive/mdSliderContainer.html",
         "url": "api/directive/mdSliderContainer",
         "label": "mdSliderContainer",
@@ -805,6 +1033,12 @@ DocsApp
       {
         "name": "mdSlider",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.slider/directive/mdSlider.html",
         "url": "api/directive/mdSlider",
         "label": "mdSlider",
@@ -848,6 +1082,12 @@ DocsApp
       {
         "name": "mdSubheader",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.subheader/directive/mdSubheader.html",
         "url": "api/directive/mdSubheader",
         "label": "mdSubheader",
@@ -870,6 +1110,12 @@ DocsApp
       {
         "name": "mdSwipeLeft",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeLeft.html",
         "url": "api/directive/mdSwipeLeft",
         "label": "mdSwipeLeft",
@@ -880,6 +1126,12 @@ DocsApp
       {
         "name": "mdSwipeRight",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeRight.html",
         "url": "api/directive/mdSwipeRight",
         "label": "mdSwipeRight",
@@ -889,6 +1141,12 @@ DocsApp
       {
         "name": "mdSwipeUp",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeUp.html",
         "url": "api/directive/mdSwipeUp",
         "label": "mdSwipeUp",
@@ -898,6 +1156,12 @@ DocsApp
       {
         "name": "mdSwipeDown",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.swipe/directive/mdSwipeDown.html",
         "url": "api/directive/mdSwipeDown",
         "label": "mdSwipeDown",
@@ -919,6 +1183,12 @@ DocsApp
       {
         "name": "mdSwitch",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.switch/directive/mdSwitch.html",
         "url": "api/directive/mdSwitch",
         "label": "mdSwitch",
@@ -941,6 +1211,12 @@ DocsApp
       {
         "name": "mdTab",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.tabs/directive/mdTab.html",
         "url": "api/directive/mdTab",
         "label": "mdTab",
@@ -951,6 +1227,12 @@ DocsApp
       {
         "name": "mdTabs",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.tabs/directive/mdTabs.html",
         "url": "api/directive/mdTabs",
         "label": "mdTabs",
@@ -994,6 +1276,12 @@ DocsApp
       {
         "name": "mdToolbar",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.toolbar/directive/mdToolbar.html",
         "url": "api/directive/mdToolbar",
         "label": "mdToolbar",
@@ -1016,6 +1304,12 @@ DocsApp
       {
         "name": "mdTooltip",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.tooltip/directive/mdTooltip.html",
         "url": "api/directive/mdTooltip",
         "label": "mdTooltip",
@@ -1038,6 +1332,12 @@ DocsApp
       {
         "name": "mdVirtualRepeatContainer",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": false,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.virtualRepeat/directive/mdVirtualRepeatContainer.html",
         "url": "api/directive/mdVirtualRepeatContainer",
         "label": "mdVirtualRepeatContainer",
@@ -1048,6 +1348,12 @@ DocsApp
       {
         "name": "mdVirtualRepeat",
         "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.virtualRepeat/directive/mdVirtualRepeat.html",
         "url": "api/directive/mdVirtualRepeat",
         "label": "mdVirtualRepeat",
@@ -1069,6 +1375,12 @@ DocsApp
       {
         "name": "mdWhiteframe",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.components.whiteframe/directive/mdWhiteframe.html",
         "url": "api/directive/mdWhiteframe",
         "label": "mdWhiteframe",
@@ -1091,6 +1403,12 @@ DocsApp
       {
         "name": "mdInkRipple",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.core.ripple/directive/mdInkRipple.html",
         "url": "api/directive/mdInkRipple",
         "label": "mdInkRipple",
@@ -1144,6 +1462,12 @@ DocsApp
       {
         "name": "mdAutofocus",
         "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
         "outputPath": "partials/api/material.core.util/directive/mdAutofocus.html",
         "url": "api/directive/mdAutofocus",
         "label": "mdAutofocus",
