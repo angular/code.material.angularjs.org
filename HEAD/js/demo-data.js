@@ -3110,6 +3110,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/whiteframe/demoDirectiveAttributeUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "whiteframeDirectiveUsage",
+          "module": "whiteframeDirectiveUsage",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "whiteframedemoDirectiveInterpolation",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/whiteframe/demoDirectiveInterpolation/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/whiteframe/demoDirectiveInterpolation/script.js"
+          }
+        ],
+        "moduleName": "material.components.whiteframe",
+        "name": "demoDirectiveInterpolation",
+        "label": "Directive Interpolation",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/whiteframe/demoDirectiveInterpolation/index.html"
+        }
       }
     ],
     "url": "demo/whiteframe"

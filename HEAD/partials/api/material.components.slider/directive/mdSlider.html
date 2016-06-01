@@ -47,6 +47,11 @@ values the user is allowed to pick.</p>
 <md-slider md-discrete ng-model="myDiscreteValue" step="10" min="10" max="130">
 </md-slider>
 </hljs>
+<h4>Invert Mode</h4>
+<hljs lang="html">
+<md-slider md-invert ng-model="myValue" step="10" min="10" max="130">
+</md-slider>
+</hljs>
   
   </section>
   
@@ -79,6 +84,8 @@ values the user is allowed to pick.</p>
   
     
   
+    
+  
   
     
       <tr class="api-params-item">
@@ -92,6 +99,24 @@ values the user is allowed to pick.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether to enable discrete mode.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-invert
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether to enable invert mode.</p>
 
           
         </td>
