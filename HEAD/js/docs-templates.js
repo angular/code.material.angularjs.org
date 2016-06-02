@@ -1922,7 +1922,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <span flex></span>\n' +
     '    <span aria-hidden="true" class="md-toggle-icon"\n' +
     '    ng-class="{\'toggled\' : isOpen()}">\n' +
-    '      <md-icon md-svg-src="md-toggle-arrow"></md-icon>\n' +
+    '      <md-icon md-svg-icon="md-toggle-arrow"></md-icon>\n' +
     '    </span>\n' +
     '  </div>\n' +
     '  <span class="md-visually-hidden">\n' +
