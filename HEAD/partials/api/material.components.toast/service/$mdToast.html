@@ -348,8 +348,10 @@ This scope will be destroyed when the toast is removed unless <code>preserveScop
 <li><code>hideDelay</code> - <code>{number=}</code>: How many milliseconds the toast should stay
 active before automatically closing.  Set to 0 or false to have the toast stay open until
 closed manually. Default: 3000.</li>
-<li><code>position</code> - <code>{string=}</code>: Where to place the toast. Available: any combination
-of &#39;bottom&#39;, &#39;left&#39;, &#39;top&#39;, &#39;right&#39;. Default: &#39;bottom left&#39;.</li>
+<li><code>position</code> - <code>{string=}</code>: Sets the position of the toast. <br/>
+Available: any combination of <code>&#39;bottom&#39;</code>, <code>&#39;left&#39;</code>, <code>&#39;top&#39;</code>, <code>&#39;right&#39;</code>, <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code>.
+The properties <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code> are dynamic and can be used for RTL support.<br/>
+Default combination: <code>&#39;bottom left&#39;</code>.</li>
 <li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
 The controller will be injected the local <code>$mdToast.hide( )</code>, which is a function
 used to hide the toast.</li>
