@@ -1240,7 +1240,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <div flex="33" flex-md="{{ vm.box1Width }}" class="one"></div>\n' +
     '      <div flex="33" layout="{{ vm.direction }}" layout-md="row" class="two">\n' +
     '\n' +
-    '        <div flex="22" flex-md="10" hide-lg class="two_one"></div>\n' +
+    '        <div flex="20" flex-md="10" hide-lg class="two_one"></div>\n' +
     '        <div flex="30px" show hide-md="{{ vm.hideBox }}" flex-md="25" class="two_two"></div>\n' +
     '        <div flex="20" flex-md="65" class="two_three"></div>\n' +
     '\n' +
