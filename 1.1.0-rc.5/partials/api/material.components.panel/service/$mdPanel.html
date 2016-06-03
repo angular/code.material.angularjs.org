@@ -1,0 +1,486 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdPanel</code> is a robust, low-level service for creating floating panels on
+the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+(function(angular, undefined) {
+  ‘use strict’;
+
+  angular
+      .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
+      .controller(&#39;DemoDialogController&#39;, DialogController);
+
+  var panelRef;
+
+  function showPanel($event) {
+    var panelPosition = $mdPanelPosition
+        .absolute()
+        .top(&#39;50%&#39;)
+        .left(&#39;50%&#39;);
+
+    var panelAnimation = $mdPanelAnimation
+        .targetEvent($event)
+        .defaultAnimation(&#39;md-panel-animate-fly&#39;)
+        .closeTo(&#39;.show-button&#39;);
+
+    var config = {
+      attachTo: angular.element(document.body),
+      controller: DialogController,
+      controllerAs: &#39;ctrl&#39;,
+      position: panelPosition,
+      animation: panelAnimation,
+      targetEvent: $event,
+      template: &#39;dialog-template.html&#39;,
+      clickOutsideToClose: true,
+      escapeToClose: true,
+      focusOnOpen: true
+    }
+    panelRef = $mdPanel.create(config);
+    panelRef.open()
+        .finally(function() {
+          panelRef = undefined;
+        });
+  }
+
+  function DialogController(MdPanelRef, toppings) {
+    var toppings;
+
+    function closeDialog() {
+      MdPanelRef.close();
+    }
+  }
+})(angular);
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="create">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.create([opt_config]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Creates a panel with the specified options.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_config
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Specific configuration object that may contain
+the following properties:</p>
+<ul>
+<li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This
+<strong>must</strong> be trusted HTML with respect to Angular’s
+<a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.</li>
+<li><code>templateUrl</code> - <code>{string=}</code>: The URL that will be used as the content of
+the panel.</li>
+<li><code>controller</code> - <code>{(function|string)=}</code>: The controller to associate with
+the panel. The controller can inject a reference to the returned
+panelRef, which allows the panel to be closed, hidden, and shown. Any
+fields passed in through locals or resolve will be bound to the
+controller.</li>
+<li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on
+the scope.</li>
+<li><code>bindToController</code> - <code>{boolean=}</code>: Binds locals to the controller
+instead of passing them in. Defaults to true, as this is a best
+practice.</li>
+<li><code>locals</code> - <code>{Object=}</code>: An object containing key/value pairs. The keys
+will be used as names of values to inject into the controller. For
+example, <code>locals: {three: 3}</code> would inject <code>three</code> into the controller,
+with the value 3.</li>
+<li><code>resolve</code> - <code>{Object=}</code>: Similar to locals, except it takes promises as
+values. The panel will not open until all of the promises resolve.</li>
+<li><code>attachTo</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to
+attach the panel to. Defaults to appending to the root element of the
+application.</li>
+<li><code>panelClass</code> - <code>{string=}</code>: A css class to apply to the panel element.
+This class should define any borders, box-shadow, etc. for the panel.</li>
+<li><code>zIndex</code> - <code>{number=}</code>: The z-index to place the panel at.
+Defaults to 80.</li>
+<li><code>position</code> - <code>{MdPanelPosition=}</code>: An MdPanelPosition object that
+specifies the alignment of the panel. For more information, see
+<code>MdPanelPosition</code>.</li>
+<li><code>clickOutsideToClose</code> - <code>{boolean=}</code>: Whether the user can click
+outside the panel to close it. Defaults to false.</li>
+<li><code>escapeToClose</code> - <code>{boolean=}</code>: Whether the user can press escape to
+close the panel. Defaults to false.</li>
+<li><code>trapFocus</code> - <code>{boolean=}</code>: Whether focus should be trapped within the
+panel. If <code>trapFocus</code> is true, the user will not be able to interact
+with the rest of the page until the panel is dismissed. Defaults to
+false.</li>
+<li><code>focusOnOpen</code> - <code>{boolean=}</code>: An option to override focus behavior on
+open. Only disable if focusing some other way, as focus management is
+required for panels to be accessible. Defaults to true.</li>
+<li><code>fullscreen</code> - <code>{boolean=}</code>: Whether the panel should be full screen.
+Applies the class <code>._md-panel-fullscreen</code> to the panel on open. Defaults
+to false.</li>
+<li><code>animation</code> - <code>{MdPanelAnimation=}</code>: An MdPanelAnimation object that
+specifies the animation of the panel. For more information, see
+<code>MdPanelAnimation</code>.</li>
+<li><code>hasBackdrop</code> - <code>{boolean=}</code>: Whether there should be an opaque backdrop
+behind the panel. Defaults to false.</li>
+<li><code>disableParentScroll</code> - <code>{boolean=}</code>: Whether the user can scroll the
+page behind the panel. Defaults to false.</li>
+<li><code>onDomAdded</code> - <code>{function=}</code>: Callback function used to announce when
+the panel is added to the DOM.</li>
+<li><code>onOpenComplete</code> - <code>{function=}</code>: Callback function used to announce
+when the open() action is finished.</li>
+<li><code>onRemoving</code> - <code>{function=}</code>: Callback function used to announce the
+close/hide() action is starting.</li>
+<li><code>onDomRemoved</code> - <code>{function=}</code>: Callback function used to announce when the
+panel is removed from the DOM.</li>
+<li><code>origin</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to
+focus on when the panel closes. This is commonly the element which triggered
+the opening of the panel. If you do not use <code>origin</code>, you need to control
+the focus manually.</li>
+</ul>
+<p>TODO(ErinCoughlan): Add the following config options.</p>
+<ul>
+<li><code>groupName</code> - <code>{string=}</code>: Name of panel groups. This group name is
+used for configuring the number of open panels and identifying specific
+behaviors for groups. For instance, all tooltips will be identified
+using the same groupName.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelref">MdPanelRef</code></td>
+    <td class="description"><p>panelRef</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="open">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.open([opt_config]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Calls the create method above, then opens the panel. This is a shortcut for
+creating and then calling open manually. If custom methods need to be
+called when the panel is added to the DOM or opened, do not use this method.
+Instead create the panel, chain promises on the domAdded and openComplete
+methods, and call open from the returned panelRef.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          opt_config
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Specific configuration object that may contain
+the properties defined in <code>$mdPanel.create</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise&lt;MdPanelRef&gt;</code></td>
+    <td class="description"><p>panelRef A promise that resolves
+to an instance of the panel.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setGroupMaxOpen">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.setGroupMaxOpen(groupName, maxOpen);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the maximum number of panels in a group that can be opened at a given
+time.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* groupName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The name of the group to configure.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* maxOpen</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The max number of panels that can be opened.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="newPanelPosition">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.newPanelPosition();
+</code>
+      </h3>
+      <div class="service-desc"><p>Returns a new instance of the MdPanelPosition object. Use this to create
+the position config object.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelposition">MdPanelPosition</code></td>
+    <td class="description"><p>panelPosition</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="newPanelAnimation">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.newPanelAnimation();
+</code>
+      </h3>
+      <div class="service-desc"><p>Returns a new instance of the MdPanelAnimation object. Use this to create
+the animation config object.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelanimation">MdPanelAnimation</code></td>
+    <td class="description"><p>panelAnimation</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

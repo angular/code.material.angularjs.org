@@ -1,0 +1,152 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>md-virtual-repeat</code> specifies an element to repeat using virtual scrolling.</p>
+<p>Virtual repeat is a limited substitute for ng-repeat that renders only
+enough dom nodes to fill the container and recycling them as the user scrolls.
+Arrays, but not objects are supported for iteration.
+Track by, as alias, and (key, value) syntax are not supported.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-virtual-repeat-container>
+  <div md-virtual-repeat="i in items">Hello {{i}}!</div>
+</md-virtual-repeat-container>
+
+<md-virtual-repeat-container md-orient-horizontal>
+  <div md-virtual-repeat="i in items" md-item-size="20">Hello {{i}}!</div>
+</md-virtual-repeat-container>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-item-size
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The height or width of the repeated elements (which must be
+  identical for each element). Optional. Will attempt to read the size from the dom if missing,
+  but still assumes that all repeated nodes have same height or width.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-extra-name
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Evaluates to an additional name to which the current iterated item
+  can be assigned on the repeated scope (needed for use in <code>md-autocomplete</code>).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-demand
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When present, treats the md-virtual-repeat argument as an object
+  that can fetch rows rather than an array.</p>
+<p>  <strong>NOTE:</strong> This object must implement the following interface with two (2) methods:</p>
+<ul>
+<li><code>getItemAtIndex: function(index) [object]</code> The item at that index or null if it is not yet
+loaded (it should start downloading the item in that case).</li>
+<li><code>getLength: function() [number]</code> The data length to which the repeater container
+should be sized. Ideally, when the count is known, this method should return it.
+Otherwise, return a higher number than the currently loaded items to produce an
+infinite-scroll behavior.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

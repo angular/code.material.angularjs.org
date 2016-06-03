@@ -1,0 +1,497 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>A reference to a created panel. This reference contains a unique id for the
+panel, along with the following properties:</p>
+<ul>
+<li><code>id</code> - `{string}: The unique id for the panel. This id is used to track
+when a panel was interacted with.</li>
+<li><code>config</code> - <code>{Object=}</code>: The entire config object that was used in
+create.</li>
+<li><code>isAttached</code> - <code>{boolean}</code>: Whether the panel is attached to the DOM.
+Visibility to the user does not factor into isAttached.</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="open">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.open();
+</code>
+      </h3>
+      <div class="service-desc"><p>Attaches and shows the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel is
+opened.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="close">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.close();
+</code>
+      </h3>
+      <div class="service-desc"><p>Hides and detaches the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel is
+closed.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="attach">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.attach();
+</code>
+      </h3>
+      <div class="service-desc"><p>Create the panel elements and attach them to the DOM. The panel will be
+hidden by default.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel is
+attached.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="detach">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.detach();
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes the panel from the DOM. This will NOT hide the panel before removing it.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel is
+detached.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="show">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.show();
+</code>
+      </h3>
+      <div class="service-desc"><p>Shows the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel has
+shown and animations are completed.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="hide">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.hide();
+</code>
+      </h3>
+      <div class="service-desc"><p>Hides the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that is resolved when the panel has
+hidden and animations are completed.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="destroy">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.destroy();
+</code>
+      </h3>
+      <div class="service-desc"><p>Destroys the panel. The panel cannot be opened again after this is called.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="addClass">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.addClass(newClass);
+</code>
+      </h3>
+      <div class="service-desc"><p>Adds a class to the panel. DO NOT use this to hide/show the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* newClass</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Class to be added.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="removeClass">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.removeClass(oldClass);
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes a class from the panel. DO NOT use this to hide/show the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* oldClass</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Class to be removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="toggleClass">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.toggleClass(toggleClass);
+</code>
+      </h3>
+      <div class="service-desc"><p>Toggles a class on the panel. DO NOT use this to hide/show the panel.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* toggleClass</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Class to be toggled.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="focusOnOpen">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.focusOnOpen();
+</code>
+      </h3>
+      <div class="service-desc"><p>Focuses the panel content if the focusOnOpen config value is true.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

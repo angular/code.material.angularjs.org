@@ -1,0 +1,287 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Animation configuration object. To use, create an MdPanelAnimation with the
+desired properties, then pass the object as part of $mdPanel creation.</p>
+<p>Example:</p>
+<p>var panelAnimation = new MdPanelAnimation()
+    .openFrom(myButtonEl)
+    .closeTo(&#39;.my-button&#39;)
+    .withAnimation($mdPanel.animation.SCALE);</p>
+<p>$mdPanel.create({
+  animation: panelAnimation
+});</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="openFrom">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelAnimation.openFrom();
+</code>
+      </h3>
+      <div class="service-desc"><p>Specifies where to start the open animation. <code>openFrom</code> accepts a
+click event object, query selector, DOM element, or a Rect object that
+is used to determine the bounds. When passed a click event, the location
+of the click will be used as the position to start the animation.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* </b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-event">Event</code><code class="api-type label type-hint type-hint-object">{top: number, left: number}</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-event">Event</code><code class="api-type label type-hint type-hint-object">{top: number, left: number}</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelanimation">MdPanelAnimation</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="closeTo">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelAnimation.closeTo();
+</code>
+      </h3>
+      <div class="service-desc"><p>Specifies where to animate the dialog close. <code>closeTo</code> accepts a
+query selector, DOM element, or a Rect object that is used to determine
+the bounds.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* </b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-object">{top: number, left: number}</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-object">{top: number, left: number}</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelanimation">MdPanelAnimation</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="withAnimation">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelAnimation.withAnimation(cssClass);
+</code>
+      </h3>
+      <div class="service-desc"><p>Specifies the animation class.</p>
+<p>There are several default animations that can be used:
+($mdPanel.animation)
+  SLIDE: The panel slides in and out from the specified
+      elements. It will not fade in or out.
+  SCALE: The panel scales in and out. Slide and fade are
+      included in this animation.
+  FADE: The panel fades in and out.</p>
+<p>Custom classes will by default fade in and out unless
+&quot;transition: opacity 1ms&quot; is added to the to custom class.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* cssClass</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">{open: string, close: string}</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">{open: string, close: string}</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelanimation">MdPanelAnimation</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
