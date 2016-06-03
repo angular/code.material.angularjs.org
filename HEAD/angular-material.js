@@ -300,9 +300,30 @@ angular.module('material.core')
  */
 function MdConstantFactory($sniffer) {
 
-  var webkit = /webkit/i.test($sniffer.vendorPrefix);
+  var vendorPrefix = $sniffer.vendorPrefix;
+  var isWebkit = /webkit/i.test(vendorPrefix);
+  var SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g;
+  var prefixTestEl = document.createElement('div');
+
   function vendorProperty(name) {
-    return webkit ?  ('webkit' + name.charAt(0).toUpperCase() + name.substring(1)) : name;
+    // Add a dash between the prefix and name, to be able to transform the string into camelcase.
+    var prefixedName = vendorPrefix + '-' + name;
+    var ucPrefix = camelCase(prefixedName);
+    var lcPrefix = ucPrefix.charAt(0).toLowerCase() + ucPrefix.substring(1);
+
+    return hasStyleProperty(name)     ? name     :       // The current browser supports the un-prefixed property
+           hasStyleProperty(ucPrefix) ? ucPrefix :       // The current browser only supports the prefixed property.
+           hasStyleProperty(lcPrefix) ? lcPrefix : name; // Some browsers are only supporting the prefix in lowercase.
+  }
+
+  function hasStyleProperty(property) {
+    return angular.isDefined(prefixTestEl.style[property]);
+  }
+
+  function camelCase(input) {
+    return input.replace(SPECIAL_CHARS_REGEXP, function(matches, separator, letter, offset) {
+      return offset ? letter.toUpperCase() : letter;
+    });
   }
 
   return {
@@ -326,8 +347,8 @@ function MdConstantFactory($sniffer) {
     },
     CSS: {
       /* Constants */
-      TRANSITIONEND: 'transitionend' + (webkit ? ' webkitTransitionEnd' : ''),
-      ANIMATIONEND: 'animationend' + (webkit ? ' webkitAnimationEnd' : ''),
+      TRANSITIONEND: 'transitionend' + (isWebkit ? ' webkitTransitionEnd' : ''),
+      ANIMATIONEND: 'animationend' + (isWebkit ? ' webkitAnimationEnd' : ''),
 
       TRANSFORM: vendorProperty('transform'),
       TRANSFORM_ORIGIN: vendorProperty('transformOrigin'),
@@ -13552,6 +13573,7 @@ function inputTextareaDirective($mdUtil, $window, $mdAria, $timeout, $mdGesture)
     var ngModelCtrl = ctrls[1] || $mdUtil.fakeNgModel();
     var isReadonly = angular.isDefined(attr.readonly);
     var mdNoAsterisk = $mdUtil.parseAttributeBoolean(attr.mdNoAsterisk);
+    var tagName = element[0].tagName.toLowerCase();
 
 
     if (!containerCtrl) return;
@@ -13578,7 +13600,13 @@ function inputTextareaDirective($mdUtil, $window, $mdAria, $timeout, $mdGesture)
       element.attr('id', 'input_' + $mdUtil.nextUid());
     }
 
-    if (element[0].tagName.toLowerCase() === 'textarea') {
+    // This works around a Webkit issue where number inputs, placed in a flexbox, that have
+    // a `min` and `max` will collapse to about 1/3 of their proper width. Please check #7349
+    // for more info. Also note that we don't override the `step` if the user has specified it,
+    // in order to prevent some unexpected behaviour.
+    if (tagName === 'input' && attr.type === 'number' && attr.min && attr.max && !attr.step) {
+      element.attr('step', 'any');
+    } else if (tagName === 'textarea') {
       setupTextarea();
     }
 
@@ -19969,6 +19997,7 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
     var lastParentOverFlow;
     var backdrop;
     var triggeringElement = null;
+    var previousContainerStyles;
     var promise = $q.when(true);
     var isLockedOpenParsed = $parse(attr.mdIsLockedOpen);
     var isLocked = function() {
@@ -20037,6 +20066,8 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
       parent[isOpen ? 'on' : 'off']('keydown', onKeyDown);
       if (backdrop) backdrop[isOpen ? 'on' : 'off']('click', close);
 
+      var restorePositioning = updateContainerPositions(parent, isOpen);
+
       if ( isOpen ) {
         // Capture upon opening..
         triggeringElement = $document[0].activeElement;
@@ -20045,16 +20076,60 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $animate, 
       disableParentScroll(isOpen);
 
       return promise = $q.all([
-                isOpen && backdrop ? $animate.enter(backdrop, parent) :
-                backdrop ? $animate.leave(backdrop) : $q.when(true),
-                $animate[isOpen ? 'removeClass' : 'addClass'](element, '_md-closed')
-              ])
-              .then(function() {
-                // Perform focus when animations are ALL done...
-                if (scope.isOpen) {
-                  focusEl && focusEl.focus();
-                }
-              });
+        isOpen && backdrop ? $animate.enter(backdrop, parent) : backdrop ?
+                             $animate.leave(backdrop) : $q.when(true),
+        $animate[isOpen ? 'removeClass' : 'addClass'](element, '_md-closed')
+      ]).then(function() {
+        // Perform focus when animations are ALL done...
+        if (scope.isOpen) {
+          focusEl && focusEl.focus();
+        }
+
+        // Restores the positioning on the sidenav and backdrop.
+        restorePositioning && restorePositioning();
+      });
+    }
+
+    function updateContainerPositions(parent, willOpen) {
+      var drawerEl = element[0];
+      var scrollTop = parent[0].scrollTop;
+
+      if (willOpen && scrollTop) {
+        previousContainerStyles = {
+          top: drawerEl.style.top,
+          bottom: drawerEl.style.bottom,
+          height: drawerEl.style.height
+        };
+
+        // When the parent is scrolled down, then we want to be able to show the sidenav at the current scroll
+        // position. We're moving the sidenav down to the correct scroll position and apply the height of the
+        // parent, to increase the performance. Using 100% as height, will impact the performance heavily.
+        var positionStyle = {
+          top: scrollTop + 'px',
+          bottom: 'initial',
+          height: parent[0].clientHeight + 'px'
+        };
+
+        // Apply the new position styles to the sidenav and backdrop.
+        element.css(positionStyle);
+        backdrop.css(positionStyle);
+      }
+
+      // When the sidenav is closing and we have previous defined container styles,
+      // then we return a restore function, which resets the sidenav and backdrop.
+      if (!willOpen && previousContainerStyles) {
+        return function() {
+          drawerEl.style.top = previousContainerStyles.top;
+          drawerEl.style.bottom = previousContainerStyles.bottom;
+          drawerEl.style.height = previousContainerStyles.height;
+
+          backdrop[0].style.top = null;
+          backdrop[0].style.bottom = null;
+          backdrop[0].style.height = null;
+
+          previousContainerStyles = null;
+        }
+      }
     }
 
     /**
@@ -22247,7 +22322,7 @@ angular
  * @param {string=} md-direction Which direction would you like the tooltip to go?  Supports left, right, top, and bottom.  Defaults to bottom.
  */
 function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdTheming, $rootElement,
-                            $animate, $q) {
+                            $animate, $q, $interpolate) {
 
   var TOOLTIP_SHOW_DELAY = 0;
   var TOOLTIP_WINDOW_EDGE_SPACE = 8;
@@ -22364,11 +22439,22 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
         element.remove();
         attributeObserver && attributeObserver.disconnect();
       });
+
+      // Updates the aria-label when the element text changes. This watch
+      // doesn't need to be set up if the element doesn't have any data
+      // bindings.
+      if (element.text().indexOf($interpolate.startSymbol()) > -1) {
+        scope.$watch(function() {
+          return element.text().trim();
+        }, addAriaLabel);
+      }
     }
 
-    function addAriaLabel () {
-      if (!parent.attr('aria-label') && !parent.text().trim()) {
-        parent.attr('aria-label', element.text().trim());
+    function addAriaLabel (override) {
+      if ((override || !parent.attr('aria-label')) && !parent.text().trim()) {
+        var rawText = override || element.text().trim();
+        var interpolatedText = $interpolate(rawText)(parent.scope());
+        parent.attr('aria-label', interpolatedText);
       }
     }
 
@@ -22583,7 +22669,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $mdUtil, $mdThe
   }
 
 }
-MdTooltipDirective.$inject = ["$timeout", "$window", "$$rAF", "$document", "$mdUtil", "$mdTheming", "$rootElement", "$animate", "$q"];
+MdTooltipDirective.$inject = ["$timeout", "$window", "$$rAF", "$document", "$mdUtil", "$mdTheming", "$rootElement", "$animate", "$q", "$interpolate"];
 
 })();
 (function(){
