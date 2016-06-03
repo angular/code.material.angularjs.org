@@ -1528,7 +1528,8 @@ md-datepicker {
 .md-datepicker-button {
   display: inline-block;
   box-sizing: border-box;
-  background: none; }
+  background: none;
+  vertical-align: middle; }
 
 .md-datepicker-input {
   font-size: 14px;

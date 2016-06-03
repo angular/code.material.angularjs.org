@@ -404,21 +404,6 @@ DocsApp
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabSpeedDial/fabSpeedDial.js",
         "hasDemo": true
-      },
-      {
-        "name": "mdFabTrigger",
-        "type": "directive",
-        "restrict": {
-          "element": true,
-          "attribute": false,
-          "cssClass": false,
-          "comment": false
-        },
-        "outputPath": "partials/api/material.components.fabSpeedDial/directive/mdFabTrigger.html",
-        "url": "api/directive/mdFabTrigger",
-        "label": "mdFabTrigger",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/fabTrigger/fabTrigger.js"
       }
     ],
     "hasDemo": false
