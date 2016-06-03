@@ -12,7 +12,7 @@
   padding-bottom: 50px; }
 
 .radioButtondemoBasicUsage [ng-controller] {
-  padding-left: 20px; }
+  padding: 0 20px; }
 
 .radioButtondemoBasicUsage .radioValue {
   margin-left: 5px;
@@ -21,8 +21,7 @@
   padding: 5px; }
 
 .radioButtondemoBasicUsage md-icon {
-  margin: 20px;
-  margin-top: 0;
+  margin: 0 20px 20px;
   width: 128px;
   height: 128px; }
 
