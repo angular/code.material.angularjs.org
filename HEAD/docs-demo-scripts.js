@@ -900,6 +900,13 @@ angular
     };
   });
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 angular.module('datepickerBasicUsage',
     ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
   $scope.myDate = new Date();
@@ -1082,13 +1089,6 @@ angular.module('dialogDemo2', ['ngMaterial'])
         })
     );
   };
-});
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
 });
 
 angular.module('dividerDemo1', ['ngMaterial'])
