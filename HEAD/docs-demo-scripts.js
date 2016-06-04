@@ -2966,8 +2966,6 @@ angular.module('tooltipDemo1', ['ngMaterial'])
 
 angular.module('whiteframeBasicUsage', ['ngMaterial']);
 
-angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
-
 angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
     .controller('DemoCtrl', function($interval) {
       this.elevation = 1;
@@ -2985,3 +2983,5 @@ angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
         this.showFrame = this.showFrame == 3 ? -1 : 3;
       };
     });
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial']);

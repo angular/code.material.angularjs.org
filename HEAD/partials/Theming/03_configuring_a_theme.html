@@ -121,5 +121,14 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 
 });
 </hljs>
+
+<h3 id="disable-theming">Disable Theming</h3>
+<p>You can disable theming by calling <code>disableTheming()</code>.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.disableTheming();
+});
+</hljs>
     
 </div>
