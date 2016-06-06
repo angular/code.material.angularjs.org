@@ -814,6 +814,33 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
+angular.module('datepickerBasicUsage',
+    ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
+  $scope.myDate = new Date();
+
+  $scope.minDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() - 2,
+      $scope.myDate.getDate());
+
+  $scope.maxDate = new Date(
+      $scope.myDate.getFullYear(),
+      $scope.myDate.getMonth() + 2,
+      $scope.myDate.getDate());
+  
+  $scope.onlyWeekendsPredicate = function(date) {
+    var day = date.getDay();
+    return day === 0 || day === 6;
+  }
+});
+
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
     $mdThemingProvider.theme('forest')
@@ -899,33 +926,6 @@ angular
       }
     };
   });
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
-angular.module('datepickerBasicUsage',
-    ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
-  $scope.myDate = new Date();
-
-  $scope.minDate = new Date(
-      $scope.myDate.getFullYear(),
-      $scope.myDate.getMonth() - 2,
-      $scope.myDate.getDate());
-
-  $scope.maxDate = new Date(
-      $scope.myDate.getFullYear(),
-      $scope.myDate.getMonth() + 2,
-      $scope.myDate.getDate());
-  
-  $scope.onlyWeekendsPredicate = function(date) {
-    var day = date.getDay();
-    return day === 0 || day === 6;
-  }
-});
 
 angular.module('dialogDemo1', ['ngMaterial'])
 
@@ -2966,6 +2966,8 @@ angular.module('tooltipDemo1', ['ngMaterial'])
 
 angular.module('whiteframeBasicUsage', ['ngMaterial']);
 
+angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
+
 angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
     .controller('DemoCtrl', function($interval) {
       this.elevation = 1;
@@ -2983,5 +2985,3 @@ angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
         this.showFrame = this.showFrame == 3 ? -1 : 3;
       };
     });
-
-angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
