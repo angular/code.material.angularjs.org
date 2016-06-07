@@ -7807,6 +7807,15 @@ angular.module('material.components.content', [
  * momentum scrolling is disabled. Momentum scrolling can cause flickering issues while scrolling
  * SVG icons and some other components.
  *
+ * Additionally, we now also automatically apply a new `md-no-flicker` class to the `<md-content>`
+ * which applies a Webkit-specific transform of `translateX(0)` to help reduce the flicker. If you
+ * need to disable this for any reason, you can do so globally with the following code, or on a
+ * case-by-case basis by ensuring your CSS operator is more specific than our global class.
+ *
+ * <hljs lang="css">
+ *   .md-no-flicker { -webkit-transform: none }
+ * </hljs>
+ *
  * @usage
  *
  * Add the `[layout-padding]` attribute to make the content padded.
@@ -7816,7 +7825,6 @@ angular.module('material.components.content', [
  *      Lorem ipsum dolor sit amet, ne quod novum mei.
  *  </md-content>
  * </hljs>
- *
  */
 
 function mdContentDirective($mdTheming) {
@@ -7825,6 +7833,7 @@ function mdContentDirective($mdTheming) {
     controller: ['$scope', '$element', ContentController],
     link: function(scope, element) {
       element.addClass('_md');     // private md component indicator for styling
+      element.addClass('md-no-flicker'); // add a class that helps prevent flickering on iOS devices
 
       $mdTheming(element);
       scope.$broadcast('$mdContentLoaded', element);
@@ -20243,7 +20252,7 @@ function SidenavFocusDirective() {
  * the sidenav 'locks open': it falls into the content's flow instead
  * of appearing over it. This overrides the `md-is-open` attribute.
  *
-* The $mdMedia() servic  e is exposed to the is-locked-open attribute, which
+* The $mdMedia() service is exposed to the is-locked-open attribute, which
  * can be given a media query or one of the `sm`, `gt-sm`, `md`, `gt-md`, `lg` or `gt-lg` presets.
  * Examples:
  *

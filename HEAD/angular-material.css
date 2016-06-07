@@ -143,6 +143,12 @@ input:-webkit-autofill {
     z-index: 65;
     box-shadow: inset 0px 0px 1px rgba(0, 0, 0, 0.3); }
 
+.md-no-momentum {
+  -webkit-overflow-scrolling: auto; }
+
+.md-no-flicker {
+  -webkit-transform: translateX(0); }
+
 @media (min-width: 960px) {
   .md-padding {
     padding: 16px; } }
@@ -1339,8 +1345,6 @@ md-content {
   md-content[md-scroll-x] {
     overflow-x: auto;
     overflow-y: hidden; }
-  md-content.md-no-momentum {
-    -webkit-overflow-scrolling: auto; }
   @media print {
     md-content {
       overflow: visible !important; } }
