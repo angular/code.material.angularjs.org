@@ -23,6 +23,21 @@ directives are compiled.</p>
 internally by the <code>$mdIcon</code> service using the <code>$templateRequest</code> service. When an SVG is
 requested by name/ID, the <code>$mdIcon</code> service searches its registry for the associated source URL;
 that URL is used to on-demand load and parse the SVG dynamically.</p>
+<p>The <code>$templateRequest</code> service expects the icons source to be loaded over trusted URLs.<br/>
+This means, when loading icons from an external URL, you have to trust the URL in the <code>$sceDelegateProvider</code>.</p>
+<hljs lang="js">
+  app.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Adding &#39;self&#39; to the whitelist, will allow requests from the current origin.
+      &#39;self&#39;,
+      // Using double asterisks here, will allow all URLs to load.
+      // We recommend to only specify the given domain you want to allow.
+      &#39;**&#39;
+    ]);
+  });
+</hljs>
+
+<p>Read more about the <a href="https://docs.angularjs.org/api/ng/provider/$sceDelegateProvider">$sceDelegateProvider</a>.</p>
 <p><strong>Notice:</strong> Most font-icons libraries do not support ligatures (for example <code>fontawesome</code>).<br/>
  In such cases you are not able to use the icon&#39;s ligature name - Like so:</p>
  <hljs lang="html">
