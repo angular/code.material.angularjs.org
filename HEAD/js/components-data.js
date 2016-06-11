@@ -1392,6 +1392,28 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.core.aria",
+    "type": "module",
+    "outputPath": "partials/api/material.core.aria/index.html",
+    "url": "api/material.core.aria",
+    "label": "material.core.aria",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/aria/aria.js",
+    "docs": [
+      {
+        "name": "$mdAriaProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.core.aria/service/$mdAriaProvider.html",
+        "url": "api/service/$mdAriaProvider",
+        "label": "$mdAriaProvider",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/aria/aria.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.ripple",
     "type": "module",
     "outputPath": "partials/api/material.core.ripple/index.html",
