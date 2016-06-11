@@ -288,6 +288,58 @@ DocsApp
     "hasDemo": false
   },
   {
+    "name": "material.components.datepicker",
+    "type": "module",
+    "outputPath": "partials/api/material.components.datepicker/index.html",
+    "url": "api/material.components.datepicker",
+    "label": "material.components.datepicker",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/datePicker.js",
+    "docs": [
+      {
+        "name": "mdCalendar",
+        "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
+        "outputPath": "partials/api/material.components.datepicker/directive/mdCalendar.html",
+        "url": "api/directive/mdCalendar",
+        "label": "mdCalendar",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/calendar.js",
+        "hasDemo": true
+      },
+      {
+        "name": "$mdDateLocaleProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.components.datepicker/service/$mdDateLocaleProvider.html",
+        "url": "api/service/$mdDateLocaleProvider",
+        "label": "$mdDateLocaleProvider",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/dateLocaleProvider.js"
+      },
+      {
+        "name": "mdDatepicker",
+        "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
+        "outputPath": "partials/api/material.components.datepicker/directive/mdDatepicker.html",
+        "url": "api/directive/mdDatepicker",
+        "label": "mdDatepicker",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/datepickerDirective.js"
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.dialog",
     "type": "module",
     "outputPath": "partials/api/material.components.dialog/index.html",

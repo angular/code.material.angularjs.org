@@ -19,7 +19,7 @@
     self.newState = newState;
 
     function newState(state) {
-      alert("Sorry! You'll need to create a Constituion for " + state + " first!");
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
     }
 
     // ******************************
@@ -814,6 +814,13 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
     $mdThemingProvider.theme('forest')
@@ -918,13 +925,6 @@ angular.module('datepickerBasicUsage',
     var day = date.getDay();
     return day === 0 || day === 6;
   }
-});
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
 });
 
 angular.module('dialogDemo1', ['ngMaterial'])
