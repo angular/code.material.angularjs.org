@@ -814,13 +814,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
     $mdThemingProvider.theme('forest')
@@ -906,6 +899,13 @@ angular
       }
     };
   });
+
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
 
 angular.module('datepickerBasicUsage',
     ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
@@ -2315,10 +2315,17 @@ angular
 angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function($scope) {
   $scope.clearValue = function() {
-    $scope.myModel = undefined;
+    $scope.quest = undefined;
+    $scope.favoriteColor = undefined;
+    $scope.myForm.$setPristine();;
   };
   $scope.save = function() {
-    alert('Form was valid!');
+    if ($scope.myForm.$valid) {
+      $scope.myForm.$setSubmitted();
+      alert('Form was valid.');
+    } else {
+      alert('Form was invalid!');
+    }
   };
 });
 
