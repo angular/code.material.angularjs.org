@@ -7782,6 +7782,10 @@ angular.module('material.components.chips', [
           var lastColors = {};
 
           var parseColors = function (theme) {
+            if (typeof theme !== 'string') {
+              theme = '';
+            }
+
             if (!attrs.mdColors) {
               attrs.mdColors = '{}';
             }
