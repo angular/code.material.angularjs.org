@@ -18,7 +18,26 @@
 become a <code>&lt;button&gt;</code> element. As per the <a href="http://www.google.com/design/spec/style/color.html#color-ui-color-application">Material Design specifications</a>
 the FAB button background is filled with the accent color [by default]. The primary color palette may be used with
 the <code>md-primary</code> class.</p>
+<p>Developers can also change the color palette of the button, by using the following classes</p>
+<ul>
+<li><code>md-primary</code></li>
+<li><code>md-accent</code></li>
+<li><code>md-warn</code></li>
+</ul>
+<p>See for example</p>
+<hljs lang="html">
+  <md-button class="md-primary">Primary Button</md-button>
+</hljs>
 
+<p>Button can be also raised, which means that they will use the current color palette to fill the button.</p>
+<hljs lang="html">
+  <md-button class="md-accent md-raised">Raised and Accent Button</md-button>
+</hljs>
+
+<p>It is also possible to disable the focus effect on the button, by using the following markup.</p>
+<hljs lang="html">
+  <md-button class="md-no-focus">No Focus Style</md-button>
+</hljs>
 </div>
 
 
@@ -87,8 +106,6 @@ the <code>md-primary</code> class.</p>
   
     
   
-    
-  
   
     
       <tr class="api-params-item">
@@ -102,24 +119,6 @@ the <code>md-primary</code> class.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>If present, disable ripple ink effects.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          md-no-focus-style
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
-        <td class="description">
-          <p>If present, disable focus style on button</p>
 
           
         </td>

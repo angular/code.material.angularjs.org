@@ -57,11 +57,28 @@ avoid a nested ng-click situation.</p>
   </ul>
 </ul>
 
-<p> <span style="font-size:.8em;text-align:center">
-   Warning: This component is a WORK IN PROGRESS. If you use it now,
-   it will probably break on you in the future.
- </span></p>
+<p><span style="font-size:.8em;text-align:center">
+  Warning: This component is a WORK IN PROGRESS. If you use it now,
+  it will probably break on you in the future.
+</span></p>
+<p>Sometimes developers want to limit the amount of possible chips.<br/>
+You can specify the maximum amount of chips by using the following markup.</p>
+<hljs lang="html">
+  <md-chips
+      ng-model="myItems"
+      placeholder="Add an item"
+      md-max-chips="5">
+  </md-chips>
+</hljs>
 
+<p>In some cases, you have an autocomplete inside of the <code>md-chips</code>.<br/>
+When the maximum amount of chips has been reached, you can also disable the autocomplete selection.<br/>
+Here is an example markup.</p>
+<hljs lang="html">
+  <md-chips ng-model="myItems" md-max-chips="5">
+    <md-autocomplete ng-hide="myItems.length > 5" ...></md-autocomplete>
+  </md-chips>
+</hljs>
 </div>
 
 

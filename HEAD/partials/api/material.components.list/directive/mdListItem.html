@@ -82,6 +82,7 @@ Currently supported proxy items are</p>
 <ul>
 <li><code>md-checkbox</code> (Toggle)</li>
 <li><code>md-switch</code> (Toggle)</li>
+<li><code>md-menu</code> (Open)</li>
 </ul>
 <p>This means, when using a supported proxy item inside of <code>md-list-item</code>, the list item will
 become clickable and executes the associated action of the proxy element on click.</p>
@@ -101,6 +102,39 @@ become clickable and executes the associated action of the proxy element on clic
 </hljs>
 
 <p>The recognized <code>md-switch</code> will toggle its state, when the user clicks on the <code>md-list-item</code>.</p>
+<p>It is also possible to have a <code>md-menu</code> inside of a <code>md-list-item</code>.</p>
+<hljs lang="html">
+  <md-list-item>
+    <p>Click anywhere to fire the secondary action</p>
+    <md-menu class="md-secondary">
+      <md-button class="md-icon-button">
+        <md-icon md-svg-icon="communication:message"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button>
+            Redial
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            Check voicemail
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button>
+            Notifications
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </md-list-item>
+</hljs>
+
+<p>The menu will automatically open, when the users clicks on the <code>md-list-item</code>.<br/></p>
+<p>If the developer didn&#39;t specify any position mode on the menu, the <code>md-list-item</code> will automatically detect the
+position mode and applies it to the <code>md-menu</code>.</p>
 <h3 id="avatars">Avatars</h3>
 <p>Sometimes you may want to have some avatars inside of the <code>md-list-item</code>.<br/>
 You are able to create a optimized icon for the list item, by applying the <code>.md-avatar</code> class on the <code>&lt;img&gt;</code> element.</p>
