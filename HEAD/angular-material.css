@@ -1491,7 +1491,7 @@ md-datepicker {
   background: none;
   vertical-align: middle; }
 
-.md-datepicker-input, label:not(.md-no-float):not(._md-container-ignore) {
+.md-datepicker-input {
   font-size: 14px;
   box-sizing: border-box;
   border: none;
@@ -1500,17 +1500,17 @@ md-datepicker {
   background: transparent;
   min-width: 120px;
   max-width: 328px; }
-  .md-datepicker-input::-ms-clear, label:not(.md-no-float):not(._md-container-ignore)::-ms-clear {
+  .md-datepicker-input::-ms-clear {
     display: none; }
 
 ._md-datepicker-floating-label > label:not(.md-no-float):not(._md-container-ignore) {
-  right: 6px;
+  right: 18px;
   left: auto;
-  width: calc(100% - 98px); }
+  width: calc(100% - 84px); }
   [dir=rtl] ._md-datepicker-floating-label > label:not(.md-no-float):not(._md-container-ignore) {
     right: auto; }
   [dir=rtl] ._md-datepicker-floating-label > label:not(.md-no-float):not(._md-container-ignore) {
-    left: 6px; }
+    left: 18px; }
 
 ._md-datepicker-floating-label > md-datepicker {
   overflow: visible; }
