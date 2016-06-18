@@ -1543,10 +1543,9 @@ md-datepicker {
   z-index: 99; }
 
 .md-datepicker-calendar-pane {
-  left: -100%;
   position: absolute;
   top: 0;
-  left: 0;
+  left: -100%;
   z-index: 100;
   border-width: 1px;
   border-style: solid;

@@ -39,7 +39,6 @@
 .progressLineardemoBasicUsage .container {
   display: block;
   position: relative;
-  height: 100%;
   width: 100%;
   border: 2px solid #aad1f9;
   transition: opacity  0.1s linear;
