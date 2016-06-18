@@ -11359,8 +11359,9 @@ function inputTextareaDirective($mdUtil, $window, $mdAria, $timeout, $mdGesture)
 
         if (!lineHeight) {
           // offsetHeight includes padding which can throw off our value
+          var originalPadding = element[0].style.padding || '';
           lineHeight = element.css('padding', 0).prop('offsetHeight');
-          element.css('padding', null);
+          element[0].style.padding = originalPadding;
         }
 
         if (minRows && lineHeight) {
@@ -12282,12 +12283,21 @@ function mdListItemDirective($mdAria, $mdConstant, $mdUtil, $timeout) {
       }
 
       function wrapSecondaryItem(secondaryItem, container) {
+        // If the current secondary item is not a button, but contains a ng-click attribute,
+        // the secondary item will be automatically wrapped inside of a button.
         if (secondaryItem && !isButton(secondaryItem) && secondaryItem.hasAttribute('ng-click')) {
+
           $mdAria.expect(secondaryItem, 'aria-label');
           var buttonWrapper = angular.element('<md-button class="md-secondary md-icon-button">');
-          copyAttributes(secondaryItem, buttonWrapper[0]);
+
+          // Copy the attributes from the secondary item to the generated button.
+          // We also support some additional attributes from the secondary item,
+          // because some developers may use a ngIf, ngHide, ngShow on their item.
+          copyAttributes(secondaryItem, buttonWrapper[0], ['ng-if', 'ng-hide', 'ng-show']);
+
           secondaryItem.setAttribute('tabindex', '-1');
           buttonWrapper.append(secondaryItem);
+
           secondaryItem = buttonWrapper[0];
         }
 
@@ -12301,16 +12311,28 @@ function mdListItemDirective($mdAria, $mdConstant, $mdUtil, $timeout) {
         container.append(secondaryItem);
       }
 
-      function copyAttributes(item, wrapper) {
+      /**
+       * Copies attributes from a source element to the destination element
+       * By default the function will copy the most necessary attributes, supported
+       * by the button executor for clickable list items.
+       * @param source Element with the specified attributes
+       * @param destination Element which will retrieve the attributes
+       * @param extraAttrs Additional attributes, which will be copied over.
+       */
+      function copyAttributes(source, destination, extraAttrs) {
         var copiedAttrs = $mdUtil.prefixer([
           'ng-if', 'ng-click', 'ng-dblclick', 'aria-label', 'ng-disabled', 'ui-sref',
           'href', 'ng-href', 'target', 'ng-attr-ui-sref', 'ui-sref-opts'
         ]);
 
+        if (extraAttrs) {
+          copiedAttrs = copiedAttrs.concat($mdUtil.prefixer(extraAttrs));
+        }
+
         angular.forEach(copiedAttrs, function(attr) {
-          if (item.hasAttribute(attr)) {
-            wrapper.setAttribute(attr, item.getAttribute(attr));
-            item.removeAttribute(attr);
+          if (source.hasAttribute(attr)) {
+            destination.setAttribute(attr, source.getAttribute(attr));
+            source.removeAttribute(attr);
           }
         });
       }
@@ -19802,8 +19824,9 @@ function MdToastProvider($$interimElementProvider) {
             }
           }
 
-
-          return templateRoot.outerHTML;
+          // We have to return the innerHTMl, because we do not want to have the `md-template` element to be
+          // the root element of our interimElement.
+          return templateRoot.innerHTML;
         }
 
         return template || '';
@@ -27739,7 +27762,7 @@ MdIconProvider.prototype = {
     return this;
   },
 
-  $get: ['$templateRequest', '$q', '$log', '$templateCache', '$mdUtil', '$sce', function($templateRequest, $q, $log, $templateCache, $mdUtil, $sce) {
+  $get: ['$templateRequest', '$q', '$log', '$mdUtil', '$sce', function($templateRequest, $q, $log, $mdUtil, $sce) {
     return MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce);
   }]
 };
@@ -27770,7 +27793,7 @@ function ConfigurationItem(url, viewBoxSize) {
  *
  * @returns {angular.$q.Promise} A promise that gets resolved to a clone of the initial SVG DOM element; which was
  * created from the SVG markup in the SVG data file. If an error occurs (e.g. the icon cannot be found) the promise
- * will get rejected. 
+ * will get rejected.
  *
  * @usage
  * <hljs lang="js">
@@ -27799,6 +27822,7 @@ function ConfigurationItem(url, viewBoxSize) {
 /* @ngInject */
 function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
   var iconCache = {};
+  var svgCache = {};
   var urlRegex = /[-\w@:%\+.~#?&//=]{2,}\.[a-z]{2,4}\b(\/[-\w@:%\+.~#?&//=]*)?/i;
   var dataUrlRegex = /^data:image\/svg\+xml[\s*;\w\-\=]*?(base64)?,(.*)$/i;
 
@@ -27910,7 +27934,7 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
     function extractFromSet(set) {
       var iconName = id.slice(id.lastIndexOf(':') + 1);
       var icon = set.querySelector('#' + iconName);
-      return !icon ? announceIdNotFound(id) : new Icon(icon, iconSetConfig);
+      return icon ? new Icon(icon, iconSetConfig) : announceIdNotFound(id);
     }
 
     function announceIdNotFound(id) {
@@ -27945,8 +27969,10 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
             reject(err);
           },
           extractSvg = function(response) {
-            var svg = angular.element('<div>').append(response).find('svg')[0];
-            resolve(svg);
+            if (!svgCache[url]) {
+              svgCache[url] = angular.element('<div>').append(response)[0].querySelector('svg');
+            }
+            resolve(svgCache[url]);
           };
 
         $templateRequest(url, true).then(extractSvg, announceAndReject);
@@ -27970,7 +27996,7 @@ function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
    */
   function Icon(el, config) {
     if (el && el.tagName != 'svg') {
-      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el)[0];
+      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(el.cloneNode(true))[0];
     }
 
     // Inject the namespace if not available...

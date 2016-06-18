@@ -879,7 +879,7 @@ md-card {
       md-card md-card-header md-card-header-text .md-subhead {
         font-size: 14px; }
   md-card > img,
-  md-card > :not(md-card-content) img {
+  md-card > md-card-header img {
     box-sizing: border-box;
     display: -ms-flexbox;
     display: flex;
