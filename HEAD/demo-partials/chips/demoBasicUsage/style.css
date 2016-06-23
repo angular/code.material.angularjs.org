@@ -34,5 +34,6 @@
         fill: white; }
       .chipsdemoBasicUsage .custom-chips md-chip ._md-chip-remove-container button.vegetablechip:hover, .chipsdemoBasicUsage .custom-chips md-chip ._md-chip-remove-container button.vegetablechip:focus {
         background: rgba(255, 0, 0, 0.8); }
-  .chipsdemoBasicUsage .custom-chips md-chip:not(.md-readonly) md-chip-template {
-    padding-right: 5px; }
+
+.chipsdemoBasicUsage .custom-chips md-chips-wrap.md-removable md-chip md-chip-template {
+  padding-right: 5px; }

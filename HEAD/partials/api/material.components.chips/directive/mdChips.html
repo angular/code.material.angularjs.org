@@ -166,6 +166,8 @@ on our custom validators.</p>
     
   
     
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
           <b>* md-transform-chip</b>
@@ -263,6 +265,25 @@ on our custom validators.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          md-removable
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Enables or disables the deletion of chips through the
+   removal icon or the Delete/Backspace key. Defaults to true.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           readonly
           
           <span hide show-sm>
@@ -273,7 +294,8 @@ on our custom validators.</p>
         <td class="description">
           <p>Disables list manipulation (deleting or adding list items), hiding
    the input and delete buttons. If no <code>ng-model</code> is provided, the chips will automatically be
-   marked as readonly.</p>
+   marked as readonly.<br/><br/>
+   When <code>md-removable</code> is not defined, the <code>md-remove</code> behavior will be overwritten and disabled.</p>
 
           
         </td>
