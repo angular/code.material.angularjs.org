@@ -2303,6 +2303,35 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/sidenav/demoBasicUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "sidenavDemo2",
+          "module": "sidenavDemo2",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "sidenavdemoCustomSidenav",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/sidenav/demoCustomSidenav/script.js"
+          }
+        ],
+        "moduleName": "material.components.sidenav",
+        "name": "demoCustomSidenav",
+        "label": "Custom Sidenav",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/sidenav/demoCustomSidenav/index.html"
+        }
       }
     ],
     "url": "demo/sidenav"
