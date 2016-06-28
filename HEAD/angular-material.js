@@ -6821,7 +6821,7 @@ function MdBottomSheetProvider($$interimElementProvider) {
   var CLOSING_VELOCITY = 0.5;
   var PADDING = 80; // same as css
 
-  bottomSheetDefaults.$inject = ["$animate", "$mdConstant", "$mdUtil", "$mdTheming", "$mdBottomSheet", "$rootElement", "$mdGesture"];
+  bottomSheetDefaults.$inject = ["$animate", "$mdConstant", "$mdUtil", "$mdTheming", "$mdBottomSheet", "$rootElement", "$mdGesture", "$log"];
   return $$interimElementProvider('$mdBottomSheet')
     .setDefaults({
       methods: ['disableParentScroll', 'escapeToClose', 'clickOutsideToClose'],
@@ -6829,7 +6829,8 @@ function MdBottomSheetProvider($$interimElementProvider) {
     });
 
   /* @ngInject */
-  function bottomSheetDefaults($animate, $mdConstant, $mdUtil, $mdTheming, $mdBottomSheet, $rootElement, $mdGesture) {
+  function bottomSheetDefaults($animate, $mdConstant, $mdUtil, $mdTheming, $mdBottomSheet, $rootElement,
+                               $mdGesture, $log) {
     var backdrop;
 
     return {
@@ -6849,6 +6850,13 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
       // prevent tab focus or click focus on the bottom-sheet container
       element.attr('tabindex',"-1");
+
+      // Once the md-bottom-sheet has `ng-cloak` applied on his template the opening animation will not work properly.
+      // This is a very common problem, so we have to notify the developer about this.
+      if (element.hasClass('ng-cloak')) {
+        var message = '$mdBottomSheet: using `<md-bottom-sheet ng-cloak >` will affect the bottom-sheet opening animations.';
+        $log.warn( message, element[0] );
+      }
 
       if (!options.disableBackdrop) {
         // Add a backdrop that will close on click
@@ -8750,8 +8758,17 @@ function MdDialogProvider($$interimElementProvider) {
         element = angular.element(contentEl);
       }
 
+      var dialogElement = element.find('md-dialog');
+
+      // Once a dialog has `ng-cloak` applied on his template the dialog animation will not work properly.
+      // This is a very common problem, so we have to notify the developer about this.
+      if (dialogElement.hasClass('ng-cloak')) {
+        var message = '$mdDialog: using `<md-dialog ng-cloak >` will affect the dialog opening animations.';
+        $log.warn( message, element[0] );
+      }
+
       captureParentAndFromToElements(options);
-      configureAria(element.find('md-dialog'), options);
+      configureAria(dialogElement, options);
       showBackdrop(scope, element, options);
 
       return dialogPopIn(element, options)
