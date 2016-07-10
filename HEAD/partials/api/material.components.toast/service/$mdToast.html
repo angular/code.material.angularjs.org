@@ -229,6 +229,10 @@ the <code>build()</code> and <code>show()</code> methods below.</em></p>
        <td><code>.theme(string)</code></td>
        <td>Sets the theme on the toast to the requested theme. Default is <code>$mdThemingProvider</code>&#39;s default.</td>
      </tr>
+     <tr>
+       <td><code>.toastClass(string)</code></td>
+       <td>Sets a class on the toast element</td>
+     </tr>
    </tbody>
 </table></td>
   </tr>
@@ -352,6 +356,7 @@ closed manually. Default: 3000.</li>
 Available: any combination of <code>&#39;bottom&#39;</code>, <code>&#39;left&#39;</code>, <code>&#39;top&#39;</code>, <code>&#39;right&#39;</code>, <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code>.
 The properties <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code> are dynamic and can be used for RTL support.<br/>
 Default combination: <code>&#39;bottom left&#39;</code>.</li>
+<li><code>toastClass</code> - <code>{string=}</code>: A class to set on the toast element.</li>
 <li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
 The controller will be injected the local <code>$mdToast.hide( )</code>, which is a function
 used to hide the toast.</li>

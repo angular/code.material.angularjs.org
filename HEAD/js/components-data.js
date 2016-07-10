@@ -178,7 +178,7 @@ DocsApp
         "name": "mdChipRemove",
         "type": "directive",
         "restrict": {
-          "element": true,
+          "element": false,
           "attribute": true,
           "cssClass": false,
           "comment": false

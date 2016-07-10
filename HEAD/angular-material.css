@@ -4,6 +4,10 @@
  * @license MIT
  * v1.1.0-rc.5
  */
+/**
+ * Mixin to create a primary checkbox.
+ * Used by the checkbox and select component.
+ */
 html, body {
   height: 100%;
   position: relative; }
@@ -637,6 +641,8 @@ md-bottom-sheet {
           -ms-flex: 1 1 14.28571%;
               flex: 1 1 14.28571%;
           max-width: 14.28571%; } }
+      md-bottom-sheet.md-grid md-list-item::before {
+        display: none; }
       md-bottom-sheet.md-grid md-list-item .md-list-item-content {
         display: -ms-flexbox;
         display: flex;

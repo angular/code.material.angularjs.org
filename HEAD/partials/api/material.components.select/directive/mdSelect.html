@@ -18,6 +18,29 @@
 an asterisk (<code>*</code>). This behavior can be disabled by using the <code>md-no-asterisk</code> attribute.</p>
 <p>By default, the select will display with an underline to match other form elements. This can be
 disabled by applying the <code>md-no-underline</code> CSS class.</p>
+<h3 id="option-params">Option Params</h3>
+<p>When applied, <code>md-option-empty</code> will mark the option as &quot;empty&quot; allowing the option to  clear the
+select and put it back in it&#39;s default state. You may supply this attribute on any option you
+wish, however, it is automatically applied to an option whose <code>value</code> or <code>ng-value</code> are not
+defined.</p>
+<p><strong>Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option&gt;</code></li>
+<li><code>&lt;md-option value&gt;</code></li>
+<li><code>&lt;md-option value=&quot;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&quot;&gt;</code></li>
+</ul>
+<p><strong>NOT Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option ng-value=&quot;1&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&#39;&#39;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;undefined&quot;&gt;</code></li>
+<li><code>&lt;md-option value=&quot;undefined&quot;&gt;</code> (this evaluates to the string <code>&quot;undefined&quot;</code>)</li>
+<li><code ng-non-bindable>&lt;md-option ng-value=&quot;{{someValueThatMightBeUndefined}}&quot;&gt;</code></li>
+</ul>
+<p><strong>Note:</strong> A value of <code>undefined</code> <strong><em>is considered a valid value</em></strong> (and does not auto-apply this
+attribute) since you may wish this to be your &quot;Not Available&quot; or &quot;None&quot; option.</p>
 
 </div>
 

@@ -144,7 +144,7 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 <hljs lang="js">
   $scope.showPrerenderedDialog = function() {
     $mdDialog.show({
-      contentElement: &#39;#myStaticDialog&#39;
+      contentElement: &#39;#myStaticDialog&#39;,
       parent: angular.element(document.body)
     });
   };
