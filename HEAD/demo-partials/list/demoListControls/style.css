@@ -6,9 +6,9 @@
   padding-top: 0; }
 
 .listdemoListControls md-list-item > p,
-.listdemoListControls md-list-item > ._md-list-item-inner > p,
-.listdemoListControls md-list-item ._md-list-item-inner > p,
-.listdemoListControls md-list-item ._md-list-item-inner > ._md-list-item-inner > p {
+.listdemoListControls md-list-item > .md-list-item-inner > p,
+.listdemoListControls md-list-item .md-list-item-inner > p,
+.listdemoListControls md-list-item .md-list-item-inner > .md-list-item-inner > p {
   -webkit-user-select: none;
   /* Chrome all / Safari all */
   -moz-user-select: none;
