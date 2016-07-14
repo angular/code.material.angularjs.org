@@ -7823,7 +7823,7 @@ angular.module('material.components.chips', [
 
       rgbValues = contrast ? rgbValues.contrast : rgbValues.value;
 
-      return $mdUtil.supplant('rgba( {0}, {1}, {2}, {3} )',
+      return $mdUtil.supplant('rgba({0}, {1}, {2}, {3})',
         [rgbValues[0], rgbValues[1], rgbValues[2], rgbValues[3] || color.opacity]
       );
     }
@@ -22573,9 +22573,12 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
 
     $scope.searchText = '';
 
-    // Per http://www.w3schools.com/jsref/event_oninput.asp
+    // Normally, triggering the change / input event is unnecessary, because the browser detects it properly.
+    // But some browsers are not detecting it properly, which means that we have to trigger the event.
+    // Using the `input` is not working properly, because for example IE11 is not supporting the `input` event.
+    // The `change` event is a good alternative and is supported by all supported browsers.
     var eventObj = document.createEvent('CustomEvent');
-    eventObj.initCustomEvent('input', true, true, { value: '' });
+    eventObj.initCustomEvent('change', true, true, { value: '' });
     elements.input.dispatchEvent(eventObj);
 
     // For some reason, firing the above event resets the value of $scope.searchText if
