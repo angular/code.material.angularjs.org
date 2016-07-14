@@ -12753,7 +12753,7 @@ function MdNavBar($mdAria) {
     template:
       '<div class="md-nav-bar">' +
         '<nav role="navigation">' +
-          '<ul class="_md-nav-bar-list" layout="row" ng-transclude role="listbox"' +
+          '<ul class="_md-nav-bar-list" ng-transclude role="listbox"' +
             'tabindex="0"' +
             'ng-focus="ctrl.onFocus()"' +
             'ng-blur="ctrl.onBlur()"' +
@@ -19962,7 +19962,7 @@ function MdToastProvider($$interimElementProvider) {
           template:
             '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">' +
             '  <div class="md-toast-content">' +
-            '    <span flex class="md-toast-text" role="alert" aria-relevant="all" aria-atomic="true">' +
+            '    <span class="md-toast-text" role="alert" aria-relevant="all" aria-atomic="true">' +
             '      {{ toast.content }}' +
             '    </span>' +
             '    <md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ' +
@@ -22829,7 +22829,6 @@ function MdAutocomplete ($$mdSvgRegistry) {
 
       return '\
         <md-autocomplete-wrap\
-            layout="row"\
             ng-class="{ \'md-whiteframe-z1\': !floatingLabel, \'md-menu-showing\': !$mdAutocompleteCtrl.hidden }">\
           ' + getInputElement() + '\
           <md-progress-linear\
@@ -22885,7 +22884,7 @@ function MdAutocomplete ($$mdSvgRegistry) {
       function getInputElement () {
         if (attr.mdFloatingLabel) {
           return '\
-            <md-input-container flex ng-if="floatingLabel">\
+            <md-input-container ng-if="floatingLabel">\
               <label>{{floatingLabel}}</label>\
               <input type="search"\
                   ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
@@ -22915,7 +22914,7 @@ function MdAutocomplete ($$mdSvgRegistry) {
             </md-input-container>';
         } else {
           return '\
-            <input flex type="search"\
+            <input type="search"\
                 ' + (tabindex != null ? 'tabindex="' + tabindex + '"' : '') + '\
                 id="{{ inputId || \'input-\' + $mdAutocompleteCtrl.id }}"\
                 name="{{inputName}}"\
@@ -25042,6 +25041,24 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
       date.getDate()
     ].join('-');
   };
+
+  /**
+   * Util to trigger an extra digest on a parent scope, in order to to ensure that
+   * any child virtual repeaters have updated. This is necessary, because the virtual
+   * repeater doesn't update the $index the first time around since the content isn't
+   * in place yet. The case, in which this is an issue, is when the repeater has less
+   * than a page of content (e.g. a month or year view has a min or max date).
+   */
+  CalendarCtrl.prototype.updateVirtualRepeat = function() {
+    var scope = this.$scope;
+    var virtualRepeatResizeListener = scope.$on('$md-resize-enable', function() {
+      if (!scope.$$phase) {
+        scope.$apply();
+      }
+
+      virtualRepeatResizeListener();
+    });
+  };
 })();
 
 })();
@@ -25199,6 +25216,7 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
     }
 
     this.attachScopeListeners();
+    calendarCtrl.updateVirtualRepeat();
 
     // Fire the initial render, since we might have missed it the first time it fired.
     calendarCtrl.ngModelCtrl && calendarCtrl.ngModelCtrl.$render();
@@ -25712,7 +25730,7 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
    * Controller for the mdCalendar component.
    * @ngInject @constructor
    */
-  function CalendarYearCtrl($element, $scope, $animate, $q, $$mdDateUtil, $timeout) {
+  function CalendarYearCtrl($element, $scope, $animate, $q, $$mdDateUtil) {
 
     /** @final {!angular.JQLite} */
     this.$element = $element;
@@ -25728,9 +25746,6 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
 
     /** @final */
     this.dateUtil = $$mdDateUtil;
-
-    /** @final */
-    this.$timeout = $timeout;
 
     /** @final {HTMLElement} */
     this.calendarScroller = $element[0].querySelector('.md-virtual-repeat-scroller');
@@ -25755,7 +25770,7 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
       self.calendarCtrl.setCurrentView('month', $$mdDateUtil.getTimestampFromNode(this));
     };
   }
-  CalendarYearCtrl.$inject = ["$element", "$scope", "$animate", "$q", "$$mdDateUtil", "$timeout"];
+  CalendarYearCtrl.$inject = ["$element", "$scope", "$animate", "$q", "$$mdDateUtil"];
 
   /**
    * Initialize the controller by saving a reference to the calendar and
@@ -25773,12 +25788,6 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
      */
     this.items = { length: 400 };
 
-    if (maxDate && minDate) {
-      // Limit the number of years if min and max dates are set.
-      var numYears = this.dateUtil.getYearDistance(minDate, maxDate) + 1;
-      this.items.length = Math.max(numYears, 1);
-    }
-
     this.firstRenderableDate = this.dateUtil.incrementYears(calendarCtrl.today, - (this.items.length / 2));
 
     if (minDate && minDate > this.firstRenderableDate) {
@@ -25789,13 +25798,14 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
       this.firstRenderableDate = this.dateUtil.incrementMonths(maxDate, - (this.items.length - 1));
     }
 
-    // Trigger an extra digest to ensure that the virtual repeater has updated. This
-    // is necessary, because the virtual repeater doesn't update the $index the first
-    // time around since the content isn't in place yet. The case, in which this is an
-    // issues, is when the repeater has less than a page of content (e.g. there's a min
-    // and max date).
-    if (minDate || maxDate) this.$timeout();
+    if (maxDate && minDate) {
+      // Limit the number of years if min and max dates are set.
+      var numYears = this.dateUtil.getYearDistance(this.firstRenderableDate, maxDate) + 1;
+      this.items.length = Math.max(numYears, 1);
+    }
+
     this.attachScopeListeners();
+    calendarCtrl.updateVirtualRepeat();
 
     // Fire the initial render, since we might have missed it the first time it fired.
     calendarCtrl.ngModelCtrl && calendarCtrl.ngModelCtrl.$render();
@@ -26020,7 +26030,7 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
 
     var cellText = this.dateLocale.shortMonths[month];
 
-    if (this.dateUtil.isDateWithinRange(firstOfMonth,
+    if (this.dateUtil.isMonthWithinRange(firstOfMonth,
         calendarCtrl.minDate, calendarCtrl.maxDate)) {
       var selectionIndicator = document.createElement('span');
       selectionIndicator.classList.add('md-calendar-date-selection-indicator');
@@ -26416,7 +26426,8 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
       incrementYears: incrementYears,
       getYearDistance: getYearDistance,
       clampDate: clampDate,
-      getTimestampFromNode: getTimestampFromNode
+      getTimestampFromNode: getTimestampFromNode,
+      isMonthWithinRange: isMonthWithinRange
     };
 
     /**
@@ -26680,6 +26691,20 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
        }
      }
 
+     /**
+      * Checks if a month is within a min and max range, ignoring the date and time components.
+      * If minDate or maxDate are not dates, they are ignored.
+      * @param {Date} date
+      * @param {Date} minDate
+      * @param {Date} maxDate
+      */
+     function isMonthWithinRange(date, minDate, maxDate) {
+       var month = date.getMonth();
+       var year = date.getFullYear();
+
+       return (!minDate || minDate.getFullYear() < year || minDate.getMonth() <= month) &&
+        (!maxDate || maxDate.getFullYear() > year || maxDate.getMonth() >= month);
+     }
   });
 })();
 
