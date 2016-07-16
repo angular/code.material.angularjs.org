@@ -152,6 +152,9 @@ values. The panel will not open until all of the promises resolve.</li>
 <li><code>attachTo</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to
 attach the panel to. Defaults to appending to the root element of the
 application.</li>
+<li><code>propagateContainerEvents</code> - <code>{boolean=}</code>: Whether pointer or touch
+events should be allowed to propagate &#39;go through&#39; the container, aka the
+wrapper, of the panel. Defaults to false.</li>
 <li><code>panelClass</code> - <code>{string=}</code>: A css class to apply to the panel element.
 This class should define any borders, box-shadow, etc. for the panel.</li>
 <li><code>zIndex</code> - <code>{number=}</code>: The z-index to place the panel at.

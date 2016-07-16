@@ -294,7 +294,7 @@ hidden and animations are completed.</p>
     
     <li id="addClass">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelRef.addClass(newClass);
+        <code class="method-function-syntax">MdPanelRef.addClass(newClass, toElement);
 </code>
       </h3>
       <div class="service-desc"><p>Adds a class to the panel. DO NOT use this to hide/show the panel.</p>
@@ -333,6 +333,27 @@ hidden and animations are completed.</p>
       </tr>
     
   
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* toElement</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether or not to add the class to the panel
+   element instead of the container.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
   
     
   
@@ -352,7 +373,7 @@ hidden and animations are completed.</p>
     
     <li id="removeClass">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelRef.removeClass(oldClass);
+        <code class="method-function-syntax">MdPanelRef.removeClass(oldClass, fromElement);
 </code>
       </h3>
       <div class="service-desc"><p>Removes a class from the panel. DO NOT use this to hide/show the panel.</p>
@@ -391,6 +412,27 @@ hidden and animations are completed.</p>
       </tr>
     
   
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* fromElement</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether or not to remove the class from the
+panel element instead of the container.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
   
     
   
@@ -410,7 +452,7 @@ hidden and animations are completed.</p>
     
     <li id="toggleClass">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">MdPanelRef.toggleClass(toggleClass);
+        <code class="method-function-syntax">MdPanelRef.toggleClass(toggleClass, onElement);
 </code>
       </h3>
       <div class="service-desc"><p>Toggles a class on the panel. DO NOT use this to hide/show the panel.</p>
@@ -449,12 +491,55 @@ hidden and animations are completed.</p>
       </tr>
     
   
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* onElement</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether or not to remove the class from the panel
+   element instead of the container.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
   
     
   
 
   </tbody>
 </table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="updatePosition">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.updatePosition();
+</code>
+      </h3>
+      <div class="service-desc"><p>Updates the position configuration of a panel. Use this to update the
+position of a panel that is open, without having to close and re-open the
+panel.</p>
+</div>
+
+      <div class="method-param-table">
 
       
 
