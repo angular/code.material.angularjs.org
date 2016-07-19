@@ -4,10 +4,6 @@
  * @license MIT
  * v1.1.0-rc.5
  */
-/**
- * Mixin to create a primary checkbox.
- * Used by the checkbox and select component.
- */
 html, body {
   height: 100%;
   position: relative; }
@@ -166,7 +162,7 @@ input:-webkit-autofill {
   -webkit-overflow-scrolling: auto; }
 
 .md-no-flicker {
-  -webkit-transform: translateX(0); }
+  -webkit-filter: blur(0px); }
 
 @media (min-width: 960px) {
   .md-padding {
