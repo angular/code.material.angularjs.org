@@ -1,126 +1,127 @@
 {
-  "firebase": "angular-material",
-  "public": ".",
-  "ignore": [
-    "firebase.json",
-    "**/.*",
-    "**/node_modules/**"
-  ],
-  "redirects": [
-    {
-      "source": "/",
-      "destination": "/latest",
-      "type": 302
-    },
-    {
-      "source": "/head",
-      "destination": "/HEAD",
-      "type": 302
-    }
-  ],
-  "headers": [
-    {
-      "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
-      "headers": [
-        {
-          "key": "Access-Control-Allow-Origin",
-          "value": "*"
-        }
-      ]
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/HEAD/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/HEAD/index.html"
-    },
-    {
-      "source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/latest/index.html"
-    },
-    {
-      "source": "/0.11.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/0.11.3/index.html"
-    },
-    {
-      "source": "/0.11.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/0.11.4/index.html"
-    },
-    {
-      "source": "/1.0.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.0-rc2/index.html"
-    },
-    {
-      "source": "/1.0.0-rc6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.0-rc6/index.html"
-    },
-    {
-      "source": "/1.0.0-rc7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.0-rc7/index.html"
-    },
-    {
-      "source": "/1.0.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.0/index.html"
-    },
-    {
-      "source": "/1.0.1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.1/index.html"
-    },
-    {
-      "source": "/1.0.2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.2/index.html"
-    },
-    {
-      "source": "/1.0.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.3/index.html"
-    },
-    {
-      "source": "/1.0.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.4/index.html"
-    },
-    {
-      "source": "/1.0.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.5/index.html"
-    },
-    {
-      "source": "/1.0.6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.6/index.html"
-    },
-    {
-      "source": "/1.0.7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.7/index.html"
-    },
-    {
-      "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.8/index.html"
-    },
-    {
-      "source": "/1.0.9/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.0.9/index.html"
-    },
-    {
-      "source": "/1.1.0-rc1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc1/index.html"
-    },
-    {
-      "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc2/index.html"
-    },
-    {
-      "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc2/index.html"
-    },
-    {
-      "source": "/1.1.0-rc3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc3/index.html"
-    },
-    {
-      "source": "/1.1.0-rc4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc4/index.html"
-    },
-    {
-      "source": "/1.1.0-rc.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0-rc.5/index.html"
-    }
-  ]
+  "hosting": {
+    "public": ".",
+    "rewrites": [
+      {
+        "source": "/HEAD/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/HEAD/index.html"
+      },
+      {
+        "source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/latest/index.html"
+      },
+      {
+        "source": "/0.11.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/0.11.3/index.html"
+      },
+      {
+        "source": "/0.11.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/0.11.4/index.html"
+      },
+      {
+        "source": "/1.0.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.0-rc2/index.html"
+      },
+      {
+        "source": "/1.0.0-rc6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.0-rc6/index.html"
+      },
+      {
+        "source": "/1.0.0-rc7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.0-rc7/index.html"
+      },
+      {
+        "source": "/1.0.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.0/index.html"
+      },
+      {
+        "source": "/1.0.1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.1/index.html"
+      },
+      {
+        "source": "/1.0.2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.2/index.html"
+      },
+      {
+        "source": "/1.0.3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.3/index.html"
+      },
+      {
+        "source": "/1.0.4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.4/index.html"
+      },
+      {
+        "source": "/1.0.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.5/index.html"
+      },
+      {
+        "source": "/1.0.6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.6/index.html"
+      },
+      {
+        "source": "/1.0.7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.7/index.html"
+      },
+      {
+        "source": "/1.0.8/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.8/index.html"
+      },
+      {
+        "source": "/1.0.9/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.0.9/index.html"
+      },
+      {
+        "source": "/1.1.0-rc1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc1/index.html"
+      },
+      {
+        "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc2/index.html"
+      },
+      {
+        "source": "/1.1.0-rc2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc2/index.html"
+      },
+      {
+        "source": "/1.1.0-rc3/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc3/index.html"
+      },
+      {
+        "source": "/1.1.0-rc4/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc4/index.html"
+      },
+      {
+        "source": "/1.1.0-rc.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0-rc.5/index.html"
+      }
+    ],
+    "redirects": [
+      {
+        "source": "/",
+        "destination": "/latest",
+        "type": 302
+      },
+      {
+        "source": "/head",
+        "destination": "/HEAD",
+        "type": 302
+      }
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(eot|otf|ttf|ttc|woff|font.css)",
+        "headers": [
+          {
+            "key": "Access-Control-Allow-Origin",
+            "value": "*"
+          }
+        ]
+      }
+    ],
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
 }
