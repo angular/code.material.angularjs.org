@@ -90,7 +90,7 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
   <ul class="methods">
     <li id="create">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.create([opt_config]);
+        <code class="method-function-syntax">$mdPanel.create([config]);
 </code>
       </h3>
       <div class="service-desc"><p>Creates a panel with the specified options.</p>
@@ -117,7 +117,7 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_config
+          config
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-object">Object</code></span>
@@ -196,13 +196,6 @@ focus on when the panel closes. This is commonly the element which triggered
 the opening of the panel. If you do not use <code>origin</code>, you need to control
 the focus manually.</li>
 </ul>
-<p>TODO(ErinCoughlan): Add the following config options.</p>
-<ul>
-<li><code>groupName</code> - <code>{string=}</code>: Name of panel groups. This group name is
-used for configuring the number of open panels and identifying specific
-behaviors for groups. For instance, all tooltips will be identified
-using the same groupName.</li>
-</ul>
 
           
         </td>
@@ -242,7 +235,7 @@ using the same groupName.</li>
     
     <li id="open">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.open([opt_config]);
+        <code class="method-function-syntax">$mdPanel.open([config]);
 </code>
       </h3>
       <div class="service-desc"><p>Calls the create method above, then opens the panel. This is a shortcut for
@@ -273,7 +266,7 @@ methods, and call open from the returned panelRef.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          opt_config
+          config
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-object">Object</code></span>
@@ -315,85 +308,6 @@ to an instance of the panel.</p>
   </tr>
   </tbody>
 </table>
-      
-
-      </div>
-
-    </li>
-    
-    <li id="setGroupMaxOpen">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.setGroupMaxOpen(groupName, maxOpen);
-</code>
-      </h3>
-      <div class="service-desc"><p>Sets the maximum number of panels in a group that can be opened at a given
-time.</p>
-</div>
-
-      <div class="method-param-table">
-
-      
-      
-<table class="md-api-table">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* groupName</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
-        <td class="description">
-          <p>The name of the group to configure.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* maxOpen</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-number">number</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-number">number</code></td>
-        <td class="description">
-          <p>The max number of panels that can be opened.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-  
-    
-  
-    
-  
-
-  </tbody>
-</table>
-
-      
-
-      
-
       
 
       </div>

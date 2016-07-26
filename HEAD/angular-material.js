@@ -11098,7 +11098,6 @@ angular.module('material.components.icon', ['material.core']);
  * @ngdoc module
  * @name material.components.input
  */
-
 angular.module('material.components.input', [
     'material.core'
   ])
@@ -11115,7 +11114,12 @@ angular.module('material.components.input', [
 
   .animation('.md-input-invalid', mdInputInvalidMessagesAnimation)
   .animation('.md-input-messages-animation', ngMessagesAnimation)
-  .animation('.md-input-message-animation', ngMessageAnimation);
+  .animation('.md-input-message-animation', ngMessageAnimation)
+
+  // Register a service for each animation so that we can easily inject them into unit tests
+  .service('mdInputInvalidAnimation', mdInputInvalidMessagesAnimation)
+  .service('mdInputMessagesAnimation', ngMessagesAnimation)
+  .service('mdInputMessageAnimation', ngMessageAnimation);
 
 /**
  * @ngdoc directive
@@ -11986,36 +11990,36 @@ function ngMessageDirective($mdUtil) {
 }
 ngMessageDirective.$inject = ["$mdUtil"];
 
-function mdInputInvalidMessagesAnimation($q, $animateCss) {
+var $$AnimateRunner, $animateCss, $mdUtil;
+
+function mdInputInvalidMessagesAnimation($$AnimateRunner, $animateCss, $mdUtil) {
+  saveSharedServices($$AnimateRunner, $animateCss, $mdUtil);
+
   return {
     addClass: function(element, className, done) {
-      var messages = getMessagesElement(element);
-
-      if (className == "md-input-invalid" && messages.hasClass('md-auto-hide')) {
-        showInputMessages(element, $animateCss, $q).finally(done);
-      } else {
-        done();
-      }
+      showInputMessages(element, done);
     }
 
     // NOTE: We do not need the removeClass method, because the message ng-leave animation will fire
   };
 }
-mdInputInvalidMessagesAnimation.$inject = ["$q", "$animateCss"];
+mdInputInvalidMessagesAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil"];
 
-function ngMessagesAnimation($q, $animateCss) {
+function ngMessagesAnimation($$AnimateRunner, $animateCss, $mdUtil) {
+  saveSharedServices($$AnimateRunner, $animateCss, $mdUtil);
+
   return {
     enter: function(element, done) {
-      showInputMessages(element, $animateCss, $q).finally(done);
+      showInputMessages(element, done);
     },
 
     leave: function(element, done) {
-      hideInputMessages(element, $animateCss, $q).finally(done);
+      hideInputMessages(element, done);
     },
 
     addClass: function(element, className, done) {
       if (className == "ng-hide") {
-        hideInputMessages(element, $animateCss, $q).finally(done);
+        hideInputMessages(element, done);
       } else {
         done();
       }
@@ -12023,64 +12027,70 @@ function ngMessagesAnimation($q, $animateCss) {
 
     removeClass: function(element, className, done) {
       if (className == "ng-hide") {
-        showInputMessages(element, $animateCss, $q).finally(done);
+        showInputMessages(element, done);
       } else {
         done();
       }
     }
   }
 }
-ngMessagesAnimation.$inject = ["$q", "$animateCss"];
+ngMessagesAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil"];
 
-function ngMessageAnimation($animateCss) {
+function ngMessageAnimation($$AnimateRunner, $animateCss, $mdUtil) {
+  saveSharedServices($$AnimateRunner, $animateCss, $mdUtil);
+
   return {
     enter: function(element, done) {
-      var messages = getMessagesElement(element);
-
-      // If we have the md-auto-hide class, the md-input-invalid animation will fire, so we can skip
-      if (messages.hasClass('md-auto-hide')) {
-        done();
-        return;
-      }
-
-      return showMessage(element, $animateCss);
+      return showMessage(element);
     },
 
     leave: function(element, done) {
-      return hideMessage(element, $animateCss);
+      return hideMessage(element);
     }
   }
 }
-ngMessageAnimation.$inject = ["$animateCss"];
+ngMessageAnimation.$inject = ["$$AnimateRunner", "$animateCss", "$mdUtil"];
 
-function showInputMessages(element, $animateCss, $q) {
+function showInputMessages(element, done) {
   var animators = [], animator;
   var messages = getMessagesElement(element);
 
   angular.forEach(messages.children(), function(child) {
-    animator = showMessage(angular.element(child), $animateCss);
+    animator = showMessage(angular.element(child));
 
     animators.push(animator.start());
   });
 
-  return $q.all(animators);
+  $$AnimateRunner.all(animators, done);
 }
 
-function hideInputMessages(element, $animateCss, $q) {
+function hideInputMessages(element, done) {
   var animators = [], animator;
   var messages = getMessagesElement(element);
 
   angular.forEach(messages.children(), function(child) {
-    animator = hideMessage(angular.element(child), $animateCss);
+    animator = hideMessage(angular.element(child));
 
     animators.push(animator.start());
   });
 
-  return $q.all(animators);
+  $$AnimateRunner.all(animators, done);
 }
 
-function showMessage(element, $animateCss) {
-  var height = element[0].offsetHeight;
+function showMessage(element) {
+  var height = parseInt(window.getComputedStyle(element[0]).height);
+  var topMargin = parseInt(window.getComputedStyle(element[0]).marginTop);
+
+  var messages = getMessagesElement(element);
+  var container = getInputElement(element);
+
+  // Check to see if the message is already visible so we can skip
+  var alreadyVisible = (topMargin > -height);
+
+  // If we have the md-auto-hide class, the md-input-invalid animation will fire, so we can skip
+  if (alreadyVisible || (messages.hasClass('md-auto-hide') && !container.hasClass('md-input-invalid'))) {
+    return $animateCss(element, {});
+  }
 
   return $animateCss(element, {
     event: 'enter',
@@ -12091,9 +12101,10 @@ function showMessage(element, $animateCss) {
   });
 }
 
-function hideMessage(element, $animateCss) {
+function hideMessage(element) {
   var height = element[0].offsetHeight;
   var styles = window.getComputedStyle(element[0]);
+  //var styles = { opacity: element.css('opacity') };
 
   // If we are already hidden, just return an empty animation
   if (styles.opacity == 0) {
@@ -12117,9 +12128,21 @@ function getInputElement(element) {
 }
 
 function getMessagesElement(element) {
-  var input = getInputElement(element);
+  // If we are a ng-message element, we need to traverse up the DOM tree
+  if (element.hasClass('md-input-message-animation')) {
+    return angular.element($mdUtil.getClosest(element, function(node) {
+      return node.classList.contains('md-input-messages-animation');
+    }));
+  }
 
-  return angular.element(input[0].querySelector('.md-input-messages-animation'));
+  // Otherwise, we can traverse down
+  return angular.element(element[0].querySelector('.md-input-messages-animation'));
+}
+
+function saveSharedServices(_$$AnimateRunner_, _$animateCss_, _$mdUtil_) {
+  $$AnimateRunner = _$$AnimateRunner_;
+  $animateCss = _$animateCss_;
+  $mdUtil = _$mdUtil_;
 }
 
 })();
@@ -13357,7 +13380,7 @@ angular
  * @description
  * Creates a panel with the specified options.
  *
- * @param opt_config {Object=} Specific configuration object that may contain
+ * @param config {Object=} Specific configuration object that may contain
  * the following properties:
  *
  *   - `template` - `{string=}`: HTML template to show in the dialog. This
@@ -13428,12 +13451,6 @@ angular
  *     the opening of the panel. If you do not use `origin`, you need to control
  *     the focus manually.
  *
- * TODO(ErinCoughlan): Add the following config options.
- *   - `groupName` - `{string=}`: Name of panel groups. This group name is
- *     used for configuring the number of open panels and identifying specific
- *     behaviors for groups. For instance, all tooltips will be identified
- *     using the same groupName.
- *
  * @returns {MdPanelRef} panelRef
  */
 
@@ -13448,23 +13465,11 @@ angular
  * Instead create the panel, chain promises on the domAdded and openComplete
  * methods, and call open from the returned panelRef.
  *
- * @param {Object=} opt_config Specific configuration object that may contain
+ * @param {Object=} config Specific configuration object that may contain
  * the properties defined in `$mdPanel.create`.
  *
  * @returns {angular.$q.Promise<MdPanelRef>} panelRef A promise that resolves
  * to an instance of the panel.
- */
-
-
-/**
- * @ngdoc method
- * @name $mdPanel#setGroupMaxOpen
- * @description
- * Sets the maximum number of panels in a group that can be opened at a given
- * time.
- *
- * @param groupName {string} The name of the group to configure.
- * @param maxOpen {number} The max number of panels that can be opened.
  */
 
 
@@ -13682,7 +13687,7 @@ angular
  * @description
  * Sets the value of `top` for the panel. Clears any previously set
  * vertical position.
- * @param {string=} opt_top Value of `top`. Defaults to '0'.
+ * @param {string=} top Value of `top`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
 
@@ -13692,7 +13697,7 @@ angular
  * @description
  * Sets the value of `bottom` for the panel. Clears any previously set
  * vertical position.
- * @param {string=} opt_bottom Value of `bottom`. Defaults to '0'.
+ * @param {string=} bottom Value of `bottom`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
 
@@ -13702,7 +13707,7 @@ angular
  * @description
  * Sets the value of `left` for the panel. Clears any previously set
  * horizontal position.
- * @param {string=} opt_left Value of `left`. Defaults to '0'.
+ * @param {string=} left Value of `left`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
 
@@ -13712,7 +13717,7 @@ angular
  * @description
  * Sets the value of `right` for the panel. Clears any previously set
  * horizontal position.
- * @param {string=} opt_right Value of `right`. Defaults to '0'.
+ * @param {string=} right Value of `right`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
 
@@ -13969,11 +13974,11 @@ MdPanelService.$inject = ["$rootElement", "$rootScope", "$injector", "$window"];
 
 /**
  * Creates a panel with the specified options.
- * @param {!Object=} opt_config Configuration object for the panel.
+ * @param {!Object=} config Configuration object for the panel.
  * @returns {!MdPanelRef}
  */
-MdPanelService.prototype.create = function(opt_config) {
-  var configSettings = opt_config || {};
+MdPanelService.prototype.create = function(config) {
+  var configSettings = config || {};
 
   this._config = {
     scope: this._$rootScope.$new(true),
@@ -13990,11 +13995,11 @@ MdPanelService.prototype.create = function(opt_config) {
 
 /**
  * Creates and opens a panel with the specified options.
- * @param {!Object=} opt_config Configuration object for the panel.
+ * @param {!Object=} config Configuration object for the panel.
  * @returns {!angular.$q.Promise<MdPanelRef>} The panel created from create.
  */
-MdPanelService.prototype.open = function(opt_config) {
-  var panelRef = this.create(opt_config);
+MdPanelService.prototype.open = function(config) {
+  var panelRef = this.create(config);
   return panelRef.open().then(function() {
     return panelRef;
   });
@@ -14524,17 +14529,17 @@ MdPanelRef.prototype.updatePosition = function(position) {
 
 /**
  * Calculates and updates the position of the panel.
- * @param {boolean=} opt_init
+ * @param {boolean=} init
  * @private
  */
-MdPanelRef.prototype._updatePosition = function(opt_init) {
+MdPanelRef.prototype._updatePosition = function(init) {
   var positionConfig = this._config['position'];
 
   if (positionConfig) {
     positionConfig._setPanelPosition(this._panelEl);
 
     // Hide the panel now that position is known.
-    if (opt_init) {
+    if (init) {
       this._panelContainer.addClass(MD_PANEL_HIDDEN);
     }
 
@@ -14943,12 +14948,12 @@ MdPanelPosition.prototype.absolute = function() {
 /**
  * Sets the value of `top` for the panel. Clears any previously set vertical
  * position.
- * @param {string=} opt_top Value of `top`. Defaults to '0'.
+ * @param {string=} top Value of `top`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
-MdPanelPosition.prototype.top = function(opt_top) {
+MdPanelPosition.prototype.top = function(top) {
   this._bottom = '';
-  this._top = opt_top || '0';
+  this._top = top || '0';
   return this;
 };
 
@@ -14956,12 +14961,12 @@ MdPanelPosition.prototype.top = function(opt_top) {
 /**
  * Sets the value of `bottom` for the panel. Clears any previously set vertical
  * position.
- * @param {string=} opt_bottom Value of `bottom`. Defaults to '0'.
+ * @param {string=} bottom Value of `bottom`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
-MdPanelPosition.prototype.bottom = function(opt_bottom) {
+MdPanelPosition.prototype.bottom = function(bottom) {
   this._top = '';
-  this._bottom = opt_bottom || '0';
+  this._bottom = bottom || '0';
   return this;
 };
 
@@ -14969,12 +14974,12 @@ MdPanelPosition.prototype.bottom = function(opt_bottom) {
 /**
  * Sets the value of `left` for the panel. Clears any previously set
  * horizontal position.
- * @param {string=} opt_left Value of `left`. Defaults to '0'.
+ * @param {string=} left Value of `left`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
-MdPanelPosition.prototype.left = function(opt_left) {
+MdPanelPosition.prototype.left = function(left) {
   this._right = '';
-  this._left = opt_left || '0';
+  this._left = left || '0';
   return this;
 };
 
@@ -14982,12 +14987,12 @@ MdPanelPosition.prototype.left = function(opt_left) {
 /**
  * Sets the value of `right` for the panel. Clears any previously set
  * horizontal position.
- * @param {string=} opt_right Value of `right`. Defaults to '0'.
+ * @param {string=} right Value of `right`. Defaults to '0'.
  * @returns {MdPanelPosition}
  */
-MdPanelPosition.prototype.right = function(opt_right) {
+MdPanelPosition.prototype.right = function(right) {
   this._left = '';
-  this._right = opt_right || '0';
+  this._right = right || '0';
   return this;
 };
 
