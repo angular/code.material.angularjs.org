@@ -7,6 +7,11 @@ need more custom styling (such as layout changes including padding, margins,
 etc) you will need to either write CSS rules with custom selectors, or build a
 custom version of the <code>angular-material.css</code> file using SASS and custom
 variables.</p>
+<blockquote>
+<p><b>Note:</b> The Material Theming system provides the
+  <a href="./api/service/$mdThemingProvider"><code>$mdThemingProvider.setNonce()</code></a> method to meet the
+  requirements of a CSP-policy enabled application.</p>
+</blockquote>
 <p><img src="https://cloud.githubusercontent.com/assets/210413/4816236/bf7783dc-5edd-11e4-88ef-1f8b6e87e1d7.png" alt="color palette" style="max-width: 100%;"></p>
 <h2 id="theming-approach">Theming Approach</h2>
 <p>Angular Material makes it easy to design an app which follows the Material style
