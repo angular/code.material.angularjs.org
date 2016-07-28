@@ -5456,7 +5456,8 @@ md-tooltip {
     padding: 0;
     position: absolute;
     right: 0;
-    top: 0; }
+    top: 0;
+    -webkit-overflow-scrolling: touch; }
   .md-virtual-repeat-container .md-virtual-repeat-sizer {
     box-sizing: border-box;
     height: 1px;
