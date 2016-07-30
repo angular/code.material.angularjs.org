@@ -14,8 +14,20 @@
 
 <div class="api-profile-description">
   <p><code>md-virtual-repeat-container</code> provides the scroll container for md-virtual-repeat.</p>
-<p>Virtual repeat is a limited substitute for ng-repeat that renders only
-enough dom nodes to fill the container and recycling them as the user scrolls.</p>
+<p>VirtualRepeat is a limited substitute for ng-repeat that renders only
+enough DOM nodes to fill the container and recycling them as the user scrolls.</p>
+<p>Once an element is not visible anymore, the VirtualRepeat recycles it and will reuse it for
+another visible item by replacing the previous dataset with the new one.</p>
+<p><strong>Common Issues</strong></p>
+<blockquote>
+<p>When having one-time bindings inside of the view template, the VirtualRepeat will not properly
+update the bindings for new items, since the view will be recycled.</p>
+</blockquote>
+<p><strong>Notes:</strong></p>
+<blockquote>
+<p>The VirtualRepeat is a similar implementation to the Android
+<a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html">RecyclerView</a></p>
+</blockquote>
 
 </div>
 

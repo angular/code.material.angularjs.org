@@ -25,6 +25,33 @@ between <code>600px</code> and <code>959px</code> (<code>sm</code> breakpoint)</
 <li>For a toast action, use element with class <code>md-action</code>.</li>
 <li>Add the class <code>md-capsule</code> for curved corners.</li>
 </ul>
+<h3 id="custom-presets">Custom Presets</h3>
+<p>Developers are also able to create their own preset, which can be easily used without repeating
+their options each time.</p>
+<hljs lang="js">
+  $mdToastProvider.addPreset(&#39;testPreset&#39;, {
+    options: function() {
+      return {
+        template:
+          &#39;<md-toast>&#39; +
+            &#39;<div class="md-toast-content">&#39; +
+              &#39;This is a custom preset&#39; +
+            &#39;</div>&#39; +
+          &#39;</md-toast>&#39;,
+        controllerAs: &#39;toast&#39;,
+        bindToController: true
+      };
+    }
+  });
+</hljs>
+
+<p>After you created your preset at config phase, you can easily access it.</p>
+<hljs lang="js">
+  $mdToast.show(
+    $mdToast.testPreset()
+  );
+</hljs>
+
 <h2 id="parent-container-notes">Parent container notes</h2>
 <p>The toast is positioned using absolute positioning relative to its first non-static parent
 container. Thus, if the requested parent container uses static positioning, we will temporarily

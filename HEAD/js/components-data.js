@@ -1,5 +1,4 @@
-DocsApp
-.constant('COMPONENTS', [
+angular.module('docsApp').constant('COMPONENTS', [
   {
     "name": "material.components.autocomplete",
     "type": "module",

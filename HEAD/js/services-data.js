@@ -1,5 +1,4 @@
-DocsApp
-.constant('SERVICES', [
+angular.module('docsApp').constant('SERVICES', [
   {
     "name": "$mdMedia",
     "type": "service",

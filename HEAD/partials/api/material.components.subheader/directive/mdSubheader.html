@@ -13,8 +13,21 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>&lt;md-subheader&gt;</code> directive is a subheader for a section. By default it is sticky.
-You can make it not sticky by applying the <code>md-no-sticky</code> class to the subheader.</p>
+  <p>The <code>md-subheader</code> directive creates a sticky subheader for a section.</p>
+<p>Developers are able to disable the stickiness of the subheader by using the following markup</p>
+<hljs lang="html">
+  <md-subheader class="md-no-sticky">Not Sticky</md-subheader>
+</hljs>
+
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The <code>md-subheader</code> directive uses the <a href="/api/service/$mdSticky">$mdSticky</a> service to make the
+subheader sticky.</li>
+</ul>
+<blockquote>
+<p>Whenever the current browser doesn&#39;t support stickiness natively, the subheader
+will be compiled twice to create a sticky clone of the subheader.</p>
+</blockquote>
 
 </div>
 

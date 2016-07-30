@@ -170,6 +170,33 @@ will not show up.</p>
 </ul>
 <p>When using a <code>template</code> as content element, it will be not compiled upon open.
 This allows you to compile the element yourself and use it each time the dialog opens.</p>
+<h3 id="custom-presets">Custom Presets</h3>
+<p>Developers are also able to create their own preset, which can be easily used without repeating
+their options each time.</p>
+<hljs lang="js">
+  $mdDialogProvider.addPreset(&#39;testPreset&#39;, {
+    options: function() {
+      return {
+        template:
+          &#39;<md-dialog>&#39; +
+            &#39;This is a custom preset&#39; +
+          &#39;</md-dialog>&#39;,
+        controllerAs: &#39;dialog&#39;,
+        bindToController: true,
+        clickOutsideToClose: true,
+        escapeToClose: true
+      };
+    }
+  });
+</hljs>
+
+<p>After you created your preset at config phase, you can easily access it.</p>
+<hljs lang="js">
+  $mdDialog.show(
+    $mdDialog.testPreset()
+  );
+</hljs>
+
 <h3 id="javascript-promise-api-syntax-custom-dialog-template">JavaScript: promise API syntax, custom dialog template</h3>
 <hljs lang="js">
 (function(angular, undefined){

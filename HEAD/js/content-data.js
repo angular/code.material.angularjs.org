@@ -1,5 +1,4 @@
-DocsApp
-.constant('PAGES', {
+angular.module('docsApp').constant('PAGES', {
   "CSS": [
     {
       "name": "button",
