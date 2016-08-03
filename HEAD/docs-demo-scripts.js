@@ -814,6 +814,13 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
     $mdThemingProvider.theme('forest')
@@ -1071,13 +1078,6 @@ angular.module('dialogDemo2', ['ngMaterial'])
         })
     );
   };
-});
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
 });
 
 angular.module('dividerDemo1', ['ngMaterial'])
