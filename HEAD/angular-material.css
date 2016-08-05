@@ -2684,7 +2684,6 @@ md-list-item {
               justify-content: flex-start;
       padding: 0 16px;
       margin: 0;
-      background-color: initial;
       font-weight: 400;
       text-align: left;
       border: medium none; }
