@@ -900,6 +900,13 @@ angular
     };
   });
 
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 angular.module('datepickerBasicUsage',
     ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
   $scope.myDate = new Date();
@@ -918,13 +925,6 @@ angular.module('datepickerBasicUsage',
     var day = date.getDay();
     return day === 0 || day === 6;
   };
-});
-
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
 });
 
 angular.module('dialogDemo1', ['ngMaterial'])
