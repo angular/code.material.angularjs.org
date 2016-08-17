@@ -1538,7 +1538,6 @@ md-calendar {
   border-spacing: 0;
   border-collapse: collapse; }
   .md-calendar-day-header th {
-    height: 44px;
     width: 44px;
     text-align: center;
     padding: 0;
@@ -3188,7 +3187,6 @@ md-menu-content.md-menu-bar-menu.md-dense {
   md-menu-content.md-menu-bar-menu.md-dense md-menu-divider {
     margin: 8px 0; }
   md-menu-content.md-menu-bar-menu.md-dense md-menu-item > .md-button, md-menu-content.md-menu-bar-menu.md-dense .md-menu > .md-button {
-    text-align: left;
     text-align: start; }
     [dir=rtl] md-menu-content.md-menu-bar-menu.md-dense md-menu-item > .md-button, [dir=rtl] md-menu-content.md-menu-bar-menu.md-dense .md-menu > .md-button {
       text-align: right; }
