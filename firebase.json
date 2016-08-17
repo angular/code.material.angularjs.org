@@ -93,6 +93,10 @@
       {
         "source": "/1.1.0-rc.5/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
         "destination": "/1.1.0-rc.5/index.html"
+      },
+      {
+        "source": "/1.1.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.0/index.html"
       }
     ],
     "redirects": [
@@ -123,19 +127,5 @@
       "**/.*",
       "**/node_modules/**"
     ]
-  },
-  "rewrites": [
-    {
-      "source": "/HEAD/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/HEAD/index.html"
-    },
-    {
-      "source": "/latest/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/latest/index.html"
-    },
-    {
-      "source": "/1.1.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
-      "destination": "/1.1.0/index.html"
-    }
-  ]
+  }
 }
