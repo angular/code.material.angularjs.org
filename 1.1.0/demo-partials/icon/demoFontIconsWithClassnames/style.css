@@ -1,0 +1,90 @@
+.icondemoFontIconsWithClassnames {
+  /* Bootstrap Overrides */
+  /* OLD STYLES */ }
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames {
+    padding: 25px;
+    width: 100%; }
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames,
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:before,
+  .icondemoFontIconsWithClassnames .appDemoFontIconsWithClassnames *:after {
+    box-sizing: border-box; }
+  .icondemoFontIconsWithClassnames [class^="icon-"]:before,
+  .icondemoFontIconsWithClassnames [class*=" icon-"]:before {
+    font-family: "icomoon";
+    display: inline-block;
+    vertical-align: middle;
+    line-height: 1;
+    font-weight: normal;
+    font-style: normal;
+    text-decoration: inherit;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale; }
+  .icondemoFontIconsWithClassnames .icon-home:before {
+    content: "\e900"; }
+  .icondemoFontIconsWithClassnames .icon-clock:before {
+    content: "\e94e"; }
+  .icondemoFontIconsWithClassnames .icon-user-plus:before {
+    content: "\e973"; }
+  .icondemoFontIconsWithClassnames .icon-google-plus2:before {
+    content: "\ea89"; }
+  .icondemoFontIconsWithClassnames .icon-youtube4:before {
+    content: "\ea9a"; }
+  .icondemoFontIconsWithClassnames .icon-settings:before {
+    content: "\e600"; }
+  .icondemoFontIconsWithClassnames md-progress-circular {
+    margin-bottom: 20px; }
+  .icondemoFontIconsWithClassnames header {
+    overflow: hidden; }
+  .icondemoFontIconsWithClassnames header h1 {
+    color: #888;
+    font-size: 36px;
+    font-weight: 300; }
+  .icondemoFontIconsWithClassnames .container {
+    margin: 0 auto;
+    max-width: 1200px;
+    min-width: 960px;
+    padding: 40px 40px;
+    font: 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  .icondemoFontIconsWithClassnames .glyph {
+    border-bottom: 1px dotted #ccc;
+    padding: 10px 0 20px;
+    margin-bottom: 20px; }
+  .icondemoFontIconsWithClassnames .preview-scale,
+  .icondemoFontIconsWithClassnames .preview-glyphs {
+    display: flex;
+    flex-direction: row; }
+  .icondemoFontIconsWithClassnames .preview-scale {
+    color: #888;
+    font-size: 12px;
+    margin-top: 24px; }
+  .icondemoFontIconsWithClassnames .step {
+    flex-grow: 1;
+    line-height: 0.5; }
+  .icondemoFontIconsWithClassnames .usage {
+    margin-top: 10px; }
+  .icondemoFontIconsWithClassnames .usage input {
+    font-family: monospace;
+    text-align: center; }
+  .icondemoFontIconsWithClassnames .usage .point {
+    width: 150px; }
+  .icondemoFontIconsWithClassnames .usage .class {
+    width: 250px; }
+  .icondemoFontIconsWithClassnames md-radio-button {
+    display: inline-block; }
+  .icondemoFontIconsWithClassnames .loading {
+    background-color: black;
+    filter: alpha(opacity=40);
+    height: 100%;
+    left: 0;
+    opacity: .40;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 90; }
+  .icondemoFontIconsWithClassnames .loading md-progress-circular {
+    left: 50%;
+    position: fixed;
+    top: 48%;
+    z-index: 100; }

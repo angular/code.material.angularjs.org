@@ -1,0 +1,28 @@
+<div class="doc-content theming">
+    
+    <h3 id="under-the-hood">Under the Hood</h3>
+<p>Angular Material dynamically generates CSS for registered themes by injecting several
+<code>&lt;script&gt;</code> tags into the <code>&lt;head&gt;</code> section of the application at runtime. Here is how
+that process currently works:</p>
+<ol>
+<li><p>During the Angular Material build process, a function in <code>gulp/util.js</code> called
+<a href="https://github.com/angular/material/blob/master/gulp/util.js#L187">themeBuildStream()</a>
+compiles all <code>*-theme.scss</code> files from components into a single CSS string that is
+injected into the <code>material.core</code> module as a constant called <code>$MD_THEME_CSS</code>.</p>
+</li>
+<li><p>At runtime, a function in <code>src/core/services/theming/theming.js</code> called
+<a href="https://github.com/angular/material/blob/master/src/core/services/theming/theming.js#L450">generateThemes()</a>
+parses <code>$MD_THEME_CSS</code> to generate the <code>&lt;style&gt;</code> tags that are added to the <code>&lt;head&gt;</code>
+section of the application. A closure variable called <code>GENERATED</code> is used to keep track
+of the themes that have had their CSS generated.</p>
+</li>
+<li><p>For each of the four (4) palettes (e.g. <code>primary</code>, <code>accent</code>, <code>warn</code> and <code>background</code>)
+<em>in each registered theme</em> (including the default theme), there are four (4) <code>&lt;style&gt;</code>
+tags added to the <code>&lt;head&gt;</code> section (e.g. <code>.md-primary</code>, <code>.md-primary.md-hue-1</code>,
+<code>.md-primary.md-hue-2</code>, <code>.md-primary.md-hue-3</code>). Each registered theme
+results in 16 <code>&lt;style&gt;</code> tags being generated.</p>
+</li>
+</ol>
+
+    
+</div>
