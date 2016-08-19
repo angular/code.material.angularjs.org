@@ -1,3 +1,109 @@
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/share-arrow.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
+
+
+angular.module('buttonsDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+
+  $scope.googleUrl = 'http://google.com';
+
+});
+
 (function () {
   'use strict';
   angular
@@ -333,112 +439,6 @@
     }
   }
 })();
-
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share-arrow' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/share-arrow.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
-
-angular.module('buttonsDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-
-  $scope.googleUrl = 'http://google.com';
-
-});
 
 
 angular.module('cardDemo1', ['ngMaterial'])
@@ -814,6 +814,92 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
+
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    }
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    }
+  });
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette); 
+
+    $scope.mdURL = 'https://www.google.com/design/spec/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color))
+        };
+      }
+    }
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
+
 
 angular.module('contentDemo1', ['ngMaterial'])
 
@@ -993,92 +1079,6 @@ angular.module('dialogDemo2', ['ngMaterial'])
     );
   };
 });
-
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
-
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    }
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    }
-  });
-
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette); 
-
-    $scope.mdURL = 'https://www.google.com/design/spec/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color))
-        };
-      }
-    }
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
 
 angular.module('dividerDemo1', ['ngMaterial'])
   .controller('AppCtrl', function($scope) {
