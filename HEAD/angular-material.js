@@ -3856,7 +3856,7 @@ function InterimElementProvider() {
       var unwatch = attrs.$observe(attrs.$normalize(className), updateFn);
 
       updateFn(getNormalizedAttrValue(className, attrs, ""));
-      scope.$on("$destroy", function() { unwatch(); });
+      scope.$on("$destroy", function() { unwatch() });
     }
   }
 
@@ -4069,7 +4069,7 @@ function InterimElementProvider() {
 
     attrValue = (attrValue || "");
 
-    if ( attrValue.indexOf("-") === 0 || attrValue.indexOf(" ") === 0) {
+    if ( attrValue.indexOf("-") == 0 || attrValue.indexOf(" ") == 0) {
       // For missing main-axis values
       attrValue = "none" + attrValue;
     }
@@ -5786,7 +5786,7 @@ function ThemingDirective($mdTheming, $interpolate, $log) {
               if (index > -1) {
                 registeredCallbacks.splice(index, 1);
               }
-            };
+            }
           },
           $setTheme: function (theme) {
             if (!$mdTheming.registered(theme)) {
@@ -5796,7 +5796,7 @@ function ThemingDirective($mdTheming, $interpolate, $log) {
 
             registeredCallbacks.forEach(function (cb) {
               cb();
-            });
+            })
           }
         };
         el.data('$mdThemeController', ctrl);
@@ -6318,7 +6318,7 @@ function AnimateDomUtils($mdUtil, $q, $timeout, $mdConstant, $animateCss) {
 
       if (addTransition) {
         transition = transition || "all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important";
-        css.transition = transition;
+        css['transition'] = transition;
       }
 
       return css;
@@ -6333,7 +6333,7 @@ function AnimateDomUtils($mdUtil, $q, $timeout, $mdConstant, $animateCss) {
       destination = destination || {};
 
       angular.forEach('left top right bottom width height'.split(' '), function (key) {
-        destination[key] = Math.round(source[key]);
+        destination[key] = Math.round(source[key])
       });
 
       destination.width = destination.width || (destination.right - destination.left);
@@ -6366,7 +6366,7 @@ function AnimateDomUtils($mdUtil, $q, $timeout, $mdConstant, $animateCss) {
     }
 
   };
-}
+};
 
 
 })();
@@ -7764,7 +7764,7 @@ angular.module('material.components.chips', [
    *  or one that should be observed and dynamically interpolated.
    */
   var STATIC_COLOR_EXPRESSION = /^{((\s|,)*?["'a-zA-Z-]+?\s*?:\s*?('|")[a-zA-Z0-9-.]*('|"))+\s*}$/;
-  var colorPalettes = null;
+  var colorPalettes = undefined;
 
   /**
    * @ngdoc module
@@ -7908,7 +7908,7 @@ angular.module('material.components.chips', [
 
         rgbColors[key] = parseColor(color);
         if (hasBackground && !hasColorProperty) {
-          rgbColors.color = parseColor(color, true);
+          rgbColors['color'] = parseColor(color, true);
         }
       });
 
@@ -8090,7 +8090,7 @@ angular.module('material.components.chips', [
             if (!angular.equals(colors, lastColors)) {
               var keys = Object.keys(lastColors);
 
-              if (lastColors.background && !keys.color) {
+              if (lastColors.background && !keys['color']) {
                 keys.push('color');
               }
 
@@ -8902,9 +8902,9 @@ function MdDialogProvider($$interimElementProvider) {
         };
         this.keypress = function($event) {
           if ($event.keyCode === $mdConstant.KEY_CODE.ENTER) {
-            $mdDialog.hide(this.result);
+            $mdDialog.hide(this.result)
           }
-        };
+        }
       },
       controllerAs: 'dialog',
       bindToController: true,
@@ -9317,14 +9317,13 @@ function MdDialogProvider($$interimElementProvider) {
           else              $animate.leave(options.backdrop);
         }
 
-
         if (options.disableParentScroll) {
           options.restoreScroll();
           delete options.restoreScroll;
         }
 
         options.hideBackdrop = null;
-      };
+      }
     }
 
     /**
@@ -19769,7 +19768,7 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming, $mdUtil) {
         });
       }
     }
-  };
+  }
 }
 MdSubheaderDirective.$inject = ["$mdSticky", "$compile", "$mdTheming", "$mdUtil"];
 
@@ -27306,7 +27305,6 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
         // interaction on the text input, and multiple tab stops for one component (picker)
         // may be confusing.
         var hiddenIcons = tAttrs.mdHideIcons;
-        var ariaLabelValue = tAttrs.ariaLabel || tAttrs.mdPlaceholder;
 
         var calendarButton = (hiddenIcons === 'all' || hiddenIcons === 'calendar') ? '' :
           '<md-button class="md-datepicker-button md-icon-button" type="button" ' +
@@ -27324,15 +27322,13 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
             '<div class="md-datepicker-expand-triangle"></div>' +
           '</md-button>';
 
-        return calendarButton +
-        '<div class="md-datepicker-input-container" ng-class="{\'md-datepicker-focused\': ctrl.isFocused}">' +
-          '<input ' +
-            (ariaLabelValue ? 'aria-label="' + ariaLabelValue + '" ' : '') +
-            'class="md-datepicker-input" ' +
-            'aria-haspopup="true" ' +
-            'ng-focus="ctrl.setFocused(true)" ' +
-            'ng-blur="ctrl.setFocused(false)"> ' +
-            triangleButton +
+        return '' +
+        calendarButton +
+        '<div class="md-datepicker-input-container" ' +
+            'ng-class="{\'md-datepicker-focused\': ctrl.isFocused}">' +
+          '<input class="md-datepicker-input" aria-haspopup="true" ' +
+              'ng-focus="ctrl.setFocused(true)" ng-blur="ctrl.setFocused(false)">' +
+          triangleButton +
         '</div>' +
 
         // This pane will be detached from here and re-attached to the document body.

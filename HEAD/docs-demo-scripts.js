@@ -788,17 +788,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('staticChipsDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    this.chipText = 'Football';
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('chipsCustomSeparatorDemo', ['ngMaterial'])
       .controller('CustomSeparatorCtrl', DemoCtrl);
 
@@ -811,6 +800,17 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     var semicolon = 186;
     this.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
     this.contacts = ['test@example.com'];
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('staticChipsDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    this.chipText = 'Football';
   }
 })();
 
