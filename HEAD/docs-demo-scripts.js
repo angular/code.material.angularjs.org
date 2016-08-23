@@ -900,13 +900,6 @@ angular
     };
   });
 
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
 angular.module('datepickerBasicUsage',
     ['ngMaterial', 'ngMessages']).controller('AppCtrl', function($scope) {
   $scope.myDate = new Date();
@@ -1186,6 +1179,13 @@ angular.module('dividerDemo1', ['ngMaterial'])
       }
     });
 })();
+
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
 
 (function() {
   'use strict';
@@ -2574,6 +2574,29 @@ angular.module('switchDemo1', ['ngMaterial'])
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
+
+  angular
+      .module('tabsDemoStaticTabs', ['ngMaterial'] )
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ( $scope ) {
+    $scope.data = {
+      selectedIndex: 0,
+      secondLocked:  true,
+      secondLabel:   "Item Two",
+      bottom:        false
+    };
+    $scope.next = function() {
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+    };
+    $scope.previous = function() {
+      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    };
+  }
+})();
+
+(function () {
+  'use strict';
   angular
       .module('tabsDemoDynamicTabs', ['ngMaterial'])
       .controller('AppCtrl', AppCtrl);
@@ -2612,29 +2635,6 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
   }
 })();
 
-
-(function () {
-  'use strict';
-
-  angular
-      .module('tabsDemoStaticTabs', ['ngMaterial'] )
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ( $scope ) {
-    $scope.data = {
-      selectedIndex: 0,
-      secondLocked:  true,
-      secondLabel:   "Item Two",
-      bottom:        false
-    };
-    $scope.next = function() {
-      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
-    };
-    $scope.previous = function() {
-      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
-    };
-  }
-})();
 
 
 angular.module('toastDemo1', ['ngMaterial'])
