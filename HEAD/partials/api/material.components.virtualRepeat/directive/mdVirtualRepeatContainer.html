@@ -18,15 +18,20 @@
 enough DOM nodes to fill the container and recycling them as the user scrolls.</p>
 <p>Once an element is not visible anymore, the VirtualRepeat recycles it and will reuse it for
 another visible item by replacing the previous dataset with the new one.</p>
-<p><strong>Common Issues</strong></p>
+<h3 id="common-issues">Common Issues</h3>
 <blockquote>
 <p>When having one-time bindings inside of the view template, the VirtualRepeat will not properly
 update the bindings for new items, since the view will be recycled.</p>
 </blockquote>
-<p><strong>Notes:</strong></p>
+<h3 id="notes">Notes</h3>
 <blockquote>
 <p>The VirtualRepeat is a similar implementation to the Android
 <a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html">RecyclerView</a></p>
+</blockquote>
+<!-- This comment forces a break between blockquotes //-->
+<blockquote>
+<p>Please also review the <a href="api/directive/mdVirtualRepeat">VirtualRepeat</a> documentation for more
+information.</p>
 </blockquote>
 
 </div>

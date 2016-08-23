@@ -13,17 +13,7 @@
 
 
 <div class="api-profile-description">
-  <p>Object for configuring the position of the panel. Examples:</p>
-<p>Centering the panel:
-<code>new MdPanelPosition().absolute().center();</code></p>
-<p>Overlapping the panel with an element:
-<code>new MdPanelPosition()
-    .relativeTo(someElement)
-    .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.ALIGN_TOPS);</code></p>
-<p>Aligning the panel with the bottom of an element:
-`new MdPanelPosition()
-    .relativeTo(someElement)
-    .addPanelPosition($mdPanel.xPosition.CENTER, $mdPanel.yPosition.BELOW);</p>
+  <p>Object for configuring the position of the panel.</p>
 
 </div>
 
@@ -33,6 +23,28 @@
 
   
 
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <h4 id="centering-the-panel">Centering the panel</h4>
+<hljs lang="js">
+new MdPanelPosition().absolute().center();
+</hljs>
+
+<h4 id="overlapping-the-panel-with-an-element">Overlapping the panel with an element</h4>
+<hljs lang="js">
+new MdPanelPosition()
+    .relativeTo(someElement)
+    .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.ALIGN_TOPS);
+</hljs>
+
+<h4 id="aligning-the-panel-with-the-bottom-of-an-element">Aligning the panel with the bottom of an element</h4>
+<hljs lang="js">
+new MdPanelPosition()
+    .relativeTo(someElement)
+    .addPanelPosition($mdPanel.xPosition.CENTER, $mdPanel.yPosition.BELOW);
+</hljs>
+  </section>
 
 
   
