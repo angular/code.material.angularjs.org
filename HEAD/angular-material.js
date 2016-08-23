@@ -12946,7 +12946,7 @@ angular.module('material.components.navBar', ['material.core'])
  *                                IMPLEMENTATION                             *
  *****************************************************************************/
 
-function MdNavBar($mdAria) {
+function MdNavBar($mdAria, $mdTheming) {
   return {
     restrict: 'E',
     transclude: true,
@@ -12971,13 +12971,14 @@ function MdNavBar($mdAria) {
         '<md-nav-ink-bar></md-nav-ink-bar>' +
       '</div>',
     link: function(scope, element, attrs, ctrl) {
+      $mdTheming(element);
       if (!ctrl.navBarAriaLabel) {
         $mdAria.expectAsync(element, 'aria-label', angular.noop);
       }
     },
   };
 }
-MdNavBar.$inject = ["$mdAria"];
+MdNavBar.$inject = ["$mdAria", "$mdTheming"];
 
 /**
  * Controller for the nav-bar component.
