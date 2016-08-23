@@ -5490,7 +5490,7 @@ md-tooltip {
     md-tooltip .md-content.md-show, md-tooltip .md-content.md-show-add-active {
       -webkit-transform: scale(1);
               transform: scale(1);
-      opacity: 1;
+      opacity: 0.9;
       -webkit-transform-origin: center top;
               transform-origin: center top; }
     md-tooltip .md-content.md-show-remove {
