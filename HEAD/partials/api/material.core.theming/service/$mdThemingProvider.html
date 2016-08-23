@@ -69,26 +69,6 @@ like <a href="https://github.com/webpack/raw-loader">raw-loader</a> for <code>we
     $mdThemingProvider.registerStyles(require(&#39;../styles/my-component.theme.css&#39;));
   });
 </hljs>
-
-<h3 id="browser-color">Browser color</h3>
-<p>Enables browser header coloring
-for more info please visit:
-<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color</a></p>
-<p>Options parameter: <br/>
-<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/>
-<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
-            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code>. <br/>
-<code>hue</code>     - The hue from the selected palette. Default is <code>800</code><br/></p>
-<hljs lang="js">
-  myAppModule.config(function($mdThemingProvider) {
-    // Enable browser color
-    $mdThemingProvider.enableBrowserColor({
-      theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
-      palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
-      hue: &#39;200&#39; // Default is &#39;800&#39;
-    });
-  });
-</hljs>
 </div>
 
 
@@ -330,84 +310,6 @@ classes when they change. Default is <code>false</code>. Enabling can reduce per
 
       
 
-      
-
-      </div>
-
-    </li>
-    
-    <li id="enableBrowserColor">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdThemingProvider.enableBrowserColor([options]);
-</code>
-      </h3>
-      <div class="service-desc"></div>
-
-      <div class="method-param-table">
-
-      
-      
-<table class="md-api-table">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  
-    
-  
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          options
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
-        <td class="description">
-          <p>Options object for the browser color<br/>
-<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/>
-<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
-            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code>. <br/>
-<code>hue</code>     - The hue from the selected palette. Default is <code>800</code><br/></p>
-
-          
-        </td>
-      </tr>
-    
-  
-
-  </tbody>
-</table>
-
-      
-
-      
-
-      
-      <table class="md-api-table">
-  <thead>
-  <tr>
-    <th>Returns</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>
-<code class="api-type label type-hint type-hint-function">Function</code></td>
-    <td class="description"><p>remove function of the browser color</p>
-</td>
-  </tr>
-  </tbody>
-</table>
       
 
       </div>
