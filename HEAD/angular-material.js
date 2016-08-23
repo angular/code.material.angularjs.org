@@ -27610,8 +27610,11 @@ MdContactChips.$inject = ["$mdTheming", "$mdUtil"];
     // Unless the user specifies so, the datepicker should not be a tab stop.
     // This is necessary because ngAria might add a tabindex to anything with an ng-model
     // (based on whether or not the user has turned that particular feature on/off).
-    if (!$attrs.tabindex) {
-      $element.attr('tabindex', '-1');
+    if ($attrs.tabindex) {
+      this.ngInputElement.attr('tabindex', $attrs.tabindex);
+      $attrs.$set('tabindex', null);
+    } else {
+      $attrs.$set('tabindex', '-1');
     }
 
     $mdTheming($element);
