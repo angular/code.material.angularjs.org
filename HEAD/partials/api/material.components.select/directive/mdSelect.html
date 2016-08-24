@@ -41,6 +41,8 @@ defined.</p>
 </ul>
 <p><strong>Note:</strong> A value of <code>undefined</code> <strong><em>is considered a valid value</em></strong> (and does not auto-apply this
 attribute) since you may wish this to be your &quot;Not Available&quot; or &quot;None&quot; option.</p>
+<p><strong>Note:</strong> Using the <code>value</code> attribute (as opposed to <code>ng-value</code>) always evaluates to a string, so
+<code>value=&quot;null&quot;</code> will require the test <code>ng-if=&quot;myValue != &#39;null&#39;&quot;</code> rather than <code>ng-if=&quot;!myValue&quot;</code>.</p>
 
 </div>
 

@@ -70,6 +70,10 @@ myAppModule.config(function($mdDateLocaleProvider) {
 
     $mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
     $mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
+
+    // You can also set when your calendar begins and ends.
+    $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
+    $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
 });
 </hljs>
   </section>
@@ -94,6 +98,10 @@ myAppModule.config(function($mdDateLocaleProvider) {
   </thead>
   <tbody>
   
+  
+    
+  
+    
   
     
   
@@ -356,6 +364,44 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <td class="description">
           <p>Translation of the button label &quot;Open calendar&quot; for the
     current locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          firstRenderableDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>The date from which the datepicker calendar will begin
+rendering. Note that this will be ignored if a minimum date is set. Defaults to January 1st 1880.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          lastRenderableDate
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-date">Date</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-date">Date</code></td>
+        <td class="description">
+          <p>The last date that will be rendered by the datepicker
+calendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.</p>
 
           
         </td>

@@ -1530,6 +1530,9 @@ md-calendar {
   .md-calendar-month-label md-icon {
     -webkit-transform: rotate(180deg);
             transform: rotate(180deg); }
+    [dir=rtl] .md-calendar-month-label md-icon {
+      -webkit-transform: none;
+              transform: none; }
   .md-calendar-month-label span {
     vertical-align: middle; }
 

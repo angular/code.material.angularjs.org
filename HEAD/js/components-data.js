@@ -37,7 +37,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdHighlightText",
         "label": "mdHighlightText",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/js/highlightDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/autocomplete/js/highlightDirective.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -186,7 +187,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdChipRemove",
         "label": "mdChipRemove",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipRemoveDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipRemoveDirective.js",
+        "hasDemo": true
       },
       {
         "name": "mdChips",
@@ -201,7 +203,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdChips",
         "label": "mdChips",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipsDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/chipsDirective.js",
+        "hasDemo": true
       },
       {
         "name": "mdContactChips",
@@ -216,7 +219,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdContactChips",
         "label": "mdContactChips",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/contactChipsDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/chips/js/contactChipsDirective.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -253,7 +257,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdColors",
         "label": "mdColors",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/colors/colors.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -318,7 +323,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdDateLocaleProvider",
         "label": "$mdDateLocaleProvider",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/dateLocaleProvider.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/dateLocaleProvider.js",
+        "hasDemo": false
       },
       {
         "name": "mdDatepicker",
@@ -333,7 +339,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdDatepicker",
         "label": "mdDatepicker",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/datepickerDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/datepicker/js/datepickerDirective.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -370,7 +377,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdDialog",
         "label": "$mdDialog",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/dialog/dialog.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
@@ -525,7 +533,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdGridTile",
         "label": "mdGridTile",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/grid-list.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/gridList/grid-list.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -562,7 +571,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdIconProvider",
         "label": "$mdIconProvider",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js",
+        "hasDemo": false
       },
       {
         "name": "$mdIcon",
@@ -571,7 +581,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdIcon",
         "label": "$mdIcon",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/icon/js/iconService.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
@@ -614,7 +625,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdInput",
         "label": "mdInput",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js",
+        "hasDemo": true
       },
       {
         "name": "mdSelectOnFocus",
@@ -629,7 +641,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSelectOnFocus",
         "label": "mdSelectOnFocus",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/input/input.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -672,7 +685,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdListItem",
         "label": "mdListItem",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/list/list.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -771,7 +785,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdNavItem",
         "label": "mdNavItem",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/navBar/navBar.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/navBar/navBar.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -802,7 +817,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/type/MdPanelRef",
         "label": "MdPanelRef",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
+        "hasDemo": false
       },
       {
         "name": "MdPanelPosition",
@@ -811,7 +827,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/type/MdPanelPosition",
         "label": "MdPanelPosition",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
@@ -848,7 +865,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdProgressCircular",
         "label": "$mdProgressCircular",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularProvider.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/progressCircular/js/progressCircularProvider.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
@@ -919,7 +937,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdRadioButton",
         "label": "mdRadioButton",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radio-button.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/radioButton/radio-button.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -984,7 +1003,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSidenavFocus",
         "label": "mdSidenavFocus",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js",
+        "hasDemo": true
       },
       {
         "name": "mdSidenav",
@@ -999,7 +1019,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSidenav",
         "label": "mdSidenav",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -1042,7 +1063,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSlider",
         "label": "mdSlider",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/slider/slider.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -1135,7 +1157,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSwipeRight",
         "label": "mdSwipeRight",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js",
+        "hasDemo": true
       },
       {
         "name": "mdSwipeUp",
@@ -1150,7 +1173,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSwipeUp",
         "label": "mdSwipeUp",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js",
+        "hasDemo": true
       },
       {
         "name": "mdSwipeDown",
@@ -1165,7 +1189,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdSwipeDown",
         "label": "mdSwipeDown",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/swipe/swipe.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -1236,7 +1261,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdTabs",
         "label": "mdTabs",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/js/tabsDirective.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/tabs/js/tabsDirective.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -1357,7 +1383,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/directive/mdVirtualRepeat",
         "label": "mdVirtualRepeat",
         "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
@@ -1444,7 +1471,8 @@ angular.module('docsApp').constant('COMPONENTS', [
         "url": "api/service/$mdInkRipple",
         "label": "$mdInkRipple",
         "module": "material.core",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js"
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
