@@ -40,12 +40,12 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
   var panelRef;
 
   function showPanel($event) {
-    var panelPosition = $mdPanelPosition
+    var panelPosition = $mdPanel.newPanelPosition()
         .absolute()
         .top(&#39;50%&#39;)
         .left(&#39;50%&#39;);
 
-    var panelAnimation = $mdPanelAnimation
+    var panelAnimation = $mdPanel.newPanelAnimation()
         .targetEvent($event)
         .defaultAnimation(&#39;md-panel-animate-fly&#39;)
         .closeTo(&#39;.show-button&#39;);
@@ -62,10 +62,10 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
       escapeToClose: true,
       focusOnOpen: true
     }
-    panelRef = $mdPanel.create(config);
-    panelRef.open()
-        .finally(function() {
-          panelRef = undefined;
+
+    $mdPanel.open(config)
+        .then(function(result) {
+          panelRef = result;
         });
   }
 
@@ -73,7 +73,7 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
     var toppings;
 
     function closeDialog() {
-      MdPanelRef.close();
+      MdPanelRef &amp;&amp; MdPanelRef.close();
     }
   }
 })(angular);
@@ -125,9 +125,15 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
-          <p>Specific configuration object that may contain
-the following properties:</p>
+          <p>Specific configuration object that may contain the
+    following properties:</p>
 <ul>
+<li><code>id</code> - <code>{string=}</code>: An ID to track the panel by. When an ID is provided,
+the created panel is added to a tracked panels object. Any subsequent
+requests made to create a panel with that ID are ignored. This is useful
+in having the panel service not open multiple panels from the same user
+interaction when there is no backdrop and events are propagated. Defaults
+to an arbitrary string that is not tracked.</li>
 <li><code>template</code> - <code>{string=}</code>: HTML template to show in the panel. This
 <strong>must</strong> be trusted HTML with respect to Angular’s
 <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.</li>
@@ -191,10 +197,10 @@ when the open() action is finished.</li>
 close/hide() action is starting.</li>
 <li><code>onDomRemoved</code> - <code>{function=}</code>: Callback function used to announce when
 the panel is removed from the DOM.</li>
-<li><code>origin</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to
-focus on when the panel closes. This is commonly the element which
-triggered the opening of the panel. If you do not use <code>origin</code>, you need
-to control the focus manually.</li>
+<li><code>origin</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to focus
+on when the panel closes. This is commonly the element which triggered
+the opening of the panel. If you do not use <code>origin</code>, you need to control
+the focus manually.</li>
 </ul>
 
           
@@ -275,7 +281,7 @@ methods, and call open from the returned panelRef.</p>
 <code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
           <p>Specific configuration object that may contain
-the properties defined in <code>$mdPanel.create</code>.</p>
+    the properties defined in <code>$mdPanel.create</code>.</p>
 
           
         </td>
@@ -301,9 +307,9 @@ the properties defined in <code>$mdPanel.create</code>.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise&lt;MdPanelRef&gt;</code></td>
+<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;!MdPanelRef&gt;</code></td>
     <td class="description"><p>panelRef A promise that resolves
-to an instance of the panel.</p>
+    to an instance of the panel.</p>
 </td>
   </tr>
   </tbody>

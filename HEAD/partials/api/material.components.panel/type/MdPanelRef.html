@@ -18,7 +18,7 @@ panel, along with the following properties:</p>
 <ul>
 <li><code>id</code> - <code>{string}</code>: The unique id for the panel. This id is used to track
 when a panel was interacted with.</li>
-<li><code>config</code> - <code>{Object=}</code>: The entire config object that was used in
+<li><code>config</code> - <code>{!Object=}</code>: The entire config object that was used in
 create.</li>
 <li><code>isAttached</code> - <code>{boolean}</code>: Whether the panel is attached to the DOM.
 Visibility to the user does not factor into isAttached.</li>
@@ -74,7 +74,7 @@ etc methods.</li>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
-opened.</p>
+    opened.</p>
 </td>
   </tr>
   </tbody>
@@ -90,9 +90,8 @@ opened.</p>
         <code class="method-function-syntax">MdPanelRef.close();
 </code>
       </h3>
-      <div class="service-desc"><p>Hides and detaches the panel. Note that this will <strong>not</strong> destroy the panel. If you
-don&#39;t intend on using the panel again, call the <a href="#destroy">destroy</a> method
-afterwards.</p>
+      <div class="service-desc"><p>Hides and detaches the panel. Note that this will <strong>not</strong> destroy the panel.
+If you don&#39;t intend on using the panel again, call the <a href="#destroy">destroy</a> method afterwards.</p>
 </div>
 
       <div class="method-param-table">
@@ -114,7 +113,7 @@ afterwards.</p>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
-closed.</p>
+    closed.</p>
 </td>
   </tr>
   </tbody>
@@ -153,7 +152,7 @@ hidden by default.</p>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
-attached.</p>
+    attached.</p>
 </td>
   </tr>
   </tbody>
@@ -169,7 +168,8 @@ attached.</p>
         <code class="method-function-syntax">MdPanelRef.detach();
 </code>
       </h3>
-      <div class="service-desc"><p>Removes the panel from the DOM. This will NOT hide the panel before removing it.</p>
+      <div class="service-desc"><p>Removes the panel from the DOM. This will NOT hide the panel before removing
+it.</p>
 </div>
 
       <div class="method-param-table">
@@ -191,7 +191,7 @@ attached.</p>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
-detached.</p>
+    detached.</p>
 </td>
   </tr>
   </tbody>
@@ -229,7 +229,7 @@ detached.</p>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel has
-shown and animations are completed.</p>
+    shown and animations are completed.</p>
 </td>
   </tr>
   </tbody>
@@ -267,7 +267,7 @@ shown and animations are completed.</p>
     <td>
 <code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
     <td class="description"><p>A promise that is resolved when the panel has
-hidden and animations are completed.</p>
+    hidden and animations are completed.</p>
 </td>
   </tr>
   </tbody>
@@ -351,7 +351,7 @@ hidden and animations are completed.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether or not to add the class to the panel
-   element instead of the container.</p>
+    element instead of the container.</p>
 
           
         </td>
@@ -430,7 +430,7 @@ hidden and animations are completed.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether or not to remove the class from the
-panel element instead of the container.</p>
+    panel element instead of the container.</p>
 
           
         </td>
@@ -509,7 +509,7 @@ panel element instead of the container.</p>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>Whether or not to remove the class from the panel
-   element instead of the container.</p>
+    element instead of the container.</p>
 
           
         </td>

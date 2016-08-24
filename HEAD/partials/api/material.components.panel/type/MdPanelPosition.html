@@ -35,7 +35,10 @@ new MdPanelPosition().absolute().center();
 <hljs lang="js">
 new MdPanelPosition()
     .relativeTo(someElement)
-    .addPanelPosition($mdPanel.xPosition.ALIGN_START, $mdPanel.yPosition.ALIGN_TOPS);
+    .addPanelPosition(
+      $mdPanel.xPosition.ALIGN_START,
+      $mdPanel.yPosition.ALIGN_TOPS
+    );
 </hljs>
 
 <h4 id="aligning-the-panel-with-the-bottom-of-an-element">Aligning the panel with the bottom of an element</h4>
@@ -126,8 +129,8 @@ within the viewport.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-element">Element</code><code class="api-type label type-hint type-hint-angular">angular.JQLite</code></td>
         <td class="description">
-          <p>Query selector,
-    DOM element, or angular element to position the panel with respect to.</p>
+          <p>Query selector, DOM element,
+    or angular element to position the panel with respect to.</p>
 
           
         </td>
@@ -322,8 +325,8 @@ position.</p>
         <code class="method-function-syntax">MdPanelPosition.start([start]);
 </code>
       </h3>
-      <div class="service-desc"><p>Sets the panel to the start of the page - <code>left</code> if <code>ltr</code> or <code>right</code> for <code>rtl</code>. Clears any previously set
-horizontal position.</p>
+      <div class="service-desc"><p>Sets the panel to the start of the page - <code>left</code> if <code>ltr</code> or <code>right</code> for
+<code>rtl</code>. Clears any previously set horizontal position.</p>
 </div>
 
       <div class="method-param-table">
@@ -397,8 +400,8 @@ horizontal position.</p>
         <code class="method-function-syntax">MdPanelPosition.end([end]);
 </code>
       </h3>
-      <div class="service-desc"><p>Sets the panel to the end of the page - <code>right</code> if <code>ltr</code> or <code>left</code> for <code>rtl</code>. Clears any previously set
-horizontal position.</p>
+      <div class="service-desc"><p>Sets the panel to the end of the page - <code>right</code> if <code>ltr</code> or <code>left</code> for <code>rtl</code>.
+Clears any previously set horizontal position.</p>
 </div>
 
       <div class="method-param-table">
