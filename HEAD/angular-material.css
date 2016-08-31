@@ -983,7 +983,8 @@ md-card {
       md-card md-card-header md-card-header-text .md-subhead {
         font-size: 14px; }
   md-card > img,
-  md-card > md-card-header img {
+  md-card > md-card-header img,
+  md-card md-card-title-media img {
     box-sizing: border-box;
     display: -webkit-box;
     display: -webkit-flex;
