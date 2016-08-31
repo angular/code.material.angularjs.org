@@ -22865,16 +22865,20 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
       positionDropdown();
 
       if (elements) {
-        $mdUtil.disableScrollAround(elements.ul);
-        enableWrapScroll = disableElementScrollEvents(angular.element(elements.wrap));
+        $mdUtil.nextTick(function () {
+          $mdUtil.disableScrollAround(elements.ul);
+          enableWrapScroll = disableElementScrollEvents(angular.element(elements.wrap));
+        }, false, $scope);
       }
     } else if (hidden && !oldHidden) {
-      $mdUtil.enableScrolling();
+      $mdUtil.nextTick(function () {
+        $mdUtil.enableScrolling();
 
-      if (enableWrapScroll) {
-        enableWrapScroll();
-        enableWrapScroll = null;
-      }
+        if (enableWrapScroll) {
+          enableWrapScroll();
+          enableWrapScroll = null;
+        }
+      }, false, $scope);
     }
   }
 
