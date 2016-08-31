@@ -49,6 +49,12 @@ angular.module('docsApp').constant('PAGES', {
       "outputPath": "partials/Theming/05_under_the_hood.html",
       "url": "/Theming/05_under_the_hood",
       "label": "Theming under the hood"
+    },
+    {
+      "name": "Browser Colors",
+      "outputPath": "partials/Theming/06_browser_color.html",
+      "url": "/Theming/06_browser_color",
+      "label": "Browser Colors"
     }
   ]
 });
