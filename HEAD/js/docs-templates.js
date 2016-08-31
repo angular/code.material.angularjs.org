@@ -708,7 +708,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <table class="md-api-table">\n' +
     '    <tr>\n' +
     '      <td>flex</td>\n' +
-    '      <td>Will grow and shrink as needed. Starts with a size of 0%. Same as <code>flex="0"</code>.</td>\n' +
+    '      <td>\n' +
+    '        Will grow and shrink as needed. Starts with a size of 0%. Same as <code>flex="0"</code>.\n' +
+    '        <br />\n' +
+    '        <br />\n' +
+    '        <b>Note:</b> There is a known bug with this attribute in IE11 when the parent container has\n' +
+    '        no explicit height set. See our\n' +
+    '        <a ng-href="layout/tips#layout-column-0px-ie11">Troubleshooting</a> page for more info.\n' +
+    '      </td>\n' +
     '    </tr>\n' +
     '    <tr>\n' +
     '      <td>flex="none"</td>\n' +
@@ -1773,97 +1780,91 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <br/>\n' +
     '  <hr/>\n' +
     '\n' +
-    '  <h3>Layout Column and Container Heights</h3>\n' +
+    '  <h3 id="layout-column-0px-ie11">IE11 - Layout Column, 0px Height</h3>\n' +
     '\n' +
     '  <p>\n' +
-    '    In Flexbox, some browsers will determine size of the flex containers based on the size of their\n' +
-    '    content. This is particularly noticable if you have a non-flex item (say a toolbar), followed by\n' +
-    '    two flex items in a column layout.\n' +
+    '    In Internet Explorer 11, when you have a column layout with unspecified height and flex items\n' +
+    '    inside, the browser can get confused and incorrectly calculate the height of each item (and thus\n' +
+    '    the container) as <code>0px</code>, making the items overlap and not take up the proper amount\n' +
+    '    of space.\n' +
     '  </p>\n' +
     '\n' +
-    '  <docs-demo demo-title="Flex Height - Odd (Chrome )" class="small-demo colorNested">\n' +
+    '  <p class="layout_note">\n' +
+    '    <b>Note:</b> The flex items below actually do have some height. This is because our doc-specific\n' +
+    '    CSS provides a small bit of padding (<code>8px</code>). We felt that the extra padding made for\n' +
+    '    a better demo of the actual issue.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="IE11 - Layout Column, 0px Height" class="colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="column" style="height: 450px !important;">\n' +
-    '        <div style="height: 50px;">Toolbar</div>\n' +
+    '      <div flex layout="column">\n' +
+    '        <div flex>\n' +
+    '          11111<br />11111<br />11111\n' +
+    '        </div>\n' +
     '\n' +
-    '        <div flex layout="column" style="overflow: auto;">\n' +
-    '          <md-content flex layout-margin>\n' +
-    '            <p>Flex with smaller content...</p>\n' +
+    '        <div flex>\n' +
+    '          22222<br />22222<br />22222\n' +
+    '        </div>\n' +
     '\n' +
-    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
-    '          </md-content>\n' +
-    '\n' +
-    '          <md-content flex layout-margin>\n' +
-    '            <p>\n' +
-    '              Flex with larger content...\n' +
-    '            </p>\n' +
-    '\n' +
-    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
-    '\n' +
-    '            <div id="toHide">\n' +
-    '              <p ng-repeat="i in [5,6,7,8,9]">Line {{i}}</p>\n' +
-    '            </div>\n' +
-    '          </md-content>\n' +
+    '        <div flex>\n' +
+    '          33333<br />33333<br />33333\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    Notice how in Chrome the second scrollable area is nearly twice as tall as the first. This is\n' +
-    '    because we are using nested flex items and the contents of the second\n' +
-    '    <code>&lt;md-content&gt;</code> are twice as large as the first. Try clicking the button below\n' +
-    '    to toggle the light blue box; this will make the containers the same size.\n' +
-    '  </p>\n' +
-    '\n' +
-    '  <p layout="row" layout-align="center center">\n' +
-    '    <md-button class="md-raised" ng-click="tips.toggleContentSize()">\n' +
-    '      {{tips.toggleButtonText}} Blue Box\n' +
-    '    </md-button>\n' +
+    '    Unfortunately, there is no IE11 specific fix available, and the suggested workaround is to set\n' +
+    '    the <code>flex-basis</code> property to <code>auto</code> instead of <code>0px</code> (which is\n' +
+    '    the default setting).\n' +
     '  </p>\n' +
     '\n' +
     '  <p>\n' +
-    '    In order to fix this, we must specify the height of the outer flex item. The easiest way to\n' +
-    '    achieve this is to simply set the height to <code>100%</code>. When paired with the\n' +
-    '    <code>flex</code> attribute, this achieves the desired result.\n' +
+    '    You can easily achieve this using the <code>flex="auto"</code> attribute that the Layout system\n' +
+    '    provides.\n' +
     '  </p>\n' +
     '\n' +
-    '  <p>\n' +
-    '    <em>\n' +
-    '      <strong>Note:</strong> When <code>height: 100%</code> is used without the <code>flex</code>\n' +
-    '      attribute, the container will take up as much space as available and squish the toolbar which\n' +
-    '      has been set to a height of <code>50px</code>.\n' +
-    '    </em>\n' +
-    '  </p>\n' +
-    '\n' +
-    '  <docs-demo demo-title="Chrome Flex Height - Fixed" class="small-demo colorNested">\n' +
+    '  <docs-demo demo-title="IE11 - Layout Column, 0px Height (Fix 1)" class="colorNested">\n' +
     '    <demo-file name="index.html">\n' +
-    '      <div layout="column" style="height: 450px !important;">\n' +
-    '        <div style="height: 50px;">Toolbar</div>\n' +
+    '      <div flex layout="column">\n' +
+    '        <div flex="auto">\n' +
+    '          11111<br />11111<br />11111\n' +
+    '        </div>\n' +
     '\n' +
-    '        <div flex layout="column" style="overflow: auto; height: 100%;">\n' +
-    '          <md-content flex layout-margin>\n' +
-    '            <p>Flex with smaller content...</p>\n' +
+    '        <div flex="auto">\n' +
+    '          22222<br />22222<br />22222\n' +
+    '        </div>\n' +
     '\n' +
-    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
-    '          </md-content>\n' +
-    '\n' +
-    '          <md-content flex layout-margin>\n' +
-    '            <p>\n' +
-    '              Flex with larger content...\n' +
-    '            </p>\n' +
-    '\n' +
-    '            <p ng-repeat="i in [0,1,2,3,4]">Line {{i}}</p>\n' +
-    '\n' +
-    '            <div>\n' +
-    '              <p ng-repeat="i in [5,6,7,8,9]">Line {{i}}</p>\n' +
-    '            </div>\n' +
-    '          </md-content>\n' +
+    '        <div flex="auto">\n' +
+    '          33333<br />33333<br />33333\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Alternatively, you can manually set the height of the layout container (<code>400px</code>\n' +
+    '    in the demo below).\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="IE11 - Layout Column, 0px Height (Fix 2)" class="colorNested">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div flex layout="column" style="height: 400px;">\n' +
+    '        <div flex>\n' +
+    '          11111<br />11111<br />11111\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <div flex>\n' +
+    '          22222<br />22222<br />22222\n' +
+    '        </div>\n' +
+    '\n' +
+    '        <div flex>\n' +
+    '          33333<br />33333<br />33333\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
     '\n' +
     '  <br/>\n' +
     '  <hr/>\n' +
