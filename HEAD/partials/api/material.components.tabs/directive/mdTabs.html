@@ -13,9 +13,10 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>&lt;md-tabs&gt;</code> directive serves as the container for 1..n <code>&lt;md-tab&gt;</code> child directives to produces a Tabs components.
-In turn, the nested <code>&lt;md-tab&gt;</code> directive is used to specify a tab label for the <strong>header button</strong> and a [optional] tab view
-content that will be associated with each tab button.</p>
+  <p>The <code>&lt;md-tabs&gt;</code> directive serves as the container for 1..n <code>&lt;md-tab&gt;</code> child directives to
+produces a Tabs components. In turn, the nested <code>&lt;md-tab&gt;</code> directive is used to specify a tab
+label for the <strong>header button</strong> and a [optional] tab view content that will be associated with
+each tab button.</p>
 <p>Below is the markup for its simplest usage:</p>
  <hljs lang="html">
  <md-tabs>
@@ -31,9 +32,15 @@ content that will be associated with each tab button.</p>
 <li>Tabs with internal view content</li>
 <li>Tabs with external view content</li>
 </ol>
-<p><strong>Tab-only</strong> support is useful when tab buttons are used for custom navigation regardless of any other components, content, or views.
-<strong>Tabs with internal views</strong> are the traditional usages where each tab has associated view content and the view switching is managed internally by the Tabs component.
-<strong>Tabs with external view content</strong> is often useful when content associated with each tab is independently managed and data-binding notifications announce tab selection changes.</p>
+<p><strong>Tab-only</strong> support is useful when tab buttons are used for custom navigation regardless of any
+other components, content, or views.</p>
+<p><i><b>Note:</b> If you are using the Tabs component for page-level navigation, please take a look
+at the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead as it can handle this
+case a bit more natively.</i></p>
+<p><strong>Tabs with internal views</strong> are the traditional usages where each tab has associated view
+content and the view switching is managed internally by the Tabs component.</p>
+<p><strong>Tabs with external view content</strong> is often useful when content associated with each tab is
+independently managed and data-binding notifications announce tab selection changes.</p>
 <p>Additional features also include:</p>
 <ul>
 <li>Content can include any markup.</li>
