@@ -1,0 +1,214 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>With only defining themes, one couldn&#39;t get non ngMaterial elements colored with Material colors,
+<code>$mdColors</code> service is used by the md-color directive to convert the 1..n color expressions to RGBA values and will apply
+those values to element as CSS property values.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+   angular.controller(&#39;myCtrl&#39;, function ($mdColors) {
+     var color = $mdColors.getThemeColor(&#39;myTheme-red-200-0.5&#39;);
+     ...
+   });
+ </hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="applyThemeColors">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdColors.applyThemeColors(element, colorExpression);
+</code>
+      </h3>
+      <div class="service-desc"><p>Gets a color json object, keys are css properties and values are string of the wanted color
+Then calculate the rgba() values based on the theme color parts</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* element</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-domelement">DOMElement</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-domelement">DOMElement</code></td>
+        <td class="description">
+          <p>the element to apply the styles on.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* colorExpression</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>json object, keys are css properties and values are string of the wanted color,
+for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="getThemeColor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdColors.getThemeColor(expression);
+</code>
+      </h3>
+      <div class="service-desc"><p>Get parsed color from expression</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* expression</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>string of a color expression (for instance <code>&#39;red-700-0.8&#39;</code>)</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
+    <td class="description"><p>a css color expression (for instance <code>rgba(211, 47, 47, 0.8)</code>)</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
