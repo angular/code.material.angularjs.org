@@ -1183,7 +1183,7 @@ angular.module('dividerDemo1', ['ngMaterial'])
           templateUrl: 'dialog.html',
           targetEvent: $event
         });
-      }
+      };
     });
 })();
 
@@ -1361,11 +1361,11 @@ angular.module('appDemoSvgIcons', ['ngMaterial'])
     $scope.insertDriveIconURL = 'img/icons/ic_insert_drive_file_24px.svg';
     $scope.getAndroid = function() {
       return 'img/icons/android.svg';
-    }
+    };
     /* Returns base64 encoded SVG. */
     $scope.getAndroidEncoded = function() {
       return 'PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCI+PGcgaWQ9ImFuZHJvaWQiPjxwYXRoIGQ9Ik02IDE4YzAgLjU1LjQ1IDEgMSAxaDF2My41YzAgLjgzLjY3IDEuNSAxLjUgMS41czEuNS0uNjcgMS41LTEuNVYxOWgydjMuNWMwIC44My42NyAxLjUgMS41IDEuNXMxLjUtLjY3IDEuNS0xLjVWMTloMWMuNTUgMCAxLS40NSAxLTFWOEg2djEwek0zLjUgOEMyLjY3IDggMiA4LjY3IDIgOS41djdjMCAuODMuNjcgMS41IDEuNSAxLjVTNSAxNy4zMyA1IDE2LjV2LTdDNSA4LjY3IDQuMzMgOCAzLjUgOHptMTcgMGMtLjgzIDAtMS41LjY3LTEuNSAxLjV2N2MwIC44My42NyAxLjUgMS41IDEuNXMxLjUtLjY3IDEuNS0xLjV2LTdjMC0uODMtLjY3LTEuNS0xLjUtMS41em0tNC45Ny01Ljg0bDEuMy0xLjNjLjItLjIuMi0uNTEgMC0uNzEtLjItLjItLjUxLS4yLS43MSAwbC0xLjQ4IDEuNDhDMTMuODUgMS4yMyAxMi45NSAxIDEyIDFjLS45NiAwLTEuODYuMjMtMi42Ni42M0w3Ljg1LjE1Yy0uMi0uMi0uNTEtLjItLjcxIDAtLjIuMi0uMi41MSAwIC43MWwxLjMxIDEuMzFDNi45NyAzLjI2IDYgNS4wMSA2IDdoMTJjMC0xLjk5LS45Ny0zLjc1LTIuNDctNC44NHpNMTAgNUg5VjRoMXYxem01IDBoLTFWNGgxdjF6Ii8+PC9nPjwvc3ZnPg==';
-    }
+    };
 });
 
 
@@ -1906,20 +1906,20 @@ PanelMenuCtrl.prototype.selectDessert = function(dessert) {
 
 
 PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
-  var handled;
+  var handled, els, index, prevIndex, nextIndex;
   switch ($event.which) {
     case 38: // Up Arrow.
-      var els = document.querySelectorAll('.demo-menu-item');
-      var index = indexOf(els, document.activeElement);
-      var prevIndex = (index + els.length - 1) % els.length;
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      prevIndex = (index + els.length - 1) % els.length;
       els[prevIndex].focus();
       handled = true;
       break;
 
     case 40: // Down Arrow.
-      var els = document.querySelectorAll('.demo-menu-item');
-      var index = indexOf(els, document.activeElement);
-      var nextIndex = (index + 1) % els.length;
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      nextIndex = (index + 1) % els.length;
       els[nextIndex].focus();
       handled = true;
       break;
@@ -2113,7 +2113,7 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
         if ( (j < 2) && !self.showList[j] && self.activated ) {
           self.showList[j] = true;
         }
-        if ( counter++ % 4 == 0 ) j++;
+        if ( counter++ % 4 === 0 ) j++;
 
         // Show the indicator in the "Used within Containers" after 200ms delay
         if ( j == 2 ) self.contained = "indeterminate";
@@ -2205,7 +2205,7 @@ angular
     self.selectedId = 2;
     self.selectedUser = function() {
       return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
-    }
+    };
   });
 
 (function () {
@@ -2314,7 +2314,7 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
   $scope.clearValue = function() {
     $scope.quest = undefined;
     $scope.favoriteColor = undefined;
-    $scope.myForm.$setPristine();;
+    $scope.myForm.$setPristine();
   };
   $scope.save = function() {
     if ($scope.myForm.$valid) {
@@ -2376,7 +2376,7 @@ angular
           .then(function () {
             $log.debug("toggle " + navID + " is done");
           });
-      }
+      };
     }
   })
   .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
@@ -2408,7 +2408,7 @@ angular
     function buildToggler(componentId) {
       return function() {
         $mdSidenav(componentId).toggle();
-      }
+      };
     }
   });
 
@@ -2746,7 +2746,7 @@ angular.module('toastDemo1', ['ngMaterial'])
           )
           .then(function() {
             isDlgOpen = false;
-          })
+          });
       };
     });
 
@@ -2794,7 +2794,7 @@ angular.module('tooltipDemo1', ['ngMaterial'])
     if (val && val.length ) {
       $scope.demo.showTooltip = true;
     }
-  })
+  });
 });
 
 (function () {
