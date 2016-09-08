@@ -1495,6 +1495,16 @@ angular.module('docsApp').constant('COMPONENTS', [
         "module": "material.core",
         "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/theming/theming.js",
         "hasDemo": false
+      },
+      {
+        "name": "$mdTheming",
+        "type": "service",
+        "outputPath": "partials/api/material.core.theming/service/$mdTheming.html",
+        "url": "api/service/$mdTheming",
+        "label": "$mdTheming",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/theming/theming.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
