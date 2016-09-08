@@ -14225,7 +14225,7 @@ angular
 
 
 /**
- * @ngdoc object
+ * @ngdoc type
  * @name MdPanelAnimation
  * @description
  * Animation configuration object. To use, create an MdPanelAnimation with the
