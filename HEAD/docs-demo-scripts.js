@@ -2538,6 +2538,21 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
     ];
 });
 
+angular.module('switchDemo1', ['ngMaterial'])
+.controller('SwitchDemoCtrl', function($scope) {
+  $scope.data = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+
+  $scope.message = 'false';
+
+  $scope.onChange = function(cbState) {
+  	$scope.message = cbState;
+  };
+});
+
 angular.module('demoSwipe', ['ngMaterial'])
   .controller('demoSwipeCtrl', function($scope) {
     $scope.onSwipeLeft = function(ev) {
@@ -2555,21 +2570,6 @@ angular.module('demoSwipe', ['ngMaterial'])
       alert('You swiped down!!');
     };
   });
-
-angular.module('switchDemo1', ['ngMaterial'])
-.controller('SwitchDemoCtrl', function($scope) {
-  $scope.data = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
-
-  $scope.message = 'false';
-
-  $scope.onChange = function(cbState) {
-  	$scope.message = cbState;
-  };
-});
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
