@@ -85,7 +85,16 @@ Currently supported proxy items are</p>
 <li><code>md-menu</code> (Open)</li>
 </ul>
 <p>This means, when using a supported proxy item inside of <code>md-list-item</code>, the list item will
-become clickable and executes the associated action of the proxy element on click.</p>
+automatically become clickable and executes the associated action of the proxy element on click.</p>
+<p>It is possible to disable this behavior by applying the <code>md-no-proxy</code> class to the list item.</p>
+<hljs lang="html">
+  <md-list-item class="md-no-proxy">
+    <span>No Proxy List</span>
+    <md-checkbox class="md-secondary"></md-checkbox>
+  </md-list-item>
+</hljs>
+
+<p>Here are a few examples of proxy elements inside of a list item.</p>
 <hljs lang="html">
   <md-list-item>
     <span>First Line</span>
