@@ -804,7 +804,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "datepickerdemoBasicUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/datepicker/demoBasicUsage/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {
@@ -822,36 +829,6 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/datepicker/demoBasicUsage/index.html"
-        }
-      },
-      {
-        "ngModule": {
-          "name": "datepickerValidations",
-          "module": "datepickerValidations",
-          "dependencies": [
-            "ngMaterial",
-            "ngMessages"
-          ]
-        },
-        "id": "datepickerdemoValidations",
-        "css": [],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/datepicker/demoValidations/script.js"
-          }
-        ],
-        "moduleName": "material.components.datepicker",
-        "name": "demoValidations",
-        "label": "Validations",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/datepicker/demoValidations/index.html"
         }
       }
     ],
