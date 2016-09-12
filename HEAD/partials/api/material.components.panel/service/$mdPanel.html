@@ -31,7 +31,7 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
 (function(angular, undefined) {
-  ‘use strict’;
+  &#39;use strict&#39;;
 
   angular
       .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
@@ -69,11 +69,9 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
         });
   }
 
-  function DialogController(MdPanelRef, toppings) {
-    var toppings;
-
+  function DialogController(MdPanelRef) {
     function closeDialog() {
-      MdPanelRef &amp;&amp; MdPanelRef.close();
+      if (MdPanelRef) MdPanelRef.close();
     }
   }
 })(angular);

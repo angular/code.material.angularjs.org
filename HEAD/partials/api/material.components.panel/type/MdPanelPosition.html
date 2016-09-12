@@ -744,37 +744,39 @@ chosen; the last position will be chose whether it is on-screen or not.</p>
 <p>xPosition must be one of the following values available on
 $mdPanel.xPosition:</p>
 <p>CENTER | ALIGN_START | ALIGN_END | OFFSET_START | OFFSET_END</p>
-<hr>
-<ul>
-<li>*</li>
-<li>PANEL   *</li>
-<li>*</li>
-</ul>
-<hr>
-<p>  A B    C    D E</p>
-<p>A: OFFSET_START (for LTR displays)
+<pre>
+   *************
+   *           *
+   *   PANEL   *
+   *           *
+   *************
+  A B    C    D E
+
+A: OFFSET_START (for LTR displays)
 B: ALIGN_START (for LTR displays)
 C: CENTER
 D: ALIGN_END (for LTR displays)
-E: OFFSET_END (for LTR displays)</p>
+E: OFFSET_END (for LTR displays)
+</pre>
+
 <p>yPosition must be one of the following values available on
 $mdPanel.yPosition:</p>
 <p>CENTER | ALIGN_TOPS | ALIGN_BOTTOMS | ABOVE | BELOW</p>
-<p>  F
-  G <strong><strong><strong>*</strong></strong></strong></p>
-<pre><code>*           *
-</code></pre>
-<p>  H <em>   PANEL   </em></p>
-<pre><code>*           *
-</code></pre>
-<p>  I <strong><strong><strong>*</strong></strong></strong>
-  J</p>
-<p>F: BELOW
+<pre>
+  F
+  G *************
+    *           *
+  H *   PANEL   *
+    *           *
+  I *************
+  J
+
+F: BELOW
 G: ALIGN_TOPS
 H: CENTER
 I: ALIGN_BOTTOMS
-J: ABOVE</p>
-</div>
+J: ABOVE
+</pre></div>
 
       <div class="method-param-table">
 
