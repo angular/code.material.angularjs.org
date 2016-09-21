@@ -1440,28 +1440,6 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
-    "name": "material.core.compiler",
-    "type": "module",
-    "outputPath": "partials/api/material.core.compiler/index.html",
-    "url": "api/material.core.compiler",
-    "label": "material.core.compiler",
-    "module": "material.core",
-    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/compiler/compiler.js",
-    "docs": [
-      {
-        "name": "$mdCompiler",
-        "type": "service",
-        "outputPath": "partials/api/material.core.compiler/service/$mdCompiler.html",
-        "url": "api/service/$mdCompiler",
-        "label": "$mdCompiler",
-        "module": "material.core",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/compiler/compiler.js",
-        "hasDemo": false
-      }
-    ],
-    "hasDemo": false
-  },
-  {
     "name": "material.core.ripple",
     "type": "module",
     "outputPath": "partials/api/material.core.ripple/index.html",
