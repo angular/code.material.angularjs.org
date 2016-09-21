@@ -593,6 +593,276 @@ panel.</p>
       </div>
 
     </li>
+    
+    <li id="registerInterceptor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.registerInterceptor(type, callback);
+</code>
+      </h3>
+      <div class="service-desc"><p>Registers an interceptor with the panel. The callback should return a promise,
+which will allow the action to continue when it gets resolved, or will
+prevent an action if it is rejected. The interceptors are called sequentially
+and it reverse order. <code>type</code> must be one of the following
+values available on <code>$mdPanel.interceptorTypes</code>:</p>
+<ul>
+<li><code>CLOSE</code> - Gets called before the panel begins closing.</li>
+</ul>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* type</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Type of interceptor.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* callback</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;any&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;any&gt;</code></td>
+        <td class="description">
+          <p>Callback to be registered.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelref">MdPanelRef</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="removeInterceptor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.removeInterceptor(type, callback);
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes a registered interceptor.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* type</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Type of interceptor to be removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* callback</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(): !angular.$q.Promise&lt;any&gt;</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(): !angular.$q.Promise&lt;any&gt;</code></td>
+        <td class="description">
+          <p>Interceptor to be removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelref">MdPanelRef</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="removeAllInterceptors">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelRef.removeAllInterceptors([type]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes all interceptors. If a type is supplied, only the
+interceptors of that type will be cleared.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          type
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Type of interceptors to be removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelref">MdPanelRef</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
     </ul>
 </section>
   
