@@ -4739,7 +4739,7 @@ md-switch {
     margin-right: 8px;
     float: left; }
     [dir=rtl] md-switch .md-container {
-      margin-right: auto;
+      margin-right: 0px;
       margin-left: 8px; }
   md-switch:not([disabled]) .md-dragging,
   md-switch:not([disabled]).md-dragging .md-container {
