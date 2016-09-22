@@ -104,7 +104,31 @@ directive for displaying the results inside of the dropdown.<br/></p>
 
 <p>In this example, our code utilizes <code>md-item-template</code> and <code>ng-messages</code> to specify
     input validation for the field.</p>
+<h3 id="asynchronous-results">Asynchronous Results</h3>
+<p>The autocomplete items expression also supports promises, which will resolve with the query results.</p>
+<hljs lang="js">
+  function AppController($scope, $http) {
+    $scope.query = function(searchText) {
+      return $http
+        .get(BACKEND_URL + &#39;/items/&#39; + searchText)
+        .then(function(data) {
+          // Map the response object to the data object.
+          return data;
+        });
+    };
+  }
+</hljs>
 
+<hljs lang="html">
+  <md-autocomplete
+      md-selected-item="selectedItem"
+      md-search-text="searchText"
+      md-items="item in query(searchText)">
+    <md-item-template>
+      <span md-highlight-text="searchText">{{item}}</span>
+    </md-item-template>
+</md-autocomplete>
+</hljs>
   
   </section>
   
@@ -138,8 +162,10 @@ directive for displaying the results inside of the dropdown.<br/></p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>An expression in the format of <code>item in items</code> to iterate over
-    matches for your search.</p>
+          <p>An expression in the format of <code>item in results</code> to iterate over
+    matches for your search.<br/><br/>
+    The <code>results</code> expression can be also a function, which returns the results synchronously
+    or asynchronously (per Promise)</p>
 
           
         </td>
