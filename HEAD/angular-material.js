@@ -1070,7 +1070,7 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
 
   var $mdUtil = {
     dom: {},
-    now: window.performance && window.performance.now ?
+    now: window.performance ?
       angular.bind(window.performance, window.performance.now) : Date.now || function() {
       return new Date().getTime();
     },
