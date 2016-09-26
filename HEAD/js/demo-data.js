@@ -1884,42 +1884,6 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "panelGroupsDemo",
-          "module": "panelGroupsDemo",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "paneldemoGroups",
-        "css": [
-          {
-            "name": "style.global.css",
-            "label": "style.global.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/panel/demoGroups/style.global.css"
-          }
-        ],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/panel/demoGroups/script.js"
-          }
-        ],
-        "moduleName": "material.components.panel",
-        "name": "demoGroups",
-        "label": "Groups",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/panel/demoGroups/index.html"
-        }
-      },
-      {
-        "ngModule": {
           "name": "panelAnimationsDemo",
           "module": "panelAnimationsDemo",
           "dependencies": [

@@ -470,6 +470,81 @@ angular.module('cardDemo3', ['ngMaterial'])
   $scope.imagePath = 'img/washedout.png';
 });
 
+
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
+
+angular.module('checkboxDemo3', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
+});
+
+
+angular.module('checkboxDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+    $scope.items = [1,2,3,4,5];
+      $scope.selected = [];
+
+      $scope.toggle = function (item, list) {
+        var idx = list.indexOf(item);
+        if (idx > -1) {
+          list.splice(idx, 1);
+        }
+        else {
+          list.push(item);
+        }
+      };
+
+      $scope.exists = function (item, list) {
+        return list.indexOf(item) > -1;
+      };
+});
+
 (function () {
   'use strict';
   angular
@@ -738,81 +813,6 @@ angular.module('cardDemo3', ['ngMaterial'])
     this.chipText = 'Football';
   }
 })();
-
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
-});
-
-
-angular.module('checkboxDemo3', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.items = [1,2,3,4,5];
-  $scope.selected = [1];
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminate = function() {
-    return ($scope.selected.length !== 0 &&
-        $scope.selected.length !== $scope.items.length);
-  };
-
-  $scope.isChecked = function() {
-    return $scope.selected.length === $scope.items.length;
-  };
-
-  $scope.toggleAll = function() {
-    if ($scope.selected.length === $scope.items.length) {
-      $scope.selected = [];
-    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-      $scope.selected = $scope.items.slice(0);
-    }
-  };
-});
-
-
-angular.module('checkboxDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-    $scope.items = [1,2,3,4,5];
-      $scope.selected = [];
-
-      $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-          list.splice(idx, 1);
-        }
-        else {
-          list.push(item);
-        }
-      };
-
-      $scope.exists = function (item, list) {
-        return list.indexOf(item) > -1;
-      };
-});
 
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
@@ -1955,95 +1955,6 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
   }
 };
 
-})();
-
-(function() {
-  'use strict';
-
-  angular
-    .module('panelGroupsDemo', ['ngMaterial'])
-    .controller('PanelGroupsCtrl', PanelGroupsCtrl)
-    .controller('PanelMenuCtrl', PanelMenuCtrl);
-
-  function PanelGroupsCtrl($mdPanel) {
-    this.settings = {
-      name: 'settings',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-    this.favorite = {
-      name: 'favorite',
-      items: [
-        'Add to Favorites'
-      ]
-    };
-    this.more = {
-      name: 'more',
-      items: [
-        'Account',
-        'Sign Out'
-      ]
-    };
-
-    this.showToolbarMenu = function($event, menu) {
-      var template = '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>';
-
-      var position = $mdPanel.newPanelPosition()
-          .relativeTo($event.srcElement)
-          .addPanelPosition(
-            $mdPanel.xPosition.ALIGN_START,
-            $mdPanel.yPosition.BELOW
-          );
-
-      $mdPanel.newPanelGroup('toolbar', {
-        maxOpen: 2
-      });
-
-      var config = {
-        id: 'toolbar_' + menu.name,
-        attachTo: angular.element(document.body),
-        controller: PanelMenuCtrl,
-        controllerAs: 'ctrl',
-        template: template,
-        position: position,
-        panelClass: 'menu-panel-container',
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event,
-        focusOnOpen: false,
-        zIndex: 100,
-        propagateContainerEvents: true,
-        groupName: 'toolbar'
-      };
-
-      $mdPanel.open(config);
-    }
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
-    this.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    }
-  }
 })();
 
 (function() {
