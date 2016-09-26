@@ -141,6 +141,10 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 
 <h3 id="pre-rendered-dialogs">Pre-Rendered Dialogs</h3>
 <p>By using the <code>contentElement</code> option, it is possible to use an already existing element in the DOM.</p>
+<blockquote>
+<p>Pre-rendered dialogs will be not linked to any scope and will not instantiate any new controller.<br/>
+You can manually link the elements to a scope or instantiate a controller from the template (<code>ng-controller</code>)</p>
+</blockquote>
 <hljs lang="js">
   $scope.showPrerenderedDialog = function() {
     $mdDialog.show({
