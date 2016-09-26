@@ -1070,9 +1070,28 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
 
   var $mdUtil = {
     dom: {},
-    now: window.performance ?
+    now: window.performance && window.performance.now ?
       angular.bind(window.performance, window.performance.now) : Date.now || function() {
       return new Date().getTime();
+    },
+
+    /**
+     * Cross-version compatibility method to retrieve an option of a ngModel controller,
+     * which supports the breaking changes in the AngularJS snapshot (SHA 87a2ff76af5d0a9268d8eb84db5755077d27c84c).
+     * @param {!angular.ngModelCtrl} ngModelCtrl
+     * @param {!string} optionName
+     * @returns {Object|undefined}
+     */
+    getModelOption: function (ngModelCtrl, optionName) {
+      if (!ngModelCtrl.$options) {
+        return;
+      }
+
+      var $options = ngModelCtrl.$options;
+
+      // The newer versions of Angular introduced a `getOption function and made the option values no longer
+      // visible on the $options object.
+      return $options.getOption ? $options.getOption(optionName) : $options[optionName]
     },
 
     /**
@@ -18334,9 +18353,11 @@ function SelectMenuDirective($parse, $mdUtil, $mdConstant, $mdTheming) {
 
       // Allow users to provide `ng-model="foo" ng-model-options="{trackBy: 'foo.id'}"` so
       // that we can properly compare objects set on the model to the available options
-      if (ngModel.$options && ngModel.$options.trackBy) {
+      var trackByOption = $mdUtil.getModelOption(ngModel, 'trackBy');
+
+      if (trackByOption) {
         var trackByLocals = {};
-        var trackByParsed = $parse(ngModel.$options.trackBy);
+        var trackByParsed = $parse(trackByOption);
         self.hashGetter = function(value, valueScope) {
           trackByLocals.$value = value;
           return trackByParsed(valueScope || $scope, trackByLocals);
@@ -18452,7 +18473,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdConstant, $mdTheming) {
           values.push(self.selected[hashKey]);
         }
       }
-      var usingTrackBy = self.ngModel.$options && self.ngModel.$options.trackBy;
+      var usingTrackBy = $mdUtil.getModelOption(self.ngModel, 'trackBy');
 
       var newVal = self.isMultiple ? values : values[0];
       var prevVal = self.ngModel.$modelValue;
@@ -29109,7 +29130,7 @@ function MdContactChips($mdTheming, $mdUtil) {
     // Forwards any events from the input to the root element. This is necessary to get `updateOn`
     // working for events that don't bubble (e.g. 'blur') since Angular binds the handlers to
     // the `<md-datepicker>`.
-    var updateOn = ngModelCtrl.$options && ngModelCtrl.$options.updateOn;
+    var updateOn = self.$mdUtil.getModelOption(ngModelCtrl, 'updateOn');
 
     if (updateOn) {
       this.ngInputElement.on(
