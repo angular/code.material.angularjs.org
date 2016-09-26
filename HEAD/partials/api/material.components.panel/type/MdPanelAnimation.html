@@ -15,14 +15,6 @@
 <div class="api-profile-description">
   <p>Animation configuration object. To use, create an MdPanelAnimation with the
 desired properties, then pass the object as part of $mdPanel creation.</p>
-<p>Example:</p>
-<p>var panelAnimation = new MdPanelAnimation()
-    .openFrom(myButtonEl)
-    .closeTo(&#39;.my-button&#39;)
-    .withAnimation($mdPanel.animation.SCALE);</p>
-<p>$mdPanel.create({
-  animation: panelAnimation
-});</p>
 
 </div>
 
@@ -32,6 +24,21 @@ desired properties, then pass the object as part of $mdPanel creation.</p>
 
   
 
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+var panelAnimation = new MdPanelAnimation()
+    .openFrom(myButtonEl)
+    .duration(1337)
+    .closeTo(&#39;.my-button&#39;)
+    .withAnimation($mdPanel.animation.SCALE);
+
+$mdPanel.create({
+  animation: panelAnimation
+});
+</hljs>
+  </section>
 
 
   
@@ -234,6 +241,81 @@ the bounds.</p>
         </td>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">{open: string, close: string}</code></td>
+        <td class="description">
+          
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-mdpanelanimation">MdPanelAnimation</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="duration">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">MdPanelAnimation.duration(duration);
+</code>
+      </h3>
+      <div class="service-desc"><p>Specifies the duration of the animation in milliseconds. The <code>duration</code>
+method accepts either a number or an object with separate open and close
+durations.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* duration</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code><code class="api-type label type-hint type-hint-object">{open: number, close: number}</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code><code class="api-type label type-hint type-hint-object">{open: number, close: number}</code></td>
         <td class="description">
           
           

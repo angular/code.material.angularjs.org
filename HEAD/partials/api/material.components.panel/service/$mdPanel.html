@@ -199,6 +199,10 @@ the panel is removed from the DOM.</li>
 on when the panel closes. This is commonly the element which triggered
 the opening of the panel. If you do not use <code>origin</code>, you need to control
 the focus manually.</li>
+<li><code>groupName</code> - <code>{string=}</code>: Name of a panel group. This group name is used
+for configuring the number of open panels and identifying specific
+behaviors for groups. For instance, all tooltips could be identified
+using the same groupName.</li>
 </ul>
 
           
@@ -388,6 +392,186 @@ the animation config object.</p>
   </tr>
   </tbody>
 </table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="newPanelGroup">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.newPanelGroup(groupName, [config]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Creates a panel group and adds it to a tracked list of panel groups.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* groupName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Name of the group to create.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          config
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Specific configuration object that may contain the
+    following properties:</p>
+<ul>
+<li><code>maxOpen</code> - <code>{number=}</code>: The maximum number of panels that are allowed to
+be open within a defined panel group.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">!Object&lt;string, {panels: !Array&lt;!MdPanelRef&gt;, openPanels: !Array&lt;!MdPanelRef&gt;, maxOpen: number}&gt;</code></td>
+    <td class="description"><p>panelGroup</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setGroupMaxOpen">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.setGroupMaxOpen(groupName, maxOpen);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets the maximum number of panels in a group that can be opened at a given
+time.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* groupName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The name of the group to configure.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* maxOpen</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The maximum number of panels that can be
+    opened. Infinity can be passed in to remove the maxOpen limit.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
       
 
       </div>

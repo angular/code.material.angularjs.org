@@ -829,6 +829,16 @@ angular.module('docsApp').constant('COMPONENTS', [
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
         "hasDemo": false
+      },
+      {
+        "name": "MdPanelAnimation",
+        "type": "type",
+        "outputPath": "partials/api/material.components.panel/type/MdPanelAnimation.html",
+        "url": "api/type/MdPanelAnimation",
+        "label": "MdPanelAnimation",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
