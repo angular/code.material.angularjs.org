@@ -19,10 +19,15 @@ enough DOM nodes to fill the container and recycling them as the user scrolls.</
 <p>Once an element is not visible anymore, the VirtualRepeat recycles it and will reuse it for
 another visible item by replacing the previous dataset with the new one.</p>
 <h3 id="common-issues">Common Issues</h3>
-<blockquote>
-<p>When having one-time bindings inside of the view template, the VirtualRepeat will not properly
+<ul>
+<li><p>When having one-time bindings inside of the view template, the VirtualRepeat will not properly
 update the bindings for new items, since the view will be recycled.</p>
-</blockquote>
+</li>
+<li><p>Directives inside of a VirtualRepeat will be only compiled (linked) once, because those
+are will be recycled items and used for other items.
+The VirtualRepeat just updates the scope bindings.</p>
+</li>
+</ul>
 <h3 id="notes">Notes</h3>
 <blockquote>
 <p>The VirtualRepeat is a similar implementation to the Android
