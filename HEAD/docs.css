@@ -791,6 +791,7 @@ md-tabs.demo-source-tabs .active md-tab-label {
   display: -webkit-box;
   display: -webkit-flex;
   display: flex;
+  overflow: hidden;
 }
 .small-demo .demo-source-tabs:not(.ng-hide) {
   height: 224px;
