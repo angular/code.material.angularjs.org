@@ -6,7 +6,8 @@ hljs {
   color: white;
   font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
   line-height: 1.45;
-  tab-size: 2;
+  -moz-tab-size: 2;
+       tab-size: 2;
   -webkit-font-smoothing: auto;
   -webkit-text-size-adjust: none;
   position: relative;
@@ -201,8 +202,8 @@ demo-include {
   z-index: 2;
 }
 [ng-panel] {
-  transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   -webkit-transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
+  transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   position: absolute;
   left: 0;
   top: 0;
@@ -210,17 +211,20 @@ demo-include {
   height: 100%;
 }
 [ng-panel].ng-enter {
-  transform: translate3d(0, -15%, 0);
+  -webkit-transform: translate3d(0, -15%, 0);
+          transform: translate3d(0, -15%, 0);
   opacity: 0.1;
   z-index: 1;
 }
 [ng-panel].ng-enter.ng-enter-active,
 [ng-panel].ng-leave {
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 [ng-panel].ng-leave.ng-leave-active {
-  transform: translate3d(0, 0, 0);
+  -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
   opacity: 0.5;
 }
 [ng-panel] .demo-content {
@@ -270,21 +274,23 @@ body.docs-body {
 .md-fab.docs-scroll-fab {
   position: fixed !important;
 
-  transform: scale(0);
+  -webkit-transform: scale(0);
 
-  /* Manually prefix because the docs won't be prefixed. See #9785 */
-  -webkit-transition: transform 0.2s;
-  -moz-transition: transform 0.2s;
-  -o-transition: transform 0.2s;
+          transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s;
+  transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .docs-scroll-fab.scrolling {
-  transform: scale(1);
+  -webkit-transform: scale(1);
+          transform: scale(1);
 }
 
 #license-footer {
-  align-self: flex-end;
+  -webkit-align-self: flex-end;
+          align-self: flex-end;
   padding: 16px 32px;
   width: 100%;
 
@@ -304,7 +310,7 @@ body.docs-body {
 }
 
 .training_info {
-  opacity:0.4;
+  opacity: 0.4;
   text-transform: none;
 }
 /***************
@@ -314,9 +320,6 @@ a {
   text-decoration: none;
   font-weight: 400;
   -webkit-transition: border-bottom 0.35s;
-  -moz-transition: border-bottom 0.35s;
-  -ms-transition: border-bottom 0.35s;
-  -o-transition: border-bottom 0.35s;
   transition: border-bottom 0.35s;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -419,7 +422,6 @@ ul.skip-links li a {
   top: 0;
   width: 92%;
   -webkit-transition: opacity   0.15s linear;
-  -moz-transition: opacity  0.15s linear;
   transition: opacity   0.15s linear;
 }
 ul.skip-links li a:focus {
@@ -523,7 +525,10 @@ code:not(.highlight) {
   color: white;
   cursor: pointer;
   display: block;
-  align-items: inherit;
+  -webkit-box-align: inherit;
+  -webkit-align-items: inherit;
+              -ms-grid-row-align: inherit;
+          align-items: inherit;
   line-height: 40px;
   margin: 0;
   max-height: 40px;
@@ -560,7 +565,9 @@ body[dir=rtl] .docs-menu .md-button {
 }
 
 .docs-menu md-select md-select-label {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+          justify-content: flex-end;
   padding-top: 10px;
 }
 
@@ -596,20 +603,13 @@ body[dir=rtl] .menu-heading {
   text-align: right;
 }
 
-
-.docs-menu li.parentActive,
-.docs-menu li.parentActive .menu-toggle-list {
-  /*background-color: #2C80D2 !important;*/
-}
 .menu-toggle-list {
   overflow: hidden;
   position: relative;
   z-index: 1;
   -webkit-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
-  -webkit-transition-property: height;
-  -moz-transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
-  -moz-transition-property: height;
   transition: 0.75s cubic-bezier(0.35, 0, 0.25, 1);
+  -webkit-transition-property: height;
   transition-property: height;
 }
 .docs-menu .menu-toggle-list a.md-button {
@@ -631,23 +631,32 @@ body[dir=rtl] .menu-heading {
   margin-left: auto;
   speak: none;
   vertical-align: middle;
-  transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
-  transition: transform 0.3s ease-in-out;
+          transform: rotate(180deg);
   -webkit-transition: -webkit-transform 0.3s ease-in-out;
+  transition: -webkit-transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 .md-button-toggle .md-toggle-icon.toggled {
-  transform: rotate(0deg);
   -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
 }
 
 /* End Docs Menu */
 
 .docs-logo {
   text-align: center;
+  display: -webkit-box;
+  display: -webkit-flex;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
   padding: 0 0 16px;
   margin: 0 auto;
 }
@@ -658,18 +667,21 @@ body[dir=rtl] .menu-heading {
   height: 150px;
   width: auto;
   display: block;
-  transform-origin: 50% 0;
-  transform: scale(1.2);
+  -webkit-transform-origin: 50% 0;
+          transform-origin: 50% 0;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
 }
 .nav-header {
   background-color: #106CC8;
+  background: -webkit-linear-gradient(#185694, #106cc8);
   background: linear-gradient(#185694, #106cc8);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #185694), color-stop(1, #106cc8));
   background: -webkit-linear-gradient(top, #185694 0%, #106cc8 100%);
-  background: -moz-linear-gradient(top, #185694 0%, #106cc8 100%);
   background: linear-gradient(top, #185694 0%, #106cc8 100%);
   border-bottom: 1px solid #267ED5;
-  flex-shrink: 0;
+  -webkit-flex-shrink: 0;
+          flex-shrink: 0;
   z-index: 2;
 }
 a.docs-logo {
@@ -776,12 +788,8 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 .demo-content {
   position: relative;
-  overflow:hidden;
   display: -webkit-box;
   display: -webkit-flex;
-  display: -moz-box;
-  display: -moz-flex;
-  display: -ms-flexbox;
   display: flex;
 }
 .small-demo .demo-source-tabs:not(.ng-hide) {
@@ -792,20 +800,14 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 
 .doc-content > * {
-  -webkit-box-flex: 1 1 auto;
+  -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
-  -moz-box-flex: 1 1 auto;
-  -moz-flex: 1 1 auto;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 .demo-content > * {
-  -webkit-box-flex: 1 1 0%;
+  -webkit-box-flex: 1;
   -webkit-flex: 1 1 0%;
-  -moz-box-flex: 1 1 0%;
-  -moz-flex: 1 1 0%;
-  -ms-flex: 1 1 0%;
-  flex: 1 1 0%;
+          flex: 1 1 0%;
 }
 
 .demo-content > div[layout-fill] {
@@ -848,7 +850,6 @@ md-toolbar.demo-toolbar .md-button.active, md-toolbar.demo-toolbar .md-button.ac
 
 md-toolbar.demo-toolbar .md-button {
   -webkit-transition: all 0.3s linear;
-  -moz-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #616161;
 }
@@ -903,7 +904,6 @@ ul.buckets li a {
   font-weight: 500;
   padding: 16px 0;
   text-decoration: none;
-  -webkit-transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   background-color: #f6f6f6 !important;
   box-shadow: none !important;
   margin-right: 0;
@@ -912,6 +912,7 @@ ul.buckets li a {
 ul.buckets li a,
 ul.buckets li a md-icon {
   color: #666 !important;
+  -webkit-transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
 }
 ul.buckets li a:hover,
@@ -954,9 +955,7 @@ header.api-profile-header > h2 {
   text-align: center;
   margin-top: 14px;
   -webkit-align-self: flex-start;
-  -moz-align-self: flex-start;
-  -ms-flex-item-align: start;
-  align-self: flex-start;
+          align-self: flex-start;
 }
 .api-params-title {
   color: #888;
@@ -973,8 +972,6 @@ ul.methods .method-function-syntax {
   font-weight: normal;
   font-size: 2.0rem;
   margin: 0;
-  -webkit-margin-before: 0;
-  -webkit-margin-after: 0;
 }
 
 h3 .method-function-syntax {
@@ -1145,10 +1142,7 @@ docs-demo .doc-demo-content {
 
 .no-transition {
   -webkit-transition: none !important;
-  -moz-transition:    none !important;
-  -ms-transition:     none !important;
-  -o-transition:      none !important;
-  transition:         none !important;
+  transition: none !important;
 }
 
 table.attributes, table.md-api-table {
