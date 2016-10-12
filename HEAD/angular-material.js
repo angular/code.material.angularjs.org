@@ -31805,15 +31805,11 @@ MenuBarController.prototype.handleParentClick = function(event) {
   var openMenu = this.querySelector('md-menu.md-open');
 
   if (openMenu && !openMenu.contains(event.target)) {
-    angular.element(openMenu).controller('mdMenu').close();
+    angular.element(openMenu).controller('mdMenu').close(true, {
+      closeAll: true
+    });
   }
 };
-
-
-
-
-
-
 
 })();
 (function(){
