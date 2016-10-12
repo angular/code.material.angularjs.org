@@ -956,6 +956,9 @@ md-card {
         border-radius: 50%; }
       md-card md-card-header md-card-avatar md-icon {
         padding: 8px; }
+        md-card md-card-header md-card-avatar md-icon > svg {
+          height: inherit;
+          width: inherit; }
       md-card md-card-header md-card-avatar + md-card-header-text {
         max-height: 40px; }
         md-card md-card-header md-card-avatar + md-card-header-text .md-title {
