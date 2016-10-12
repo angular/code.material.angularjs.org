@@ -1973,7 +1973,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </span>\n' +
     '</md-button>\n' +
     '\n' +
-    '<ul id="docs-menu-{{section.name | nospace}}" class="menu-toggle-list">\n' +
+    '<ul id="docs-menu-{{section.name | nospace}}"\n' +
+    '  class="menu-toggle-list"\n' +
+    '  aria-hidden="{{!renderContent}}"\n' +
+    '  ng-style="{ visibility: renderContent ? \'visible\' : \'hidden\' }">\n' +
+    '\n' +
     '  <li ng-repeat="page in section.pages">\n' +
     '    <menu-link section="page"></menu-link>\n' +
     '  </li>\n' +
