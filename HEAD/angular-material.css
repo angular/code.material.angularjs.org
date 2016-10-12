@@ -5391,6 +5391,8 @@ md-toolbar {
     -webkit-box-align: center;
     -webkit-align-items: center;
             align-items: center; }
+  .md-toolbar-tools md-checkbox {
+    margin: inherit; }
   .md-toolbar-tools .md-button {
     margin-top: 0;
     margin-bottom: 0; }
