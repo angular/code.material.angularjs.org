@@ -1472,6 +1472,28 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
+    "name": "material.core.interaction",
+    "type": "module",
+    "outputPath": "partials/api/material.core.interaction/index.html",
+    "url": "api/material.core.interaction",
+    "label": "material.core.interaction",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/interaction/interaction.js",
+    "docs": [
+      {
+        "name": "$mdInteraction",
+        "type": "service",
+        "outputPath": "partials/api/material.core.interaction/service/$mdInteraction.html",
+        "url": "api/service/$mdInteraction",
+        "label": "$mdInteraction",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/interaction/interaction.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.ripple",
     "type": "module",
     "outputPath": "partials/api/material.core.ripple/index.html",
