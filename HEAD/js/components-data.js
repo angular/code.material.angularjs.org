@@ -1494,6 +1494,28 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
+    "name": "material.core.liveannouncer",
+    "type": "module",
+    "outputPath": "partials/api/material.core.liveannouncer/index.html",
+    "url": "api/material.core.liveannouncer",
+    "label": "material.core.liveannouncer",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/liveAnnouncer/live-announcer.js",
+    "docs": [
+      {
+        "name": "$mdLiveAnnouncer",
+        "type": "service",
+        "outputPath": "partials/api/material.core.liveannouncer/service/$mdLiveAnnouncer.html",
+        "url": "api/service/$mdLiveAnnouncer",
+        "label": "$mdLiveAnnouncer",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/liveAnnouncer/live-announcer.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.ripple",
     "type": "module",
     "outputPath": "partials/api/material.core.ripple/index.html",
