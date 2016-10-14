@@ -1673,6 +1673,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "menuDemoCustomTrigger",
+          "module": "menuDemoCustomTrigger",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "menudemoCustomTrigger",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoCustomTrigger/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoCustomTrigger/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoCustomTrigger",
+        "label": "Custom Trigger",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoCustomTrigger/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "menuDemoPosition",
           "module": "menuDemoPosition",
           "dependencies": [

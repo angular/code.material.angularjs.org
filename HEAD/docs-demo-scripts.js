@@ -1566,45 +1566,6 @@ angular.module('listDemo1', ['ngMaterial'])
     ];
 });
 
-angular
-  .module('menuDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.openMenu = function($mdOpenMenu, ev) {
-      originatorEv = ev;
-      $mdOpenMenu(ev);
-    };
-
-    this.notificationsEnabled = true;
-    this.toggleNotifications = function() {
-      this.notificationsEnabled = !this.notificationsEnabled;
-    };
-
-    this.redial = function() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .targetEvent(originatorEv)
-          .clickOutsideToClose(true)
-          .parent('body')
-          .title('Suddenly, a redial')
-          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
-          .ok('That was easy')
-      );
-
-      originatorEv = null;
-    };
-
-    this.checkVoicemail = function() {
-      // This never happens.
-    };
-  });
-
 angular.module('listDemo2', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
@@ -1685,6 +1646,52 @@ angular.module('listDemo2', ['ngMaterial'])
 });
 
 angular
+  .module('menuDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+
+      originatorEv = null;
+    };
+
+    this.checkVoicemail = function() {
+      // This never happens.
+    };
+  });
+
+angular
+  .module('menuDemoCustomTrigger', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
+  });
+
+angular
   .module('menuDemoPosition', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -1693,12 +1700,12 @@ angular
   })
   .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
     var originatorEv;
-    
+
     this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
 
-    this.openMenu = function($mdOpenMenu, ev) {
+    this.openMenu = function($mdMenu, ev) {
       originatorEv = ev;
-      $mdOpenMenu(ev);
+      $mdMenu.open(ev);
     };
 
     this.announceClick = function(index) {
@@ -2886,6 +2893,25 @@ angular.module('toolbarDemo2', ['ngMaterial'])
   }
 });
 
+angular.module('tooltipDemo1', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.demo = {
+    showTooltip : false,
+    tipDirection : ''
+  };
+
+  $scope.demo.delayTooltip = undefined;
+  $scope.$watch('demo.delayTooltip',function(val) {
+    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+  });
+
+  $scope.$watch('demo.tipDirection',function(val) {
+    if (val && val.length ) {
+      $scope.demo.showTooltip = true;
+    }
+  });
+});
+
 (function () {
   'use strict';
 
@@ -2956,25 +2982,6 @@ angular.module('toolbarDemo2', ['ngMaterial'])
         this.dynamicItems = new DynamicItems();
       });
 })();
-
-angular.module('tooltipDemo1', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.demo = {
-    showTooltip : false,
-    tipDirection : ''
-  };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip',function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
-
-  $scope.$watch('demo.tipDirection',function(val) {
-    if (val && val.length ) {
-      $scope.demo.showTooltip = true;
-    }
-  });
-});
 
 (function () {
   'use strict';

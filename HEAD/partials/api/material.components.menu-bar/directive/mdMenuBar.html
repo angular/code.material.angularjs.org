@@ -31,7 +31,7 @@ of the <code>md-menu</code> directive to behave similar to an operating system p
     <hljs lang="html">
 <md-menu-bar>
   <md-menu>
-    <button ng-click="$mdOpenMenu()">
+    <button ng-click="$mdMenu.open()">
       File
     </button>
     <md-menu-content>
@@ -44,7 +44,7 @@ of the <code>md-menu</code> directive to behave similar to an operating system p
       <md-menu-item>
       <md-menu-item>
         <md-menu>
-          <md-button ng-click="$mdOpenMenu()">New</md-button>
+          <md-button ng-click="$mdMenu.open()">New</md-button>
           <md-menu-content>
             <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
             <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
@@ -69,7 +69,7 @@ to the <code>string</code> value of the <code>value</code> attribute. If you nee
 <hljs lang="html">
 <md-menu-bar>
  <md-menu>
-   <button ng-click="$mdOpenMenu()">
+   <button ng-click="$mdMenu.open()">
      Sample Menu
    </button>
    <md-menu-content>
@@ -90,7 +90,7 @@ To nest a menu place the nested menu inside the content of the <code>md-menu-ite
 <hljs lang="html">
 <md-menu-item>
   <md-menu>
-    <button ng-click="$mdOpenMenu()">New</md-button>
+    <button ng-click="$mdMenu.open()">New</md-button>
     <md-menu-content>
       <md-menu-item><md-button ng-click="ctrl.sampleAction('New Document', $event)">Document</md-button></md-menu-item>
       <md-menu-item><md-button ng-click="ctrl.sampleAction('New Spreadsheet', $event)">Spreadsheet</md-button></md-menu-item>
