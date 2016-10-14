@@ -441,6 +441,36 @@ angular.module('buttonsDemo1', ['ngMaterial'])
 });
 
 
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+})
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+});
+
+
+angular.module('cardDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo3', ['ngMaterial'])
+
+.config(['$mdIconProvider', function($mdIconProvider) {
+  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+}])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
 angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -513,36 +543,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-})
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});
-
-
-angular.module('cardDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo3', ['ngMaterial'])
-
-.config(['$mdIconProvider', function($mdIconProvider) {
-  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
-}])
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
 });
 
 (function () {
@@ -1566,6 +1566,45 @@ angular.module('listDemo1', ['ngMaterial'])
     ];
 });
 
+angular
+  .module('menuDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdOpenMenu, ev) {
+      originatorEv = ev;
+      $mdOpenMenu(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+
+      originatorEv = null;
+    };
+
+    this.checkVoicemail = function() {
+      // This never happens.
+    };
+  });
+
 angular.module('listDemo2', ['ngMaterial'])
 .config(function($mdIconProvider) {
   $mdIconProvider
@@ -1644,45 +1683,6 @@ angular.module('listDemo2', ['ngMaterial'])
   };
 
 });
-
-angular
-  .module('menuDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.openMenu = function($mdOpenMenu, ev) {
-      originatorEv = ev;
-      $mdOpenMenu(ev);
-    };
-
-    this.notificationsEnabled = true;
-    this.toggleNotifications = function() {
-      this.notificationsEnabled = !this.notificationsEnabled;
-    };
-
-    this.redial = function() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .targetEvent(originatorEv)
-          .clickOutsideToClose(true)
-          .parent('body')
-          .title('Suddenly, a redial')
-          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
-          .ok('That was easy')
-      );
-
-      originatorEv = null;
-    };
-
-    this.checkVoicemail = function() {
-      // This never happens.
-    };
-  });
 
 angular
   .module('menuDemoPosition', ['ngMaterial'])
@@ -2886,25 +2886,6 @@ angular.module('toolbarDemo2', ['ngMaterial'])
   }
 });
 
-angular.module('tooltipDemo1', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.demo = {
-    showTooltip : false,
-    tipDirection : ''
-  };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip',function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
-
-  $scope.$watch('demo.tipDirection',function(val) {
-    if (val && val.length ) {
-      $scope.demo.showTooltip = true;
-    }
-  });
-});
-
 (function () {
   'use strict';
 
@@ -2975,6 +2956,25 @@ angular.module('tooltipDemo1', ['ngMaterial'])
         this.dynamicItems = new DynamicItems();
       });
 })();
+
+angular.module('tooltipDemo1', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.demo = {
+    showTooltip : false,
+    tipDirection : ''
+  };
+
+  $scope.demo.delayTooltip = undefined;
+  $scope.$watch('demo.delayTooltip',function(val) {
+    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+  });
+
+  $scope.$watch('demo.tipDirection',function(val) {
+    if (val && val.length ) {
+      $scope.demo.showTooltip = true;
+    }
+  });
+});
 
 (function () {
   'use strict';
