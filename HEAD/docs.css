@@ -673,9 +673,6 @@ body[dir=rtl] .menu-heading {
   background-color: #106CC8;
   background: -webkit-linear-gradient(#185694, #106cc8);
   background: linear-gradient(#185694, #106cc8);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #185694), color-stop(1, #106cc8));
-  background: -webkit-linear-gradient(top, #185694 0%, #106cc8 100%);
-  background: linear-gradient(top, #185694 0%, #106cc8 100%);
   border-bottom: 1px solid #267ED5;
   -webkit-flex-shrink: 0;
           flex-shrink: 0;
