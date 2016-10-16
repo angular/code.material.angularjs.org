@@ -34,13 +34,32 @@
 </ul>
 <p>There is an example below of how this should look.</p>
 <h3 id="notes">Notes</h3>
+<p><strong>Autocomplete Dropdown Items Rendering</strong></p>
 <p>The <code>md-autocomplete</code> uses the the <a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeat</a>
 directive for displaying the results inside of the dropdown.<br/></p>
 <blockquote>
 <p>When encountering issues regarding the item template please take a look at the
   <a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> documentation.</p>
 </blockquote>
-
+<p><strong>Autocomplete inside of a Virtual Repeat</strong></p>
+<p>When using the <code>md-autocomplete</code> directive inside of a
+<a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> the dropdown items might
+not update properly, because caching of the results is enabled by default.</p>
+<p>The autocomplete will then show invalid dropdown items, because the VirtualRepeat only updates the
+scope bindings, rather than re-creating the <code>md-autocomplete</code> and the previous cached results will be used.</p>
+<blockquote>
+<p>To avoid such problems ensure that the autocomplete does not cache any results.</p>
+</blockquote>
+<hljs lang="html">
+  <md-autocomplete
+      md-no-cache="true"
+      md-selected-item="selectedItem"
+      md-items="item in items"
+      md-search-text="searchText"
+      md-item-text="item.display">
+    <span>{{ item.display }}</span>
+  </md-autocomplete>
+</hljs>
 </div>
 
 
