@@ -43,13 +43,18 @@ easily loaded and used. When using font-icons, developers must follow three (3) 
    rel=&quot;stylesheet&quot;&gt;</code>
 </li>
 <li>
-  Use either (a) font-icon class names or (b) font ligatures to render the font glyph by using
-  its textual name
+  Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
+  using its textual name <em>or</em> numerical character reference. Note that <code>material-icons</code> is the default fontset when
+  none is specified.
 </li>
-<li>
-  Use <code>&lt;md-icon md-font-icon=&quot;classname&quot; /&gt;</code> or <br/>
-  use <code>&lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt; textual_name &lt;/md-icon&gt;</code> or <br/>
-  use <code>&lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt; numerical_character_reference &lt;/md-icon&gt;</code>
+<li> Use any of the following templates: <br/>
+  <ul>
+    <li><code>&lt;md-icon md-font-icon=&quot;classname&quot;&gt;&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt;textual_name&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon&gt; numerical_character_reference &lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon ng_bind=&quot;&#39;textual_name&#39;&quot;&gt;&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon ng-bind=&quot;scopeVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
+  </ul>
 </li>
 </ol>
 
@@ -64,6 +69,16 @@ Material Design Icons:</p>
 <ul>
 <li><a href="https://design.google.com/icons/">https://design.google.com/icons/</a></li>
 <li><a href="https://design.google.com/icons/#ic_accessibility">https://design.google.com/icons/#ic_accessibility</a></li>
+</ul>
+
+<h3 id="localization">Localization</h3>
+<p>Because an <code>md-icon</code> element&#39;s text content is not intended to translated, it is recommended to declare the text
+content for an <code>md-icon</code> element in its start tag. Instead of using the HTML text content, consider using <code>ng-bind</code>
+with a scope variable or literal string.</p>
+<p>Examples:</p>
+<ul>
+  <li><code>&lt;md-icon ng-bind=&quot;myIconVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
+  <li><code>&lt;md-icon ng-bind=&quot;&#39;menu&#39;&quot;&gt;&lt;/md-icon&gt;</code>
 </ul>
 
 <p><h2 id="material_design_icons">Material Design Icons</h2>
