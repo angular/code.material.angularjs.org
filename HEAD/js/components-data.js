@@ -720,11 +720,11 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
-    "name": "material.components.menu-bar",
+    "name": "material.components.menuBar",
     "type": "module",
-    "outputPath": "partials/api/material.components.menu-bar/index.html",
-    "url": "api/material.components.menu-bar",
-    "label": "material.components.menu-bar",
+    "outputPath": "partials/api/material.components.menuBar/index.html",
+    "url": "api/material.components.menuBar",
+    "label": "material.components.menuBar",
     "module": "material.components",
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/menuBar/menu-bar.js",
     "docs": [
@@ -737,7 +737,7 @@ angular.module('docsApp').constant('COMPONENTS', [
           "cssClass": false,
           "comment": false
         },
-        "outputPath": "partials/api/material.components.menu-bar/directive/mdMenuBar.html",
+        "outputPath": "partials/api/material.components.menuBar/directive/mdMenuBar.html",
         "url": "api/directive/mdMenuBar",
         "label": "mdMenuBar",
         "module": "material.components",

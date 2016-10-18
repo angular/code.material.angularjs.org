@@ -13738,7 +13738,7 @@ angular.module('material.components.menu', [
 
 /**
  * @ngdoc module
- * @name material.components.menu-bar
+ * @name material.components.menuBar
  */
 
 angular.module('material.components.menuBar', [
@@ -32259,7 +32259,7 @@ MenuBarController.prototype.handleParentClick = function(event) {
 /**
  * @ngdoc directive
  * @name mdMenuBar
- * @module material.components.menu-bar
+ * @module material.components.menuBar
  * @restrict E
  * @description
  *
