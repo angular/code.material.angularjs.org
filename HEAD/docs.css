@@ -527,7 +527,6 @@ code:not(.highlight) {
   display: block;
   -webkit-box-align: inherit;
   -webkit-align-items: inherit;
-              -ms-grid-row-align: inherit;
           align-items: inherit;
   line-height: 40px;
   margin: 0;
