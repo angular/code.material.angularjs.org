@@ -1,97 +1,3 @@
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share-arrow' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/share-arrow.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
 (function () {
   'use strict';
   angular
@@ -427,6 +333,100 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     }
   }
 })();
+
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/share-arrow.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
 
 
 angular.module('buttonsDemo1', ['ngMaterial'])
@@ -2000,24 +2000,48 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
         'Sign Out'
       ]
     };
+    this.tools = {
+      name: 'tools',
+      items: [
+        'Create',
+        'Delete'
+      ]
+    };
+    this.code = {
+      name: 'code',
+      items: [
+        'See Source',
+        'See Commits'
+      ]
+    };
+
+    this.menuTemplate = '' +
+        '<div class="menu-panel" md-whiteframe="4">' +
+        '  <div class="menu-content">' +
+        '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
+        '      <button class="md-button">' +
+        '        <span>{{item}}</span>' +
+        '      </button>' +
+        '    </div>' +
+        '    <md-divider></md-divider>' +
+        '    <div class="menu-item">' +
+        '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
+        '        <span>Close Menu</span>' +
+        '      </button>' +
+        '    </div>' +
+        '  </div>' +
+        '</div>';
+
+    $mdPanel.newPanelGroup('toolbar', {
+      maxOpen: 2
+    });
+
+    $mdPanel.newPanelGroup('menus', {
+      maxOpen: 3
+    });
 
     this.showToolbarMenu = function($event, menu) {
-      var template = '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>';
+      var template = this.menuTemplate;
 
       var position = $mdPanel.newPanelPosition()
           .relativeTo($event.srcElement)
@@ -2025,10 +2049,6 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
             $mdPanel.xPosition.ALIGN_START,
             $mdPanel.yPosition.BELOW
           );
-
-      $mdPanel.newPanelGroup('toolbar', {
-        maxOpen: 2
-      });
 
       var config = {
         id: 'toolbar_' + menu.name,
@@ -2045,11 +2065,42 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
         focusOnOpen: false,
         zIndex: 100,
         propagateContainerEvents: true,
-        groupName: 'toolbar'
+        groupName: ['toolbar', 'menus']
       };
 
       $mdPanel.open(config);
-    }
+    };
+
+    this.showContentMenu = function($event, menu) {
+      var template = this.menuTemplate;
+
+      var position = $mdPanel.newPanelPosition()
+          .relativeTo($event.srcElement)
+          .addPanelPosition(
+            $mdPanel.xPosition.ALIGN_START,
+            $mdPanel.yPosition.BELOW
+          );
+
+      var config = {
+        id: 'content_' + menu.name,
+        attachTo: angular.element(document.body),
+        controller: PanelMenuCtrl,
+        controllerAs: 'ctrl',
+        template: template,
+        position: position,
+        panelClass: 'menu-panel-container',
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event,
+        focusOnOpen: false,
+        zIndex: 100,
+        propagateContainerEvents: true,
+        groupName: 'menus'
+      };
+
+      $mdPanel.open(config);
+    };
   }
 
   function PanelMenuCtrl(mdPanelRef) {
@@ -2169,7 +2220,11 @@ DialogCtrl.prototype.closeDialog = function() {
 })();
 
 angular
-  .module('progressCircularDemo1', ['ngMaterial'])
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
   .controller('AppCtrl', ['$interval',
     function($interval) {
       var self = this;

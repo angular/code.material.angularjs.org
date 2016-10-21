@@ -137,6 +137,8 @@ to an arbitrary string that is not tracked.</li>
 <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.</li>
 <li><code>templateUrl</code> - <code>{string=}</code>: The URL that will be used as the content of
 the panel.</li>
+<li><code>contentElement</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: Pre-compiled
+element to be used as the panel&#39;s content.</li>
 <li><code>controller</code> - <code>{(function|string)=}</code>: The controller to associate with
 the panel. The controller can inject a reference to the returned
 panelRef, which allows the panel to be closed, hidden, and shown. Any
@@ -199,10 +201,11 @@ the panel is removed from the DOM.</li>
 on when the panel closes. This is commonly the element which triggered
 the opening of the panel. If you do not use <code>origin</code>, you need to control
 the focus manually.</li>
-<li><code>groupName</code> - <code>{string=}</code>: Name of a panel group. This group name is used
-for configuring the number of open panels and identifying specific
-behaviors for groups. For instance, all tooltips could be identified
-using the same groupName.</li>
+<li><code>groupName</code> - <code>{(string|!Array&lt;string&gt;)=}</code>: A group name or an array of
+group names. The group name is used for creating a group of panels. The
+group is used for configuring the number of open panels and identifying
+specific behaviors for groups. For instance, all tooltips could be
+identified using the same groupName.</li>
 </ul>
 
           
