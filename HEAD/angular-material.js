@@ -19851,7 +19851,7 @@ function createDirective(name, targetValue) {
  * A Sidenav QP component.
  */
 SidenavService.$inject = ["$mdComponentRegistry", "$mdUtil", "$q", "$log"];
-SidenavDirective.$inject = ["$mdMedia", "$mdUtil", "$mdConstant", "$mdTheming", "$mdInteraction", "$animate", "$compile", "$parse", "$log", "$q", "$document", "$window"];
+SidenavDirective.$inject = ["$mdMedia", "$mdUtil", "$mdConstant", "$mdTheming", "$mdInteraction", "$animate", "$compile", "$parse", "$log", "$q", "$document", "$window", "$$rAF"];
 SidenavController.$inject = ["$scope", "$attrs", "$mdComponentRegistry", "$q", "$interpolate"];
 angular
   .module('material.components.sidenav', [
@@ -20091,8 +20091,8 @@ function SidenavFocusDirective() {
  *   - `<md-sidenav md-is-locked-open="$mdMedia('min-width: 1000px')"></md-sidenav>`
  *   - `<md-sidenav md-is-locked-open="$mdMedia('sm')"></md-sidenav>` (locks open on small screens)
  */
-function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $mdInteraction, $animate, $compile,
-                          $parse, $log, $q, $document, $window) {
+function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $mdInteraction, $animate,
+                          $compile, $parse, $log, $q, $document, $window, $$rAF) {
   return {
     restrict: 'E',
     scope: {
@@ -20216,8 +20216,12 @@ function SidenavDirective($mdMedia, $mdUtil, $mdConstant, $mdTheming, $mdInterac
       ]).then(function() {
         // Perform focus when animations are ALL done...
         if (scope.isOpen) {
-          // Notifies child components that the sidenav was opened.
-          ngWindow.triggerHandler('resize');
+          $$rAF(function() {
+            // Notifies child components that the sidenav was opened. Should wait
+            // a frame in order to allow for the element height to be computed.
+            ngWindow.triggerHandler('resize');
+          });
+
           focusEl && focusEl.focus();
         }
 

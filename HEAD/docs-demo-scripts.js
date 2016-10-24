@@ -1739,17 +1739,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
   };
 });
 
-(function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-  }
-})();
-
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -1794,6 +1783,17 @@ angular
     };
   });
 
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+  }
+})();
 
 (function() {
 'use strict';
