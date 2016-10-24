@@ -1,97 +1,3 @@
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share-arrow' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/share-arrow.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
 (function () {
   'use strict';
   angular
@@ -427,6 +333,100 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     }
   }
 })();
+
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/share-arrow.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
 
 
 angular.module('buttonsDemo1', ['ngMaterial'])
@@ -1193,6 +1193,20 @@ angular.module('dividerDemo1', ['ngMaterial'])
     });
 })();
 
+(function() {
+  'use strict';
+
+  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
+    .controller('AppCtrl', function($scope) {
+      $scope.isOpen = false;
+
+      $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
+      };
+    });
+})();
 
 angular.module('gridListDemo1', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {});
@@ -1406,113 +1420,71 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
   })
   ;
 
-(function() {
-  'use strict';
-
-  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
-    .controller('AppCtrl', function($scope) {
-      $scope.isOpen = false;
-
-      $scope.demo = {
-        isOpen: false,
-        count: 0,
-        selectedDirection: 'left'
-      };
-    });
-})();
 angular
-  .module('menuDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      title: 'Developer',
+      email: 'ipsum@lorem.com',
+      firstName: '',
+      lastName: '',
+      company: 'Google',
+      address: '1600 Amphitheatre Pkwy',
+      city: 'Mountain View',
+      state: 'CA',
+      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
+      postalCode: '94043'
+    };
+
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
   })
-  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
+  .config(function($mdThemingProvider) {
 
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
+    // Configure a dark theme with primary foreground yellow
 
-    this.notificationsEnabled = true;
-    this.toggleNotifications = function() {
-      this.notificationsEnabled = !this.notificationsEnabled;
-    };
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
 
-    this.redial = function() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .targetEvent(originatorEv)
-          .clickOutsideToClose(true)
-          .parent('body')
-          .title('Suddenly, a redial')
-          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
-          .ok('That was easy')
-      );
-
-      originatorEv = null;
-    };
-
-    this.checkVoicemail = function() {
-      // This never happens.
-    };
   });
 
-angular
-  .module('menuDemoCustomTrigger', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
-  });
+angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
 
-angular
-  .module('menuDemoPosition', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
-
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
-
-    this.announceClick = function(index) {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .title('You clicked!')
-          .textContent('You clicked the menu item at index ' + index)
-          .ok('Nice')
-          .targetEvent(originatorEv)
-      );
-      originatorEv = null;
-    };
-  });
-
-
-
-angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-}).controller('WidthDemoCtrl', function($mdDialog) {
-  var vm = this;
-
-  this.announceClick = function(index) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('You clicked!')
-        .textContent('You clicked the menu item at index ' + index)
-        .ok('Nice')
-    );
+.controller('AppCtrl', function($scope) {
+  $scope.project = {
+    description: 'Nuclear Missile Defense System',
+    rate: 500
   };
 });
+
+angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
+
+  .controller('AppCtrl', function($scope) {
+    $scope.showHints = true;
+
+    $scope.user = {
+      name: "",
+      email: "",
+      social: "123456789",
+      phone: "N/A"
+    };
+  });
+
+angular
+  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      name: 'John Doe',
+      email: '',
+      phone: '',
+      address: 'Mountain View, CA',
+      donation: 19.99
+    };
+  });
 
 
 angular.module('listDemo1', ['ngMaterial'])
@@ -1674,70 +1646,98 @@ angular.module('listDemo2', ['ngMaterial'])
 });
 
 angular
-  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      title: 'Developer',
-      email: 'ipsum@lorem.com',
-      firstName: '',
-      lastName: '',
-      company: 'Google',
-      address: '1600 Amphitheatre Pkwy',
-      city: 'Mountain View',
-      state: 'CA',
-      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
-      postalCode: '94043'
+  .module('menuDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
     };
 
-    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
-    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
-    'WY').split(' ').map(function(state) {
-        return {abbrev: state};
-      });
-  })
-  .config(function($mdThemingProvider) {
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
 
-    // Configure a dark theme with primary foreground yellow
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
 
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
+      originatorEv = null;
+    };
 
-  });
-
-angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.project = {
-    description: 'Nuclear Missile Defense System',
-    rate: 500
-  };
-});
-
-angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
-
-  .controller('AppCtrl', function($scope) {
-    $scope.showHints = true;
-
-    $scope.user = {
-      name: "",
-      email: "",
-      social: "123456789",
-      phone: "N/A"
+    this.checkVoicemail = function() {
+      // This never happens.
     };
   });
 
 angular
-  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      name: 'John Doe',
-      email: '',
-      phone: '',
-      address: 'Mountain View, CA',
-      donation: 19.99
+  .module('menuDemoCustomTrigger', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
+  });
+
+angular
+  .module('menuDemoPosition', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.announceClick = function(index) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title('You clicked!')
+          .textContent('You clicked the menu item at index ' + index)
+          .ok('Nice')
+          .targetEvent(originatorEv)
+      );
+      originatorEv = null;
     };
   });
+
+
+
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+}).controller('WidthDemoCtrl', function($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+});
 
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
@@ -2967,28 +2967,6 @@ angular.module('tooltipDemo1', ['ngMaterial'])
   });
 });
 
-angular.module('whiteframeBasicUsage', ['ngMaterial']);
-
-angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
-
-angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
-    .controller('DemoCtrl', function($interval) {
-      this.elevation = 1;
-      this.showFrame = 3;
-      
-      this.nextElevation = function() {
-        if (++this.elevation == 25) {
-          this.elevation = 1;
-        }
-      };
-
-      $interval(this.nextElevation.bind(this), 500);
-      
-      this.toggleFrame = function() {
-        this.showFrame = this.showFrame == 3 ? -1 : 3;
-      };
-    });
-
 (function () {
   'use strict';
 
@@ -3171,3 +3149,25 @@ angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
       });
 
 })();
+
+angular.module('whiteframeBasicUsage', ['ngMaterial']);
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
+    .controller('DemoCtrl', function($interval) {
+      this.elevation = 1;
+      this.showFrame = 3;
+      
+      this.nextElevation = function() {
+        if (++this.elevation == 25) {
+          this.elevation = 1;
+        }
+      };
+
+      $interval(this.nextElevation.bind(this), 500);
+      
+      this.toggleFrame = function() {
+        this.showFrame = this.showFrame == 3 ? -1 : 3;
+      };
+    });
