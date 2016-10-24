@@ -1272,7 +1272,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <tr>\n' +
     '        <td>layout-gt-lg</td>\n' +
     '        <td>flex-gt-lg</td>\n' +
-    '        <td>width &gt;= <b>1920</b>px</td>\n' +
+    '        <td>width &gt;= <b>1920/b>px</td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>layout-xl</td>\n' +
