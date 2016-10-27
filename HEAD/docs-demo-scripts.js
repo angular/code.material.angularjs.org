@@ -1086,6 +1086,56 @@ angular.module('dialogDemo2', ['ngMaterial'])
   };
 });
 
+angular.module('dialogDemo1', ['ngMaterial'])
+  .config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('red')
+      .primaryPalette('red');
+
+    $mdThemingProvider.theme('blue')
+      .primaryPalette('blue');
+
+  })
+.controller('AppCtrl', function($scope, $mdDialog, $interval) {
+  $scope.theme = 'red';
+
+  var isThemeRed = true;
+
+  $interval(function () {
+    $scope.theme = isThemeRed ? 'blue' : 'red';
+
+    isThemeRed = !isThemeRed;
+  }, 2000);
+
+  $scope.showAdvanced = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'dialog1.tmpl.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+});
+
 angular.module('dividerDemo1', ['ngMaterial'])
   .controller('AppCtrl', function($scope) {
     var imagePath = 'img/list/60.jpeg';
@@ -1361,15 +1411,6 @@ angular
   });
 
 
-angular.module('appSvgIconSets', ['ngMaterial'])
-  .controller('DemoCtrl', function($scope) {})
-  .config(['$mdIconProvider', function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  }]);
-
-
 angular.module('appDemoSvgIcons', ['ngMaterial'])
 .controller('DemoCtrl', function( $scope ) {
 
@@ -1388,6 +1429,15 @@ angular.module('appDemoSvgIcons', ['ngMaterial'])
       return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g id="add-shopping-cart"><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></g></svg>';
     }
 });
+
+
+angular.module('appSvgIconSets', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {})
+  .config(['$mdIconProvider', function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  }]);
 
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
