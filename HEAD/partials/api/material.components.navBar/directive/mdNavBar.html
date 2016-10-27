@@ -37,9 +37,17 @@ listbox, according to
   
     <hljs lang="html">
  <md-nav-bar md-selected-nav-item="currentNavItem">
-   <md-nav-item md-nav-click="goto('page1')" name="page1">Page One</md-nav-item>
-   <md-nav-item md-nav-sref="app.page2" name="page2">Page Two</md-nav-item>
-   <md-nav-item md-nav-href="#page3" name="page3">Page Three</md-nav-item>
+   <md-nav-item md-nav-click="goto('page1')" name="page1">
+     Page One
+   </md-nav-item>
+   <md-nav-item md-nav-href="#page2" name="page3">Page Two</md-nav-item>
+   <md-nav-item md-nav-sref="page3" name="page2">Page Three</md-nav-item>
+   <md-nav-item
+     md-nav-sref="app.page4"
+     sref-opts="{reload: true, notify: true}"
+     name="page4">
+     Page Four
+   </md-nav-item>
  </md-nav-bar>
 </hljs>
 <hljs lang="js">
@@ -92,7 +100,7 @@ listbox, according to
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>The name of the current tab; this must
-match the name attribute of <code>&lt;md-nav-item&gt;</code></p>
+    match the name attribute of <code>&lt;md-nav-item&gt;</code></p>
 
           
         </td>
