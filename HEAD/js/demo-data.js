@@ -939,49 +939,6 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/dialog/demoOpenFromCloseTo/index.html"
         }
-      },
-      {
-        "ngModule": {
-          "name": "dialogDemo1",
-          "module": "dialogDemo1",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "dialogdemoThemeInheritance",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/dialog/demoThemeInheritance/style.css"
-          }
-        ],
-        "html": [
-          {
-            "name": "dialog1.tmpl.html",
-            "label": "dialog1.tmpl.html",
-            "fileType": "html",
-            "outputPath": "demo-partials/dialog/demoThemeInheritance/dialog1.tmpl.html"
-          }
-        ],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/dialog/demoThemeInheritance/script.js"
-          }
-        ],
-        "moduleName": "material.components.dialog",
-        "name": "demoThemeInheritance",
-        "label": "Theme Inheritance",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/dialog/demoThemeInheritance/index.html"
-        }
       }
     ],
     "url": "demo/dialog"
