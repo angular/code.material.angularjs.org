@@ -1086,6 +1086,56 @@ angular.module('dialogDemo2', ['ngMaterial'])
   };
 });
 
+angular.module('dialogDemo1', ['ngMaterial'])
+  .config(function ($mdThemingProvider) {
+    $mdThemingProvider.theme('red')
+      .primaryPalette('red');
+
+    $mdThemingProvider.theme('blue')
+      .primaryPalette('blue');
+
+  })
+.controller('AppCtrl', function($scope, $mdDialog, $interval) {
+  $scope.theme = 'red';
+
+  var isThemeRed = true;
+
+  $interval(function () {
+    $scope.theme = isThemeRed ? 'blue' : 'red';
+
+    isThemeRed = !isThemeRed;
+  }, 2000);
+
+  $scope.showAdvanced = function(ev) {
+    $mdDialog.show({
+      controller: DialogController,
+      templateUrl: 'dialog1.tmpl.html',
+      parent: angular.element(document.body),
+      targetEvent: ev,
+      clickOutsideToClose:true
+    })
+    .then(function(answer) {
+      $scope.status = 'You said the information was "' + answer + '".';
+    }, function() {
+      $scope.status = 'You cancelled the dialog.';
+    });
+  };
+
+  function DialogController($scope, $mdDialog) {
+    $scope.hide = function() {
+      $mdDialog.hide();
+    };
+
+    $scope.cancel = function() {
+      $mdDialog.cancel();
+    };
+
+    $scope.answer = function(answer) {
+      $mdDialog.hide(answer);
+    };
+  }
+});
+
 angular.module('dividerDemo1', ['ngMaterial'])
   .controller('AppCtrl', function($scope) {
     var imagePath = 'img/list/60.jpeg';
@@ -2726,6 +2776,21 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
+angular.module('switchDemo1', ['ngMaterial'])
+.controller('SwitchDemoCtrl', function($scope) {
+  $scope.data = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+
+  $scope.message = 'false';
+
+  $scope.onChange = function(cbState) {
+  	$scope.message = cbState;
+  };
+});
+
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
@@ -2790,21 +2855,6 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
     };
   }
 })();
-
-angular.module('switchDemo1', ['ngMaterial'])
-.controller('SwitchDemoCtrl', function($scope) {
-  $scope.data = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
-
-  $scope.message = 'false';
-
-  $scope.onChange = function(cbState) {
-  	$scope.message = cbState;
-  };
-});
 
 
 angular.module('toastDemo1', ['ngMaterial'])

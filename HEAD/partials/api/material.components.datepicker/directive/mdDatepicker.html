@@ -108,6 +108,8 @@ Supported attributes are:</p>
   
     
   
+    
+  
   
     
   
@@ -178,6 +180,42 @@ for a timezone to be specified. <a href="https://docs.angularjs.org/api/ng/direc
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>Expression evaluated when focus is removed from the input or the calendar is closed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-disabled
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the datepicker is disabled.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-required
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether a value is required for the datepicker.</p>
 
           
         </td>
@@ -337,33 +375,17 @@ datepicker to not align properly with other components. <strong>Use at your own 
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          ng-disabled
+          md-date-locale
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+<code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
-          <p>Whether the datepicker is disabled.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          ng-required
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
-        <td class="description">
-          <p>Whether a value is required for the datepicker.</p>
+          <p>Allows for the values from the <code>$mdDateLocaleProvider</code> to be
+ovewritten on a per-element basis (e.g. <code>msgOpenCalendar</code> can be overwritten with
+<code>md-date-locale=&quot;{ msgOpenCalendar: &#39;Open a special calendar&#39; }&quot;</code>).</p>
 
           
         </td>
