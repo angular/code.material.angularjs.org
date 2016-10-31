@@ -101,6 +101,15 @@ scope bindings, rather than re-creating the <code>md-autocomplete</code> and the
 
 <p>In this example, our code utilizes <code>md-item-template</code> and <code>md-not-found</code> to specify the
     different parts that make up our component.</p>
+<h3 id="clear-button-for-the-input">Clear button for the input</h3>
+<p>By default, for floating label autocomplete&#39;s the clear button is not showing up
+(<a href="https://material.google.com/components/text-fields.html#text-fields-auto-complete-text-field">See specs</a>)</p>
+<p>Nevertheless, developers are able to explicitly toggle the clear button for all types of autocomplete&#39;s.</p>
+<hljs lang="html">
+  <md-autocomplete ... md-clear-button="true"></md-autocomplete>
+  <md-autocomplete ... md-clear-button="false"></md-autocomplete>
+</hljs>
+
 <h3 id="example-with-validation">Example with validation</h3>
 <hljs lang="html">
 <form name="autocompleteForm">
@@ -189,6 +198,8 @@ scope bindings, rather than re-creating the <code>md-autocomplete</code> and the
           
         </td>
       </tr>
+    
+  
     
   
     
@@ -447,6 +458,24 @@ scope bindings, rather than re-creating the <code>md-autocomplete</code> and the
         <td class="description">
           <p>Specifies the amount of time (in milliseconds) to wait before looking
     for results</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-clear-button
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the clear button for the autocomplete input should show up or not.</p>
 
           
         </td>
