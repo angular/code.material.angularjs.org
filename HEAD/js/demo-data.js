@@ -44,10 +44,10 @@ angular.module('docsApp').constant('DEMOS', [
         "id": "autocompletedemoCustomTemplate",
         "css": [
           {
-            "name": "style.global.css",
-            "label": "style.global.css",
+            "name": "style.css",
+            "label": "style.css",
             "fileType": "css",
-            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/style.global.css"
+            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/style.css"
           }
         ],
         "html": [],

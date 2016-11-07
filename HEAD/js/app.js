@@ -540,12 +540,11 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope, $http, $wind
               if (open && $li && $ul[0].scrollTop === 0) {
                 var activeHeight = $li.scrollHeight;
                 var activeOffset = $li.offsetTop;
-                var offsetParent = $li.offsetParent;
-                var parentScrollPosition = offsetParent ? offsetParent.offsetTop : 0;
+                var parentOffset = $li.offsetParent.offsetTop;
 
                 // Reduce it a bit (2 list items' height worth) so it doesn't touch the nav
                 var negativeOffset = activeHeight * 2;
-                var newScrollTop = activeOffset + parentScrollPosition - negativeOffset;
+                var newScrollTop = activeOffset + parentOffset - negativeOffset;
 
                 $mdUtil.animateScrollTo(document.querySelector('.docs-menu').parentNode, newScrollTop);
               }

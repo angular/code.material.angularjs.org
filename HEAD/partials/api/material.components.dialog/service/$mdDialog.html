@@ -139,24 +139,6 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 })(angular);
 </hljs>
 
-<h3 id="multiple-dialogs">Multiple Dialogs</h3>
-<p>Using the <code>multiple</code> option for the <code>$mdDialog</code> service allows developers to show multiple dialogs
-at the same time.</p>
-<hljs lang="js">
-  // From plain options
-  $mdDialog.show({
-    multiple: true
-  });
-
-  // From a dialog preset
-  $mdDialog.show(
-    $mdDialog
-      .alert()
-      .multiple(true)
-  );
-
-</hljs>
-
 <h3 id="pre-rendered-dialogs">Pre-Rendered Dialogs</h3>
 <p>By using the <code>contentElement</code> option, it is possible to use an already existing element in the DOM.</p>
 <blockquote>

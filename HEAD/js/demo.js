@@ -69,7 +69,6 @@ angular.module('docsApp')
         case "index.html" : return "HTML";
         case "script.js" : return "JS";
         case "style.css" : return "CSS";
-        case "style.global.css" : return "CSS";
         default : return name;
       }
     }
