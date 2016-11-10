@@ -44,10 +44,10 @@ angular.module('docsApp').constant('DEMOS', [
         "id": "autocompletedemoCustomTemplate",
         "css": [
           {
-            "name": "style.css",
-            "label": "style.css",
+            "name": "style.global.css",
+            "label": "style.global.css",
             "fileType": "css",
-            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/style.css"
+            "outputPath": "demo-partials/autocomplete/demoCustomTemplate/style.global.css"
           }
         ],
         "html": [],
@@ -942,8 +942,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "dialogDemo1",
-          "module": "dialogDemo1",
+          "name": "dialogDemo3",
+          "module": "dialogDemo3",
           "dependencies": [
             "ngMaterial"
           ]
