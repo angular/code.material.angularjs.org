@@ -1721,15 +1721,15 @@ md-datepicker {
 .md-datepicker-triangle-button {
   position: absolute;
   right: 0;
-  top: 5px;
-  -webkit-transform: translateY(-25%) translateX(45%);
-          transform: translateY(-25%) translateX(45%); }
+  bottom: -2.5px;
+  -webkit-transform: translateX(45%);
+          transform: translateX(45%); }
   [dir=rtl] .md-datepicker-triangle-button {
     right: auto;
     left: 0; }
   [dir=rtl] .md-datepicker-triangle-button {
-    -webkit-transform: translateY(-25%) translateX(-45%);
-            transform: translateY(-25%) translateX(-45%); }
+    -webkit-transform: translateX(-45%);
+            transform: translateX(-45%); }
 
 .md-datepicker-triangle-button.md-button.md-icon-button {
   height: 36px;
