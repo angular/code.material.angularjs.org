@@ -2976,21 +2976,14 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "tooltipDemo1",
-          "module": "tooltipDemo1",
+          "name": "tooltipDemo",
+          "module": "tooltipDemo",
           "dependencies": [
             "ngMaterial"
           ]
         },
         "id": "tooltipdemoBasicUsage",
-        "css": [
-          {
-            "name": "style.css",
-            "label": "style.css",
-            "fileType": "css",
-            "outputPath": "demo-partials/tooltip/demoBasicUsage/style.css"
-          }
-        ],
+        "css": [],
         "html": [],
         "js": [
           {
