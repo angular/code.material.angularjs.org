@@ -29580,7 +29580,6 @@ function MdContactChips($mdTheming, $mdUtil) {
             'class="md-datepicker-input" ' +
             'aria-haspopup="true" ' +
             'aria-expanded="{{ctrl.isCalendarOpen}}" ' +
-            'aria-owns="{{::ctrl.calendarPaneId}}"' +
             'ng-focus="ctrl.setFocused(true)" ' +
             'ng-blur="ctrl.setFocused(false)"> ' +
             triangleButton +
@@ -29811,7 +29810,7 @@ function MdContactChips($mdTheming, $mdUtil) {
     this.calendarPaneOpenedFrom = null;
 
     /** @type {String} Unique id for the calendar pane. */
-    this.calendarPaneId = 'md-date-pane' + $mdUtil.nextUid();
+    this.calendarPaneId = 'md-date-pane-' + $mdUtil.nextUid();
 
     /** Pre-bound click handler is saved so that the event listener can be removed. */
     this.bodyClickHandler = angular.bind(this, this.handleBodyClick);
@@ -29849,6 +29848,8 @@ function MdContactChips($mdTheming, $mdUtil) {
     } else {
       $attrs.$set('tabindex', '-1');
     }
+
+    $attrs.$set('aria-owns', this.calendarPaneId);
 
     $mdTheming($element);
     $mdTheming(angular.element(this.calendarPane));
@@ -30366,7 +30367,6 @@ function MdContactChips($mdTheming, $mdUtil) {
     this.date = value;
     this.inputElement.value = this.locale.formatDate(value, timezone);
     this.mdInputContainer && this.mdInputContainer.setHasValue(!!value);
-    this.closeCalendarPane();
     this.resizeInputElement();
     this.updateErrorState();
   };
