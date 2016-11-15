@@ -2772,8 +2772,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "tabsDemoStaticTabs",
-          "module": "tabsDemoStaticTabs",
+          "name": "tabsDemoIconTabs",
+          "module": "tabsDemoIconTabs",
           "dependencies": [
             "ngMaterial"
           ]
