@@ -10,7 +10,7 @@
 (function(){
 "use strict";
 
-angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.virtualRepeat","material.components.whiteframe"]);
+angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
 })();
 (function(){
 "use strict";
@@ -22420,10 +22420,7 @@ angular.module('material.components.toolbar', [
  *   <md-toolbar>
  *
  *     <div class="md-toolbar-tools">
- *       <span>My App's Title</span>
- *
- *       <!-- fill up the space between left and right area -->
- *       <span flex></span>
+ *       <h2 md-truncate flex>My App's Title</h2>
  *
  *       <md-button>
  *         Right Bar Button
@@ -22436,6 +22433,30 @@ angular.module('material.components.toolbar', [
  *   </md-content>
  * </div>
  * </hljs>
+ *
+ * <i><b>Note:</b> The code above shows usage with the `md-truncate` component which provides an
+ * ellipsis if the title is longer than the width of the Toolbar.</i>
+ *
+ * ## CSS & Styles
+ *
+ * The `<md-toolbar>` provides a few custom CSS classes that you may use to enhance the
+ * functionality of your toolbar.
+ *
+ * <div>
+ * <docs-css-api-table>
+ *
+ *   <docs-css-selector code="md-toolbar .md-toolbar-tools">
+ *     The `md-toolbar-tools` class provides quite a bit of automatic styling for your toolbar
+ *     buttons and text. When applied, it will center the buttons and text vertically for you.
+ *   </docs-css-selector>
+ *
+ * </docs-css-api-table>
+ * </div>
+ *
+ * ### Private Classes
+ *
+ * Currently, the only private class is the `md-toolbar-transitions` class. All other classes are
+ * considered public.
  *
  * @param {boolean=} md-scroll-shrink Whether the header should shrink away as
  * the user scrolls down, and reveal itself as the user scrolls up.
@@ -22450,6 +22471,7 @@ angular.module('material.components.toolbar', [
  * @param {number=} md-shrink-speed-factor How much to change the speed of the toolbar's
  * shrinking by. For example, if 0.25 is given then the toolbar will shrink
  * at one fourth the rate at which the user scrolls down. Default 0.5.
+ *
  */
 
 function mdToolbarDirective($$rAF, $mdConstant, $mdUtil, $mdTheming, $animate) {
@@ -23100,6 +23122,98 @@ function MdTooltipRegistry() {
       }
     }
   }
+}
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.components.truncate
+ */
+MdTruncateController.$inject = ["$element"];
+angular.module('material.components.truncate', ['material.core'])
+  .directive('mdTruncate', MdTruncateDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdTruncate
+ * @module material.components.truncate
+ * @restrict AE
+ * @description
+ *
+ * The `md-truncate` component displays a label that will automatically clip text which is wider
+ * than the component. By default, it displays an ellipsis, but you may apply the `md-clip` CSS
+ * class to override this default and use a standard "clipping" approach.
+ *
+ * <i><b>Note:</b> The `md-truncate` component does not automatically adjust it's width. You must
+ * provide the `flex` attribute, or some other CSS-based width management. See the
+ * <a ng-href="./demo/truncate">demos</a> for examples.</i>
+ *
+ * @usage
+ *
+ * ### As an Element
+ *
+ * <hljs lang="html">
+ *   <div layout="row">
+ *     <md-button>Back</md-button>
+ *
+ *     <md-truncate flex>Chapter 1 - The Way of the Old West</md-truncate>
+ *
+ *     <md-button>Forward</md-button>
+ *   </div>
+ * </hljs>
+ *
+ * ### As an Attribute
+ *
+ * <hljs lang="html">
+ *   <h2 md-truncate style="max-width: 100px;">Some Title With a Lot of Text</h2>
+ * </hljs>
+ *
+ * ## CSS & Styles
+ *
+ * `<md-truncate>` provides two CSS classes that you may use to control the type of clipping.
+ *
+ * <i><b>Note:</b> The `md-truncate` also applies a setting of `width: 0;` when used with the `flex`
+ * attribute to fix an issue with the flex element not shrinking properly.</i>
+ *
+ * <div>
+ * <docs-css-api-table>
+ *
+ *   <docs-css-selector code=".md-ellipsis">
+ *     Assigns the "ellipsis" behavior (default) which will cut off mid-word and append an ellipsis
+ *     (&hellip;) to the end of the text.
+ *   </docs-css-selector>
+ *
+ *   <docs-css-selector code=".md-clip">
+ *     Assigns the "clipping" behavior which will simply chop off the text. This may happen
+ *     mid-word or even mid-character.
+ *   </docs-css-selector>
+ *
+ * </docs-css-api-table>
+ * </div>
+ */
+function MdTruncateDirective() {
+  return {
+    restrict: 'AE',
+
+    controller: MdTruncateController,
+    controllerAs: '$ctrl',
+    bindToController: true
+  }
+}
+
+/**
+ * Controller for the <md-truncate> component.
+ *
+ * @param $element The md-truncate element.
+ *
+ * @constructor
+ * @ngInject
+ */
+function MdTruncateController($element) {
+  $element.addClass('md-truncate');
 }
 
 })();

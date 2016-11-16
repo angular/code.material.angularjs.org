@@ -3007,6 +3007,37 @@ angular.module('docsApp').constant('DEMOS', [
     "url": "demo/tooltip"
   },
   {
+    "name": "truncate",
+    "moduleName": "material.components.truncate",
+    "label": "Truncate",
+    "demos": [
+      {
+        "ngModule": "",
+        "id": "truncatedemoBasicUsage",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/truncate/demoBasicUsage/style.css"
+          }
+        ],
+        "html": [],
+        "js": [],
+        "moduleName": "material.components.truncate",
+        "name": "demoBasicUsage",
+        "label": "Basic Usage",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/truncate/demoBasicUsage/index.html"
+        }
+      }
+    ],
+    "url": "demo/truncate"
+  },
+  {
     "name": "virtualRepeat",
     "moduleName": "material.components.virtualRepeat",
     "label": "Virtual Repeat",

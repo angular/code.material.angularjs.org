@@ -1356,6 +1356,34 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
+    "name": "material.components.truncate",
+    "type": "module",
+    "outputPath": "partials/api/material.components.truncate/index.html",
+    "url": "api/material.components.truncate",
+    "label": "material.components.truncate",
+    "module": "material.components",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/components/truncate/truncate.js",
+    "docs": [
+      {
+        "name": "mdTruncate",
+        "type": "directive",
+        "restrict": {
+          "element": true,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
+        "outputPath": "partials/api/material.components.truncate/directive/mdTruncate.html",
+        "url": "api/directive/mdTruncate",
+        "label": "mdTruncate",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/truncate/truncate.js",
+        "hasDemo": true
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.components.virtualRepeat",
     "type": "module",
     "outputPath": "partials/api/material.components.virtualRepeat/index.html",

@@ -5479,6 +5479,15 @@ md-toolbar {
             transform: scale(0);
     opacity: 0; }
 
+.md-truncate {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; }
+  .md-truncate.md-clip {
+    text-overflow: clip; }
+  .md-truncate.flex {
+    width: 0; }
+
 .md-virtual-repeat-container {
   box-sizing: border-box;
   display: block;
