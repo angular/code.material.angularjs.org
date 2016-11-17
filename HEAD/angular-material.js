@@ -9842,7 +9842,7 @@ function MdDialogDirective($$rAF, $mdTheming, $mdDialog) {
 function MdDialogProvider($$interimElementProvider) {
   // Elements to capture and redirect focus when the user presses tab at the dialog boundary.
   advancedDialogOptions.$inject = ["$mdDialog", "$mdConstant"];
-  dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector", "$mdTheming", "$interpolate"];
+  dialogDefaultOptions.$inject = ["$mdDialog", "$mdAria", "$mdUtil", "$mdConstant", "$animate", "$document", "$window", "$rootElement", "$log", "$injector", "$mdTheming", "$interpolate", "$mdInteraction"];
   var topFocusTrap, bottomFocusTrap;
 
   return $$interimElementProvider('$mdDialog')
@@ -9921,7 +9921,7 @@ function MdDialogProvider($$interimElementProvider) {
 
   /* @ngInject */
   function dialogDefaultOptions($mdDialog, $mdAria, $mdUtil, $mdConstant, $animate, $document, $window, $rootElement,
-                                $log, $injector, $mdTheming, $interpolate) {
+                                $log, $injector, $mdTheming, $interpolate, $mdInteraction) {
 
     return {
       hasBackdrop: true,
@@ -10081,7 +10081,10 @@ function MdDialogProvider($$interimElementProvider) {
         // Exposed cleanup function from the $mdCompiler.
         options.cleanupElement();
 
-        if (!options.$destroy) options.origin.focus();
+        // Restores the focus to the origin element if the last interaction upon opening was a keyboard.
+        if (!options.$destroy && options.originInteraction === 'keyboard') {
+          options.origin.focus();
+        }
       }
     }
 
@@ -10133,7 +10136,8 @@ function MdDialogProvider($$interimElementProvider) {
           options.openFrom = getBoundingClientRect(getDomElement(options.openFrom));
 
           if ( options.targetEvent ) {
-            options.origin   = getBoundingClientRect(options.targetEvent.target, options.origin);
+            options.origin = getBoundingClientRect(options.targetEvent.target, options.origin);
+            options.originInteraction = $mdInteraction.getLastInteractionType();
           }
 
 
@@ -17171,7 +17175,7 @@ MdPanelPosition.prototype._reduceTranslateValues =
  * @private
  */
 MdPanelPosition.prototype._setPanelPosition = function(panelEl) {
-  // Remove the class in case it has been added before.
+  // Remove the "position adjusted" class in case it has been added before.
   panelEl.removeClass('_md-panel-position-adjusted');
 
   // Only calculate the position if necessary.
@@ -17183,6 +17187,7 @@ MdPanelPosition.prototype._setPanelPosition = function(panelEl) {
   if (this._actualPosition) {
     this._calculatePanelPosition(panelEl, this._actualPosition);
     this._setTransform(panelEl);
+    this._constrainToViewport(panelEl);
     return;
   }
 
@@ -17196,8 +17201,6 @@ MdPanelPosition.prototype._setPanelPosition = function(panelEl) {
     }
   }
 
-  // Class that can be used to re-style the panel if it was repositioned.
-  panelEl.addClass('_md-panel-position-adjusted');
   this._constrainToViewport(panelEl);
 };
 
@@ -17209,6 +17212,8 @@ MdPanelPosition.prototype._setPanelPosition = function(panelEl) {
  */
 MdPanelPosition.prototype._constrainToViewport = function(panelEl) {
   var margin = MdPanelPosition.viewportMargin;
+  var initialTop = this._top;
+  var initialLeft = this._left;
 
   if (this.getTop()) {
     var top = parseInt(this.getTop());
@@ -17233,6 +17238,12 @@ MdPanelPosition.prototype._constrainToViewport = function(panelEl) {
       this._left = left - (right - viewportWidth + margin) + 'px';
     }
   }
+
+  // Class that can be used to re-style the panel if it was repositioned.
+  panelEl.toggleClass(
+    '_md-panel-position-adjusted',
+    this._top !== initialTop || this._left !== initialLeft
+  );
 };
 
 
