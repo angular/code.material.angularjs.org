@@ -3301,8 +3301,8 @@ md-progress-circular {
   md-progress-circular._md-progress-circular-disabled {
     visibility: hidden; }
   md-progress-circular.md-mode-indeterminate svg {
-    -webkit-animation: indeterminate-rotate 2.9s linear infinite;
-            animation: indeterminate-rotate 2.9s linear infinite; }
+    -webkit-animation: indeterminate-rotate 1568.63ms linear infinite;
+            animation: indeterminate-rotate 1568.63ms linear infinite; }
   md-progress-circular svg {
     position: absolute;
     overflow: visible;
