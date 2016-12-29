@@ -2404,7 +2404,9 @@ MdCompilerService.prototype._fetchContentElement = function(options) {
       restoreFn = createRestoreFn(contentEl);
     } else {
       restoreFn = function() {
-        contentEl.parentNode.removeChild(contentEl);
+        if (contentEl.parentNode) {
+          contentEl.parentNode.removeChild(contentEl);
+        }
       }
     }
   }
@@ -23165,7 +23167,6 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $interpolate,
       if (!panelRef) {
         var id = 'tooltip-' + $mdUtil.nextUid();
         var attachTo = angular.element(document.body);
-        var content = element.html().trim();
         var panelAnimation = $mdPanel.newPanelAnimation()
             .openFrom(parent)
             .closeTo(parent)
@@ -23177,7 +23178,7 @@ function MdTooltipDirective($timeout, $window, $$rAF, $document, $interpolate,
         var panelConfig = {
           id: id,
           attachTo: attachTo,
-          template: content,
+          contentElement: element,
           propagateContainerEvents: true,
           panelClass: 'md-tooltip ' + origin,
           animation: panelAnimation,
