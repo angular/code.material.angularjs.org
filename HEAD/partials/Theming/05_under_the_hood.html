@@ -6,12 +6,12 @@
 that process currently works:</p>
 <ol>
 <li><p>During the Angular Material build process, a function in <code>gulp/util.js</code> called
-<a href="https://github.com/angular/material/blob/master/gulp/util.js#L187">themeBuildStream()</a>
+<a href="https://github.com/angular/material/blob/master/gulp/util.js#L223">themeBuildStream()</a>
 compiles all <code>*-theme.scss</code> files from components into a single CSS string that is
 injected into the <code>material.core</code> module as a constant called <code>$MD_THEME_CSS</code>.</p>
 </li>
 <li><p>At runtime, a function in <code>src/core/services/theming/theming.js</code> called
-<a href="https://github.com/angular/material/blob/master/src/core/services/theming/theming.js#L450">generateThemes()</a>
+<a href="https://github.com/angular/material/blob/master/src/core/services/theming/theming.js#L917">generateAllThemes()</a>
 parses <code>$MD_THEME_CSS</code> to generate the <code>&lt;style&gt;</code> tags that are added to the <code>&lt;head&gt;</code>
 section of the application. A closure variable called <code>GENERATED</code> is used to keep track
 of the themes that have had their CSS generated.</p>
