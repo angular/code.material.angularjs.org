@@ -907,6 +907,11 @@ angular.module('contentDemo1', ['ngMaterial'])
 
 });
 
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
+});
+
 angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
   this.myDate = new Date();
 
@@ -926,11 +931,6 @@ angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller
     var day = date.getDay();
     return day === 0 || day === 6;
   };
-});
-
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
 });
 
 angular.module('dialogDemo1', ['ngMaterial'])
