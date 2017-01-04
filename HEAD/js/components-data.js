@@ -801,6 +801,16 @@ angular.module('docsApp').constant('COMPONENTS', [
     "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
     "docs": [
       {
+        "name": "$mdPanelProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.components.panel/service/$mdPanelProvider.html",
+        "url": "api/service/$mdPanelProvider",
+        "label": "$mdPanelProvider",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/panel/panel.js",
+        "hasDemo": false
+      },
+      {
         "name": "$mdPanel",
         "type": "service",
         "outputPath": "partials/api/material.components.panel/service/$mdPanel.html",

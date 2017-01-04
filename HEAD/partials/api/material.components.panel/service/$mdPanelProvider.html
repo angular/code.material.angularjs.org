@@ -1,0 +1,228 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdPanelProvider</code> allows users to create configuration presets that will be
+stored within a cached presets object. When the configuration is needed, the
+user can request the preset by passing it as the first parameter in the
+<code>$mdPanel.create</code> or <code>$mdPanel.open</code> methods.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+(function(angular, undefined) {
+  &#39;use strict&#39;;
+
+  angular
+      .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
+      .config(DemoConfig)
+      .controller(&#39;DemoCtrl&#39;, DemoCtrl)
+      .controller(&#39;DemoMenuCtrl&#39;, DemoMenuCtrl);
+
+  function DemoConfig($mdPanelProvider) {
+    $mdPanelProvider.definePreset(&#39;demoPreset&#39;, {
+      attachTo: angular.element(document.body),
+      controller: DemoMenuCtrl,
+      controllerAs: &#39;ctrl&#39;,
+      template: &#39;&#39; +
+          &#39;<div class="menu-panel" md-whiteframe="4">&#39; +
+          &#39;  <div class="menu-content">&#39; +
+          &#39;    <div class="menu-item" ng-repeat="item in ctrl.items">&#39; +
+          &#39;      <button class="md-button">&#39; +
+          &#39;        <span>{{item}}</span>&#39; +
+          &#39;      </button>&#39; +
+          &#39;    </div>&#39; +
+          &#39;    <md-divider></md-divider>&#39; +
+          &#39;    <div class="menu-item">&#39; +
+          &#39;      <button class="md-button" ng-click="ctrl.closeMenu()">&#39; +
+          &#39;        <span>Close Menu</span>&#39; +
+          &#39;      </button>&#39; +
+          &#39;    </div>&#39; +
+          &#39;  </div>&#39; +
+          &#39;</div>&#39;,
+      panelClass: &#39;menu-panel-container&#39;,
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: &#39;menus&#39;
+    });
+  }
+
+  function PanelProviderCtrl($mdPanel) {
+    this.navigation = {
+      name: &#39;navigation&#39;,
+      items: [
+        &#39;Home&#39;,
+        &#39;About&#39;,
+        &#39;Contact&#39;
+      ]
+    };
+    this.favorites = {
+      name: &#39;favorites&#39;,
+      items: [
+        &#39;Add to Favorites&#39;
+      ]
+    };
+    this.more = {
+      name: &#39;more&#39;,
+      items: [
+        &#39;Account&#39;,
+        &#39;Sign Out&#39;
+      ]
+    };
+
+    $mdPanel.newPanelGroup(&#39;menus&#39;, {
+      maxOpen: 2
+    });
+
+    this.showMenu = function($event, menu) {
+      $mdPanel.open(&#39;demoPreset&#39;, {
+        id: &#39;menu_&#39; + menu.name,
+        position: $mdPanel.newPanelPosition()
+            .relativeTo($event.srcElement)
+            .addPanelPosition(
+              $mdPanel.xPosition.ALIGN_START,
+              $mdPanel.yPosition.BELOW
+            ),
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event
+      });
+    };
+  }
+
+  function PanelMenuCtrl(mdPanelRef) {
+    this.closeMenu = function() {
+      mdPanelRef &amp;&amp; mdPanelRef.close();
+    };
+  }
+})(angular);
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="definePreset">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanelProvider.definePreset(name, preset);
+</code>
+      </h3>
+      <div class="service-desc"><p>Takes the passed in preset name and preset configuration object and adds it
+to the <code>_presets</code> object of the provider. This <code>_presets</code> object is then
+passed along to the <code>$mdPanel</code> service.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Preset name.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* preset</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Specific configuration object that can contain any
+    and all of the parameters avaialble within the <code>$mdPanel.create</code> method.
+    However, parameters that pertain to id, position, animation, and user
+    interaction are not allowed and will be removed from the preset
+    configuration.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

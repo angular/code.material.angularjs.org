@@ -2039,6 +2039,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/panel/demoPanelAnimations/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "panelProviderDemo",
+          "module": "panelProviderDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "paneldemoPanelProvider",
+        "css": [
+          {
+            "name": "style.global.css",
+            "label": "style.global.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/panel/demoPanelProvider/style.global.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/panel/demoPanelProvider/script.js"
+          }
+        ],
+        "moduleName": "material.components.panel",
+        "name": "demoPanelProvider",
+        "label": "Panel Provider",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/panel/demoPanelProvider/index.html"
+        }
       }
     ],
     "url": "demo/panel"
