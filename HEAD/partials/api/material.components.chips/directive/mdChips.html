@@ -28,7 +28,10 @@ To override the chip delete control, include an element (ideally a button) with 
 <code>md-chip-remove</code>. A click listener to remove the chip will be added automatically. The element
 is also placed as a sibling to the chip content (on which there are also click listeners) to
 avoid a nested ng-click situation.</p>
-<p><h3> Pending Features </h3></p>
+<!-- Note: We no longer want to include this in the site docs; but it should remain here for
+future developers and those looking at the documentation.
+
+<h3> Pending Features </h3>
 <ul style="padding-left:20px;">
 
   <ul>Style
@@ -41,7 +44,8 @@ avoid a nested ng-click situation.</p>
   </ul>
 
   <ul>Item mutation
-    <li>Support <code>&lt;md-chip-edit&gt;</code> template, show/hide the edit element on tap/click? double tap/double
+    <li>Support `
+      <md-chip-edit>` template, show/hide the edit element on tap/click? double tap/double
       click?
     </li>
   </ul>
@@ -52,15 +56,12 @@ avoid a nested ng-click situation.</p>
   </ul>
 
   <ul>Drag and Drop
-    <li>Drag and drop chips between related <code>&lt;md-chips&gt;</code> elements.
+    <li>Drag and drop chips between related `<md-chips>` elements.
     </li>
   </ul>
 </ul>
 
-<p><span style="font-size:.8em;text-align:center">
-  Warning: This component is a WORK IN PROGRESS. If you use it now,
-  it will probably break on you in the future.
-</span></p>
+//-->
 <p>Sometimes developers want to limit the amount of possible chips.<br/>
 You can specify the maximum amount of chips by using the following markup.</p>
 <hljs lang="html">
@@ -79,6 +80,17 @@ Here is an example markup.</p>
     <md-autocomplete ng-hide="myItems.length > 5" ...></md-autocomplete>
   </md-chips>
 </hljs>
+
+<h3 id="accessibility">Accessibility</h3>
+<p>The <code>md-chips</code> component supports keyboard and screen reader users since Version 1.1.2. In
+order to achieve this, we modified the chips behavior to select newly appended chips for
+<code>300ms</code> before re-focusing the input and allowing the user to type.</p>
+<p>For most users, this delay is small enough that it will not be noticeable but allows certain
+screen readers to function properly (JAWS and NVDA in particular).</p>
+<p>We introduced a new <code>md-chip-append-delay</code> option to allow developers to better control this
+behavior.</p>
+<p>Please refer to the documentation of this option (below) for more information.</p>
+
 </div>
 
 
@@ -148,7 +160,7 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
-          <p>A model to bind the list of items to</p>
+          <p>A model to which the list of items will be bound.</p>
 
           
         </td>
@@ -216,6 +228,12 @@ on our custom validators.</p>
           
         </td>
       </tr>
+    
+  
+    
+  
+    
+  
     
   
     
@@ -426,6 +444,43 @@ on our custom validators.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          input-aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers to identify the input.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          container-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers informing users of how to
+   navigate the chips. Used in readonly mode.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           delete-hint
           
           <span hide show-sm>
@@ -473,6 +528,37 @@ on our custom validators.</p>
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>An array of key codes used to separate chips.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-chip-append-delay
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The number of milliseconds that the component will select
+   a newly appended chip before allowing a user to type into the input. This is <strong>necessary</strong>
+   for keyboard accessibility for screen readers. It defaults to 300ms and any number less than
+   300 can cause issues with screen readers (particularly JAWS and sometimes NVDA).</p>
+<p>   <em>Available since Version 1.1.2.</em></p>
+<p>   <strong>Note:</strong> You can safely set this to <code>0</code> in one of the following two instances:</p>
+<ol>
+<li><p>You are targeting an iOS or Safari-only application (where users would use VoiceOver) or
+only ChromeVox users.</p>
+</li>
+<li><p>If you have utilized the <code>md-separator-keys</code> to disable the <code>enter</code> keystroke in
+favor of another one (such as <code>,</code> or <code>;</code>).</p>
+</li>
+</ol>
 
           
         </td>

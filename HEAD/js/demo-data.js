@@ -486,7 +486,14 @@ angular.module('docsApp').constant('DEMOS', [
             "outputPath": "demo-partials/chips/demoBasicUsage/style.css"
           }
         ],
-        "html": [],
+        "html": [
+          {
+            "name": "readme.html",
+            "label": "readme.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/chips/demoBasicUsage/readme.html"
+          }
+        ],
         "js": [
           {
             "name": "script.js",
