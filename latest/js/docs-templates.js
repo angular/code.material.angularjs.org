@@ -316,9 +316,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
   $templateCache.put('partials/home.tmpl.html',
     '<div ng-controller="HomeCtrl" class="doc-content">\n' +
     '  <md-content>\n' +
-    '    <h2 class="md-headline" style="margin-top: 0;">What is Angular Material?</h2>\n' +
+    '    <h2 class="md-headline" style="margin-top: 0;">What is AngularJS Material?</h2>\n' +
     '    <p>\n' +
-    '      For developers using AngularJS, Angular Material is both a UI Component framework and a reference implementation of Google\'s\n' +
+    '      For developers using AngularJS, AngularJS Material is both a UI Component framework and a reference implementation of Google\'s\n' +
     '      Material Design Specification. This project provides a set of reusable, well-tested, and\n' +
     '      accessible UI components based on Material Design.\n' +
     '    </p>\n' +
@@ -341,14 +341,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-headline">What about Angular 2?</h2>\n' +
+    '    <h2 class="md-headline">What about Angular?</h2>\n' +
     '    <p>\n' +
-    '      Angular Material recently released Version 1 which we consider to be stable and ready for\n' +
-    '      production use. Developers should note that Angular Material v1 works only with Angular 1.x.\n' +
+    '      AngularJS Material recently released Version 1 which we consider to be stable and ready for\n' +
+    '      production use. Developers should note that AngularJS Material works only with AngularJS.\n' +
     '    </p>\n' +
     '    <ul>\n' +
-    '      <li>Current Angular Material v1.x development efforts are focused on bug fixes and minor improvements.</li>\n' +
-    '      <li>Angular Material v2 development is also in-progress at the <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.</li>\n' +
+    '      <li>Current AngularJS Material development efforts are focused on bug fixes and minor improvements.</li>\n' +
+    '      <li>Angular Material development is also in-progress at the <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.</li>\n' +
     '    </ul>\n' +
     '    <p>\n' +
     '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking changes.\n' +
@@ -367,7 +367,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}<br/>\n' +
-    '          <div style="text-transform: none;margin-top:-15px;font-size:1.0em;">Angular Material v1.x </div>\n' +
+    '          <div style="text-transform: none;margin-top:-15px;font-size:1.0em;">AngularJS Material</div>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -377,7 +377,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <br/>\n' +
     '    <h2 class="md-headline">Training Videos:</h2>\n' +
     '    <p>\n' +
-    '      Here are some video courses that will help jump start your development with Angular Material.\n' +
+    '      Here are some video courses that will help jump start your development with AngularJS Material.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
@@ -399,7 +399,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <br/>\n' +
     '    <h2 class="md-headline">Conference Presentations:</h2>\n' +
     '    <p>\n' +
-    '      Here are some conference presentations that will provide overviews for your development with Angular Material.\n' +
+    '      Here are some conference presentations that will provide overviews for your development with AngularJS Material.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
