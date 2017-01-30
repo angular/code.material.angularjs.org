@@ -1,0 +1,444 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Service that makes an element apply theming related <b>classes</b> to itself.</p>
+<hljs lang="js">
+app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
+  return {
+    restrict: &#39;e&#39;,
+    link: function(scope, el, attrs) {
+      $mdTheming(el);
+    }
+  };
+});
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  <section class="api-section">
+      
+  <div class="api-param-section">
+    <h2>
+      
+        Arguments
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          element
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-element">element</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-element">element</code></td>
+        <td class="description">
+          <p>to apply theming to</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+      <section class="api-section">
+  
+</section>
+
+
+      
+
+    </section>
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="registered">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.registered(themeName);
+</code>
+      </h3>
+      <div class="service-desc"><p>Determine is specified theme name is a valid, registered theme</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* themeName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>the theme to check if registered</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+    <td class="description"><p>whether the theme is registered or not</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="defaultTheme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.defaultTheme();
+</code>
+      </h3>
+      <div class="service-desc"><p>Returns the default theme</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
+    <td class="description"><p>The default theme</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="generateTheme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.generateTheme(name);
+</code>
+      </h3>
+      <div class="service-desc"><p>Lazy generate themes - by default, every theme is generated when defined.
+You can disable this in the configuration section using the
+<code>$mdThemingProvider.generateThemesOnDemand(true);</code></p>
+<p>The theme name that is passed in must match the name of the theme that was defined as part of the configuration block.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>theme name to generate</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setBrowserColor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.setBrowserColor(options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sets browser header coloring
+for more info please visit:
+<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color</a></p>
+<p>The default color is <code>800</code> from <code>primary</code> palette of the <code>default</code> theme</p>
+<p>options are:<br/>
+<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme.<br/>
+<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
+            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code><br/>
+<code>hue</code>     - The hue from the selected palette. Default is <code>800</code></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Options object for the browser color</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-function">Function</code></td>
+    <td class="description"><p>remove function of the browser color</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+<section class="api-section">
+  <h2>Properties</h2>
+  <br/>
+  <ul class="methods">
+    <li id="THEMES">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.THEMES</code>
+      </h3>
+      <div class="service-desc"><p>Property to get all the themes defined</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+        <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+    <td class="description"><p>All the themes defined with their properties</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+        
+
+      </div>
+
+    </li>
+    
+    <li id="PALETTES">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.PALETTES</code>
+      </h3>
+      <div class="service-desc"><p>Property to get all the palettes defined</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+        <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+    <td class="description"><p>All the palettes defined with their colors</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+        
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+
+
+
+  
+</div>
+
+
+</div>

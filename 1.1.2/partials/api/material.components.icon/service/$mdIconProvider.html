@@ -1,0 +1,694 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdIconProvider</code> is used only to register icon IDs with URLs. These configuration features allow
+icons and icon sets to be pre-registered and associated with source URLs <strong>before</strong> the <code>&lt;md-icon /&gt;</code>
+directives are compiled.</p>
+<p>If using font-icons, the developer is responsible for loading the fonts.</p>
+<p>If using SVGs, loading of the actual svg files are deferred to on-demand requests and are loaded
+internally by the <code>$mdIcon</code> service using the <code>$templateRequest</code> service. When an SVG is
+requested by name/ID, the <code>$mdIcon</code> service searches its registry for the associated source URL;
+that URL is used to on-demand load and parse the SVG dynamically.</p>
+<p>The <code>$templateRequest</code> service expects the icons source to be loaded over trusted URLs.<br/>
+This means, when loading icons from an external URL, you have to trust the URL in the <code>$sceDelegateProvider</code>.</p>
+<hljs lang="js">
+  app.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+      // Adding &#39;self&#39; to the whitelist, will allow requests from the current origin.
+      &#39;self&#39;,
+      // Using double asterisks here, will allow all URLs to load.
+      // We recommend to only specify the given domain you want to allow.
+      &#39;**&#39;
+    ]);
+  });
+</hljs>
+
+<p>Read more about the <a href="https://docs.angularjs.org/api/ng/provider/$sceDelegateProvider">$sceDelegateProvider</a>.</p>
+<p><strong>Notice:</strong> Most font-icons libraries do not support ligatures (for example <code>fontawesome</code>).<br/>
+ In such cases you are not able to use the icon&#39;s ligature name - Like so:</p>
+ <hljs lang="html">
+   <md-icon md-font-set="fa">fa-bell</md-icon>
+ </hljs>
+
+<p>You should instead use the given unicode, instead of the ligature name.</p>
+<p><p ng-hide="true"> ##// Notice we can&#39;t use a hljs element here, because the characters will be escaped.</p></p>
+<pre><code class="lang-html">&lt;md-icon md-font-set=&quot;fa&quot;&gt;&amp;#xf0f3&lt;/md-icon&gt;
+</code></pre>
+<p>All unicode ligatures are prefixed with the <code>&amp;#x</code> string.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+  app.config(function($mdIconProvider) {
+
+    // Configure URLs for icons specified by [set:]id.
+
+    $mdIconProvider
+         .defaultFontSet( &#39;fa&#39; )                   // This sets our default fontset className.
+         .defaultIconSet(&#39;my/app/icons.svg&#39;)       // Register a default set of SVG icons
+         .iconSet(&#39;social&#39;, &#39;my/app/social.svg&#39;)   // Register a named icon set of SVGs
+         .icon(&#39;android&#39;, &#39;my/app/android.svg&#39;)    // Register a specific icon (by name)
+         .icon(&#39;work:chair&#39;, &#39;my/app/chair.svg&#39;);  // Register icon in a specific set
+  });
+</hljs>
+
+<p>SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
+<strong>startup</strong> process (shown below):</p>
+<hljs lang="js">
+  app.config(function($mdIconProvider) {
+
+    // Register a default set of SVG icon definitions
+    $mdIconProvider.defaultIconSet(&#39;my/app/icons.svg&#39;)
+
+  })
+  .run(function($templateRequest){
+
+    // Pre-fetch icons sources by URL and cache in the $templateCache...
+    // subsequent $templateRequest calls will look there first.
+
+    var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
+
+</hljs>
+
+<blockquote>
+<p><b>Note:</b> The loaded SVG data is subsequently cached internally for future requests.</p>
+</blockquote>
+
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="icon">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.icon(id, url, [viewBoxSize]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Register a source URL for a specific icon name; the name may include optional &#39;icon set&#39; name prefix.
+These icons  will later be retrieved from the cache using <code>$mdIcon( &lt;icon name&gt; )</code></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* id</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Icon name/id used to register the icon</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          viewBoxSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Sets the width and height the icon&#39;s viewBox.
+It is ignored for icons with an existing viewBox. Default size is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="iconSet">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.iconSet(id, url, [viewBoxSize]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Register a source URL for a &#39;named&#39; set of icons; group of SVG definitions where each definition
+has an icon id. Individual icons can be subsequently retrieved from this cached set using
+<code>$mdIcon(&lt;icon set name&gt;:&lt;icon name&gt;)</code></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* id</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Icon name/id used to register the iconset</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          viewBoxSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Sets the width and height of the viewBox of all icons in the set.
+It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+Default value is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="defaultIconSet">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.defaultIconSet(url, [viewBoxSize]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Register a source URL for the default &#39;named&#39; set of icons. Unless explicitly registered,
+subsequent lookups of icons will failover to search this &#39;default&#39; icon set.
+Icon can be retrieved from this cached, default set using <code>$mdIcon(&lt;name&gt;)</code></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* url</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>specifies the external location for the data file. Used internally by
+<code>$templateRequest</code> to load the data or as part of the lookup in <code>$templateCache</code> if pre-loading
+was configured.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          viewBoxSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Sets the width and height of the viewBox of all icons in the set.
+It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+Default value is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="defaultFontSet">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.defaultFontSet(name);
+</code>
+      </h3>
+      <div class="service-desc"><p>When using Font-Icons, Angular Material assumes the the Material Design icons will be used and automatically
+configures the default font-set == &#39;material-icons&#39;. Note that the font-set references the font-icon library
+class style that should be applied to the <code>&lt;md-icon&gt;</code>.</p>
+<p>Configuring the default means that the attributes
+<code>md-font-set=&quot;material-icons&quot;</code> or <code>class=&quot;material-icons&quot;</code> do not need to be explicitly declared on the
+<code>&lt;md-icon&gt;</code> markup. For example:</p>
+<p> <code>&lt;md-icon&gt; face &lt;/md-icon&gt;</code>
+ will render as
+ <code>&lt;span class=&quot;material-icons&quot;&gt; face &lt;/span&gt;</code>, and</p>
+<p> <code>&lt;md-icon md-font-set=&quot;fa&quot;&gt; face &lt;/md-icon&gt;</code>
+ will render as
+ <code>&lt;span class=&quot;fa&quot;&gt; face &lt;/span&gt;</code></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>of the font-library style that should be applied to the md-icon DOM element</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="fontSet">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.fontSet(alias, className);
+</code>
+      </h3>
+      <div class="service-desc"><p>When using a font set for <code>&lt;md-icon&gt;</code> you must specify the correct font classname in the <code>md-font-set</code>
+attribute. If the fonset className is really long, your markup may become cluttered... an easy
+solution is to define an <code>alias</code> for your fontset:</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* alias</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>of the specified fontset.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* className</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>of the fontset.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="defaultViewBoxSize">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdIconProvider.defaultViewBoxSize([viewBoxSize]);
+</code>
+      </h3>
+      <div class="service-desc"><p>While <code>&lt;md-icon /&gt;</code> markup can also be style with sizing CSS, this method configures
+the default width <strong>and</strong> height used for all icons; unless overridden by specific CSS.
+The default sizing is (24px, 24px).</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          viewBoxSize
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Sets the width and height of the viewBox for an icon or an icon set.
+All icons in a set should be the same size. The default value is 24.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-obj">obj</code></td>
+    <td class="description"><p>an <code>$mdIconProvider</code> reference; used to support method call chains for the API</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
