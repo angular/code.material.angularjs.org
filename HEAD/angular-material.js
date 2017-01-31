@@ -2690,7 +2690,7 @@ function MdGesture($$MdGestureHandler, $$rAF, $timeout) {
         if (touchActionProperty) {
           // We check for horizontal to be false, because otherwise we would overwrite the default opts.
           this.oldTouchAction = element[0].style[touchActionProperty];
-          element[0].style[touchActionProperty] = options.horizontal === false ? 'pan-y' : 'pan-x';
+          element[0].style[touchActionProperty] = options.horizontal ? 'pan-y' : 'pan-x';
         }
       },
       onCleanup: function(element) {
@@ -19524,7 +19524,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdConstant, $mdTheming) {
       var newVal = self.isMultiple ? values : values[0];
       var prevVal = self.ngModel.$modelValue;
 
-      if (usingTrackBy ? !angular.equals(prevVal, newVal) : prevVal !== newVal) {
+      if (usingTrackBy ? !angular.equals(prevVal, newVal) : (prevVal + '') !== newVal) {
         self.ngModel.$setViewValue(newVal);
         self.ngModel.$render();
       }
@@ -22095,6 +22095,8 @@ function getDirective(name) {
   function DirectiveFactory($parse) {
       return { restrict: 'A', link: postLink };
       function postLink(scope, element, attr) {
+        element.css('touch-action', 'none');
+
         var fn = $parse(attr[directiveName]);
         element.on(eventName, function(ev) {
           scope.$applyAsync(function() { fn(scope, { $event: ev }); });
