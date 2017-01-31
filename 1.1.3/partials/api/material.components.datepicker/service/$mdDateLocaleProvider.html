@@ -1,0 +1,393 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>$mdDateLocaleProvider</code> is the provider that creates the <code>$mdDateLocale</code> service.
+This provider that allows the user to specify messages, formatters, and parsers for date
+internationalization. The <code>$mdDateLocale</code> service itself is consumed by Angular Material
+components that deal with dates.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+myAppModule.config(function($mdDateLocaleProvider) {
+
+    // Example of a French localization.
+    $mdDateLocaleProvider.months = [&#39;janvier&#39;, &#39;février&#39;, &#39;mars&#39;, ...];
+    $mdDateLocaleProvider.shortMonths = [&#39;janv&#39;, &#39;févr&#39;, &#39;mars&#39;, ...];
+    $mdDateLocaleProvider.days = [&#39;dimanche&#39;, &#39;lundi&#39;, &#39;mardi&#39;, ...];
+    $mdDateLocaleProvider.shortDays = [&#39;Di&#39;, &#39;Lu&#39;, &#39;Ma&#39;, ...];
+
+    // Can change week display to start on Monday.
+    $mdDateLocaleProvider.firstDayOfWeek = 1;
+
+    // Optional.
+    $mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
+
+    // Example uses moment.js to parse and format dates.
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, &#39;L&#39;, true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
+    $mdDateLocaleProvider.formatDate = function(date) {
+      var m = moment(date);
+      return m.isValid() ? m.format(&#39;L&#39;) : &#39;&#39;;
+    };
+
+    $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+      return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
+    };
+
+    // In addition to date display, date components also need localized messages
+    // for aria-labels for screen-reader users.
+
+    $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+      return &#39;Semaine &#39; + weekNumber;
+    };
+
+    $mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
+    $mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
+
+    // You can also set when your calendar begins and ends.
+    $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
+    $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
+});
+</hljs>
+  </section>
+
+
+  
+
+  
+  
+  
+<section class="api-section">
+  <h2>Properties</h2>
+  <br/>
+  <ul class="methods">
+    <li id="months">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.months</code>
+      </h3>
+      <div class="service-desc"><p>Array of month names (in order).</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="shortMonths">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.shortMonths</code>
+      </h3>
+      <div class="service-desc"><p>Array of abbreviated month names.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="days">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.days</code>
+      </h3>
+      <div class="service-desc"><p>Array of the days of the week (in order).</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="shortDays">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.shortDays</code>
+      </h3>
+      <div class="service-desc"><p>Array of abbreviated dayes of the week.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="dates">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.dates</code>
+      </h3>
+      <div class="service-desc"><p>Array of dates of the month. Only necessary for locales
+    using a numeral system other than [1, 2, 3...].</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="firstDayOfWeek">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.firstDayOfWeek</code>
+      </h3>
+      <div class="service-desc"><p>The first day of the week. Sunday = 0, Monday = 1,
+   etc.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="parseDate">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.parseDate</code>
+      </h3>
+      <div class="service-desc"><p>Function to parse a date object from a string.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="formatDate">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.formatDate</code>
+      </h3>
+      <div class="service-desc"><p>Function to format a date object to a
+    string. The datepicker directive also provides the time zone, if it was specified.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="monthHeaderFormatter">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.monthHeaderFormatter</code>
+      </h3>
+      <div class="service-desc"><p>Function that returns the label for
+    a month given a date.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="monthFormatter">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.monthFormatter</code>
+      </h3>
+      <div class="service-desc"><p>Function that returns the full name of a month
+    for a giben date.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="weekNumberFormatter">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.weekNumberFormatter</code>
+      </h3>
+      <div class="service-desc"><p>Function that returns a label for
+    a week given the week number.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="msgCalendar">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.msgCalendar</code>
+      </h3>
+      <div class="service-desc"><p>Translation of the label &quot;Calendar&quot; for the current locale.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="msgOpenCalendar">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.msgOpenCalendar</code>
+      </h3>
+      <div class="service-desc"><p>Translation of the button label &quot;Open calendar&quot; for the
+    current locale.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="firstRenderableDate">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.firstRenderableDate</code>
+      </h3>
+      <div class="service-desc"><p>The date from which the datepicker calendar will begin
+rendering. Note that this will be ignored if a minimum date is set. Defaults to January 1st 1880.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    
+    <li id="lastRenderableDate">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdDateLocaleProvider.lastRenderableDate</code>
+      </h3>
+      <div class="service-desc"><p>The last date that will be rendered by the datepicker
+calendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.</p>
+</div>
+
+      <div class="method-param-table">
+
+        
+
+        
+
+        
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+
+
+
+  
+</div>
+
+
+</div>

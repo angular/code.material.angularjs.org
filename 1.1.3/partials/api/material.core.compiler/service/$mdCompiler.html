@@ -1,0 +1,220 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The $mdCompiler service is an abstraction of Angular&#39;s compiler, that allows developers
+to easily compile an element with options like in a Directive Definition Object.</p>
+<blockquote>
+<p>The compiler powers a lot of components inside of Angular Material.
+Like the <code>$mdPanel</code> or <code>$mdDialog</code>.</p>
+</blockquote>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <p>Basic Usage with a template</p>
+<hljs lang="js">
+  $mdCompiler.compile({
+    templateUrl: &#39;modal.html&#39;,
+    controller: &#39;ModalCtrl&#39;,
+    locals: {
+      modal: myModalInstance;
+    }
+  }).then(function (compileData) {
+    compileData.element; // Compiled DOM element
+    compileData.link(myScope); // Instantiate controller and link element to scope.
+  });
+</hljs>
+
+<p>Example with a content element</p>
+<hljs lang="js">
+
+  // Create a virtual element and link it manually.
+  // The compiler doesn&#39;t need to recompile the element each time.
+  var myElement = $compile(&#39;<span>Test</span>&#39;)(myScope);
+
+  $mdCompiler.compile({
+    contentElement: myElement
+  }).then(function (compileData) {
+    compileData.element // Content Element (same as above)
+    compileData.link // This does nothing when using a contentElement.
+  });
+</hljs>
+
+<blockquote>
+<p>Content Element is a significant performance improvement when the developer already knows that the
+compiled element will be always the same and the scope will not change either.</p>
+</blockquote>
+<p>The <code>contentElement</code> option also supports DOM elements which will be temporary removed and restored
+at its old position.</p>
+<hljs lang="js">
+  var domElement = document.querySelector(&#39;#myElement&#39;);
+
+  $mdCompiler.compile({
+    contentElement: myElement
+  }).then(function (compileData) {
+    compileData.element // Content Element (same as above)
+    compileData.link // This does nothing when using a contentElement.
+  });
+</hljs>
+
+<p>The <code>$mdCompiler</code> can also query for the element in the DOM itself.</p>
+<hljs lang="js">
+  $mdCompiler.compile({
+    contentElement: &#39;#myElement&#39;
+  }).then(function (compileData) {
+    compileData.element // Content Element (same as above)
+    compileData.link // This does nothing when using a contentElement.
+  });
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="compile">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdCompiler.compile(options);
+</code>
+      </h3>
+      <div class="service-desc"><p>A method to compile a HTML template with the Angular compiler.
+The <code>$mdCompiler</code> is wrapper around the Angular compiler and provides extra functionality
+like controller instantiation or async resolves.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>An options object, with the following properties:</p>
+<ul>
+<li><code>controller</code> - <code>{string|Function}</code> Controller fn that should be associated with
+   newly created scope or the name of a registered controller if passed as a string.</li>
+<li><code>controllerAs</code> - <code>{string=}</code> A controller alias name. If present the controller will be
+   published to scope under the <code>controllerAs</code> name.</li>
+<li><code>contentElement</code> - <code>{string|Element}</code>: Instead of using a template, which will be
+   compiled each time, you can also use a DOM element.<br/></li>
+<li><code>template</code> - <code>{string=}</code> An html template as a string.</li>
+<li><code>templateUrl</code> - <code>{string=}</code> A path to an html template.</li>
+<li><code>transformTemplate</code> - <code>{function(template)=}</code> A function which transforms the template after
+  it is loaded. It will be given the template string as a parameter, and should
+  return a a new string representing the transformed template.</li>
+<li><code>resolve</code> - <code>{Object.&lt;string, function&gt;=}</code> - An optional map of dependencies which should
+  be injected into the controller. If any of these dependencies are promises, the compiler
+  will wait for them all to be resolved, or if one is rejected before the controller is
+  instantiated <code>compile()</code> will fail..<ul>
+<li><code>key</code> - <code>{string}</code>: a name of a dependency to be injected into the controller.</li>
+<li><code>factory</code> - <code>{string|function}</code>: If <code>string</code> then it is an alias for a service.
+Otherwise if function, then it is injected and the return value is treated as the
+dependency. If the result is a promise, it is resolved before its value is
+injected into the controller.</li>
+</ul>
+</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+    <td class="description"><p>promise A promise, which will be resolved with a <code>compileData</code> object.
+<code>compileData</code> has the following properties:</p>
+<ul>
+<li><code>element</code> - <code>{element}</code>: an uncompiled element matching the provided template.</li>
+<li><code>link</code> - <code>{function(scope)}</code>: A link function, which, when called, will compile
+the element and instantiate the provided controller (if given).</li>
+<li><code>locals</code> - <code>{object}</code>: The locals which will be passed into the controller once <code>link</code> is
+called. If <code>bindToController</code> is true, they will be coppied to the ctrl instead</li>
+</ul>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

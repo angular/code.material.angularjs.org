@@ -1,0 +1,44 @@
+<div class="doc-content theming">
+    
+    <div class="layout_note">
+  <span>This feature is <strong>mobile</strong> only</span>
+</div>
+
+<p><img src="https://cloud.githubusercontent.com/assets/6004537/18006666/50519c7e-6ba9-11e6-905b-c3751c20549c.png" alt="browser color"></p>
+<p>Enables browser header coloring with <a href="https://material.google.com/style/color.html">Material Design Colors</a> and the theming system.</p>
+<p>For more information, please visit:<br/> 
+<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color</a>.</p>
+<p>Below are usage examples for both the Angular configuration phase, and during runtime.</p>
+<h3 id="config-phase">Config Phase</h3>
+<hljs lang="js">
+  myAppModule
+    .config(function($mdThemingProvider) {
+      // Enable browser color
+      $mdThemingProvider.enableBrowserColor({
+        theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+        palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+        hue: &#39;200&#39; // Default is &#39;800&#39;
+      });
+    });
+</hljs>
+
+<h3 id="runtime">Runtime</h3>
+<hljs lang="js">
+  myAppModule
+    .controller(&#39;myCtrl&#39;, function($scope, $mdTheming) {
+      var removeFunction = $mdTheming.setBrowserColor({
+        theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+        palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+        hue: &#39;200&#39; // Default is &#39;800&#39;
+      });
+
+      $scope.$on(&#39;$destroy&#39;, function () {
+        removeFunction(); // COMPLETELY removes the browser color
+      })
+    })
+</hljs>
+
+<p>For api reference please visit <a ng-href="/api/service/$mdThemingProvider#enableBrowserColor">$mdThemingProvider</a> documentation.</p>
+
+    
+</div>

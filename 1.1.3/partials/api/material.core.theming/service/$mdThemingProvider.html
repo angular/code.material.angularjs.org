@@ -1,0 +1,427 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Provider to configure the <code>$mdTheming</code> service.</p>
+<h3 id="default-theme">Default Theme</h3>
+<p>The <code>$mdThemingProvider</code> uses by default the following theme configuration:</p>
+<ul>
+<li>Primary Palette: <code>Blue</code></li>
+<li>Accent Palette: <code>Pink</code></li>
+<li>Warn Palette: <code>Deep-Orange</code></li>
+<li>Background Palette: <code>Grey</code></li>
+</ul>
+<p>If you don&#39;t want to use the <code>md-theme</code> directive on the elements itself, you may want to overwrite
+the default theme.<br/>
+This can be done by using the following markup.</p>
+<hljs lang="js">
+  myAppModule.config(function($mdThemingProvider) {
+    $mdThemingProvider
+      .theme(&#39;default&#39;)
+      .primaryPalette(&#39;blue&#39;)
+      .accentPalette(&#39;teal&#39;)
+      .warnPalette(&#39;red&#39;)
+      .backgroundPalette(&#39;grey&#39;);
+  });
+</hljs>
+
+
+<h3 id="dynamic-themes">Dynamic Themes</h3>
+<p>By default, if you change a theme at runtime, the <code>$mdTheming</code> service will not detect those changes.<br/>
+If you have an application, which changes its theme on runtime, you have to enable theme watching.</p>
+<hljs lang="js">
+  myAppModule.config(function($mdThemingProvider) {
+    // Enable theme watching.
+    $mdThemingProvider.alwaysWatchTheme(true);
+  });
+</hljs>
+
+<h3 id="custom-theme-styles">Custom Theme Styles</h3>
+<p>Sometimes you may want to use your own theme styles for some custom components.<br/>
+You are able to register your own styles by using the following markup.</p>
+<hljs lang="js">
+  myAppModule.config(function($mdThemingProvider) {
+    // Register our custom stylesheet into the theming provider.
+    $mdThemingProvider.registerStyles(STYLESHEET);
+  });
+</hljs>
+
+<p>The <code>registerStyles</code> method only accepts strings as value, so you&#39;re actually not able to load an external
+stylesheet file into the <code>$mdThemingProvider</code>.</p>
+<p>If it&#39;s necessary to load an external stylesheet, we suggest using a bundler, which supports including raw content,
+like <a href="https://github.com/webpack/raw-loader">raw-loader</a> for <code>webpack</code>.</p>
+<hljs lang="js">
+  myAppModule.config(function($mdThemingProvider) {
+    // Register your custom stylesheet into the theming provider.
+    $mdThemingProvider.registerStyles(require(&#39;../styles/my-component.theme.css&#39;));
+  });
+</hljs>
+
+<h3 id="browser-color">Browser color</h3>
+<p>Enables browser header coloring
+for more info please visit:
+<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color</a></p>
+<p>Options parameter: <br/>
+<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/>
+<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
+            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code>. <br/>
+<code>hue</code>     - The hue from the selected palette. Default is <code>800</code><br/></p>
+<hljs lang="js">
+  myAppModule.config(function($mdThemingProvider) {
+    // Enable browser color
+    $mdThemingProvider.enableBrowserColor({
+      theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+      palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+      hue: &#39;200&#39; // Default is &#39;800&#39;
+    });
+  });
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="registerStyles">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.registerStyles(styles);
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* styles</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The styles to be appended to Angular Material&#39;s built in theme css.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setNonce">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.setNonce(nonceValue);
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* nonceValue</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The nonce to be added as an attribute to the theme style tags.
+Setting a value allows the use of CSP policy without using the unsafe-inline directive.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setDefaultTheme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.setDefaultTheme(themeName);
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* themeName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Default theme name to be applied to elements. Default value is <code>default</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="alwaysWatchTheme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.alwaysWatchTheme(watch);
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* watch</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether or not to always watch themes for changes and re-apply
+classes when they change. Default is <code>false</code>. Enabling can reduce performance.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="enableBrowserColor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.enableBrowserColor([options]);
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          options
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Options object for the browser color<br/>
+<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/>
+<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
+            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code>. <br/>
+<code>hue</code>     - The hue from the selected palette. Default is <code>800</code><br/></p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-function">Function</code></td>
+    <td class="description"><p>remove function of the browser color</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
