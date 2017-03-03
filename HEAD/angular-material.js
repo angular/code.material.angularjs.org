@@ -383,10 +383,15 @@ function MdConstantFactory() {
 
   var self = {
     isInputKey : function(e) { return (e.keyCode >= 31 && e.keyCode <= 90); },
-    isNumPadKey : function (e){ return (3 === e.location && e.keyCode >= 97 && e.keyCode <= 105); },
+    isNumPadKey : function(e) { return (3 === e.location && e.keyCode >= 97 && e.keyCode <= 105); },
+    isMetaKey: function(e) { return (e.keyCode >= 91 && e.keyCode <= 93); },
+    isFnLockKey: function(e) { return (e.keyCode >= 112 && e.keyCode <= 145); },
     isNavigationKey : function(e) {
       var kc = self.KEY_CODE, NAVIGATION_KEYS =  [kc.SPACE, kc.ENTER, kc.UP_ARROW, kc.DOWN_ARROW];
       return (NAVIGATION_KEYS.indexOf(e.keyCode) != -1);
+    },
+    hasModifierKey: function(e) {
+      return e.ctrlKey || e.metaKey || e.altKey;
     },
 
     /**
@@ -1991,7 +1996,9 @@ function MdAriaService($$rAF, $log, $window, $interpolate) {
     expectAsync: expectAsync,
     expectWithText: expectWithText,
     expectWithoutText: expectWithoutText,
-    getText: getText
+    getText: getText,
+    hasAriaLabel: hasAriaLabel,
+    parentHasAriaLabel: parentHasAriaLabel
   };
 
   /**
@@ -2094,8 +2101,153 @@ function MdAriaService($$rAF, $log, $window, $interpolate) {
         }
       }
     }
-
     return hasAttr;
+  }
+
+  /**
+   * Check if expected element has aria label attribute
+   * @param element
+   */
+  function hasAriaLabel(element) {
+    var node = angular.element(element)[0] || element;
+
+    /* Check if compatible node type (ie: not HTML Document node) */
+    if (!node.hasAttribute) {
+      return false;
+    }
+
+    /* Check label or description attributes */
+    return node.hasAttribute('aria-label') || node.hasAttribute('aria-labelledby') || node.hasAttribute('aria-describedby');
+  }
+
+  /**
+   * Check if expected element's parent has aria label attribute and has valid role and tagName
+   * @param element
+   * @param {optional} level Number of levels deep search should be performed
+   */
+  function parentHasAriaLabel(element, level) {
+    level = level || 1;
+    var node = angular.element(element)[0] || element;
+    if (!node.parentNode) {
+      return false;
+    }
+    if (performCheck(node.parentNode)) {
+      return true;
+    }
+    level--;
+    if (level) {
+      return parentHasAriaLabel(node.parentNode, level);
+    }
+    return false;
+
+    function performCheck(parentNode) {
+      if (!hasAriaLabel(parentNode)) {
+        return false;
+      }
+      /* Perform role blacklist check */
+      if (parentNode.hasAttribute('role')) {
+        switch(parentNode.getAttribute('role').toLowerCase()) {
+          case 'command':
+          case 'definition':
+          case 'directory':
+          case 'grid':
+          case 'list':
+          case 'listitem':
+          case 'log':
+          case 'marquee':
+          case 'menu':
+          case 'menubar':
+          case 'note':
+          case 'presentation':
+          case 'separator':
+          case 'scrollbar':
+          case 'status':
+          case 'tablist':
+            return false;
+        }
+      }
+      /* Perform tagName blacklist check */
+      switch(parentNode.tagName.toLowerCase()) {
+        case 'abbr':
+        case 'acronym':
+        case 'address':
+        case 'applet':
+        case 'audio':
+        case 'b':
+        case 'bdi':
+        case 'bdo':
+        case 'big':
+        case 'blockquote':
+        case 'br':
+        case 'canvas':
+        case 'caption':
+        case 'center':
+        case 'cite':
+        case 'code':
+        case 'col':
+        case 'data':
+        case 'dd':
+        case 'del':
+        case 'dfn':
+        case 'dir':
+        case 'div':
+        case 'dl':
+        case 'em':
+        case 'embed':
+        case 'fieldset':
+        case 'figcaption':
+        case 'font':
+        case 'h1':
+        case 'h2':
+        case 'h3':
+        case 'h4':
+        case 'h5':
+        case 'h6':
+        case 'hgroup':
+        case 'html':
+        case 'i':
+        case 'ins':
+        case 'isindex':
+        case 'kbd':
+        case 'keygen':
+        case 'label':
+        case 'legend':
+        case 'li':
+        case 'map':
+        case 'mark':
+        case 'menu':
+        case 'object':
+        case 'ol':
+        case 'output':
+        case 'pre':
+        case 'presentation':
+        case 'q':
+        case 'rt':
+        case 'ruby':
+        case 'samp':
+        case 'small':
+        case 'source':
+        case 'span':
+        case 'status':
+        case 'strike':
+        case 'strong':
+        case 'sub':
+        case 'sup':
+        case 'svg':
+        case 'tbody':
+        case 'td':
+        case 'th':
+        case 'thead':
+        case 'time':
+        case 'tr':
+        case 'track':
+        case 'tt':
+        case 'ul':
+        case 'var':
+          return false;
+      }
+      return true;
+    }
   }
 }
 
@@ -19201,7 +19353,7 @@ function SelectDirective($mdSelect, $mdUtil, $mdConstant, $mdTheming, $mdAria, $
           e.preventDefault();
           openSelect(e);
         } else {
-          if ($mdConstant.isInputKey(e) || $mdConstant.isNumPadKey(e)) {
+          if (shouldHandleKey(e, $mdConstant)) {
             e.preventDefault();
 
             var node = selectMenuCtrl.optNodeForKeyboardSearch(e);
@@ -20033,7 +20185,7 @@ function SelectProvider($$interimElementProvider) {
               $mdUtil.nextTick($mdSelect.hide, true);
               break;
             default:
-              if ($mdConstant.isInputKey(ev) || $mdConstant.isNumPadKey(ev)) {
+              if (shouldHandleKey(ev, $mdConstant)) {
                 var optNode = dropDown.controller('mdSelectMenu').optNodeForKeyboardSearch(ev);
                 opts.focusedNode = optNode || opts.focusedNode;
                 optNode && optNode.focus();
@@ -20310,6 +20462,15 @@ function SelectProvider($$interimElementProvider) {
     }
     return isScrollable;
   }
+
+}
+
+function shouldHandleKey(ev, $mdConstant) {
+  var char = String.fromCharCode(ev.keyCode);
+  var isNonUsefulKey = (ev.keyCode <= 31);
+
+  return (char && char.length && !isNonUsefulKey &&
+    !$mdConstant.isMetaKey(ev) && !$mdConstant.isFnLockKey(ev) && !$mdConstant.hasModifierKey(ev));
 }
 
 })();
@@ -24407,12 +24568,14 @@ VirtualRepeatController.prototype.virtualRepeatUpdate_ = function(items, oldItem
     this.container.setScrollSize(itemsLength * this.itemSize);
   }
 
+  var cleanupFirstRender = false, firstRenderStartIndex;
   if (this.isFirstRender) {
+    cleanupFirstRender = true;
     this.isFirstRender = false;
-    var startIndex = this.$attrs.mdStartIndex ?
+    firstRenderStartIndex = this.$attrs.mdStartIndex ?
       this.$scope.$eval(this.$attrs.mdStartIndex) :
       this.container.topIndex;
-    this.container.scrollToIndex(startIndex);
+    this.container.scrollToIndex(firstRenderStartIndex);
   }
 
   // Detach and pool any blocks that are no longer in the viewport.
@@ -24466,6 +24629,10 @@ VirtualRepeatController.prototype.virtualRepeatUpdate_ = function(items, oldItem
         this.blocks[maxIndex] && this.blocks[maxIndex].element[0].nextSibling);
   }
 
+  // DOM manipulation may have altered scroll, so scroll again
+  if (cleanupFirstRender) {
+    this.container.scrollToIndex(firstRenderStartIndex);
+  }
   // Restore $$checkUrlChange.
   this.$browser.$$checkUrlChange = this.browserCheckUrlChange;
 
@@ -30377,7 +30544,7 @@ function MdContactChips($mdTheming, $mdUtil) {
    * @name mdDatepicker
    * @module material.components.datepicker
    *
-   * @param {Date} ng-model The component's model. Expects a JavaScript Date object.
+   * @param {Date} ng-model The component's model. Expects either a JavaScript Date object or a value that can be parsed into one (e.g. a ISO 8601 string).
    * @param {Object=} ng-model-options Allows tuning of the way in which `ng-model` is being updated. Also allows
    * for a timezone to be specified. <a href="https://docs.angularjs.org/api/ng/directive/ngModelOptions#usage">Read more at the ngModelOptions docs.</a>
    * @param {expression=} ng-change Expression evaluated when the model value changes.
@@ -30803,9 +30970,18 @@ function MdContactChips($mdTheming, $mdUtil) {
 
     // Responds to external changes to the model value.
     self.ngModelCtrl.$formatters.push(function(value) {
+      var parsedValue = angular.isDefined(value) ? Date.parse(value) : null;
+
+      // `parsedValue` is the time since epoch if valid or `NaN` if invalid.
+      if (!isNaN(parsedValue) && angular.isNumber(parsedValue)) {
+        value = new Date(parsedValue);
+      }
+
       if (value && !(value instanceof Date)) {
-        throw Error('The ng-model for md-datepicker must be a Date instance. ' +
-            'Currently the model is a: ' + (typeof value));
+        throw Error(
+          'The ng-model for md-datepicker must be a Date instance or a value ' +
+          'that can be parsed into a date. Currently the model is of type: ' + typeof value
+        );
       }
 
       self.onExternalChange(value);
@@ -31494,20 +31670,29 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
     // If using a font-icon, then the textual name of the icon itself
     // provides the aria-label.
 
-    var label = attr.alt || attr.mdFontIcon || attr.mdSvgIcon || element.text();
     var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
 
-    if ( !attr['aria-label'] ) {
+    /* Provide a default accessibility role of img */
+    if (!attr.role) {
+      $mdAria.expect(element, 'role', 'img');
+      /* manually update attr variable */
+      attr.role = 'img';
+    }
 
-      if (label !== '' && !parentsHaveText() ) {
-
-        $mdAria.expect(element, 'aria-label', label);
-        $mdAria.expect(element, 'role', 'img');
-
-      } else if ( !element.text() ) {
-        // If not a font-icon with ligature, then
-        // hide from the accessibility layer.
-
+    /* Don't process ARIA if already valid */
+    if ( attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element) ) {
+      var iconName;
+      if (attr.alt) {
+        /* Use alt text by default if available */
+        $mdAria.expect(element, 'aria-label', attr.alt);
+      } else if ($mdAria.parentHasAriaLabel(element, 2)) {
+        /* Parent has ARIA so we will assume it will describe the image */
+        $mdAria.expect(element, 'aria-hidden', 'true');
+      } else if (iconName = (attr.mdFontIcon || attr.mdSvgIcon || element.text())) {
+        /* Use icon name as aria-label */
+        $mdAria.expect(element, 'aria-label', iconName);
+      } else {
+        /* No label found */
         $mdAria.expect(element, 'aria-hidden', 'true');
       }
     }
@@ -31523,19 +31708,7 @@ function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
             element.append(svg);
           });
         }
-
       });
-    }
-
-    function parentsHaveText() {
-      var parent = element.parent();
-      if (parent.attr('aria-label') || parent.text()) {
-        return true;
-      }
-      else if(parent.parent().attr('aria-label') || parent.parent().text()) {
-        return true;
-      }
-      return false;
     }
 
     function prepareForFontIcon() {
