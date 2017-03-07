@@ -364,8 +364,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
       controller: 'ListBottomSheetCtrl'
     }).then(function(clickedItem) {
       $scope.alert = clickedItem['name'] + ' clicked!';
-    }).catch(function(error) {
-      // User clicked outside or hit escape
     });
   };
 
@@ -382,8 +380,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
               .position('top right')
               .hideDelay(1500)
           );
-    }).catch(function(error) {
-      // User clicked outside or hit escape
     });
   };
 })
