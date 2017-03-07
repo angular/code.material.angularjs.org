@@ -294,6 +294,9 @@ input {
 ._md-panel-hidden {
   display: none; }
 
+._md-panel-offscreen {
+  left: -9999px; }
+
 ._md-panel-fullscreen {
   border-radius: 0;
   left: 0;
