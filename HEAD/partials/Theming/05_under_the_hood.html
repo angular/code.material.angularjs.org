@@ -1,11 +1,11 @@
 <div class="doc-content theming">
     
     <h3 id="under-the-hood">Under the Hood</h3>
-<p>Angular Material dynamically generates CSS for registered themes by injecting several
+<p>AngularJS Material dynamically generates CSS for registered themes by injecting several
 <code>&lt;script&gt;</code> tags into the <code>&lt;head&gt;</code> section of the application at runtime. Here is how
 that process currently works:</p>
 <ol>
-<li><p>During the Angular Material build process, a function in <code>gulp/util.js</code> called
+<li><p>During the AngularJS Material build process, a function in <code>gulp/util.js</code> called
 <a href="https://github.com/angular/material/blob/master/gulp/util.js#L223">themeBuildStream()</a>
 compiles all <code>*-theme.scss</code> files from components into a single CSS string that is
 injected into the <code>material.core</code> module as a constant called <code>$MD_THEME_CSS</code>.</p>
