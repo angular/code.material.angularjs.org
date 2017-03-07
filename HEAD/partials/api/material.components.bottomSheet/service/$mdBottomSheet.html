@@ -46,9 +46,26 @@ var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
 app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
-      template: &#39;<md-bottom-sheet>Hello!</md-bottom-sheet>&#39;
+      template: &#39;<md-bottom-sheet>&#39; +
+      &#39;Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>&#39; +
+      &#39;</md-bottom-sheet>&#39;
+    })
+
+    // Fires when the hide() method is used
+    .then(function() {
+      console.log(&#39;You clicked the button to close the bottom sheet!&#39;);
+    })
+
+    // Fires when the cancel() method is used
+    .catch(function() {
+      console.log(&#39;You hit escape or clicked the backdrop to close.&#39;);
     });
   };
+
+  $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
+    $mdBottomSheet.hide();
+  }
+
 });
 </hljs>
   </section>
@@ -67,6 +84,12 @@ app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
 </code>
       </h3>
       <div class="service-desc"><p>Show a bottom sheet with the specified options.</p>
+<p><em><b>Note:</b> You should <b>always</b> provide a <code>.catch()</code> method in case the user hits the
+<code>esc</code> key or clicks the background to close. In this case, the <code>cancel()</code> method will
+automatically be called on the bottom sheet which will <code>reject()</code> the promise. See the @usage
+section above for an example.</p>
+<p>Newer versions of Angular will throw a <code>Possibly unhandled rejection</code> exception if you forget
+this.</em></p>
 </div>
 
       <div class="method-param-table">
@@ -172,7 +195,9 @@ rejected with <code>$mdBottomSheet.cancel()</code>.</p>
 </code>
       </h3>
       <div class="service-desc"><p>Hide the existing bottom sheet and resolve the promise returned from
-<code>$mdBottomSheet.show()</code>. This call will close the most recently opened/current bottomsheet (if any).</p>
+<code>$mdBottomSheet.show()</code>. This call will close the most recently opened/current bottomsheet (if
+any).</p>
+<p><em><b>Note:</b> Use a <code>.then()</code> on your <code>.show()</code> to handle this callback.</em></p>
 </div>
 
       <div class="method-param-table">
@@ -232,6 +257,7 @@ rejected with <code>$mdBottomSheet.cancel()</code>.</p>
       </h3>
       <div class="service-desc"><p>Hide the existing bottom sheet and reject the promise returned from
 <code>$mdBottomSheet.show()</code>.</p>
+<p><em><b>Note:</b> Use a <code>.catch()</code> on your <code>.show()</code> to handle this callback.</em></p>
 </div>
 
       <div class="method-param-table">

@@ -8118,9 +8118,26 @@ function MdBottomSheetDirective($mdBottomSheet) {
  * app.controller('MyController', function($scope, $mdBottomSheet) {
  *   $scope.openBottomSheet = function() {
  *     $mdBottomSheet.show({
- *       template: '<md-bottom-sheet>Hello!</md-bottom-sheet>'
+ *       template: '<md-bottom-sheet>' +
+ *       'Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>' +
+ *       '</md-bottom-sheet>'
+ *     })
+ *
+ *     // Fires when the hide() method is used
+ *     .then(function() {
+ *       console.log('You clicked the button to close the bottom sheet!');
+ *     })
+ *
+ *     // Fires when the cancel() method is used
+ *     .catch(function() {
+ *       console.log('You hit escape or clicked the backdrop to close.');
  *     });
  *   };
+ *
+ *   $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
+ *     $mdBottomSheet.hide();
+ *   }
+ *
  * });
  * </hljs>
  */
@@ -8131,6 +8148,14 @@ function MdBottomSheetDirective($mdBottomSheet) {
  *
  * @description
  * Show a bottom sheet with the specified options.
+ *
+ * <em><b>Note:</b> You should <b>always</b> provide a `.catch()` method in case the user hits the
+ * `esc` key or clicks the background to close. In this case, the `cancel()` method will
+ * automatically be called on the bottom sheet which will `reject()` the promise. See the @usage
+ * section above for an example.
+ *
+ * Newer versions of Angular will throw a `Possibly unhandled rejection` exception if you forget
+ * this.</em>
  *
  * @param {object} options An options object, with the following properties:
  *
@@ -8172,7 +8197,10 @@ function MdBottomSheetDirective($mdBottomSheet) {
  *
  * @description
  * Hide the existing bottom sheet and resolve the promise returned from
- * `$mdBottomSheet.show()`. This call will close the most recently opened/current bottomsheet (if any).
+ * `$mdBottomSheet.show()`. This call will close the most recently opened/current bottomsheet (if
+ * any).
+ *
+ * <em><b>Note:</b> Use a `.then()` on your `.show()` to handle this callback.</em>
  *
  * @param {*=} response An argument for the resolved promise.
  *
@@ -8185,6 +8213,8 @@ function MdBottomSheetDirective($mdBottomSheet) {
  * @description
  * Hide the existing bottom sheet and reject the promise returned from
  * `$mdBottomSheet.show()`.
+ *
+ * <em><b>Note:</b> Use a `.catch()` on your `.show()` to handle this callback.</em>
  *
  * @param {*=} response An argument for the rejected promise.
  *
@@ -29916,7 +29946,7 @@ function MdContactChips($mdTheming, $mdUtil) {
    * @property {(Array<string>)=} months Array of month names (in order).
    * @property {(Array<string>)=} shortMonths Array of abbreviated month names.
    * @property {(Array<string>)=} days Array of the days of the week (in order).
-   * @property {(Array<string>)=} shortDays Array of abbreviated dayes of the week.
+   * @property {(Array<string>)=} shortDays Array of abbreviated days of the week.
    * @property {(Array<string>)=} dates Array of dates of the month. Only necessary for locales
    *     using a numeral system other than [1, 2, 3...].
    * @property {(Array<string>)=} firstDayOfWeek The first day of the week. Sunday = 0, Monday = 1,
