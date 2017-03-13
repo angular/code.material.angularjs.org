@@ -6671,6 +6671,12 @@ function ThemingProvider($mdColorPalette, $$mdMetaProvider) {
    *     restrict: 'e',
    *     link: function(scope, el, attrs) {
    *       $mdTheming(el);
+   *
+   *       $mdTheming.defineTheme('myTheme', {
+   *         primary: 'blue',
+   *         accent: 'pink',
+   *         dark: true
+   *       })
    *     }
    *   };
    * });
@@ -6742,6 +6748,24 @@ function ThemingProvider($mdColorPalette, $$mdMetaProvider) {
    *
    * @param {Object} options Options object for the browser color
    * @returns {Function} remove function of the browser color
+   */
+
+  /**
+   * @ngdoc method
+   * @name $mdTheming#defineTheme
+   * @description
+   * Dynamically define a theme by an options object
+   *
+   * options are:<br/>
+   * `primary`    - The primary palette of the theme.<br/>
+   * `accent`     - The accent palette of the theme.<br/>
+   * `warn`       - The warn palette of the theme.<br/>
+   * `background` - The background palette of the theme.<br/>
+   * `dark`       - Indicates if it's a dark theme.<br/>
+   *
+   * @param {String} name Theme name to define
+   * @param {Object} options Theme definition options
+   * @returns {Promise<string>} A resolved promise with the theme name
    */
 
   /* @ngInject */

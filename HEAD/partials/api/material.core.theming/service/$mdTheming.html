@@ -22,6 +22,12 @@ app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
     restrict: &#39;e&#39;,
     link: function(scope, el, attrs) {
       $mdTheming(el);
+
+      $mdTheming.defineTheme(&#39;myTheme&#39;, {
+        primary: &#39;blue&#39;,
+        accent: &#39;pink&#39;,
+        dark: true
+      })
     }
   };
 });
@@ -344,6 +350,107 @@ for more info please visit:
     <td>
 <code class="api-type label type-hint type-hint-function">Function</code></td>
     <td class="description"><p>remove function of the browser color</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="defineTheme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdTheming.defineTheme(name, options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Dynamically define a theme by an options object</p>
+<p>options are:<br/>
+<code>primary</code>    - The primary palette of the theme.<br/>
+<code>accent</code>     - The accent palette of the theme.<br/>
+<code>warn</code>       - The warn palette of the theme.<br/>
+<code>background</code> - The background palette of the theme.<br/>
+<code>dark</code>       - Indicates if it&#39;s a dark theme.<br/></p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">String</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">String</code></td>
+        <td class="description">
+          <p>Theme name to define</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>Theme definition options</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">Promise&lt;string&gt;</code></td>
+    <td class="description"><p>A resolved promise with the theme name</p>
 </td>
   </tr>
   </tbody>
