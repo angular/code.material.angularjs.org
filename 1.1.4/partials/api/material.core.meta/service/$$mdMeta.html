@@ -1,0 +1,260 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>A provider and a service that simplifies meta tags access</p>
+<p>Note: This is intended only for use with dynamic meta tags such as browser color and title.
+Tags that are only processed when the page is rendered (such as <code>charset</code>, and <code>http-equiv</code>)
+will not work since <code>$$mdMeta</code> adds the tags after the page has already been loaded.</p>
+<pre><code class="lang-js">app.config(function($$mdMetaProvider) {
+  var removeMeta = $$mdMetaProvider.setMeta(&#39;meta-name&#39;, &#39;content&#39;);
+  var metaValue  = $$mdMetaProvider.getMeta(&#39;meta-name&#39;); // -&gt; &#39;content&#39;
+
+  removeMeta();
+});
+
+app.controller(&#39;myController&#39;, function($$mdMeta) {
+  var removeMeta = $$mdMeta.setMeta(&#39;meta-name&#39;, &#39;content&#39;);
+  var metaValue  = $$mdMeta.getMeta(&#39;meta-name&#39;); // -&gt; &#39;content&#39;
+
+  removeMeta();
+});
+</code></pre>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  <section class="api-section">
+      
+      <section class="api-section">
+  
+</section>
+
+
+      <div class="api-param-table">
+  <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">$$mdMeta.$service</code></td>
+    <td class="description"></td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    </section>
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="setMeta">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$mdMeta.setMeta(name, content);
+</code>
+      </h3>
+      <div class="service-desc"><p>Creates meta element with the &#39;name&#39; and &#39;content&#39; attributes,
+if the meta tag is already created than we replace the &#39;content&#39; value</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>meta tag &#39;name&#39; attribute value</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* content</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>meta tag &#39;content&#39; attribute value</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-function">function</code></td>
+    <td class="description"><p>remove function</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="getMeta">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$mdMeta.getMeta(name);
+</code>
+      </h3>
+      <div class="service-desc"><p>Gets the &#39;content&#39; attribute value of the wanted meta element</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>meta tag &#39;name&#39; attribute value</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
+    <td class="description"><p>content attribute value</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>

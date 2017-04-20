@@ -1,0 +1,581 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>&lt;md-chips&gt;</code> is an input component for building lists of strings or objects. The list items are
+displayed as &#39;chips&#39;. This component can make use of an <code>&lt;input&gt;</code> element or an 
+<code>&lt;md-autocomplete&gt;</code> element.</p>
+<h3 id="custom-templates">Custom templates</h3>
+<p>A custom template may be provided to render the content of each chip. This is achieved by
+specifying an <code>&lt;md-chip-template&gt;</code> element containing the custom content as a child of
+<code>&lt;md-chips&gt;</code>.</p>
+<p>Note: Any attributes on
+<code>&lt;md-chip-template&gt;</code> will be dropped as only the innerHTML is used for the chip template. The
+variables <code>$chip</code> and <code>$index</code> are available in the scope of <code>&lt;md-chip-template&gt;</code>, representing
+the chip object and its index in the list of chips, respectively.
+To override the chip delete control, include an element (ideally a button) with the attribute
+<code>md-chip-remove</code>. A click listener to remove the chip will be added automatically. The element
+is also placed as a sibling to the chip content (on which there are also click listeners) to
+avoid a nested ng-click situation.</p>
+<!-- Note: We no longer want to include this in the site docs; but it should remain here for
+future developers and those looking at the documentation.
+
+<h3> Pending Features </h3>
+<ul style="padding-left:20px;">
+
+  <ul>Style
+    <li>Colours for hover, press states (ripple?).</li>
+  </ul>
+
+  <ul>Validation
+    <li>allow a validation callback</li>
+    <li>hilighting style for invalid chips</li>
+  </ul>
+
+  <ul>Item mutation
+    <li>Support `
+      <md-chip-edit>` template, show/hide the edit element on tap/click? double tap/double
+      click?
+    </li>
+  </ul>
+
+  <ul>Truncation and Disambiguation (?)
+    <li>Truncate chip text where possible, but do not truncate entries such that two are
+    indistinguishable.</li>
+  </ul>
+
+  <ul>Drag and Drop
+    <li>Drag and drop chips between related `<md-chips>` elements.
+    </li>
+  </ul>
+</ul>
+
+//-->
+<p>Sometimes developers want to limit the amount of possible chips.<br/>
+You can specify the maximum amount of chips by using the following markup.</p>
+<hljs lang="html">
+  <md-chips
+      ng-model="myItems"
+      placeholder="Add an item"
+      md-max-chips="5">
+  </md-chips>
+</hljs>
+
+<p>In some cases, you have an autocomplete inside of the <code>md-chips</code>.<br/>
+When the maximum amount of chips has been reached, you can also disable the autocomplete selection.<br/>
+Here is an example markup.</p>
+<hljs lang="html">
+  <md-chips ng-model="myItems" md-max-chips="5">
+    <md-autocomplete ng-hide="myItems.length > 5" ...></md-autocomplete>
+  </md-chips>
+</hljs>
+
+<h3 id="accessibility">Accessibility</h3>
+<p>The <code>md-chips</code> component supports keyboard and screen reader users since Version 1.1.2. In
+order to achieve this, we modified the chips behavior to select newly appended chips for
+<code>300ms</code> before re-focusing the input and allowing the user to type.</p>
+<p>For most users, this delay is small enough that it will not be noticeable but allows certain
+screen readers to function properly (JAWS and NVDA in particular).</p>
+<p>We introduced a new <code>md-chip-append-delay</code> option to allow developers to better control this
+behavior.</p>
+<p>Please refer to the documentation of this option (below) for more information.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+  <md-chips
+      ng-model="myItems"
+      placeholder="Add an item"
+      readonly="isReadOnly">
+  </md-chips>
+</hljs>
+
+<p><h3>Validation</h3>
+When using <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>, you can show errors based
+on our custom validators.</p>
+<hljs lang="html">
+  <form name="userForm">
+    <md-chips
+      name="fruits"
+      ng-model="myItems"
+      placeholder="Add an item"
+      md-max-chips="5">
+    </md-chips>
+    <div ng-messages="userForm.fruits.$error" ng-if="userForm.$dirty">
+      <div ng-message="md-max-chips">You reached the maximum amount of chips</div>
+   </div>
+  </form>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* ng-model</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>A model to which the list of items will be bound.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-transform-chip</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression of form <code>myFunction($chip)</code> that when called
+   expects one of the following return values:</p>
+<ul>
+<li>an object representing the <code>$chip</code> input string</li>
+<li><code>undefined</code> to simply add the <code>$chip</code> input string, or</li>
+<li><code>null</code> to prevent the chip from being appended</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-require-match</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If true, and the chips template contains an autocomplete,
+   only allow selection of pre-defined chips (i.e. you cannot add new ones).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Placeholder text that will be forwarded to the input.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          secondary-placeholder
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Placeholder text that will be forwarded to the input,
+   displayed when there is at least one item in the list</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-removable
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Enables or disables the deletion of chips through the
+   removal icon or the Delete/Backspace key. Defaults to true.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          readonly
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Disables list manipulation (deleting or adding list items), hiding
+   the input and delete buttons. If no <code>ng-model</code> is provided, the chips will automatically be
+   marked as readonly.<br/><br/>
+   When <code>md-removable</code> is not defined, the <code>md-remove</code> behavior will be overwritten and disabled.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-enable-chip-edit
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Set this to &quot;true&quot; to enable editing of chip contents. The user can 
+   go into edit mode with pressing &quot;space&quot;, &quot;enter&quot;, or double clicking on the chip. Chip edit is only
+   supported for chips with basic template.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-max-chips
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The maximum number of chips allowed to add through user input.
+   <br/><br/>The validation property <code>md-max-chips</code> can be used when the max chips
+   amount is reached.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-add-on-blur
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When set to true, remaining text inside of the input will
+   be converted into a new chip on blur.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-add
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip has been
+   added.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-remove
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip has been
+   removed.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-on-select
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An expression which will be called when a chip is selected.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers to identify the input.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          container-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers informing users of how to
+   navigate the chips. Used in readonly mode.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          delete-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers instructing users that pressing
+   the delete key will remove the chip.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          delete-button-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A label for the delete button. Also hidden and read by
+   screen readers.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-separator-keys
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>An array of key codes used to separate chips.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-chip-append-delay
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The number of milliseconds that the component will select
+   a newly appended chip before allowing a user to type into the input. This is <strong>necessary</strong>
+   for keyboard accessibility for screen readers. It defaults to 300ms and any number less than
+   300 can cause issues with screen readers (particularly JAWS and sometimes NVDA).</p>
+<p>   <em>Available since Version 1.1.2.</em></p>
+<p>   <strong>Note:</strong> You can safely set this to <code>0</code> in one of the following two instances:</p>
+<ol>
+<li><p>You are targeting an iOS or Safari-only application (where users would use VoiceOver) or
+only ChromeVox users.</p>
+</li>
+<li><p>If you have utilized the <code>md-separator-keys</code> to disable the <code>enter</code> keystroke in
+favor of another one (such as <code>,</code> or <code>;</code>).</p>
+</li>
+</ol>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

@@ -1,0 +1,159 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-nav-bar&gt;</code> directive renders a list of material tabs that can be used
+for top-level page navigation. Unlike <code>&lt;md-tabs&gt;</code>, it has no concept of a tab
+body and no bar pagination.</p>
+<p>Because it deals with page navigation, certain routing concepts are built-in.
+Route changes via via ng-href, ui-sref, or ng-click events are supported.
+Alternatively, the user could simply watch currentNavItem for changes.</p>
+<p>Accessibility functionality is implemented as a site navigator with a
+listbox, according to
+<a href="https://www.w3.org/TR/wai-aria-practices/#Site_Navigator_Tabbed_Style">https://www.w3.org/TR/wai-aria-practices/#Site_Navigator_Tabbed_Style</a></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+ <md-nav-bar md-selected-nav-item="currentNavItem">
+   <md-nav-item md-nav-click="goto('page1')" name="page1">
+     Page One
+   </md-nav-item>
+   <md-nav-item md-nav-href="#page2" name="page3">Page Two</md-nav-item>
+   <md-nav-item md-nav-sref="page3" name="page2">Page Three</md-nav-item>
+   <md-nav-item
+     md-nav-sref="app.page4"
+     sref-opts="{reload: true, notify: true}"
+     name="page4">
+     Page Four
+   </md-nav-item>
+ </md-nav-bar>
+</hljs>
+<hljs lang="js">
+(function() {
+  &#39;use strict&#39;;
+
+   $rootScope.$on(&#39;$routeChangeSuccess&#39;, function(event, current) {
+     $scope.currentLink = getCurrentLinkFromRoute(current);
+   });
+});
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          mdSelectedNavItem
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The name of the current tab; this must
+    match the name attribute of <code>&lt;md-nav-item&gt;</code></p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          mdNoInkBar
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If set to true, the ink bar will be hidden.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          navBarAriaLabel
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>An aria-label for the nav-bar</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

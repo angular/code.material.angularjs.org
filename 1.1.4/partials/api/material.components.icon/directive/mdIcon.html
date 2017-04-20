@@ -1,0 +1,336 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>md-icon</code> directive makes it easier to use vector-based icons in your app (as opposed to
+raster-based icons types like PNG). The directive supports both icon fonts and SVG icons.</p>
+<p>Icons should be considered view-only elements that should not be used directly as buttons; instead nest a <code>&lt;md-icon&gt;</code>
+inside a <code>md-button</code> to add hover and click features.</p>
+<h3 id="icon-fonts">Icon fonts</h3>
+<p>Icon fonts are a technique in which you use a font where the glyphs in the font are
+your icons instead of text. Benefits include a straightforward way to bundle everything into a
+single HTTP request, simple scaling, easy color changing, and more.</p>
+<p><code>md-icon</code> lets you consume an icon font by letting you reference specific icons in that font
+by name rather than character code.</p>
+<h3 id="svg">SVG</h3>
+<p>For SVGs, the problem with using <code>&lt;img&gt;</code> or a CSS <code>background-image</code> is that you can&#39;t take
+advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
+animation.</p>
+<p><code>md-icon</code> makes it easier to use SVG icons by <em>inlining</em> the SVG into an <code>&lt;svg&gt;</code> element in the
+document. The most straightforward way of referencing an SVG icon is via URL, just like a
+traditional <code>&lt;img&gt;</code>. <code>$mdIconProvider</code>, as a convenience, lets you <em>name</em> an icon so you can
+reference it by name instead of URL throughout your templates.</p>
+<p>Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
+your SVG icons together and pre-load them with $mdIconProvider as an icon set. An icon set can
+also be given a name, which acts as a namespace for individual icons, so you can reference them
+like <code>&quot;social:cake&quot;</code>.</p>
+<p>When using SVGs, both external SVGs (via URLs) or sets of SVGs [from icon sets] can be
+easily loaded and used. When using font-icons, developers must follow three (3) simple steps:</p>
+<ol>
+<li>Load the font library. e.g.<br/>
+   <code>&lt;link href=&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot;
+   rel=&quot;stylesheet&quot;&gt;</code>
+</li>
+<li>
+  Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
+  using its textual name <em>or</em> numerical character reference. Note that <code>material-icons</code> is the default fontset when
+  none is specified.
+</li>
+<li> Use any of the following templates: <br/>
+  <ul>
+    <li><code>&lt;md-icon md-font-icon=&quot;classname&quot;&gt;&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt;textual_name&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon&gt; numerical_character_reference &lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon ng_bind=&quot;&#39;textual_name&#39;&quot;&gt;&lt;/md-icon&gt;</code></li>
+    <li><code>&lt;md-icon ng-bind=&quot;scopeVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
+  </ul>
+</li>
+</ol>
+
+<p>Full details for these steps can be found:</p>
+<ul>
+<li><a href="http://google.github.io/material-design-icons/">http://google.github.io/material-design-icons/</a></li>
+<li><a href="http://google.github.io/material-design-icons/#icon-font-for-the-web">http://google.github.io/material-design-icons/#icon-font-for-the-web</a></li>
+</ul>
+
+<p>The Material Design icon style <code>.material-icons</code> and the icon font references are published in
+Material Design Icons:</p>
+<ul>
+<li><a href="https://design.google.com/icons/">https://design.google.com/icons/</a></li>
+<li><a href="https://design.google.com/icons/#ic_accessibility">https://design.google.com/icons/#ic_accessibility</a></li>
+</ul>
+
+<h3 id="localization">Localization</h3>
+<p>Because an <code>md-icon</code> element&#39;s text content is not intended to translated, it is recommended to declare the text
+content for an <code>md-icon</code> element in its start tag. Instead of using the HTML text content, consider using <code>ng-bind</code>
+with a scope variable or literal string.</p>
+<p>Examples:</p>
+<ul>
+  <li><code>&lt;md-icon ng-bind=&quot;myIconVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
+  <li><code>&lt;md-icon ng-bind=&quot;&#39;menu&#39;&quot;&gt;&lt;/md-icon&gt;</code>
+</ul>
+
+<p><h2 id="material_design_icons">Material Design Icons</h2>
+Using the Material Design Icon-Selector, developers can easily and quickly search for a Material Design font-icon and
+determine its textual name and character reference code. Click on any icon to see the slide-up information
+panel with details regarding a SVG download or information on the font-icon usage.</p>
+<p><a href="https://www.google.com/design/icons/#ic_accessibility" target="_blank" style="border-bottom:none;">
+<img src="https://cloud.githubusercontent.com/assets/210413/7902490/fe8dd14c-0780-11e5-98fb-c821cc6475e6.png"
+     aria-label="Material Design Icon-Selector" style="max-width:75%;padding-left:10%">
+</a></p>
+<p><span class="image_caption">
+ Click on the image above to link to the
+ <a href="https://design.google.com/icons/#ic_accessibility" target="_blank">Material Design Icon-Selector</a>.
+</span></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <p>When using SVGs:</p>
+<hljs lang="html">
+
+ <!-- Icon ID; may contain optional icon set prefix; icons must registered using $mdIconProvider -->
+ <md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
+
+ <!-- Icon urls; may be preloaded in templateCache -->
+ <md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
+ <md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
+
+</hljs>
+
+<p>Use the <code>$mdIconProvider</code> to configure your application with
+svg iconsets.</p>
+<hljs lang="js">
+ angular.module(&#39;appSvgIconSets&#39;, [&#39;ngMaterial&#39;])
+   .controller(&#39;DemoCtrl&#39;, function($scope) {})
+   .config(function($mdIconProvider) {
+     $mdIconProvider
+        .iconSet(&#39;social&#39;, &#39;img/icons/sets/social-icons.svg&#39;, 24)
+        .defaultIconSet(&#39;img/icons/sets/core-icons.svg&#39;, 24);
+    });
+</hljs>
+
+
+<p>When using Font Icons with classnames:</p>
+<hljs lang="html">
+
+ <md-icon md-font-icon="android" aria-label="android" ></md-icon>
+ <md-icon class="icon_home"      aria-label="Home"    ></md-icon>
+
+</hljs>
+
+<p>When using Material Font Icons with ligatures:</p>
+<hljs lang="html">
+ <!--
+ For Material Design Icons
+ The class '.material-icons' is auto-added if a style has NOT been specified
+ since `material-icons` is the default fontset. So your markup:
+ -->
+ <md-icon> face </md-icon>
+ <!-- becomes this at runtime: -->
+ <md-icon md-font-set="material-icons"> face </md-icon>
+ <!-- If the fontset does not support ligature names, then we need to use the ligature unicode.-->
+ <md-icon> &#xE87C; </md-icon>
+ <!-- The class '.material-icons' must be manually added if other styles are also specified-->
+ <md-icon class="material-icons md-light md-48"> face </md-icon>
+</hljs>
+
+<p>When using other Font-Icon libraries:</p>
+<hljs lang="js">
+ // Specify a font-icon style alias
+ angular.config(function($mdIconProvider) {
+   $mdIconProvider.fontSet(&#39;md&#39;, &#39;material-icons&#39;);
+ });
+</hljs>
+
+<hljs lang="html">
+ <md-icon md-font-set="md">favorite</md-icon>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-font-icon</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>String name of CSS icon associated with the font-face will be used
+to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-font-set</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>CSS style name associated with the font library; which will be assigned as
+the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
+internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine the style name.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-svg-src</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>String URL (or expression) used to load, cache, and display an
+    external SVG.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-svg-icon</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>md-svg-icon String name used for lookup of the icon from the internal cache;
+    interpolated strings or expressions may also be used. Specific set names can be used with
+    the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
+To use icon sets, developers are required to pre-register the sets using the <code>$mdIconProvider</code> service.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Labels icon for accessibility. If an empty string is provided, icon
+will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no aria-label on the icon
+nor a label on the parent element, a warning will be logged to the console.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          alt
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Labels icon for accessibility. If an empty string is provided, icon
+will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no alt on the icon
+nor a label on the parent element, a warning will be logged to the console.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

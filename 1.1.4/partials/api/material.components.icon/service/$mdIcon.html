@@ -1,0 +1,148 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>$mdIcon</code> service is a function used to lookup SVG icons.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+function SomeDirective($mdIcon) {
+
+  // See if the icon has already been loaded, if not
+  // then lookup the icon from the registry cache, load and cache
+  // it for future requests.
+  // NOTE: ID queries require configuration with $mdIconProvider
+
+  $mdIcon(&#39;android&#39;).then(function(iconEl)    { element.append(iconEl); });
+  $mdIcon(&#39;work:chair&#39;).then(function(iconEl) { element.append(iconEl); });
+
+  // Load and cache the external SVG using a URL
+
+  $mdIcon(&#39;img/icons/android.svg&#39;).then(function(iconEl) {
+    element.append(iconEl);
+  });
+};
+</hljs>
+
+<blockquote>
+<p><b>Note:</b> The <code>&lt;md-icon&gt;</code> directive internally uses the <code>$mdIcon</code> service to query, loaded,
+  and instantiate SVG DOM elements.</p>
+</blockquote>
+
+  </section>
+
+
+  <section class="api-section">
+      
+  <div class="api-param-section">
+    <h2>
+      
+        Arguments
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* id</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Query value for a unique Id or URL. If the argument is a URL, then the service will retrieve the icon element
+from its internal cache or load the icon and cache it first. If the value is not a URL-type string, then an ID lookup is
+performed. The Id may be a unique icon ID or may include an iconSet ID prefix.</p>
+<p>For the <strong>id</strong> query to work properly, this means that all id-to-URL mappings must have been previously configured
+using the <code>$mdIconProvider</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+      <section class="api-section">
+  
+</section>
+
+
+      <div class="api-param-table">
+  <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+    <td class="description"><p>A promise that gets resolved to a clone of the initial SVG DOM element; which was
+created from the SVG markup in the SVG data file. If an error occurs (e.g. the icon cannot be found) the promise
+will get rejected.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+
+    </section>
+
+  
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
