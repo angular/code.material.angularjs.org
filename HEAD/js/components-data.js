@@ -1433,6 +1433,22 @@ angular.module('docsApp').constant('COMPONENTS', [
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js",
         "hasDemo": true
+      },
+      {
+        "name": "mdForceHeight",
+        "type": "directive",
+        "restrict": {
+          "element": false,
+          "attribute": true,
+          "cssClass": false,
+          "comment": false
+        },
+        "outputPath": "partials/api/material.components.virtualRepeat/directive/mdForceHeight.html",
+        "url": "api/directive/mdForceHeight",
+        "label": "mdForceHeight",
+        "module": "material.components",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/components/virtualRepeat/virtual-repeater.js",
+        "hasDemo": true
       }
     ],
     "hasDemo": false
