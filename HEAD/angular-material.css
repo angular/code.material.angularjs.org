@@ -5025,7 +5025,7 @@ md-tab-content {
             transform: translateX(-100%);
     -webkit-animation: 1s md-tab-content-hide;
             animation: 1s md-tab-content-hide;
-    opacity: 0; }
+    visibility: hidden; }
     [dir=rtl] md-tab-content.md-left:not(.md-active) {
       -webkit-transform: translateX(100%);
               transform: translateX(100%); }
@@ -5040,7 +5040,7 @@ md-tab-content {
             transform: translateX(100%);
     -webkit-animation: 1s md-tab-content-hide;
             animation: 1s md-tab-content-hide;
-    opacity: 0; }
+    visibility: hidden; }
     [dir=rtl] md-tab-content.md-right:not(.md-active) {
       -webkit-transform: translateX(-100%);
               transform: translateX(-100%); }
