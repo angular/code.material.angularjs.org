@@ -1,101 +1,3 @@
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share-arrow' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/share-arrow.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
 (function () {
   'use strict';
   angular
@@ -438,6 +340,104 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   }
 })();
 
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/share-arrow.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
+
 
 angular.module('buttonsDemo1', ['ngMaterial'])
 
@@ -601,94 +601,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
 (function () {
   'use strict';
-  angular
-      .module('chipsCustomInputDemo', ['ngMaterial'])
-      .controller('CustomInputDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    self.readonly = false;
-    self.selectedItem = null;
-    self.searchText = null;
-    self.querySearch = querySearch;
-    self.vegetables = loadVegetables();
-    self.selectedVegetables = [];
-    self.numberChips = [];
-    self.numberChips2 = [];
-    self.numberBuffer = '';
-    self.autocompleteDemoRequireMatch = true;
-    self.transformChip = transformChip;
-
-    /**
-     * Return the proper object when the append is called.
-     */
-    function transformChip(chip) {
-      // If it is an object, it's already a known chip
-      if (angular.isObject(chip)) {
-        return chip;
-      }
-
-      // Otherwise, create a new one
-      return { name: chip, type: 'new' }
-    }
-
-    /**
-     * Search for vegetables.
-     */
-    function querySearch (query) {
-      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
-      return results;
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(vegetable) {
-        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
-            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-
-    function loadVegetables() {
-      var veggies = [
-        {
-          'name': 'Broccoli',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Cabbage',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Carrot',
-          'type': 'Umbelliferous'
-        },
-        {
-          'name': 'Lettuce',
-          'type': 'Composite'
-        },
-        {
-          'name': 'Spinach',
-          'type': 'Goosefoot'
-        }
-      ];
-
-      return veggies.map(function (veg) {
-        veg._lowername = veg.name.toLowerCase();
-        veg._lowertype = veg.type.toLowerCase();
-        return veg;
-      });
-    }
-  }
-})();
-
-(function () {
-  'use strict';
 
   // If we do not have CryptoJS defined; import it
   if (typeof CryptoJS == 'undefined') {
@@ -803,6 +715,94 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 
 
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsCustomInputDemo', ['ngMaterial'])
+      .controller('CustomInputDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    self.readonly = false;
+    self.selectedItem = null;
+    self.searchText = null;
+    self.querySearch = querySearch;
+    self.vegetables = loadVegetables();
+    self.selectedVegetables = [];
+    self.numberChips = [];
+    self.numberChips2 = [];
+    self.numberBuffer = '';
+    self.autocompleteDemoRequireMatch = true;
+    self.transformChip = transformChip;
+
+    /**
+     * Return the proper object when the append is called.
+     */
+    function transformChip(chip) {
+      // If it is an object, it's already a known chip
+      if (angular.isObject(chip)) {
+        return chip;
+      }
+
+      // Otherwise, create a new one
+      return { name: chip, type: 'new' }
+    }
+
+    /**
+     * Search for vegetables.
+     */
+    function querySearch (query) {
+      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
+      return results;
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(vegetable) {
+        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
+            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+
+    function loadVegetables() {
+      var veggies = [
+        {
+          'name': 'Broccoli',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Cabbage',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Carrot',
+          'type': 'Umbelliferous'
+        },
+        {
+          'name': 'Lettuce',
+          'type': 'Composite'
+        },
+        {
+          'name': 'Spinach',
+          'type': 'Goosefoot'
+        }
+      ];
+
+      return veggies.map(function (veg) {
+        veg._lowername = veg.name.toLowerCase();
+        veg._lowertype = veg.type.toLowerCase();
+        return veg;
+      });
+    }
+  }
 })();
 
 (function () {
@@ -1373,30 +1373,6 @@ angular.module('gridListDemo1', ['ngMaterial'])
 
 
 angular
-  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
-  .controller('DemoCtrl', function( $scope ) {
-      // Specify a list of font-icons with ligatures and color overrides
-      var iconData = [
-            {name: 'accessibility'  , color: "#777" },
-            {name: 'question_answer', color: "rgb(89, 226, 168)" },
-            {name: 'backup'         , color: "#A00" },
-            {name: 'email'          , color: "#00A" }
-          ];
-
-      $scope.fonts = [].concat(iconData);
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:"md-18",padding:0},
-        {size:"md-24",padding:2},
-        {size:"md-36",padding:6},
-        {size:"md-48",padding:10}
-      ];
-
-  });
-
-
-angular
   .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
   .controller('DemoCtrl', function( $scope ) {
       // Create list of font-icon names with color overrides
@@ -1428,6 +1404,30 @@ angular
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');
+  });
+
+
+angular
+  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
+  .controller('DemoCtrl', function( $scope ) {
+      // Specify a list of font-icons with ligatures and color overrides
+      var iconData = [
+            {name: 'accessibility'  , color: "#777" },
+            {name: 'question_answer', color: "rgb(89, 226, 168)" },
+            {name: 'backup'         , color: "#A00" },
+            {name: 'email'          , color: "#00A" }
+          ];
+
+      $scope.fonts = [].concat(iconData);
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:"md-18",padding:0},
+        {size:"md-24",padding:2},
+        {size:"md-36",padding:6},
+        {size:"md-48",padding:10}
+      ];
+
   });
 
 
