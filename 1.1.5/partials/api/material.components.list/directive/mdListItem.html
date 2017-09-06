@@ -1,0 +1,195 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>A <code>md-list-item</code> element can be used to represent some information in a row.<br/></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="single-row-item">Single Row Item</h3>
+<hljs lang="html">
+  <md-list-item>
+    <span>Single Row Item</span>
+  </md-list-item>
+</hljs>
+
+<h3 id="multiple-lines">Multiple Lines</h3>
+<p>By using the following markup, you will be able to have two lines inside of one <code>md-list-item</code>.</p>
+<hljs lang="html">
+  <md-list-item class="md-2-line">
+    <div class="md-list-item-text" layout="column">
+      <p>First Line</p>
+      <p>Second Line</p>
+    </div>
+  </md-list-item>
+</hljs>
+
+<p>It is also possible to have three lines inside of one list item.</p>
+<hljs lang="html">
+  <md-list-item class="md-3-line">
+    <div class="md-list-item-text" layout="column">
+      <p>First Line</p>
+      <p>Second Line</p>
+      <p>Third Line</p>
+    </div>
+  </md-list-item>
+</hljs>
+
+<h3 id="secondary-items">Secondary Items</h3>
+<p>Secondary items are elements which will be aligned at the end of the <code>md-list-item</code>.</p>
+<hljs lang="html">
+  <md-list-item>
+    <span>Single Row Item</span>
+    <md-button class="md-secondary">
+      Secondary Button
+    </md-button>
+  </md-list-item>
+</hljs>
+
+<p>It also possible to have multiple secondary items inside of one <code>md-list-item</code>.</p>
+<hljs lang="html">
+  <md-list-item>
+    <span>Single Row Item</span>
+    <md-button class="md-secondary">First Button</md-button>
+    <md-button class="md-secondary">Second Button</md-button>
+  </md-list-item>
+</hljs>
+
+<h3 id="proxy-item">Proxy Item</h3>
+<p>Proxies are elements, which will execute their specific action on click<br/>
+Currently supported proxy items are</p>
+<ul>
+<li><code>md-checkbox</code> (Toggle)</li>
+<li><code>md-switch</code> (Toggle)</li>
+<li><code>md-menu</code> (Open)</li>
+</ul>
+<p>This means, when using a supported proxy item inside of <code>md-list-item</code>, the list item will
+automatically become clickable and executes the associated action of the proxy element on click.</p>
+<p>It is possible to disable this behavior by applying the <code>md-no-proxy</code> class to the list item.</p>
+<hljs lang="html">
+  <md-list-item class="md-no-proxy">
+    <span>No Proxy List</span>
+    <md-checkbox class="md-secondary"></md-checkbox>
+  </md-list-item>
+</hljs>
+
+<p>Here are a few examples of proxy elements inside of a list item.</p>
+<hljs lang="html">
+  <md-list-item>
+    <span>First Line</span>
+    <md-checkbox class="md-secondary"></md-checkbox>
+  </md-list-item>
+</hljs>
+
+<p>The <code>md-checkbox</code> element will be automatically detected as a proxy element and will toggle on click.</p>
+<hljs lang="html">
+  <md-list-item>
+    <span>First Line</span>
+    <md-switch class="md-secondary"></md-switch>
+  </md-list-item>
+</hljs>
+
+<p>The recognized <code>md-switch</code> will toggle its state, when the user clicks on the <code>md-list-item</code>.</p>
+<p>It is also possible to have a <code>md-menu</code> inside of a <code>md-list-item</code>.</p>
+<hljs lang="html">
+  <md-list-item>
+    <p>Click anywhere to fire the secondary action</p>
+    <md-menu class="md-secondary">
+      <md-button class="md-icon-button">
+        <md-icon md-svg-icon="communication:message"></md-icon>
+      </md-button>
+      <md-menu-content width="4">
+        <md-menu-item>
+          <md-button>
+            Redial
+          </md-button>
+        </md-menu-item>
+        <md-menu-item>
+          <md-button>
+            Check voicemail
+          </md-button>
+        </md-menu-item>
+        <md-menu-divider></md-menu-divider>
+        <md-menu-item>
+          <md-button>
+            Notifications
+          </md-button>
+        </md-menu-item>
+      </md-menu-content>
+    </md-menu>
+  </md-list-item>
+</hljs>
+
+<p>The menu will automatically open, when the users clicks on the <code>md-list-item</code>.<br/></p>
+<p>If the developer didn&#39;t specify any position mode on the menu, the <code>md-list-item</code> will automatically detect the
+position mode and applies it to the <code>md-menu</code>.</p>
+<h3 id="avatars">Avatars</h3>
+<p>Sometimes you may want to have some avatars inside of the <code>md-list-item</code>.<br/>
+You are able to create a optimized icon for the list item, by applying the <code>.md-avatar</code> class on the <code>&lt;img&gt;</code> element.</p>
+<hljs lang="html">
+  <md-list-item>
+    <img src="my-avatar.png" class="md-avatar">
+    <span>Alan Turing</span>
+</hljs>
+
+<p>When using <code>&lt;md-icon&gt;</code> for an avatar, you have to use the <code>.md-avatar-icon</code> class.</p>
+<hljs lang="html">
+  <md-list-item>
+    <md-icon class="md-avatar-icon" md-svg-icon="avatars:timothy"></md-icon>
+    <span>Timothy Kopra</span>
+  </md-list-item>
+</hljs>
+
+<p>In cases, you have a <code>md-list-item</code>, which doesn&#39;t have any avatar,
+but you want to align it with the other avatar items, you have to use the <code>.md-offset</code> class.</p>
+<hljs lang="html">
+  <md-list-item class="md-offset">
+    <span>Jon Doe</span>
+  </md-list-item>
+</hljs>
+
+<h3 id="dom-modification">DOM modification</h3>
+<p>The <code>md-list-item</code> component automatically detects if the list item should be clickable.</p>
+<hr>
+<p>If the <code>md-list-item</code> is clickable, we wrap all content inside of a <code>&lt;div&gt;</code> and create
+an overlaying button, which will will execute the given actions (like <code>ng-href</code>, <code>ng-click</code>)</p>
+<p>We create an overlaying button, instead of wrapping all content inside of the button,
+because otherwise some elements may not be clickable inside of the button.</p>
+<hr>
+<p>When using a secondary item inside of your list item, the <code>md-list-item</code> component will automatically create
+a secondary container at the end of the <code>md-list-item</code>, which contains all secondary items.</p>
+<p>The secondary item container is not static, because otherwise the overflow will not work properly on the
+list item.</p>
+
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
