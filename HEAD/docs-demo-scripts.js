@@ -1,3 +1,345 @@
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    self.newState = newState;
+
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    self.repos         = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for repos... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.repos.filter( createFilterFor(query) ) : self.repos,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `components` list of key/value pairs
+     */
+    function loadAll() {
+      var repos = [
+        {
+          'name'      : 'AngularJS',
+          'url'       : 'https://github.com/angular/angular.js',
+          'watchers'  : '3,623',
+          'forks'     : '16,175',
+        },
+        {
+          'name'      : 'Angular',
+          'url'       : 'https://github.com/angular/angular',
+          'watchers'  : '469',
+          'forks'     : '760',
+        },
+        {
+          'name'      : 'AngularJS Material',
+          'url'       : 'https://github.com/angular/material',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Angular Material',
+          'url'       : 'https://github.com/angular/material2',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Bower Material',
+          'url'       : 'https://github.com/angular/bower-material',
+          'watchers'  : '42',
+          'forks'     : '84',
+        },
+        {
+          'name'      : 'Material Start',
+          'url'       : 'https://github.com/angular/material-start',
+          'watchers'  : '81',
+          'forks'     : '303',
+        }
+      ];
+      return repos.map( function (repo) {
+        repo.value = repo.name.toLowerCase();
+        return repo;
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(item) {
+        return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      })
+    }
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter( createFilterFor(query) ) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -577,348 +919,6 @@ angular
       }
     };
   });
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    self.repos         = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for repos... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.repos.filter( createFilterFor(query) ) : self.repos,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `components` list of key/value pairs
-     */
-    function loadAll() {
-      var repos = [
-        {
-          'name'      : 'AngularJS',
-          'url'       : 'https://github.com/angular/angular.js',
-          'watchers'  : '3,623',
-          'forks'     : '16,175',
-        },
-        {
-          'name'      : 'Angular',
-          'url'       : 'https://github.com/angular/angular',
-          'watchers'  : '469',
-          'forks'     : '760',
-        },
-        {
-          'name'      : 'AngularJS Material',
-          'url'       : 'https://github.com/angular/material',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Angular Material',
-          'url'       : 'https://github.com/angular/material2',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Bower Material',
-          'url'       : 'https://github.com/angular/bower-material',
-          'watchers'  : '42',
-          'forks'     : '84',
-        },
-        {
-          'name'      : 'Material Start',
-          'url'       : 'https://github.com/angular/material-start',
-          'watchers'  : '81',
-          'forks'     : '303',
-        }
-      ];
-      return repos.map( function (repo) {
-        repo.value = repo.name.toLowerCase();
-        return repo;
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(item) {
-        return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      })
-    }
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter( createFilterFor(query) ) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -1717,6 +1717,51 @@ angular.module('listDemo2', ['ngMaterial'])
 });
 
 angular
+  .module('menuBarDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+  .filter('keyboardShortcut', function($window) {
+    return function(str) {
+      if (!str) return;
+      var keys = str.split('-');
+      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
+
+      var seperator = (!isOSX || keys.length > 2) ? '+' : '';
+
+      var abbreviations = {
+        M: isOSX ? '⌘' : 'Ctrl',
+        A: isOSX ? 'Option' : 'Alt',
+        S: 'Shift'
+      };
+
+      return keys.map(function(key, index) {
+        var last = index == keys.length - 1;
+        return last ? key : abbreviations[key];
+      }).join(seperator);
+    };
+  })
+  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
+    this.settings = {
+      printLayout: true,
+      showRuler: true,
+      showSpellingSuggestions: true,
+      presentationMode: 'edit'
+    };
+
+    this.sampleAction = function(name, ev) {
+      $mdDialog.show($mdDialog.alert()
+        .title(name)
+        .textContent('You triggered the "' + name + '" action')
+        .ok('Great')
+        .targetEvent(ev)
+      );
+    };
+  });
+
+
+angular
   .module('menuDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -1809,51 +1854,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
     );
   };
 });
-
-angular
-  .module('menuBarDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  })
-  .filter('keyboardShortcut', function($window) {
-    return function(str) {
-      if (!str) return;
-      var keys = str.split('-');
-      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
-
-      var seperator = (!isOSX || keys.length > 2) ? '+' : '';
-
-      var abbreviations = {
-        M: isOSX ? '⌘' : 'Ctrl',
-        A: isOSX ? 'Option' : 'Alt',
-        S: 'Shift'
-      };
-
-      return keys.map(function(key, index) {
-        var last = index == keys.length - 1;
-        return last ? key : abbreviations[key];
-      }).join(seperator);
-    };
-  })
-  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
-    this.settings = {
-      printLayout: true,
-      showRuler: true,
-      showSpellingSuggestions: true,
-      presentationMode: 'edit'
-    };
-
-    this.sampleAction = function(name, ev) {
-      $mdDialog.show($mdDialog.alert()
-        .title(name)
-        .textContent('You triggered the "' + name + '" action')
-        .ok('Great')
-        .targetEvent(ev)
-      );
-    };
-  });
-
 
 (function() {
   'use strict';
@@ -2401,32 +2401,6 @@ DialogCtrl.prototype.closeDialog = function() {
   }
 })();
 
-angular
-  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
-  })
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
-
-      self.activated = true;
-      self.determinateValue = 30;
-
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
-      $interval(function() {
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-      }, 100);
-    }
-  ]);
-
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
   })
@@ -2527,6 +2501,32 @@ angular
   .config(function($mdIconProvider) {
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
+
+angular
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
+  .controller('AppCtrl', ['$interval',
+    function($interval) {
+      var self = this;
+
+      self.activated = true;
+      self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+      $interval(function() {
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+      }, 100);
+    }
+  ]);
 
 angular
   .module('radioDemo2', ['ngMaterial'])
@@ -3071,6 +3071,13 @@ angular.module('toastDemo1', ['ngMaterial'])
   };
 });
 
+
+angular.module('toolbarDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
 (function() {
 
   var isDlgOpen;
@@ -3119,13 +3126,6 @@ angular.module('toastDemo1', ['ngMaterial'])
     });
 
 })();
-
-
-angular.module('toolbarDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
 
 angular.module('toolbarDemo2', ['ngMaterial'])
 
