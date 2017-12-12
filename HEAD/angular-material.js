@@ -24175,9 +24175,7 @@ function MdTruncateDirective() {
   return {
     restrict: 'AE',
 
-    controller: MdTruncateController,
-    controllerAs: '$ctrl',
-    bindToController: true
+    controller: MdTruncateController
   }
 }
 
