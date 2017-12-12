@@ -1865,8 +1865,8 @@ angular
     $scope.currentNavItem = 'page1';
 
     $scope.goto = function(page) {
-      console.log("Goto " + page);
-    }
+      $scope.status = "Goto " + page;
+    };
   }
 })();
 
@@ -2919,7 +2919,7 @@ angular.module('switchDemo1', ['ngMaterial'])
   $scope.message = 'false';
 
   $scope.onChange = function(cbState) {
-  	$scope.message = cbState;
+    $scope.message = cbState;
   };
 });
 
