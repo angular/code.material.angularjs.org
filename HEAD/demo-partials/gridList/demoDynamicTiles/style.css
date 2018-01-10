@@ -53,9 +53,6 @@
 .gridListdemoDynamicTiles .pink {
   background: #ff80ab; }
 
-.gridListdemoDynamicTiles md-grid-tile {
-  transition: all 300ms ease-out 50ms; }
-
 .gridListdemoDynamicTiles md-grid-tile md-icon {
   padding-bottom: 32px; }
 
