@@ -319,8 +319,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2 class="md-headline" style="margin-top: 0;">What is AngularJS Material?</h2>\n' +
     '    <p>\n' +
     '      AngularJS Material is both a UI Component framework and a reference implementation of Google\'s\n' +
-    '      Material Design Specification. This project provides a set of reusable, well-tested, and\n' +
-    '      accessible UI components based on Material Design.\n' +
+    '      <a href="https://material.io/guidelines/material-design/" target="_blank" rel="noopener">Material Design Specification</a>.\n' +
+    '      This project provides a set of reusable, well-tested, and accessible UI components based on Material Design.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="50" flex-gt-md="25" ng-repeat="(index, link) in [\n' +
@@ -341,14 +341,17 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2 class="md-headline">What about Angular?</h2>\n' +
+    '    <h2 class="md-headline">AngularJS versus Angular?</h2>\n' +
     '    <p>\n' +
-    '      AngularJS Material recently released Version 1 which we consider to be stable and ready for\n' +
-    '      production use. Developers should note that AngularJS Material works only with AngularJS 1.x.\n' +
+    '      The AngularJS Material library is a mature and stable product that is ready for production use.\n' +
+    '      Developers should note that AngularJS Material works only with\n' +
+    '      <a href="https://angularjs.org/" target="_blank" rel="noopener">AngularJS 1.x</a>.\n' +
     '    </p>\n' +
     '    <ul>\n' +
-    '      <li>Current AngularJS Material development efforts are focused on bug fixes and minor improvements.</li>\n' +
-    '      <li>AngularJS Material development is also in-progress at the <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.</li>\n' +
+    '      <li>Current AngularJS Material development efforts are focused on bug fixes, accessibility, and minor improvements.</li>\n' +
+    '      <li>The Angular Material library (for Angular v2+) can be found in the\n' +
+    '        <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.\n' +
+    '      </li>\n' +
     '    </ul>\n' +
     '    <p>\n' +
     '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking changes.\n' +
