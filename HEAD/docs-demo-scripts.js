@@ -920,16 +920,16 @@ angular
     };
   });
 
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
-});
-
 
 angular.module('contentDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
 
+});
+
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
 });
 
 angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
