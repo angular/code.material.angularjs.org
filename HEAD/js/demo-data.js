@@ -1872,6 +1872,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/menuBar/demoBasicUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "menuBarDemoDynamicNestedMenus",
+          "module": "menuBarDemoDynamicNestedMenus",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "menuBardemoDynamicNestedMenus",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menuBar/demoDynamicNestedMenus/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menuBar/demoDynamicNestedMenus/script.js"
+          }
+        ],
+        "moduleName": "material.components.menuBar",
+        "name": "demoDynamicNestedMenus",
+        "label": "Dynamic Nested Menus",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menuBar/demoDynamicNestedMenus/index.html"
+        }
       }
     ],
     "url": "demo/menuBar"
