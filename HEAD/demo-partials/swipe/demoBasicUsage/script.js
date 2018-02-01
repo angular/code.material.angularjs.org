@@ -1,33 +1,17 @@
 angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope, $log) {
-    $scope.onSwipeLeft = function(ev, target) {
+  .controller('demoSwipeCtrl', function($scope) {
+    $scope.onSwipeLeft = function(ev) {
       alert('You swiped left!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
     };
 
-    $scope.onSwipeRight = function(ev, target) {
+    $scope.onSwipeRight = function(ev) {
       alert('You swiped right!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
     };
-    $scope.onSwipeUp = function(ev, target) {
+    $scope.onSwipeUp = function(ev) {
       alert('You swiped up!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
     };
 
-    $scope.onSwipeDown = function(ev, target) {
+    $scope.onSwipeDown = function(ev) {
       alert('You swiped down!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
     };
   });
