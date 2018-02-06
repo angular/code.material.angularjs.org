@@ -15,6 +15,14 @@
 <div class="api-profile-description">
   <p>The md-swipe-up directive allows you to specify custom behavior when an element is swiped
 up.</p>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>The <code>$event.currentTarget</code> of the swiped element will be <code>null</code>, but you can get a
+reference to the element that actually holds the <code>md-swipe-up</code> directive by using <code>$target.current</code></li>
+</ul>
+<blockquote>
+<p>You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).</p>
+</blockquote>
 
 </div>
 
@@ -29,7 +37,7 @@ up.</p>
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-<div md-swipe-up="onSwipeUp()">Swipe me up!</div>
+<div md-swipe-up="onSwipeUp($event, $target)">Swipe me up!</div>
 </hljs>
   
   </section>

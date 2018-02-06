@@ -1,92 +1,6 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -185,6 +99,92 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    self.newState = newState;
+
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -439,18 +439,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
-angular.module('buttonsDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-
-  $scope.googleUrl = 'http://google.com';
-
-});
-
-
 angular.module('cardDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -478,6 +466,18 @@ angular.module('cardDemo3', ['ngMaterial'])
 }])
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('buttonsDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+
+  $scope.googleUrl = 'http://google.com';
+
 });
 
 
@@ -1793,6 +1793,23 @@ angular
 
 
 
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+}).controller('WidthDemoCtrl', function($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+});
+
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -1914,23 +1931,6 @@ angular
       $log.log(item);
     };
   });
-
-angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-}).controller('WidthDemoCtrl', function($mdDialog) {
-  var vm = this;
-
-  this.announceClick = function(index) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('You clicked!')
-        .textContent('You clicked the menu item at index ' + index)
-        .ok('Nice')
-    );
-  };
-});
 
 (function() {
   'use strict';
@@ -2968,20 +2968,36 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
 });
 
 angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope) {
-    $scope.onSwipeLeft = function(ev) {
+  .controller('demoSwipeCtrl', function($scope, $log) {
+    $scope.onSwipeLeft = function(ev, target) {
       alert('You swiped left!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
     };
 
-    $scope.onSwipeRight = function(ev) {
+    $scope.onSwipeRight = function(ev, target) {
       alert('You swiped right!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
     };
-    $scope.onSwipeUp = function(ev) {
+    $scope.onSwipeUp = function(ev, target) {
       alert('You swiped up!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
     };
 
-    $scope.onSwipeDown = function(ev) {
+    $scope.onSwipeDown = function(ev, target) {
       alert('You swiped down!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
     };
   });
 
