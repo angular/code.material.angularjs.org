@@ -1,0 +1,123 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>md-highlight-text</code> directive allows you to specify text that should be highlighted within
+    an element.  Highlighted text will be wrapped in <code>&lt;span class=&quot;highlight&quot;&gt;&lt;/span&gt;</code> which can
+    be styled through CSS.  Please note that child elements may not be used with this directive.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<input placeholder="Enter a search term..." ng-model="searchTerm" type="text" />
+<ul>
+  <li ng-repeat="result in results" md-highlight-text="searchTerm">
+    {{result.text}}
+  </li>
+</ul>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-highlight-text</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A model to be searched for</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-highlight-flags
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A list of flags (loosely based on JavaScript RexExp flags).</p>
+<h4 id="-supported-flags-"><strong>Supported flags</strong>:</h4>
+<ul>
+<li><code>g</code>: Find all matches within the provided text</li>
+<li><code>i</code>: Ignore case when searching for matches</li>
+<li><code>$</code>: Only match if the text ends with the search term</li>
+<li><code>^</code>: Only match if the text begins with the search term</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

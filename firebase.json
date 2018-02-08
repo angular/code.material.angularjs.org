@@ -121,6 +121,10 @@
       {
         "source": "/1.1.6/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
         "destination": "/1.1.6/index.html"
+      },
+      {
+        "source": "/1.1.7/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.1.7/index.html"
       }
     ],
     "redirects": [
