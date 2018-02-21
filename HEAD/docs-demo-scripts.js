@@ -255,6 +255,91 @@
   }
 })();
 
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      })
+    }
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter( createFilterFor(query) ) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = angular.lowercase(query);
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -352,91 +437,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
     });
 
   });
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      })
-    }
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter( createFilterFor(query) ) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
 
 
 angular.module('buttonsDemo1', ['ngMaterial'])
@@ -1213,20 +1213,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
 (function() {
   'use strict';
 
-  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
-    .controller('AppCtrl', function($scope) {
-      $scope.isOpen = false;
-
-      $scope.demo = {
-        isOpen: false,
-        count: 0,
-        selectedDirection: 'left'
-      };
-    });
-})();
-(function() {
-  'use strict';
-
   angular.module('fabSpeedDialDemoMoreOptions', ['ngMaterial'])
     .controller('DemoCtrl', function($scope, $mdDialog, $timeout) {
       var self = this;
@@ -1277,9 +1263,79 @@ angular.module('dividerDemo1', ['ngMaterial'])
     });
 })();
 
+(function() {
+  'use strict';
+
+  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
+    .controller('AppCtrl', function($scope) {
+      $scope.isOpen = false;
+
+      $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
+      };
+    });
+})();
 
 angular.module('gridListDemo1', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {});
+
+
+angular
+  .module('gridListDemoApp', ['ngMaterial'])
+  .controller('gridListDemoCtrl', function($scope) {
+
+    this.tiles = buildGridModel({
+            icon : "avatar:svg-",
+            title: "Svg-",
+            background: ""
+          });
+
+    function buildGridModel(tileTmpl){
+      var it, results = [ ];
+
+      for (var j=0; j<11; j++) {
+
+        it = angular.extend({},tileTmpl);
+        it.icon  = it.icon + (j+1);
+        it.title = it.title + (j+1);
+        it.span  = { row : 1, col : 1 };
+
+        switch(j+1) {
+          case 1:
+            it.background = "red";
+            it.span.row = it.span.col = 2;
+            break;
+
+          case 2: it.background = "green";         break;
+          case 3: it.background = "darkBlue";      break;
+          case 4:
+            it.background = "blue";
+            it.span.col = 2;
+            break;
+
+          case 5:
+            it.background = "yellow";
+            it.span.row = it.span.col = 2;
+            break;
+
+          case 6: it.background = "pink";          break;
+          case 7: it.background = "darkBlue";      break;
+          case 8: it.background = "purple";        break;
+          case 9: it.background = "deepBlue";      break;
+          case 10: it.background = "lightPurple";  break;
+          case 11: it.background = "yellow";       break;
+        }
+
+        results.push(it);
+      }
+      return results;
+    }
+  })
+  .config( function( $mdIconProvider ){
+    $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
+  });
 
 
 angular.module('gridListDemo1', ['ngMaterial'])
@@ -1348,62 +1404,6 @@ angular
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');
-  });
-
-
-angular
-  .module('gridListDemoApp', ['ngMaterial'])
-  .controller('gridListDemoCtrl', function($scope) {
-
-    this.tiles = buildGridModel({
-            icon : "avatar:svg-",
-            title: "Svg-",
-            background: ""
-          });
-
-    function buildGridModel(tileTmpl){
-      var it, results = [ ];
-
-      for (var j=0; j<11; j++) {
-
-        it = angular.extend({},tileTmpl);
-        it.icon  = it.icon + (j+1);
-        it.title = it.title + (j+1);
-        it.span  = { row : 1, col : 1 };
-
-        switch(j+1) {
-          case 1:
-            it.background = "red";
-            it.span.row = it.span.col = 2;
-            break;
-
-          case 2: it.background = "green";         break;
-          case 3: it.background = "darkBlue";      break;
-          case 4:
-            it.background = "blue";
-            it.span.col = 2;
-            break;
-
-          case 5:
-            it.background = "yellow";
-            it.span.row = it.span.col = 2;
-            break;
-
-          case 6: it.background = "pink";          break;
-          case 7: it.background = "darkBlue";      break;
-          case 8: it.background = "purple";        break;
-          case 9: it.background = "deepBlue";      break;
-          case 10: it.background = "lightPurple";  break;
-          case 11: it.background = "yellow";       break;
-        }
-
-        results.push(it);
-      }
-      return results;
-    }
-  })
-  .config( function( $mdIconProvider ){
-    $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
   });
 
 
