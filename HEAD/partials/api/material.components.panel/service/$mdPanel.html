@@ -17,6 +17,13 @@
 <div class="api-profile-description">
   <p><code>$mdPanel</code> is a robust, low-level service for creating floating panels on
 the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
+<p>The following types, referenced below, have separate documentation:</p>
+<ul>
+<li><a href="api/type/MdPanelAnimation">MdPanelAnimation</a> from <code>$mdPanel.newPanelAnimation()</code></li>
+<li><a href="api/type/MdPanelPosition">MdPanelPosition</a> from <code>$mdPanel.newPanelPosition()</code></li>
+<li><a href="api/type/MdPanelRef">MdPanelRef</a> from the <code>$mdPanel.open()</code> Promise or
+injected in the panel&#39;s controller</li>
+</ul>
 
 </div>
 
@@ -35,38 +42,41 @@ the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
 
   angular
       .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
-      .controller(&#39;DemoDialogController&#39;, DialogController);
+      .controller(&#39;DemoDialogController&#39;, DialogController)
+      .controller(&#39;DemoCtrl&#39;, function($mdPanel) {
 
-  var panelRef;
+    var panelRef;
 
-  function showPanel($event) {
-    var panelPosition = $mdPanel.newPanelPosition()
-        .absolute()
-        .top(&#39;50%&#39;)
-        .left(&#39;50%&#39;);
+    function showPanel($event) {
+      var panelPosition = $mdPanel.newPanelPosition()
+          .absolute()
+          .top(&#39;50%&#39;)
+          .left(&#39;50%&#39;);
 
-    var panelAnimation = $mdPanel.newPanelAnimation()
-        .targetEvent($event)
-        .defaultAnimation(&#39;md-panel-animate-fly&#39;)
-        .closeTo(&#39;.show-button&#39;);
+      var panelAnimation = $mdPanel.newPanelAnimation()
+          .openFrom($event)
+          .duration(200)
+          .closeTo(&#39;.show-button&#39;)
+          .withAnimation($mdPanel.animation.SCALE);
 
-    var config = {
-      attachTo: angular.element(document.body),
-      controller: DialogController,
-      controllerAs: &#39;ctrl&#39;,
-      position: panelPosition,
-      animation: panelAnimation,
-      targetEvent: $event,
-      templateUrl: &#39;dialog-template.html&#39;,
-      clickOutsideToClose: true,
-      escapeToClose: true,
-      focusOnOpen: true
-    };
+      var config = {
+        attachTo: angular.element(document.body),
+        controller: DialogController,
+        controllerAs: &#39;ctrl&#39;,
+        position: panelPosition,
+        animation: panelAnimation,
+        targetEvent: $event,
+        templateUrl: &#39;dialog-template.html&#39;,
+        clickOutsideToClose: true,
+        escapeToClose: true,
+        focusOnOpen: true
+      };
 
-    $mdPanel.open(config)
-        .then(function(result) {
-          panelRef = result;
-        });
+      $mdPanel.open(config)
+          .then(function(result) {
+            panelRef = result;
+          });
+    }
   }
 
   function DialogController(MdPanelRef) {
