@@ -495,44 +495,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
 });
 
 
-angular.module('checkboxDemo3', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.items = [1,2,3,4,5];
-  $scope.selected = [1];
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminate = function() {
-    return ($scope.selected.length !== 0 &&
-        $scope.selected.length !== $scope.items.length);
-  };
-
-  $scope.isChecked = function() {
-    return $scope.selected.length === $scope.items.length;
-  };
-
-  $scope.toggleAll = function() {
-    if ($scope.selected.length === $scope.items.length) {
-      $scope.selected = [];
-    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-      $scope.selected = $scope.items.slice(0);
-    }
-  };
-});
-
-
 angular.module('checkboxDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -834,6 +796,18 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+(function () {
+  'use strict';
+  angular
+    .module('chipsValidationDemo', ['ngMaterial', 'ngMessages'])
+    .controller('ChipsValidationCtrl', ValidationCtrl);
+
+  function ValidationCtrl () {
+    this.selectedFruit = [];
+    this.selectedVegetables = [];
+  }
+})();
+
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
     $mdThemingProvider.theme('forest')
@@ -930,6 +904,44 @@ angular.module('contentDemo1', ['ngMaterial'])
 angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
   this.myDate = new Date();
   this.isOpen = false;
+});
+
+
+angular.module('checkboxDemo3', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
 });
 
 angular.module('datepickerValidations', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
@@ -1263,20 +1275,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
     });
 })();
 
-(function() {
-  'use strict';
-
-  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
-    .controller('AppCtrl', function($scope) {
-      $scope.isOpen = false;
-
-      $scope.demo = {
-        isOpen: false,
-        count: 0,
-        selectedDirection: 'left'
-      };
-    });
-})();
 
 angular.module('gridListDemo1', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {});
@@ -1371,6 +1369,20 @@ angular.module('gridListDemo1', ['ngMaterial'])
   }
 });
 
+(function() {
+  'use strict';
+
+  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
+    .controller('AppCtrl', function($scope) {
+      $scope.isOpen = false;
+
+      $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
+      };
+    });
+})();
 
 angular
   .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
@@ -1531,19 +1543,6 @@ angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
     special: true
   };
 });
-
-angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
-
-  .controller('AppCtrl', function($scope) {
-    $scope.showHints = true;
-
-    $scope.user = {
-      name: "",
-      email: "",
-      social: "123456789",
-      phone: "N/A"
-    };
-  });
 
 angular
   .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
@@ -1793,23 +1792,6 @@ angular
 
 
 
-angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-}).controller('WidthDemoCtrl', function($mdDialog) {
-  var vm = this;
-
-  this.announceClick = function(index) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('You clicked!')
-        .textContent('You clicked the menu item at index ' + index)
-        .ok('Nice')
-    );
-  };
-});
-
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -1854,6 +1836,23 @@ angular
     };
   });
 
+
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+}).controller('WidthDemoCtrl', function($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+});
 
 angular
   .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
@@ -1931,21 +1930,6 @@ angular
       $log.log(item);
     };
   });
-
-(function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-    };
-  }
-})();
 
 (function() {
 'use strict';
@@ -2259,6 +2243,34 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
     this.closeMenu = function() {
       mdPanelRef && mdPanelRef.close();
     }
+  }
+})();
+
+angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
+
+  .controller('AppCtrl', function($scope) {
+    $scope.showHints = true;
+
+    $scope.user = {
+      name: "",
+      email: "",
+      social: "123456789",
+      phone: "N/A"
+    };
+  });
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
   }
 })();
 
@@ -2738,23 +2750,6 @@ angular
       };
     });
 
-angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
-.controller('AppCtrl', function($scope) {
-  $scope.clearValue = function() {
-    $scope.quest = undefined;
-    $scope.favoriteColor = undefined;
-    $scope.myForm.$setPristine();
-  };
-  $scope.save = function() {
-    if ($scope.myForm.$valid) {
-      $scope.myForm.$setSubmitted();
-      alert('Form was valid.');
-    } else {
-      alert('Form was invalid!');
-    }
-  };
-});
-
 angular
   .module('sidenavDemo1', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
@@ -2841,31 +2836,21 @@ angular
     }
   });
 
-
-angular.module('sliderDemo1', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('device', 'img/icons/sets/device-icons.svg', 24);
-  })
+angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function($scope) {
-
-  $scope.color = {
-    red: Math.floor(Math.random() * 255),
-    green: Math.floor(Math.random() * 255),
-    blue: Math.floor(Math.random() * 255)
+  $scope.clearValue = function() {
+    $scope.quest = undefined;
+    $scope.favoriteColor = undefined;
+    $scope.myForm.$setPristine();
   };
-
-  $scope.rating1 = 3;
-  $scope.rating2 = 2;
-  $scope.rating3 = 4;
-
-  $scope.disabled1 = Math.floor(Math.random() * 100);
-  $scope.disabled2 = 0;
-  $scope.disabled3 = 70;
-
-  $scope.invert = Math.floor(Math.random() * 100);
-
-  $scope.isDisabled = true;
+  $scope.save = function() {
+    if ($scope.myForm.$valid) {
+      $scope.myForm.$setSubmitted();
+      alert('Form was valid.');
+    } else {
+      alert('Form was invalid!');
+    }
+  };
 });
 
 
@@ -3001,6 +2986,33 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
+
+angular.module('sliderDemo1', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('device', 'img/icons/sets/device-icons.svg', 24);
+  })
+.controller('AppCtrl', function($scope) {
+
+  $scope.color = {
+    red: Math.floor(Math.random() * 255),
+    green: Math.floor(Math.random() * 255),
+    blue: Math.floor(Math.random() * 255)
+  };
+
+  $scope.rating1 = 3;
+  $scope.rating2 = 2;
+  $scope.rating3 = 4;
+
+  $scope.disabled1 = Math.floor(Math.random() * 100);
+  $scope.disabled2 = 0;
+  $scope.disabled3 = 70;
+
+  $scope.invert = Math.floor(Math.random() * 100);
+
+  $scope.isDisabled = true;
+});
+
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
   $scope.data = {
@@ -3017,58 +3029,6 @@ angular.module('switchDemo1', ['ngMaterial'])
 });
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
-(function () {
-  'use strict';
-  angular
-      .module('tabsDemoDynamicTabs', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ($scope, $log) {
-    var tabs = [
-        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
-        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
-        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
-        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
-        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
-        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
-        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
-        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
-        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
-        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
-        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
-      ],
-      selected = null,
-      previous = null;
-    $scope.tabs = tabs;
-    $scope.selectedIndex = 0;
-    $scope.$watch('selectedIndex', function(current, old){
-      previous = selected;
-      selected = tabs[current];
-      if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
-      if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
-    });
-    $scope.addTab = function (title, view) {
-      view = view || title + " Content View";
-      tabs.push({ title: title, content: view, disabled: false});
-    };
-    $scope.removeTab = function (tab) {
-      var index = tabs.indexOf(tab);
-      tabs.splice(index, 1);
-    };
-  }
-})();
-
-
 (function () {
   'use strict';
 
@@ -3212,6 +3172,58 @@ angular.module('toastDemo1', ['ngMaterial'])
     });
 
 })();
+
+(function () {
+  'use strict';
+  angular
+      .module('tabsDemoDynamicTabs', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ($scope, $log) {
+    var tabs = [
+        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
+        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
+        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
+        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
+        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
+        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
+        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
+        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
+        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
+        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
+        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
+      ],
+      selected = null,
+      previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      previous = selected;
+      selected = tabs[current];
+      if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
+      if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
+    });
+    $scope.addTab = function (title, view) {
+      view = view || title + " Content View";
+      tabs.push({ title: title, content: view, disabled: false});
+    };
+    $scope.removeTab = function (tab) {
+      var index = tabs.indexOf(tab);
+      tabs.splice(index, 1);
+    };
+  }
+})();
+
 
 
 angular.module('toolbarDemo1', ['ngMaterial'])
