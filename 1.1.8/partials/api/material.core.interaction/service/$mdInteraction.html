@@ -1,0 +1,169 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Service which keeps track of the last interaction type and validates them for several browsers.
+The service hooks into the document&#39;s body and listens for touch, mouse and keyboard events.</p>
+<p>The most recent interaction type can be retrieved by calling the <code>getLastInteractionType</code> method.</p>
+<p>Here is an example markup for using the interaction service.</p>
+<hljs lang="js">
+  var lastType = $mdInteraction.getLastInteractionType();
+
+  if (lastType === &#39;keyboard&#39;) {
+    // We only restore the focus for keyboard users.
+    restoreFocus();
+  }
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="getLastInteractionType">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdInteraction.getLastInteractionType();
+</code>
+      </h3>
+      <div class="service-desc"><p>Retrieves the last interaction type triggered in body.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-null">null</code></td>
+    <td class="description"><p>Last interaction type.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="isUserInvoked">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdInteraction.isUserInvoked([checkDelay]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Method to detect whether any interaction happened recently or not.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          checkDelay
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Time to check for any interaction to have been triggered.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+    <td class="description"><p>Whether there was any interaction or not.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
