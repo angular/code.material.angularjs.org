@@ -660,7 +660,8 @@ body[dir=rtl] .menu-heading {
   outline: none;
 }
 .docs-logo > img {
-  height: 150px;
+  margin-top: 19px;
+  height: 120px;
   width: auto;
   display: block;
   -webkit-transform-origin: 50% 0;
@@ -685,6 +686,8 @@ a.docs-logo {
   text-align: center;
   font-weight: 400;
   font-size: 26px;
+  margin-bottom: 1rem;
+  margin-top: 21px;
 }
 .docs-menu-separator-icon {
   margin: 0;

@@ -5136,7 +5136,10 @@ md-toast {
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
-    direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+            flex-direction: row;
     -webkit-box-align: center;
     -webkit-align-items: center;
             align-items: center;
