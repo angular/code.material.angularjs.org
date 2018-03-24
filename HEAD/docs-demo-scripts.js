@@ -571,6 +571,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
     // Lists of fruit names and Vegetable objects
     self.fruitNames = ['Apple', 'Banana', 'Orange'];
+    self.ngChangeFruitNames = angular.copy(self.fruitNames);
     self.roFruitNames = angular.copy(self.fruitNames);
     self.editableFruitNames = angular.copy(self.fruitNames);
 
@@ -595,6 +596,10 @@ angular.module('checkboxDemo2', ['ngMaterial'])
         name: chip,
         type: 'unknown'
       };
+    };
+
+    self.onModelChange = function(newModel) {
+      alert('The model has changed');
     };
   }
 })();
@@ -626,6 +631,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
     self.querySearch = querySearch;
     self.delayedQuerySearch = delayedQuerySearch;
+    self.onModelChange = onModelChange;
 
     /**
      * Search for contacts; use a random delay to simulate a remote call
@@ -683,6 +689,10 @@ angular.module('checkboxDemo2', ['ngMaterial'])
         return (contact._lowername.indexOf(lowercaseQuery) != -1);
       };
 
+    }
+
+    function onModelChange(model) {
+      alert('The model has changed');
     }
 
     function loadContacts() {
