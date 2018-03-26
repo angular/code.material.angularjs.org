@@ -439,18 +439,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   });
 
 
-angular.module('buttonsDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-
-  $scope.googleUrl = 'http://google.com';
-
-});
-
-
 angular.module('cardDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -478,6 +466,18 @@ angular.module('cardDemo3', ['ngMaterial'])
 }])
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('buttonsDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+
+  $scope.googleUrl = 'http://google.com';
+
 });
 
 
@@ -1544,16 +1544,6 @@ angular
 
   });
 
-angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.project = {
-    description: 'Nuclear Missile Defense System',
-    rate: 500,
-    special: true
-  };
-});
-
 angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
 
   .controller('AppCtrl', function($scope) {
@@ -1566,6 +1556,16 @@ angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
       phone: "N/A"
     };
   });
+
+angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.project = {
+    description: 'Nuclear Missile Defense System',
+    rate: 500,
+    special: true
+  };
+});
 
 angular
   .module('inputIconDemo', ['ngMaterial', 'ngMessages'])

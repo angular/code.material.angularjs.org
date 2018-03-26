@@ -17,11 +17,17 @@
 for top-level page navigation. Unlike <code>&lt;md-tabs&gt;</code>, it has no concept of a tab
 body and no bar pagination.</p>
 <p>Because it deals with page navigation, certain routing concepts are built-in.
-Route changes via ng-href, ui-sref, or ng-click events are supported.
-Alternatively, the user could simply watch currentNavItem for changes.</p>
+Route changes via <code>ng-href</code>, <code>ui-sref</code>, or <code>ng-click</code> events are supported.
+Alternatively, the user could simply watch the value of <code>md-selected-nav-item</code>
+(<code>currentNavItem</code> in the below example) for changes.</p>
 <p>Accessibility functionality is implemented as a site navigator with a
-listbox, according to
-<a href="https://www.w3.org/TR/wai-aria-practices/#Site_Navigator_Tabbed_Style">https://www.w3.org/TR/wai-aria-practices/#Site_Navigator_Tabbed_Style</a></p>
+listbox, according to the
+<a href="https://www.w3.org/TR/2016/WD-wai-aria-practices-1.1-20160317/#Site_Navigator_Tabbed_Style">
+  WAI-ARIA Authoring Practices 1.1 Working Draft from March 2016</a>.
+We&#39;ve kept the <code>role=&quot;navigation&quot;</code> on the <code>&lt;nav&gt;</code>, for backwards compatibility, even though
+ it is not required in the
+<a href="https://www.w3.org/TR/wai-aria-practices/#aria_lh_navigation">
+  latest Working Group Note from December 2017</a>.</p>
 
 </div>
 
@@ -91,7 +97,7 @@ listbox, according to
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          mdSelectedNavItem
+          md-selected-nav-item
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -100,7 +106,7 @@ listbox, according to
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>The name of the current tab; this must
-    match the name attribute of <code>&lt;md-nav-item&gt;</code></p>
+    match the <code>name</code> attribute of <code>&lt;md-nav-item&gt;</code>.</p>
 
           
         </td>
@@ -110,7 +116,7 @@ listbox, according to
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          mdNoInkBar
+          md-no-ink-bar
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></span>
@@ -128,7 +134,7 @@ listbox, according to
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          navBarAriaLabel
+          nav-bar-aria-label
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -136,7 +142,8 @@ listbox, according to
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>An aria-label for the nav-bar</p>
+          <p>An <code>aria-label</code> applied to the <code>md-nav-bar</code>&#39;s listbox
+for accessibility.</p>
 
           
         </td>

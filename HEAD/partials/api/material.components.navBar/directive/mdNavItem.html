@@ -13,9 +13,9 @@
 
 
 <div class="api-profile-description">
-  <p><code>&lt;md-nav-item&gt;</code> describes a page navigation link within the <code>&lt;md-nav-bar&gt;</code>
-component. It renders an md-button as the actual link.</p>
-<p>Exactly one of the mdNavClick, mdNavHref, mdNavSref attributes are required
+  <p><code>&lt;md-nav-item&gt;</code> describes a page navigation link within the <code>&lt;md-nav-bar&gt;</code> component.
+It renders an <code>&lt;md-button&gt;</code> as the actual link.</p>
+<p>Exactly one of the <code>md-nav-click</code>, <code>md-nav-href</code>, or <code>md-nav-sref</code> attributes are required
 to be specified.</p>
 
 </div>
@@ -70,15 +70,33 @@ to be specified.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          mdNavClick
+          aria-label
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-function">Function=</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-function">Function=</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Function which will be called when the
+          <p>Adds alternative text for accessibility.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-nav-click
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression which will be evaluated when the
     link is clicked to change the page. Renders as an <code>ng-click</code>.</p>
 
           
@@ -89,7 +107,7 @@ to be specified.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          mdNavHref
+          md-nav-href
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -108,7 +126,7 @@ to be specified.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          mdNavSref
+          md-nav-sref
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -116,28 +134,8 @@ to be specified.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Ui-router state to transition to when this link is
+          <p>UI-Router state to transition to when this link is
     clicked. Renders as a <code>ui-sref</code>.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          srefOpts
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
-        <td class="description">
-          <p>Ui-router options that are passed to the
-    <code>$state.go()</code> function. See the [Ui-router documentation for details]
-    (<a href="https://ui-router.github.io/docs/latest/interfaces/transition.transitionoptions.html">https://ui-router.github.io/docs/latest/interfaces/transition.transitionoptions.html</a>).</p>
 
           
         </td>
@@ -166,15 +164,17 @@ to be specified.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          aria-label
+          sref-opts
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-object">object</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
-          <p>Adds alternative text for accessibility</p>
+          <p>UI-Router options that are passed to the
+    <code>$state.go()</code> function. See the [UI-Router documentation for details]
+    (<a href="https://ui-router.github.io/docs/latest/interfaces/transition.transitionoptions.html">https://ui-router.github.io/docs/latest/interfaces/transition.transitionoptions.html</a>).</p>
 
           
         </td>

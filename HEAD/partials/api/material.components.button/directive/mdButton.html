@@ -107,6 +107,27 @@ may be used with the <code>md-primary</code> class.</p>
   
     
   
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Adds alternative text to button for accessibility, useful for icon buttons.
+If no default text is found, a warning will be logged.</p>
+
+          
+        </td>
+      </tr>
+    
   
     
       <tr class="api-params-item">
@@ -119,25 +140,7 @@ may be used with the <code>md-primary</code> class.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If present, disable ripple ink effects.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          ng-disabled
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-expression">expression</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-expression">expression</code></td>
-        <td class="description">
-          <p>En/Disable based on the expression</p>
+          <p>If present, disable ink ripple effects.</p>
 
           
         </td>
@@ -155,7 +158,7 @@ may be used with the <code>md-primary</code> class.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Overrides the default ripple size logic. Options: <code>full</code>, <code>partial</code>, <code>auto</code></p>
+          <p>Overrides the default ripple size logic. Options: <code>full</code>, <code>partial</code>, <code>auto</code>.</p>
 
           
         </td>
@@ -165,16 +168,33 @@ may be used with the <code>md-primary</code> class.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          aria-label
+          ng-disabled
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>Adds alternative text to button for accessibility, useful for icon buttons.
-If no default text is found, a warning will be logged.</p>
+          <p>Disable the button when the expression is truthy.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-blur
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Expression evaluated when focus is removed from the button.</p>
 
           
         </td>
