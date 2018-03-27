@@ -17,6 +17,8 @@
 <p>While similar to the <code>&lt;input type=&quot;radio&quot; ng-model=&quot;&quot; value=&quot;&quot;&gt;</code> directive,
 the <code>&lt;md-radio-button&gt;</code> directive provides ink effects, ARIA support, and
 supports use within named radio groups.</p>
+<p>One of <code>value</code> or <code>ng-value</code> must be set so that the <code>md-radio-group</code>&#39;s model is set properly when the
+<code>md-radio-button</code> is selected.</p>
 
 </div>
 
@@ -66,7 +68,7 @@ supports use within named radio groups.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* ngValue</b>
+          <b>* value</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -74,8 +76,7 @@ supports use within named radio groups.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>AngularJS expression which sets the value to which the expression should
-   be set when selected.</p>
+          <p>The value to which the model should be set when selected.</p>
 
           
         </td>
@@ -85,7 +86,7 @@ supports use within named radio groups.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* value</b>
+          <b>* ng-value</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -93,7 +94,8 @@ supports use within named radio groups.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>The value to which the expression should be set when selected.</p>
+          <p>AngularJS expression which sets the value to which the model should
+   be set when selected.</p>
 
           
         </td>
@@ -139,7 +141,7 @@ supports use within named radio groups.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Adds label to radio button for accessibility.
-Defaults to radio button&#39;s text. If no text content is available, a warning will be logged.</p>
+   Defaults to radio button&#39;s text. If no text content is available, a warning will be logged.</p>
 
           
         </td>
