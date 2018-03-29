@@ -68,6 +68,33 @@ app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
 
 });
 </hljs>
+
+<h3 id="custom-presets">Custom Presets</h3>
+<p>Developers are also able to create their own preset, which can be easily used without repeating
+their options each time.</p>
+<hljs lang="js">
+  $mdBottomSheetProvider.addPreset(&#39;testPreset&#39;, {
+    options: function() {
+      return {
+        template:
+          &#39;<md-bottom-sheet>&#39; +
+            &#39;This is a custom preset&#39; +
+          &#39;</md-bottom-sheet>&#39;,
+        controllerAs: &#39;bottomSheet&#39;,
+        bindToController: true,
+        clickOutsideToClose: true,
+        escapeToClose: true
+      };
+    }
+  });
+</hljs>
+
+<p>After you create your preset during the config phase, you can easily access it.</p>
+<hljs lang="js">
+  $mdBottomSheet.show(
+    $mdBottomSheet.testPreset()
+  );
+</hljs>
   </section>
 
 
@@ -80,7 +107,7 @@ app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
   <ul class="methods">
     <li id="show">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdBottomSheet.show(options);
+        <code class="method-function-syntax">$mdBottomSheet.show(optionsOrPreset);
 </code>
       </h3>
       <div class="service-desc"><p>Show a bottom sheet with the specified options.</p>
@@ -110,7 +137,7 @@ this.</em></p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* options</b>
+          <b>* optionsOrPreset</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-object">object</code></span>
@@ -118,7 +145,8 @@ this.</em></p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
-          <p>An options object, with the following properties:</p>
+          <p>Either provide an <code>$mdBottomSheetPreset</code> defined during the config phase or
+an options object, with the following properties:</p>
 <ul>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of an html template file that will
 be used as the content of the bottom sheet. Restrictions: the template must
