@@ -2531,8 +2531,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "sidenavDemo1",
-          "module": "sidenavDemo1",
+          "name": "basicUsageSidenavDemo",
+          "module": "basicUsageSidenavDemo",
           "dependencies": [
             "ngMaterial"
           ]
@@ -2560,8 +2560,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "sidenavDemo2",
-          "module": "sidenavDemo2",
+          "name": "customSidenavDemo",
+          "module": "customSidenavDemo",
           "dependencies": [
             "ngMaterial"
           ]
@@ -2585,6 +2585,35 @@ angular.module('docsApp').constant('DEMOS', [
           "label": "index.html",
           "fileType": "html",
           "outputPath": "demo-partials/sidenav/demoCustomSidenav/index.html"
+        }
+      },
+      {
+        "ngModule": {
+          "name": "disableCloseEventsSidenavDemo",
+          "module": "disableCloseEventsSidenavDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "sidenavdemoDisableCloseEvents",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/sidenav/demoDisableCloseEvents/script.js"
+          }
+        ],
+        "moduleName": "material.components.sidenav",
+        "name": "demoDisableCloseEvents",
+        "label": "Disable Close Events",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/sidenav/demoDisableCloseEvents/index.html"
         }
       }
     ],
