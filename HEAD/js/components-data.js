@@ -1526,6 +1526,28 @@ angular.module('docsApp').constant('COMPONENTS', [
     "hasDemo": false
   },
   {
+    "name": "material.core.gestures",
+    "type": "module",
+    "outputPath": "partials/api/material.core.gestures/index.html",
+    "url": "api/material.core.gestures",
+    "label": "material.core.gestures",
+    "module": "material.core",
+    "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/gesture/gesture.js",
+    "docs": [
+      {
+        "name": "$mdGestureProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.core.gestures/service/$mdGestureProvider.html",
+        "url": "api/service/$mdGestureProvider",
+        "label": "$mdGestureProvider",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/gesture/gesture.js",
+        "hasDemo": false
+      }
+    ],
+    "hasDemo": false
+  },
+  {
     "name": "material.core.interaction",
     "type": "module",
     "outputPath": "partials/api/material.core.interaction/index.html",
