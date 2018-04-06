@@ -106,6 +106,149 @@ for more info please visit:
   <h2>Methods</h2>
   <br/>
   <ul class="methods">
+    <li id="enableBrowserColor">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.enableBrowserColor([options]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Enables browser header coloring. For more info please visit
+<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">
+  Web Fundamentals</a>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          options
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Options for the browser color, which include:<br/></p>
+<ul>
+<li><code>theme</code> - <code>{string}</code>: A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/></li>
+<li><code>palette</code> - <code>{string}</code>:  Can be any one of the basic material design palettes, extended defined palettes, or <code>primary</code>,
+<code>accent</code>, <code>background</code>, and <code>warn</code>. Default is <code>primary</code>.<br/></li>
+<li><code>hue</code> -  <code>{string}</code>: The hue from the selected palette. Default is <code>800</code>.<br/></li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-function">function</code></td>
+    <td class="description"><p>Function that removes the browser coloring when called.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="disableTheming">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.disableTheming([isDisabled]);
+</code>
+      </h3>
+      <div class="service-desc"><p>An easier way to disable theming without having to use <code>.constant(&quot;$MD_THEME_CSS&quot;,&quot;&quot;);</code>.
+This disables all dynamic theme style sheet generations and injections.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          isDisabled
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Disable all dynamic theme style sheet generations and injections
+ if <code>true</code> or <code>undefined</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
     <li id="registerStyles">
       <h3 class="method-function-syntax">
         <code class="method-function-syntax">$mdThemingProvider.registerStyles(styles);
@@ -139,7 +282,7 @@ for more info please visit:
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>The styles to be appended to AngularJS Material&#39;s built in theme css.</p>
+          <p>The styles to be appended to AngularJS Material&#39;s built in theme CSS.</p>
 
           
         </td>
@@ -223,7 +366,7 @@ Setting a value allows the use of CSP policy without using the unsafe-inline dir
     
     <li id="setDefaultTheme">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdThemingProvider.setDefaultTheme(themeName);
+        <code class="method-function-syntax">$mdThemingProvider.setDefaultTheme(theme);
 </code>
       </h3>
       <div class="service-desc"></div>
@@ -246,7 +389,7 @@ Setting a value allows the use of CSP policy without using the unsafe-inline dir
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* themeName</b>
+          <b>* theme</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-string">string</code></span>
@@ -280,7 +423,7 @@ Setting a value allows the use of CSP policy without using the unsafe-inline dir
     
     <li id="alwaysWatchTheme">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdThemingProvider.alwaysWatchTheme(watch);
+        <code class="method-function-syntax">$mdThemingProvider.alwaysWatchTheme(alwaysWatch);
 </code>
       </h3>
       <div class="service-desc"></div>
@@ -303,7 +446,7 @@ Setting a value allows the use of CSP policy without using the unsafe-inline dir
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* watch</b>
+          <b>* alwaysWatch</b>
           
           <span hide show-sm>
 <code class="api-type label type-hint type-hint-boolean">boolean</code></span>
@@ -336,12 +479,15 @@ classes when they change. Default is <code>false</code>. Enabling can reduce per
 
     </li>
     
-    <li id="enableBrowserColor">
+    <li id="definePalette">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdThemingProvider.enableBrowserColor([options]);
+        <code class="method-function-syntax">$mdThemingProvider.definePalette(name, map);
 </code>
       </h3>
-      <div class="service-desc"></div>
+      <div class="service-desc"><p>In the event that you need to define a custom color palette, you can use this function to
+make it available to your theme for use in its intention groups.<br>
+Note that you must specify all hues in the definition map.</p>
+</div>
 
       <div class="method-param-table">
 
@@ -359,28 +505,165 @@ classes when they change. Default is <code>false</code>. Enabling can reduce per
   
   
     
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Name of palette being defined</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* map</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Palette definition that includes hue definitions and contrast colors:</p>
+<ul>
+<li><code>&#39;50&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;100&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;200&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;300&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;400&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;500&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;600&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;700&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;800&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;900&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A100&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A200&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A400&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A700&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;contrastDefaultColor&#39;</code> - <code>{string}</code>: <code>light</code> or <code>dark</code></li>
+<li><code>&#39;contrastDarkColors&#39;</code> - <code>{string[]}</code>: Hues which should use dark contrast colors (i.e. raised button text).
+For example: <code>[&#39;50&#39;, &#39;100&#39;, &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;]</code>.</li>
+<li><code>&#39;contrastLightColors&#39;</code> - <code>{string[]}</code>: Hues which should use light contrast colors (i.e. raised button text).
+For example: <code>[&#39;500&#39;, &#39;600&#39;, &#39;700&#39;, &#39;800&#39;, &#39;900&#39;, &#39;A200&#39;, &#39;A400&#39;, &#39;A700&#39;]</code>.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="extendPalette">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.extendPalette(name, map);
+</code>
+      </h3>
+      <div class="service-desc"><p>Sometimes it is easier to extend an existing color palette and then change a few properties,
+rather than defining a whole new palette.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
   
   
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          options
+          <b>* name</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Options object for the browser color<br/>
-<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/>
-<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
-            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code>. <br/>
-<code>hue</code>     - The hue from the selected palette. Default is <code>800</code><br/></p>
+          <p>Name of palette being extended</p>
 
           
         </td>
       </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* map</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Palette definition that includes optional hue definitions and contrast colors:</p>
+<ul>
+<li><code>&#39;50&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;100&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;200&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;300&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;400&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;500&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;600&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;700&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;800&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;900&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A100&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A200&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A400&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;A700&#39;</code> - <code>{string}</code>: HEX color</li>
+<li><code>&#39;contrastDefaultColor&#39;</code> - <code>{string}</code>: <code>light</code> or <code>dark</code></li>
+<li><code>&#39;contrastDarkColors&#39;</code> - <code>{string[]}</code>: Hues which should use dark contrast colors (i.e. raised button text).
+For example: <code>[&#39;50&#39;, &#39;100&#39;, &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;]</code>.</li>
+<li><code>&#39;contrastLightColors&#39;</code> - <code>{string[]}</code>: Hues which should use light contrast colors (i.e. raised button text).
+For example: <code>[&#39;500&#39;, &#39;600&#39;, &#39;700&#39;, &#39;800&#39;, &#39;900&#39;, &#39;A200&#39;, &#39;A400&#39;, &#39;A700&#39;]</code>.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
     
   
 
@@ -402,12 +685,93 @@ classes when they change. Default is <code>false</code>. Enabling can reduce per
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-function">Function</code></td>
-    <td class="description"><p>remove function of the browser color</p>
+<code class="api-type label type-hint type-hint-object">object</code></td>
+    <td class="description"><p>A new object which is a copy of the given palette, <code>name</code>,
+   with variables from <code>map</code> overwritten.</p>
 </td>
   </tr>
   </tbody>
 </table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="theme">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdThemingProvider.theme(name, [inheritFrom]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Register a theme (which is a collection of color palettes); i.e. <code>warn</code>, <code>accent</code>,
+<code>background</code>, and <code>primary</code>.<br>
+Optionally inherit from an existing theme.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* name</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Name of theme being registered</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          inheritFrom
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Existing theme name to inherit from</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
       
 
       </div>

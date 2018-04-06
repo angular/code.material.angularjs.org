@@ -17,17 +17,20 @@
 <div class="api-profile-description">
   <p>Service that makes an element apply theming related <b>classes</b> to itself.</p>
 <hljs lang="js">
+// Example component directive that we want to apply theming classes to.
 app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
   return {
-    restrict: &#39;e&#39;,
-    link: function(scope, el, attrs) {
-      $mdTheming(el);
+    restrict: &#39;AE&#39;,
+    link: function(scope, element, attrs) {
+      // Initialize the service using our directive&#39;s element
+      $mdTheming(element);
 
       $mdTheming.defineTheme(&#39;myTheme&#39;, {
         primary: &#39;blue&#39;,
         accent: &#39;pink&#39;,
         dark: true
-      })
+      });
+      // Your directive&#39;s custom code here.
     }
   };
 });
@@ -77,7 +80,7 @@ app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-element">element</code></td>
         <td class="description">
-          <p>to apply theming to</p>
+          <p>Element that will have theming classes applied to it.</p>
 
           
         </td>
@@ -281,18 +284,12 @@ You can disable this in the configuration section using the
     
     <li id="setBrowserColor">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdTheming.setBrowserColor(options);
+        <code class="method-function-syntax">$mdTheming.setBrowserColor([options]);
 </code>
       </h3>
-      <div class="service-desc"><p>Sets browser header coloring
-for more info please visit:
-<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color</a></p>
-<p>The default color is <code>800</code> from <code>primary</code> palette of the <code>default</code> theme</p>
-<p>options are:<br/>
-<code>theme</code>   - A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme.<br/>
-<code>palette</code> - Can be any one of the basic material design palettes, extended defined palettes and &#39;primary&#39;,
-            &#39;accent&#39;, &#39;background&#39; and &#39;warn&#39;. Default is <code>primary</code><br/>
-<code>hue</code>     - The hue from the selected palette. Default is <code>800</code></p>
+      <div class="service-desc"><p>Enables browser header coloring. For more info please visit
+<a href="https://developers.google.com/web/fundamentals/design-and-ui/browser-customization/theme-color">
+  Web Fundamentals</a>.</p>
 </div>
 
       <div class="method-param-table">
@@ -311,24 +308,30 @@ for more info please visit:
   
   
     
+  
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* options</b>
+          options
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
+<code class="api-type label type-hint type-hint-object">object</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
+<code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
-          <p>Options object for the browser color</p>
+          <p>Options for the browser color, which include:<br/></p>
+<ul>
+<li><code>theme</code> - <code>{string}</code>: A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/></li>
+<li><code>palette</code> - <code>{string}</code>:  Can be any one of the basic material design palettes, extended defined palettes, or <code>primary</code>,
+<code>accent</code>, <code>background</code>, and <code>warn</code>. Default is <code>primary</code>.<br/></li>
+<li><code>hue</code> -  <code>{string}</code>: The hue from the selected palette. Default is <code>800</code>.<br/></li>
+</ul>
 
           
         </td>
       </tr>
-    
-  
-  
     
   
 
@@ -350,8 +353,8 @@ for more info please visit:
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-function">Function</code></td>
-    <td class="description"><p>remove function of the browser color</p>
+<code class="api-type label type-hint type-hint-function">function</code></td>
+    <td class="description"><p>Function that removes the browser coloring when called.</p>
 </td>
   </tr>
   </tbody>
@@ -367,13 +370,7 @@ for more info please visit:
         <code class="method-function-syntax">$mdTheming.defineTheme(name, options);
 </code>
       </h3>
-      <div class="service-desc"><p>Dynamically define a theme by an options object</p>
-<p>options are:<br/>
-<code>primary</code>    - The primary palette of the theme.<br/>
-<code>accent</code>     - The accent palette of the theme.<br/>
-<code>warn</code>       - The warn palette of the theme.<br/>
-<code>background</code> - The background palette of the theme.<br/>
-<code>dark</code>       - Indicates if it&#39;s a dark theme.<br/></p>
+      <div class="service-desc"><p>Dynamically define a theme by using an options object that contains palette names.</p>
 </div>
 
       <div class="method-param-table">
@@ -397,10 +394,10 @@ for more info please visit:
           <b>* name</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Theme name to define</p>
 
@@ -415,12 +412,20 @@ for more info please visit:
           <b>* options</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
+<code class="api-type label type-hint type-hint-object">object</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
+<code class="api-type label type-hint type-hint-object">object</code></td>
         <td class="description">
-          <p>Theme definition options</p>
+          <p>Theme definition options
+Options are:<br/></p>
+<ul>
+<li><code>primary</code> - <code>{string}</code>: The name of the primary palette to use in the theme.<br/></li>
+<li><code>accent</code> - <code>{string}</code>: The name of the accent palette to use in the theme.<br/></li>
+<li><code>warn</code> - <code>{string}</code>: The name of the warn palette to use in the theme.<br/></li>
+<li><code>background</code> - <code>{string}</code>: The name of the background palette to use in the theme.<br/></li>
+<li><code>dark</code> - <code>{boolean}</code>: Indicates if it&#39;s a dark theme.<br/></li>
+</ul>
 
           
         </td>
@@ -452,7 +457,7 @@ for more info please visit:
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">Promise&lt;string&gt;</code></td>
-    <td class="description"><p>A resolved promise with the theme name</p>
+    <td class="description"><p>A resolved promise with the new theme name.</p>
 </td>
   </tr>
   </tbody>
@@ -494,8 +499,8 @@ for more info please visit:
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-object">Object</code></td>
-    <td class="description"><p>All the themes defined with their properties</p>
+<code class="api-type label type-hint type-hint-object">object</code></td>
+    <td class="description"><p>All the themes defined with their properties.</p>
 </td>
   </tr>
   </tbody>
@@ -530,8 +535,8 @@ for more info please visit:
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-object">Object</code></td>
-    <td class="description"><p>All the palettes defined with their colors</p>
+<code class="api-type label type-hint type-hint-object">object</code></td>
+    <td class="description"><p>All the palettes defined with their colors.</p>
 </td>
   </tr>
   </tbody>
