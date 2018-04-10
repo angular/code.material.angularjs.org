@@ -1557,165 +1557,6 @@ angular
     };
   });
 
-
-angular.module('listDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
-})
-.controller('AppCtrl', function($scope) {
-    var imagePath = 'img/list/60.jpeg';
-
-    $scope.phones = [
-      {
-        type: 'Home',
-        number: '(555) 251-1234',
-        options: {
-          icon: 'communication:phone'
-        }
-      },
-      {
-        type: 'Cell',
-        number: '(555) 786-9841',
-        options: {
-          icon: 'communication:phone',
-          avatarIcon: true
-        }
-      },
-      {
-        type: 'Office',
-        number: '(555) 314-1592',
-        options: {
-          face : imagePath
-        }
-      },
-      {
-        type: 'Offset',
-        number: '(555) 192-2010',
-        options: {
-          offset: true,
-          actionIcon: 'communication:phone'
-        }
-      }
-    ];
-    $scope.todos = [
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-    ];
-});
-
-angular.module('listDemo2', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
-    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-})
-.controller('ListCtrl', function($scope, $mdDialog) {
-  $scope.toppings = [
-    { name: 'Pepperoni', wanted: true },
-    { name: 'Sausage', wanted: false },
-    { name: 'Black Olives', wanted: true },
-    { name: 'Green Peppers', wanted: false }
-  ];
-
-  $scope.settings = [
-    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
-    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
-  ];
-
-  $scope.messages = [
-    {id: 1, title: "Message A", selected: false},
-    {id: 2, title: "Message B", selected: true},
-    {id: 3, title: "Message C", selected: true},
-  ];
-
-  $scope.people = [
-    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
-    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
-    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
-  ];
-
-  $scope.goToPerson = function(person, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Inspect ' + person)
-        .ariaLabel('Person inspect demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.navigateTo = function(to, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Imagine being taken to ' + to)
-        .ariaLabel('Navigation demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doPrimaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Primary Action')
-        .textContent('Primary actions can be used for one click actions')
-        .ariaLabel('Primary click demo')
-        .ok('Awesome!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doSecondaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Secondary Action')
-        .textContent('Secondary actions can be used for one click actions')
-        .ariaLabel('Secondary click demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-});
-
 angular
   .module('menuDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -1931,6 +1772,165 @@ angular
       $log.log(item);
     };
   });
+
+
+angular.module('listDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
+})
+.controller('AppCtrl', function($scope) {
+    var imagePath = 'img/list/60.jpeg';
+
+    $scope.phones = [
+      {
+        type: 'Home',
+        number: '(555) 251-1234',
+        options: {
+          icon: 'communication:phone'
+        }
+      },
+      {
+        type: 'Cell',
+        number: '(555) 786-9841',
+        options: {
+          icon: 'communication:phone',
+          avatarIcon: true
+        }
+      },
+      {
+        type: 'Office',
+        number: '(555) 314-1592',
+        options: {
+          face : imagePath
+        }
+      },
+      {
+        type: 'Offset',
+        number: '(555) 192-2010',
+        options: {
+          offset: true,
+          actionIcon: 'communication:phone'
+        }
+      }
+    ];
+    $scope.todos = [
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+    ];
+});
+
+angular.module('listDemo2', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
+    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+})
+.controller('ListCtrl', function($scope, $mdDialog) {
+  $scope.toppings = [
+    { name: 'Pepperoni', wanted: true },
+    { name: 'Sausage', wanted: false },
+    { name: 'Black Olives', wanted: true },
+    { name: 'Green Peppers', wanted: false }
+  ];
+
+  $scope.settings = [
+    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
+    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
+  ];
+
+  $scope.messages = [
+    {id: 1, title: "Message A", selected: false},
+    {id: 2, title: "Message B", selected: true},
+    {id: 3, title: "Message C", selected: true},
+  ];
+
+  $scope.people = [
+    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
+    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
+    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
+  ];
+
+  $scope.goToPerson = function(person, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Inspect ' + person)
+        .ariaLabel('Person inspect demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.navigateTo = function(to, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Imagine being taken to ' + to)
+        .ariaLabel('Navigation demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doPrimaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Primary Action')
+        .textContent('Primary actions can be used for one click actions')
+        .ariaLabel('Primary click demo')
+        .ok('Awesome!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doSecondaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Secondary Action')
+        .textContent('Secondary actions can be used for one click actions')
+        .ariaLabel('Secondary click demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+});
 
 (function() {
   'use strict';
@@ -2478,32 +2478,6 @@ DialogCtrl.prototype.closeDialog = function() {
   }
 })();
 
-angular
-  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
-  })
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
-
-      self.activated = true;
-      self.determinateValue = 30;
-
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
-      $interval(function() {
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-      }, 100);
-    }
-  ]);
-
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
   })
@@ -2554,6 +2528,64 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     }, 7200, 0, true);
   }]);
 
+angular
+  .module('radioDemo2', ['ngMaterial'])
+  .controller('ContactController', function($scope, $filter) {
+    var self = this;
+
+    self.contacts = [{
+      'id': 1,
+      'fullName': 'Maria Guadalupe',
+      'lastName': 'Guadalupe',
+      'title': "CEO, Found"
+    }, {
+      'id': 2,
+      'fullName': 'Gabriel García Marquéz',
+      'lastName': 'Marquéz',
+      'title': "VP Sales & Marketing"
+    }, {
+      'id': 3,
+      'fullName': 'Miguel de Cervantes',
+      'lastName': 'Cervantes',
+      'title': "Manager, Operations"
+    }, {
+      'id': 4,
+      'fullName': 'Pacorro de Castel',
+      'lastName': 'Castel',
+      'title': "Security"
+    }];
+    self.selectedId = 2;
+    self.selectedUser = function() {
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    };
+  });
+
+angular
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
+  .controller('AppCtrl', ['$interval',
+    function($interval) {
+      var self = this;
+
+      self.activated = true;
+      self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+      $interval(function() {
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+      }, 100);
+    }
+  ]);
+
 
 angular
   .module('radioDemo1', ['ngMaterial'])
@@ -2603,38 +2635,6 @@ angular
   })
   .config(function($mdIconProvider) {
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
-  });
-
-angular
-  .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
-    var self = this;
-
-    self.contacts = [{
-      'id': 1,
-      'fullName': 'Maria Guadalupe',
-      'lastName': 'Guadalupe',
-      'title': "CEO, Found"
-    }, {
-      'id': 2,
-      'fullName': 'Gabriel García Marquéz',
-      'lastName': 'Marquéz',
-      'title': "VP Sales & Marketing"
-    }, {
-      'id': 3,
-      'fullName': 'Miguel de Cervantes',
-      'lastName': 'Cervantes',
-      'title': "Manager, Operations"
-    }, {
-      'id': 4,
-      'fullName': 'Pacorro de Castel',
-      'lastName': 'Castel',
-      'title': "Security"
-    }];
-    self.selectedId = 2;
-    self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
-    };
   });
 
 (function () {
@@ -2889,6 +2889,55 @@ angular.module('sliderDemo2', ['ngMaterial'])
   $scope.master = Math.floor(Math.random() * 100);
 });
 
+angular.module('demoSwipe', ['ngMaterial'])
+  .controller('demoSwipeCtrl', function($scope, $log) {
+    $scope.onSwipeLeft = function(ev, target) {
+      alert('You swiped left!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeRight = function(ev, target) {
+      alert('You swiped right!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+    $scope.onSwipeUp = function(ev, target) {
+      alert('You swiped up!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeDown = function(ev, target) {
+      alert('You swiped down!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+  });
+
+angular.module('switchDemo1', ['ngMaterial'])
+.controller('SwitchDemoCtrl', function($scope) {
+  $scope.data = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+
+  $scope.message = 'false';
+
+  $scope.onChange = function(cbState) {
+    $scope.message = cbState;
+  };
+});
+
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
 .config(function($mdThemingProvider) {
@@ -2978,53 +3027,79 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
     ];
 });
 
-angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope, $log) {
-    $scope.onSwipeLeft = function(ev, target) {
-      alert('You swiped left!!');
+(function() {
 
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
+  var isDlgOpen;
 
-    $scope.onSwipeRight = function(ev, target) {
-      alert('You swiped right!!');
+  angular
+    .module('toastDemo2', ['ngMaterial'])
+    .controller('AppCtrl', function($scope, $mdToast) {
+      $scope.showCustomToast = function() {
+        $mdToast.show({
+          hideDelay   : 3000,
+          position    : 'top right',
+          controller  : 'ToastCtrl',
+          templateUrl : 'toast-template.html'
+        });
+      };
+    })
+    .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
 
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-    $scope.onSwipeUp = function(ev, target) {
-      alert('You swiped up!!');
+      $scope.closeToast = function() {
+        if (isDlgOpen) return;
 
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
+        $mdToast
+          .hide()
+          .then(function() {
+            isDlgOpen = false;
+          });
+      };
 
-    $scope.onSwipeDown = function(ev, target) {
-      alert('You swiped down!!');
+      $scope.openMoreInfo = function(e) {
+        if ( isDlgOpen ) return;
+        isDlgOpen = true;
 
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-  });
+        $mdDialog
+          .show($mdDialog
+            .alert()
+            .title('More info goes here.')
+            .textContent('Something witty.')
+            .ariaLabel('More info')
+            .ok('Got it')
+            .targetEvent(e)
+          )
+          .then(function() {
+            isDlgOpen = false;
+          });
+      };
+    });
 
-angular.module('switchDemo1', ['ngMaterial'])
-.controller('SwitchDemoCtrl', function($scope) {
-  $scope.data = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
+})();
 
-  $scope.message = 'false';
 
-  $scope.onChange = function(cbState) {
-    $scope.message = cbState;
-  };
+angular.module('toolbarDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
+
+angular.module('toolbarDemo2', ['ngMaterial'])
+
+.controller('TitleController', function($scope) {
+  $scope.title = 'My App Title';
+})
+.controller('AppCtrl', function($scope) {
+  var imagePath = 'img/list/60.jpeg';
+
+  $scope.todos = [];
+  for (var i = 0; i < 15; i++) {
+    $scope.todos.push({
+      face: imagePath,
+      what: "Brunch this weekend?",
+      who: "Min Li Chan",
+      notes: "I'll be in your neighborhood doing errands."
+    });
+  }
 });
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
@@ -3108,6 +3183,21 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
   }
 })();
 
+angular.module('tooltipDemo', ['ngMaterial'])
+    .controller('AppCtrl', AppCtrl);
+
+function AppCtrl($scope) {
+  $scope.demo = {
+    showTooltip: false,
+    tipDirection: 'bottom'
+  };
+
+  $scope.demo.delayTooltip = undefined;
+  $scope.$watch('demo.delayTooltip', function(val) {
+    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+  });
+}
+
 
 angular.module('toastDemo1', ['ngMaterial'])
 
@@ -3174,96 +3264,6 @@ angular.module('toastDemo1', ['ngMaterial'])
     $mdToast.hide();
   };
 });
-
-(function() {
-
-  var isDlgOpen;
-
-  angular
-    .module('toastDemo2', ['ngMaterial'])
-    .controller('AppCtrl', function($scope, $mdToast) {
-      $scope.showCustomToast = function() {
-        $mdToast.show({
-          hideDelay   : 3000,
-          position    : 'top right',
-          controller  : 'ToastCtrl',
-          templateUrl : 'toast-template.html'
-        });
-      };
-    })
-    .controller('ToastCtrl', function($scope, $mdToast, $mdDialog) {
-
-      $scope.closeToast = function() {
-        if (isDlgOpen) return;
-
-        $mdToast
-          .hide()
-          .then(function() {
-            isDlgOpen = false;
-          });
-      };
-
-      $scope.openMoreInfo = function(e) {
-        if ( isDlgOpen ) return;
-        isDlgOpen = true;
-
-        $mdDialog
-          .show($mdDialog
-            .alert()
-            .title('More info goes here.')
-            .textContent('Something witty.')
-            .ariaLabel('More info')
-            .ok('Got it')
-            .targetEvent(e)
-          )
-          .then(function() {
-            isDlgOpen = false;
-          });
-      };
-    });
-
-})();
-
-
-angular.module('toolbarDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
-angular.module('toolbarDemo2', ['ngMaterial'])
-
-.controller('TitleController', function($scope) {
-  $scope.title = 'My App Title';
-})
-.controller('AppCtrl', function($scope) {
-  var imagePath = 'img/list/60.jpeg';
-
-  $scope.todos = [];
-  for (var i = 0; i < 15; i++) {
-    $scope.todos.push({
-      face: imagePath,
-      what: "Brunch this weekend?",
-      who: "Min Li Chan",
-      notes: "I'll be in your neighborhood doing errands."
-    });
-  }
-});
-
-angular.module('tooltipDemo', ['ngMaterial'])
-    .controller('AppCtrl', AppCtrl);
-
-function AppCtrl($scope) {
-  $scope.demo = {
-    showTooltip: false,
-    tipDirection: 'bottom'
-  };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip', function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
-}
 
 (function () {
   'use strict';
@@ -3448,8 +3448,6 @@ function AppCtrl($scope) {
 
 })();
 
-angular.module('whiteframeBasicUsage', ['ngMaterial']);
-
 angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
 
 angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
@@ -3469,3 +3467,5 @@ angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
         this.showFrame = this.showFrame == 3 ? -1 : 3;
       };
     });
+
+angular.module('whiteframeBasicUsage', ['ngMaterial']);
