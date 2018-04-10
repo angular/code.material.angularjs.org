@@ -146,11 +146,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          title="AngularJS Framework">Introduction to AngularJS Material</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
-    '        Visit the <a href="http://codepen.io/team/AngularMaterial/" target="_blank"\n' +
+    '        Visit the <a href="https://codepen.io/team/AngularMaterial/" target="_blank"\n' +
     '                       title="CodePen Material Community">CodePen Community for AngularJS Material</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
-    '        <a href="http://codepen.io/team/AngularMaterial/pen/RrbXyW" target="_blank">Start with a\n' +
+    '        <a href="https://codepen.io/team/AngularMaterial/pen/RrbXyW" target="_blank">Start with a\n' +
     '        blank CodePen Material Application</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
@@ -188,13 +188,13 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </p>\n' +
     '\n' +
     '    <iframe height=\'777\' scrolling=\'no\'\n' +
-    '            src=\'//codepen.io/team/AngularMaterial/embed/RrbXyW/?height=777&theme-id=21180&default-tab=html\'\n' +
+    '            src=\'https://codepen.io/team/AngularMaterial/embed/RrbXyW/?height=777&theme-id=21180&default-tab=html\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
     '      See the Pen <a\n' +
-    '        href=\'http://codepen.io/team/AngularMaterial/pen/RrbXyW/\'>AngularJS Material - Blank\n' +
+    '        href=\'https://codepen.io/team/AngularMaterial/pen/RrbXyW/\'>AngularJS Material - Blank\n' +
     '      Starter</a> by AngularJS\n' +
-    '      Material (<a href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a\n' +
-    '        href=\'http://codepen.io\'>CodePen</a>.\n' +
+    '      Material (<a href=\'https://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a\n' +
+    '        href=\'https://codepen.io\'>CodePen</a>.\n' +
     '    </iframe>\n' +
     '\n' +
     '    <p>\n' +
@@ -209,14 +209,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h3>Our CodePen Community</h3>\n' +
     '    <p>\n' +
     '      You can also visit our\n' +
-    '      <a href="http://codepen.io/team/AngularMaterial/" target="_blank"\n' +
+    '      <a href="https://codepen.io/team/AngularMaterial/" target="_blank"\n' +
     '         title="Codepen Community">CodePen Community</a> to explore more\n' +
     '      <a href="https://codepen.io/team/AngularMaterial/pens/public/" target="_blank">samples</a>,\n' +
     '      <a href="https://codepen.io/team/AngularMaterial/collections/public/" target="_blank">Collections</a>, and ideas.\n' +
     '    </p>\n' +
     '    <div layout-align="center" style="width: 100%">\n' +
     '      <iframe height=\'777\' scrolling=\'no\'\n' +
-    '            src=\'http://codepen.io/collection/XExqGz/\'\n' +
+    '            src=\'https://codepen.io/collection/XExqGz/\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
     '      </iframe>\n' +
     '    </div>\n' +
