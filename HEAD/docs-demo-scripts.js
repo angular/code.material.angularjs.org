@@ -532,29 +532,6 @@ angular.module('checkboxDemo3', ['ngMaterial'])
   };
 });
 
-
-angular.module('checkboxDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-    $scope.items = [1,2,3,4,5];
-      $scope.selected = [];
-
-      $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-          list.splice(idx, 1);
-        }
-        else {
-          list.push(item);
-        }
-      };
-
-      $scope.exists = function (item, list) {
-        return list.indexOf(item) > -1;
-      };
-});
-
 (function () {
   'use strict';
   angular
@@ -598,6 +575,29 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     };
   }
 })();
+
+
+angular.module('checkboxDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+    $scope.items = [1,2,3,4,5];
+      $scope.selected = [];
+
+      $scope.toggle = function (item, list) {
+        var idx = list.indexOf(item);
+        if (idx > -1) {
+          list.splice(idx, 1);
+        }
+        else {
+          list.push(item);
+        }
+      };
+
+      $scope.exists = function (item, list) {
+        return list.indexOf(item) > -1;
+      };
+});
 
 (function () {
   'use strict';
@@ -3010,21 +3010,6 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
-angular.module('switchDemo1', ['ngMaterial'])
-.controller('SwitchDemoCtrl', function($scope) {
-  $scope.data = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
-
-  $scope.message = 'false';
-
-  $scope.onChange = function(cbState) {
-    $scope.message = cbState;
-  };
-});
-
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
@@ -3077,6 +3062,21 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
   }
 })();
 
+
+angular.module('switchDemo1', ['ngMaterial'])
+.controller('SwitchDemoCtrl', function($scope) {
+  $scope.data = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+
+  $scope.message = 'false';
+
+  $scope.onChange = function(cbState) {
+    $scope.message = cbState;
+  };
+});
 
 (function () {
   'use strict';
