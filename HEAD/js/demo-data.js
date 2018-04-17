@@ -648,6 +648,43 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/chips/demoStaticChips/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "chipsValidationDemo",
+          "module": "chipsValidationDemo",
+          "dependencies": [
+            "ngMaterial",
+            "ngMessages"
+          ]
+        },
+        "id": "chipsdemoValidation",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/chips/demoValidation/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/chips/demoValidation/script.js"
+          }
+        ],
+        "moduleName": "material.components.chips",
+        "name": "demoValidation",
+        "label": "Validation",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/chips/demoValidation/index.html"
+        }
       }
     ],
     "url": "demo/chips"
