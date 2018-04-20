@@ -107,12 +107,23 @@ scope bindings, rather than re-creating the <code>md-autocomplete</code> and the
 <p>In this example, our code utilizes <code>md-item-template</code> and <code>md-not-found</code> to specify the
     different parts that make up our component.</p>
 <h3 id="clear-button-for-the-input">Clear button for the input</h3>
-<p>By default, for floating label autocomplete&#39;s the clear button is not showing up
-(<a href="https://material.google.com/components/text-fields.html#text-fields-auto-complete-text-field">See specs</a>)</p>
-<p>Nevertheless, developers are able to explicitly toggle the clear button for all types of autocomplete&#39;s.</p>
+<p>By default, the clear button is displayed when there is input. This aligns with the spec&#39;s
+<a href="https://material.io/guidelines/patterns/search.html#search-in-app-search">Search Pattern</a>.
+In floating label mode, when <code>md-floating-label=&quot;My Label&quot;</code> is applied, the clear button is not displayed
+by default (see the spec&#39;s
+<a href="https://material.io/guidelines/components/text-fields.html#text-fields-layout">Autocomplete Text Field</a>).</p>
+<p>Nevertheless, developers are able to explicitly toggle the clear button for all autocomplete components
+with <code>md-clear-button</code>.</p>
 <hljs lang="html">
   <md-autocomplete ... md-clear-button="true"></md-autocomplete>
   <md-autocomplete ... md-clear-button="false"></md-autocomplete>
+</hljs>
+
+<p>In previous versions, the clear button was always hidden when the component was disabled.
+This changed in <code>1.1.5</code> to give the developer control of this behavior. This example
+will hide the clear button only when the component is disabled.</p>
+<hljs lang="html">
+  <md-autocomplete ... ng-disabled="disabled" md-clear-button="!disabled"></md-autocomplete>
 </hljs>
 
 <h3 id="example-with-validation">Example with validation</h3>
