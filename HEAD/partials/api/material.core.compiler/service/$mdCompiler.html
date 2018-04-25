@@ -136,7 +136,7 @@ like controller instantiation or async resolves.</p>
         <td class="description">
           <p>An options object, with the following properties:</p>
 <ul>
-<li><code>controller</code> - <code>{string|function}</code> Controller fn that should be associated with
+<li><code>controller</code> - <code>{string|Function}</code> Controller fn that should be associated with
    newly created scope or the name of a registered controller if passed as a string.</li>
 <li><code>controllerAs</code> - <code>{string=}</code> A controller alias name. If present the controller will be
    published to scope under the <code>controllerAs</code> name.</li>
@@ -191,11 +191,11 @@ injected into the controller.</li>
     <td class="description"><p>promise A promise, which will be resolved with a <code>compileData</code> object.
 <code>compileData</code> has the following properties:</p>
 <ul>
-<li><code>element</code> - <code>{Element}</code>: an uncompiled element matching the provided template.</li>
+<li><code>element</code> - <code>{element}</code>: an uncompiled element matching the provided template.</li>
 <li><code>link</code> - <code>{function(scope)}</code>: A link function, which, when called, will compile
 the element and instantiate the provided controller (if given).</li>
-<li><code>locals</code> - <code>{Object}</code>: The locals which will be passed into the controller once <code>link</code> is
-called. If <code>bindToController</code> is true, they will be copied to the ctrl instead</li>
+<li><code>locals</code> - <code>{object}</code>: The locals which will be passed into the controller once <code>link</code> is
+called. If <code>bindToController</code> is true, they will be coppied to the ctrl instead</li>
 </ul>
 </td>
   </tr>
