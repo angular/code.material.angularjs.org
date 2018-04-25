@@ -155,12 +155,14 @@ on our custom validators.</p>
           <b>* ng-model</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>A model to which the list of items will be bound.</p>
+          <p>Assignable angular expression to be data-bound to the list of chips.
+ The expression should evaluate to a <code>string</code> or <code>Object</code> Array. The type of this array should align
+ with the return value of <code>md-transform-chip</code>.</p>
 
           
         </td>

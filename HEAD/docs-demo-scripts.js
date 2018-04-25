@@ -609,7 +609,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
   // If we do not have CryptoJS defined; import it
   if (typeof CryptoJS == 'undefined') {
-    var cryptoSrc = '//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js';
+    var cryptoSrc = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js';
     var scriptTag = document.createElement('script');
     scriptTag.setAttribute('src', cryptoSrc);
     document.body.appendChild(scriptTag);
@@ -856,6 +856,92 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   }
 })();
 
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
+
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    };
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    };
+  });
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette);
+
+    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
+        };
+      }
+    };
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
+
 
 angular.module('contentDemo1', ['ngMaterial'])
 
@@ -1091,92 +1177,6 @@ angular.module('dialogDemo3', ['ngMaterial'])
     };
   }
 });
-
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
-
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    };
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    };
-  });
-
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette);
-
-    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
-        };
-      }
-    };
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
 
 angular.module('dividerDemo1', ['ngMaterial'])
   .controller('AppCtrl', function($scope) {
@@ -1580,100 +1580,6 @@ angular
     };
   });
 
-angular
-  .module('menuDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
-
-    this.notificationsEnabled = true;
-    this.toggleNotifications = function() {
-      this.notificationsEnabled = !this.notificationsEnabled;
-    };
-
-    this.redial = function() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .targetEvent(originatorEv)
-          .clickOutsideToClose(true)
-          .parent('body')
-          .title('Suddenly, a redial')
-          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
-          .ok('That was easy')
-      );
-
-      originatorEv = null;
-    };
-
-    this.checkVoicemail = function() {
-      // This never happens.
-    };
-  });
-
-angular
-  .module('menuDemoCustomTrigger', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
-  });
-
-angular
-  .module('menuDemoPosition', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
-
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
-
-    this.announceClick = function(index) {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .title('You clicked!')
-          .textContent('You clicked the menu item at index ' + index)
-          .ok('Nice')
-          .targetEvent(originatorEv)
-      );
-      originatorEv = null;
-    };
-  });
-
-
-
-angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-}).controller('WidthDemoCtrl', function($mdDialog) {
-  var vm = this;
-
-  this.announceClick = function(index) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('You clicked!')
-        .textContent('You clicked the menu item at index ' + index)
-        .ok('Nice')
-    );
-  };
-});
-
 
 angular.module('listDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
@@ -1834,6 +1740,100 @@ angular.module('listDemo2', ['ngMaterial'])
 });
 
 angular
+  .module('menuDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+
+      originatorEv = null;
+    };
+
+    this.checkVoicemail = function() {
+      // This never happens.
+    };
+  });
+
+angular
+  .module('menuDemoCustomTrigger', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
+  });
+
+angular
+  .module('menuDemoPosition', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.announceClick = function(index) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title('You clicked!')
+          .textContent('You clicked the menu item at index ' + index)
+          .ok('Nice')
+          .targetEvent(originatorEv)
+      );
+      originatorEv = null;
+    };
+  });
+
+
+
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+}).controller('WidthDemoCtrl', function($mdDialog) {
+  var vm = this;
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+});
+
+angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -1877,21 +1877,6 @@ angular
     };
   });
 
-
-(function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-    };
-  }
-})();
 
 angular
   .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
@@ -1969,6 +1954,196 @@ angular
       $log.log(item);
     };
   });
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
+  }
+})();
+
+(function() {
+'use strict';
+
+angular.module('panelDemo', ['ngMaterial'])
+    .controller('BasicDemoCtrl', BasicDemoCtrl)
+    .controller('PanelDialogCtrl', PanelDialogCtrl);
+
+
+function BasicDemoCtrl($mdPanel) {
+  this._mdPanel = $mdPanel;
+
+  this.desserts = [
+    'Apple Pie',
+    'Donut',
+    'Fudge',
+    'Cupcake',
+    'Ice Cream',
+    'Tiramisu'
+  ];
+
+  this.selected = {favoriteDessert: 'Donut'};
+  this.disableParentScroll = false;
+}
+
+
+BasicDemoCtrl.prototype.showDialog = function() {
+  var position = this._mdPanel.newPanelPosition()
+      .absolute()
+      .center();
+
+  var config = {
+    attachTo: angular.element(document.body),
+    controller: PanelDialogCtrl,
+    controllerAs: 'ctrl',
+    disableParentScroll: this.disableParentScroll,
+    templateUrl: 'panel.tmpl.html',
+    hasBackdrop: true,
+    panelClass: 'demo-dialog-example',
+    position: position,
+    trapFocus: true,
+    zIndex: 150,
+    clickOutsideToClose: true,
+    escapeToClose: true,
+    focusOnOpen: true
+  };
+
+  this._mdPanel.open(config);
+};
+
+
+BasicDemoCtrl.prototype.showMenu = function(ev) {
+  var position = this._mdPanel.newPanelPosition()
+      .relativeTo('.demo-menu-open-button')
+      .addPanelPosition(this._mdPanel.xPosition.ALIGN_START, this._mdPanel.yPosition.BELOW);
+
+  var config = {
+    attachTo: angular.element(document.body),
+    controller: PanelMenuCtrl,
+    controllerAs: 'ctrl',
+    template:
+        '<div class="demo-menu-example" ' +
+        '     aria-label="Select your favorite dessert." ' +
+        '     role="listbox">' +
+        '  <div class="demo-menu-item" ' +
+        '       ng-class="{selected : dessert == ctrl.favoriteDessert}" ' +
+        '       aria-selected="{{dessert == ctrl.favoriteDessert}}" ' +
+        '       tabindex="-1" ' +
+        '       role="option" ' +
+        '       ng-repeat="dessert in ctrl.desserts" ' +
+        '       ng-click="ctrl.selectDessert(dessert)"' +
+        '       ng-keydown="ctrl.onKeydown($event, dessert)">' +
+        '    {{ dessert }} ' +
+        '  </div>' +
+        '</div>',
+    panelClass: 'demo-menu-example',
+    position: position,
+    locals: {
+      'selected': this.selected,
+      'desserts': this.desserts
+    },
+    openFrom: ev,
+    clickOutsideToClose: true,
+    escapeToClose: true,
+    focusOnOpen: false,
+    zIndex: 2
+  };
+
+  this._mdPanel.open(config);
+};
+
+
+function PanelDialogCtrl(mdPanelRef) {
+  this._mdPanelRef = mdPanelRef;
+}
+
+
+PanelDialogCtrl.prototype.closeDialog = function() {
+  var panelRef = this._mdPanelRef;
+
+  panelRef && panelRef.close().then(function() {
+    angular.element(document.querySelector('.demo-dialog-open-button')).focus();
+    panelRef.destroy();
+  });
+};
+
+
+
+function PanelMenuCtrl(mdPanelRef, $timeout) {
+  this._mdPanelRef = mdPanelRef;
+  this.favoriteDessert = this.selected.favoriteDessert;
+  $timeout(function() {
+    var selected = document.querySelector('.demo-menu-item.selected');
+    if (selected) {
+      angular.element(selected).focus();
+    } else {
+      angular.element(document.querySelectorAll('.demo-menu-item')[0]).focus();
+    }
+  });
+}
+
+
+PanelMenuCtrl.prototype.selectDessert = function(dessert) {
+  this.selected.favoriteDessert = dessert;
+  this._mdPanelRef && this._mdPanelRef.close().then(function() {
+    angular.element(document.querySelector('.demo-menu-open-button')).focus();
+  });
+};
+
+
+PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
+  var handled, els, index, prevIndex, nextIndex;
+  switch ($event.which) {
+    case 38: // Up Arrow.
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      prevIndex = (index + els.length - 1) % els.length;
+      els[prevIndex].focus();
+      handled = true;
+      break;
+
+    case 40: // Down Arrow.
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      nextIndex = (index + 1) % els.length;
+      els[nextIndex].focus();
+      handled = true;
+      break;
+
+    case 13: // Enter.
+    case 32: // Space.
+      this.selectDessert(dessert);
+      handled = true;
+      break;
+
+    case 9: // Tab.
+      this._mdPanelRef && this._mdPanelRef.close();
+  }
+
+  if (handled) {
+    $event.preventDefault();
+    $event.stopImmediatePropagation();
+  }
+
+  function indexOf(nodeList, element) {
+    for (var item, i = 0; item = nodeList[i]; i++) {
+      if (item === element) {
+        return i;
+      }
+    }
+    return -1;
+  }
+};
+
+})();
 
 (function() {
   'use strict';
@@ -2453,181 +2628,6 @@ angular
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
 
-(function() {
-'use strict';
-
-angular.module('panelDemo', ['ngMaterial'])
-    .controller('BasicDemoCtrl', BasicDemoCtrl)
-    .controller('PanelDialogCtrl', PanelDialogCtrl);
-
-
-function BasicDemoCtrl($mdPanel) {
-  this._mdPanel = $mdPanel;
-
-  this.desserts = [
-    'Apple Pie',
-    'Donut',
-    'Fudge',
-    'Cupcake',
-    'Ice Cream',
-    'Tiramisu'
-  ];
-
-  this.selected = {favoriteDessert: 'Donut'};
-  this.disableParentScroll = false;
-}
-
-
-BasicDemoCtrl.prototype.showDialog = function() {
-  var position = this._mdPanel.newPanelPosition()
-      .absolute()
-      .center();
-
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: PanelDialogCtrl,
-    controllerAs: 'ctrl',
-    disableParentScroll: this.disableParentScroll,
-    templateUrl: 'panel.tmpl.html',
-    hasBackdrop: true,
-    panelClass: 'demo-dialog-example',
-    position: position,
-    trapFocus: true,
-    zIndex: 150,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: true
-  };
-
-  this._mdPanel.open(config);
-};
-
-
-BasicDemoCtrl.prototype.showMenu = function(ev) {
-  var position = this._mdPanel.newPanelPosition()
-      .relativeTo('.demo-menu-open-button')
-      .addPanelPosition(this._mdPanel.xPosition.ALIGN_START, this._mdPanel.yPosition.BELOW);
-
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: PanelMenuCtrl,
-    controllerAs: 'ctrl',
-    template:
-        '<div class="demo-menu-example" ' +
-        '     aria-label="Select your favorite dessert." ' +
-        '     role="listbox">' +
-        '  <div class="demo-menu-item" ' +
-        '       ng-class="{selected : dessert == ctrl.favoriteDessert}" ' +
-        '       aria-selected="{{dessert == ctrl.favoriteDessert}}" ' +
-        '       tabindex="-1" ' +
-        '       role="option" ' +
-        '       ng-repeat="dessert in ctrl.desserts" ' +
-        '       ng-click="ctrl.selectDessert(dessert)"' +
-        '       ng-keydown="ctrl.onKeydown($event, dessert)">' +
-        '    {{ dessert }} ' +
-        '  </div>' +
-        '</div>',
-    panelClass: 'demo-menu-example',
-    position: position,
-    locals: {
-      'selected': this.selected,
-      'desserts': this.desserts
-    },
-    openFrom: ev,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: false,
-    zIndex: 2
-  };
-
-  this._mdPanel.open(config);
-};
-
-
-function PanelDialogCtrl(mdPanelRef) {
-  this._mdPanelRef = mdPanelRef;
-}
-
-
-PanelDialogCtrl.prototype.closeDialog = function() {
-  var panelRef = this._mdPanelRef;
-
-  panelRef && panelRef.close().then(function() {
-    angular.element(document.querySelector('.demo-dialog-open-button')).focus();
-    panelRef.destroy();
-  });
-};
-
-
-
-function PanelMenuCtrl(mdPanelRef, $timeout) {
-  this._mdPanelRef = mdPanelRef;
-  this.favoriteDessert = this.selected.favoriteDessert;
-  $timeout(function() {
-    var selected = document.querySelector('.demo-menu-item.selected');
-    if (selected) {
-      angular.element(selected).focus();
-    } else {
-      angular.element(document.querySelectorAll('.demo-menu-item')[0]).focus();
-    }
-  });
-}
-
-
-PanelMenuCtrl.prototype.selectDessert = function(dessert) {
-  this.selected.favoriteDessert = dessert;
-  this._mdPanelRef && this._mdPanelRef.close().then(function() {
-    angular.element(document.querySelector('.demo-menu-open-button')).focus();
-  });
-};
-
-
-PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
-  var handled, els, index, prevIndex, nextIndex;
-  switch ($event.which) {
-    case 38: // Up Arrow.
-      els = document.querySelectorAll('.demo-menu-item');
-      index = indexOf(els, document.activeElement);
-      prevIndex = (index + els.length - 1) % els.length;
-      els[prevIndex].focus();
-      handled = true;
-      break;
-
-    case 40: // Down Arrow.
-      els = document.querySelectorAll('.demo-menu-item');
-      index = indexOf(els, document.activeElement);
-      nextIndex = (index + 1) % els.length;
-      els[nextIndex].focus();
-      handled = true;
-      break;
-
-    case 13: // Enter.
-    case 32: // Space.
-      this.selectDessert(dessert);
-      handled = true;
-      break;
-
-    case 9: // Tab.
-      this._mdPanelRef && this._mdPanelRef.close();
-  }
-
-  if (handled) {
-    $event.preventDefault();
-    $event.stopImmediatePropagation();
-  }
-
-  function indexOf(nodeList, element) {
-    for (var item, i = 0; item = nodeList[i]; i++) {
-      if (item === element) {
-        return i;
-      }
-    }
-    return -1;
-  }
-};
-
-})();
-
 angular
   .module('radioDemo2', ['ngMaterial'])
   .controller('ContactController', function($scope, $filter) {
@@ -3052,34 +3052,6 @@ angular.module('switchDemo1', ['ngMaterial'])
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
-
-  angular
-      .module('tabsDemoIconTabs', ['ngMaterial'] )
-      .config(function($mdIconProvider) {
-        $mdIconProvider
-          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
-          .icon('favorite', 'img/icons/favorite.svg');
-      })
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ( $scope ) {
-    $scope.data = {
-      selectedIndex: 0,
-      secondLocked:  true,
-      secondLabel:   "Item Two",
-      bottom:        false
-    };
-    $scope.next = function() {
-      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
-    };
-    $scope.previous = function() {
-      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
-    };
-  }
-})();
-
-(function () {
-  'use strict';
   angular
       .module('tabsDemoDynamicTabs', ['ngMaterial'])
       .controller('AppCtrl', AppCtrl);
@@ -3129,6 +3101,34 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
   }
 })();
 
+
+(function () {
+  'use strict';
+
+  angular
+      .module('tabsDemoIconTabs', ['ngMaterial'] )
+      .config(function($mdIconProvider) {
+        $mdIconProvider
+          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
+          .icon('favorite', 'img/icons/favorite.svg');
+      })
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ( $scope ) {
+    $scope.data = {
+      selectedIndex: 0,
+      secondLocked:  true,
+      secondLabel:   "Item Two",
+      bottom:        false
+    };
+    $scope.next = function() {
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+    };
+    $scope.previous = function() {
+      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    };
+  }
+})();
 
 
 angular.module('toastDemo1', ['ngMaterial'])
