@@ -3041,8 +3041,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "toolbarDemo1",
-          "module": "toolbarDemo1",
+          "name": "toolbarDemoBasic",
+          "module": "toolbarDemoBasic",
           "dependencies": [
             "ngMaterial"
           ]
