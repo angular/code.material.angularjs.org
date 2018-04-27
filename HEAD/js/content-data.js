@@ -19,6 +19,14 @@ angular.module('docsApp').constant('PAGES', {
       "label": "Typography"
     }
   ],
+  "performance": [
+    {
+      "name": "Internet Explorer",
+      "outputPath": "partials/performance/internet-explorer.html",
+      "url": "/performance/internet-explorer",
+      "label": "Internet Explorer"
+    }
+  ],
   "Theming": [
     {
       "name": "Introduction and Terms",
