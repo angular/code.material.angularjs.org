@@ -98,7 +98,7 @@ injected in the panel&#39;s controller</li>
   <ul class="methods">
     <li id="create">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.create([config]);
+        <code class="method-function-syntax">$mdPanel.create(config);
 </code>
       </h3>
       <div class="service-desc"><p>Creates a panel with the specified options.</p>
@@ -120,20 +120,17 @@ injected in the panel&#39;s controller</li>
   
   
     
-  
-  
-    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          config
+          <b>* config</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
+</span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
+</td>
         <td class="description">
-          <p>Specific configuration object that may contain the
+          <p>{!Object=} Specific configuration object that may contain the
     following properties:</p>
 <ul>
 <li><code>id</code> - <code>{string=}</code>: An ID to track the panel by. When an ID is provided,
@@ -228,6 +225,9 @@ identified using the same groupName.</li>
           
         </td>
       </tr>
+    
+  
+  
     
   
 

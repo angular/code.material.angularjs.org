@@ -18,7 +18,7 @@
   <p>The <code>$mdDateLocaleProvider</code> is the provider that creates the <code>$mdDateLocale</code> service.
 This provider that allows the user to specify messages, formatters, and parsers for date
 internationalization. The <code>$mdDateLocale</code> service itself is consumed by AngularJS Material
-components that deal with dates.</p>
+components that deal with dates (i.e. <a href="api/directive/mdDatepicker">mdDatepicker</a>).</p>
 
 </div>
 
@@ -169,7 +169,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.dates</code>
       </h3>
       <div class="service-desc"><p>Array of dates of the month. Only necessary for locales
-    using a numeral system other than [1, 2, 3...].</p>
+ using a numeral system other than [1, 2, 3...].</p>
 </div>
 
       <div class="method-param-table">
@@ -189,7 +189,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.firstDayOfWeek</code>
       </h3>
       <div class="service-desc"><p>The first day of the week. Sunday = 0, Monday = 1,
-   etc.</p>
+ etc.</p>
 </div>
 
       <div class="method-param-table">
@@ -208,7 +208,8 @@ myAppModule.config(function($mdDateLocaleProvider) {
       <h3 class="method-function-syntax">
         <code class="method-function-syntax">$mdDateLocaleProvider.parseDate</code>
       </h3>
-      <div class="service-desc"><p>Function to parse a date object from a string.</p>
+      <div class="service-desc"><p>Function that converts a date string to a Date
+ object (the date portion).</p>
 </div>
 
       <div class="method-param-table">
@@ -228,7 +229,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.formatDate</code>
       </h3>
       <div class="service-desc"><p>Function to format a date object to a
-    string. The datepicker directive also provides the time zone, if it was specified.</p>
+ string. The datepicker directive also provides the time zone, if it was specified.</p>
 </div>
 
       <div class="method-param-table">
@@ -248,7 +249,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.monthHeaderFormatter</code>
       </h3>
       <div class="service-desc"><p>Function that returns the label for
-    a month given a date.</p>
+ a month given a date.</p>
 </div>
 
       <div class="method-param-table">
@@ -268,7 +269,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.monthFormatter</code>
       </h3>
       <div class="service-desc"><p>Function that returns the full name of a month
-    for a given date.</p>
+ for a given date.</p>
 </div>
 
       <div class="method-param-table">
@@ -288,7 +289,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.weekNumberFormatter</code>
       </h3>
       <div class="service-desc"><p>Function that returns a label for
-    a week given the week number.</p>
+ a week given the week number.</p>
 </div>
 
       <div class="method-param-table">
@@ -327,7 +328,7 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.msgOpenCalendar</code>
       </h3>
       <div class="service-desc"><p>Translation of the button label &quot;Open calendar&quot; for the
-    current locale.</p>
+ current locale.</p>
 </div>
 
       <div class="method-param-table">
@@ -347,7 +348,8 @@ myAppModule.config(function($mdDateLocaleProvider) {
         <code class="method-function-syntax">$mdDateLocaleProvider.firstRenderableDate</code>
       </h3>
       <div class="service-desc"><p>The date from which the datepicker calendar will begin
-rendering. Note that this will be ignored if a minimum date is set. Defaults to January 1st 1880.</p>
+ rendering. Note that this will be ignored if a minimum date is set.
+ Defaults to January 1st 1880.</p>
 </div>
 
       <div class="method-param-table">
@@ -367,7 +369,8 @@ rendering. Note that this will be ignored if a minimum date is set. Defaults to 
         <code class="method-function-syntax">$mdDateLocaleProvider.lastRenderableDate</code>
       </h3>
       <div class="service-desc"><p>The last date that will be rendered by the datepicker
-calendar. Note that this will be ignored if a maximum date is set. Defaults to January 1st 2130.</p>
+ calendar. Note that this will be ignored if a maximum date is set.
+ Defaults to January 1st 2130.</p>
 </div>
 
       <div class="method-param-table">
