@@ -13,14 +13,20 @@
 
 
 <div class="api-profile-description">
-  <p><code>md-virtual-repeat</code> specifies an element to repeat using virtual scrolling.</p>
-<p>Virtual repeat is a limited substitute for ng-repeat that renders only
-enough DOM nodes to fill the container and recycling them as the user scrolls.</p>
-<p>Arrays, but not objects are supported for iteration.
-Track by, as alias, and (key, value) syntax are not supported.</p>
+  <p>The <code>md-virtual-repeat</code> attribute is applied to a template that is repeated using virtual
+scrolling. This provides smooth and performant scrolling through very large lists of elements.</p>
+<p>Virtual repeat is a limited substitute for <code>ng-repeat</code> that renders only
+enough DOM nodes to fill the container, recycling them as the user scrolls.</p>
+<h3 id="notes">Notes</h3>
+<ul>
+<li>Arrays are supported for iteration by default.</li>
+<li>An object can used use if <code>md-on-demand</code> is specified and the object implements the interface
+described in the <code>md-on-demand</code> <a ng-href="#attributes">documentation</a>.</li>
+<li><code>trackBy</code>, <code>as</code> alias, and <code>(key, value)</code> syntax from <code>ng-repeat</code> are not supported.</li>
+</ul>
 <h3 id="on-demand-async-item-loading">On-Demand Async Item Loading</h3>
-<p>When using the <code>md-on-demand</code> attribute and loading some asynchronous data, the <code>getItemAtIndex</code> function will
-mostly return nothing.</p>
+<p>When using the <code>md-on-demand</code> attribute and loading some asynchronous data,
+the <code>getItemAtIndex</code> function will mostly return nothing.</p>
 <hljs lang="js">
   DynamicItems.prototype.getItemAtIndex = function(index) {
     if (this.pages[index]) {
@@ -32,9 +38,9 @@ mostly return nothing.</p>
   };
 </hljs>
 
-<p>This means that the VirtualRepeat will not have any value for the given index.<br/>
-After the data loading completed, the user expects the VirtualRepeat to recognize the change.</p>
-<p>To make sure that the VirtualRepeat properly detects any change, you need to run the operation
+<p>This means that the Virtual Repeat will not have any value for the given index.<br/>
+After the data loading completes, the user expects the Virtual Repeat to recognize the change.</p>
+<p>To make sure that the Virtual Repeat properly detects any change, you need to run the operation
 in another digest.</p>
 <hljs lang="js">
   DynamicItems.prototype.loadPage = function(index) {
@@ -106,17 +112,16 @@ in another digest.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          md-item-size
+          md-extra-name
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-number">number</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-number">number</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>The height or width of the repeated elements (which must be
-  identical for each element). Optional. Will attempt to read the size from the dom if missing,
-  but still assumes that all repeated nodes have same height or width.</p>
+          <p>Evaluates to an additional name to which the current iterated item
+  can be assigned on the repeated scope (needed for use in <code>md-autocomplete</code>).</p>
 
           
         </td>
@@ -126,16 +131,18 @@ in another digest.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          md-extra-name
+          md-item-size
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
-          <p>Evaluates to an additional name to which the current iterated item
-  can be assigned on the repeated scope (needed for use in <code>md-autocomplete</code>).</p>
+          <p>Optional height or width of the repeated elements (which <strong>must be
+  identical for each element</strong>). Virtual repeat will attempt to read the size from the DOM,
+  if missing, but it still assumes that all repeated nodes have the <strong>same height</strong>
+  (when scrolling vertically) or <strong>same width</strong> (when scrolling horizontally).</p>
 
           
         </td>
@@ -153,13 +160,13 @@ in another digest.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, treats the md-virtual-repeat argument as an object
+          <p>When present, treats the <code>md-virtual-repeat</code> argument as an object
   that can fetch rows rather than an array.</p>
-<p>  <strong>NOTE:</strong> This object must implement the following interface with two (2) methods:</p>
+<p>  <strong>NOTE:</strong> This object <strong>must</strong> implement the following interface with two methods:</p>
 <ul>
-<li><code>getItemAtIndex: function(index) [object]</code> The item at that index or null if it is not yet
-loaded (it should start downloading the item in that case).</li>
-<li><code>getLength: function() [number]</code> The data length to which the repeater container
+<li><code>getItemAtIndex</code> - <code>{function(index): Object}</code>: The item at that <code>index</code> or <code>null</code> if it is not
+yet loaded (it should start downloading the item in that case).</li>
+<li><code>getLength</code> - <code>{function(): number}</code>: The data length to which the repeater container
 should be sized. Ideally, when the count is known, this method should return it.
 Otherwise, return a higher number than the currently loaded items to produce an
 infinite-scroll behavior.</li>

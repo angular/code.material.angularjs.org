@@ -13,27 +13,29 @@
 
 
 <div class="api-profile-description">
-  <p><code>md-virtual-repeat-container</code> provides the scroll container for md-virtual-repeat.</p>
-<p>VirtualRepeat is a limited substitute for ng-repeat that renders only
-enough DOM nodes to fill the container and recycling them as the user scrolls.</p>
-<p>Once an element is not visible anymore, the VirtualRepeat recycles it and will reuse it for
-another visible item by replacing the previous dataset with the new one.</p>
+  <p><code>md-virtual-repeat-container</code> provides the scroll container for
+<a ng-href="api/directive/mdVirtualRepeat">md-virtual-repeat</a>.</p>
+<p>VirtualRepeat is a limited substitute for <code>ng-repeat</code> that renders only
+enough DOM nodes to fill the container, recycling them as the user scrolls.</p>
+<p>Once an element is not visible anymore, the Virtual Repeat recycles the element and reuses it
+for another visible item by replacing the previous data set with the set of currently visible
+elements.</p>
 <h3 id="common-issues">Common Issues</h3>
 <ul>
-<li>When having one-time bindings inside of the view template, the VirtualRepeat will not properly
+<li>When having one-time bindings inside of the view template, the Virtual Repeat will not properly
 update the bindings for new items, since the view will be recycled.</li>
-<li>Directives inside of a VirtualRepeat will be only compiled (linked) once, because those
+<li>Directives inside of a Virtual Repeat will be only compiled (linked) once, because those
 items will be recycled and used for other items.
-The VirtualRepeat just updates the scope bindings.</li>
+The Virtual Repeat just updates the scope bindings.</li>
 </ul>
 <h3 id="notes">Notes</h3>
 <blockquote>
 <p>The VirtualRepeat is a similar implementation to the Android
-<a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html">RecyclerView</a></p>
+<a href="https://developer.android.com/reference/android/support/v7/widget/RecyclerView.html">RecyclerView</a>.</p>
 </blockquote>
 <!-- This comment forces a break between blockquotes //-->
 <blockquote>
-<p>Please also review the <a ng-href="api/directive/mdVirtualRepeat">VirtualRepeat</a>
+<p>Please also review the <a ng-href="api/directive/mdVirtualRepeat">mdVirtualRepeat</a>
 documentation for more information.</p>
 </blockquote>
 
@@ -89,44 +91,6 @@ documentation for more information.</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          md-top-index
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-number">number</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-number">number</code></td>
-        <td class="description">
-          <p>Binds the index of the item that is at the top of the scroll
-    container to <code>$scope</code>. It can both read and set the scroll position.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          md-orient-horizontal
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
-        <td class="description">
-          <p>Whether the container should scroll horizontally
-    (defaults to orientation and scrolling vertically).</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
           md-auto-shrink
           
           <span hide show-sm>
@@ -135,8 +99,8 @@ documentation for more information.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, the container will shrink to fit
-    the number of items when that number is less than its original size.</p>
+          <p>When present and the container will shrink to fit
+    the number of items in the <code>md-virtual-repeat</code>.</p>
 
           
         </td>
@@ -155,7 +119,45 @@ documentation for more information.</p>
 <code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
           <p>Minimum number of items that md-auto-shrink
-    will shrink to (default: 0).</p>
+    will shrink to. Default: <code>0</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-orient-horizontal
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>Whether the container should scroll horizontally.
+    The default is <code>false</code> which indicates vertical orientation and scrolling.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-top-index
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>Binds the index of the item that is at the top of the scroll
+    container to <code>$scope</code>. It can both read and set the scroll position.</p>
 
           
         </td>

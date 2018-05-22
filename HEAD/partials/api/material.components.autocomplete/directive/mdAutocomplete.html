@@ -40,20 +40,22 @@
     (ie. <code>md-autocomplete-snap=&quot;width&quot;</code>).</p>
 <h3 id="notes">Notes</h3>
 <p><strong>Autocomplete Dropdown Items Rendering</strong></p>
-<p>The <code>md-autocomplete</code> uses the the <a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeat</a>
-directive for displaying the results inside of the dropdown.<br/></p>
+<p>The <code>md-autocomplete</code> uses the the <a ng-href="api/directive/mdVirtualRepeat">
+  mdVirtualRepeat</a> directive for displaying the results inside of the dropdown.<br/></p>
 <blockquote>
 <p>When encountering issues regarding the item template please take a look at the
   <a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> documentation.</p>
 </blockquote>
 <p><strong>Autocomplete inside of a Virtual Repeat</strong></p>
 <p>When using the <code>md-autocomplete</code> directive inside of a
-<a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> the dropdown items might
-not update properly, because caching of the results is enabled by default.</p>
-<p>The autocomplete will then show invalid dropdown items, because the VirtualRepeat only updates the
-scope bindings, rather than re-creating the <code>md-autocomplete</code> and the previous cached results will be used.</p>
+<a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> the dropdown items
+might not update properly, because caching of the results is enabled by default.</p>
+<p>The autocomplete will then show invalid dropdown items, because the Virtual Repeat only updates
+the scope bindings rather than re-creating the <code>md-autocomplete</code>. This means that the previous
+cached results will be used.</p>
 <blockquote>
-<p>To avoid such problems ensure that the autocomplete does not cache any results.</p>
+<p>To avoid such problems, ensure that the autocomplete does not cache any results via
+<code>md-no-cache=&quot;true&quot;</code>:</p>
 </blockquote>
 <hljs lang="html">
   <md-autocomplete
@@ -214,8 +216,6 @@ will hide the clear button only when the component is disabled.</p>
           
         </td>
       </tr>
-    
-  
     
   
     
@@ -628,7 +628,8 @@ will hide the clear button only when the component is disabled.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>This will be applied to the input for styling. This attribute is only valid when a <code>md-floating-label</code> is defined</p>
+          <p>This will be applied to the input for styling. This attribute
+    is only valid when a <code>md-floating-label</code> is defined.</p>
 
           
         </td>
@@ -648,25 +649,6 @@ will hide the clear button only when the component is disabled.</p>
         <td class="description">
           <p>This will add a floating label to autocomplete and wrap it in
     <code>md-input-container</code></p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          md-input-name
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
-        <td class="description">
-          <p>The name attribute given to the input element to be used with
-    FormController</p>
 
           
         </td>
