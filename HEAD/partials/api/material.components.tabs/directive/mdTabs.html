@@ -13,10 +13,11 @@
 
 
 <div class="api-profile-description">
-  <p>The <code>&lt;md-tabs&gt;</code> directive serves as the container for 1..n <code>&lt;md-tab&gt;</code> child directives to
-produces a Tabs components. In turn, the nested <code>&lt;md-tab&gt;</code> directive is used to specify a tab
-label for the <strong>header button</strong> and a [optional] tab view content that will be associated with
-each tab button.</p>
+  <p>The <code>&lt;md-tabs&gt;</code> directive serves as the container for 1..n
+<a ng-href="api/directive/mdTab"><code>&lt;md-tab&gt;</code></a> child directives.
+In turn, the nested <code>&lt;md-tab&gt;</code> directive is used to specify a tab label for the
+<strong>header button</strong> and <i>optional</i> tab view content that will be associated with each tab
+button.</p>
 <p>Below is the markup for its simplest usage:</p>
  <hljs lang="html">
  <md-tabs>
@@ -26,18 +27,18 @@ each tab button.</p>
  </md-tabs>
  </hljs>
 
-<p>Tabs supports three (3) usage scenarios:</p>
+<p>Tabs support three (3) usage scenarios:</p>
 <ol>
 <li>Tabs (buttons only)</li>
 <li>Tabs with internal view content</li>
 <li>Tabs with external view content</li>
 </ol>
-<p><strong>Tab-only</strong> support is useful when tab buttons are used for custom navigation regardless of any
+<p><strong>Tabs-only</strong> support is useful when tab buttons are used for custom navigation regardless of any
 other components, content, or views.</p>
-<p><i><b>Note:</b> If you are using the Tabs component for page-level navigation, please take a look
-at the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead as it can handle this
-case a bit more natively.</i></p>
-<p><strong>Tabs with internal views</strong> are the traditional usages where each tab has associated view
+<p><i><b>Note:</b> If you are using the Tabs component for page-level navigation, please use
+the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead. It handles this
+case a more natively and more performantly.</i></p>
+<p><strong>Tabs with internal views</strong> are the traditional usage where each tab has associated view
 content and the view switching is managed internally by the Tabs component.</p>
 <p><strong>Tabs with external view content</strong> is often useful when content associated with each tab is
 independently managed and data-binding notifications announce tab selection changes.</p>
@@ -47,10 +48,14 @@ independently managed and data-binding notifications announce tab selection chan
 <li>If a tab is disabled while active/selected, then the next tab will be auto-selected.</li>
 </ul>
 <h3 id="explanation-of-tab-stretching">Explanation of tab stretching</h3>
-<p>Initially, tabs will have an inherent size.  This size will either be defined by how much space is needed to accommodate their text or set by the user through CSS.  Calculations will be based on this size.</p>
-<p>On mobile devices, tabs will be expanded to fill the available horizontal space.  When this happens, all tabs will become the same size.</p>
+<p>Initially, tabs will have an inherent size.  This size will either be defined by how much space
+is needed to accommodate their text or set by the user through CSS.
+Calculations will be based on this size.</p>
+<p>On mobile devices, tabs will be expanded to fill the available horizontal space.
+When this happens, all tabs will become the same size.</p>
 <p>On desktops, by default, stretching will never occur.</p>
-<p>This default behavior can be overridden through the <code>md-stretch-tabs</code> attribute.  Here is a table showing when stretching will occur:</p>
+<p>This default behavior can be overridden through the <code>md-stretch-tabs</code> attribute.
+Here is a table showing when stretching will occur:</p>
 <table>
 <thead>
 <tr>
@@ -168,7 +173,7 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-integer">integer</code></td>
         <td class="description">
-          <p>Index of the active/selected tab</p>
+          <p>Index of the active/selected tab.</p>
 
           
         </td>
@@ -222,7 +227,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Attribute to indicate position of tab buttons: <code>bottom</code> or <code>top</code>; default is <code>top</code></p>
+          <p>Attribute to indicate position of tab buttons: <code>bottom</code> or <code>top</code>;
+ Default is <code>top</code>.</p>
 
           
         </td>
@@ -240,7 +246,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Attribute to indicate whether or not to stretch tabs: <code>auto</code>, <code>always</code>, or <code>never</code>; default is <code>auto</code></p>
+          <p>Attribute to indicate whether or not to stretch tabs: <code>auto</code>,
+ <code>always</code>, or <code>never</code>; Default is <code>auto</code>.</p>
 
           
         </td>
@@ -258,7 +265,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, the tab wrapper will resize based on the contents of the selected tab</p>
+          <p>When enabled, the tab wrapper will resize based on the
+ contents of the selected tab.</p>
 
           
         </td>
@@ -276,7 +284,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If present, shows a solid <code>1px</code> border between the tabs and their content</p>
+          <p>If present, shows a solid <code>1px</code> border between the tabs and
+ their content.</p>
 
           
         </td>
@@ -294,7 +303,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, tabs will be centered provided there is no need for pagination</p>
+          <p>When enabled, tabs will be centered provided there is no need
+ for pagination.</p>
 
           
         </td>
@@ -312,7 +322,7 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, pagination will remain off</p>
+          <p>When enabled, pagination will remain off.</p>
 
           
         </td>
@@ -330,7 +340,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, swipe gestures will be enabled for the content area to jump between tabs</p>
+          <p>When enabled, swipe gestures will be enabled for the content
+ area to allow swiping between tabs.</p>
 
           
         </td>
@@ -348,7 +359,9 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, scopes will be disconnected for tabs that are not being displayed.  This provides a performance boost, but may also cause unexpected issues and is not recommended for most users.</p>
+          <p>When enabled, scopes will be disconnected for tabs that
+ are not being displayed. This provides a performance boost, but may also cause unexpected
+ issues. It is not recommended for most users.</p>
 
           
         </td>
@@ -366,7 +379,8 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, any tabs added after the initial load will be automatically selected</p>
+          <p>When present, any tabs added after the initial load will be
+ automatically selected.</p>
 
           
         </td>
@@ -384,7 +398,9 @@ independently managed and data-binding notifications announce tab selection chan
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, click events will not be fired when selecting tabs</p>
+          <p>When true, click events will not be fired when the value of
+ <code>md-active</code> on an <code>md-tab</code> changes. This is useful when using tabs with UI-Router&#39;s child
+ states, as triggering a click event in that case can cause an extra tab change to occur.</p>
 
           
         </td>
