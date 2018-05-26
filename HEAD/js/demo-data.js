@@ -870,6 +870,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "calendarDemo",
+          "module": "calendarDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "datepickerdemoCalendar",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/datepicker/demoCalendar/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/datepicker/demoCalendar/script.js"
+          }
+        ],
+        "moduleName": "material.components.datepicker",
+        "name": "demoCalendar",
+        "label": "Calendar",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/datepicker/demoCalendar/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "datepickerValidations",
           "module": "datepickerValidations",
           "dependencies": [
