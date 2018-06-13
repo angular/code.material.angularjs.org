@@ -74,7 +74,7 @@
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(state) {
         return (state.value.indexOf(lowercaseQuery) === 0);
@@ -181,7 +181,7 @@
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
@@ -245,7 +245,7 @@
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(state) {
         return (state.value.indexOf(lowercaseQuery) === 0);
@@ -330,7 +330,7 @@
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(state) {
         return (state.value.indexOf(lowercaseQuery) === 0);
@@ -608,7 +608,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
   'use strict';
 
   // If we do not have CryptoJS defined; import it
-  if (typeof CryptoJS == 'undefined') {
+  if (typeof CryptoJS === 'undefined') {
     var cryptoSrc = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js';
     var scriptTag = document.createElement('script');
     scriptTag.setAttribute('src', cryptoSrc);
@@ -619,7 +619,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       .module('contactChipsDemo', ['ngMaterial'])
       .controller('ContactChipDemoCtrl', DemoCtrl);
 
-  function DemoCtrl ($q, $timeout) {
+  function DemoCtrl ($q, $timeout, $log) {
     var self = this;
     var pendingSearch, cancelSearch = angular.noop;
     var lastSearch;
@@ -627,7 +627,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     self.allContacts = loadContacts();
     self.contacts = [self.allContacts[0]];
     self.asyncContacts = [];
-    self.filterSelected = true;
 
     self.querySearch = querySearch;
     self.delayedQuerySearch = delayedQuerySearch;
@@ -645,7 +644,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
      * Also debounce the queries; since the md-contact-chips does not support this
      */
     function delayedQuerySearch(criteria) {
-      if ( !pendingSearch || !debounceSearch() )  {
+      if (!pendingSearch || !debounceSearch())  {
         cancelSearch();
 
         return pendingSearch = $q(function(resolve, reject) {
@@ -683,16 +682,16 @@ angular.module('checkboxDemo2', ['ngMaterial'])
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(contact) {
-        return (contact._lowername.indexOf(lowercaseQuery) != -1);
+        return (contact._lowername.indexOf(lowercaseQuery) !== -1);
       };
 
     }
 
-    function onModelChange(model) {
-      alert('The model has changed');
+    function onModelChange(newModel) {
+      $log.log('The model has changed to ' + JSON.stringify(newModel) + '.');
     }
 
     function loadContacts() {
@@ -723,8 +722,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       });
     }
   }
-
-
 })();
 
 (function () {
@@ -773,7 +770,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
      * Create filter function for a query string
      */
     function createFilterFor(query) {
-      var lowercaseQuery = angular.lowercase(query);
+      var lowercaseQuery = query.toLowerCase();
 
       return function filterFn(vegetable) {
         return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||

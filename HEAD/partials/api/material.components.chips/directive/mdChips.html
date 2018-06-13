@@ -73,7 +73,8 @@ You can specify the maximum amount of chips by using the following markup.</p>
 </hljs>
 
 <p>In some cases, you have an autocomplete inside of the <code>md-chips</code>.<br/>
-When the maximum amount of chips has been reached, you can also disable the autocomplete selection.<br/>
+When the maximum amount of chips has been reached, you can also disable the autocomplete
+selection.<br/>
 Here is an example markup.</p>
 <hljs lang="html">
   <md-chips ng-model="myItems" md-max-chips="5">
@@ -160,9 +161,9 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>Assignable angular expression to be data-bound to the list of chips.
- The expression should evaluate to a <code>string</code> or <code>Object</code> Array. The type of this array should align
- with the return value of <code>md-transform-chip</code>.</p>
+          <p>Assignable AngularJS expression to be data-bound to the list of
+   chips. The expression should evaluate to a <code>string</code> or <code>Object</code> Array. The type of this
+   array should align with the return value of <code>md-transform-chip</code>.</p>
 
           
         </td>
@@ -198,8 +199,8 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>An expression of form <code>myFunction($chip)</code> that when called
-   expects one of the following return values:</p>
+          <p>An expression of form <code>myFunction($chip)</code> that when
+   called expects one of the following return values:</p>
 <ul>
 <li>an object representing the <code>$chip</code> input string</li>
 <li><code>undefined</code> to simply add the <code>$chip</code> input string, or</li>
@@ -262,7 +263,8 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>AngularJS expression to be executed on chip addition/removal.</p>
+          <p>AngularJS expression to be executed on chip addition, removal,
+   or content change.</p>
 
           
         </td>
@@ -339,7 +341,8 @@ on our custom validators.</p>
           <p>Disables list manipulation (deleting or adding list items), hiding
    the input and delete buttons. If no <code>ng-model</code> is provided, the chips will automatically be
    marked as readonly.<br/><br/>
-   When <code>md-removable</code> is not defined, the <code>md-remove</code> behavior will be overwritten and disabled.</p>
+   When <code>md-removable</code> is not defined, the <code>md-remove</code> behavior will be overwritten and
+   disabled.</p>
 
           
         </td>
@@ -357,9 +360,9 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Set this to &quot;true&quot; to enable editing of chip contents. The user can
-   go into edit mode with pressing &quot;space&quot;, &quot;enter&quot;, or double clicking on the chip. Chip edit is only
-   supported for chips with basic template.</p>
+          <p>Set this to &quot;true&quot; to enable editing of chip contents.
+   The user can go into edit mode with pressing &quot;space&quot;, &quot;enter&quot;, or double clicking on the
+   chip. Chip edit is only supported for chips with basic template.</p>
 
           
         </td>

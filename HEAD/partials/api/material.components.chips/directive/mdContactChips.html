@@ -70,12 +70,13 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
           <b>* ng-model</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code><code class="api-type label type-hint type-hint-object">object</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>A model to bind the list of items to</p>
+          <p>Assignable AngularJS expression to be data-bound to the list of
+   contact chips. The expression should evaluate to an <code>Object</code> Array.</p>
 
           
         </td>
@@ -167,8 +168,6 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
   
     
   
-    
-  
   
     
   
@@ -183,7 +182,8 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>AngularJS expression to be executed on chip addition/removal</p>
+          <p>AngularJS expression to be executed on chip addition, removal,
+   or content change.</p>
 
           
         </td>
@@ -248,26 +248,6 @@ appearance of the matched text inside of the contacts&#39; autocomplete popup.</
         <td class="description">
           <p>Specifies the minimum length of text before autocomplete will
    make suggestions</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          filter-selected
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-expression">expression</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-expression">expression</code></td>
-        <td class="description">
-          <p>Whether to filter selected contacts from the list of
-   suggestions shown in the autocomplete.</p>
-<p>   <strong>*Note:</strong> This attribute has been removed but may come back.*</p>
 
           
         </td>
