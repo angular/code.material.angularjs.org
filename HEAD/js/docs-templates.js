@@ -585,7 +585,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '  <p>\n' +
     '    To customize the size and position of elements in a layout <b>container</b>, use the\n' +
-    '    <code>flex</code>, <code>flex-order</code>, and <code>flex-offset</code> attributes on the container\'s <u>child</u> elements:\n' +
+    '    <code>flex</code>, <code>flex-order</code>, and <code>flex-offset</code> attributes on the\n' +
+    '    container\'s <b>child</b> elements:\n' +
     '  </p>\n' +
     '\n' +
     '  <docs-demo demo-title="Flex Directive" class="small-demo colorNested">\n' +
@@ -605,9 +606,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    Add the <code>flex</code> directive to a layout\'s child element and the element will flex (grow or shrink) to fit\n' +
-    '    the area unused by other elements. <code>flex</code> defines how the element will adjust its size with respect to its\n' +
-    '    <u>parent</u> container and the other elements within the container.\n' +
+    '    Add the <code>flex</code> directive to a layout\'s child element and the element will flex\n' +
+    '    (grow or shrink) to fit the area unused by other elements. <code>flex</code> defines how the\n' +
+    '    element will adjust its size with respect to its <b>parent</b> container and the other elements\n' +
+    '    within the container.\n' +
     '  </p>\n' +
     '\n' +
     '  <docs-demo demo-title="Flex Percent Values" class="small-demo colorNested-noPad">\n' +
@@ -654,16 +656,103 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          flex 33% on mobile, <br/>and 66% on gt-sm devices.\n' +
     '        </div>\n' +
     '        <div flex-gt-sm="33" flex="66">\n' +
-    '          flex 66%  on mobile, <br/>and 33% on gt-sm devices.\n' +
+    '          flex 66% on mobile, <br/>and 33% on gt-sm devices.\n' +
     '        </div>\n' +
     '      </div>\n' +
     '    </demo-file>\n' +
     '  </docs-demo>\n' +
     '\n' +
+    '  <p>\n' +
+    '    You can specify multiple <code>flex</code> directives on the same element in order to create\n' +
+    '    flexible responsive behaviors across device sizes.\n' +
+    '  </p>\n' +
+    '  <p>\n' +
+    '    Please take care not to overlap these directives, for example:\n' +
+    '    <code>flex="100" flex-md="50" flex-gt-sm="25"</code>. In this example, there are two directives\n' +
+    '    that apply to "medium" devices (<code>50</code> and <code>25</code>).\n' +
+    '  </p>\n' +
+    '  <p>\n' +
+    '    The below example demonstrates how to use multiple <code>flex</code> directives overrides to\n' +
+    '    achieve a desirable outcome:\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Overriding Responsive Flex Directives" class="colorNested-noPad">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="row" layout-wrap>\n' +
+    '        <div flex="100" flex-gt-sm="33">\n' +
+    '          flex 100% on mobile, <br/>and 33% on gt-sm devices.\n' +
+    '        </div>\n' +
+    '        <div flex="100" flex-gt-sm="66">\n' +
+    '          flex 100% on mobile, <br/>and 66% on gt-sm devices.\n' +
+    '        </div>\n' +
+    '        <div flex="100" flex-md="50" flex-gt-md="25">\n' +
+    '          flex 100% on mobile, 50% on md, and 25% on gt-md devices.\n' +
+    '        </div>\n' +
+    '        <div flex="100" flex-md="50" flex-gt-md="25">\n' +
+    '          flex 100% on mobile, 50% on md, and 25% on gt-md devices.\n' +
+    '        </div>\n' +
+    '        <div flex="100" flex-md="50" flex-gt-md="25">\n' +
+    '          flex 100% on mobile, 50% on md, and 25% on gt-md devices.\n' +
+    '        </div>\n' +
+    '        <div flex="100" flex-md="50" flex-gt-md="25">\n' +
+    '          flex 100% on mobile, 50% on md, and 25% on gt-md devices.\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
     '\n' +
     '  <p>\n' +
-    '    See the <a href="layout/options">layout options page</a> for more information on responsive flex directives like\n' +
-    '    <code>hide-sm</code> and <code>layout-wrap</code> used in the above examples.\n' +
+    '    When a responsive layout directive like <code>layout-gt-sm</code> is active, any flex directives\n' +
+    '    within that layout, that you want applied, should be active at the same time. This means that\n' +
+    '    the flex directives that match up with <code>layout-gt-sm</code> would be\n' +
+    '    <code>flex-gt-sm</code> and not just <code>flex</code>.\n' +
+    '  </p>\n' +
+    '  <p>\n' +
+    '    This example demonstrates what happens when the proper flex suffix is omitted. In this case, the\n' +
+    '    <code>flex="66"</code> directive is interpreted in context of the <code>layout="column"</code>\n' +
+    '    layout. This is most likely not desirable.\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Incorrect use of Flex Directives within Responsive Layouts"\n' +
+    '             class="small-demo colorNested-noPad">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="column" layout-gt-sm="row">\n' +
+    '        <!-- In order to work within a layout-gt-sm, the flex directive needs to match.\n' +
+    '             flex-gt-sm="33" will work when layout-gt-sm="row" is active", but flex="33" would\n' +
+    '              only apply when layout="column" is active. -->\n' +
+    '        <div flex-gt-sm="33">\n' +
+    '          column layout on mobile, <br/>flex 33% on gt-sm devices.\n' +
+    '        </div>\n' +
+    '        <!-- In this case, we failed to use the gt-sm suffix with the flex directive,\n' +
+    '             resulting in undesirable behavior. -->\n' +
+    '        <div flex="66">\n' +
+    '          [flex 66%]\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    Here\'s the same example as above with the correct <code>flex-gt-sm="66"</code> directive:\n' +
+    '  </p>\n' +
+    '\n' +
+    '  <docs-demo demo-title="Use of Responsive Flex Directives within Responsive Layouts"\n' +
+    '             class="small-demo colorNested-noPad">\n' +
+    '    <demo-file name="index.html">\n' +
+    '      <div layout="column" layout-gt-sm="row">\n' +
+    '        <div flex-gt-sm="33">\n' +
+    '          column layout on mobile, <br/>flex 33% on gt-sm devices.\n' +
+    '        </div>\n' +
+    '        <div flex-gt-sm="66">\n' +
+    '          column layout on mobile, <br/>flex 66% on gt-sm devices.\n' +
+    '        </div>\n' +
+    '      </div>\n' +
+    '    </demo-file>\n' +
+    '  </docs-demo>\n' +
+    '\n' +
+    '  <p>\n' +
+    '    See the <a href="layout/options">layout options page</a> for more information on responsive flex\n' +
+    '    directives like <code>hide-sm</code> and <code>layout-wrap</code> used in the above examples.\n' +
     '  </p>\n' +
     '\n' +
     '  <br/>\n' +
