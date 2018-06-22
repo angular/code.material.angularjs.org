@@ -557,6 +557,55 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 
 (function () {
   'use strict';
+  angular
+      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
+      .config(['$mdIconProvider', function($mdIconProvider) {
+        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
+      }])
+      .controller('BasicDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    self.readonly = false;
+
+    // Lists of fruit names and Vegetable objects
+    self.fruitNames = ['Apple', 'Banana', 'Orange'];
+    self.ngChangeFruitNames = angular.copy(self.fruitNames);
+    self.roFruitNames = angular.copy(self.fruitNames);
+    self.editableFruitNames = angular.copy(self.fruitNames);
+
+    self.tags = [];
+    self.vegObjs = [
+      {
+        'name' : 'Broccoli',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Cabbage',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Carrot',
+        'type' : 'Umbelliferous'
+      }
+    ];
+
+    self.newVeg = function(chip) {
+      return {
+        name: chip,
+        type: 'unknown'
+      };
+    };
+
+    self.onModelChange = function(newModel) {
+      alert('The model has changed');
+    };
+  }
+})();
+
+(function () {
+  'use strict';
 
   // If we do not have CryptoJS defined; import it
   if (typeof CryptoJS === 'undefined') {
@@ -766,55 +815,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
-      .config(['$mdIconProvider', function($mdIconProvider) {
-        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
-      }])
-      .controller('BasicDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    self.readonly = false;
-
-    // Lists of fruit names and Vegetable objects
-    self.fruitNames = ['Apple', 'Banana', 'Orange'];
-    self.ngChangeFruitNames = angular.copy(self.fruitNames);
-    self.roFruitNames = angular.copy(self.fruitNames);
-    self.editableFruitNames = angular.copy(self.fruitNames);
-
-    self.tags = [];
-    self.vegObjs = [
-      {
-        'name' : 'Broccoli',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Cabbage',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Carrot',
-        'type' : 'Umbelliferous'
-      }
-    ];
-
-    self.newVeg = function(chip) {
-      return {
-        name: chip,
-        type: 'unknown'
-      };
-    };
-
-    self.onModelChange = function(newModel) {
-      alert('The model has changed');
-    };
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('chipsCustomSeparatorDemo', ['ngMaterial'])
       .controller('CustomSeparatorCtrl', DemoCtrl);
 
@@ -852,6 +852,92 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     this.selectedVegetables = [];
   }
 })();
+
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
+
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    };
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    };
+  });
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette);
+
+    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
+        };
+      }
+    };
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -1216,92 +1302,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
       };
     });
 })();
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
-
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    };
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    };
-  });
-
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette);
-
-    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
-        };
-      }
-    };
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
-
 
 angular.module('gridListDemo1', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {});
