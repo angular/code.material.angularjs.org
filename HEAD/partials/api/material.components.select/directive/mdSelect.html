@@ -193,23 +193,6 @@ which results in Bob being selected as desired.</p>
     
   
     
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* md-no-asterisk</b>
-          
-          <span hide show-sm>
-</span>
-        </td>
-        <td style="white-space: nowrap;">
-</td>
-        <td class="description">
-          <p>{boolean=} When set to true, an asterisk will not be appended to the
-floating label. <strong>Note:</strong> This attribute is only evaluated once; it is not watched.</p>
-
-          
-        </td>
-      </tr>
-    
   
     
   
@@ -247,7 +230,9 @@ floating label. <strong>Note:</strong> This attribute is only evaluated once; it
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When set to true, allows for more than one option to be selected. The model is an array with the selected choices.</p>
+          <p>When present, allows for more than one option to be selected.
+ The model is an array with the selected choices. <strong>Note:</strong> This attribute is only evaluated
+ once; it is not watched.</p>
 
           
         </td>
@@ -350,6 +335,23 @@ the ngSanitize module must be loaded.</p>
       </tr>
     
   
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-asterisk
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>When set to true, an asterisk will not be appended to the
+floating label. <strong>Note:</strong> This attribute is only evaluated once; it is not watched.</p>
+
+          
+        </td>
+      </tr>
     
   
     
