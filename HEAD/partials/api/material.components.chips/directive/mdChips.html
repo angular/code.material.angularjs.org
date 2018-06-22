@@ -355,14 +355,15 @@ on our custom validators.</p>
           md-enable-chip-edit
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>Set this to &quot;true&quot; to enable editing of chip contents.
-   The user can go into edit mode with pressing &quot;space&quot;, &quot;enter&quot;, or double clicking on the
-   chip. Chip edit is only supported for chips with basic template.</p>
+          <p>Set this to <code>&quot;true&quot;</code> to enable editing of chip contents.
+   The user can go into edit mode by pressing the <code>space</code> or <code>enter</code> keys, or by double
+   clicking on the chip. Chip editing is only supported for chips using the basic template.
+   <strong>Note:</strong> This attribute is only evaluated once; it is not watched.</p>
 
           
         </td>
@@ -418,8 +419,9 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When set to true, remaining text inside of the input will
-   be converted into a new chip on blur.</p>
+          <p>When set to <code>&quot;true&quot;</code>, the remaining text inside of the input
+   will be converted into a new chip on blur.
+   <strong>Note:</strong> This attribute is only evaluated once; it is not watched.</p>
 
           
         </td>
