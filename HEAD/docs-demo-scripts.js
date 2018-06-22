@@ -564,7 +564,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       }])
       .controller('BasicDemoCtrl', DemoCtrl);
 
-  function DemoCtrl ($timeout, $q) {
+  function DemoCtrl ($timeout, $q, $log) {
     var self = this;
 
     self.readonly = false;
@@ -599,7 +599,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     };
 
     self.onModelChange = function(newModel) {
-      alert('The model has changed');
+      $log.log('The model has changed to ' + newModel + '.');
     };
   }
 })();
