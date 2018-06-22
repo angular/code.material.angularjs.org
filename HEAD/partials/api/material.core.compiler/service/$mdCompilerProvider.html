@@ -70,23 +70,43 @@ controllers respect the AngularJS <code>$compileProvider.preAssignBindingsEnable
 this doesn&#39;t affect directives/components created via regular AngularJS methods which
 constitute most Material and user-created components.</p>
 <p>If disabled (<code>false</code>), the compiler assigns the value of each of the bindings to the
-properties of the controller object before the constructor of this object is called.</p>
+properties of the controller object before the constructor of this object is called.
+The ability to disable this settings is <strong>deprecated</strong> and will be removed in
+AngularJS Material 1.2.0.</p>
 <p>If enabled (<code>true</code>) the behavior depends on the AngularJS version used:</p>
 <ul>
-<li><code>&lt;1.5.10</code> - bindings are pre-assigned.</li>
-<li><code>&gt;=1.5.10 &lt;1.7</code> - behaves like set to whatever <code>$compileProvider.preAssignBindingsEnabled()</code> reports.
- If the <code>preAssignBindingsEnabled</code> flag wasn&#39;t set manually, it defaults to pre-assigning bindings
- with AngularJS <code>1.5.x</code> and to calling the constructor first with AngularJS <code>1.6.x</code>.</li>
-<li><code>&gt;=1.7</code> - the compiler calls the constructor first before assigning bindings and
- <code>$compileProvider.preAssignBindingsEnabled()</code> no longer exists.</li>
+<li><code>&lt;1.5.10</code><ul>
+<li>Bindings are pre-assigned.</li>
 </ul>
-<p>The default value is <code>false</code> but will change to <code>true</code> in AngularJS Material 1.2.</p>
-<p>It is recommended to set this flag to <code>true</code> in AngularJS Material 1.1.x. The only reason
-it&#39;s not set that way by default is backwards compatibility. Not setting the flag to <code>true</code>
-when AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled()</code> is set to <code>false</code>
-(i.e. default behavior in AngularJS 1.6 or newer) makes it hard to unit test
+</li>
+<li><code>&gt;=1.5.10 &lt;1.7</code><ul>
+<li>Respects whatever <code>$compileProvider.preAssignBindingsEnabled()</code> reports. If the
+<code>preAssignBindingsEnabled</code> flag wasn&#39;t set manually, it defaults to pre-assigning bindings
+with AngularJS <code>1.5</code> and to calling the constructor first with AngularJS <code>1.6</code>.</li>
+</ul>
+</li>
+<li><code>&gt;=1.7</code><ul>
+<li>The compiler calls the constructor first before assigning bindings and
+<code>$compileProvider.preAssignBindingsEnabled()</code> no longer exists.</li>
+</ul>
+</li>
+</ul>
+<p>Defaults</p>
+<ul>
+<li>The default value is <code>false</code> in AngularJS 1.6 and earlier.<ul>
+<li>It is planned to fix this value to <code>true</code> and not allow the <code>false</code> value in
+AngularJS Material 1.2.0.</li>
+</ul>
+</li>
+</ul>
+<p>It is recommended to set this flag to <code>true</code> when using AngularJS Material 1.1.x with
+AngularJS versions &gt;= 1.5.10. The only reason it&#39;s not set that way by default is backwards
+compatibility.</p>
+<p>By not setting the flag to <code>true</code> when AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled()</code>
+is set to <code>false</code> (i.e. default behavior in AngularJS 1.6 or newer), unit testing of
 Material Dialog/Panel/Toast/BottomSheet controllers using the <code>$controller</code> helper
-as it always follows the <code>$compileProvider.preAssignBindingsEnabled()</code> value.</p>
+is problematic as it always follows AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled()</code>
+value.</p>
 </div>
 
       <div class="method-param-table">
@@ -119,7 +139,7 @@ as it always follows the <code>$compileProvider.preAssignBindingsEnabled()</code
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
           <p>update the <code>respectPreAssignBindingsEnabled</code> state if provided,
-otherwise just return the current Material <code>respectPreAssignBindingsEnabled</code> state.</p>
+ otherwise just return the current Material <code>respectPreAssignBindingsEnabled</code> state.</p>
 
           
         </td>
@@ -146,8 +166,8 @@ otherwise just return the current Material <code>respectPreAssignBindingsEnabled
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-boolean">boolean</code><code class="api-type label type-hint type-hint-mdcompilerprovider">MdCompilerProvider</code></td>
-    <td class="description"><p>current value if used as getter or itself (chaining)
- if used as setter</p>
+    <td class="description"><p>current value, if used as a getter, or itself (chaining)
+ if used as a setter.</p>
 </td>
   </tr>
   </tbody>
