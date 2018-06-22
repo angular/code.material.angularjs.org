@@ -19,9 +19,7 @@
     // using a hidden form.  The hidden form is necessary to avoid a CORS issue.
     // See http://blog.codepen.io/documentation/api/prefill
     function editOnCodepen(demo) {
-      var externalScripts = $demoAngularScripts.all();
-      externalScripts.push('https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.1/moment.js');
-      var data = codepenDataAdapter.translate(demo, externalScripts);
+      var data = codepenDataAdapter.translate(demo, $demoAngularScripts.all());
       var form = buildForm(data);
       $document.find('body').append(form);
       form[0].submit();
@@ -132,7 +130,7 @@
 
         return content + '\n\n'+
           commentStart + '\n'+
-          'Copyright 2018 Google Inc. All Rights Reserved. \n'+
+          'Copyright 2016 Google Inc. All Rights Reserved. \n'+
           'Use of this source code is governed by an MIT-style license that can be found'+
           'in the LICENSE file at http://material.angularjs.org/HEAD/license.\n'+
           commentEnd;

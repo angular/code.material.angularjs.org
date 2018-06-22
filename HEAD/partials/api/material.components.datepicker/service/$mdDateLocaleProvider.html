@@ -57,16 +57,6 @@ myAppModule.config(function($mdDateLocaleProvider) {
       return m.isValid() ? m.format(&#39;L&#39;) : &#39;&#39;;
     };
 
-    // Allow only a day and month to be specified.
-    // This is required if using the &#39;M/D&#39; format with moment.js.
-    $mdDateLocaleProvider.isDateComplete = function(dateString) {
-      dateString = dateString.trim();
-
-      // Look for two chunks of content (either numbers or text) separated by delimiters.
-      var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
-      return re.test(dateString);
-    };
-
     $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
       return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
     };
@@ -314,26 +304,6 @@ myAppModule.config(function($mdDateLocaleProvider) {
 
     </li>
     
-    <li id="longDateFormatter">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdDateLocaleProvider.longDateFormatter</code>
-      </h3>
-      <div class="service-desc"><p>Function that formats a date into a long
- <code>aria-label</code> that is read by the screen reader when the focused date changes.</p>
-</div>
-
-      <div class="method-param-table">
-
-        
-
-        
-
-        
-
-      </div>
-
-    </li>
-    
     <li id="msgCalendar">
       <h3 class="method-function-syntax">
         <code class="method-function-syntax">$mdDateLocaleProvider.msgCalendar</code>
@@ -401,29 +371,6 @@ myAppModule.config(function($mdDateLocaleProvider) {
       <div class="service-desc"><p>The last date that will be rendered by the datepicker
  calendar. Note that this will be ignored if a maximum date is set.
  Defaults to January 1st 2130.</p>
-</div>
-
-      <div class="method-param-table">
-
-        
-
-        
-
-        
-
-      </div>
-
-    </li>
-    
-    <li id="isDateComplete">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdDateLocaleProvider.isDateComplete</code>
-      </h3>
-      <div class="service-desc"><p>Function to determine whether a string
- makes sense to be parsed to a <code>Date</code> object. Returns <code>true</code> if the date appears to be complete
- and parsing should occur. By default, this checks for 3 groups of text or numbers separated
- by delimiters. This means that by default, date strings must include a month, day, and year
- to be parsed and for the model to be updated.</p>
 </div>
 
       <div class="method-param-table">

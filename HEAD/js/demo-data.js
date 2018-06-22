@@ -906,64 +906,6 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "datepickerMoment",
-          "module": "datepickerMoment",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "datepickerdemoMoment",
-        "css": [],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/datepicker/demoMoment/script.js"
-          }
-        ],
-        "moduleName": "material.components.datepicker",
-        "name": "demoMoment",
-        "label": "Moment",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/datepicker/demoMoment/index.html"
-        }
-      },
-      {
-        "ngModule": {
-          "name": "customDatepickerMoment",
-          "module": "customDatepickerMoment",
-          "dependencies": [
-            "ngMaterial"
-          ]
-        },
-        "id": "datepickerdemoMomentCustomFormat",
-        "css": [],
-        "html": [],
-        "js": [
-          {
-            "name": "script.js",
-            "label": "script.js",
-            "fileType": "js",
-            "outputPath": "demo-partials/datepicker/demoMomentCustomFormat/script.js"
-          }
-        ],
-        "moduleName": "material.components.datepicker",
-        "name": "demoMomentCustomFormat",
-        "label": "Moment Custom Format",
-        "index": {
-          "name": "index.html",
-          "label": "index.html",
-          "fileType": "html",
-          "outputPath": "demo-partials/datepicker/demoMomentCustomFormat/index.html"
-        }
-      },
-      {
-        "ngModule": {
           "name": "datepickerValidations",
           "module": "datepickerValidations",
           "dependencies": [
