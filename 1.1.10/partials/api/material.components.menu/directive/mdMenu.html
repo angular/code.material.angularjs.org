@@ -1,0 +1,259 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Menus are elements that open when clicked. They are useful for displaying
+additional options within the context of an action.</p>
+<p>Every <code>md-menu</code> must specify exactly two child elements. The first element is what is
+left in the DOM and is used to open the menu. This element is called the trigger element.
+The trigger element&#39;s scope has access to <code>$mdMenu.open($event)</code>
+which it may call to open the menu. By passing $event as argument, the
+corresponding event is stopped from propagating up the DOM-tree. Similarly, <code>$mdMenu.close()</code>
+can be used to close the menu.</p>
+<p>The second element is the <code>md-menu-content</code> element which represents the
+contents of the menu when it is open. Typically this will contain <code>md-menu-item</code>s,
+but you can do custom content as well.</p>
+<hljs lang="html">
+<md-menu>
+ <!-- Trigger element is a md-button with an icon -->
+ <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open sample menu">
+   <md-icon md-svg-icon="call:phone"></md-icon>
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+</hljs>
+
+<h2 id="sizing-menus">Sizing Menus</h2>
+<p>The width of the menu when it is open may be specified by specifying a <code>width</code>
+attribute on the <code>md-menu-content</code> element.
+See the <a href="https://material.io/guidelines/components/menus.html#menus-simple-menus">Material Design Spec</a>
+for more information.</p>
+<h2 id="aligning-menus">Aligning Menus</h2>
+<p>When a menu opens, it is important that the content aligns with the trigger element.
+Failure to align menus can result in jarring experiences for users as content
+suddenly shifts. To help with this, <code>md-menu</code> provides several APIs to help
+with alignment.</p>
+<h3 id="target-mode">Target Mode</h3>
+<p>By default, <code>md-menu</code> will attempt to align the <code>md-menu-content</code> by aligning
+designated child elements in both the trigger and the menu content.</p>
+<p>To specify the alignment element in the <code>trigger</code> you can use the <code>md-menu-origin</code>
+attribute on a child element. If no <code>md-menu-origin</code> is specified, the <code>md-menu</code>
+will be used as the origin element.</p>
+<p>Similarly, the <code>md-menu-content</code> may specify a <code>md-menu-align-target</code> for a
+<code>md-menu-item</code> to specify the node that it should try and align with.</p>
+<p>In this example code, we specify an icon to be our origin element, and an
+icon in our menu content to be our alignment target. This ensures that both
+icons are aligned when the menu opens.</p>
+<hljs lang="html">
+<md-menu>
+ <md-button ng-click="$mdMenu.open($event)" class="md-icon-button" aria-label="Open some menu">
+   <md-icon md-menu-origin md-svg-icon="call:phone"></md-icon>
+ </md-button>
+ <md-menu-content>
+   <md-menu-item>
+     <md-button ng-click="doSomething()" aria-label="Do something">
+       <md-icon md-menu-align-target md-svg-icon="call:phone"></md-icon>
+       Do Something
+     </md-button>
+   </md-menu-item>
+ </md-menu-content>
+</md-menu>
+</hljs>
+
+<h3 id="position-mode">Position Mode</h3>
+<p>We can specify the origin of the menu by using the <code>md-position-mode</code> attribute.
+This attribute allows specifying the positioning by the <code>x</code> and <code>y</code> axes.</p>
+<p>The default mode is <code>target target</code>. This mode uses the left and top edges of the origin element
+to position the menu in LTR layouts. The <code>x</code> axis modes will adjust when in RTL layouts.</p>
+<p>Sometimes you want to specify alignment from the right side of a origin element. For example,
+if we have a menu on the right side a toolbar, we may want to right align our menu content.
+We can use <code>target-right target</code> to specify a right-oriented alignment target.
+There is a working example of this in the Menu Position Modes demo.</p>
+<h4 id="horizontal-positioning-options">Horizontal Positioning Options</h4>
+<ul>
+<li><code>target</code></li>
+<li><code>target-left</code></li>
+<li><code>target-right</code></li>
+<li><code>cascade</code></li>
+<li><code>right</code></li>
+<li><code>left</code></li>
+</ul>
+<h4 id="vertical-positioning-options">Vertical Positioning Options</h4>
+<ul>
+<li><code>target</code></li>
+<li><code>cascade</code></li>
+<li><code>bottom</code></li>
+</ul>
+<h3 id="menu-offsets">Menu Offsets</h3>
+<p>It is sometimes unavoidable to need to have a deeper level of control for
+the positioning of a menu to ensure perfect alignment. <code>md-menu</code> provides
+the <code>md-offset</code> attribute to allow pixel-level specificity when adjusting
+menu positioning.</p>
+<p>This offset is provided in the format of <code>x y</code> or <code>n</code> where <code>n</code> will be used
+in both the <code>x</code> and <code>y</code> axis.
+For example, to move a menu by <code>2px</code> down from the top, we can use:</p>
+<hljs lang="html">
+<md-menu md-offset="0 2">
+  <!-- menu-content -->
+</md-menu>
+</hljs>
+
+<p>Specifying <code>md-offset=&quot;2 2&quot;</code> would shift the menu two pixels down and two pixels to the right.</p>
+<h3 id="auto-focus">Auto Focus</h3>
+<p>By default, when a menu opens, <code>md-menu</code> focuses the first button in the menu content.</p>
+<p>Sometimes you would like to focus another menu item instead of the first.<br/>
+This can be done by applying the <code>md-autofocus</code> directive on the given element.</p>
+<hljs lang="html">
+<md-menu-item>
+  <md-button md-autofocus ng-click="doSomething()">
+    Auto Focus
+  </md-button>
+</md-menu-item>
+</hljs>
+
+
+<h3 id="preventing-close">Preventing close</h3>
+<p>Sometimes you would like to be able to click on a menu item without having the menu
+close. To do this, AngularJS Material exposes the <code>md-prevent-menu-close</code> attribute which
+can be added to a button inside a menu to stop the menu from automatically closing.
+You can then close the menu either by using <code>$mdMenu.close()</code> in the template,
+or programmatically by injecting <code>$mdMenu</code> and calling <code>$mdMenu.hide()</code>.</p>
+<hljs lang="html">
+<md-menu-content ng-mouseleave="$mdMenu.close()">
+  <md-menu-item>
+    <md-button ng-click="doSomething()" aria-label="Do something" md-prevent-menu-close="md-prevent-menu-close">
+      <md-icon md-menu-align-target md-svg-icon="call:phone"></md-icon>
+      Do Something
+    </md-button>
+  </md-menu-item>
+</md-menu-content>
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-menu>
+ <md-button ng-click="$mdMenu.open($event)" class="md-icon-button">
+   <md-icon md-svg-icon="call:phone"></md-icon>
+ </md-button>
+ <md-menu-content>
+   <md-menu-item><md-button ng-click="doSomething()">Do Something</md-button></md-menu-item>
+ </md-menu-content>
+</md-menu>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-position-mode
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Specify pre-defined position modes for the <code>x</code> and <code>y</code> axes.
+ The default modes are <code>target target</code>. This positions the origin of the menu using the left and top edges
+ of the origin element in LTR layouts.<br></p>
+<h4 id="valid-modes-for-horizontal-positioning">Valid modes for horizontal positioning</h4>
+<ul>
+<li><code>target</code></li>
+<li><code>target-left</code></li>
+<li><code>target-right</code></li>
+<li><code>cascade</code></li>
+<li><code>right</code></li>
+<li><code>left</code><br><h4 id="valid-modes-for-vertical-positioning">Valid modes for vertical positioning</h4>
+</li>
+<li><code>target</code></li>
+<li><code>cascade</code></li>
+<li><code>bottom</code></li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-offset
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>An offset to apply to the dropdown on opening, after positioning.
+ Defined as <code>x</code> and <code>y</code> pixel offset values in the form of <code>x y</code>.<br>
+ The default value is <code>0 0</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
