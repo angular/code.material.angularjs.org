@@ -376,6 +376,103 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
+    '    <h2 class="md-headline">Browser Support</h2>\n' +
+    '    <p>\n' +
+    '      AngularJS Material generally supports browsers that fall into these categories\n' +
+    '    </p>\n' +
+    '    <ul>\n' +
+    '      <li>Greater than 0.5% global usage</li>\n' +
+    '      <li>Last two versions of Evergreen browsers</li>\n' +
+    '      <li>Firefox ESR</li>\n' +
+    '      <li>Not considered "dead" browsers</li>\n' +
+    '    </ul>\n' +
+    '    <br/>\n' +
+    '    <h3>The following table provides a more detailed view:</h3>\n' +
+    '    <table class="custom-table">\n' +
+    '      <tbody>\n' +
+    '      <tr>\n' +
+    '        <th>\n' +
+    '          Browser\n' +
+    '        </th>\n' +
+    '        <th>\n' +
+    '          Supported Versions\n' +
+    '        </th>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Chrome<br/>Chrome for Android<br/>Edge<br/>Opera\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          last 2 versions\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Firefox\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          last 2 versions<br/>ESR\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          IE<br/>IE Mobile\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          11\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Safari\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          11<br>11.1\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          iOS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          10.3<br>11.0-11.2<br>11.3\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Firefox for Android<br/>UC<br/>QQ<br/>Baidu\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          latest version\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Android Browser\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          4.4<br>4.4.3-4.4.4<br>latest version\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Samsung Internet\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          4<br>5<br>6.2\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Opera for Android\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          Mini all<br>Mobile 37\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      </tbody>\n' +
+    '    </table>\n' +
+    '\n' +
     '    <md-divider></md-divider>\n' +
     '\n' +
     '    <br/>\n' +

@@ -7,6 +7,7 @@ hljs {
   font-family: Menlo, Monaco, "Andale Mono", "lucida console", "Courier New", monospace;
   line-height: 1.45;
   -moz-tab-size: 2;
+    -o-tab-size: 2;
        tab-size: 2;
   -webkit-font-smoothing: auto;
   -webkit-text-size-adjust: none;
@@ -202,7 +203,6 @@ demo-include {
   z-index: 2;
 }
 [ng-panel] {
-  -webkit-transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   position: absolute;
   left: 0;
@@ -277,7 +277,6 @@ body.docs-body {
   -webkit-transform: scale(0);
 
           transform: scale(0);
-  -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
@@ -289,8 +288,7 @@ body.docs-body {
 }
 
 #license-footer {
-  -webkit-align-self: flex-end;
-          align-self: flex-end;
+  align-self: flex-end;
   padding: 16px 32px;
   width: 100%;
 
@@ -319,7 +317,6 @@ body.docs-body {
 a {
   text-decoration: none;
   font-weight: 400;
-  -webkit-transition: border-bottom 0.35s;
   transition: border-bottom 0.35s;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -421,7 +418,6 @@ ul.skip-links li a {
   text-decoration: none;
   top: 0;
   width: 92%;
-  -webkit-transition: opacity   0.15s linear;
   transition: opacity   0.15s linear;
 }
 ul.skip-links li a:focus {
@@ -525,9 +521,7 @@ code:not(.highlight) {
   color: white;
   cursor: pointer;
   display: block;
-  -webkit-box-align: inherit;
-  -webkit-align-items: inherit;
-          align-items: inherit;
+  align-items: inherit;
   line-height: 40px;
   margin: 0;
   max-height: 40px;
@@ -564,9 +558,7 @@ body[dir=rtl] .docs-menu .md-button {
 }
 
 .docs-menu md-select md-select-label {
-  -webkit-box-pack: end;
-  -webkit-justify-content: flex-end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   padding-top: 10px;
 }
 
@@ -629,7 +621,6 @@ body[dir=rtl] .menu-heading {
   vertical-align: middle;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
@@ -643,16 +634,9 @@ body[dir=rtl] .menu-heading {
 
 .docs-logo {
   text-align: center;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 0 16px;
   margin: 0 auto;
 }
@@ -671,11 +655,9 @@ body[dir=rtl] .menu-heading {
 }
 .nav-header {
   background-color: #106CC8;
-  background: -webkit-linear-gradient(#185694, #106cc8);
   background: linear-gradient(#185694, #106cc8);
   border-bottom: 1px solid #267ED5;
-  -webkit-flex-shrink: 0;
-          flex-shrink: 0;
+  flex-shrink: 0;
   z-index: 2;
 }
 a.docs-logo {
@@ -742,14 +724,12 @@ docs-demo {
 .demo-container {
   border-radius: 4px;
   margin-bottom: 16px;
-  -webkit-transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   position: relative;
   padding-bottom: 0;
 }
 .demo-source-tabs {
   z-index: 1;
-  -webkit-transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   height: 448px;
   background: #fff;
@@ -784,8 +764,6 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 .demo-content {
   position: relative;
-  display: -webkit-box;
-  display: -webkit-flex;
   display: flex;
   overflow: hidden;
 }
@@ -797,14 +775,10 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 
 .doc-content > * {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 auto;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .demo-content > * {
-  -webkit-box-flex: 1;
-  -webkit-flex: 1 1 0%;
-          flex: 1 1 0%;
+  flex: 1 1 0%;
 }
 
 .demo-content > div[layout-fill] {
@@ -846,7 +820,6 @@ md-toolbar.demo-toolbar .md-button.active, md-toolbar.demo-toolbar .md-button.ac
 }
 
 md-toolbar.demo-toolbar .md-button {
-  -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #616161;
 }
@@ -909,7 +882,6 @@ ul.buckets li a {
 ul.buckets li a,
 ul.buckets li a md-icon {
   color: #666 !important;
-  -webkit-transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
 }
 ul.buckets li a:hover,
@@ -951,8 +923,7 @@ header.api-profile-header > h2 {
   margin-right: 8px;
   text-align: center;
   margin-top: 14px;
-  -webkit-align-self: flex-start;
-          align-self: flex-start;
+  align-self: flex-start;
 }
 .api-params-title {
   color: #888;
@@ -1110,7 +1081,6 @@ docs-demo .doc-demo-content {
 }
 
 .no-transition {
-  -webkit-transition: none !important;
   transition: none !important;
 }
 
@@ -1161,6 +1131,66 @@ table.md-css-table td p {
 .contributor_tables > table {
   padding-top: 10px;
   padding-bottom: 10px;
+}
+
+table.custom-table {
+  margin: 24px 2px;
+  box-shadow: 0 1px 2px rgba(10, 16, 20, 0.24), 0 0 2px rgba(10, 16, 20, 0.12);
+  border-radius: 2px;
+  background: #fafafa;
+  border-spacing: 0;
+}
+table.custom-table thead > {
+  vertical-align: middle;
+  border-color: inherit;
+}
+table.custom-table thead > tr {
+  vertical-align: inherit;
+  border-color: inherit;
+}
+table.custom-table thead > tr > th {
+  background: rgba(219, 219, 219, 0.2);
+  border-bottom: 1px solid #dbdbdb;
+  color: #333;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px 24px;
+  text-align: left;
+  text-transform: uppercase;
+  line-height: 28px;
+}
+table.custom-table tbody > tr > th,
+table.custom-table tbody > tr > td {
+  border-bottom: 1px solid #dbdbdb;
+  padding: 16px;
+  text-align: left;
+  line-height: 24px;
+  vertical-align: top;
+}
+@media (max-width: 480px) {
+  table.custom-table tbody > tr > th:before,
+  table.custom-table tbody > tr > td:before {
+    display: inline-block;
+  }
+}
+table.custom-table tbody > tr > td {
+  letter-spacing: 0.3px;
+}
+@media (max-width: 480px) {
+  table.custom-table tbody > tr > td tr td:first-child {
+    background-color: #dbdbdb;
+  }
+}
+table.custom-table tbody > tr > th:first-child {
+  border-right: 1px solid #dbdbdb;
+}
+table.custom-table tbody > tr > th {
+  background: rgba(219, 219, 219, 0.2);
+  font-weight: 600;
+  max-width: 100px;
+}
+table.custom-table tbody > tr >:last-child td {
+  border: none;
 }
 
 /* Provide some layout/padding enhancements for mobile/small devices */
