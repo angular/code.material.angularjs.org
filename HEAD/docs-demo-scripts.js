@@ -619,7 +619,7 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       .module('contactChipsDemo', ['ngMaterial'])
       .controller('ContactChipDemoCtrl', DemoCtrl);
 
-  function DemoCtrl ($q, $timeout, $log, $mdConstant) {
+  function DemoCtrl ($q, $timeout, $log) {
     var self = this;
     var pendingSearch, cancelSearch = angular.noop;
     var lastSearch;
@@ -627,7 +627,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     self.allContacts = loadContacts();
     self.contacts = [self.allContacts[0]];
     self.asyncContacts = [];
-    self.keys = [$mdConstant.KEY_CODE.COMMA];
 
     self.querySearch = querySearch;
     self.delayedQuerySearch = delayedQuerySearch;
@@ -961,36 +960,6 @@ angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() 
 (function () {
   'use strict';
 
-  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
-    /**
-     * @param date {Date}
-     * @returns {string} string representation of the provided date
-     */
-    $mdDateLocaleProvider.formatDate = function(date) {
-      return date ? moment(date).format('L') : '';
-    };
-
-    /**
-     * @param dateString {string} string that can be converted to a Date
-     * @returns {Date} JavaScript Date object created from the provided dateString
-     */
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-  })
-  .controller("AppCtrl", function($log) {
-    this.myDate = new Date();
-
-    this.onDateChanged = function() {
-      $log.log('Updated Date: ', this.myDate);
-    };
-  });
-})();
-
-(function () {
-  'use strict';
-
   angular.module('customDatepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
     /**
      * @param date {Date}
@@ -1205,6 +1174,36 @@ angular.module('dialogDemo2', ['ngMaterial'])
     );
   };
 });
+
+(function () {
+  'use strict';
+
+  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
+    /**
+     * @param date {Date}
+     * @returns {string} string representation of the provided date
+     */
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('L') : '';
+    };
+
+    /**
+     * @param dateString {string} string that can be converted to a Date
+     * @returns {Date} JavaScript Date object created from the provided dateString
+     */
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
 
 angular.module('dialogDemo3', ['ngMaterial'])
   .config(function ($mdThemingProvider) {

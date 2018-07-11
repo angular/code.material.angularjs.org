@@ -13,7 +13,7 @@
       .module('contactChipsDemo', ['ngMaterial'])
       .controller('ContactChipDemoCtrl', DemoCtrl);
 
-  function DemoCtrl ($q, $timeout, $log, $mdConstant) {
+  function DemoCtrl ($q, $timeout, $log) {
     var self = this;
     var pendingSearch, cancelSearch = angular.noop;
     var lastSearch;
@@ -21,7 +21,6 @@
     self.allContacts = loadContacts();
     self.contacts = [self.allContacts[0]];
     self.asyncContacts = [];
-    self.keys = [$mdConstant.KEY_CODE.COMMA];
 
     self.querySearch = querySearch;
     self.delayedQuerySearch = delayedQuerySearch;
