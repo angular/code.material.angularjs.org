@@ -229,7 +229,8 @@ app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
       <div class="service-desc"><p>Lazy generate themes - by default, every theme is generated when defined.
 You can disable this in the configuration section using the
 <code>$mdThemingProvider.generateThemesOnDemand(true);</code></p>
-<p>The theme name that is passed in must match the name of the theme that was defined as part of the configuration block.</p>
+<p>The theme name that is passed in must match the name of the theme that was defined as part of
+the configuration block.</p>
 </div>
 
       <div class="method-param-table">
@@ -253,12 +254,12 @@ You can disable this in the configuration section using the
           <b>* name</b>
           
           <span hide show-sm>
-</span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-</td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>{string} theme name to generate</p>
+          <p>theme name to generate</p>
 
           
         </td>
@@ -323,9 +324,11 @@ You can disable this in the configuration section using the
         <td class="description">
           <p>Options for the browser color, which include:<br/></p>
 <ul>
-<li><code>theme</code> - <code>{string}</code>: A defined theme via <code>$mdThemeProvider</code> to use the palettes from. Default is <code>default</code> theme. <br/></li>
-<li><code>palette</code> - <code>{string}</code>:  Can be any one of the basic material design palettes, extended defined palettes, or <code>primary</code>,
-<code>accent</code>, <code>background</code>, and <code>warn</code>. Default is <code>primary</code>.<br/></li>
+<li><code>theme</code> - <code>{string}</code>: A defined theme via <code>$mdThemeProvider</code> to use the palettes from.
+ Default is <code>default</code> theme. <br/></li>
+<li><code>palette</code> - <code>{string}</code>:  Can be any one of the basic material design palettes, extended
+ defined palettes, or <code>primary</code>, <code>accent</code>, <code>background</code>, and <code>warn</code>. Default is <code>primary</code>.
+<br/></li>
 <li><code>hue</code> -  <code>{string}</code>: The hue from the selected palette. Default is <code>800</code>.<br/></li>
 </ul>
 
