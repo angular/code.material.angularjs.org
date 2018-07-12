@@ -1873,8 +1873,6 @@ angular
   .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
     var originatorEv;
 
-    this.menuHref = "http://www.google.com/design/spec/components/menus.html#menus-specs";
-
     this.openMenu = function($mdMenu, ev) {
       originatorEv = ev;
       $mdMenu.open(ev);
@@ -1899,7 +1897,8 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
     .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
     .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
 }).controller('WidthDemoCtrl', function($mdDialog) {
-  var vm = this;
+  var ctrl = this;
+  ctrl.menuHref = "https://material.io/design/components/menus.html#specs";
 
   this.announceClick = function(index) {
     $mdDialog.show(
@@ -3127,6 +3126,7 @@ angular.module('switchDemo1', ['ngMaterial'])
   };
 });
 
+angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
   angular
@@ -3179,7 +3179,6 @@ angular.module('switchDemo1', ['ngMaterial'])
 })();
 
 
-angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
 
