@@ -343,7 +343,7 @@
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
-      .icon('share-arrow', 'img/icons/share-arrow.svg', 24)
+      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
       .icon('upload', 'img/icons/upload.svg', 24)
       .icon('copy', 'img/icons/copy.svg', 24)
       .icon('print', 'img/icons/print.svg', 24)
@@ -391,7 +391,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 .controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
 
   $scope.items = [
-    { name: 'Share', icon: 'share-arrow' },
+    { name: 'Share', icon: 'share' },
     { name: 'Upload', icon: 'upload' },
     { name: 'Copy', icon: 'copy' },
     { name: 'Print this page', icon: 'print' },
@@ -420,7 +420,7 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 .run(function($templateRequest) {
 
     var urls = [
-      'img/icons/share-arrow.svg',
+      'img/icons/baseline-share-24px.svg',
       'img/icons/upload.svg',
       'img/icons/copy.svg',
       'img/icons/print.svg',
@@ -554,6 +554,92 @@ angular.module('checkboxDemo2', ['ngMaterial'])
         return list.indexOf(item) > -1;
       };
 });
+
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
+
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    };
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    };
+  });
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette);
+
+    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
+        };
+      }
+    };
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
 
 (function () {
   'use strict';
@@ -853,92 +939,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     this.selectedVegetables = [];
   }
 })();
-
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
-
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    };
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    };
-  });
-
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette);
-
-    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
-        };
-      }
-    };
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -3111,6 +3111,7 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
+angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
   $scope.data = {
@@ -3126,7 +3127,6 @@ angular.module('switchDemo1', ['ngMaterial'])
   };
 });
 
-angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
   angular

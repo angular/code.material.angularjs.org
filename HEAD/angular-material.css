@@ -1930,23 +1930,6 @@ md-fab-toolbar {
     -webkit-transform: scale(1);
             transform: scale(1); }
 
-md-icon {
-  margin: auto;
-  background-repeat: no-repeat no-repeat;
-  display: inline-block;
-  vertical-align: middle;
-  fill: currentColor;
-  height: 24px;
-  width: 24px;
-  min-height: 24px;
-  min-width: 24px; }
-  md-icon svg {
-    pointer-events: none;
-    display: block; }
-  md-icon[md-font-icon] {
-    line-height: 24px;
-    width: auto; }
-
 md-grid-list {
   box-sizing: border-box;
   display: block;
@@ -2005,6 +1988,23 @@ md-grid-list {
     border: 1px solid #fff; }
   md-grid-tile-footer {
     border-top: 1px solid #fff; } }
+
+md-icon {
+  margin: auto;
+  background-repeat: no-repeat no-repeat;
+  display: inline-block;
+  vertical-align: middle;
+  fill: currentColor;
+  height: 24px;
+  width: 24px;
+  min-height: 24px;
+  min-width: 24px; }
+  md-icon svg {
+    pointer-events: none;
+    display: block; }
+  md-icon[md-font-icon] {
+    line-height: 24px;
+    width: auto; }
 
 md-input-container {
   display: inline-block;
