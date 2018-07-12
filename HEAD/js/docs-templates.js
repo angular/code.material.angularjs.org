@@ -2098,8 +2098,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <p>The MIT License</p>\n' +
     '\n' +
     '    <p>\n' +
-    '      Copyright (c) 2014-2016 Google, Inc.\n' +
-    '      <a href="http://angularjs.org">http://angularjs.org</a>\n' +
+    '      Copyright (c) 2014-2018 Google LLC\n' +
+    '      <a href="http://angularjs.org">https://angularjs.org</a>\n' +
     '    </p>\n' +
     '\n' +
     '    <p>\n' +
