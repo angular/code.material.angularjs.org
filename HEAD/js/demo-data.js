@@ -208,8 +208,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "buttonsDemo1",
-          "module": "buttonsDemo1",
+          "name": "buttonsDemoBasic",
+          "module": "buttonsDemoBasic",
           "dependencies": [
             "ngMaterial"
           ]

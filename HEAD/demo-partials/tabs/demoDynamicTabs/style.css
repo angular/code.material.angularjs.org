@@ -1,13 +1,5 @@
-.tabsdemoDynamicTabs md-content {
-  background-color: transparent !important; }
-  .tabsdemoDynamicTabs md-content md-tabs {
-    border: 1px solid #e1e1e1; }
-    .tabsdemoDynamicTabs md-content md-tabs md-tab-content {
-      background: #f6f6f6; }
-    .tabsdemoDynamicTabs md-content md-tabs md-tabs-wrapper {
-      background: white; }
-  .tabsdemoDynamicTabs md-content h1:first-child {
-    margin-top: 0; }
+.tabsdemoDynamicTabs md-content h1:first-child {
+  margin-top: 0; }
 
 .tabsdemoDynamicTabs md-input-container {
   padding-bottom: 0; }
@@ -21,9 +13,6 @@
 
 .tabsdemoDynamicTabs .edit-form input {
   width: 100%; }
-
-.tabsdemoDynamicTabs md-tabs {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12); }
 
 .tabsdemoDynamicTabs md-tab[disabled] {
   opacity: 0.5; }

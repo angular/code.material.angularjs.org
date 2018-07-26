@@ -1,13 +1,8 @@
 .buttondemoBasicUsage section {
-  background: #f7f7f7;
   border-radius: 3px;
   text-align: center;
   margin: 1em;
-  position: relative !important;
-  padding-bottom: 10px; }
-
-.buttondemoBasicUsage md-content {
-  margin-right: 7px; }
+  position: relative !important; }
 
 .buttondemoBasicUsage section .md-button {
   margin-top: 16px;
