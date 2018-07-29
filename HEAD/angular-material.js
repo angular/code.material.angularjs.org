@@ -10,7 +10,7 @@
 (function(){
 "use strict";
 
-angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabToolbar","material.components.fabShared","material.components.fabSpeedDial","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
+angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
 })();
 (function(){
 "use strict";
@@ -1687,8 +1687,10 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
      * nextTick() coalesces all calls within a single frame
      * to minimize $digest thrashing
      *
-     * @param callback
-     * @param digest
+     * @param {Function} callback function to be called after the tick
+     * @param {boolean} digest true to call $rootScope.$digest() after callback
+     * @param scope scope associated with callback. If the scope is destroyed, the callback will
+     *  be skipped.
      * @returns {*}
      */
     nextTick: function(callback, digest, scope) {
@@ -11280,208 +11282,6 @@ function MdDividerDirective($mdTheming) {
 (function() {
   'use strict';
 
-  /**
-   * @ngdoc module
-   * @name material.components.fabToolbar
-   */
-  angular
-    // Declare our module
-    .module('material.components.fabToolbar', [
-      'material.core',
-      'material.components.fabShared',
-      'material.components.fabActions'
-    ])
-
-    // Register our directive
-    .directive('mdFabToolbar', MdFabToolbarDirective)
-
-    // Register our custom animations
-    .animation('.md-fab-toolbar', MdFabToolbarAnimation)
-
-    // Register a service for the animation so that we can easily inject it into unit tests
-    .service('mdFabToolbarAnimation', MdFabToolbarAnimation);
-
-  /**
-   * @ngdoc directive
-   * @name mdFabToolbar
-   * @module material.components.fabToolbar
-   *
-   * @restrict E
-   *
-   * @description
-   *
-   * The `<md-fab-toolbar>` directive is used to present a toolbar of elements (usually `<md-button>`s)
-   * for quick access to common actions when a floating action button is activated (via click or
-   * keyboard navigation).
-   *
-   * You may also easily position the trigger by applying one one of the following classes to the
-   * `<md-fab-toolbar>` element:
-   *  - `md-fab-top-left`
-   *  - `md-fab-top-right`
-   *  - `md-fab-bottom-left`
-   *  - `md-fab-bottom-right`
-   *
-   * These CSS classes use `position: absolute`, so you need to ensure that the container element
-   * also uses `position: absolute` or `position: relative` in order for them to work.
-   *
-   * @usage
-   *
-   * <hljs lang="html">
-   * <md-fab-toolbar md-direction='left'>
-   *   <md-fab-trigger>
-   *     <md-button aria-label="Add..."><md-icon md-svg-src="/img/icons/plus.svg"></md-icon></md-button>
-   *   </md-fab-trigger>
-   *
-   *   <md-toolbar>
-   *    <md-fab-actions>
-   *      <md-button aria-label="Add User">
-   *        <md-icon md-svg-src="/img/icons/user.svg"></md-icon>
-   *      </md-button>
-   *
-   *      <md-button aria-label="Add Group">
-   *        <md-icon md-svg-src="/img/icons/group.svg"></md-icon>
-   *      </md-button>
-   *    </md-fab-actions>
-   *   </md-toolbar>
-   * </md-fab-toolbar>
-   * </hljs>
-   *
-   * @param {string} md-direction From which direction you would like the toolbar items to appear
-   * relative to the trigger element. Supports `left` and `right` directions.
-   * @param {expression=} md-open Programmatically control whether or not the toolbar is visible.
-   */
-  function MdFabToolbarDirective() {
-    return {
-      restrict: 'E',
-      transclude: true,
-      template: '<div class="md-fab-toolbar-wrapper">' +
-      '  <div class="md-fab-toolbar-content" ng-transclude></div>' +
-      '</div>',
-
-      scope: {
-        direction: '@?mdDirection',
-        isOpen: '=?mdOpen'
-      },
-
-      bindToController: true,
-      controller: 'MdFabController',
-      controllerAs: 'vm',
-
-      link: link
-    };
-
-    function link(scope, element, attributes) {
-      // Add the base class for animations
-      element.addClass('md-fab-toolbar');
-
-      // Prepend the background element to the trigger's button
-      element.find('md-fab-trigger').find('button')
-        .prepend('<div class="md-fab-toolbar-background"></div>');
-    }
-  }
-
-  function MdFabToolbarAnimation() {
-
-    function runAnimation(element, className, done) {
-      // If no className was specified, don't do anything
-      if (!className) {
-        return;
-      }
-
-      var el = element[0];
-      var ctrl = element.controller('mdFabToolbar');
-
-      // Grab the relevant child elements
-      var backgroundElement = el.querySelector('.md-fab-toolbar-background');
-      var triggerElement = el.querySelector('md-fab-trigger button');
-      var toolbarElement = el.querySelector('md-toolbar');
-      var iconElement = el.querySelector('md-fab-trigger button md-icon');
-      var actions = element.find('md-fab-actions').children();
-
-      // If we have both elements, use them to position the new background
-      if (triggerElement && backgroundElement) {
-        // Get our variables
-        var color = window.getComputedStyle(triggerElement).getPropertyValue('background-color');
-        var width = el.offsetWidth;
-        var height = el.offsetHeight;
-
-        // Make it twice as big as it should be since we scale from the center
-        var scale = 2 * (width / triggerElement.offsetWidth);
-
-        // Set some basic styles no matter what animation we're doing
-        backgroundElement.style.backgroundColor = color;
-        backgroundElement.style.borderRadius = width + 'px';
-
-        // If we're open
-        if (ctrl.isOpen) {
-          // Turn on toolbar pointer events when closed
-          toolbarElement.style.pointerEvents = 'inherit';
-
-          backgroundElement.style.width = triggerElement.offsetWidth + 'px';
-          backgroundElement.style.height = triggerElement.offsetHeight + 'px';
-          backgroundElement.style.transform = 'scale(' + scale + ')';
-
-          // Set the next close animation to have the proper delays
-          backgroundElement.style.transitionDelay = '0ms';
-          iconElement && (iconElement.style.transitionDelay = '.3s');
-
-          // Apply a transition delay to actions
-          angular.forEach(actions, function(action, index) {
-            action.style.transitionDelay = (actions.length - index) * 25 + 'ms';
-          });
-        } else {
-          // Turn off toolbar pointer events when closed
-          toolbarElement.style.pointerEvents = 'none';
-
-          // Scale it back down to the trigger's size
-          backgroundElement.style.transform = 'scale(1)';
-
-          // Reset the position
-          backgroundElement.style.top = '0';
-
-          if (element.hasClass('md-right')) {
-            backgroundElement.style.left = '0';
-            backgroundElement.style.right = null;
-          }
-
-          if (element.hasClass('md-left')) {
-            backgroundElement.style.right = '0';
-            backgroundElement.style.left = null;
-          }
-
-          // Set the next open animation to have the proper delays
-          backgroundElement.style.transitionDelay = '200ms';
-          iconElement && (iconElement.style.transitionDelay = '0ms');
-
-          // Apply a transition delay to actions
-          angular.forEach(actions, function(action, index) {
-            action.style.transitionDelay = 200 + (index * 25) + 'ms';
-          });
-        }
-      }
-    }
-
-    return {
-      addClass: function(element, className, done) {
-        runAnimation(element, className, done);
-        done();
-      },
-
-      removeClass: function(element, className, done) {
-        runAnimation(element, className, done);
-        done();
-      }
-    };
-  }
-})();
-
-})();
-(function(){
-"use strict";
-
-(function() {
-  'use strict';
-
   MdFabController.$inject = ["$scope", "$element", "$animate", "$mdUtil", "$mdConstant", "$timeout"];
   angular.module('material.components.fabShared', ['material.core'])
     .controller('MdFabController', MdFabController);
@@ -12044,6 +11844,208 @@ function MdDividerDirective($mdTheming) {
       removeClass: function(element, className, done) {
         runAnimation(element);
         delayDone(done);
+      }
+    };
+  }
+})();
+
+})();
+(function(){
+"use strict";
+
+(function() {
+  'use strict';
+
+  /**
+   * @ngdoc module
+   * @name material.components.fabToolbar
+   */
+  angular
+    // Declare our module
+    .module('material.components.fabToolbar', [
+      'material.core',
+      'material.components.fabShared',
+      'material.components.fabActions'
+    ])
+
+    // Register our directive
+    .directive('mdFabToolbar', MdFabToolbarDirective)
+
+    // Register our custom animations
+    .animation('.md-fab-toolbar', MdFabToolbarAnimation)
+
+    // Register a service for the animation so that we can easily inject it into unit tests
+    .service('mdFabToolbarAnimation', MdFabToolbarAnimation);
+
+  /**
+   * @ngdoc directive
+   * @name mdFabToolbar
+   * @module material.components.fabToolbar
+   *
+   * @restrict E
+   *
+   * @description
+   *
+   * The `<md-fab-toolbar>` directive is used to present a toolbar of elements (usually `<md-button>`s)
+   * for quick access to common actions when a floating action button is activated (via click or
+   * keyboard navigation).
+   *
+   * You may also easily position the trigger by applying one one of the following classes to the
+   * `<md-fab-toolbar>` element:
+   *  - `md-fab-top-left`
+   *  - `md-fab-top-right`
+   *  - `md-fab-bottom-left`
+   *  - `md-fab-bottom-right`
+   *
+   * These CSS classes use `position: absolute`, so you need to ensure that the container element
+   * also uses `position: absolute` or `position: relative` in order for them to work.
+   *
+   * @usage
+   *
+   * <hljs lang="html">
+   * <md-fab-toolbar md-direction='left'>
+   *   <md-fab-trigger>
+   *     <md-button aria-label="Add..."><md-icon md-svg-src="/img/icons/plus.svg"></md-icon></md-button>
+   *   </md-fab-trigger>
+   *
+   *   <md-toolbar>
+   *    <md-fab-actions>
+   *      <md-button aria-label="Add User">
+   *        <md-icon md-svg-src="/img/icons/user.svg"></md-icon>
+   *      </md-button>
+   *
+   *      <md-button aria-label="Add Group">
+   *        <md-icon md-svg-src="/img/icons/group.svg"></md-icon>
+   *      </md-button>
+   *    </md-fab-actions>
+   *   </md-toolbar>
+   * </md-fab-toolbar>
+   * </hljs>
+   *
+   * @param {string} md-direction From which direction you would like the toolbar items to appear
+   * relative to the trigger element. Supports `left` and `right` directions.
+   * @param {expression=} md-open Programmatically control whether or not the toolbar is visible.
+   */
+  function MdFabToolbarDirective() {
+    return {
+      restrict: 'E',
+      transclude: true,
+      template: '<div class="md-fab-toolbar-wrapper">' +
+      '  <div class="md-fab-toolbar-content" ng-transclude></div>' +
+      '</div>',
+
+      scope: {
+        direction: '@?mdDirection',
+        isOpen: '=?mdOpen'
+      },
+
+      bindToController: true,
+      controller: 'MdFabController',
+      controllerAs: 'vm',
+
+      link: link
+    };
+
+    function link(scope, element, attributes) {
+      // Add the base class for animations
+      element.addClass('md-fab-toolbar');
+
+      // Prepend the background element to the trigger's button
+      element.find('md-fab-trigger').find('button')
+        .prepend('<div class="md-fab-toolbar-background"></div>');
+    }
+  }
+
+  function MdFabToolbarAnimation() {
+
+    function runAnimation(element, className, done) {
+      // If no className was specified, don't do anything
+      if (!className) {
+        return;
+      }
+
+      var el = element[0];
+      var ctrl = element.controller('mdFabToolbar');
+
+      // Grab the relevant child elements
+      var backgroundElement = el.querySelector('.md-fab-toolbar-background');
+      var triggerElement = el.querySelector('md-fab-trigger button');
+      var toolbarElement = el.querySelector('md-toolbar');
+      var iconElement = el.querySelector('md-fab-trigger button md-icon');
+      var actions = element.find('md-fab-actions').children();
+
+      // If we have both elements, use them to position the new background
+      if (triggerElement && backgroundElement) {
+        // Get our variables
+        var color = window.getComputedStyle(triggerElement).getPropertyValue('background-color');
+        var width = el.offsetWidth;
+        var height = el.offsetHeight;
+
+        // Make it twice as big as it should be since we scale from the center
+        var scale = 2 * (width / triggerElement.offsetWidth);
+
+        // Set some basic styles no matter what animation we're doing
+        backgroundElement.style.backgroundColor = color;
+        backgroundElement.style.borderRadius = width + 'px';
+
+        // If we're open
+        if (ctrl.isOpen) {
+          // Turn on toolbar pointer events when closed
+          toolbarElement.style.pointerEvents = 'inherit';
+
+          backgroundElement.style.width = triggerElement.offsetWidth + 'px';
+          backgroundElement.style.height = triggerElement.offsetHeight + 'px';
+          backgroundElement.style.transform = 'scale(' + scale + ')';
+
+          // Set the next close animation to have the proper delays
+          backgroundElement.style.transitionDelay = '0ms';
+          iconElement && (iconElement.style.transitionDelay = '.3s');
+
+          // Apply a transition delay to actions
+          angular.forEach(actions, function(action, index) {
+            action.style.transitionDelay = (actions.length - index) * 25 + 'ms';
+          });
+        } else {
+          // Turn off toolbar pointer events when closed
+          toolbarElement.style.pointerEvents = 'none';
+
+          // Scale it back down to the trigger's size
+          backgroundElement.style.transform = 'scale(1)';
+
+          // Reset the position
+          backgroundElement.style.top = '0';
+
+          if (element.hasClass('md-right')) {
+            backgroundElement.style.left = '0';
+            backgroundElement.style.right = null;
+          }
+
+          if (element.hasClass('md-left')) {
+            backgroundElement.style.right = '0';
+            backgroundElement.style.left = null;
+          }
+
+          // Set the next open animation to have the proper delays
+          backgroundElement.style.transitionDelay = '200ms';
+          iconElement && (iconElement.style.transitionDelay = '0ms');
+
+          // Apply a transition delay to actions
+          angular.forEach(actions, function(action, index) {
+            action.style.transitionDelay = 200 + (index * 25) + 'ms';
+          });
+        }
+      }
+    }
+
+    return {
+      addClass: function(element, className, done) {
+        runAnimation(element, className, done);
+        done();
+      },
+
+      removeClass: function(element, className, done) {
+        runAnimation(element, className, done);
+        done();
       }
     };
   }
@@ -24698,8 +24700,8 @@ function virtualRepeatContainerTemplate($element) {
 var NUM_EXTRA = 3;
 
 /** @ngInject */
-function VirtualRepeatContainerController($$rAF, $mdUtil, $mdConstant, $parse, $rootScope, $window, $scope,
-                                          $element, $attrs) {
+function VirtualRepeatContainerController($$rAF, $mdUtil, $mdConstant, $parse, $rootScope, $window,
+                                          $scope, $element, $attrs) {
   this.$rootScope = $rootScope;
   this.$scope = $scope;
   this.$element = $element;
@@ -24843,7 +24845,10 @@ VirtualRepeatContainerController.prototype.getScrollSize = function() {
   return this.scrollSize;
 };
 
-
+/**
+ * @returns {string} either width or height dimension
+ * @private
+ */
 VirtualRepeatContainerController.prototype.getDimensionName_ = function() {
   return this.isHorizontal() ? 'width' : 'height';
 };
@@ -24980,7 +24985,7 @@ VirtualRepeatContainerController.prototype.resetScroll = function() {
 
 
 VirtualRepeatContainerController.prototype.handleScroll_ = function() {
-  var ltr = document.dir != 'rtl' && document.body.dir != 'rtl';
+  var ltr = document.dir !== 'rtl' && document.body.dir !== 'rtl';
   if(!ltr && !this.maxSize) {
     this.scroller.scrollLeft = this.scrollSize;
     this.maxSize = this.scroller.scrollLeft;
@@ -25083,8 +25088,8 @@ VirtualRepeatContainerController.prototype.handleScroll_ = function() {
  * </md-virtual-repeat-container>
  * </hljs>
  *
- * @param {expression=} md-extra-name Evaluates to an additional name to which the current iterated item
- *   can be assigned on the repeated scope (needed for use in `md-autocomplete`).
+ * @param {expression=} md-extra-name Evaluates to an additional name to which the current iterated
+ *   item can be assigned on the repeated scope (needed for use in `md-autocomplete`).
  * @param {number=} md-item-size Optional height or width of the repeated elements (which **must be
  *   identical for each element**). Virtual repeat will attempt to read the size from the DOM,
  *   if missing, but it still assumes that all repeated nodes have the **same height**
@@ -25094,8 +25099,8 @@ VirtualRepeatContainerController.prototype.handleScroll_ = function() {
  *
  *   **NOTE:** This object **must** implement the following interface with two methods:
  *
- *   - `getItemAtIndex` - `{function(index): Object}`: The item at that `index` or `null` if it is not
- *     yet loaded (it should start downloading the item in that case).
+ *   - `getItemAtIndex` - `{function(index): Object}`: The item at that `index` or `null` if it is
+ *     not yet loaded (it should start downloading the item in that case).
  *   - `getLength` - `{function(): number}`: The data length to which the repeater container
  *     should be sized. Ideally, when the count is known, this method should return it.
  *     Otherwise, return a higher number than the currently loaded items to produce an
@@ -25252,7 +25257,7 @@ VirtualRepeatController.prototype.readItemSize_ = function() {
 /**
  * Returns the user-specified repeat list, transforming it into an array-like
  * object in the case of infinite scroll/dynamic load mode.
- * @param {!angular.Scope} The scope.
+ * @param {!angular.Scope} scope The scope.
  * @return {!Array|!Object} An array or array-like object for iteration.
  */
 VirtualRepeatController.prototype.repeatListExpression_ = function(scope) {
@@ -25338,8 +25343,8 @@ VirtualRepeatController.prototype.getItemCount = function() {
 /**
  * Updates the order and visible offset of repeated blocks in response to scrolling
  * or updates to `items`.
- * @param items {Array} visible elements
- * @param oldItems {Array} previously visible elements
+ * @param {Array} items visible elements
+ * @param {Array} oldItems previously visible elements
  * @private
  */
 VirtualRepeatController.prototype.virtualRepeatUpdate_ = function(items, oldItems) {
@@ -25559,13 +25564,15 @@ VirtualRepeatController.prototype.updateIndexes_ = function() {
 
 /**
  * This VirtualRepeatModelArrayLike class enforces the interface requirements
- * for infinite scrolling within a mdVirtualRepeatContainer. An object with this
- * interface must implement the following interface with two (2) methods:
+ * for infinite scrolling within a mdVirtualRepeatContainer.
+ *
+ * @param {Object} model An object with this interface must implement the following interface with
+ * two (2) methods:
  *
  * getItemAtIndex: function(index) -> item at that index or null if it is not yet
  *     loaded (It should start downloading the item in that case).
  *
- * getLength: function() -> number The data legnth to which the repeater container
+ * getLength: function() -> number The data length to which the repeater container
  *     should be sized. Ideally, when the count is known, this method should return it.
  *     Otherwise, return a higher number than the currently loaded items to produce an
  *     infinite-scroll behavior.
@@ -25583,14 +25590,17 @@ VirtualRepeatController.prototype.updateIndexes_ = function() {
 function VirtualRepeatModelArrayLike(model) {
   if (!angular.isFunction(model.getItemAtIndex) ||
       !angular.isFunction(model.getLength)) {
-    throw Error('When md-on-demand is enabled, the Object passed to md-virtual-repeat must implement ' +
-        'functions getItemAtIndex() and getLength() ');
+    throw Error('When md-on-demand is enabled, the Object passed to md-virtual-repeat must ' +
+        'implement functions getItemAtIndex() and getLength().');
   }
 
   this.model = model;
 }
 
-
+/**
+ * @param {number} start
+ * @param {number} end
+ */
 VirtualRepeatModelArrayLike.prototype.$$includeIndexes = function(start, end) {
   for (var i = start; i < end; i++) {
     if (!this.hasOwnProperty(i)) {

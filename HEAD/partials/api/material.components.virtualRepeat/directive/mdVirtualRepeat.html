@@ -120,8 +120,8 @@ in another digest.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>Evaluates to an additional name to which the current iterated item
-  can be assigned on the repeated scope (needed for use in <code>md-autocomplete</code>).</p>
+          <p>Evaluates to an additional name to which the current iterated
+  item can be assigned on the repeated scope (needed for use in <code>md-autocomplete</code>).</p>
 
           
         </td>
@@ -164,8 +164,8 @@ in another digest.</p>
   that can fetch rows rather than an array.</p>
 <p>  <strong>NOTE:</strong> This object <strong>must</strong> implement the following interface with two methods:</p>
 <ul>
-<li><code>getItemAtIndex</code> - <code>{function(index): Object}</code>: The item at that <code>index</code> or <code>null</code> if it is not
-yet loaded (it should start downloading the item in that case).</li>
+<li><code>getItemAtIndex</code> - <code>{function(index): Object}</code>: The item at that <code>index</code> or <code>null</code> if it is
+not yet loaded (it should start downloading the item in that case).</li>
 <li><code>getLength</code> - <code>{function(): number}</code>: The data length to which the repeater container
 should be sized. Ideally, when the count is known, this method should return it.
 Otherwise, return a higher number than the currently loaded items to produce an
