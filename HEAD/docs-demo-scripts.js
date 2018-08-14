@@ -1,109 +1,3 @@
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/baseline-share-24px.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
 (function () {
   'use strict';
   angular
@@ -445,6 +339,112 @@ angular.module('buttonsDemoBasic', ['ngMaterial'])
     }
   }
 })();
+
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/baseline-share-24px.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
+
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
 
 
 angular.module('cardDemo1', ['ngMaterial'])
@@ -1907,51 +1907,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
 });
 
 angular
-  .module('menuBarDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  })
-  .filter('keyboardShortcut', function($window) {
-    return function(str) {
-      if (!str) return;
-      var keys = str.split('-');
-      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
-
-      var separator = (!isOSX || keys.length > 2) ? '+' : '';
-
-      var abbreviations = {
-        M: isOSX ? '⌘' : 'Ctrl',
-        A: isOSX ? 'Option' : 'Alt',
-        S: 'Shift'
-      };
-
-      return keys.map(function(key, index) {
-        var last = index === keys.length - 1;
-        return last ? key : abbreviations[key];
-      }).join(separator);
-    };
-  })
-  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
-    this.settings = {
-      printLayout: true,
-      showRuler: true,
-      showSpellingSuggestions: true,
-      presentationMode: 'edit'
-    };
-
-    this.sampleAction = function(name, ev) {
-      $mdDialog.show($mdDialog.alert()
-        .title(name)
-        .textContent('You triggered the "' + name + '" action')
-        .ok('Great')
-        .targetEvent(ev)
-      );
-    };
-  });
-
-
-angular
   .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
   .config(function ($mdIconProvider) {
     $mdIconProvider.iconSet("call", 'img/icons/sets/communication-icons.svg', 24);
@@ -2357,6 +2312,51 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
     };
   }
 })();
+
+angular
+  .module('menuBarDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+  .filter('keyboardShortcut', function($window) {
+    return function(str) {
+      if (!str) return;
+      var keys = str.split('-');
+      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
+
+      var separator = (!isOSX || keys.length > 2) ? '+' : '';
+
+      var abbreviations = {
+        M: isOSX ? '⌘' : 'Ctrl',
+        A: isOSX ? 'Option' : 'Alt',
+        S: 'Shift'
+      };
+
+      return keys.map(function(key, index) {
+        var last = index === keys.length - 1;
+        return last ? key : abbreviations[key];
+      }).join(separator);
+    };
+  })
+  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
+    this.settings = {
+      printLayout: true,
+      showRuler: true,
+      showSpellingSuggestions: true,
+      presentationMode: 'edit'
+    };
+
+    this.sampleAction = function(name, ev) {
+      $mdDialog.show($mdDialog.alert()
+        .title(name)
+        .textContent('You triggered the "' + name + '" action')
+        .ok('Great')
+        .targetEvent(ev)
+      );
+    };
+  });
+
 
 (function() {
 'use strict';
