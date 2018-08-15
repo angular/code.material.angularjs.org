@@ -25822,6 +25822,9 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
       if ($scope.autofocus) {
         $element.on('focus', focusInputElement);
       }
+      if ($scope.ariaDescribedBy) {
+        elements.input.setAttribute('aria-describedby', $scope.ariaDescribedBy);
+      }
     });
   }
 
@@ -26897,6 +26900,10 @@ MdAutocomplete.$inject = ["$$mdSvgRegistry"];angular
  *     as much as possible.
  * @param {string=} md-dropdown-position Overrides the default dropdown position. Options: `top`,
  *    `bottom`.
+ * @param {string=} aria-describedby A space-separated list of element IDs. This should contain the
+ *     IDs of any elements that describe this autocomplete. Screen readers will read the content of
+ *     these elements at the end of announcing that the autocomplete has been selected and
+ *     describing its current state. The descriptive elements do not need to be visible on the page.
  * @param {string=} md-selected-message Attribute to specify the text that the screen reader will
  *    announce after a value is selected. Default is: "selected". If `Alaska` is selected in the
  *    options panel, it will read "Alaska selected". You will want to override this when your app
@@ -27026,6 +27033,7 @@ function MdAutocomplete ($$mdSvgRegistry) {
       itemsExpr:          '@mdItems',
       itemText:           '&mdItemText',
       placeholder:        '@placeholder',
+      ariaDescribedBy:    '@?ariaDescribedby',
       noCache:            '=?mdNoCache',
       requireMatch:       '=?mdRequireMatch',
       selectOnMatch:      '=?mdSelectOnMatch',
