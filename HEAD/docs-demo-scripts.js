@@ -724,24 +724,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('chipsCustomSeparatorDemo', ['ngMaterial'])
-      .controller('CustomSeparatorCtrl', DemoCtrl);
-
-  function DemoCtrl ($mdConstant) {
-    // Use common key codes found in $mdConstant.KEY_CODE...
-    this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
-    this.tags = [];
-
-    // Any key code can be used to create a custom separator
-    var semicolon = 186;
-    this.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
-    this.contacts = ['test@example.com'];
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('chipsCustomInputDemo', ['ngMaterial'])
       .controller('CustomInputDemoCtrl', DemoCtrl);
 
@@ -824,6 +806,24 @@ angular.module('checkboxDemo2', ['ngMaterial'])
         return veg;
       });
     }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsCustomSeparatorDemo', ['ngMaterial'])
+      .controller('CustomSeparatorCtrl', DemoCtrl);
+
+  function DemoCtrl ($mdConstant) {
+    // Use common key codes found in $mdConstant.KEY_CODE...
+    this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+    this.tags = [];
+
+    // Any key code can be used to create a custom separator
+    var semicolon = 186;
+    this.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
+    this.contacts = ['test@example.com'];
   }
 })();
 
@@ -1291,6 +1291,24 @@ angular.module('dividerDemo1', ['ngMaterial'])
 (function() {
   'use strict';
 
+  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
+    .controller('DemoCtrl', function() {
+      this.topDirections = ['left', 'up'];
+      this.bottomDirections = ['down', 'right'];
+
+      this.isOpen = false;
+
+      this.availableModes = ['md-fling', 'md-scale'];
+      this.selectedMode = 'md-fling';
+
+      this.availableDirections = ['up', 'down', 'left', 'right'];
+      this.selectedDirection = 'up';
+    });
+})();
+
+(function() {
+  'use strict';
+
   angular.module('fabSpeedDialDemoMoreOptions', ['ngMaterial'])
     .controller('DemoCtrl', function($scope, $mdDialog, $timeout) {
       var self = this;
@@ -1338,24 +1356,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
           targetEvent: $event
         });
       };
-    });
-})();
-
-(function() {
-  'use strict';
-
-  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
-    .controller('DemoCtrl', function() {
-      this.topDirections = ['left', 'up'];
-      this.bottomDirections = ['down', 'right'];
-
-      this.isOpen = false;
-
-      this.availableModes = ['md-fling', 'md-scale'];
-      this.selectedMode = 'md-fling';
-
-      this.availableDirections = ['up', 'down', 'left', 'right'];
-      this.selectedDirection = 'up';
     });
 })();
 
@@ -1853,6 +1853,13 @@ angular
   });
 
 angular
+  .module('menuDemoCustomTrigger', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
+  });
+
+angular
   .module('menuDemoPosition', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -1898,13 +1905,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
     );
   };
 });
-
-angular
-  .module('menuDemoCustomTrigger', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
-  });
 
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
@@ -2041,6 +2041,181 @@ angular
       $scope.status = "Goto " + page;
     };
   }
+})();
+
+(function() {
+'use strict';
+
+angular.module('panelDemo', ['ngMaterial'])
+    .controller('BasicDemoCtrl', BasicDemoCtrl)
+    .controller('PanelDialogCtrl', PanelDialogCtrl);
+
+
+function BasicDemoCtrl($mdPanel) {
+  this._mdPanel = $mdPanel;
+
+  this.desserts = [
+    'Apple Pie',
+    'Donut',
+    'Fudge',
+    'Cupcake',
+    'Ice Cream',
+    'Tiramisu'
+  ];
+
+  this.selected = {favoriteDessert: 'Donut'};
+  this.disableParentScroll = false;
+}
+
+
+BasicDemoCtrl.prototype.showDialog = function() {
+  var position = this._mdPanel.newPanelPosition()
+      .absolute()
+      .center();
+
+  var config = {
+    attachTo: angular.element(document.body),
+    controller: PanelDialogCtrl,
+    controllerAs: 'ctrl',
+    disableParentScroll: this.disableParentScroll,
+    templateUrl: 'panel.tmpl.html',
+    hasBackdrop: true,
+    panelClass: 'demo-dialog-example',
+    position: position,
+    trapFocus: true,
+    zIndex: 150,
+    clickOutsideToClose: true,
+    escapeToClose: true,
+    focusOnOpen: true
+  };
+
+  this._mdPanel.open(config);
+};
+
+
+BasicDemoCtrl.prototype.showMenu = function(ev) {
+  var position = this._mdPanel.newPanelPosition()
+      .relativeTo('.demo-menu-open-button')
+      .addPanelPosition(this._mdPanel.xPosition.ALIGN_START, this._mdPanel.yPosition.BELOW);
+
+  var config = {
+    attachTo: angular.element(document.body),
+    controller: PanelMenuCtrl,
+    controllerAs: 'ctrl',
+    template:
+        '<div class="demo-menu-example" ' +
+        '     aria-label="Select your favorite dessert." ' +
+        '     role="listbox">' +
+        '  <div class="demo-menu-item" ' +
+        '       ng-class="{selected : dessert == ctrl.favoriteDessert}" ' +
+        '       aria-selected="{{dessert == ctrl.favoriteDessert}}" ' +
+        '       tabindex="-1" ' +
+        '       role="option" ' +
+        '       ng-repeat="dessert in ctrl.desserts" ' +
+        '       ng-click="ctrl.selectDessert(dessert)"' +
+        '       ng-keydown="ctrl.onKeydown($event, dessert)">' +
+        '    {{ dessert }} ' +
+        '  </div>' +
+        '</div>',
+    panelClass: 'demo-menu-example',
+    position: position,
+    locals: {
+      'selected': this.selected,
+      'desserts': this.desserts
+    },
+    openFrom: ev,
+    clickOutsideToClose: true,
+    escapeToClose: true,
+    focusOnOpen: false,
+    zIndex: 2
+  };
+
+  this._mdPanel.open(config);
+};
+
+
+function PanelDialogCtrl(mdPanelRef) {
+  this._mdPanelRef = mdPanelRef;
+}
+
+
+PanelDialogCtrl.prototype.closeDialog = function() {
+  var panelRef = this._mdPanelRef;
+
+  panelRef && panelRef.close().then(function() {
+    angular.element(document.querySelector('.demo-dialog-open-button')).focus();
+    panelRef.destroy();
+  });
+};
+
+
+
+function PanelMenuCtrl(mdPanelRef, $timeout) {
+  this._mdPanelRef = mdPanelRef;
+  this.favoriteDessert = this.selected.favoriteDessert;
+  $timeout(function() {
+    var selected = document.querySelector('.demo-menu-item.selected');
+    if (selected) {
+      angular.element(selected).focus();
+    } else {
+      angular.element(document.querySelectorAll('.demo-menu-item')[0]).focus();
+    }
+  });
+}
+
+
+PanelMenuCtrl.prototype.selectDessert = function(dessert) {
+  this.selected.favoriteDessert = dessert;
+  this._mdPanelRef && this._mdPanelRef.close().then(function() {
+    angular.element(document.querySelector('.demo-menu-open-button')).focus();
+  });
+};
+
+
+PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
+  var handled, els, index, prevIndex, nextIndex;
+  switch ($event.which) {
+    case 38: // Up Arrow.
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      prevIndex = (index + els.length - 1) % els.length;
+      els[prevIndex].focus();
+      handled = true;
+      break;
+
+    case 40: // Down Arrow.
+      els = document.querySelectorAll('.demo-menu-item');
+      index = indexOf(els, document.activeElement);
+      nextIndex = (index + 1) % els.length;
+      els[nextIndex].focus();
+      handled = true;
+      break;
+
+    case 13: // Enter.
+    case 32: // Space.
+      this.selectDessert(dessert);
+      handled = true;
+      break;
+
+    case 9: // Tab.
+      this._mdPanelRef && this._mdPanelRef.close();
+  }
+
+  if (handled) {
+    $event.preventDefault();
+    $event.stopImmediatePropagation();
+  }
+
+  function indexOf(nodeList, element) {
+    for (var item, i = 0; item = nodeList[i]; i++) {
+      if (item === element) {
+        return i;
+      }
+    }
+    return -1;
+  }
+};
+
 })();
 
 (function() {
@@ -2799,181 +2974,6 @@ angular.module('sliderDemo1', ['ngMaterial'])
     $scope.isDisabled = true;
   });
 
-(function() {
-'use strict';
-
-angular.module('panelDemo', ['ngMaterial'])
-    .controller('BasicDemoCtrl', BasicDemoCtrl)
-    .controller('PanelDialogCtrl', PanelDialogCtrl);
-
-
-function BasicDemoCtrl($mdPanel) {
-  this._mdPanel = $mdPanel;
-
-  this.desserts = [
-    'Apple Pie',
-    'Donut',
-    'Fudge',
-    'Cupcake',
-    'Ice Cream',
-    'Tiramisu'
-  ];
-
-  this.selected = {favoriteDessert: 'Donut'};
-  this.disableParentScroll = false;
-}
-
-
-BasicDemoCtrl.prototype.showDialog = function() {
-  var position = this._mdPanel.newPanelPosition()
-      .absolute()
-      .center();
-
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: PanelDialogCtrl,
-    controllerAs: 'ctrl',
-    disableParentScroll: this.disableParentScroll,
-    templateUrl: 'panel.tmpl.html',
-    hasBackdrop: true,
-    panelClass: 'demo-dialog-example',
-    position: position,
-    trapFocus: true,
-    zIndex: 150,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: true
-  };
-
-  this._mdPanel.open(config);
-};
-
-
-BasicDemoCtrl.prototype.showMenu = function(ev) {
-  var position = this._mdPanel.newPanelPosition()
-      .relativeTo('.demo-menu-open-button')
-      .addPanelPosition(this._mdPanel.xPosition.ALIGN_START, this._mdPanel.yPosition.BELOW);
-
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: PanelMenuCtrl,
-    controllerAs: 'ctrl',
-    template:
-        '<div class="demo-menu-example" ' +
-        '     aria-label="Select your favorite dessert." ' +
-        '     role="listbox">' +
-        '  <div class="demo-menu-item" ' +
-        '       ng-class="{selected : dessert == ctrl.favoriteDessert}" ' +
-        '       aria-selected="{{dessert == ctrl.favoriteDessert}}" ' +
-        '       tabindex="-1" ' +
-        '       role="option" ' +
-        '       ng-repeat="dessert in ctrl.desserts" ' +
-        '       ng-click="ctrl.selectDessert(dessert)"' +
-        '       ng-keydown="ctrl.onKeydown($event, dessert)">' +
-        '    {{ dessert }} ' +
-        '  </div>' +
-        '</div>',
-    panelClass: 'demo-menu-example',
-    position: position,
-    locals: {
-      'selected': this.selected,
-      'desserts': this.desserts
-    },
-    openFrom: ev,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: false,
-    zIndex: 2
-  };
-
-  this._mdPanel.open(config);
-};
-
-
-function PanelDialogCtrl(mdPanelRef) {
-  this._mdPanelRef = mdPanelRef;
-}
-
-
-PanelDialogCtrl.prototype.closeDialog = function() {
-  var panelRef = this._mdPanelRef;
-
-  panelRef && panelRef.close().then(function() {
-    angular.element(document.querySelector('.demo-dialog-open-button')).focus();
-    panelRef.destroy();
-  });
-};
-
-
-
-function PanelMenuCtrl(mdPanelRef, $timeout) {
-  this._mdPanelRef = mdPanelRef;
-  this.favoriteDessert = this.selected.favoriteDessert;
-  $timeout(function() {
-    var selected = document.querySelector('.demo-menu-item.selected');
-    if (selected) {
-      angular.element(selected).focus();
-    } else {
-      angular.element(document.querySelectorAll('.demo-menu-item')[0]).focus();
-    }
-  });
-}
-
-
-PanelMenuCtrl.prototype.selectDessert = function(dessert) {
-  this.selected.favoriteDessert = dessert;
-  this._mdPanelRef && this._mdPanelRef.close().then(function() {
-    angular.element(document.querySelector('.demo-menu-open-button')).focus();
-  });
-};
-
-
-PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
-  var handled, els, index, prevIndex, nextIndex;
-  switch ($event.which) {
-    case 38: // Up Arrow.
-      els = document.querySelectorAll('.demo-menu-item');
-      index = indexOf(els, document.activeElement);
-      prevIndex = (index + els.length - 1) % els.length;
-      els[prevIndex].focus();
-      handled = true;
-      break;
-
-    case 40: // Down Arrow.
-      els = document.querySelectorAll('.demo-menu-item');
-      index = indexOf(els, document.activeElement);
-      nextIndex = (index + 1) % els.length;
-      els[nextIndex].focus();
-      handled = true;
-      break;
-
-    case 13: // Enter.
-    case 32: // Space.
-      this.selectDessert(dessert);
-      handled = true;
-      break;
-
-    case 9: // Tab.
-      this._mdPanelRef && this._mdPanelRef.close();
-  }
-
-  if (handled) {
-    $event.preventDefault();
-    $event.stopImmediatePropagation();
-  }
-
-  function indexOf(nodeList, element) {
-    for (var item, i = 0; item = nodeList[i]; i++) {
-      if (item === element) {
-        return i;
-      }
-    }
-    return -1;
-  }
-};
-
-})();
-
 
 angular.module('sliderDemo2', ['ngMaterial'])
 
@@ -3125,6 +3125,58 @@ angular.module('switchDemo1', ['ngMaterial'])
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
+  angular
+      .module('tabsDemoDynamicTabs', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ($scope, $log) {
+    var tabs = [
+        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
+        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
+        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
+        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
+        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
+        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
+        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
+        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
+        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
+        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
+        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
+      ],
+      selected = null,
+      previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old){
+      previous = selected;
+      selected = tabs[current];
+      if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
+      if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
+    });
+    $scope.addTab = function (title, view) {
+      view = view || title + " Content View";
+      tabs.push({ title: title, content: view, disabled: false});
+    };
+    $scope.removeTab = function (tab) {
+      var index = tabs.indexOf(tab);
+      tabs.splice(index, 1);
+    };
+  }
+})();
+
+
+(function () {
+  'use strict';
 
   angular
       .module('tabsDemoIconTabs', ['ngMaterial'] )
@@ -3217,58 +3269,6 @@ angular.module('toastDemo1', ['ngMaterial'])
     $mdToast.hide();
   };
 });
-
-(function () {
-  'use strict';
-  angular
-      .module('tabsDemoDynamicTabs', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ($scope, $log) {
-    var tabs = [
-        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
-        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
-        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
-        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
-        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
-        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
-        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
-        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
-        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
-        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
-        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
-      ],
-      selected = null,
-      previous = null;
-    $scope.tabs = tabs;
-    $scope.selectedIndex = 0;
-    $scope.$watch('selectedIndex', function(current, old){
-      previous = selected;
-      selected = tabs[current];
-      if ( old + 1 && (old != current)) $log.debug('Goodbye ' + previous.title + '!');
-      if ( current + 1 )                $log.debug('Hello ' + selected.title + '!');
-    });
-    $scope.addTab = function (title, view) {
-      view = view || title + " Content View";
-      tabs.push({ title: title, content: view, disabled: false});
-    };
-    $scope.removeTab = function (tab) {
-      var index = tabs.indexOf(tab);
-      tabs.splice(index, 1);
-    };
-  }
-})();
-
 
 (function() {
 
