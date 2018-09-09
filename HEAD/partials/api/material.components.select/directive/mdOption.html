@@ -1,0 +1,221 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Displays an option in a <a ng-href="/api/directive/mdSelect">md-select</a> box&#39;s
+dropdown menu. Options can be grouped using
+<a ng-href="/api/directive/mdOptgroup">md-optgroup</a> element directives.</p>
+<h3 id="option-params">Option Params</h3>
+<p>When applied, <code>md-option-empty</code> will mark the option as &quot;empty&quot; allowing the option to clear the
+select and put it back in it&#39;s default state. You may supply this attribute on any option you
+wish, however, it is automatically applied to an option whose <code>value</code> or <code>ng-value</code> are not
+defined.</p>
+<p><strong>Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option&gt;</code></li>
+<li><code>&lt;md-option value&gt;</code></li>
+<li><code>&lt;md-option value=&quot;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&quot;&gt;</code></li>
+</ul>
+<p><strong>NOT Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option ng-value=&quot;1&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&#39;&#39;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;undefined&quot;&gt;</code></li>
+<li><code>&lt;md-option value=&quot;undefined&quot;&gt;</code> (this evaluates to the string <code>&quot;undefined&quot;</code>)</li>
+<li><code ng-non-bindable>&lt;md-option ng-value=&quot;{{someValueThatMightBeUndefined}}&quot;&gt;</code></li>
+</ul>
+<p><strong>Note:</strong> A value of <code>undefined</code> <strong><em>is considered a valid value</em></strong> (and does not auto-apply this
+attribute) since you may wish this to be your &quot;Not Available&quot; or &quot;None&quot; option.</p>
+<p><strong>Note:</strong> Using the
+<a ng-href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/option#Attributes">value</a>
+attribute from the <code>&lt;option&gt;</code> element (as opposed to the <code>&lt;md-option&gt;</code> element&#39;s
+<a ng-href="https://docs.angularjs.org/api/ng/directive/ngValue">ng-value</a>) always evaluates
+to a <code>string</code>. This means that <code>value=&quot;null&quot;</code> will cause a check against <code>myValue != &quot;null&quot;</code>
+rather than <code>!myValue</code> or <code>myValue != null</code>.
+Importantly, this also applies to <code>number</code> values. <code>value=&quot;1&quot;</code> will not match up with an
+<code>ng-model</code> like <code>$scope.selectedValue = 1</code>. Use <code>ng-value=&quot;1&quot;</code> in this case and other cases where
+you have values that are not strings.</p>
+<p><strong>Note:</strong> Please see our <a ng-href="/api/directive/mdSelect#selects-and-object-equality">docs on
+using objects with <code>md-select</code></a> for additional guidance on using the <code>trackBy</code> option with
+<code>ng-model-options</code>.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-select ng-model="currentState" placeholder="Select a state">
+  <md-option ng-value="AL">Alabama</md-option>
+  <md-option ng-value="AK">Alaska</md-option>
+  <md-option ng-value="FL">Florida</md-option>
+</md-select>
+</hljs>
+
+<p>With <code>ng-repeat</code>:</p>
+<hljs lang="html">
+<md-select ng-model="currentState" placeholder="Select a state">
+  <md-option ng-value="state" ng-repeat="state in states">{{ state }}</md-option>
+</md-select>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-value
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Binds the given expression to the value of the option.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          value
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Attribute to set the value of the option.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-repeat
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p><a ng-href="https://docs.angularjs.org/api/ng/directive/ngRepeat">
+ AngularJS directive</a> that instantiates a template once per item from a collection.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-option-empty
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If the attribute exists, mark the option as &quot;empty&quot; allowing
+the option to clear the select and put it back in it&#39;s default state. You may supply this
+attribute on any option you wish, however, it is automatically applied to an option whose <code>value</code>
+or <code>ng-value</code> are not defined.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          tabindex
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-number">number</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-number">number</code></td>
+        <td class="description">
+          <p>The <code>tabindex</code> of the option. Defaults to <code>0</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
