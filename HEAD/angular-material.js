@@ -36843,7 +36843,7 @@ function MdTabsController ($scope, $element, $window, $mdConstant, $mdTabInkRipp
 
   /**
    * Forces the pagination to move the focused tab into view.
-   * @param {number} index of tab to have its offset adjusted
+   * @param {number=} index of tab to have its offset adjusted
    */
   function adjustOffset (index) {
     var elements = getElements();
