@@ -115,9 +115,11 @@ user can request the preset by passing it as the first parameter in the
   }
 
   function PanelMenuCtrl(mdPanelRef) {
-    // The controller is provided with an import named &#39;mdPanelRef&#39;
+    // &#39;mdPanelRef&#39; is injected in the controller.
     this.closeMenu = function() {
-      mdPanelRef &amp;&amp; mdPanelRef.close();
+      if (mdPanelRef) {
+        mdPanelRef.close();
+      }
     };
   }
 })(angular);

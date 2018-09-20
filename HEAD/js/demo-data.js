@@ -3062,8 +3062,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "toastDemo1",
-          "module": "toastDemo1",
+          "name": "toastBasicDemo",
+          "module": "toastBasicDemo",
           "dependencies": [
             "ngMaterial"
           ]
@@ -3091,14 +3091,21 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "toastDemo2",
-          "module": "toastDemo2",
+          "name": "toastCustomDemo",
+          "module": "toastCustomDemo",
           "dependencies": [
             "ngMaterial"
           ]
         },
         "id": "toastdemoCustomUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/toast/demoCustomUsage/style.css"
+          }
+        ],
         "html": [
           {
             "name": "toast-template.html",

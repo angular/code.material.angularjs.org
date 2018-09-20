@@ -13,15 +13,18 @@
 
 
 <div class="api-profile-description">
-  <p><code>&lt;md-input-container&gt;</code> is the parent of any input or textarea element.</p>
-<p>Input and textarea elements will not behave properly unless the md-input-container
-parent is provided.</p>
-<p>A single <code>&lt;md-input-container&gt;</code> should contain only one <code>&lt;input&gt;</code> element, otherwise it will throw an error.</p>
-<p><b>Exception:</b> Hidden inputs (<code>&lt;input type=&quot;hidden&quot; /&gt;</code>) are ignored and will not throw an error, so
-you may combine these with other inputs.</p>
-<p><b>Note:</b> When using <code>ngMessages</code> with your input element, make sure the message and container elements
-are <em>block</em> elements, otherwise animations applied to the messages will not look as intended. Either use a <code>div</code> and
-apply the <code>ng-message</code> and <code>ng-messages</code> classes respectively, or use the <code>md-block</code> class on your element.</p>
+  <p><code>&lt;md-input-container&gt;</code> is the parent of any input or textarea element. It can also optionally
+wrap <code>&lt;md-select&gt;</code> elements so that they will be formatted for use in a form.</p>
+<p>Input and textarea elements will not behave properly unless the md-input-container parent is
+provided.</p>
+<p>A single <code>&lt;md-input-container&gt;</code> should contain only one <code>&lt;input&gt;</code> or <code>&lt;md-select&gt;</code> element,
+otherwise it will throw an error.</p>
+<p><b>Exception:</b> Hidden inputs (<code>&lt;input type=&quot;hidden&quot; /&gt;</code>) are ignored and will not throw an
+error, so you may combine these with other inputs.</p>
+<p><b>Note:</b> When using <code>ngMessages</code> with your input element, make sure the message and container
+elements are <em>block</em> elements, otherwise animations applied to the messages will not look as
+intended. Either use a <code>div</code> and apply the <code>ng-message</code> and <code>ng-messages</code> classes respectively,
+or use the <code>md-block</code> class on your element.</p>
 
 </div>
 
@@ -36,7 +39,6 @@ apply the <code>ng-message</code> and <code>ng-messages</code> classes respectiv
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-
 <md-input-container>
   <label>Username</label>
   <input type="text" ng-model="user.name">
@@ -47,6 +49,11 @@ apply the <code>ng-message</code> and <code>ng-messages</code> classes respectiv
   <textarea ng-model="user.description"></textarea>
 </md-input-container>
 
+<md-input-container>
+  <md-select ng-model="user.state" placeholder="State of Residence">
+    <md-option ng-value="state" ng-repeat="state in states">{{ state }}</md-option>
+  </md-select>
+</md-input-container>
 </hljs>
 
 <p><h3>When disabling floating labels</h3></p>
@@ -55,7 +62,6 @@ apply the <code>ng-message</code> and <code>ng-messages</code> classes respectiv
 <md-input-container md-no-float>
   <input type="text" placeholder="Non-Floating Label">
 </md-input-container>
-
 </hljs>
   
   </section>
@@ -80,18 +86,24 @@ apply the <code>ng-message</code> and <code>ng-messages</code> classes respectiv
   
   
     
+  
+    
+  
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* md-is-error</b>
+          md-is-error
           
           <span hide show-sm>
-</span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-</td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>{expression=} When the given expression evaluates to true, the input container
-  will go into error state. Defaults to erroring if the input has been touched and is invalid.</p>
+          <p>When the given expression evaluates to <code>true</code>, the input
+  container will go into the error state. Defaults to erroring if the input has been touched and
+  is invalid.</p>
 
           
         </td>
@@ -101,25 +113,20 @@ apply the <code>ng-message</code> and <code>ng-messages</code> classes respectiv
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* md-no-float</b>
+          md-no-float
           
           <span hide show-sm>
-</span>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
         </td>
         <td style="white-space: nowrap;">
-</td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>{boolean=} When present, <code>placeholder</code> attributes on the input will not be converted to floating
-  labels.</p>
+          <p>When present, <code>placeholder</code> attributes on the input will not be
+  converted to floating labels.</p>
 
           
         </td>
       </tr>
-    
-  
-  
-    
-  
     
   
 
