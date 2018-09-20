@@ -13,13 +13,36 @@
 
 
 <div class="api-profile-description">
-  <p>Displays a select box, bound to an <code>ng-model</code>. Selectable options are defined using
-the <a ng-href="/api/directive/mdOption">md-option</a> element directive. Options can be grouped
-using the <a ng-href="/api/directive/mdOptgroup">md-optgroup</a> element directive.</p>
+  <p>Displays a select box, bound to an ng-model.</p>
 <p>When the select is required and uses a floating label, then the label will automatically contain
 an asterisk (<code>*</code>). This behavior can be disabled by using the <code>md-no-asterisk</code> attribute.</p>
 <p>By default, the select will display with an underline to match other form elements. This can be
 disabled by applying the <code>md-no-underline</code> CSS class.</p>
+<h3 id="option-params">Option Params</h3>
+<p>When applied, <code>md-option-empty</code> will mark the option as &quot;empty&quot; allowing the option to  clear the
+select and put it back in it&#39;s default state. You may supply this attribute on any option you
+wish, however, it is automatically applied to an option whose <code>value</code> or <code>ng-value</code> are not
+defined.</p>
+<p><strong>Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option&gt;</code></li>
+<li><code>&lt;md-option value&gt;</code></li>
+<li><code>&lt;md-option value=&quot;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&quot;&gt;</code></li>
+</ul>
+<p><strong>NOT Automatically Applied</strong></p>
+<ul>
+<li><code>&lt;md-option ng-value=&quot;1&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;&#39;&#39;&quot;&gt;</code></li>
+<li><code>&lt;md-option ng-value=&quot;undefined&quot;&gt;</code></li>
+<li><code>&lt;md-option value=&quot;undefined&quot;&gt;</code> (this evaluates to the string <code>&quot;undefined&quot;</code>)</li>
+<li><code ng-non-bindable>&lt;md-option ng-value=&quot;{{someValueThatMightBeUndefined}}&quot;&gt;</code></li>
+</ul>
+<p><strong>Note:</strong> A value of <code>undefined</code> <strong><em>is considered a valid value</em></strong> (and does not auto-apply this
+attribute) since you may wish this to be your &quot;Not Available&quot; or &quot;None&quot; option.</p>
+<p><strong>Note:</strong> Using the <code>value</code> attribute (as opposed to <code>ng-value</code>) always evaluates to a string, so
+<code>value=&quot;null&quot;</code> will require the test <code>ng-if=&quot;myValue != &#39;null&#39;&quot;</code> rather than <code>ng-if=&quot;!myValue&quot;</code>.</p>
 
 </div>
 
@@ -55,11 +78,13 @@ disabled by applying the <code>md-no-underline</code> CSS class.</p>
   </md-input-container>
 </hljs>
 
-<p>Using the <code>md-select-header</code> element directive</p>
-<p>When a developer needs to put more than just a text label in the <code>md-select-menu</code>, they should
-use one or more <code>md-select-header</code>s. These elements can contain custom HTML which can be styled
-as desired. Use cases for this element include a sticky search bar and custom option group
-labels.</p>
+<p>With a select-header</p>
+<p>When a developer needs to put more than just a text label in the
+md-select-menu, they should use the md-select-header.
+The user can put custom HTML inside of the header and style it to their liking.
+One common use case of this would be a sticky search bar.</p>
+<p>When using the md-select-header the labels that would previously be added to the
+OptGroupDirective are ignored.</p>
 <hljs lang="html">
   <md-input-container>
     <md-select ng-model="someModel">
@@ -92,21 +117,19 @@ angular.controller(&#39;MyCtrl&#39;, function($scope) {
 </div>
 </hljs>
 
-<p>At first one might expect that the select should be populated with &quot;Bob&quot; as the selected user.
-However, this is not true. To determine whether something is selected,
+<p>At first one might expect that the select should be populated with &quot;Bob&quot; as the selected user. However,
+this is not true. To determine whether something is selected,
 <code>ngModelController</code> is looking at whether <code>$scope.selectedUser == (any user in $scope.users);</code>;</p>
 <p>Javascript&#39;s <code>==</code> operator does not check for deep equality (ie. that all properties
 on the object are the same), but instead whether the objects are <em>the same object in memory</em>.
 In this case, we have two instances of identical objects, but they exist in memory as unique
 entities. Because of this, the select will have no value populated for a selected user.</p>
-<p>To get around this, <code>ngModelController</code> provides a <code>track by</code> option that allows us to specify a
-different expression which will be used for the equality operator. As such, we can update our
-<code>html</code> to make use of this by specifying the <code>ng-model-options=&quot;{trackBy: &#39;$value.id&#39;}&quot;</code> on the
-<code>md-select</code> element. This converts our equality expression to be
+<p>To get around this, <code>ngModelController</code> provides a <code>track by</code> option that allows us to specify a different
+expression which will be used for the equality operator. As such, we can update our <code>html</code> to
+make use of this by specifying the <code>ng-model-options=&quot;{trackBy: &#39;$value.id&#39;}&quot;</code> on the <code>md-select</code>
+element. This converts our equality expression to be
 <code>$scope.selectedUser.id == (any id in $scope.users.map(function(u) { return u.id; }));</code>
 which results in Bob being selected as desired.</p>
-<p><strong>Note:</strong> We do not support AngularJS&#39;s <code>track by</code> syntax. For instance
- <code>ng-options=&quot;user in users track by user.id&quot;</code> will not work with <code>md-select</code>.</p>
 <p>Working HTML:</p>
 <hljs lang="html">
 <div ng-controller="MyCtrl">

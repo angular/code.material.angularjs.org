@@ -16,7 +16,6 @@
 
 <div class="api-profile-description">
   <p>Service that makes an element apply theming related <b>classes</b> to itself.</p>
-<p>For more information on the hue objects, their default values, as well as valid hue values, please visit <a ng-href="Theming/03_configuring_a_theme#specifying-custom-hues-for-color-intentions">the custom hues section of Configuring a Theme</a>.</p>
 <hljs lang="js">
 // Example component directive that we want to apply theming classes to.
 app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
@@ -28,27 +27,7 @@ app.directive(&#39;myFancyDirective&#39;, function($mdTheming) {
 
       $mdTheming.defineTheme(&#39;myTheme&#39;, {
         primary: &#39;blue&#39;,
-        primaryHues: {
-          default: &#39;500&#39;,
-          hue-1: &#39;300&#39;,
-          hue-2: &#39;900&#39;,
-          hue-3: &#39;A100&#39;
-        },
         accent: &#39;pink&#39;,
-        accentHues: {
-          default: &#39;600&#39;,
-          hue-1: &#39;300&#39;,
-          hue-2: &#39;200&#39;,
-          hue-3: &#39;A500&#39;
-        },
-        warn: &#39;red&#39;,
-        // It&#39;s not necessary to specify all hues in the object.
-        warnHues: {
-          default: &#39;200&#39;,
-          hue-3: &#39;A100&#39;
-        },
-        // It&#39;s not necessary to specify custom hues at all.
-        background: &#39;grey&#39;,
         dark: true
       });
       // Your directive&#39;s custom code here.
@@ -445,13 +424,9 @@ the configuration block.</p>
 Options are:<br/></p>
 <ul>
 <li><code>primary</code> - <code>{string}</code>: The name of the primary palette to use in the theme.<br/></li>
-<li><code>primaryHues</code> - <code>{object=}</code>: Override hues for primary palette.<br/></li>
 <li><code>accent</code> - <code>{string}</code>: The name of the accent palette to use in the theme.<br/></li>
-<li><code>accentHues</code> - <code>{object=}</code>: Override hues for accent palette.<br/></li>
 <li><code>warn</code> - <code>{string}</code>: The name of the warn palette to use in the theme.<br/></li>
-<li><code>warnHues</code> - <code>{object=}</code>: Override hues for warn palette.<br/></li>
 <li><code>background</code> - <code>{string}</code>: The name of the background palette to use in the theme.<br/></li>
-<li><code>backgroundHues</code> - <code>{object=}</code>: Override hues for background palette.<br/></li>
 <li><code>dark</code> - <code>{boolean}</code>: Indicates if it&#39;s a dark theme.<br/></li>
 </ul>
 

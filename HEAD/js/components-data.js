@@ -987,38 +987,6 @@ angular.module('docsApp').constant('COMPONENTS', [
         "module": "material.components",
         "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js",
         "hasDemo": true
-      },
-      {
-        "name": "mdOption",
-        "type": "directive",
-        "restrict": {
-          "element": true,
-          "attribute": false,
-          "cssClass": false,
-          "comment": false
-        },
-        "outputPath": "partials/api/material.components.select/directive/mdOption.html",
-        "url": "api/directive/mdOption",
-        "label": "mdOption",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js",
-        "hasDemo": true
-      },
-      {
-        "name": "mdOptgroup",
-        "type": "directive",
-        "restrict": {
-          "element": true,
-          "attribute": false,
-          "cssClass": false,
-          "comment": false
-        },
-        "outputPath": "partials/api/material.components.select/directive/mdOptgroup.html",
-        "url": "api/directive/mdOptgroup",
-        "label": "mdOptgroup",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/select/select.js",
-        "hasDemo": true
       }
     ],
     "hasDemo": false

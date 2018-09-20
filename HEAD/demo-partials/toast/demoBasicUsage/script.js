@@ -1,4 +1,5 @@
-angular.module('toastBasicDemo', ['ngMaterial'])
+
+angular.module('toastDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdToast) {
   var last = {
@@ -35,7 +36,7 @@ angular.module('toastBasicDemo', ['ngMaterial'])
     $mdToast.show(
       $mdToast.simple()
         .textContent('Simple Toast!')
-        .position(pinTo)
+        .position(pinTo )
         .hideDelay(3000)
     );
   };
@@ -44,18 +45,14 @@ angular.module('toastBasicDemo', ['ngMaterial'])
     var pinTo = $scope.getToastPosition();
     var toast = $mdToast.simple()
       .textContent('Marked as read')
-      .actionKey('z')
-      .actionHint('Press the Control-"z" key combination to ')
       .action('UNDO')
-      .dismissHint('Activate the Escape key to dismiss this toast.')
       .highlightAction(true)
-      .highlightClass('md-accent') // Accent is used by default, this just demonstrates the usage.
-      .position(pinTo)
-      .hideDelay(0);
+      .highlightClass('md-accent')// Accent is used by default, this just demonstrates the usage.
+      .position(pinTo);
 
     $mdToast.show(toast).then(function(response) {
-      if (response === 'ok') {
-        alert('You selected the \'UNDO\' action.');
+      if ( response == 'ok' ) {
+        alert('You clicked the \'UNDO\' action.');
       }
     });
   };

@@ -228,30 +228,9 @@ the <code>build()</code> and <code>show()</code> methods below.</em></p>
        <td><code>.action(string)</code></td>
        <td>
          Adds an action button. <br/>
-         If clicked, the promise (returned from <code>show()</code>) will resolve with the value <code>&#39;ok&#39;</code>;
-         otherwise, it is resolved with <code>true</code> after a <code>hideDelay</code> timeout.
-       </td>
-     </tr>
-     <tr>
-       <td><code>.actionKey(string)</code></td>
-       <td>
-         Adds a hotkey for the action button. <br/>
-         If the <code>actionKey</code> and Control are pressed, the toast&#39;s action will be triggered.<br>
-         Defaults to the first character of the action if not defined.
-       </td>
-     </tr>
-     <tr>
-       <td><code>.actionHint(string)</code></td>
-       <td>
-         Text that a screen reader will announce to let the user know how to activate the
-         action. <br>Defaults to: &quot;Press Control-&quot;<code>actionKey</code>&quot; to &quot; followed by the action.
-       </td>
-     </tr>
-     <tr>
-       <td><code>.dismissHint(string)</code></td>
-       <td>
-         Text that a screen reader will announce to let the user know how to dismiss the toast.
-         <br>Defaults to: &quot;Press Escape to dismiss.&quot;
+         If clicked, the promise (returned from <code>show()</code>)
+         will resolve with the value <code>&#39;ok&#39;</code>; otherwise, it is resolved with <code>true</code> after a <code>hideDelay</code>
+         timeout
        </td>
      </tr>
      <tr>
@@ -397,11 +376,9 @@ custom toast directive.</li>
 <li><code>scope</code> - <code>{object=}</code>: the scope to link the template / controller to. If none is specified, it will create a new child scope.
 This scope will be destroyed when the toast is removed unless <code>preserveScope</code> is set to true.</li>
 <li><code>preserveScope</code> - <code>{boolean=}</code>: whether to preserve the scope when the element is removed. Default is false</li>
-<li><code>hideDelay</code> - <code>{number=}</code>: The number of milliseconds the toast should stay active before
-automatically closing. Set to <code>0</code> or <code>false</code> to have the toast stay open until closed
-manually via an action in the toast, a hotkey, or a swipe gesture. For accessibility, toasts
-should not automatically close when they contain an action.<br>
-Defaults to: <code>3000</code>.</li>
+<li><code>hideDelay</code> - <code>{number=}</code>: How many milliseconds the toast should stay
+active before automatically closing.  Set to 0 or false to have the toast stay open until
+closed manually. Default: 3000.</li>
 <li><code>position</code> - <code>{string=}</code>: Sets the position of the toast. <br/>
 Available: any combination of <code>&#39;bottom&#39;</code>, <code>&#39;left&#39;</code>, <code>&#39;top&#39;</code>, <code>&#39;right&#39;</code>, <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code>.
 The properties <code>&#39;end&#39;</code> and <code>&#39;start&#39;</code> are dynamic and can be used for RTL support.<br/>
@@ -414,7 +391,7 @@ used to hide the toast.</li>
 be used as names of values to inject into the controller. For example,
 <code>locals: {three: 3}</code> would inject <code>three</code> into the controller with the value
 of 3.</li>
-<li><code>bindToController</code> - <code>{boolean=}</code>: bind the locals to the controller, instead of passing them in.</li>
+<li><code>bindToController</code> - <code>bool</code>: bind the locals to the controller, instead of passing them in.</li>
 <li><code>resolve</code> - <code>{object=}</code>: Similar to locals, except it takes promises as values
 and the toast will not open until the promises resolve.</li>
 <li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
