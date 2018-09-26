@@ -1263,7 +1263,7 @@ angular.module('docsApp').constant('COMPONENTS', [
           "element": true,
           "attribute": true,
           "cssClass": false,
-          "comment": false
+          "comment": true
         },
         "outputPath": "partials/api/material.components.switch/directive/mdSwitch.html",
         "url": "api/directive/mdSwitch",

@@ -132,7 +132,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        </li>\n' +
     '        <li>\n' +
     '          Read the\n' +
-    '          <a href="https://material.io/guidelines/" target="_blank"\n' +
+    '          <a href="https://material.io/archive/guidelines/" target="_blank"\n' +
     '             title="Material Design">Material Design </a> specifications for components,\n' +
     '          animations, styles, and layouts.\n' +
     '        </li>\n' +
@@ -320,7 +320,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2 class="md-headline" style="margin-top: 0;">What is AngularJS Material?</h2>\n' +
     '    <p>\n' +
     '      AngularJS Material is both a UI Component framework and a reference implementation of Google\'s\n' +
-    '      <a href="https://material.io/guidelines/material-design/" target="_blank" rel="noopener">Material Design Specification</a>.\n' +
+    '      <a href="https://material.io/archive/guidelines/" target="_blank" rel="noopener">Material Design Specification</a>.\n' +
     '      This project provides a set of reusable, well-tested, and accessible UI components based on Material Design.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
@@ -528,7 +528,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
     '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video\', site : \'Google\' },\n' +
-    '        { href: \'http://www.google.com/design/spec/material-design/\', icon: \'launch\', text: \'Learn More\', site : \'Google\' }\n' +
+    '        { href: \'https://material.io/archive/guidelines/\', icon: \'launch\', text: \'Learn More\', site : \'Google\' }\n' +
     '      ]">\n' +
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
