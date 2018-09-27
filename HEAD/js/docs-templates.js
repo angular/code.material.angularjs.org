@@ -319,9 +319,11 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '  <md-content>\n' +
     '    <h2 class="md-headline" style="margin-top: 0;">What is AngularJS Material?</h2>\n' +
     '    <p>\n' +
-    '      AngularJS Material is both a UI Component framework and a reference implementation of Google\'s\n' +
-    '      <a href="https://material.io/archive/guidelines/" target="_blank" rel="noopener">Material Design Specification</a>.\n' +
-    '      This project provides a set of reusable, well-tested, and accessible UI components based on Material Design.\n' +
+    '      AngularJS Material is an implementation of Google\'s\n' +
+    '      <a href="https://material.io/archive/guidelines/" target="_blank" rel="noopener">\n' +
+    '        Material Design Specification (2014-2017)</a>.\n' +
+    '      This project provides a set of reusable, well-tested, and accessible UI components for\n' +
+    '      <a href="https://angularjs.org" target="_blank" rel="noopener">AngularJS</a> developers.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="50" flex-gt-md="25" ng-repeat="(index, link) in [\n' +
@@ -341,7 +343,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
-    '    <br/>\n' +
     '    <h2 class="md-headline">AngularJS versus Angular?</h2>\n' +
     '    <p>\n' +
     '      The AngularJS Material library is a mature and stable product that is ready for production use.\n' +
@@ -349,11 +350,32 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <a href="https://angularjs.org/" target="_blank" rel="noopener">AngularJS 1.x</a>.\n' +
     '    </p>\n' +
     '    <ul>\n' +
-    '      <li>Current AngularJS Material development efforts are focused on bug fixes, accessibility, and minor improvements.</li>\n' +
-    '      <li>The Angular Material library (for Angular v2+) can be found in the\n' +
-    '        <a href="https://github.com/angular/material2">angular/material2</a> GitHub repository.\n' +
+    '      <li>\n' +
+    '        Current AngularJS Material development efforts are focused on bug fixes, accessibility, and\n' +
+    '        minor improvements.\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        The Angular Material library (for Angular v2+) can be found in the\n' +
+    '        <a href="https://github.com/angular/material2" target="_blank" rel="noopener">angular/material2</a>\n' +
+    '        GitHub repository.\n' +
     '      </li>\n' +
     '    </ul>\n' +
+    '\n' +
+    '    <br/>\n' +
+    '    <h2 class="md-headline">The Latest Material Design</h2>\n' +
+    '    <p>\n' +
+    '      The latest update to Material Design\n' +
+    '      (<a href="https://www.youtube.com/playlist?list=PLJ21zHI2TNh-rX-Xr_xi9KIEcbdee_1Ah" target="_blank" rel="noopener">video playlist</a>)\n' +
+    '      was announced at Google I/O in May, 2018\n' +
+    '      (<a href="https://design.google/library/io-2018-our-definitive-guide-design/" target="_blank" rel="noopener">recap blog post</a>).\n' +
+    '      For an implementation of this new\n' +
+    '      <a href="https://material.io/design" target="_blank" rel="noopener">Material Design Specification</a>,\n' +
+    '      please see the <a href="https://github.com/angular/material2" target="_blank" rel="noopener">Angular Material</a>\n' +
+    '      project which is built for <a href="https://angular.io" target="_blank" rel="noopener">Angular</a>\n' +
+    '      developers.\n' +
+    '    </p>\n' +
+    '\n' +
+    '    <h2 class="md-headline">Change Log</h2>\n' +
     '    <p>\n' +
     '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking changes.\n' +
     '    </p>\n' +
@@ -544,8 +566,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <br/>\n' +
     '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
     '      These docs were generated from\n' +
-    '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank" class="md-accent" >\n' +
-    '      v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
+    '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank"\n' +
+    '          rel="noopener" class="md-accent">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
     '      on (<strong>{{BUILDCONFIG.date}}</strong>) GMT.\n' +
     '    </p>\n' +
     '  </md-content>\n' +
