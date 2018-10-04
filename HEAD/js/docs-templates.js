@@ -176,7 +176,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <li>Use the "Edit on CodePen" button on any of our Demos<br/>\n' +
     '        <img\n' +
     '            src="https://cloud.githubusercontent.com/assets/210413/11568997/ed86795a-99b4-11e5-898e-1da172be80da.png"\n' +
-    '            style="width:75%;margin: 10px 30px 0 0">\n' +
+    '            style="width:75%;margin: 10px 30px 0 0" alt="Image with arrow to Edit on CodePen button">\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
@@ -187,7 +187,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      the AngularJS Material library from the Google CDN:\n' +
     '    </p>\n' +
     '\n' +
-    '    <iframe height=\'777\' scrolling=\'no\'\n' +
+    '    <iframe height=\'777\' scrolling=\'no\' title="AngularJS Material - Blank Starter"\n' +
     '            src=\'https://codepen.io/team/AngularMaterial/embed/RrbXyW/?height=777&theme-id=21180&default-tab=html\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
     '      See the Pen <a\n' +
@@ -215,7 +215,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <a href="https://codepen.io/team/AngularMaterial/collections/public/" target="_blank">Collections</a>, and ideas.\n' +
     '    </p>\n' +
     '    <div layout-align="center" style="width: 100%">\n' +
-    '      <iframe height=\'777\' scrolling=\'no\'\n' +
+    '      <iframe height=\'777\' scrolling=\'no\' title="Our CodePen Community"\n' +
     '            src=\'https://codepen.io/collection/XExqGz/\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
     '      </iframe>\n' +
@@ -505,7 +505,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
     '        { href: \'https://egghead.io/series/angular-material-introduction\', icon: \'ondemand_video\', text: \'Introduction to AngularJS Material\', site : \'EggHead\', access : \'free\'},\n' +
-    '        { href: \'https://app.pluralsight.com/player?author=ajden-towfeek&name=angular-material-fundamentals-m0&mode=live&clip=0&course=angular-material-fundamentals\', icon: \'ondemand_video\', text: \'AngularJS Material Fundamentals\', site : \'Pluralsight\', access: \'member\'},\n' +
+    '        { href: \'https://app.pluralsight.com/player?author=ajden-towfeek&name=angular-material-fundamentals-m0&mode=live&clip=0&course=angular-material-fundamentals\', icon: \'ondemand_video\', text: \'AngularJS Material Fundamentals\', site : \'Pluralsight\', access: \'member\'}\n' +
     '      ]">\n' +
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
@@ -513,7 +513,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            aria-label="{{link.text}}"\n' +
     '            ng-href="{{link.href}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
-    '          {{link.site}} | <span style="color: rgb(255,82,82); text-transform: none;">{{link.text}}</span> | <span class="training_info">{{link.access}}</span>\n' +
+    '          {{link.site}} | <span class="training_link">{{link.text}}</span> | <span class="training_info">{{link.access}}</span>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -527,7 +527,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
     '        { href: \'https://www.youtube.com/watch?v=Qi31oO5u33U\', icon: \'ondemand_video\', text: \'Building with AngularJS Material\', site : \'ng-conf\',  date: \'2015\'},\n' +
-    '        { href: \'https://www.youtube.com/watch?v=363o4i0rdvU\', icon: \'ondemand_video\', text: \'AngularJS Material in Practice\', site : \'AngularConnect\', date:\'2015\'},\n' +
+    '        { href: \'https://www.youtube.com/watch?v=363o4i0rdvU\', icon: \'ondemand_video\', text: \'AngularJS Material in Practice\', site : \'AngularConnect\', date:\'2015\'}\n' +
     '      ]">\n' +
     '        <md-button\n' +
     '            class="md-primary md-raised"\n' +
@@ -567,7 +567,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <p class="md-caption" style="text-align: center; margin-bottom: 0;">\n' +
     '      These docs were generated from\n' +
     '      (<a ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}" target="_blank"\n' +
-    '          rel="noopener" class="md-accent">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
+    '          rel="noopener">v{{BUILDCONFIG.version}} - SHA {{BUILDCONFIG.commit.substring(0,7)}}</a>)\n' +
     '      on (<strong>{{BUILDCONFIG.date}}</strong>) GMT.\n' +
     '    </p>\n' +
     '  </md-content>\n' +
@@ -1363,7 +1363,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      href="https://camo.githubusercontent.com/ad81ae92f8b4285747ce4e48007bf3f104dd5630/687474703a2f2f6d6174657269616c2d64657369676e2e73746f726167652e676f6f676c65617069732e636f6d2f7075626c6973682f6d6174657269616c5f765f342f6d6174657269616c5f6578745f7075626c6973682f3042386f6c5631354a3761625053474678656d46695156527462316b2f6c61796f75745f61646170746976655f627265616b706f696e74735f30312e706e67"\n' +
     '      target="_blank"><img\n' +
     '      src="https://camo.githubusercontent.com/ad81ae92f8b4285747ce4e48007bf3f104dd5630/687474703a2f2f6d6174657269616c2d64657369676e2e73746f726167652e676f6f676c65617069732e636f6d2f7075626c6973682f6d6174657269616c5f765f342f6d6174657269616c5f6578745f7075626c6973682f3042386f6c5631354a3761625053474678656d46695156527462316b2f6c61796f75745f61646170746976655f627265616b706f696e74735f30312e706e67"\n' +
-    '      alt=""\n' +
+    '      alt="Breakpoints as specified in the Material Design Spec"\n' +
     '      style="max-width:100%;"></a>\n' +
     '  </p>\n' +
     '\n' +

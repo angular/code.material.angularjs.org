@@ -882,13 +882,6 @@ angular.module('colorsDemo', ['ngMaterial'])
     };
   });
 
-
-angular.module('contentDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-});
-
 angular
   .module('colorsThemePickerDemo', ['ngMaterial'])
   .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
@@ -942,6 +935,13 @@ angular
       }
     };
   });
+
+
+angular.module('contentDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+});
 
 angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
   this.myDate = new Date();
@@ -1653,6 +1653,165 @@ angular
       donation: 19.99
     };
   });
+
+
+angular.module('listDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
+})
+.controller('AppCtrl', function($scope) {
+    var imagePath = 'img/list/60.jpeg';
+
+    $scope.phones = [
+      {
+        type: 'Home',
+        number: '(555) 251-1234',
+        options: {
+          icon: 'communication:phone'
+        }
+      },
+      {
+        type: 'Cell',
+        number: '(555) 786-9841',
+        options: {
+          icon: 'communication:phone',
+          avatarIcon: true
+        }
+      },
+      {
+        type: 'Office',
+        number: '(555) 314-1592',
+        options: {
+          face : imagePath
+        }
+      },
+      {
+        type: 'Offset',
+        number: '(555) 192-2010',
+        options: {
+          offset: true,
+          actionIcon: 'communication:phone'
+        }
+      }
+    ];
+    $scope.todos = [
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+    ];
+});
+
+angular.module('listDemo2', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
+    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+})
+.controller('ListCtrl', function($scope, $mdDialog) {
+  $scope.toppings = [
+    { name: 'Pepperoni', wanted: true },
+    { name: 'Sausage', wanted: false },
+    { name: 'Black Olives', wanted: true },
+    { name: 'Green Peppers', wanted: false }
+  ];
+
+  $scope.settings = [
+    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
+    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
+  ];
+
+  $scope.messages = [
+    {id: 1, title: "Message A", selected: false},
+    {id: 2, title: "Message B", selected: true},
+    {id: 3, title: "Message C", selected: true},
+  ];
+
+  $scope.people = [
+    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
+    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
+    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
+  ];
+
+  $scope.goToPerson = function(person, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Inspect ' + person)
+        .ariaLabel('Person inspect demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.navigateTo = function(to, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Imagine being taken to ' + to)
+        .ariaLabel('Navigation demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doPrimaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Primary Action')
+        .textContent('Primary actions can be used for one click actions')
+        .ariaLabel('Primary click demo')
+        .ok('Awesome!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doSecondaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Secondary Action')
+        .textContent('Secondary actions can be used for one click actions')
+        .ariaLabel('Secondary click demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+});
 
 angular
   .module('menuDemoBasic', ['ngMaterial'])
@@ -2415,164 +2574,31 @@ DialogCtrl.prototype.closeDialog = function() {
   }
 })();
 
+angular
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
+  .controller('AppCtrl', ['$interval',
+    function($interval) {
+      var self = this;
 
-angular.module('listDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
-})
-.controller('AppCtrl', function($scope) {
-    var imagePath = 'img/list/60.jpeg';
+      self.activated = true;
+      self.determinateValue = 30;
 
-    $scope.phones = [
-      {
-        type: 'Home',
-        number: '(555) 251-1234',
-        options: {
-          icon: 'communication:phone'
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+      $interval(function() {
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
         }
-      },
-      {
-        type: 'Cell',
-        number: '(555) 786-9841',
-        options: {
-          icon: 'communication:phone',
-          avatarIcon: true
-        }
-      },
-      {
-        type: 'Office',
-        number: '(555) 314-1592',
-        options: {
-          face : imagePath
-        }
-      },
-      {
-        type: 'Offset',
-        number: '(555) 192-2010',
-        options: {
-          offset: true,
-          actionIcon: 'communication:phone'
-        }
-      }
-    ];
-    $scope.todos = [
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-    ];
-});
 
-angular.module('listDemo2', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
-    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-})
-.controller('ListCtrl', function($scope, $mdDialog) {
-  $scope.toppings = [
-    { name: 'Pepperoni', wanted: true },
-    { name: 'Sausage', wanted: false },
-    { name: 'Black Olives', wanted: true },
-    { name: 'Green Peppers', wanted: false }
-  ];
-
-  $scope.settings = [
-    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
-    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
-  ];
-
-  $scope.messages = [
-    {id: 1, title: "Message A", selected: false},
-    {id: 2, title: "Message B", selected: true},
-    {id: 3, title: "Message C", selected: true},
-  ];
-
-  $scope.people = [
-    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
-    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
-    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
-  ];
-
-  $scope.goToPerson = function(person, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Inspect ' + person)
-        .ariaLabel('Person inspect demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.navigateTo = function(to, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Imagine being taken to ' + to)
-        .ariaLabel('Navigation demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doPrimaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Primary Action')
-        .textContent('Primary actions can be used for one click actions')
-        .ariaLabel('Primary click demo')
-        .ok('Awesome!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doSecondaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Secondary Action')
-        .textContent('Secondary actions can be used for one click actions')
-        .ariaLabel('Secondary click demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-});
+      }, 100);
+    }
+  ]);
 
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
@@ -2624,31 +2650,88 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     }, 7200, 0, true);
   }]);
 
+
 angular
-  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
+  .module('radioDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+
+    $scope.data = {
+      group1 : 'Banana',
+      group2 : '2',
+      group3 : 'avatar-1'
+    };
+
+    $scope.avatarData = [{
+        id: "avatars:svg-1",
+        title: 'avatar 1',
+        value: 'avatar-1'
+      },{
+        id: "avatars:svg-2",
+        title: 'avatar 2',
+        value: 'avatar-2'
+      },{
+        id: "avatars:svg-3",
+        title: 'avatar 3',
+        value: 'avatar-3'
+    }];
+
+    $scope.radioData = [
+      { label: '1', value: 1 },
+      { label: '2', value: 2 },
+      { label: '3', value: '3', isDisabled: true },
+      { label: '4', value: '4' }
+    ];
+
+
+    $scope.submit = function() {
+      alert('submit');
+    };
+
+    $scope.addItem = function() {
+      var r = Math.ceil(Math.random() * 1000);
+      $scope.radioData.push({ label: r, value: r });
+    };
+
+    $scope.removeItem = function() {
+      $scope.radioData.pop();
+    };
+
   })
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
+  .config(function($mdIconProvider) {
+    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  });
 
-      self.activated = true;
-      self.determinateValue = 30;
+angular
+  .module('radioDemo2', ['ngMaterial'])
+  .controller('ContactController', function($scope, $filter) {
+    var self = this;
 
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
-      $interval(function() {
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-      }, 100);
-    }
-  ]);
+    self.contacts = [{
+      'id': 1,
+      'fullName': 'Maria Guadalupe',
+      'lastName': 'Guadalupe',
+      'title': "CEO, Found"
+    }, {
+      'id': 2,
+      'fullName': 'Gabriel García Marquéz',
+      'lastName': 'Marquéz',
+      'title': "VP Sales & Marketing"
+    }, {
+      'id': 3,
+      'fullName': 'Miguel de Cervantes',
+      'lastName': 'Cervantes',
+      'title': "Manager, Operations"
+    }, {
+      'id': 4,
+      'fullName': 'Pacorro de Castel',
+      'lastName': 'Castel',
+      'title': "Security"
+    }];
+    self.selectedId = 2;
+    self.selectedUser = function() {
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    };
+  });
 
 (function () {
   'use strict';
@@ -2866,89 +2949,6 @@ angular
     }
   });
 
-
-angular
-  .module('radioDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-
-    $scope.data = {
-      group1 : 'Banana',
-      group2 : '2',
-      group3 : 'avatar-1'
-    };
-
-    $scope.avatarData = [{
-        id: "avatars:svg-1",
-        title: 'avatar 1',
-        value: 'avatar-1'
-      },{
-        id: "avatars:svg-2",
-        title: 'avatar 2',
-        value: 'avatar-2'
-      },{
-        id: "avatars:svg-3",
-        title: 'avatar 3',
-        value: 'avatar-3'
-    }];
-
-    $scope.radioData = [
-      { label: '1', value: 1 },
-      { label: '2', value: 2 },
-      { label: '3', value: '3', isDisabled: true },
-      { label: '4', value: '4' }
-    ];
-
-
-    $scope.submit = function() {
-      alert('submit');
-    };
-
-    $scope.addItem = function() {
-      var r = Math.ceil(Math.random() * 1000);
-      $scope.radioData.push({ label: r, value: r });
-    };
-
-    $scope.removeItem = function() {
-      $scope.radioData.pop();
-    };
-
-  })
-  .config(function($mdIconProvider) {
-    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
-  });
-
-angular
-  .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
-    var self = this;
-
-    self.contacts = [{
-      'id': 1,
-      'fullName': 'Maria Guadalupe',
-      'lastName': 'Guadalupe',
-      'title': "CEO, Found"
-    }, {
-      'id': 2,
-      'fullName': 'Gabriel García Marquéz',
-      'lastName': 'Marquéz',
-      'title': "VP Sales & Marketing"
-    }, {
-      'id': 3,
-      'fullName': 'Miguel de Cervantes',
-      'lastName': 'Cervantes',
-      'title': "Manager, Operations"
-    }, {
-      'id': 4,
-      'fullName': 'Pacorro de Castel',
-      'lastName': 'Castel',
-      'title': "Security"
-    }];
-    self.selectedId = 2;
-    self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
-    };
-  });
-
 angular.module('sliderDemo1', ['ngMaterial'])
   .config(function ($mdIconProvider) {
     $mdIconProvider.iconSet('device', 'img/icons/sets/device-icons.svg', 24);
@@ -2983,40 +2983,6 @@ angular.module('sliderDemo2', ['ngMaterial'])
   $scope.bass = Math.floor(Math.random() * 100);
   $scope.master = Math.floor(Math.random() * 100);
 });
-
-angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope, $log) {
-    $scope.onSwipeLeft = function(ev, target) {
-      alert('You swiped left!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeRight = function(ev, target) {
-      alert('You swiped right!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-    $scope.onSwipeUp = function(ev, target) {
-      alert('You swiped up!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeDown = function(ev, target) {
-      alert('You swiped down!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-  });
 
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
@@ -3106,6 +3072,40 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
       },
     ];
 });
+
+angular.module('demoSwipe', ['ngMaterial'])
+  .controller('demoSwipeCtrl', function($scope, $log) {
+    $scope.onSwipeLeft = function(ev, target) {
+      alert('You swiped left!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeRight = function(ev, target) {
+      alert('You swiped right!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+    $scope.onSwipeUp = function(ev, target) {
+      alert('You swiped up!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeDown = function(ev, target) {
+      alert('You swiped down!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+  });
 
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
