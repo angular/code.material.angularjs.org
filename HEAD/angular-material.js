@@ -4134,9 +4134,13 @@ function InterimElementProvider() {
         }
 
         // Hide the latest showing interim element.
-        return closeElement(showingInterims[showingInterims.length - 1]);
+        return closeElement(showingInterims.pop());
 
         function closeElement(interim) {
+
+          if (!interim) {
+            return $q.when(reason);
+          }
 
           var hideAction = interim
             .remove(reason, false, options || { })
@@ -4145,7 +4149,6 @@ function InterimElementProvider() {
               hidePromises.splice(hidePromises.indexOf(hideAction), 1);
             });
 
-          showingInterims.splice(showingInterims.indexOf(interim), 1);
           hidePromises.push(hideAction);
 
           return interim.deferred.promise;
