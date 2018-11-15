@@ -21,7 +21,8 @@
 <p>In more complex cases, you may want to include other content such as a message to display when
     no matches were found.  You can do this by wrapping your template in <code>md-item-template</code> and
     adding a tag for <code>md-not-found</code>.  An example of this is shown below.</p>
-<p>To reset the displayed value you must clear both values for <code>md-search-text</code> and <code>md-selected-item</code>.</p>
+<p>To reset the displayed value you must clear both values for <code>md-search-text</code> and
+<code>md-selected-item</code>.</p>
 <h3 id="validation">Validation</h3>
 <p>You can use <code>ng-messages</code> to include validation the same way that you would normally validate;
     however, if you want to replicate a standard input with a floating label, you will have to
@@ -111,11 +112,11 @@ cached results will be used.</p>
 <h3 id="clear-button-for-the-input">Clear button for the input</h3>
 <p>By default, the clear button is displayed when there is input. This aligns with the spec&#39;s
 <a href="https://material.io/archive/guidelines/patterns/search.html#search-in-app-search">Search Pattern</a>.
-In floating label mode, when <code>md-floating-label=&quot;My Label&quot;</code> is applied, the clear button is not displayed
-by default (see the spec&#39;s
+In floating label mode, when <code>md-floating-label=&quot;My Label&quot;</code> is applied, the clear button is not
+displayed by default (see the spec&#39;s
 <a href="https://material.io/archive/guidelines/components/text-fields.html#text-fields-layout">Autocomplete Text Field</a>).</p>
-<p>Nevertheless, developers are able to explicitly toggle the clear button for all autocomplete components
-with <code>md-clear-button</code>.</p>
+<p>Nevertheless, developers are able to explicitly toggle the clear button for all autocomplete
+components with <code>md-clear-button</code>.</p>
 <hljs lang="html">
   <md-autocomplete ... md-clear-button="true"></md-autocomplete>
   <md-autocomplete ... md-clear-button="false"></md-autocomplete>
@@ -151,7 +152,8 @@ will hide the clear button only when the component is disabled.</p>
 <p>In this example, our code utilizes <code>md-item-template</code> and <code>ng-messages</code> to specify
     input validation for the field.</p>
 <h3 id="asynchronous-results">Asynchronous Results</h3>
-<p>The autocomplete items expression also supports promises, which will resolve with the query results.</p>
+<p>The autocomplete items expression also supports promises, which will resolve with the query
+results.</p>
 <hljs lang="js">
   function AppController($scope, $http) {
     $scope.query = function(searchText) {
@@ -216,6 +218,10 @@ will hide the clear button only when the component is disabled.</p>
           
         </td>
       </tr>
+    
+  
+    
+  
     
   
     
@@ -501,7 +507,8 @@ will hide the clear button only when the component is disabled.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>Whether the clear button for the autocomplete input should show up or not.</p>
+          <p>Whether the clear button for the autocomplete input should show
+    up or not.</p>
 
           
         </td>
@@ -519,8 +526,9 @@ will hide the clear button only when the component is disabled.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If true, the autocomplete will be automatically focused when a <code>$mdDialog</code>,
-    <code>$mdBottomsheet</code> or <code>$mdSidenav</code>, which contains the autocomplete, is opening. <br/><br/>
+          <p>If true, the autocomplete will be automatically focused when a
+    <code>$mdDialog</code>, <code>$mdBottomsheet</code> or <code>$mdSidenav</code>, which contains the autocomplete, is opening.
+    <br/><br/>
     Also the autocomplete will immediately focus the input element.</p>
 
           
@@ -539,7 +547,8 @@ will hide the clear button only when the component is disabled.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, asterisk will not be appended to the floating label.</p>
+          <p>When present, asterisk will not be appended to the floating
+    label.</p>
 
           
         </td>
@@ -652,7 +661,7 @@ will hide the clear button only when the component is disabled.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>This will add a floating label to autocomplete and wrap it in
-    <code>md-input-container</code></p>
+    <code>md-input-container</code>.</p>
 
           
         </td>
@@ -846,6 +855,49 @@ will hide the clear button only when the component is disabled.</p>
     content of these elements at the end of announcing that the autocomplete has been selected
     and describing its current state. The descriptive elements do not need to be visible on the
     page.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-labelledby
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A space-separated list of element IDs. The ideal use case
+    is that this would contain the ID of a <code>&lt;label&gt;</code> element that is associated with this
+    autocomplete. This will only have affect when <code>md-floating-label</code> is not defined.<br><br>
+    For <code>&lt;label id=&quot;state&quot;&gt;US State&lt;/label&gt;</code>, you would set this to
+    <code>input-aria-labelledby=&quot;state&quot;</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A label that will be applied to the autocomplete&#39;s input.
+   This will be announced by screen readers before the placeholder.
+   This will only have affect when <code>md-floating-label</code> is not defined. If you define both
+   <code>input-aria-label</code> and <code>input-aria-labelledby</code>, then <code>input-aria-label</code> will take precedence.</p>
 
           
         </td>
