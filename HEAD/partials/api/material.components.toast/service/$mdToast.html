@@ -420,7 +420,7 @@ Default combination: <code>&#39;bottom left&#39;</code>.</li>
 <li><code>controller</code> - <code>{string=}</code>: The controller to associate with this toast.
 The controller will be injected the local <code>$mdToast.hide()</code>, which is a function
 used to hide the toast.</li>
-<li><code>locals</code> - <code>{string=}</code>: An object containing key/value pairs. The keys will
+<li><code>locals</code> - <code>{object=}</code>: An object containing key/value pairs. The keys will
 be used as names of values to inject into the controller. For example,
 <code>locals: {three: 3}</code> would inject <code>three</code> into the controller with the value
 of 3.</li>
@@ -462,9 +462,9 @@ to the root element of the application.</li>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
     <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
-rejected with <code>$mdToast.cancel()</code>. <code>$mdToast.hide()</code> will resolve either with a Boolean
-value == &#39;true&#39; or the value passed as an argument to <code>$mdToast.hide()</code>.
-And <code>$mdToast.cancel()</code> will resolve the promise with a Boolean value == &#39;false&#39;</p>
+rejected with <code>$mdToast.cancel()</code>. <code>$mdToast.hide()</code> will resolve either with the Boolean
+value <code>true</code> or the value passed as an argument to <code>$mdToast.hide()</code>.
+<code>$mdToast.cancel()</code> will resolve the promise with the Boolean value <code>false</code>.</p>
 </td>
   </tr>
   </tbody>
@@ -539,9 +539,9 @@ And <code>$mdToast.cancel()</code> will resolve the promise with a Boolean value
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>a promise that is called when the existing element is removed from the DOM.
-The promise is resolved with either a Boolean value == &#39;true&#39; or the value passed as the
-argument to <code>.hide()</code>.</p>
+    <td class="description"><p>A promise that is called when the existing element is removed from the DOM.
+The promise is resolved with either the Boolean value <code>true</code> or the value passed as the
+argument to <code>$mdToast.hide()</code>.</p>
 </td>
   </tr>
   </tbody>
@@ -620,8 +620,8 @@ since it&#39;s not clear what the difference between resolve and reject would be
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>a promise that is called when the existing element is removed from the DOM
-The promise is resolved with a Boolean value == &#39;false&#39;.</p>
+    <td class="description"><p>A promise that is called when the existing element is removed from the DOM
+The promise is resolved with the Boolean value <code>false</code>.</p>
 </td>
   </tr>
   </tbody>

@@ -3076,7 +3076,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "toastdemoBasicUsage",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/toast/demoBasicUsage/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {
