@@ -1,345 +1,3 @@
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    self.repos         = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for repos... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.repos.filter( createFilterFor(query) ) : self.repos,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `components` list of key/value pairs
-     */
-    function loadAll() {
-      var repos = [
-        {
-          'name'      : 'AngularJS',
-          'url'       : 'https://github.com/angular/angular.js',
-          'watchers'  : '3,623',
-          'forks'     : '16,175',
-        },
-        {
-          'name'      : 'Angular',
-          'url'       : 'https://github.com/angular/angular',
-          'watchers'  : '469',
-          'forks'     : '760',
-        },
-        {
-          'name'      : 'AngularJS Material',
-          'url'       : 'https://github.com/angular/material',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Angular Material',
-          'url'       : 'https://github.com/angular/material2',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Bower Material',
-          'url'       : 'https://github.com/angular/bower-material',
-          'watchers'  : '42',
-          'forks'     : '84',
-        },
-        {
-          'name'      : 'Material Start',
-          'url'       : 'https://github.com/angular/material-start',
-          'watchers'  : '81',
-          'forks'     : '303',
-        }
-      ];
-      return repos.map( function (repo) {
-        repo.value = repo.name.toLowerCase();
-        return repo;
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(item) {
-        return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      });
-    };
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter( createFilterFor(query) ) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -474,81 +132,6 @@ angular.module('cardDemo3', ['ngMaterial'])
 }])
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
-});
-
-
-angular.module('checkboxDemo3', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.items = [1,2,3,4,5];
-  $scope.selected = [1];
-  $scope.toggle = function (item, list) {
-    var idx = list.indexOf(item);
-    if (idx > -1) {
-      list.splice(idx, 1);
-    }
-    else {
-      list.push(item);
-    }
-  };
-
-  $scope.exists = function (item, list) {
-    return list.indexOf(item) > -1;
-  };
-
-  $scope.isIndeterminate = function() {
-    return ($scope.selected.length !== 0 &&
-        $scope.selected.length !== $scope.items.length);
-  };
-
-  $scope.isChecked = function() {
-    return $scope.selected.length === $scope.items.length;
-  };
-
-  $scope.toggleAll = function() {
-    if ($scope.selected.length === $scope.items.length) {
-      $scope.selected = [];
-    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
-      $scope.selected = $scope.items.slice(0);
-    }
-  };
-});
-
-
-angular.module('checkboxDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-    $scope.items = [1,2,3,4,5];
-      $scope.selected = [];
-
-      $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-          list.splice(idx, 1);
-        }
-        else {
-          list.push(item);
-        }
-      };
-
-      $scope.exists = function (item, list) {
-        return list.indexOf(item) > -1;
-      };
 });
 
 (function () {
@@ -830,25 +413,92 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('staticChipsDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    this.chipText = 'Football';
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
     .module('chipsValidationDemo', ['ngMaterial', 'ngMessages'])
     .controller('ChipsValidationCtrl', ValidationCtrl);
 
-  function ValidationCtrl () {
+  function ValidationCtrl ($log) {
     this.selectedFruit = [];
     this.selectedVegetables = [];
+    this.onSubmit = function(form) {
+      $log.log({fruits: form.fruits.$modelValue, vegetables: form.vegetables.$modelValue});
+    };
   }
 })();
+
+
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
+
+angular.module('checkboxDemo3', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.items = [1,2,3,4,5];
+  $scope.selected = [1];
+  $scope.toggle = function (item, list) {
+    var idx = list.indexOf(item);
+    if (idx > -1) {
+      list.splice(idx, 1);
+    }
+    else {
+      list.push(item);
+    }
+  };
+
+  $scope.exists = function (item, list) {
+    return list.indexOf(item) > -1;
+  };
+
+  $scope.isIndeterminate = function() {
+    return ($scope.selected.length !== 0 &&
+        $scope.selected.length !== $scope.items.length);
+  };
+
+  $scope.isChecked = function() {
+    return $scope.selected.length === $scope.items.length;
+  };
+
+  $scope.toggleAll = function() {
+    if ($scope.selected.length === $scope.items.length) {
+      $scope.selected = [];
+    } else if ($scope.selected.length === 0 || $scope.selected.length > 0) {
+      $scope.selected = $scope.items.slice(0);
+    }
+  };
+});
+
+
+angular.module('checkboxDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+    $scope.items = [1,2,3,4,5];
+      $scope.selected = [];
+
+      $scope.toggle = function (item, list) {
+        var idx = list.indexOf(item);
+        if (idx > -1) {
+          list.splice(idx, 1);
+        }
+        else {
+          list.push(item);
+        }
+      };
+
+      $scope.exists = function (item, list) {
+        return list.indexOf(item) > -1;
+      };
+});
 
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
@@ -881,6 +531,17 @@ angular.module('colorsDemo', ['ngMaterial'])
       }
     };
   });
+
+(function () {
+  'use strict';
+  angular
+      .module('staticChipsDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    this.chipText = 'Football';
+  }
+})();
 
 angular
   .module('colorsThemePickerDemo', ['ngMaterial'])
@@ -1291,6 +952,20 @@ angular.module('dividerDemo1', ['ngMaterial'])
 (function() {
   'use strict';
 
+  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
+    .controller('AppCtrl', function($scope) {
+      $scope.isOpen = false;
+
+      $scope.demo = {
+        isOpen: false,
+        count: 0,
+        selectedDirection: 'left'
+      };
+    });
+})();
+(function() {
+  'use strict';
+
   angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
     .controller('DemoCtrl', function() {
       this.topDirections = ['left', 'up'];
@@ -1359,20 +1034,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
     });
 })();
 
-(function() {
-  'use strict';
-
-  angular.module('fabToolbarBasicUsageDemo', ['ngMaterial'])
-    .controller('AppCtrl', function($scope) {
-      $scope.isOpen = false;
-
-      $scope.demo = {
-        isOpen: false,
-        count: 0,
-        selectedDirection: 'left'
-      };
-    });
-})();
 
 angular.module('gridListDemo1', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {});
@@ -1469,41 +1130,6 @@ angular.module('gridListDemo1', ['ngMaterial'])
 
 
 angular
-  .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
-  .controller('DemoCtrl', function( $scope ) {
-      // Create list of font-icon names with color overrides
-      var iconData = [
-            {name: 'icon-home'        , color: "#777" },
-            {name: 'icon-user-plus'   , color: "rgb(89, 226, 168)" },
-            {name: 'icon-google-plus2', color: "#A00" },
-            {name: 'icon-youtube4'    , color:"#00A" },
-             // Use theming to color the font-icon
-            {name: 'icon-settings'    , color:"#A00", theme:"md-warn md-hue-5"}
-          ];
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:48,padding:10},
-        {size:36,padding:6},
-        {size:24,padding:2},
-        {size:12,padding:0}
-      ];
-
-      $scope.fonts = [].concat(iconData);
-
-
-
-  })
-  .config(function($mdThemingProvider){
-    // Update the theme colors to use themes on font-icons
-    $mdThemingProvider.theme('default')
-          .primaryPalette("red")
-          .accentPalette('green')
-          .warnPalette('blue');
-  });
-
-
-angular
   .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
   .controller('DemoCtrl', function( $scope ) {
       // Specify a list of font-icons with ligatures and color overrides
@@ -1549,6 +1175,41 @@ angular.module('appSvgIconSets', ['ngMaterial'])
       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
       .iconSet('symbol', 'img/icons/sets/symbol-icons.svg', 24)
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  });
+
+
+angular
+  .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
+  .controller('DemoCtrl', function( $scope ) {
+      // Create list of font-icon names with color overrides
+      var iconData = [
+            {name: 'icon-home'        , color: "#777" },
+            {name: 'icon-user-plus'   , color: "rgb(89, 226, 168)" },
+            {name: 'icon-google-plus2', color: "#A00" },
+            {name: 'icon-youtube4'    , color:"#00A" },
+             // Use theming to color the font-icon
+            {name: 'icon-settings'    , color:"#A00", theme:"md-warn md-hue-5"}
+          ];
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:48,padding:10},
+        {size:36,padding:6},
+        {size:24,padding:2},
+        {size:12,padding:0}
+      ];
+
+      $scope.fonts = [].concat(iconData);
+
+
+
+  })
+  .config(function($mdThemingProvider){
+    // Update the theme colors to use themes on font-icons
+    $mdThemingProvider.theme('default')
+          .primaryPalette("red")
+          .accentPalette('green')
+          .warnPalette('blue');
   });
 
 angular.module('appUsingTemplateCache', ['ngMaterial'])
@@ -1840,13 +1501,6 @@ angular
   });
 
 angular
-  .module('menuDemoCustomTrigger', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
-  });
-
-angular
   .module('menuDemoPosition', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -1892,6 +1546,13 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
     );
   };
 });
+
+angular
+  .module('menuDemoCustomTrigger', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet('call', 'img/icons/sets/communication-icons.svg', 24);
+  });
 
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
@@ -2014,21 +1675,6 @@ angular
       $log.log(item);
     };
   });
-
-(function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-    };
-  }
-})();
 
 (function() {
 'use strict';
@@ -2346,6 +1992,154 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
 })();
 
 (function() {
+  'use strict';
+
+  angular
+      .module('panelProviderDemo', ['ngMaterial'])
+      .config(PanelProviderConfig)
+      .controller('PanelProviderCtrl', PanelProviderCtrl)
+      .controller('PanelMenuCtrl', PanelMenuCtrl);
+
+  /**
+   * Configuration method that is used to define a preset for the upcoming panel
+   * element. Each parameter in the preset is an available parameter in the
+   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
+   * defined here, they overwrite the default parameters for any panel that the
+   * preset is requested for.
+   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
+   *     API.
+   */
+  function PanelProviderConfig($mdPanelProvider) {
+    $mdPanelProvider.definePreset('demoPreset', {
+      attachTo: angular.element(document.body),
+      controller: PanelMenuCtrl,
+      controllerAs: 'ctrl',
+      template: '' +
+          '<div class="menu-panel" md-whiteframe="4">' +
+          '  <div class="menu-content">' +
+          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
+          '      <button class="md-button">' +
+          '        <span>{{item}}</span>' +
+          '      </button>' +
+          '    </div>' +
+          '    <md-divider></md-divider>' +
+          '    <div class="menu-item">' +
+          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
+          '        <span>Close Menu</span>' +
+          '      </button>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>',
+      panelClass: 'menu-panel-container',
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: 'menus'
+    });
+  }
+
+  function PanelProviderCtrl($mdPanel) {
+    this.navigation = {
+      name: 'navigation',
+      items: [
+        'Home',
+        'About',
+        'Contact'
+      ]
+    };
+    this.favorites = {
+      name: 'favorites',
+      items: [
+        'Add to Favorites'
+      ]
+    };
+    this.more = {
+      name: 'more',
+      items: [
+        'Account',
+        'Sign Out'
+      ]
+    };
+
+    $mdPanel.newPanelGroup('menus', {
+      maxOpen: 2
+    });
+
+    this.showMenu = function($event, menu) {
+      /**
+       * The request to open the panel has two arguments passed into it. The
+       * first is a preset name passed in as a string. This will request a
+       * cached preset and apply its configuration parameters. The second is an
+       * object containing parameters that can only be filled through a
+       * controller. These parameters represent configuration needs associated
+       * with user interaction, panel position, panel animation, and other
+       * miscellaneous needs.
+       */
+      $mdPanel.open('demoPreset', {
+        id: 'menu_' + menu.name,
+        position: $mdPanel.newPanelPosition()
+            .relativeTo($event.target)
+            .addPanelPosition(
+              $mdPanel.xPosition.ALIGN_START,
+              $mdPanel.yPosition.BELOW
+            ),
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event
+      });
+    };
+  }
+
+  function PanelMenuCtrl(mdPanelRef) {
+    this.closeMenu = function() {
+      mdPanelRef && mdPanelRef.close();
+    };
+  }
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
+  }
+})();
+
+angular
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
+  .controller('AppCtrl', ['$interval',
+    function($interval) {
+      var self = this;
+
+      self.activated = true;
+      self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+      $interval(function() {
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+      }, 100);
+    }
+  ]);
+
+(function() {
 'use strict';
 
 angular.module('panelAnimationsDemo', ['ngMaterial'])
@@ -2454,139 +2248,6 @@ DialogCtrl.prototype.closeDialog = function() {
 
 })();
 
-(function() {
-  'use strict';
-
-  angular
-      .module('panelProviderDemo', ['ngMaterial'])
-      .config(PanelProviderConfig)
-      .controller('PanelProviderCtrl', PanelProviderCtrl)
-      .controller('PanelMenuCtrl', PanelMenuCtrl);
-
-  /**
-   * Configuration method that is used to define a preset for the upcoming panel
-   * element. Each parameter in the preset is an available parameter in the
-   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
-   * defined here, they overwrite the default parameters for any panel that the
-   * preset is requested for.
-   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
-   *     API.
-   */
-  function PanelProviderConfig($mdPanelProvider) {
-    $mdPanelProvider.definePreset('demoPreset', {
-      attachTo: angular.element(document.body),
-      controller: PanelMenuCtrl,
-      controllerAs: 'ctrl',
-      template: '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>',
-      panelClass: 'menu-panel-container',
-      focusOnOpen: false,
-      zIndex: 100,
-      propagateContainerEvents: true,
-      groupName: 'menus'
-    });
-  }
-
-  function PanelProviderCtrl($mdPanel) {
-    this.navigation = {
-      name: 'navigation',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-    this.favorites = {
-      name: 'favorites',
-      items: [
-        'Add to Favorites'
-      ]
-    };
-    this.more = {
-      name: 'more',
-      items: [
-        'Account',
-        'Sign Out'
-      ]
-    };
-
-    $mdPanel.newPanelGroup('menus', {
-      maxOpen: 2
-    });
-
-    this.showMenu = function($event, menu) {
-      /**
-       * The request to open the panel has two arguments passed into it. The
-       * first is a preset name passed in as a string. This will request a
-       * cached preset and apply its configuration parameters. The second is an
-       * object containing parameters that can only be filled through a
-       * controller. These parameters represent configuration needs associated
-       * with user interaction, panel position, panel animation, and other
-       * miscellaneous needs.
-       */
-      $mdPanel.open('demoPreset', {
-        id: 'menu_' + menu.name,
-        position: $mdPanel.newPanelPosition()
-            .relativeTo($event.target)
-            .addPanelPosition(
-              $mdPanel.xPosition.ALIGN_START,
-              $mdPanel.yPosition.BELOW
-            ),
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event
-      });
-    };
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
-    this.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    };
-  }
-})();
-
-angular
-  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
-  })
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
-
-      self.activated = true;
-      self.determinateValue = 30;
-
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
-      $interval(function() {
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-      }, 100);
-    }
-  ]);
-
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
   })
@@ -2636,89 +2297,6 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
       self.mode = (self.mode == 'query' ? 'determinate' : 'query');
     }, 7200, 0, true);
   }]);
-
-
-angular
-  .module('radioDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-
-    $scope.data = {
-      group1 : 'Banana',
-      group2 : '2',
-      group3 : 'avatar-1'
-    };
-
-    $scope.avatarData = [{
-        id: "avatars:svg-1",
-        title: 'avatar 1',
-        value: 'avatar-1'
-      },{
-        id: "avatars:svg-2",
-        title: 'avatar 2',
-        value: 'avatar-2'
-      },{
-        id: "avatars:svg-3",
-        title: 'avatar 3',
-        value: 'avatar-3'
-    }];
-
-    $scope.radioData = [
-      { label: '1', value: 1 },
-      { label: '2', value: 2 },
-      { label: '3', value: '3', isDisabled: true },
-      { label: '4', value: '4' }
-    ];
-
-
-    $scope.submit = function() {
-      alert('submit');
-    };
-
-    $scope.addItem = function() {
-      var r = Math.ceil(Math.random() * 1000);
-      $scope.radioData.push({ label: r, value: r });
-    };
-
-    $scope.removeItem = function() {
-      $scope.radioData.pop();
-    };
-
-  })
-  .config(function($mdIconProvider) {
-    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
-  });
-
-angular
-  .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
-    var self = this;
-
-    self.contacts = [{
-      'id': 1,
-      'fullName': 'Maria Guadalupe',
-      'lastName': 'Guadalupe',
-      'title': "CEO, Found"
-    }, {
-      'id': 2,
-      'fullName': 'Gabriel García Marquéz',
-      'lastName': 'Marquéz',
-      'title': "VP Sales & Marketing"
-    }, {
-      'id': 3,
-      'fullName': 'Miguel de Cervantes',
-      'lastName': 'Cervantes',
-      'title': "Manager, Operations"
-    }, {
-      'id': 4,
-      'fullName': 'Pacorro de Castel',
-      'lastName': 'Castel',
-      'title': "Security"
-    }];
-    self.selectedId = 2;
-    self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
-    };
-  });
 
 (function () {
   'use strict';
@@ -2838,6 +2416,89 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
     }
   };
 });
+
+
+angular
+  .module('radioDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+
+    $scope.data = {
+      group1 : 'Banana',
+      group2 : '2',
+      group3 : 'avatar-1'
+    };
+
+    $scope.avatarData = [{
+        id: "avatars:svg-1",
+        title: 'avatar 1',
+        value: 'avatar-1'
+      },{
+        id: "avatars:svg-2",
+        title: 'avatar 2',
+        value: 'avatar-2'
+      },{
+        id: "avatars:svg-3",
+        title: 'avatar 3',
+        value: 'avatar-3'
+    }];
+
+    $scope.radioData = [
+      { label: '1', value: 1 },
+      { label: '2', value: 2 },
+      { label: '3', value: '3', isDisabled: true },
+      { label: '4', value: '4' }
+    ];
+
+
+    $scope.submit = function() {
+      alert('submit');
+    };
+
+    $scope.addItem = function() {
+      var r = Math.ceil(Math.random() * 1000);
+      $scope.radioData.push({ label: r, value: r });
+    };
+
+    $scope.removeItem = function() {
+      $scope.radioData.pop();
+    };
+
+  })
+  .config(function($mdIconProvider) {
+    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  });
+
+angular
+  .module('radioDemo2', ['ngMaterial'])
+  .controller('ContactController', function($scope, $filter) {
+    var self = this;
+
+    self.contacts = [{
+      'id': 1,
+      'fullName': 'Maria Guadalupe',
+      'lastName': 'Guadalupe',
+      'title': "CEO, Found"
+    }, {
+      'id': 2,
+      'fullName': 'Gabriel García Marquéz',
+      'lastName': 'Marquéz',
+      'title': "VP Sales & Marketing"
+    }, {
+      'id': 3,
+      'fullName': 'Miguel de Cervantes',
+      'lastName': 'Cervantes',
+      'title': "Manager, Operations"
+    }, {
+      'id': 4,
+      'fullName': 'Pacorro de Castel',
+      'lastName': 'Castel',
+      'title': "Security"
+    }];
+    self.selectedId = 2;
+    self.selectedUser = function() {
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    };
+  });
 
 angular
   .module('basicUsageSidenavDemo', ['ngMaterial'])
@@ -2971,6 +2632,55 @@ angular.module('sliderDemo2', ['ngMaterial'])
   $scope.master = Math.floor(Math.random() * 100);
 });
 
+angular.module('demoSwipe', ['ngMaterial'])
+  .controller('demoSwipeCtrl', function($scope, $log) {
+    $scope.onSwipeLeft = function(ev, target) {
+      alert('You swiped left!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeRight = function(ev, target) {
+      alert('You swiped right!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+    $scope.onSwipeUp = function(ev, target) {
+      alert('You swiped up!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeDown = function(ev, target) {
+      alert('You swiped down!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+  });
+
+angular.module('switchDemo1', ['ngMaterial'])
+.controller('SwitchDemoCtrl', function($scope) {
+  $scope.data = {
+    cb1: true,
+    cb4: true,
+    cb5: false
+  };
+
+  $scope.message = 'false';
+
+  $scope.onChange = function(cbState) {
+    $scope.message = cbState;
+  };
+});
+
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
 .config(function($mdThemingProvider) {
@@ -3059,140 +2769,6 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
       },
     ];
 });
-
-angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope, $log) {
-    $scope.onSwipeLeft = function(ev, target) {
-      alert('You swiped left!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeRight = function(ev, target) {
-      alert('You swiped right!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-    $scope.onSwipeUp = function(ev, target) {
-      alert('You swiped up!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeDown = function(ev, target) {
-      alert('You swiped down!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-  });
-
-angular.module('switchDemo1', ['ngMaterial'])
-.controller('SwitchDemoCtrl', function($scope) {
-  $scope.data = {
-    cb1: true,
-    cb4: true,
-    cb5: false
-  };
-
-  $scope.message = 'false';
-
-  $scope.onChange = function(cbState) {
-    $scope.message = cbState;
-  };
-});
-
-angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
-(function () {
-  'use strict';
-  angular
-      .module('tabsDemoDynamicTabs', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ($scope, $log) {
-    var tabs = [
-        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
-        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
-        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
-        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
-        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
-        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
-        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
-        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
-        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
-        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
-        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
-        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
-      ],
-      selected = null,
-      previous = null;
-    $scope.tabs = tabs;
-    $scope.selectedIndex = 0;
-    $scope.$watch('selectedIndex', function(current, old) {
-      previous = selected;
-      selected = tabs[current];
-      if (old + 1 && (old != current)) {
-        $log.debug('Goodbye ' + previous.title + '!');
-      }
-      if (current + 1) {
-        $log.debug('Hello ' + selected.title + '!');
-      }
-    });
-    $scope.addTab = function(title, view) {
-      view = view || title + " Content View";
-      tabs.push({title: title, content: view, disabled: false});
-    };
-    $scope.removeTab = function(tab) {
-      var index = tabs.indexOf(tab);
-      tabs.splice(index, 1);
-    };
-  }
-})();
-
-
-(function () {
-  'use strict';
-
-  angular
-      .module('tabsDemoIconTabs', ['ngMaterial'] )
-      .config(function($mdIconProvider) {
-        $mdIconProvider
-          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
-          .icon('favorite', 'img/icons/favorite.svg');
-      })
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ( $scope ) {
-    $scope.data = {
-      selectedIndex: 0,
-      secondLocked:  true,
-      secondLabel:   "Item Two",
-      bottom:        false
-    };
-    $scope.next = function() {
-      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
-    };
-    $scope.previous = function() {
-      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
-    };
-  }
-})();
 
 angular.module('toastBasicDemo', ['ngMaterial'])
 
@@ -3367,6 +2943,91 @@ angular.module('toastBasicDemo', ['ngMaterial'])
     $scope.$on('$destroy', function() {
       removeActionKeyListener();
     });
+  }
+})();
+
+angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
+(function () {
+  'use strict';
+  angular
+      .module('tabsDemoDynamicTabs', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ($scope, $log) {
+    var tabs = [
+        { title: 'Zero (AKA 0, Cero, One - One, -Nineteen + 19, and so forth and so on and continuing into what seems like infinity.)', content: 'Woah...that is a really long title!' },
+        { title: 'One', content: "Tabs will become paginated if there isn't enough room for them."},
+        { title: 'Two', content: "You can swipe left and right on a mobile device to change tabs."},
+        { title: 'Three', content: "You can bind the selected tab via the selected attribute on the md-tabs element."},
+        { title: 'Four', content: "If you set the selected tab binding to -1, it will leave no tab selected."},
+        { title: 'Five', content: "If you remove a tab, it will try to select a new one."},
+        { title: 'Six', content: "There's an ink bar that follows the selected tab, you can turn it off if you want."},
+        { title: 'Seven', content: "If you set ng-disabled on a tab, it becomes unselectable. If the currently selected tab becomes disabled, it will try to select the next tab."},
+        { title: 'Eight', content: "If you look at the source, you're using tabs to look at a demo for tabs. Recursion!"},
+        { title: 'Nine', content: "If you set md-theme=\"green\" on the md-tabs element, you'll get green tabs."},
+        { title: 'Ten', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eleven', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twelve', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Thirteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fourteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Fifteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Sixteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Seventeen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Eighteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Nineteen', content: "If you're still reading this, you should just go check out the API docs for tabs!"},
+        { title: 'Twenty', content: "If you're still reading this, you should just go check out the API docs for tabs!"}
+      ],
+      selected = null,
+      previous = null;
+    $scope.tabs = tabs;
+    $scope.selectedIndex = 0;
+    $scope.$watch('selectedIndex', function(current, old) {
+      previous = selected;
+      selected = tabs[current];
+      if (old + 1 && (old != current)) {
+        $log.debug('Goodbye ' + previous.title + '!');
+      }
+      if (current + 1) {
+        $log.debug('Hello ' + selected.title + '!');
+      }
+    });
+    $scope.addTab = function(title, view) {
+      view = view || title + " Content View";
+      tabs.push({title: title, content: view, disabled: false});
+    };
+    $scope.removeTab = function(tab) {
+      var index = tabs.indexOf(tab);
+      tabs.splice(index, 1);
+    };
+  }
+})();
+
+
+(function () {
+  'use strict';
+
+  angular
+      .module('tabsDemoIconTabs', ['ngMaterial'] )
+      .config(function($mdIconProvider) {
+        $mdIconProvider
+          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
+          .icon('favorite', 'img/icons/favorite.svg');
+      })
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ( $scope ) {
+    $scope.data = {
+      selectedIndex: 0,
+      secondLocked:  true,
+      secondLabel:   "Item Two",
+      bottom:        false
+    };
+    $scope.next = function() {
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+    };
+    $scope.previous = function() {
+      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    };
   }
 })();
 
@@ -3614,3 +3275,345 @@ angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
         this.showFrame = this.showFrame == 3 ? -1 : 3;
       };
     });
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    self.newState = newState;
+
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    self.repos         = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for repos... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.repos.filter( createFilterFor(query) ) : self.repos,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `components` list of key/value pairs
+     */
+    function loadAll() {
+      var repos = [
+        {
+          'name'      : 'AngularJS',
+          'url'       : 'https://github.com/angular/angular.js',
+          'watchers'  : '3,623',
+          'forks'     : '16,175',
+        },
+        {
+          'name'      : 'Angular',
+          'url'       : 'https://github.com/angular/angular',
+          'watchers'  : '469',
+          'forks'     : '760',
+        },
+        {
+          'name'      : 'AngularJS Material',
+          'url'       : 'https://github.com/angular/material',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Angular Material',
+          'url'       : 'https://github.com/angular/material2',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Bower Material',
+          'url'       : 'https://github.com/angular/bower-material',
+          'watchers'  : '42',
+          'forks'     : '84',
+        },
+        {
+          'name'      : 'Material Start',
+          'url'       : 'https://github.com/angular/material-start',
+          'watchers'  : '81',
+          'forks'     : '303',
+        }
+      ];
+      return repos.map( function (repo) {
+        repo.value = repo.name.toLowerCase();
+        return repo;
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(item) {
+        return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      });
+    };
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter( createFilterFor(query) ) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();

@@ -169,6 +169,20 @@ autocomplete popup.</p>
   
     
   
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
   
     
   
@@ -249,6 +263,149 @@ autocomplete popup.</p>
         <td class="description">
           <p>Specifies the minimum length of text before autocomplete will
    make suggestions</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-describedby
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A space-separated list of element IDs. This should
+    contain the IDs of any elements that describe this autocomplete. Screen readers will read
+    the content of these elements at the end of announcing that the chips input has been
+    selected and describing its current state. The descriptive elements do not need to be
+    visible on the page.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-labelledby
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A space-separated list of element IDs. The ideal use
+   case is that this would contain the ID of a <code>&lt;label&gt;</code> element that is associated with these
+   chips.<br><br>
+   For <code>&lt;label id=&quot;state&quot;&gt;US State&lt;/label&gt;</code>, you would set this to
+   <code>input-aria-labelledby=&quot;state&quot;</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers to identify the input.
+   For static chips, this will be applied to the chips container.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          container-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers informing users of how to
+   navigate the chips when there are chips.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          container-empty-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers informing users of how to
+   add chips when there are no chips. You will want to use this to override the default when
+   in a non-English locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          delete-hint
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A string read by screen readers instructing users that pressing
+   the delete key will remove the chip. You will want to use this to override the default when
+   in a non-English locale.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-removed-message
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Screen readers will announce this message following the
+   chips contents. The default is <code>&quot;removed&quot;</code>. If a chip with the content of &quot;Apple&quot; was
+   removed, the screen reader would read &quot;Apple removed&quot;. You will want to use this to override
+   the default when in a non-English locale.</p>
 
           
         </td>

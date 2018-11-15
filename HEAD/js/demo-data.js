@@ -593,7 +593,14 @@ angular.module('docsApp').constant('DEMOS', [
           ]
         },
         "id": "chipsdemoCustomSeparatorKeys",
-        "css": [],
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/chips/demoCustomSeparatorKeys/style.css"
+          }
+        ],
         "html": [],
         "js": [
           {

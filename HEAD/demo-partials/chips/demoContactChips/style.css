@@ -10,9 +10,10 @@
 .chipsdemoContactChips .contact-item {
   box-sizing: border-box; }
   .chipsdemoContactChips .contact-item.selected {
-    opacity: 0.5; }
-    .chipsdemoContactChips .contact-item.selected h3 {
-      opacity: 0.5; }
+    background-color: #E3ECF5; }
+    .chipsdemoContactChips .contact-item.selected p {
+      color: rgba(0, 0, 0, 0.87);
+      font-weight: 400; }
   .chipsdemoContactChips .contact-item .md-list-item-text {
     padding: 14px 0;
     max-width: 190px; }
