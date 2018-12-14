@@ -1,6 +1,92 @@
 (function () {
   'use strict';
   angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    self.newState = newState;
+
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -108,70 +194,6 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-      return deferred.promise;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteDemoInsideDialog', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -218,92 +240,6 @@
      */
     function querySearch (query) {
       return query ? self.states.filter( createFilterFor(query) ) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map( function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter( createFilterFor(query) ) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
     }
 
     /**
@@ -438,6 +374,70 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
   });
 
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter( createFilterFor(query) ) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve( results ); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map( function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
 angular.module('buttonsDemoBasic', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {
   $scope.title1 = 'Button';
@@ -550,308 +550,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
         return list.indexOf(item) > -1;
       };
 });
-
-(function () {
-  'use strict';
-  angular
-      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
-      .config(['$mdIconProvider', function($mdIconProvider) {
-        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
-      }])
-      .controller('BasicDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.readonly = false;
-
-    // Lists of fruit names and Vegetable objects
-    self.fruitNames = ['Apple', 'Banana', 'Orange'];
-    self.ngChangeFruitNames = angular.copy(self.fruitNames);
-    self.roFruitNames = angular.copy(self.fruitNames);
-    self.editableFruitNames = angular.copy(self.fruitNames);
-
-    self.tags = [];
-    self.vegObjs = [
-      {
-        'name' : 'Broccoli',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Cabbage',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Carrot',
-        'type' : 'Umbelliferous'
-      }
-    ];
-
-    self.newVeg = function(chip) {
-      return {
-        name: chip,
-        type: 'unknown'
-      };
-    };
-
-    self.onModelChange = function(newModel) {
-      $log.log('The model has changed to ' + newModel + '.');
-    };
-  }
-})();
-
-(function () {
-  'use strict';
-
-  // If we do not have CryptoJS defined; import it
-  if (typeof CryptoJS === 'undefined') {
-    var cryptoSrc = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js';
-    var scriptTag = document.createElement('script');
-    scriptTag.setAttribute('src', cryptoSrc);
-    document.body.appendChild(scriptTag);
-  }
-
-  angular
-      .module('contactChipsDemo', ['ngMaterial'])
-      .controller('ContactChipDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($q, $timeout, $log, $mdConstant) {
-    var self = this;
-    var pendingSearch, cancelSearch = angular.noop;
-    var lastSearch;
-
-    self.allContacts = loadContacts();
-    self.contacts = [self.allContacts[0]];
-    self.asyncContacts = [];
-    self.keys = [$mdConstant.KEY_CODE.COMMA];
-
-    self.querySearch = querySearch;
-    self.delayedQuerySearch = delayedQuerySearch;
-    self.onModelChange = onModelChange;
-
-    /**
-     * Search for contacts; use a random delay to simulate a remote call
-     */
-    function querySearch (criteria) {
-      return criteria ? self.allContacts.filter(createFilterFor(criteria)) : [];
-    }
-
-    /**
-     * Async search for contacts
-     * Also debounce the queries; since the md-contact-chips does not support this
-     */
-    function delayedQuerySearch(criteria) {
-      if (!pendingSearch || !debounceSearch())  {
-        cancelSearch();
-
-        return pendingSearch = $q(function(resolve, reject) {
-          // Simulate async search... (after debouncing)
-          cancelSearch = reject;
-          $timeout(function() {
-
-            resolve( self.querySearch(criteria) );
-
-            refreshDebounce();
-          }, Math.random() * 500, true);
-        });
-      }
-
-      return pendingSearch;
-    }
-
-    function refreshDebounce() {
-      lastSearch = 0;
-      pendingSearch = null;
-      cancelSearch = angular.noop;
-    }
-
-    /**
-     * Debounce if querying faster than 300ms
-     */
-    function debounceSearch() {
-      var now = new Date().getMilliseconds();
-      lastSearch = lastSearch || now;
-
-      return ((now - lastSearch) < 300);
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(contact) {
-        return (contact._lowername.indexOf(lowercaseQuery) !== -1);
-      };
-
-    }
-
-    function onModelChange(newModel) {
-      $log.log('The model has changed to ' + JSON.stringify(newModel) + '.');
-    }
-
-    function loadContacts() {
-      var contacts = [
-        'Marina Augustine',
-        'Oddr Sarno',
-        'Nick Giannopoulos',
-        'Narayana Garner',
-        'Anita Gros',
-        'Megan Smith',
-        'Tsvetko Metzger',
-        'Hector Simek',
-        'Some-guy withalongalastaname'
-      ];
-
-      return contacts.map(function (c, index) {
-        var cParts = c.split(' ');
-        var email = cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() + '@example.com';
-        var hash = CryptoJS.MD5(email);
-
-        var contact = {
-          name: c,
-          email: email,
-          image: '//www.gravatar.com/avatar/' + hash + '?s=50&d=retro'
-        };
-        contact._lowername = contact.name.toLowerCase();
-        return contact;
-      });
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('chipsCustomInputDemo', ['ngMaterial'])
-      .controller('CustomInputDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    self.readonly = false;
-    self.selectedItem = null;
-    self.searchText = null;
-    self.querySearch = querySearch;
-    self.vegetables = loadVegetables();
-    self.selectedVegetables = [];
-    self.numberChips = [];
-    self.numberChips2 = [];
-    self.numberBuffer = '';
-    self.autocompleteDemoRequireMatch = true;
-    self.transformChip = transformChip;
-
-    /**
-     * Return the proper object when the append is called.
-     */
-    function transformChip(chip) {
-      // If it is an object, it's already a known chip
-      if (angular.isObject(chip)) {
-        return chip;
-      }
-
-      // Otherwise, create a new one
-      return { name: chip, type: 'new' };
-    }
-
-    /**
-     * Search for vegetables.
-     */
-    function querySearch (query) {
-      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
-      return results;
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(vegetable) {
-        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
-            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-
-    function loadVegetables() {
-      var veggies = [
-        {
-          'name': 'Broccoli',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Cabbage',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Carrot',
-          'type': 'Umbelliferous'
-        },
-        {
-          'name': 'Lettuce',
-          'type': 'Composite'
-        },
-        {
-          'name': 'Spinach',
-          'type': 'Goosefoot'
-        }
-      ];
-
-      return veggies.map(function (veg) {
-        veg._lowername = veg.name.toLowerCase();
-        veg._lowertype = veg.type.toLowerCase();
-        return veg;
-      });
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('chipsCustomSeparatorDemo', ['ngMaterial'])
-      .controller('CustomSeparatorCtrl', DemoCtrl);
-
-  function DemoCtrl ($mdConstant) {
-    // Use common key codes found in $mdConstant.KEY_CODE...
-    this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
-    this.tags = [];
-
-    // Any key code can be used to create a custom separator
-    var semicolon = 186;
-    this.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
-    this.contacts = ['test@example.com'];
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('staticChipsDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    this.chipText = 'Football';
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-    .module('chipsValidationDemo', ['ngMaterial', 'ngMessages'])
-    .controller('ChipsValidationCtrl', ValidationCtrl);
-
-  function ValidationCtrl ($log) {
-    this.selectedFruit = [];
-    this.selectedVegetables = [];
-    this.onSubmit = function(form) {
-      $log.log({fruits: form.fruits.$modelValue, vegetables: form.vegetables.$modelValue});
-    };
-  }
-})();
 
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
@@ -1290,6 +988,308 @@ angular.module('dividerDemo1', ['ngMaterial'])
       notes: " I'll be in your neighborhood doing errands"
     }];
   });
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
+      .config(['$mdIconProvider', function($mdIconProvider) {
+        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
+      }])
+      .controller('BasicDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.readonly = false;
+
+    // Lists of fruit names and Vegetable objects
+    self.fruitNames = ['Apple', 'Banana', 'Orange'];
+    self.ngChangeFruitNames = angular.copy(self.fruitNames);
+    self.roFruitNames = angular.copy(self.fruitNames);
+    self.editableFruitNames = angular.copy(self.fruitNames);
+
+    self.tags = [];
+    self.vegObjs = [
+      {
+        'name' : 'Broccoli',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Cabbage',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Carrot',
+        'type' : 'Umbelliferous'
+      }
+    ];
+
+    self.newVeg = function(chip) {
+      return {
+        name: chip,
+        type: 'unknown'
+      };
+    };
+
+    self.onModelChange = function(newModel) {
+      $log.log('The model has changed to ' + newModel + '.');
+    };
+  }
+})();
+
+(function () {
+  'use strict';
+
+  // If we do not have CryptoJS defined; import it
+  if (typeof CryptoJS === 'undefined') {
+    var cryptoSrc = 'https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js';
+    var scriptTag = document.createElement('script');
+    scriptTag.setAttribute('src', cryptoSrc);
+    document.body.appendChild(scriptTag);
+  }
+
+  angular
+      .module('contactChipsDemo', ['ngMaterial'])
+      .controller('ContactChipDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($q, $timeout, $log, $mdConstant) {
+    var self = this;
+    var pendingSearch, cancelSearch = angular.noop;
+    var lastSearch;
+
+    self.allContacts = loadContacts();
+    self.contacts = [self.allContacts[0]];
+    self.asyncContacts = [];
+    self.keys = [$mdConstant.KEY_CODE.COMMA];
+
+    self.querySearch = querySearch;
+    self.delayedQuerySearch = delayedQuerySearch;
+    self.onModelChange = onModelChange;
+
+    /**
+     * Search for contacts; use a random delay to simulate a remote call
+     */
+    function querySearch (criteria) {
+      return criteria ? self.allContacts.filter(createFilterFor(criteria)) : [];
+    }
+
+    /**
+     * Async search for contacts
+     * Also debounce the queries; since the md-contact-chips does not support this
+     */
+    function delayedQuerySearch(criteria) {
+      if (!pendingSearch || !debounceSearch())  {
+        cancelSearch();
+
+        return pendingSearch = $q(function(resolve, reject) {
+          // Simulate async search... (after debouncing)
+          cancelSearch = reject;
+          $timeout(function() {
+
+            resolve( self.querySearch(criteria) );
+
+            refreshDebounce();
+          }, Math.random() * 500, true);
+        });
+      }
+
+      return pendingSearch;
+    }
+
+    function refreshDebounce() {
+      lastSearch = 0;
+      pendingSearch = null;
+      cancelSearch = angular.noop;
+    }
+
+    /**
+     * Debounce if querying faster than 300ms
+     */
+    function debounceSearch() {
+      var now = new Date().getMilliseconds();
+      lastSearch = lastSearch || now;
+
+      return ((now - lastSearch) < 300);
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(contact) {
+        return (contact._lowername.indexOf(lowercaseQuery) !== -1);
+      };
+
+    }
+
+    function onModelChange(newModel) {
+      $log.log('The model has changed to ' + JSON.stringify(newModel) + '.');
+    }
+
+    function loadContacts() {
+      var contacts = [
+        'Marina Augustine',
+        'Oddr Sarno',
+        'Nick Giannopoulos',
+        'Narayana Garner',
+        'Anita Gros',
+        'Megan Smith',
+        'Tsvetko Metzger',
+        'Hector Simek',
+        'Some-guy withalongalastaname'
+      ];
+
+      return contacts.map(function (c, index) {
+        var cParts = c.split(' ');
+        var email = cParts[0][0].toLowerCase() + '.' + cParts[1].toLowerCase() + '@example.com';
+        var hash = CryptoJS.MD5(email);
+
+        var contact = {
+          name: c,
+          email: email,
+          image: '//www.gravatar.com/avatar/' + hash + '?s=50&d=retro'
+        };
+        contact._lowername = contact.name.toLowerCase();
+        return contact;
+      });
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsCustomInputDemo', ['ngMaterial'])
+      .controller('CustomInputDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    self.readonly = false;
+    self.selectedItem = null;
+    self.searchText = null;
+    self.querySearch = querySearch;
+    self.vegetables = loadVegetables();
+    self.selectedVegetables = [];
+    self.numberChips = [];
+    self.numberChips2 = [];
+    self.numberBuffer = '';
+    self.autocompleteDemoRequireMatch = true;
+    self.transformChip = transformChip;
+
+    /**
+     * Return the proper object when the append is called.
+     */
+    function transformChip(chip) {
+      // If it is an object, it's already a known chip
+      if (angular.isObject(chip)) {
+        return chip;
+      }
+
+      // Otherwise, create a new one
+      return { name: chip, type: 'new' };
+    }
+
+    /**
+     * Search for vegetables.
+     */
+    function querySearch (query) {
+      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
+      return results;
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(vegetable) {
+        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
+            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+
+    function loadVegetables() {
+      var veggies = [
+        {
+          'name': 'Broccoli',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Cabbage',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Carrot',
+          'type': 'Umbelliferous'
+        },
+        {
+          'name': 'Lettuce',
+          'type': 'Composite'
+        },
+        {
+          'name': 'Spinach',
+          'type': 'Goosefoot'
+        }
+      ];
+
+      return veggies.map(function (veg) {
+        veg._lowername = veg.name.toLowerCase();
+        veg._lowertype = veg.type.toLowerCase();
+        return veg;
+      });
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsCustomSeparatorDemo', ['ngMaterial'])
+      .controller('CustomSeparatorCtrl', DemoCtrl);
+
+  function DemoCtrl ($mdConstant) {
+    // Use common key codes found in $mdConstant.KEY_CODE...
+    this.keys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA];
+    this.tags = [];
+
+    // Any key code can be used to create a custom separator
+    var semicolon = 186;
+    this.customKeys = [$mdConstant.KEY_CODE.ENTER, $mdConstant.KEY_CODE.COMMA, semicolon];
+    this.contacts = ['test@example.com'];
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('staticChipsDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    this.chipText = 'Football';
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+    .module('chipsValidationDemo', ['ngMaterial', 'ngMessages'])
+    .controller('ChipsValidationCtrl', ValidationCtrl);
+
+  function ValidationCtrl ($log) {
+    this.selectedFruit = [];
+    this.selectedVegetables = [];
+    this.onSubmit = function(form) {
+      $log.log({fruits: form.fruits.$modelValue, vegetables: form.vegetables.$modelValue});
+    };
+  }
+})();
 
 (function() {
   'use strict';
@@ -1896,128 +1896,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
   };
 });
 
-angular
-  .module('menuBarDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-  })
-  .filter('keyboardShortcut', function($window) {
-    return function(str) {
-      if (!str) return;
-      var keys = str.split('-');
-      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
-
-      var separator = (!isOSX || keys.length > 2) ? '+' : '';
-
-      var abbreviations = {
-        M: isOSX ? '⌘' : 'Ctrl',
-        A: isOSX ? 'Option' : 'Alt',
-        S: 'Shift'
-      };
-
-      return keys.map(function(key, index) {
-        var last = index === keys.length - 1;
-        return last ? key : abbreviations[key];
-      }).join(separator);
-    };
-  })
-  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
-    this.settings = {
-      printLayout: true,
-      showRuler: true,
-      showSpellingSuggestions: true,
-      presentationMode: 'edit'
-    };
-
-    this.sampleAction = function(name, ev) {
-      $mdDialog.show($mdDialog.alert()
-        .title(name)
-        .textContent('You triggered the "' + name + '" action')
-        .ok('Great')
-        .targetEvent(ev)
-      );
-    };
-  });
-
-
-angular
-  .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
-  .config(function ($mdIconProvider) {
-    $mdIconProvider.iconSet("call", 'img/icons/sets/communication-icons.svg', 24);
-  })
-  .controller('DemoDynamicNestedMenusCtrl', function DemoCtrl($log) {
-    this.organizations = [
-      {
-        department: 'Sales',
-        managers: [
-          {
-            name: 'Jane',
-            reports: [
-              {name: 'Rick'},
-              {name: 'Joan'},
-              {name: 'Ron'}
-            ]
-          },
-          {
-            name: 'Jim',
-            reports: [
-              {name: 'Bob'},
-              {name: 'Sandra'},
-              {name: 'Juan'}
-            ]
-          }
-        ]
-      },
-      {
-        department: 'Engineering',
-        managers: [
-          {
-            name: 'Janet',
-            reports: [
-              {name: 'Betty'},
-              {name: 'Corrie'},
-              {name: 'Carlos'}
-            ]
-          },
-          {
-            name: 'Randy',
-            reports: [
-              {name: 'Julia'},
-              {name: 'Matt'},
-              {name: 'Kara'}
-            ]
-          }
-        ]
-      },
-      {
-        department: 'Marketing',
-        managers: [
-          {
-            name: 'Peggy',
-            reports: [
-              {name: 'Dwight'},
-              {name: 'Pam'},
-              {name: 'Jeremy'}
-            ]
-          },
-          {
-            name: 'Andrew',
-            reports: [
-              {name: 'Stephen'},
-              {name: 'Naomi'},
-              {name: 'Erin'}
-            ]
-          }
-        ]
-      }
-    ];
-
-    this.onClick = function onClick(item) {
-      $log.log(item);
-    };
-  });
-
 (function() {
   'use strict';
 
@@ -2590,6 +2468,128 @@ angular
     }
   ]);
 
+angular
+  .module('menuBarDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+  })
+  .filter('keyboardShortcut', function($window) {
+    return function(str) {
+      if (!str) return;
+      var keys = str.split('-');
+      var isOSX = /Mac OS X/.test($window.navigator.userAgent);
+
+      var separator = (!isOSX || keys.length > 2) ? '+' : '';
+
+      var abbreviations = {
+        M: isOSX ? '⌘' : 'Ctrl',
+        A: isOSX ? 'Option' : 'Alt',
+        S: 'Shift'
+      };
+
+      return keys.map(function(key, index) {
+        var last = index === keys.length - 1;
+        return last ? key : abbreviations[key];
+      }).join(separator);
+    };
+  })
+  .controller('DemoBasicCtrl', function DemoCtrl($mdDialog) {
+    this.settings = {
+      printLayout: true,
+      showRuler: true,
+      showSpellingSuggestions: true,
+      presentationMode: 'edit'
+    };
+
+    this.sampleAction = function(name, ev) {
+      $mdDialog.show($mdDialog.alert()
+        .title(name)
+        .textContent('You triggered the "' + name + '" action')
+        .ok('Great')
+        .targetEvent(ev)
+      );
+    };
+  });
+
+
+angular
+  .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
+  .config(function ($mdIconProvider) {
+    $mdIconProvider.iconSet("call", 'img/icons/sets/communication-icons.svg', 24);
+  })
+  .controller('DemoDynamicNestedMenusCtrl', function DemoCtrl($log) {
+    this.organizations = [
+      {
+        department: 'Sales',
+        managers: [
+          {
+            name: 'Jane',
+            reports: [
+              {name: 'Rick'},
+              {name: 'Joan'},
+              {name: 'Ron'}
+            ]
+          },
+          {
+            name: 'Jim',
+            reports: [
+              {name: 'Bob'},
+              {name: 'Sandra'},
+              {name: 'Juan'}
+            ]
+          }
+        ]
+      },
+      {
+        department: 'Engineering',
+        managers: [
+          {
+            name: 'Janet',
+            reports: [
+              {name: 'Betty'},
+              {name: 'Corrie'},
+              {name: 'Carlos'}
+            ]
+          },
+          {
+            name: 'Randy',
+            reports: [
+              {name: 'Julia'},
+              {name: 'Matt'},
+              {name: 'Kara'}
+            ]
+          }
+        ]
+      },
+      {
+        department: 'Marketing',
+        managers: [
+          {
+            name: 'Peggy',
+            reports: [
+              {name: 'Dwight'},
+              {name: 'Pam'},
+              {name: 'Jeremy'}
+            ]
+          },
+          {
+            name: 'Andrew',
+            reports: [
+              {name: 'Stephen'},
+              {name: 'Naomi'},
+              {name: 'Erin'}
+            ]
+          }
+        ]
+      }
+    ];
+
+    this.onClick = function onClick(item) {
+      $log.log(item);
+    };
+  });
+
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
   })
@@ -2939,6 +2939,16 @@ angular
     }
   });
 
+
+angular.module('sliderDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.vol = Math.floor(Math.random() * 100);
+  $scope.bass = Math.floor(Math.random() * 100);
+  $scope.master = Math.floor(Math.random() * 100);
+});
+
 angular.module('sliderDemo1', ['ngMaterial'])
   .config(function ($mdIconProvider) {
     $mdIconProvider.iconSet('device', 'img/icons/sets/device-icons.svg', 24);
@@ -2963,16 +2973,6 @@ angular.module('sliderDemo1', ['ngMaterial'])
 
     $scope.isDisabled = true;
   });
-
-
-angular.module('sliderDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.vol = Math.floor(Math.random() * 100);
-  $scope.bass = Math.floor(Math.random() * 100);
-  $scope.master = Math.floor(Math.random() * 100);
-});
 
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
