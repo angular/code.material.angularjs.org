@@ -13022,7 +13022,7 @@ function mdInputContainerDirective($mdTheming, $parse, $$rAF) {
           }
         });
       }
-    }
+    };
   }
 
   function ContainerCtrl($scope, $element, $attrs, $animate) {
