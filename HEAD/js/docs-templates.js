@@ -449,7 +449,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Safari\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          11<br>11.1\n' +
+    '          11.x<br>12.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -457,7 +457,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          iOS\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          10.3<br>11.0-11.2<br>11.3\n' +
+    '          11.x<br>12.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -473,7 +473,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Android Browser\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          4.4<br>4.4.3-4.4.4<br>latest version\n' +
+    '          4.4.3-4.4.4<br>latest version\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -481,7 +481,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Samsung Internet\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          4<br>5<br>6.2\n' +
+    '          4<br>6.2<br>7.2\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -489,7 +489,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Opera for Android\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          Mini all<br>Mobile 37\n' +
+    '          Mini all\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      </tbody>\n' +
