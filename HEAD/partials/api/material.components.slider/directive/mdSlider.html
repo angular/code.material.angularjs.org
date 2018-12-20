@@ -17,7 +17,7 @@
 <p>As per the <a href="https://material.io/archive/guidelines/style/color.html#color-color-system">Material Design spec</a>
 the slider is in the accent color by default. The primary color palette may be used with
 the <code>md-primary</code> class.</p>
-<p>It has two modes:</p>
+<p>The slider has two modes:</p>
 <ul>
 <li>&quot;normal&quot; mode where the user slides between a wide range of values</li>
 <li>&quot;discrete&quot; mode where the user slides between only a few select values</li>
@@ -25,8 +25,16 @@ the <code>md-primary</code> class.</p>
 <p>To enable discrete mode, add the <code>md-discrete</code> attribute to a slider
 and use the <code>step</code> attribute to change the distance between
 values the user is allowed to pick.</p>
-<p>When using the keyboard, holding the Meta, Control, or Alt key while pressing the left
-and right arrow buttons will cause the slider to move 4 steps.</p>
+<p>When using the keyboard:</p>
+<ul>
+<li>pressing the arrow keys will increase or decrease the slider&#39;s value by one step</li>
+<li>holding the Meta, Control, or Alt key while pressing the arrow keys will
+move the slider four steps at a time</li>
+<li>pressing the Home key will move the slider to the first allowed value</li>
+<li>pressing the End key will move the slider to the last allowed value</li>
+<li>pressing the Page Up key will increase the slider value by ten</li>
+<li>pressing the Page Down key will decrease the slider value by ten</li>
+</ul>
 
 </div>
 
