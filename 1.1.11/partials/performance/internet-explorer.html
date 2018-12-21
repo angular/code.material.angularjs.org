@@ -1,0 +1,159 @@
+<div class="doc-content theming">
+    
+    <h1 id="introduction">Introduction</h1>
+<p>AngularJS Material is a cutting edge framework which uses advanced CSS features.
+Internet Explorer is known to have performance issues with some of these features. 
+Some of the notable issues are related to layout calculations, animations, and border rendering. 
+In this document, we will provide optimizations which can improve performance in 
+Internet Explorer.</p>
+<p>This document should be consulted after the AngularJS code in an application is optimized: </p>
+<ol>
+<li>Reduce the number of watchers</li>
+<li>Enable production mode, etc.</li>
+</ol>
+<h1 id="theming">Theming</h1>
+<p>AngularJS Material theming works by injecting inline styles into the <code>&lt;head&gt;</code>. The benefit
+is that the theme can be switched or modified at runtime. Unfortunately these inline styles can 
+present a performance burden for Internet Explorer. When switching or modifying themes at runtime
+is not a requirement, the theming CSS can be exported to an external file which can be loaded statically.
+The following steps should be performed:</p>
+<ul>
+<li>Configure your theme as explained <a href="../Theming/03_configuring_a_theme">here</a><ul>
+<li>This step is only required when a custom theme is used</li>
+</ul>
+</li>
+<li>Run the application in Chrome </li>
+<li>Open the Chrome DevTools</li>
+<li>Execute the following javascript - <i>This copies the theming CSS to the clipboard</i></li>
+</ul>
+<hljs lang="js">
+copy([].slice.call(document.styleSheets)
+  .map(e =&gt; e.ownerNode)
+  .filter(e =&gt; e.hasAttribute(&#39;md-theme-style&#39;))
+  .map(e =&gt; e.textContent)
+  .join(&#39;\n&#39;);
+);
+</hljs>
+
+<ul>
+<li>Paste the content to a static, external CSS file and link it to the app&#39;s <code>index.html</code>.</li>
+<li>In the top level AngularJS modules of the application, add the following code to disable
+the injection of styles:</li>
+</ul>
+<hljs lang="js">
+angular
+  .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+  .config(function($mdThemingProvider) {
+    $mdThemingProvider.disableTheming();
+});
+</hljs>
+
+<p><br></p>
+<h1 id="directives-that-can-help">Directives that can help</h1>
+<h2 id="virtual-repeat">Virtual Repeat</h2>
+<p>One of the greatest issues with Internet Explorer, is the slow layout calculation. 
+The more elements are in the dom, the slower the calculations are. 
+This is especially important with ng-repeat.
+Let&#39;s take the following <a href="https://codepen.io/team/AngularMaterial/pen/GdjVvP">Example</a>:</p>
+<hljs lang="html">
+<md-list>
+  <md-list-item ng-repeat="person in people"
+                ng-click="goToPerson(person.name, $event)">
+    <img alt="{{::person.name }}" ng-src="{{::person.img }}" class="md-avatar">
+    <p>{{::person.name }}</p>
+    <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
+    <md-icon md-svg-icon="communication:email" ng-click="doSecondaryAction($event)"
+             aria-label="Send Email" class="md-secondary md-hue-3"></md-icon>
+    <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"
+             md-svg-icon="communication:message"></md-icon>
+  </md-list-item>
+</md-list>
+</hljs>
+
+<p>In this example, a list of people is shown. When a person is clicked, a <code>md-dialog</code> is opened. 
+The opening of the dialog inserts a md-backdrop and a layout calculation of the whole DOM is triggered. 
+The bigger the list gets, the opening of the dialog is slowed down.</p>
+<p>The best solution is to keep the DOM small. The list elements which should be in the DOM are just the
+elements which fit in the viewport at any one time.
+This can be achieved by using <a href="https://material.angularjs.org/latest/demo/virtualRepeat">Virtual Repeat</a>.</p>
+<p>The <a href="https://codepen.io/team/AngularMaterial/pen/yjamqa">solution</a> is easy and elegant:</p>
+<hljs lang="html">
+<md-content layout="column" ng-controller="ListCtrl">
+  <md-virtual-repeat-container id="vertical-container">
+    <md-list>
+      <md-list-item md-virtual-repeat="person in people"
+                    ng-click="goToPerson(person.name, $event)">
+        <img alt="{{ person.name }}" ng-src="{{ person.img }}" class="md-avatar">
+        <p>{{ person.name }}</p>
+        <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
+        <md-icon md-svg-icon="communication:email" ng-click="doSecondaryAction($event)"
+                 aria-label="Send Email" class="md-secondary md-hue-3"></md-icon>
+        <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat"
+                 md-svg-icon="communication:message"></md-icon>
+      </md-list-item>
+    </md-list>
+  </md-virtual-repeat-container>
+</md-content>
+</hljs>
+
+<p>The virtual repeat directive only adds, to the dom, the elements visible in the viewport. 
+When the view is scrolled the existing elements are reused.
+Using this solution, the virtual repeat directive supports real-time scrolling through millions of 
+records (assuming all in-memory). </p>
+<p><strong>Caveat</strong>: Virtual Repeat requires the height of all list items to be equal and static.
+This restriction is key to the performance that it provides.
+<br></p>
+<h1 id="directives-to-use-with-caution">Directives to use with Caution</h1>
+<h2 id="tabs">Tabs</h2>
+<p>The <a href="https://material.angularjs.org/latest/demo/tabs">Tabs</a> directive is capable of some very nice
+animations. This comes at a cost of layout calculations which increase in cost as DOM items are added
+to the content of the tabs. Internet Explorer&#39;s layout calculations are slower than other browsers
+when Flexbox is involved. This means that tabs that work fine on Chrome and Firefox, may lag for
+your IE users. The primary alternative to the Tabs directive is the 
+<a href="https://material.angularjs.org/latest/demo/navBar">NavBar</a> directive.</p>
+<p>Another alternative is to:</p>
+<ul>
+<li>use a single external content to represent the currently selected tab content area</li>
+<li>use Tabs selectedIndex to route or switch the content in the external content area</li>
+</ul>
+<p>The <a href="https://github.com/angular/material-adaptive/blob/61417580a8c8cfd454364b7f6d16d0a9b22896f4/shrine/app/src/dashboard/tmpl/dashboard.html#L11-L16">Material Adaptive Shrine</a>
+app has an example of this.</p>
+<ul>
+<li>Previously each tab had a child featuredItem and a productGrid component... this caused perf issues.</li>
+<li>It was refactored to move to using a single external productGrid outside the tabs (aka navBar)</li>
+<li>It now uses <code>md-on-select</code> or data binding to update the productGrid content.</li>
+</ul>
+<p><br></p>
+<h1 id="bells-and-whistles">Bells and whistles</h1>
+<p>AngularJS Material comes with all of the bells and whistles turned on by default. 
+These can be switched off selectively for Internet Explorer.</p>
+<h2 id="gestures">Gestures</h2>
+<p>Disabling support for touch gestures across the app can improve performance in IE.</p>
+<hljs lang="js">
+var isIE = window.document.documentMode;
+
+angular
+  .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+  .config( function($mdGestureProvider) {
+    if (isIE) {
+      $mdGestureProvider.disableAll();
+    }
+  });
+</hljs>
+
+<h2 id="ink-ripples">Ink ripples</h2>
+<p>The material ink ripple animation effects can be turned off using the <code>$mdInkRippleProvider</code>.</p>
+<h3 id="example">Example</h3>
+<hljs lang="js">
+var isIE = window.document.documentMode;
+
+angular
+  .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+  .config( function($mdInkRippleProvider) {
+    if (isIE) {
+      $mdInkRippleProvider.disableInkRipple();
+    }
+  });
+</hljs>
+    
+</div>
