@@ -837,7 +837,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <demo-file name="index.html">\n' +
     '      <div layout="column" layout-gt-sm="row">\n' +
     '        <!-- In order to work within a layout-gt-sm, the flex directive needs to match.\n' +
-    '             flex-gt-sm="33" will work when layout-gt-sm="row" is active", but flex="33" would\n' +
+    '             flex-gt-sm="33" will work when layout-gt-sm="row" is active, but flex="33" would\n' +
     '              only apply when layout="column" is active. -->\n' +
     '        <div flex-gt-sm="33">\n' +
     '          column layout on mobile, <br/>flex 33% on gt-sm devices.\n' +

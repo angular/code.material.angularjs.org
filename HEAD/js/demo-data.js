@@ -2932,6 +2932,42 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
+          "name": "tabsDemoCenterTabs",
+          "module": "tabsDemoCenterTabs",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "tabsdemoCenterTabs",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/tabs/demoCenterTabs/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/tabs/demoCenterTabs/script.js"
+          }
+        ],
+        "moduleName": "material.components.tabs",
+        "name": "demoCenterTabs",
+        "label": "Center Tabs",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/tabs/demoCenterTabs/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "tabsDemoDynamicHeight",
           "module": "tabsDemoDynamicHeight",
           "dependencies": [
