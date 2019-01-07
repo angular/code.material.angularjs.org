@@ -2546,6 +2546,7 @@ md-list-item {
     md-list-item .md-list-item-inner .md-secondary-container {
       display: flex;
       align-items: center;
+      position: relative;
       flex-shrink: 0;
       margin: auto;
       margin-right: 0;
