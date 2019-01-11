@@ -1,4 +1,4 @@
-angular.module('docsApp', [ 'angularytics', 'ngRoute', 'ngMessages', 'ngMaterial' ], [
+angular.module('docsApp', ['angularytics', 'ngRoute', 'ngMessages', 'ngMaterial'], [
   'SERVICES',
   'COMPONENTS',
   'DEMOS',
@@ -361,7 +361,7 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope, $http, $wind
         response = response.data;
         var versionId = getVersionIdFromPath();
         var head = { type: 'version', url: '/HEAD', id: 'head', name: 'HEAD (master)', github: '' };
-        var commonVersions = versionId === 'head' ? [] : [ head ];
+        var commonVersions = versionId === 'head' ? [] : [head];
         var knownVersions = getAllVersions();
         var listVersions = knownVersions.filter(removeCurrentVersion);
         var currentVersion = getCurrentVersion() || {name: 'local'};
@@ -370,11 +370,11 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope, $http, $wind
           name: 'Documentation Version',
           type: 'heading',
           className: 'version-picker',
-          children: [ {
+          children: [{
             name: currentVersion.name,
             type: 'toggle',
             pages: commonVersions.concat(listVersions)
-          } ]
+          }]
         });
         function removeCurrentVersion (version) {
           switch (versionId) {
@@ -469,7 +469,7 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope, $http, $wind
       if (section.children) {
         // matches nested section toggles, such as API or Customization
         section.children.forEach(function(childSection){
-          if(childSection.pages){
+          if (childSection.pages){
             childSection.pages.forEach(function(page){
               matchPage(childSection, page);
             });
@@ -575,7 +575,7 @@ function(SERVICES, COMPONENTS, DEMOS, PAGES, $location, $rootScope, $http, $wind
       });
 
       var parentNode = $element[0].parentNode.parentNode.parentNode;
-      if(parentNode.classList.contains('parent-list-item')) {
+      if (parentNode.classList.contains('parent-list-item')) {
         var heading = parentNode.querySelector('h2');
         $element[0].firstChild.setAttribute('aria-describedby', heading.id);
       }
@@ -689,12 +689,12 @@ function($scope, COMPONENTS, BUILDCONFIG, $mdSidenav, $timeout, $mdDialog, menu,
   function isSectionSelected(section) {
     var selected = false;
     var openedSection = menu.openedSection;
-    if(openedSection === section){
+    if (openedSection === section){
       selected = true;
     }
-    else if(section.children) {
+    else if (section.children) {
       section.children.forEach(function(childSection) {
-        if(childSection === openedSection){
+        if (childSection === openedSection){
           selected = true;
         }
       });
