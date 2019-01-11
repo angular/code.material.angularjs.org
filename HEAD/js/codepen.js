@@ -48,7 +48,7 @@
         .replace(/"/g, "&amp;quot;")
         /**
          * Codepen was unescaping &lt; (<) and &gt; (>) which caused, on some demos,
-         * an unclosed elements (like <md-select>). 
+         * an unclosed elements (like <md-select>).
          * Used different unicode lookalike characters so it won't be considered as an element
          */
         .replace(/&amp;lt;/g, "&#x02C2;") // http://graphemica.com/%CB%82
@@ -86,7 +86,7 @@
         head: LINK_FONTS_ROBOTO,
 
         js: processJs(files.js),
-        css: mergeFiles( files.css ).join(' '),
+        css: mergeFiles(files.css).join(' '),
 
         js_external: externalScripts.concat([ASSET_CACHE_JS, CORE_JS]).join(';'),
         css_external: [CORE_CSS, DOC_CSS].join(';')
