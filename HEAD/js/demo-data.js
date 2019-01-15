@@ -134,6 +134,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/autocomplete/demoInsideDialog/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "autocompleteRepeatModeDemo",
+          "module": "autocompleteRepeatModeDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "autocompletedemoRepeatMode",
+        "css": [
+          {
+            "name": "style.global.css",
+            "label": "style.global.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/autocomplete/demoRepeatMode/style.global.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/autocomplete/demoRepeatMode/script.js"
+          }
+        ],
+        "moduleName": "material.components.autocomplete",
+        "name": "demoRepeatMode",
+        "label": "Repeat Mode",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/autocomplete/demoRepeatMode/index.html"
+        }
       }
     ],
     "url": "demo/autocomplete"

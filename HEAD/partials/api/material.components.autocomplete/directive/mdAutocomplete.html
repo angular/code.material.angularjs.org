@@ -177,6 +177,29 @@ results.</p>
     </md-item-template>
 </md-autocomplete>
 </hljs>
+
+<h3 id="specifying-repeat-mode">Specifying Repeat Mode</h3>
+<p>You can use <code>md-mode</code> to specify whether to use standard or virtual lists for
+rendering autocomplete options.
+The <code>md-mode</code> accepts two values:</p>
+<ul>
+<li><code>virtual</code> (default) Uses <code>md-virtual-repeat</code> to render list items. Virtual
+ mode requires you to have consistent heights for all suggestions.</li>
+<li><code>standard</code> uses <code>ng-repeat</code> to render list items. This allows you to have
+ options of varying heights.</li>
+</ul>
+<p>Note that using &#39;standard&#39; mode will require you to address any list
+performance issues (e.g. pagination) separately within your application.</p>
+<hljs lang="html">
+  <md-autocomplete
+      md-selected-item="selectedItem"
+      md-search-text="searchText"
+      md-items="item in getMatches(searchText)"
+      md-item-text="item.display"
+      md-mode="standard">
+    <span md-highlight-text="searchText">{{item.display}}</span>
+  </md-autocomplete>
+</hljs>
   
   </section>
   
@@ -218,6 +241,8 @@ results.</p>
           
         </td>
       </tr>
+    
+  
     
   
     
@@ -958,6 +983,26 @@ results.</p>
           <p>Adds the pattern validator to the ngModel of the search text.
     See the <a href="https://docs.angularjs.org/api/ng/directive/ngPattern">ngPattern Directive</a>
     for more details.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-mode
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Specify the repeat mode for suggestion lists. Acceptable values include
+    <code>virtual</code> (md-virtual-repeat) and <code>standard</code> (ng-repeat). See the
+    <code>Specifying Repeat Mode</code> example for mode details. Default is <code>virtual</code>.</p>
 
           
         </td>
