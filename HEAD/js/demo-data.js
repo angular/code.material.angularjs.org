@@ -1933,6 +1933,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "menuDemoDensity",
+          "module": "menuDemoDensity",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "menudemoMenuDensity",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/menu/demoMenuDensity/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/menu/demoMenuDensity/script.js"
+          }
+        ],
+        "moduleName": "material.components.menu",
+        "name": "demoMenuDensity",
+        "label": "Menu Density",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/menu/demoMenuDensity/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "menuDemoPosition",
           "module": "menuDemoPosition",
           "dependencies": [
