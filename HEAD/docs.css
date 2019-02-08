@@ -267,7 +267,8 @@ body.docs-body {
   height: auto;
 }
 
-.docs-anchor {
+.docs-anchor,
+.docs-anchor:visited {
   color: inherit;
 }
 
@@ -296,7 +297,6 @@ body.docs-body {
   font-size: small;
   border-top: 1px solid #ddd;
 }
-
 
 .training_link {
   color: #D32F2F;
