@@ -1667,6 +1667,16 @@ angular.module('docsApp').constant('COMPONENTS', [
         "module": "material.core",
         "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js",
         "hasDemo": false
+      },
+      {
+        "name": "$mdInkRippleProvider",
+        "type": "service",
+        "outputPath": "partials/api/material.core.ripple/service/$mdInkRippleProvider.html",
+        "url": "api/service/$mdInkRippleProvider",
+        "label": "$mdInkRippleProvider",
+        "module": "material.core",
+        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/ripple/ripple.js",
+        "hasDemo": false
       }
     ],
     "hasDemo": false
