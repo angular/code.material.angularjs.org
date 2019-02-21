@@ -87,6 +87,70 @@
 (function () {
   'use strict';
   angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -185,70 +249,6 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-      return deferred.promise;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -557,44 +557,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
   });
 
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-})
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});
-
-
-angular.module('cardDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo3', ['ngMaterial'])
-
-.config(['$mdIconProvider', function($mdIconProvider) {
-  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
-}])
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
 
 angular.module('checkboxDemo1', ['ngMaterial'])
 
@@ -607,6 +569,14 @@ angular.module('checkboxDemo1', ['ngMaterial'])
   $scope.data.cb4 = false;
   $scope.data.cb5 = false;
 
+});
+
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
 });
 
 
@@ -931,6 +901,17 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
+      .module('staticChipsDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    this.chipText = 'Football';
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('chipsCustomSeparatorDemo', ['ngMaterial'])
       .controller('CustomSeparatorCtrl', DemoCtrl);
 
@@ -949,17 +930,6 @@ angular.module('checkboxDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('staticChipsDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    this.chipText = 'Football';
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
     .module('chipsValidationDemo', ['ngMaterial', 'ngMessages'])
     .controller('ChipsValidationCtrl', ValidationCtrl);
 
@@ -971,6 +941,36 @@ angular.module('checkboxDemo2', ['ngMaterial'])
     };
   }
 })();
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+})
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+});
+
+
+angular.module('cardDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo3', ['ngMaterial'])
+
+.config(['$mdIconProvider', function($mdIconProvider) {
+  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+}])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
 
 angular.module('colorsDemo', ['ngMaterial'])
   .config(function ($mdThemingProvider, $mdIconProvider) {
@@ -1058,16 +1058,16 @@ angular
     };
   });
 
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
+});
+
 
 angular.module('contentDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
 
-});
-
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
 });
 
 angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() {
@@ -2975,6 +2975,23 @@ angular
     };
   });
 
+angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
+.controller('AppCtrl', function($scope) {
+  $scope.clearValue = function() {
+    $scope.quest = undefined;
+    $scope.favoriteColor = undefined;
+    $scope.myForm.$setPristine();
+  };
+  $scope.save = function() {
+    if ($scope.myForm.$valid) {
+      $scope.myForm.$setSubmitted();
+      alert('Form was valid.');
+    } else {
+      alert('Form was invalid!');
+    }
+  };
+});
+
 angular
   .module('basicUsageSidenavDemo', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
@@ -3047,23 +3064,6 @@ angular
         });
     };
   });
-
-angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
-.controller('AppCtrl', function($scope) {
-  $scope.clearValue = function() {
-    $scope.quest = undefined;
-    $scope.favoriteColor = undefined;
-    $scope.myForm.$setPristine();
-  };
-  $scope.save = function() {
-    if ($scope.myForm.$valid) {
-      $scope.myForm.$setSubmitted();
-      alert('Form was valid.');
-    } else {
-      alert('Form was invalid!');
-    }
-  };
-});
 
 angular
   .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
