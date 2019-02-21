@@ -1,0 +1,143 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-radio-group&gt;</code> directive identifies a grouping
+container for the 1..n grouped radio buttons; specified using nested
+<code>&lt;md-radio-button&gt;</code> elements.</p>
+<p>The radio button uses the accent color by default. The primary color palette may be used with
+the <code>md-primary</code> class.</p>
+<p>Note: <code>&lt;md-radio-group&gt;</code> and <code>&lt;md-radio-button&gt;</code> handle <code>tabindex</code> differently
+than the native <code>&lt;input type=&quot;radio&quot;&gt;</code> controls. Whereas the native controls
+force the user to tab through all the radio buttons, <code>&lt;md-radio-group&gt;</code>
+is focusable and by default the <code>&lt;md-radio-button&gt;</code>s are not.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-radio-group ng-model="selected">
+  <md-radio-button ng-repeat="item in items"
+                   ng-value="item.value" aria-label="{{item.label}}">
+    {{ item.label }}
+  </md-radio-button>
+</md-radio-group>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* ng-model</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Assignable angular expression to data-bind to.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          ng-change
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>AngularJS expression to be executed when input changes due to user
+   interaction.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-ink
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If present, disables ink ripple effects.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

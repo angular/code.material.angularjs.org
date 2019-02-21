@@ -1,0 +1,67 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>mdColors</code> directive will apply the theme-based color expression as RGBA CSS style values.</p>
+<p>  The format will be similar to our color defining in the scss files:</p>
+<h2 id="-theme-palette-hue-opacity-"><code>[?theme]-[palette]-[?hue]-[?opacity]</code></h2>
+<ul>
+<li>[theme]    - default value is the default theme</li>
+<li>[palette]  - can be either palette name or primary/accent/warn/background</li>
+<li>[hue]      - default is 500 (hue-x can be used with primary/accent/warn/background)</li>
+<li><p>[opacity]  - default is 1</p>
+<blockquote>
+<p><code>?</code> indicates optional parameter</p>
+</blockquote>
+</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+  <div md-colors="{background: 'myTheme-accent-900-0.43'}">
+    <div md-colors="{color: 'red-A100', 'border-color': 'primary-600'}">
+      <span>Color demo</span>
+    </div>
+  </div>
+</hljs>
+
+<p><code>mdColors</code> directive will automatically watch for changes in the expression if it recognizes an interpolation
+expression or a function. For performance options, you can use <code>::</code> prefix to the <code>md-colors</code> expression
+to indicate a one-time data binding.</p>
+<hljs lang="html">
+  <md-card md-colors="::{background: '{{theme}}-primary-700'}">
+  </md-card>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
