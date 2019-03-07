@@ -4220,12 +4220,6 @@ md-slider-container {
     z-index: 1;
     position: relative; }
 
-[md-swipe-left], [md-swipe-right] {
-  touch-action: pan-y; }
-
-[md-swipe-up], [md-swipe-down] {
-  touch-action: pan-x; }
-
 .md-inline-form md-switch {
   margin-top: 18px;
   margin-bottom: 19px; }
@@ -4363,6 +4357,12 @@ md-switch {
     background-color: #9E9E9E; }
   md-switch.md-default-theme .md-thumb {
     background-color: #fff; } }
+
+[md-swipe-left], [md-swipe-right] {
+  touch-action: pan-y; }
+
+[md-swipe-up], [md-swipe-down] {
+  touch-action: pan-x; }
 
 @-webkit-keyframes md-tab-content-hide {
   0% {
