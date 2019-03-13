@@ -10,7 +10,7 @@
 (function(){
 "use strict";
 
-angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.card","material.components.button","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.datepicker","material.components.dialog","material.components.divider","material.components.fabActions","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.select","material.components.showHide","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.switch","material.components.swipe","material.components.tabs","material.components.toast","material.components.toolbar","material.components.tooltip","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
+angular.module('ngMaterial', ["ng","ngAnimate","ngAria","material.core","material.core.gestures","material.core.interaction","material.core.layout","material.core.meta","material.core.theming.palette","material.core.theming","material.core.animate","material.components.autocomplete","material.components.backdrop","material.components.bottomSheet","material.components.button","material.components.card","material.components.checkbox","material.components.chips","material.components.colors","material.components.content","material.components.dialog","material.components.fabActions","material.components.divider","material.components.fabShared","material.components.fabSpeedDial","material.components.fabToolbar","material.components.gridList","material.components.icon","material.components.datepicker","material.components.input","material.components.list","material.components.menu","material.components.menuBar","material.components.navBar","material.components.panel","material.components.progressCircular","material.components.progressLinear","material.components.radioButton","material.components.showHide","material.components.select","material.components.sidenav","material.components.slider","material.components.sticky","material.components.subheader","material.components.swipe","material.components.switch","material.components.tabs","material.components.toolbar","material.components.tooltip","material.components.toast","material.components.truncate","material.components.virtualRepeat","material.components.whiteframe"]);
 })();
 (function(){
 "use strict";
@@ -2289,567 +2289,6 @@ function MdAriaService($$rAF, $log, $window, $interpolate) {
 (function(){
 "use strict";
 
-/**
- * @ngdoc module
- * @name material.core.compiler
- * @description
- * AngularJS Material template and element compiler.
- */
-angular
-  .module('material.core')
-  .provider('$mdCompiler', MdCompilerProvider);
-
-/**
- * @ngdoc service
- * @name $mdCompilerProvider
- * @module material.core.compiler
- * @description
- * The `$mdCompiler` is able to respect the AngularJS `$compileProvider.preAssignBindingsEnabled`
- * state when using AngularJS versions greater than or equal to 1.5.10 and less than 1.7.0.
- * See the [AngularJS documentation for `$compileProvider.preAssignBindingsEnabled`
- * ](https://code.angularjs.org/1.6.10/docs/api/ng/provider/$compileProvider#preAssignBindingsEnabled)
- * for more information.
- *
- * To enable/disable whether the controllers of dynamic AngularJS Material components
- * (i.e. dialog, panel, toast, bottomsheet) respect the AngularJS
- * `$compileProvider.preAssignBindingsEnabled` flag, call the AngularJS Material method:
- * `$mdCompilerProvider.respectPreAssignBindingsEnabled(boolean)`.
- *
- * This AngularJS Material *flag* doesn't affect directives/components created via regular
- * AngularJS methods. These constitute the majority of AngularJS Material and user-created
- * components. Only dynamic construction of elements such as Dialogs, Panels, Toasts, BottomSheets,
- * etc. may be affected. Invoking `$mdCompilerProvider.respectPreAssignBindingsEnabled(true)`
- * will effect **bindings** in controllers created by AngularJS Material's services like
- * `$mdDialog`, `$mdPanel`, `$mdToast`, or `$mdBottomSheet`.
- *
- * See [$mdCompilerProvider.respectPreAssignBindingsEnabled](#mdcompilerprovider-respectpreassignbindingsenabled-respected)
- * for the details of how the different versions and settings of AngularJS affect this behavior.
- *
- * @usage
- *
- * Respect the AngularJS Compiler Setting
- *
- * <hljs lang="js">
- *   app.config(function($mdCompilerProvider) {
- *     $mdCompilerProvider.respectPreAssignBindingsEnabled(true);
- *   });
- * </hljs>
- *
- * @example
- * Using the default (backwards compatible) values for AngularJS 1.6
- * - AngularJS' `$compileProvider.preAssignBindingsEnabled(false)`
- * - AngularJS Material's `$mdCompilerProvider.respectPreAssignBindingsEnabled(false)`
- * <br><br>
- *
- * <hljs lang="js">
- * $mdDialog.show({
- *   locals: {
- *     myVar: true
- *   },
- *   controller: MyController,
- *   bindToController: true
- * }
- *
- * function MyController() {
- *   // Locals from Angular Material are available. e.g myVar is true.
- * }
- *
- * MyController.prototype.$onInit = function() {
- *   // Bindings are also available in the $onInit lifecycle hook.
- * }
- * </hljs>
- *
- * Recommended Settings for AngularJS 1.6
- * - AngularJS' `$compileProvider.preAssignBindingsEnabled(false)`
- * - AngularJS Material's `$mdCompilerProvider.respectPreAssignBindingsEnabled(true)`
- * <br><br>
- *
- * <hljs lang="js">
- * $mdDialog.show({
- *   locals: {
- *     myVar: true
- *   },
- *   controller: MyController,
- *   bindToController: true
- * }
- *
- * function MyController() {
- *   // No locals from Angular Material are available. e.g myVar is undefined.
- * }
- *
- * MyController.prototype.$onInit = function() {
- *   // Bindings are now available in the $onInit lifecycle hook.
- * }
- * </hljs>
- *
- */
-MdCompilerProvider.$inject = ['$compileProvider'];
-function MdCompilerProvider($compileProvider) {
-
-  var provider = this;
-
-  /**
-   * @ngdoc method
-   * @name $mdCompilerProvider#respectPreAssignBindingsEnabled
-   *
-   * @param {boolean=} respected update the `respectPreAssignBindingsEnabled` state if provided,
-   *  otherwise just return the current Material `respectPreAssignBindingsEnabled` state.
-   * @returns {boolean|MdCompilerProvider} current value, if used as a getter, or itself (chaining)
-   *  if used as a setter.
-   *
-   * @description
-   * Call this method to enable/disable whether Material-specific (dialog/panel/toast/bottomsheet)
-   * controllers respect the AngularJS `$compileProvider.preAssignBindingsEnabled` flag. Note that
-   * this doesn't affect directives/components created via regular AngularJS methods which
-   * constitute most Material and user-created components.
-   *
-   * If disabled (`false`), the compiler assigns the value of each of the bindings to the
-   * properties of the controller object before the constructor of this object is called.
-   * The ability to disable this settings is **deprecated** and will be removed in
-   * AngularJS Material 1.2.0.
-   *
-   * If enabled (`true`) the behavior depends on the AngularJS version used:
-   *
-   * - `<1.5.10`
-   *  - Bindings are pre-assigned.
-   * - `>=1.5.10 <1.7`
-   *  - Respects whatever `$compileProvider.preAssignBindingsEnabled()` reports. If the
-   *    `preAssignBindingsEnabled` flag wasn't set manually, it defaults to pre-assigning bindings
-   *    with AngularJS `1.5` and to calling the constructor first with AngularJS `1.6`.
-   * - `>=1.7`
-   *  - The compiler calls the constructor first before assigning bindings and
-   *    `$compileProvider.preAssignBindingsEnabled()` no longer exists.
-   *
-   * Defaults
-   * - The default value is `false` in AngularJS 1.6 and earlier.
-   *  - It is planned to fix this value to `true` and not allow the `false` value in
-   *    AngularJS Material 1.2.0.
-   *
-   * It is recommended to set this flag to `true` when using AngularJS Material 1.1.x with
-   * AngularJS versions >= 1.5.10. The only reason it's not set that way by default is backwards
-   * compatibility.
-   *
-   * By not setting the flag to `true` when AngularJS' `$compileProvider.preAssignBindingsEnabled()`
-   * is set to `false` (i.e. default behavior in AngularJS 1.6 or newer), unit testing of
-   * Material Dialog/Panel/Toast/BottomSheet controllers using the `$controller` helper
-   * is problematic as it always follows AngularJS' `$compileProvider.preAssignBindingsEnabled()`
-   * value.
-   */
-  var respectPreAssignBindingsEnabled = false;
-  this.respectPreAssignBindingsEnabled = function(respected) {
-    if (angular.isDefined(respected)) {
-      respectPreAssignBindingsEnabled = respected;
-      return this;
-    }
-
-    return respectPreAssignBindingsEnabled;
-  };
-
-  /**
-   * @private
-   * @description
-   * This function returns `true` if AngularJS Material-specific (dialog/panel/toast/bottomsheet)
-   * controllers have bindings pre-assigned in controller constructors and `false` otherwise.
-   *
-   * Note that this doesn't affect directives/components created via regular AngularJS methods
-   * which constitute most Material and user-created components; their behavior can be checked via
-   * `$compileProvider.preAssignBindingsEnabled()` in AngularJS `>=1.5.10 <1.7.0`.
-   *
-   * @returns {*} current preAssignBindingsEnabled state
-   */
-  function getPreAssignBindingsEnabled() {
-    if (!respectPreAssignBindingsEnabled) {
-      // respectPreAssignBindingsEnabled === false
-      // We're ignoring the AngularJS `$compileProvider.preAssignBindingsEnabled()` value in this case.
-      return true;
-    }
-
-    // respectPreAssignBindingsEnabled === true
-
-    // This check is needed because $compileProvider.preAssignBindingsEnabled does not exist prior
-    // to AngularJS 1.5.10, is deprecated in AngularJS 1.6.x, and removed in AngularJS 1.7.x.
-    if (typeof $compileProvider.preAssignBindingsEnabled === 'function') {
-      return $compileProvider.preAssignBindingsEnabled();
-    }
-
-    // Flag respected but not present => apply logic based on AngularJS version used.
-    if (angular.version.major === 1 && angular.version.minor < 6) {
-      // AngularJS <1.5.10
-      return true;
-    }
-
-    // AngularJS >=1.7.0
-    return false;
-  }
-
-  this.$get = ["$q", "$templateRequest", "$injector", "$compile", "$controller",
-    function($q, $templateRequest, $injector, $compile, $controller) {
-      return new MdCompilerService($q, $templateRequest, $injector, $compile, $controller);
-    }];
-
-  /**
-   * @ngdoc service
-   * @name $mdCompiler
-   * @module material.core.compiler
-   * @description
-   * The $mdCompiler service is an abstraction of AngularJS's compiler, that allows developers
-   * to easily compile an element with options like in a Directive Definition Object.
-   *
-   * > The compiler powers a lot of components inside of AngularJS Material.
-   * > Like the `$mdPanel` or `$mdDialog`.
-   *
-   * @usage
-   *
-   * Basic Usage with a template
-   *
-   * <hljs lang="js">
-   *   $mdCompiler.compile({
-   *     templateUrl: 'modal.html',
-   *     controller: 'ModalCtrl',
-   *     locals: {
-   *       modal: myModalInstance;
-   *     }
-   *   }).then(function (compileData) {
-   *     compileData.element; // Compiled DOM element
-   *     compileData.link(myScope); // Instantiate controller and link element to scope.
-   *   });
-   * </hljs>
-   *
-   * Example with a content element
-   *
-   * <hljs lang="js">
-   *
-   *   // Create a virtual element and link it manually.
-   *   // The compiler doesn't need to recompile the element each time.
-   *   var myElement = $compile('<span>Test</span>')(myScope);
-   *
-   *   $mdCompiler.compile({
-   *     contentElement: myElement
-   *   }).then(function (compileData) {
-   *     compileData.element // Content Element (same as above)
-   *     compileData.link // This does nothing when using a contentElement.
-   *   });
-   * </hljs>
-   *
-   * > Content Element is a significant performance improvement when the developer already knows that the
-   * > compiled element will be always the same and the scope will not change either.
-   *
-   * The `contentElement` option also supports DOM elements which will be temporary removed and restored
-   * at its old position.
-   *
-   * <hljs lang="js">
-   *   var domElement = document.querySelector('#myElement');
-   *
-   *   $mdCompiler.compile({
-   *     contentElement: myElement
-   *   }).then(function (compileData) {
-   *     compileData.element // Content Element (same as above)
-   *     compileData.link // This does nothing when using a contentElement.
-   *   });
-   * </hljs>
-   *
-   * The `$mdCompiler` can also query for the element in the DOM itself.
-   *
-   * <hljs lang="js">
-   *   $mdCompiler.compile({
-   *     contentElement: '#myElement'
-   *   }).then(function (compileData) {
-   *     compileData.element // Content Element (same as above)
-   *     compileData.link // This does nothing when using a contentElement.
-   *   });
-   * </hljs>
-   *
-   */
-  function MdCompilerService($q, $templateRequest, $injector, $compile, $controller) {
-
-    /** @private @const {!angular.$q} */
-    this.$q = $q;
-
-    /** @private @const {!angular.$templateRequest} */
-    this.$templateRequest = $templateRequest;
-
-    /** @private @const {!angular.$injector} */
-    this.$injector = $injector;
-
-    /** @private @const {!angular.$compile} */
-    this.$compile = $compile;
-
-    /** @private @const {!angular.$controller} */
-    this.$controller = $controller;
-  }
-
-  /**
-   * @ngdoc method
-   * @name $mdCompiler#compile
-   * @description
-   *
-   * A method to compile a HTML template with the AngularJS compiler.
-   * The `$mdCompiler` is wrapper around the AngularJS compiler and provides extra functionality
-   * like controller instantiation or async resolves.
-   *
-   * @param {!Object} options An options object, with the following properties:
-   *
-   *    - `controller` - `{string|function}` Controller fn that should be associated with
-   *         newly created scope or the name of a registered controller if passed as a string.
-   *    - `controllerAs` - `{string=}` A controller alias name. If present the controller will be
-   *         published to scope under the `controllerAs` name.
-   *    - `contentElement` - `{string|Element}`: Instead of using a template, which will be
-   *         compiled each time, you can also use a DOM element.<br/>
-   *    - `template` - `{string=}` An html template as a string.
-   *    - `templateUrl` - `{string=}` A path to an html template.
-   *    - `transformTemplate` - `{function(template)=}` A function which transforms the template after
-   *        it is loaded. It will be given the template string as a parameter, and should
-   *        return a a new string representing the transformed template.
-   *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
-   *        be injected into the controller. If any of these dependencies are promises, the compiler
-   *        will wait for them all to be resolved, or if one is rejected before the controller is
-   *        instantiated `compile()` will fail..
-   *      * `key` - `{string}`: a name of a dependency to be injected into the controller.
-   *      * `factory` - `{string|function}`: If `string` then it is an alias for a service.
-   *        Otherwise if function, then it is injected and the return value is treated as the
-   *        dependency. If the result is a promise, it is resolved before its value is
-   *        injected into the controller.
-   *
-   * @returns {Object} promise A promise, which will be resolved with a `compileData` object.
-   * `compileData` has the following properties:
-   *
-   *   - `element` - `{Element}`: an uncompiled element matching the provided template.
-   *   - `link` - `{function(scope)}`: A link function, which, when called, will compile
-   *     the element and instantiate the provided controller (if given).
-   *   - `locals` - `{Object}`: The locals which will be passed into the controller once `link` is
-   *     called. If `bindToController` is true, they will be copied to the ctrl instead
-   */
-  MdCompilerService.prototype.compile = function(options) {
-
-    if (options.contentElement) {
-      return this._prepareContentElement(options);
-    } else {
-      return this._compileTemplate(options);
-    }
-
-  };
-
-  /**
-   * Instead of compiling any template, the compiler just fetches an existing HTML element from the DOM and
-   * provides a restore function to put the element back it old DOM position.
-   * @param {!Object} options Options to be used for the compiler.
-   */
-  MdCompilerService.prototype._prepareContentElement = function(options) {
-
-    var contentElement = this._fetchContentElement(options);
-
-    return this.$q.resolve({
-      element: contentElement.element,
-      cleanup: contentElement.restore,
-      locals: {},
-      link: function() {
-        return contentElement.element;
-      }
-    });
-
-  };
-
-  /**
-   * Compiles a template by considering all options and waiting for all resolves to be ready.
-   * @param {!Object} options Compile options
-   * @returns {!Object} Compile data with link function.
-   */
-  MdCompilerService.prototype._compileTemplate = function(options) {
-
-    var self = this;
-    var templateUrl = options.templateUrl;
-    var template = options.template || '';
-    var resolve = angular.extend({}, options.resolve);
-    var locals = angular.extend({}, options.locals);
-    var transformTemplate = options.transformTemplate || angular.identity;
-
-    // Take resolve values and invoke them.
-    // Resolves can either be a string (value: 'MyRegisteredAngularConst'),
-    // or an invokable 'factory' of sorts: (value: function ValueGetter($dependency) {})
-    angular.forEach(resolve, function(value, key) {
-      if (angular.isString(value)) {
-        resolve[key] = self.$injector.get(value);
-      } else {
-        resolve[key] = self.$injector.invoke(value);
-      }
-    });
-
-    // Add the locals, which are just straight values to inject
-    // eg locals: { three: 3 }, will inject three into the controller
-    angular.extend(resolve, locals);
-
-    if (templateUrl) {
-      resolve.$$ngTemplate = this.$templateRequest(templateUrl);
-    } else {
-      resolve.$$ngTemplate = this.$q.when(template);
-    }
-
-
-    // Wait for all the resolves to finish if they are promises
-    return this.$q.all(resolve).then(function(locals) {
-
-      var template = transformTemplate(locals.$$ngTemplate, options);
-      var element = options.element || angular.element('<div>').html(template.trim()).contents();
-
-      return self._compileElement(locals, element, options);
-    });
-
-  };
-
-  /**
-   * Method to compile an element with the given options.
-   * @param {!Object} locals Locals to be injected to the controller if present
-   * @param {!JQLite} element Element to be compiled and linked
-   * @param {!Object} options Options to be used for linking.
-   * @returns {!Object} Compile data with link function.
-   */
-  MdCompilerService.prototype._compileElement = function(locals, element, options) {
-    var self = this;
-    var ngLinkFn = this.$compile(element);
-
-    var compileData = {
-      element: element,
-      cleanup: element.remove.bind(element),
-      locals: locals,
-      link: linkFn
-    };
-
-    function linkFn(scope) {
-      locals.$scope = scope;
-
-      // Instantiate controller if the developer provided one.
-      if (options.controller) {
-
-        var injectLocals = angular.extend({}, locals, {
-          $element: element
-        });
-
-        // Create the specified controller instance.
-        var ctrl = self._createController(options, injectLocals, locals);
-
-        // Unique identifier for AngularJS Route ngView controllers.
-        element.data('$ngControllerController', ctrl);
-        element.children().data('$ngControllerController', ctrl);
-
-        // Expose the instantiated controller to the compile data
-        compileData.controller = ctrl;
-      }
-
-      // Invoke the AngularJS $compile link function.
-      return ngLinkFn(scope);
-    }
-
-    return compileData;
-
-  };
-
-  /**
-   * Creates and instantiates a new controller with the specified options.
-   * @param {!Object} options Options that include the controller function or string.
-   * @param {!Object} injectLocals Locals to to be provided in the controller DI.
-   * @param {!Object} locals Locals to be injected to the controller.
-   * @returns {!Object} Created controller instance.
-   */
-  MdCompilerService.prototype._createController = function(options, injectLocals, locals) {
-    var ctrl;
-    var preAssignBindingsEnabled = getPreAssignBindingsEnabled();
-    // The third argument to $controller is considered private and undocumented:
-    // https://github.com/angular/angular.js/blob/v1.6.10/src/ng/controller.js#L102-L109.
-    // TODO remove the use of this third argument in AngularJS Material 1.2.0.
-    // Passing `true` as the third argument causes `$controller` to return a function that
-    // gets the controller instance instead of returning the instance directly. When the
-    // controller is defined as a function, `invokeCtrl.instance` is the *same instance* as
-    // `invokeCtrl()`. However, when the controller is an ES6 class, `invokeCtrl.instance` is a
-    // *different instance* from `invokeCtrl()`.
-    if (preAssignBindingsEnabled) {
-      var invokeCtrl = this.$controller(options.controller, injectLocals, true);
-
-      if (options.bindToController) {
-        angular.extend(invokeCtrl.instance, locals);
-      }
-
-      // Use the private API callback to instantiate and initialize the specified controller.
-      ctrl = invokeCtrl();
-    } else {
-      // If we don't need to pre-assign bindings, avoid using the private API third argument and
-      // related callback.
-      ctrl = this.$controller(options.controller, injectLocals);
-
-      if (options.bindToController) {
-        angular.extend(ctrl, locals);
-      }
-    }
-
-    if (options.controllerAs) {
-      injectLocals.$scope[options.controllerAs] = ctrl;
-    }
-
-    // Call the $onInit hook if it's present on the controller.
-    angular.isFunction(ctrl.$onInit) && ctrl.$onInit();
-
-    return ctrl;
-  };
-
-  /**
-   * Fetches an element removing it from the DOM and using it temporary for the compiler.
-   * Elements which were fetched will be restored after use.
-   * @param {!Object} options Options to be used for the compilation.
-   * @returns {{element: !JQLite, restore: !function}}
-   */
-  MdCompilerService.prototype._fetchContentElement = function(options) {
-
-    var contentEl = options.contentElement;
-    var restoreFn = null;
-
-    if (angular.isString(contentEl)) {
-      contentEl = document.querySelector(contentEl);
-      restoreFn = createRestoreFn(contentEl);
-    } else {
-      contentEl = contentEl[0] || contentEl;
-
-      // When the element is visible in the DOM, then we restore it at close of the dialog.
-      // Otherwise it will be removed from the DOM after close.
-      if (document.contains(contentEl)) {
-        restoreFn = createRestoreFn(contentEl);
-      } else {
-        restoreFn = function() {
-          if (contentEl.parentNode) {
-            contentEl.parentNode.removeChild(contentEl);
-          }
-        };
-      }
-    }
-
-    return {
-      element: angular.element(contentEl),
-      restore: restoreFn
-    };
-
-    function createRestoreFn(element) {
-      var parent = element.parentNode;
-      var nextSibling = element.nextElementSibling;
-
-      return function() {
-        if (!nextSibling) {
-          // When the element didn't had any sibling, then it can be simply appended to the
-          // parent, because it plays no role, which index it had before.
-          parent.appendChild(element);
-        } else {
-          // When the element had a sibling, which marks the previous position of the element
-          // in the DOM, we insert it correctly before the sibling, to have the same index as
-          // before.
-          parent.insertBefore(element, nextSibling);
-        }
-      };
-    }
-  };
-}
-
-
-})();
-(function(){
-"use strict";
-
 
 MdGesture.$inject = ["$$MdGestureHandler", "$$rAF", "$timeout"];
 attachToDocument.$inject = ["$mdGesture", "$$MdGestureHandler"];var HANDLERS = {};
@@ -3806,6 +3245,537 @@ MdInteractionService.prototype.isUserInvoked = function(checkDelay) {
 (function(){
 "use strict";
 
+(function() {
+  'use strict';
+
+  var $mdUtil, $interpolate, $log;
+
+  var SUFFIXES = /(-gt)?-(sm|md|lg|print)/g;
+  var WHITESPACE = /\s+/g;
+
+  var FLEX_OPTIONS = ['grow', 'initial', 'auto', 'none', 'noshrink', 'nogrow'];
+  var LAYOUT_OPTIONS = ['row', 'column'];
+  var ALIGNMENT_MAIN_AXIS= ["", "start", "center", "end", "stretch", "space-around", "space-between"];
+  var ALIGNMENT_CROSS_AXIS= ["", "start", "center", "end", "stretch"];
+
+  var config = {
+    /**
+     * Enable directive attribute-to-class conversions
+     * Developers can use `<body md-layout-css />` to quickly
+     * disable the Layout directives and prohibit the injection of Layout classNames
+     */
+    enabled: true,
+
+    /**
+     * List of mediaQuery breakpoints and associated suffixes
+     *
+     *   [
+     *    { suffix: "sm", mediaQuery: "screen and (max-width: 599px)" },
+     *    { suffix: "md", mediaQuery: "screen and (min-width: 600px) and (max-width: 959px)" }
+     *   ]
+     */
+    breakpoints: []
+  };
+
+  registerLayoutAPI(angular.module('material.core.layout', ['ng']));
+
+  /**
+   *   registerLayoutAPI()
+   *
+   *   The original AngularJS Material Layout solution used attribute selectors and CSS.
+   *
+   *  ```html
+   *  <div layout="column"> My Content </div>
+   *  ```
+   *
+   *  ```css
+   *  [layout] {
+   *    box-sizing: border-box;
+   *    display:flex;
+   *  }
+   *  [layout=column] {
+   *    flex-direction : column
+   *  }
+   *  ```
+   *
+   *  Use of attribute selectors creates significant performance impacts in some
+   *  browsers... mainly IE.
+   *
+   *  This module registers directives that allow the same layout attributes to be
+   *  interpreted and converted to class selectors. The directive will add equivalent classes to each element that
+   *  contains a Layout directive.
+   *
+   * ```html
+   *   <div layout="column" class="layout layout-column"> My Content </div>
+   *```
+   *
+   *  ```css
+   *  .layout {
+   *    box-sizing: border-box;
+   *    display:flex;
+   *  }
+   *  .layout-column {
+   *    flex-direction : column
+   *  }
+   *  ```
+   */
+  function registerLayoutAPI(module){
+    var PREFIX_REGEXP = /^((?:x|data)[:\-_])/i;
+    var SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g;
+
+    // NOTE: these are also defined in constants::MEDIA_PRIORITY and constants::MEDIA
+    var BREAKPOINTS     = ["", "xs", "gt-xs", "sm", "gt-sm", "md", "gt-md", "lg", "gt-lg", "xl", "print"];
+    var API_WITH_VALUES = ["layout", "flex", "flex-order", "flex-offset", "layout-align"];
+    var API_NO_VALUES   = ["show", "hide", "layout-padding", "layout-margin"];
+
+
+    // Build directive registration functions for the standard Layout API... for all breakpoints.
+    angular.forEach(BREAKPOINTS, function(mqb) {
+
+      // Attribute directives with expected, observable value(s)
+      angular.forEach(API_WITH_VALUES, function(name){
+        var fullName = mqb ? name + "-" + mqb : name;
+        module.directive(directiveNormalize(fullName), attributeWithObserve(fullName));
+      });
+
+      // Attribute directives with no expected value(s)
+      angular.forEach(API_NO_VALUES, function(name){
+        var fullName = mqb ? name + "-" + mqb : name;
+        module.directive(directiveNormalize(fullName), attributeWithoutValue(fullName));
+      });
+
+    });
+
+    // Register other, special directive functions for the Layout features:
+    module
+
+      .provider('$$mdLayout'     , function() {
+        // Publish internal service for Layouts
+        return {
+          $get : angular.noop,
+          validateAttributeValue : validateAttributeValue,
+          validateAttributeUsage : validateAttributeUsage,
+          /**
+           * Easy way to disable/enable the Layout API.
+           * When disabled, this stops all attribute-to-classname generations
+           */
+          disableLayouts  : function(isDisabled) {
+            config.enabled =  (isDisabled !== true);
+          }
+        };
+      })
+
+      .directive('mdLayoutCss'        , disableLayoutDirective)
+      .directive('ngCloak'            , buildCloakInterceptor('ng-cloak'))
+
+      .directive('layoutWrap'   , attributeWithoutValue('layout-wrap'))
+      .directive('layoutNowrap' , attributeWithoutValue('layout-nowrap'))
+      .directive('layoutNoWrap' , attributeWithoutValue('layout-no-wrap'))
+      .directive('layoutFill'   , attributeWithoutValue('layout-fill'))
+
+      // !! Deprecated attributes: use the `-lt` (aka less-than) notations
+
+      .directive('layoutLtMd'     , warnAttrNotSupported('layout-lt-md', true))
+      .directive('layoutLtLg'     , warnAttrNotSupported('layout-lt-lg', true))
+      .directive('flexLtMd'       , warnAttrNotSupported('flex-lt-md', true))
+      .directive('flexLtLg'       , warnAttrNotSupported('flex-lt-lg', true))
+
+      .directive('layoutAlignLtMd', warnAttrNotSupported('layout-align-lt-md'))
+      .directive('layoutAlignLtLg', warnAttrNotSupported('layout-align-lt-lg'))
+      .directive('flexOrderLtMd'  , warnAttrNotSupported('flex-order-lt-md'))
+      .directive('flexOrderLtLg'  , warnAttrNotSupported('flex-order-lt-lg'))
+      .directive('offsetLtMd'     , warnAttrNotSupported('flex-offset-lt-md'))
+      .directive('offsetLtLg'     , warnAttrNotSupported('flex-offset-lt-lg'))
+
+      .directive('hideLtMd'       , warnAttrNotSupported('hide-lt-md'))
+      .directive('hideLtLg'       , warnAttrNotSupported('hide-lt-lg'))
+      .directive('showLtMd'       , warnAttrNotSupported('show-lt-md'))
+      .directive('showLtLg'       , warnAttrNotSupported('show-lt-lg'))
+
+      // Determine if
+      .config(detectDisabledLayouts);
+
+    /**
+     * Converts snake_case to camelCase.
+     * Also there is special case for Moz prefix starting with upper case letter.
+     * @param name Name to normalize
+     */
+    function directiveNormalize(name) {
+      return name
+        .replace(PREFIX_REGEXP, '')
+        .replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
+          return offset ? letter.toUpperCase() : letter;
+        });
+    }
+
+  }
+
+
+  /**
+    * Detect if any of the HTML tags has a [md-layouts-disabled] attribute;
+    * If yes, then immediately disable all layout API features
+    *
+    * Note: this attribute should be specified on either the HTML or BODY tags
+    */
+   /**
+    * @ngInject
+    */
+   function detectDisabledLayouts() {
+     var isDisabled = !!document.querySelector('[md-layouts-disabled]');
+     config.enabled = !isDisabled;
+   }
+
+  /**
+   * Special directive that will disable ALL Layout conversions of layout
+   * attribute(s) to classname(s).
+   *
+   * <link rel="stylesheet" href="angular-material.min.css">
+   * <link rel="stylesheet" href="angular-material.layout.css">
+   *
+   * <body md-layout-css>
+   *  ...
+   * </body>
+   *
+   * Note: Using md-layout-css directive requires the developer to load the Material
+   * Layout Attribute stylesheet (which only uses attribute selectors):
+   *
+   *       `angular-material.layout.css`
+   *
+   * Another option is to use the LayoutProvider to configure and disable the attribute
+   * conversions; this would obviate the use of the `md-layout-css` directive
+   *
+   */
+  function disableLayoutDirective() {
+    // Return a 1x-only, first-match attribute directive
+    config.enabled = false;
+
+    return {
+      restrict : 'A',
+      priority : '900'
+    };
+  }
+
+  /**
+   * Tail-hook ngCloak to delay the uncloaking while Layout transformers
+   * finish processing. Eliminates flicker with Material.Layouts
+   */
+  function buildCloakInterceptor(className) {
+    return ['$timeout', function($timeout){
+      return {
+        restrict : 'A',
+        priority : -10,   // run after normal ng-cloak
+        compile  : function(element) {
+          if (!config.enabled) return angular.noop;
+
+          // Re-add the cloak
+          element.addClass(className);
+
+          return function(scope, element) {
+            // Wait while layout injectors configure, then uncloak
+            // NOTE: $rAF does not delay enough... and this is a 1x-only event,
+            //       $timeout is acceptable.
+            $timeout(function(){
+              element.removeClass(className);
+            }, 10, false);
+          };
+        }
+      };
+    }];
+  }
+
+
+  // *********************************************************************************
+  //
+  // These functions create registration functions for AngularJS Material Layout attribute directives
+  // This provides easy translation to switch AngularJS Material attribute selectors to
+  // CLASS selectors and directives; which has huge performance implications
+  // for IE Browsers
+  //
+  // *********************************************************************************
+
+  /**
+   * Creates a directive registration function where a possible dynamic attribute
+   * value will be observed/watched.
+   * @param {string} className attribute name; eg `layout-gt-md` with value ="row"
+   */
+  function attributeWithObserve(className) {
+
+    return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
+      $mdUtil = _$mdUtil_;
+      $interpolate = _$interpolate_;
+      $log = _$log_;
+
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          var linkFn;
+          if (config.enabled) {
+            // immediately replace static (non-interpolated) invalid values...
+
+            validateAttributeUsage(className, attr, element, $log);
+
+            validateAttributeValue(className,
+              getNormalizedAttrValue(className, attr, ""),
+              buildUpdateFn(element, className, attr)
+            );
+
+            linkFn = translateWithValueToCssClass;
+          }
+
+          // Use for postLink to account for transforms after ng-transclude.
+          return linkFn || angular.noop;
+        }
+      };
+    }];
+
+    /**
+     * Add as transformed class selector(s), then
+     * remove the deprecated attribute selector
+     */
+    function translateWithValueToCssClass(scope, element, attrs) {
+      var updateFn = updateClassWithValue(element, className, attrs);
+      var unwatch = attrs.$observe(attrs.$normalize(className), updateFn);
+
+      updateFn(getNormalizedAttrValue(className, attrs, ""));
+      scope.$on("$destroy", function() { unwatch(); });
+    }
+  }
+
+  /**
+   * Creates a registration function for AngularJS Material Layout attribute directive.
+   * This is a `simple` transpose of attribute usage to class usage; where we ignore
+   * any attribute value
+   */
+  function attributeWithoutValue(className) {
+    return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
+      $mdUtil = _$mdUtil_;
+      $interpolate = _$interpolate_;
+      $log = _$log_;
+
+      return {
+        restrict: 'A',
+        compile: function(element, attr) {
+          var linkFn;
+          if (config.enabled) {
+            // immediately replace static (non-interpolated) invalid values...
+
+            validateAttributeValue(className,
+              getNormalizedAttrValue(className, attr, ""),
+              buildUpdateFn(element, className, attr)
+            );
+
+            translateToCssClass(null, element);
+
+            // Use for postLink to account for transforms after ng-transclude.
+            linkFn = translateToCssClass;
+          }
+
+          return linkFn || angular.noop;
+        }
+      };
+    }];
+
+    /**
+     * Add as transformed class selector, then
+     * remove the deprecated attribute selector
+     */
+    function translateToCssClass(scope, element) {
+      element.addClass(className);
+    }
+  }
+
+
+
+  /**
+   * After link-phase, do NOT remove deprecated layout attribute selector.
+   * Instead watch the attribute so interpolated data-bindings to layout
+   * selectors will continue to be supported.
+   *
+   * $observe() the className and update with new class (after removing the last one)
+   *
+   * e.g. `layout="{{layoutDemo.direction}}"` will update...
+   *
+   * NOTE: The value must match one of the specified styles in the CSS.
+   * For example `flex-gt-md="{{size}}`  where `scope.size == 47` will NOT work since
+   * only breakpoints for 0, 5, 10, 15... 100, 33, 34, 66, 67 are defined.
+   *
+   */
+  function updateClassWithValue(element, className) {
+    var lastClass;
+
+    return function updateClassFn(newValue) {
+      var value = validateAttributeValue(className, newValue || "");
+      if (angular.isDefined(value)) {
+        if (lastClass) element.removeClass(lastClass);
+        lastClass = !value ? className : className + "-" + value.trim().replace(WHITESPACE, "-");
+        element.addClass(lastClass);
+      }
+    };
+  }
+
+  /**
+   * Provide console warning that this layout attribute has been deprecated
+   *
+   */
+  function warnAttrNotSupported(className) {
+    var parts = className.split("-");
+    return ["$log", function($log) {
+      $log.warn(className + "has been deprecated. Please use a `" + parts[0] + "-gt-<xxx>` variant.");
+      return angular.noop;
+    }];
+  }
+
+  /**
+   * Centralize warnings for known flexbox issues (especially IE-related issues)
+   */
+  function validateAttributeUsage(className, attr, element, $log){
+    var message, usage, url;
+    var nodeName = element[0].nodeName.toLowerCase();
+
+    switch (className.replace(SUFFIXES,"")) {
+      case "flex":
+        if ((nodeName == "md-button") || (nodeName == "fieldset")){
+          // @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+          // Use <div flex> wrapper inside (preferred) or outside
+
+          usage = "<" + nodeName + " " + className + "></" + nodeName + ">";
+          url = "https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers";
+          message = "Markup '{0}' may not work as expected in IE Browsers. Consult '{1}' for details.";
+
+          $log.warn($mdUtil.supplant(message, [usage, url]));
+        }
+    }
+
+  }
+
+
+  /**
+   * For the Layout attribute value, validate or replace with default
+   * fallback value
+   */
+  function validateAttributeValue(className, value, updateFn) {
+    var origValue;
+
+    if (!needsInterpolation(value)) {
+      switch (className.replace(SUFFIXES,"")) {
+        case 'layout'        :
+          if (!findIn(value, LAYOUT_OPTIONS)) {
+            value = LAYOUT_OPTIONS[0];    // 'row';
+          }
+          break;
+
+        case 'flex'          :
+          if (!findIn(value, FLEX_OPTIONS)) {
+            if (isNaN(value)) {
+              value = '';
+            }
+          }
+          break;
+
+        case 'flex-offset' :
+        case 'flex-order'    :
+          if (!value || isNaN(+value)) {
+            value = '0';
+          }
+          break;
+
+        case 'layout-align'  :
+          var axis = extractAlignAxis(value);
+          value = $mdUtil.supplant("{main}-{cross}",axis);
+          break;
+
+        case 'layout-padding' :
+        case 'layout-margin'  :
+        case 'layout-fill'    :
+        case 'layout-wrap'    :
+        case 'layout-nowrap' :
+          value = '';
+          break;
+      }
+
+      if (value != origValue) {
+        (updateFn || angular.noop)(value);
+      }
+    }
+
+    return value ? value.trim() : "";
+  }
+
+  /**
+   * Replace current attribute value with fallback value
+   */
+  function buildUpdateFn(element, className, attrs) {
+    return function updateAttrValue(fallback) {
+      if (!needsInterpolation(fallback)) {
+        // Do not modify the element's attribute value; so
+        // uses '<ui-layout layout="/api/sidebar.html" />' will not
+        // be affected. Just update the attrs value.
+        attrs[attrs.$normalize(className)] = fallback;
+      }
+    };
+  }
+
+  /**
+   * See if the original value has interpolation symbols:
+   * e.g.  flex-gt-md="{{triggerPoint}}"
+   */
+  function needsInterpolation(value) {
+    return (value || "").indexOf($interpolate.startSymbol()) > -1;
+  }
+
+  function getNormalizedAttrValue(className, attrs, defaultVal) {
+    var normalizedAttr = attrs.$normalize(className);
+    return attrs[normalizedAttr] ? attrs[normalizedAttr].trim().replace(WHITESPACE, "-") : defaultVal || null;
+  }
+
+  function findIn(item, list, replaceWith) {
+    item = replaceWith && item ? item.replace(WHITESPACE, replaceWith) : item;
+
+    var found = false;
+    if (item) {
+      list.forEach(function(it) {
+        it = replaceWith ? it.replace(WHITESPACE, replaceWith) : it;
+        found = found || (it === item);
+      });
+    }
+    return found;
+  }
+
+  function extractAlignAxis(attrValue) {
+    var axis = {
+      main : "start",
+      cross: "stretch"
+    }, values;
+
+    attrValue = (attrValue || "");
+
+    if (attrValue.indexOf("-") === 0 || attrValue.indexOf(" ") === 0) {
+      // For missing main-axis values
+      attrValue = "none" + attrValue;
+    }
+
+    values = attrValue.toLowerCase().trim().replace(WHITESPACE, "-").split("-");
+    if (values.length && (values[0] === "space")) {
+      // for main-axis values of "space-around" or "space-between"
+      values = [values[0]+"-"+values[1],values[2]];
+    }
+
+    if (values.length > 0) axis.main  = values[0] || axis.main;
+    if (values.length > 1) axis.cross = values[1] || axis.cross;
+
+    if (ALIGNMENT_MAIN_AXIS.indexOf(axis.main) < 0)   axis.main = "start";
+    if (ALIGNMENT_CROSS_AXIS.indexOf(axis.cross) < 0) axis.cross = "stretch";
+
+    return axis;
+  }
+
+
+})();
+
+})();
+(function(){
+"use strict";
+
 angular.module('material.core')
   .provider('$$interimElement', InterimElementProvider);
 
@@ -4570,537 +4540,6 @@ function InterimElementProvider() {
 (function(){
 "use strict";
 
-(function() {
-  'use strict';
-
-  var $mdUtil, $interpolate, $log;
-
-  var SUFFIXES = /(-gt)?-(sm|md|lg|print)/g;
-  var WHITESPACE = /\s+/g;
-
-  var FLEX_OPTIONS = ['grow', 'initial', 'auto', 'none', 'noshrink', 'nogrow'];
-  var LAYOUT_OPTIONS = ['row', 'column'];
-  var ALIGNMENT_MAIN_AXIS= ["", "start", "center", "end", "stretch", "space-around", "space-between"];
-  var ALIGNMENT_CROSS_AXIS= ["", "start", "center", "end", "stretch"];
-
-  var config = {
-    /**
-     * Enable directive attribute-to-class conversions
-     * Developers can use `<body md-layout-css />` to quickly
-     * disable the Layout directives and prohibit the injection of Layout classNames
-     */
-    enabled: true,
-
-    /**
-     * List of mediaQuery breakpoints and associated suffixes
-     *
-     *   [
-     *    { suffix: "sm", mediaQuery: "screen and (max-width: 599px)" },
-     *    { suffix: "md", mediaQuery: "screen and (min-width: 600px) and (max-width: 959px)" }
-     *   ]
-     */
-    breakpoints: []
-  };
-
-  registerLayoutAPI(angular.module('material.core.layout', ['ng']));
-
-  /**
-   *   registerLayoutAPI()
-   *
-   *   The original AngularJS Material Layout solution used attribute selectors and CSS.
-   *
-   *  ```html
-   *  <div layout="column"> My Content </div>
-   *  ```
-   *
-   *  ```css
-   *  [layout] {
-   *    box-sizing: border-box;
-   *    display:flex;
-   *  }
-   *  [layout=column] {
-   *    flex-direction : column
-   *  }
-   *  ```
-   *
-   *  Use of attribute selectors creates significant performance impacts in some
-   *  browsers... mainly IE.
-   *
-   *  This module registers directives that allow the same layout attributes to be
-   *  interpreted and converted to class selectors. The directive will add equivalent classes to each element that
-   *  contains a Layout directive.
-   *
-   * ```html
-   *   <div layout="column" class="layout layout-column"> My Content </div>
-   *```
-   *
-   *  ```css
-   *  .layout {
-   *    box-sizing: border-box;
-   *    display:flex;
-   *  }
-   *  .layout-column {
-   *    flex-direction : column
-   *  }
-   *  ```
-   */
-  function registerLayoutAPI(module){
-    var PREFIX_REGEXP = /^((?:x|data)[:\-_])/i;
-    var SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g;
-
-    // NOTE: these are also defined in constants::MEDIA_PRIORITY and constants::MEDIA
-    var BREAKPOINTS     = ["", "xs", "gt-xs", "sm", "gt-sm", "md", "gt-md", "lg", "gt-lg", "xl", "print"];
-    var API_WITH_VALUES = ["layout", "flex", "flex-order", "flex-offset", "layout-align"];
-    var API_NO_VALUES   = ["show", "hide", "layout-padding", "layout-margin"];
-
-
-    // Build directive registration functions for the standard Layout API... for all breakpoints.
-    angular.forEach(BREAKPOINTS, function(mqb) {
-
-      // Attribute directives with expected, observable value(s)
-      angular.forEach(API_WITH_VALUES, function(name){
-        var fullName = mqb ? name + "-" + mqb : name;
-        module.directive(directiveNormalize(fullName), attributeWithObserve(fullName));
-      });
-
-      // Attribute directives with no expected value(s)
-      angular.forEach(API_NO_VALUES, function(name){
-        var fullName = mqb ? name + "-" + mqb : name;
-        module.directive(directiveNormalize(fullName), attributeWithoutValue(fullName));
-      });
-
-    });
-
-    // Register other, special directive functions for the Layout features:
-    module
-
-      .provider('$$mdLayout'     , function() {
-        // Publish internal service for Layouts
-        return {
-          $get : angular.noop,
-          validateAttributeValue : validateAttributeValue,
-          validateAttributeUsage : validateAttributeUsage,
-          /**
-           * Easy way to disable/enable the Layout API.
-           * When disabled, this stops all attribute-to-classname generations
-           */
-          disableLayouts  : function(isDisabled) {
-            config.enabled =  (isDisabled !== true);
-          }
-        };
-      })
-
-      .directive('mdLayoutCss'        , disableLayoutDirective)
-      .directive('ngCloak'            , buildCloakInterceptor('ng-cloak'))
-
-      .directive('layoutWrap'   , attributeWithoutValue('layout-wrap'))
-      .directive('layoutNowrap' , attributeWithoutValue('layout-nowrap'))
-      .directive('layoutNoWrap' , attributeWithoutValue('layout-no-wrap'))
-      .directive('layoutFill'   , attributeWithoutValue('layout-fill'))
-
-      // !! Deprecated attributes: use the `-lt` (aka less-than) notations
-
-      .directive('layoutLtMd'     , warnAttrNotSupported('layout-lt-md', true))
-      .directive('layoutLtLg'     , warnAttrNotSupported('layout-lt-lg', true))
-      .directive('flexLtMd'       , warnAttrNotSupported('flex-lt-md', true))
-      .directive('flexLtLg'       , warnAttrNotSupported('flex-lt-lg', true))
-
-      .directive('layoutAlignLtMd', warnAttrNotSupported('layout-align-lt-md'))
-      .directive('layoutAlignLtLg', warnAttrNotSupported('layout-align-lt-lg'))
-      .directive('flexOrderLtMd'  , warnAttrNotSupported('flex-order-lt-md'))
-      .directive('flexOrderLtLg'  , warnAttrNotSupported('flex-order-lt-lg'))
-      .directive('offsetLtMd'     , warnAttrNotSupported('flex-offset-lt-md'))
-      .directive('offsetLtLg'     , warnAttrNotSupported('flex-offset-lt-lg'))
-
-      .directive('hideLtMd'       , warnAttrNotSupported('hide-lt-md'))
-      .directive('hideLtLg'       , warnAttrNotSupported('hide-lt-lg'))
-      .directive('showLtMd'       , warnAttrNotSupported('show-lt-md'))
-      .directive('showLtLg'       , warnAttrNotSupported('show-lt-lg'))
-
-      // Determine if
-      .config(detectDisabledLayouts);
-
-    /**
-     * Converts snake_case to camelCase.
-     * Also there is special case for Moz prefix starting with upper case letter.
-     * @param name Name to normalize
-     */
-    function directiveNormalize(name) {
-      return name
-        .replace(PREFIX_REGEXP, '')
-        .replace(SPECIAL_CHARS_REGEXP, function(_, separator, letter, offset) {
-          return offset ? letter.toUpperCase() : letter;
-        });
-    }
-
-  }
-
-
-  /**
-    * Detect if any of the HTML tags has a [md-layouts-disabled] attribute;
-    * If yes, then immediately disable all layout API features
-    *
-    * Note: this attribute should be specified on either the HTML or BODY tags
-    */
-   /**
-    * @ngInject
-    */
-   function detectDisabledLayouts() {
-     var isDisabled = !!document.querySelector('[md-layouts-disabled]');
-     config.enabled = !isDisabled;
-   }
-
-  /**
-   * Special directive that will disable ALL Layout conversions of layout
-   * attribute(s) to classname(s).
-   *
-   * <link rel="stylesheet" href="angular-material.min.css">
-   * <link rel="stylesheet" href="angular-material.layout.css">
-   *
-   * <body md-layout-css>
-   *  ...
-   * </body>
-   *
-   * Note: Using md-layout-css directive requires the developer to load the Material
-   * Layout Attribute stylesheet (which only uses attribute selectors):
-   *
-   *       `angular-material.layout.css`
-   *
-   * Another option is to use the LayoutProvider to configure and disable the attribute
-   * conversions; this would obviate the use of the `md-layout-css` directive
-   *
-   */
-  function disableLayoutDirective() {
-    // Return a 1x-only, first-match attribute directive
-    config.enabled = false;
-
-    return {
-      restrict : 'A',
-      priority : '900'
-    };
-  }
-
-  /**
-   * Tail-hook ngCloak to delay the uncloaking while Layout transformers
-   * finish processing. Eliminates flicker with Material.Layouts
-   */
-  function buildCloakInterceptor(className) {
-    return ['$timeout', function($timeout){
-      return {
-        restrict : 'A',
-        priority : -10,   // run after normal ng-cloak
-        compile  : function(element) {
-          if (!config.enabled) return angular.noop;
-
-          // Re-add the cloak
-          element.addClass(className);
-
-          return function(scope, element) {
-            // Wait while layout injectors configure, then uncloak
-            // NOTE: $rAF does not delay enough... and this is a 1x-only event,
-            //       $timeout is acceptable.
-            $timeout(function(){
-              element.removeClass(className);
-            }, 10, false);
-          };
-        }
-      };
-    }];
-  }
-
-
-  // *********************************************************************************
-  //
-  // These functions create registration functions for AngularJS Material Layout attribute directives
-  // This provides easy translation to switch AngularJS Material attribute selectors to
-  // CLASS selectors and directives; which has huge performance implications
-  // for IE Browsers
-  //
-  // *********************************************************************************
-
-  /**
-   * Creates a directive registration function where a possible dynamic attribute
-   * value will be observed/watched.
-   * @param {string} className attribute name; eg `layout-gt-md` with value ="row"
-   */
-  function attributeWithObserve(className) {
-
-    return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
-      $mdUtil = _$mdUtil_;
-      $interpolate = _$interpolate_;
-      $log = _$log_;
-
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-          var linkFn;
-          if (config.enabled) {
-            // immediately replace static (non-interpolated) invalid values...
-
-            validateAttributeUsage(className, attr, element, $log);
-
-            validateAttributeValue(className,
-              getNormalizedAttrValue(className, attr, ""),
-              buildUpdateFn(element, className, attr)
-            );
-
-            linkFn = translateWithValueToCssClass;
-          }
-
-          // Use for postLink to account for transforms after ng-transclude.
-          return linkFn || angular.noop;
-        }
-      };
-    }];
-
-    /**
-     * Add as transformed class selector(s), then
-     * remove the deprecated attribute selector
-     */
-    function translateWithValueToCssClass(scope, element, attrs) {
-      var updateFn = updateClassWithValue(element, className, attrs);
-      var unwatch = attrs.$observe(attrs.$normalize(className), updateFn);
-
-      updateFn(getNormalizedAttrValue(className, attrs, ""));
-      scope.$on("$destroy", function() { unwatch(); });
-    }
-  }
-
-  /**
-   * Creates a registration function for AngularJS Material Layout attribute directive.
-   * This is a `simple` transpose of attribute usage to class usage; where we ignore
-   * any attribute value
-   */
-  function attributeWithoutValue(className) {
-    return ['$mdUtil', '$interpolate', "$log", function(_$mdUtil_, _$interpolate_, _$log_) {
-      $mdUtil = _$mdUtil_;
-      $interpolate = _$interpolate_;
-      $log = _$log_;
-
-      return {
-        restrict: 'A',
-        compile: function(element, attr) {
-          var linkFn;
-          if (config.enabled) {
-            // immediately replace static (non-interpolated) invalid values...
-
-            validateAttributeValue(className,
-              getNormalizedAttrValue(className, attr, ""),
-              buildUpdateFn(element, className, attr)
-            );
-
-            translateToCssClass(null, element);
-
-            // Use for postLink to account for transforms after ng-transclude.
-            linkFn = translateToCssClass;
-          }
-
-          return linkFn || angular.noop;
-        }
-      };
-    }];
-
-    /**
-     * Add as transformed class selector, then
-     * remove the deprecated attribute selector
-     */
-    function translateToCssClass(scope, element) {
-      element.addClass(className);
-    }
-  }
-
-
-
-  /**
-   * After link-phase, do NOT remove deprecated layout attribute selector.
-   * Instead watch the attribute so interpolated data-bindings to layout
-   * selectors will continue to be supported.
-   *
-   * $observe() the className and update with new class (after removing the last one)
-   *
-   * e.g. `layout="{{layoutDemo.direction}}"` will update...
-   *
-   * NOTE: The value must match one of the specified styles in the CSS.
-   * For example `flex-gt-md="{{size}}`  where `scope.size == 47` will NOT work since
-   * only breakpoints for 0, 5, 10, 15... 100, 33, 34, 66, 67 are defined.
-   *
-   */
-  function updateClassWithValue(element, className) {
-    var lastClass;
-
-    return function updateClassFn(newValue) {
-      var value = validateAttributeValue(className, newValue || "");
-      if (angular.isDefined(value)) {
-        if (lastClass) element.removeClass(lastClass);
-        lastClass = !value ? className : className + "-" + value.trim().replace(WHITESPACE, "-");
-        element.addClass(lastClass);
-      }
-    };
-  }
-
-  /**
-   * Provide console warning that this layout attribute has been deprecated
-   *
-   */
-  function warnAttrNotSupported(className) {
-    var parts = className.split("-");
-    return ["$log", function($log) {
-      $log.warn(className + "has been deprecated. Please use a `" + parts[0] + "-gt-<xxx>` variant.");
-      return angular.noop;
-    }];
-  }
-
-  /**
-   * Centralize warnings for known flexbox issues (especially IE-related issues)
-   */
-  function validateAttributeUsage(className, attr, element, $log){
-    var message, usage, url;
-    var nodeName = element[0].nodeName.toLowerCase();
-
-    switch (className.replace(SUFFIXES,"")) {
-      case "flex":
-        if ((nodeName == "md-button") || (nodeName == "fieldset")){
-          // @see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
-          // Use <div flex> wrapper inside (preferred) or outside
-
-          usage = "<" + nodeName + " " + className + "></" + nodeName + ">";
-          url = "https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers";
-          message = "Markup '{0}' may not work as expected in IE Browsers. Consult '{1}' for details.";
-
-          $log.warn($mdUtil.supplant(message, [usage, url]));
-        }
-    }
-
-  }
-
-
-  /**
-   * For the Layout attribute value, validate or replace with default
-   * fallback value
-   */
-  function validateAttributeValue(className, value, updateFn) {
-    var origValue;
-
-    if (!needsInterpolation(value)) {
-      switch (className.replace(SUFFIXES,"")) {
-        case 'layout'        :
-          if (!findIn(value, LAYOUT_OPTIONS)) {
-            value = LAYOUT_OPTIONS[0];    // 'row';
-          }
-          break;
-
-        case 'flex'          :
-          if (!findIn(value, FLEX_OPTIONS)) {
-            if (isNaN(value)) {
-              value = '';
-            }
-          }
-          break;
-
-        case 'flex-offset' :
-        case 'flex-order'    :
-          if (!value || isNaN(+value)) {
-            value = '0';
-          }
-          break;
-
-        case 'layout-align'  :
-          var axis = extractAlignAxis(value);
-          value = $mdUtil.supplant("{main}-{cross}",axis);
-          break;
-
-        case 'layout-padding' :
-        case 'layout-margin'  :
-        case 'layout-fill'    :
-        case 'layout-wrap'    :
-        case 'layout-nowrap' :
-          value = '';
-          break;
-      }
-
-      if (value != origValue) {
-        (updateFn || angular.noop)(value);
-      }
-    }
-
-    return value ? value.trim() : "";
-  }
-
-  /**
-   * Replace current attribute value with fallback value
-   */
-  function buildUpdateFn(element, className, attrs) {
-    return function updateAttrValue(fallback) {
-      if (!needsInterpolation(fallback)) {
-        // Do not modify the element's attribute value; so
-        // uses '<ui-layout layout="/api/sidebar.html" />' will not
-        // be affected. Just update the attrs value.
-        attrs[attrs.$normalize(className)] = fallback;
-      }
-    };
-  }
-
-  /**
-   * See if the original value has interpolation symbols:
-   * e.g.  flex-gt-md="{{triggerPoint}}"
-   */
-  function needsInterpolation(value) {
-    return (value || "").indexOf($interpolate.startSymbol()) > -1;
-  }
-
-  function getNormalizedAttrValue(className, attrs, defaultVal) {
-    var normalizedAttr = attrs.$normalize(className);
-    return attrs[normalizedAttr] ? attrs[normalizedAttr].trim().replace(WHITESPACE, "-") : defaultVal || null;
-  }
-
-  function findIn(item, list, replaceWith) {
-    item = replaceWith && item ? item.replace(WHITESPACE, replaceWith) : item;
-
-    var found = false;
-    if (item) {
-      list.forEach(function(it) {
-        it = replaceWith ? it.replace(WHITESPACE, replaceWith) : it;
-        found = found || (it === item);
-      });
-    }
-    return found;
-  }
-
-  function extractAlignAxis(attrValue) {
-    var axis = {
-      main : "start",
-      cross: "stretch"
-    }, values;
-
-    attrValue = (attrValue || "");
-
-    if (attrValue.indexOf("-") === 0 || attrValue.indexOf(" ") === 0) {
-      // For missing main-axis values
-      attrValue = "none" + attrValue;
-    }
-
-    values = attrValue.toLowerCase().trim().replace(WHITESPACE, "-").split("-");
-    if (values.length && (values[0] === "space")) {
-      // for main-axis values of "space-around" or "space-between"
-      values = [values[0]+"-"+values[1],values[2]];
-    }
-
-    if (values.length > 0) axis.main  = values[0] || axis.main;
-    if (values.length > 1) axis.cross = values[1] || axis.cross;
-
-    if (ALIGNMENT_MAIN_AXIS.indexOf(axis.main) < 0)   axis.main = "start";
-    if (ALIGNMENT_CROSS_AXIS.indexOf(axis.cross) < 0) axis.cross = "stretch";
-
-    return axis;
-  }
-
-
-})();
-
-})();
-(function(){
-"use strict";
-
 /**
  * @ngdoc module
  * @name material.core.liveannouncer
@@ -5190,6 +4629,567 @@ MdLiveAnnouncer.prototype._createLiveElement = function() {
 
   return liveEl;
 };
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.core.compiler
+ * @description
+ * AngularJS Material template and element compiler.
+ */
+angular
+  .module('material.core')
+  .provider('$mdCompiler', MdCompilerProvider);
+
+/**
+ * @ngdoc service
+ * @name $mdCompilerProvider
+ * @module material.core.compiler
+ * @description
+ * The `$mdCompiler` is able to respect the AngularJS `$compileProvider.preAssignBindingsEnabled`
+ * state when using AngularJS versions greater than or equal to 1.5.10 and less than 1.7.0.
+ * See the [AngularJS documentation for `$compileProvider.preAssignBindingsEnabled`
+ * ](https://code.angularjs.org/1.6.10/docs/api/ng/provider/$compileProvider#preAssignBindingsEnabled)
+ * for more information.
+ *
+ * To enable/disable whether the controllers of dynamic AngularJS Material components
+ * (i.e. dialog, panel, toast, bottomsheet) respect the AngularJS
+ * `$compileProvider.preAssignBindingsEnabled` flag, call the AngularJS Material method:
+ * `$mdCompilerProvider.respectPreAssignBindingsEnabled(boolean)`.
+ *
+ * This AngularJS Material *flag* doesn't affect directives/components created via regular
+ * AngularJS methods. These constitute the majority of AngularJS Material and user-created
+ * components. Only dynamic construction of elements such as Dialogs, Panels, Toasts, BottomSheets,
+ * etc. may be affected. Invoking `$mdCompilerProvider.respectPreAssignBindingsEnabled(true)`
+ * will effect **bindings** in controllers created by AngularJS Material's services like
+ * `$mdDialog`, `$mdPanel`, `$mdToast`, or `$mdBottomSheet`.
+ *
+ * See [$mdCompilerProvider.respectPreAssignBindingsEnabled](#mdcompilerprovider-respectpreassignbindingsenabled-respected)
+ * for the details of how the different versions and settings of AngularJS affect this behavior.
+ *
+ * @usage
+ *
+ * Respect the AngularJS Compiler Setting
+ *
+ * <hljs lang="js">
+ *   app.config(function($mdCompilerProvider) {
+ *     $mdCompilerProvider.respectPreAssignBindingsEnabled(true);
+ *   });
+ * </hljs>
+ *
+ * @example
+ * Using the default (backwards compatible) values for AngularJS 1.6
+ * - AngularJS' `$compileProvider.preAssignBindingsEnabled(false)`
+ * - AngularJS Material's `$mdCompilerProvider.respectPreAssignBindingsEnabled(false)`
+ * <br><br>
+ *
+ * <hljs lang="js">
+ * $mdDialog.show({
+ *   locals: {
+ *     myVar: true
+ *   },
+ *   controller: MyController,
+ *   bindToController: true
+ * }
+ *
+ * function MyController() {
+ *   // Locals from Angular Material are available. e.g myVar is true.
+ * }
+ *
+ * MyController.prototype.$onInit = function() {
+ *   // Bindings are also available in the $onInit lifecycle hook.
+ * }
+ * </hljs>
+ *
+ * Recommended Settings for AngularJS 1.6
+ * - AngularJS' `$compileProvider.preAssignBindingsEnabled(false)`
+ * - AngularJS Material's `$mdCompilerProvider.respectPreAssignBindingsEnabled(true)`
+ * <br><br>
+ *
+ * <hljs lang="js">
+ * $mdDialog.show({
+ *   locals: {
+ *     myVar: true
+ *   },
+ *   controller: MyController,
+ *   bindToController: true
+ * }
+ *
+ * function MyController() {
+ *   // No locals from Angular Material are available. e.g myVar is undefined.
+ * }
+ *
+ * MyController.prototype.$onInit = function() {
+ *   // Bindings are now available in the $onInit lifecycle hook.
+ * }
+ * </hljs>
+ *
+ */
+MdCompilerProvider.$inject = ['$compileProvider'];
+function MdCompilerProvider($compileProvider) {
+
+  var provider = this;
+
+  /**
+   * @ngdoc method
+   * @name $mdCompilerProvider#respectPreAssignBindingsEnabled
+   *
+   * @param {boolean=} respected update the `respectPreAssignBindingsEnabled` state if provided,
+   *  otherwise just return the current Material `respectPreAssignBindingsEnabled` state.
+   * @returns {boolean|MdCompilerProvider} current value, if used as a getter, or itself (chaining)
+   *  if used as a setter.
+   *
+   * @description
+   * Call this method to enable/disable whether Material-specific (dialog/panel/toast/bottomsheet)
+   * controllers respect the AngularJS `$compileProvider.preAssignBindingsEnabled` flag. Note that
+   * this doesn't affect directives/components created via regular AngularJS methods which
+   * constitute most Material and user-created components.
+   *
+   * If disabled (`false`), the compiler assigns the value of each of the bindings to the
+   * properties of the controller object before the constructor of this object is called.
+   * The ability to disable this settings is **deprecated** and will be removed in
+   * AngularJS Material 1.2.0.
+   *
+   * If enabled (`true`) the behavior depends on the AngularJS version used:
+   *
+   * - `<1.5.10`
+   *  - Bindings are pre-assigned.
+   * - `>=1.5.10 <1.7`
+   *  - Respects whatever `$compileProvider.preAssignBindingsEnabled()` reports. If the
+   *    `preAssignBindingsEnabled` flag wasn't set manually, it defaults to pre-assigning bindings
+   *    with AngularJS `1.5` and to calling the constructor first with AngularJS `1.6`.
+   * - `>=1.7`
+   *  - The compiler calls the constructor first before assigning bindings and
+   *    `$compileProvider.preAssignBindingsEnabled()` no longer exists.
+   *
+   * Defaults
+   * - The default value is `false` in AngularJS 1.6 and earlier.
+   *  - It is planned to fix this value to `true` and not allow the `false` value in
+   *    AngularJS Material 1.2.0.
+   *
+   * It is recommended to set this flag to `true` when using AngularJS Material 1.1.x with
+   * AngularJS versions >= 1.5.10. The only reason it's not set that way by default is backwards
+   * compatibility.
+   *
+   * By not setting the flag to `true` when AngularJS' `$compileProvider.preAssignBindingsEnabled()`
+   * is set to `false` (i.e. default behavior in AngularJS 1.6 or newer), unit testing of
+   * Material Dialog/Panel/Toast/BottomSheet controllers using the `$controller` helper
+   * is problematic as it always follows AngularJS' `$compileProvider.preAssignBindingsEnabled()`
+   * value.
+   */
+  var respectPreAssignBindingsEnabled = false;
+  this.respectPreAssignBindingsEnabled = function(respected) {
+    if (angular.isDefined(respected)) {
+      respectPreAssignBindingsEnabled = respected;
+      return this;
+    }
+
+    return respectPreAssignBindingsEnabled;
+  };
+
+  /**
+   * @private
+   * @description
+   * This function returns `true` if AngularJS Material-specific (dialog/panel/toast/bottomsheet)
+   * controllers have bindings pre-assigned in controller constructors and `false` otherwise.
+   *
+   * Note that this doesn't affect directives/components created via regular AngularJS methods
+   * which constitute most Material and user-created components; their behavior can be checked via
+   * `$compileProvider.preAssignBindingsEnabled()` in AngularJS `>=1.5.10 <1.7.0`.
+   *
+   * @returns {*} current preAssignBindingsEnabled state
+   */
+  function getPreAssignBindingsEnabled() {
+    if (!respectPreAssignBindingsEnabled) {
+      // respectPreAssignBindingsEnabled === false
+      // We're ignoring the AngularJS `$compileProvider.preAssignBindingsEnabled()` value in this case.
+      return true;
+    }
+
+    // respectPreAssignBindingsEnabled === true
+
+    // This check is needed because $compileProvider.preAssignBindingsEnabled does not exist prior
+    // to AngularJS 1.5.10, is deprecated in AngularJS 1.6.x, and removed in AngularJS 1.7.x.
+    if (typeof $compileProvider.preAssignBindingsEnabled === 'function') {
+      return $compileProvider.preAssignBindingsEnabled();
+    }
+
+    // Flag respected but not present => apply logic based on AngularJS version used.
+    if (angular.version.major === 1 && angular.version.minor < 6) {
+      // AngularJS <1.5.10
+      return true;
+    }
+
+    // AngularJS >=1.7.0
+    return false;
+  }
+
+  this.$get = ["$q", "$templateRequest", "$injector", "$compile", "$controller",
+    function($q, $templateRequest, $injector, $compile, $controller) {
+      return new MdCompilerService($q, $templateRequest, $injector, $compile, $controller);
+    }];
+
+  /**
+   * @ngdoc service
+   * @name $mdCompiler
+   * @module material.core.compiler
+   * @description
+   * The $mdCompiler service is an abstraction of AngularJS's compiler, that allows developers
+   * to easily compile an element with options like in a Directive Definition Object.
+   *
+   * > The compiler powers a lot of components inside of AngularJS Material.
+   * > Like the `$mdPanel` or `$mdDialog`.
+   *
+   * @usage
+   *
+   * Basic Usage with a template
+   *
+   * <hljs lang="js">
+   *   $mdCompiler.compile({
+   *     templateUrl: 'modal.html',
+   *     controller: 'ModalCtrl',
+   *     locals: {
+   *       modal: myModalInstance;
+   *     }
+   *   }).then(function (compileData) {
+   *     compileData.element; // Compiled DOM element
+   *     compileData.link(myScope); // Instantiate controller and link element to scope.
+   *   });
+   * </hljs>
+   *
+   * Example with a content element
+   *
+   * <hljs lang="js">
+   *
+   *   // Create a virtual element and link it manually.
+   *   // The compiler doesn't need to recompile the element each time.
+   *   var myElement = $compile('<span>Test</span>')(myScope);
+   *
+   *   $mdCompiler.compile({
+   *     contentElement: myElement
+   *   }).then(function (compileData) {
+   *     compileData.element // Content Element (same as above)
+   *     compileData.link // This does nothing when using a contentElement.
+   *   });
+   * </hljs>
+   *
+   * > Content Element is a significant performance improvement when the developer already knows that the
+   * > compiled element will be always the same and the scope will not change either.
+   *
+   * The `contentElement` option also supports DOM elements which will be temporary removed and restored
+   * at its old position.
+   *
+   * <hljs lang="js">
+   *   var domElement = document.querySelector('#myElement');
+   *
+   *   $mdCompiler.compile({
+   *     contentElement: myElement
+   *   }).then(function (compileData) {
+   *     compileData.element // Content Element (same as above)
+   *     compileData.link // This does nothing when using a contentElement.
+   *   });
+   * </hljs>
+   *
+   * The `$mdCompiler` can also query for the element in the DOM itself.
+   *
+   * <hljs lang="js">
+   *   $mdCompiler.compile({
+   *     contentElement: '#myElement'
+   *   }).then(function (compileData) {
+   *     compileData.element // Content Element (same as above)
+   *     compileData.link // This does nothing when using a contentElement.
+   *   });
+   * </hljs>
+   *
+   */
+  function MdCompilerService($q, $templateRequest, $injector, $compile, $controller) {
+
+    /** @private @const {!angular.$q} */
+    this.$q = $q;
+
+    /** @private @const {!angular.$templateRequest} */
+    this.$templateRequest = $templateRequest;
+
+    /** @private @const {!angular.$injector} */
+    this.$injector = $injector;
+
+    /** @private @const {!angular.$compile} */
+    this.$compile = $compile;
+
+    /** @private @const {!angular.$controller} */
+    this.$controller = $controller;
+  }
+
+  /**
+   * @ngdoc method
+   * @name $mdCompiler#compile
+   * @description
+   *
+   * A method to compile a HTML template with the AngularJS compiler.
+   * The `$mdCompiler` is wrapper around the AngularJS compiler and provides extra functionality
+   * like controller instantiation or async resolves.
+   *
+   * @param {!Object} options An options object, with the following properties:
+   *
+   *    - `controller` - `{string|function}` Controller fn that should be associated with
+   *         newly created scope or the name of a registered controller if passed as a string.
+   *    - `controllerAs` - `{string=}` A controller alias name. If present the controller will be
+   *         published to scope under the `controllerAs` name.
+   *    - `contentElement` - `{string|Element}`: Instead of using a template, which will be
+   *         compiled each time, you can also use a DOM element.<br/>
+   *    - `template` - `{string=}` An html template as a string.
+   *    - `templateUrl` - `{string=}` A path to an html template.
+   *    - `transformTemplate` - `{function(template)=}` A function which transforms the template after
+   *        it is loaded. It will be given the template string as a parameter, and should
+   *        return a a new string representing the transformed template.
+   *    - `resolve` - `{Object.<string, function>=}` - An optional map of dependencies which should
+   *        be injected into the controller. If any of these dependencies are promises, the compiler
+   *        will wait for them all to be resolved, or if one is rejected before the controller is
+   *        instantiated `compile()` will fail..
+   *      * `key` - `{string}`: a name of a dependency to be injected into the controller.
+   *      * `factory` - `{string|function}`: If `string` then it is an alias for a service.
+   *        Otherwise if function, then it is injected and the return value is treated as the
+   *        dependency. If the result is a promise, it is resolved before its value is
+   *        injected into the controller.
+   *
+   * @returns {Object} promise A promise, which will be resolved with a `compileData` object.
+   * `compileData` has the following properties:
+   *
+   *   - `element` - `{Element}`: an uncompiled element matching the provided template.
+   *   - `link` - `{function(scope)}`: A link function, which, when called, will compile
+   *     the element and instantiate the provided controller (if given).
+   *   - `locals` - `{Object}`: The locals which will be passed into the controller once `link` is
+   *     called. If `bindToController` is true, they will be copied to the ctrl instead
+   */
+  MdCompilerService.prototype.compile = function(options) {
+
+    if (options.contentElement) {
+      return this._prepareContentElement(options);
+    } else {
+      return this._compileTemplate(options);
+    }
+
+  };
+
+  /**
+   * Instead of compiling any template, the compiler just fetches an existing HTML element from the DOM and
+   * provides a restore function to put the element back it old DOM position.
+   * @param {!Object} options Options to be used for the compiler.
+   */
+  MdCompilerService.prototype._prepareContentElement = function(options) {
+
+    var contentElement = this._fetchContentElement(options);
+
+    return this.$q.resolve({
+      element: contentElement.element,
+      cleanup: contentElement.restore,
+      locals: {},
+      link: function() {
+        return contentElement.element;
+      }
+    });
+
+  };
+
+  /**
+   * Compiles a template by considering all options and waiting for all resolves to be ready.
+   * @param {!Object} options Compile options
+   * @returns {!Object} Compile data with link function.
+   */
+  MdCompilerService.prototype._compileTemplate = function(options) {
+
+    var self = this;
+    var templateUrl = options.templateUrl;
+    var template = options.template || '';
+    var resolve = angular.extend({}, options.resolve);
+    var locals = angular.extend({}, options.locals);
+    var transformTemplate = options.transformTemplate || angular.identity;
+
+    // Take resolve values and invoke them.
+    // Resolves can either be a string (value: 'MyRegisteredAngularConst'),
+    // or an invokable 'factory' of sorts: (value: function ValueGetter($dependency) {})
+    angular.forEach(resolve, function(value, key) {
+      if (angular.isString(value)) {
+        resolve[key] = self.$injector.get(value);
+      } else {
+        resolve[key] = self.$injector.invoke(value);
+      }
+    });
+
+    // Add the locals, which are just straight values to inject
+    // eg locals: { three: 3 }, will inject three into the controller
+    angular.extend(resolve, locals);
+
+    if (templateUrl) {
+      resolve.$$ngTemplate = this.$templateRequest(templateUrl);
+    } else {
+      resolve.$$ngTemplate = this.$q.when(template);
+    }
+
+
+    // Wait for all the resolves to finish if they are promises
+    return this.$q.all(resolve).then(function(locals) {
+
+      var template = transformTemplate(locals.$$ngTemplate, options);
+      var element = options.element || angular.element('<div>').html(template.trim()).contents();
+
+      return self._compileElement(locals, element, options);
+    });
+
+  };
+
+  /**
+   * Method to compile an element with the given options.
+   * @param {!Object} locals Locals to be injected to the controller if present
+   * @param {!JQLite} element Element to be compiled and linked
+   * @param {!Object} options Options to be used for linking.
+   * @returns {!Object} Compile data with link function.
+   */
+  MdCompilerService.prototype._compileElement = function(locals, element, options) {
+    var self = this;
+    var ngLinkFn = this.$compile(element);
+
+    var compileData = {
+      element: element,
+      cleanup: element.remove.bind(element),
+      locals: locals,
+      link: linkFn
+    };
+
+    function linkFn(scope) {
+      locals.$scope = scope;
+
+      // Instantiate controller if the developer provided one.
+      if (options.controller) {
+
+        var injectLocals = angular.extend({}, locals, {
+          $element: element
+        });
+
+        // Create the specified controller instance.
+        var ctrl = self._createController(options, injectLocals, locals);
+
+        // Unique identifier for AngularJS Route ngView controllers.
+        element.data('$ngControllerController', ctrl);
+        element.children().data('$ngControllerController', ctrl);
+
+        // Expose the instantiated controller to the compile data
+        compileData.controller = ctrl;
+      }
+
+      // Invoke the AngularJS $compile link function.
+      return ngLinkFn(scope);
+    }
+
+    return compileData;
+
+  };
+
+  /**
+   * Creates and instantiates a new controller with the specified options.
+   * @param {!Object} options Options that include the controller function or string.
+   * @param {!Object} injectLocals Locals to to be provided in the controller DI.
+   * @param {!Object} locals Locals to be injected to the controller.
+   * @returns {!Object} Created controller instance.
+   */
+  MdCompilerService.prototype._createController = function(options, injectLocals, locals) {
+    var ctrl;
+    var preAssignBindingsEnabled = getPreAssignBindingsEnabled();
+    // The third argument to $controller is considered private and undocumented:
+    // https://github.com/angular/angular.js/blob/v1.6.10/src/ng/controller.js#L102-L109.
+    // TODO remove the use of this third argument in AngularJS Material 1.2.0.
+    // Passing `true` as the third argument causes `$controller` to return a function that
+    // gets the controller instance instead of returning the instance directly. When the
+    // controller is defined as a function, `invokeCtrl.instance` is the *same instance* as
+    // `invokeCtrl()`. However, when the controller is an ES6 class, `invokeCtrl.instance` is a
+    // *different instance* from `invokeCtrl()`.
+    if (preAssignBindingsEnabled) {
+      var invokeCtrl = this.$controller(options.controller, injectLocals, true);
+
+      if (options.bindToController) {
+        angular.extend(invokeCtrl.instance, locals);
+      }
+
+      // Use the private API callback to instantiate and initialize the specified controller.
+      ctrl = invokeCtrl();
+    } else {
+      // If we don't need to pre-assign bindings, avoid using the private API third argument and
+      // related callback.
+      ctrl = this.$controller(options.controller, injectLocals);
+
+      if (options.bindToController) {
+        angular.extend(ctrl, locals);
+      }
+    }
+
+    if (options.controllerAs) {
+      injectLocals.$scope[options.controllerAs] = ctrl;
+    }
+
+    // Call the $onInit hook if it's present on the controller.
+    angular.isFunction(ctrl.$onInit) && ctrl.$onInit();
+
+    return ctrl;
+  };
+
+  /**
+   * Fetches an element removing it from the DOM and using it temporary for the compiler.
+   * Elements which were fetched will be restored after use.
+   * @param {!Object} options Options to be used for the compilation.
+   * @returns {{element: !JQLite, restore: !function}}
+   */
+  MdCompilerService.prototype._fetchContentElement = function(options) {
+
+    var contentEl = options.contentElement;
+    var restoreFn = null;
+
+    if (angular.isString(contentEl)) {
+      contentEl = document.querySelector(contentEl);
+      restoreFn = createRestoreFn(contentEl);
+    } else {
+      contentEl = contentEl[0] || contentEl;
+
+      // When the element is visible in the DOM, then we restore it at close of the dialog.
+      // Otherwise it will be removed from the DOM after close.
+      if (document.contains(contentEl)) {
+        restoreFn = createRestoreFn(contentEl);
+      } else {
+        restoreFn = function() {
+          if (contentEl.parentNode) {
+            contentEl.parentNode.removeChild(contentEl);
+          }
+        };
+      }
+    }
+
+    return {
+      element: angular.element(contentEl),
+      restore: restoreFn
+    };
+
+    function createRestoreFn(element) {
+      var parent = element.parentNode;
+      var nextSibling = element.nextElementSibling;
+
+      return function() {
+        if (!nextSibling) {
+          // When the element didn't had any sibling, then it can be simply appended to the
+          // parent, because it plays no role, which index it had before.
+          parent.appendChild(element);
+        } else {
+          // When the element had a sibling, which marks the previous position of the element
+          // in the DOM, we insert it correctly before the sibling, to have the same index as
+          // before.
+          parent.insertBefore(element, nextSibling);
+        }
+      };
+    }
+  };
+}
+
 
 })();
 (function(){
@@ -8858,143 +8858,6 @@ function MdBottomSheetProvider($$interimElementProvider) {
 
 /**
  * @ngdoc module
- * @name material.components.card
- *
- * @description
- * Card components.
- */
-mdCardDirective.$inject = ["$mdTheming"];
-angular.module('material.components.card', [
-    'material.core'
-  ])
-  .directive('mdCard', mdCardDirective);
-
-
-/**
- * @ngdoc directive
- * @name mdCard
- * @module material.components.card
- *
- * @restrict E
- *
- * @description
- * The `<md-card>` directive is a container element used within `<md-content>` containers.
- *
- * An image included as a direct descendant will fill the card's width. If you want to avoid this,
- * you can add the `md-image-no-fill` class to the parent element. The `<md-card-content>`
- * container will wrap text content and provide padding. An `<md-card-footer>` element can be
- * optionally included to put content flush against the bottom edge of the card.
- *
- * Action buttons can be included in an `<md-card-actions>` element, similar to `<md-dialog-actions>`.
- * You can then position buttons using layout attributes.
- *
- * Card is built with:
- * * `<md-card-header>` - Header for the card, holds avatar, text and squared image
- *  - `<md-card-avatar>` - Card avatar
- *    - `md-user-avatar` - Class for user image
- *    - `<md-icon>`
- *  - `<md-card-header-text>` - Contains elements for the card description
- *    - `md-title` - Class for the card title
- *    - `md-subhead` - Class for the card sub header
- * * `<img>` - Image for the card
- * * `<md-card-title>` - Card content title
- *  - `<md-card-title-text>`
- *    - `md-headline` - Class for the card content title
- *    - `md-subhead` - Class for the card content sub header
- *  - `<md-card-title-media>` - Squared image within the title
- *    - `md-media-sm` - Class for small image
- *    - `md-media-md` - Class for medium image
- *    - `md-media-lg` - Class for large image
- *    - `md-media-xl` - Class for extra large image
- * * `<md-card-content>` - Card content
- * * `<md-card-actions>` - Card actions
- *  - `<md-card-icon-actions>` - Icon actions
- *
- * Cards have constant width and variable heights; where the maximum height is limited to what can
- * fit within a single view on a platform, but it can temporarily expand as needed.
- *
- * @usage
- * ### Card with optional footer
- * <hljs lang="html">
- * <md-card>
- *  <img src="card-image.png" class="md-card-image" alt="image caption">
- *  <md-card-content>
- *    <h2>Card headline</h2>
- *    <p>Card content</p>
- *  </md-card-content>
- *  <md-card-footer>
- *    Card footer
- *  </md-card-footer>
- * </md-card>
- * </hljs>
- *
- * ### Card with actions
- * <hljs lang="html">
- * <md-card>
- *  <img src="card-image.png" class="md-card-image" alt="image caption">
- *  <md-card-content>
- *    <h2>Card headline</h2>
- *    <p>Card content</p>
- *  </md-card-content>
- *  <md-card-actions layout="row" layout-align="end center">
- *    <md-button>Action 1</md-button>
- *    <md-button>Action 2</md-button>
- *  </md-card-actions>
- * </md-card>
- * </hljs>
- *
- * ### Card with header, image, title actions and content
- * <hljs lang="html">
- * <md-card>
- *   <md-card-header>
- *     <md-card-avatar>
- *       <img class="md-user-avatar" src="avatar.png"/>
- *     </md-card-avatar>
- *     <md-card-header-text>
- *       <span class="md-title">Title</span>
- *       <span class="md-subhead">Sub header</span>
- *     </md-card-header-text>
- *   </md-card-header>
- *   <img ng-src="card-image.png" class="md-card-image" alt="image caption">
- *   <md-card-title>
- *     <md-card-title-text>
- *       <span class="md-headline">Card headline</span>
- *       <span class="md-subhead">Card subheader</span>
- *     </md-card-title-text>
- *   </md-card-title>
- *   <md-card-actions layout="row" layout-align="start center">
- *     <md-button>Action 1</md-button>
- *     <md-button>Action 2</md-button>
- *     <md-card-icon-actions>
- *       <md-button class="md-icon-button" aria-label="icon">
- *         <md-icon md-svg-icon="icon"></md-icon>
- *       </md-button>
- *     </md-card-icon-actions>
- *   </md-card-actions>
- *   <md-card-content>
- *     <p>
- *      Card content
- *     </p>
- *   </md-card-content>
- * </md-card>
- * </hljs>
- */
-function mdCardDirective($mdTheming) {
-  return {
-    restrict: 'E',
-    link: function ($scope, $element, attr) {
-      $element.addClass('_md');     // private md component indicator for styling
-      $mdTheming($element);
-    }
-  };
-}
-
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
  * @name material.components.button
  * @description
  *
@@ -9177,6 +9040,143 @@ function MdButtonDirective($mdButtonInkRipple, $mdTheming, $mdAria, $mdInteracti
 
   }
 
+}
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.components.card
+ *
+ * @description
+ * Card components.
+ */
+mdCardDirective.$inject = ["$mdTheming"];
+angular.module('material.components.card', [
+    'material.core'
+  ])
+  .directive('mdCard', mdCardDirective);
+
+
+/**
+ * @ngdoc directive
+ * @name mdCard
+ * @module material.components.card
+ *
+ * @restrict E
+ *
+ * @description
+ * The `<md-card>` directive is a container element used within `<md-content>` containers.
+ *
+ * An image included as a direct descendant will fill the card's width. If you want to avoid this,
+ * you can add the `md-image-no-fill` class to the parent element. The `<md-card-content>`
+ * container will wrap text content and provide padding. An `<md-card-footer>` element can be
+ * optionally included to put content flush against the bottom edge of the card.
+ *
+ * Action buttons can be included in an `<md-card-actions>` element, similar to `<md-dialog-actions>`.
+ * You can then position buttons using layout attributes.
+ *
+ * Card is built with:
+ * * `<md-card-header>` - Header for the card, holds avatar, text and squared image
+ *  - `<md-card-avatar>` - Card avatar
+ *    - `md-user-avatar` - Class for user image
+ *    - `<md-icon>`
+ *  - `<md-card-header-text>` - Contains elements for the card description
+ *    - `md-title` - Class for the card title
+ *    - `md-subhead` - Class for the card sub header
+ * * `<img>` - Image for the card
+ * * `<md-card-title>` - Card content title
+ *  - `<md-card-title-text>`
+ *    - `md-headline` - Class for the card content title
+ *    - `md-subhead` - Class for the card content sub header
+ *  - `<md-card-title-media>` - Squared image within the title
+ *    - `md-media-sm` - Class for small image
+ *    - `md-media-md` - Class for medium image
+ *    - `md-media-lg` - Class for large image
+ *    - `md-media-xl` - Class for extra large image
+ * * `<md-card-content>` - Card content
+ * * `<md-card-actions>` - Card actions
+ *  - `<md-card-icon-actions>` - Icon actions
+ *
+ * Cards have constant width and variable heights; where the maximum height is limited to what can
+ * fit within a single view on a platform, but it can temporarily expand as needed.
+ *
+ * @usage
+ * ### Card with optional footer
+ * <hljs lang="html">
+ * <md-card>
+ *  <img src="card-image.png" class="md-card-image" alt="image caption">
+ *  <md-card-content>
+ *    <h2>Card headline</h2>
+ *    <p>Card content</p>
+ *  </md-card-content>
+ *  <md-card-footer>
+ *    Card footer
+ *  </md-card-footer>
+ * </md-card>
+ * </hljs>
+ *
+ * ### Card with actions
+ * <hljs lang="html">
+ * <md-card>
+ *  <img src="card-image.png" class="md-card-image" alt="image caption">
+ *  <md-card-content>
+ *    <h2>Card headline</h2>
+ *    <p>Card content</p>
+ *  </md-card-content>
+ *  <md-card-actions layout="row" layout-align="end center">
+ *    <md-button>Action 1</md-button>
+ *    <md-button>Action 2</md-button>
+ *  </md-card-actions>
+ * </md-card>
+ * </hljs>
+ *
+ * ### Card with header, image, title actions and content
+ * <hljs lang="html">
+ * <md-card>
+ *   <md-card-header>
+ *     <md-card-avatar>
+ *       <img class="md-user-avatar" src="avatar.png"/>
+ *     </md-card-avatar>
+ *     <md-card-header-text>
+ *       <span class="md-title">Title</span>
+ *       <span class="md-subhead">Sub header</span>
+ *     </md-card-header-text>
+ *   </md-card-header>
+ *   <img ng-src="card-image.png" class="md-card-image" alt="image caption">
+ *   <md-card-title>
+ *     <md-card-title-text>
+ *       <span class="md-headline">Card headline</span>
+ *       <span class="md-subhead">Card subheader</span>
+ *     </md-card-title-text>
+ *   </md-card-title>
+ *   <md-card-actions layout="row" layout-align="start center">
+ *     <md-button>Action 1</md-button>
+ *     <md-button>Action 2</md-button>
+ *     <md-card-icon-actions>
+ *       <md-button class="md-icon-button" aria-label="icon">
+ *         <md-icon md-svg-icon="icon"></md-icon>
+ *       </md-button>
+ *     </md-card-icon-actions>
+ *   </md-card-actions>
+ *   <md-card-content>
+ *     <p>
+ *      Card content
+ *     </p>
+ *   </md-card-content>
+ * </md-card>
+ * </hljs>
+ */
+function mdCardDirective($mdTheming) {
+  return {
+    restrict: 'E',
+    link: function ($scope, $element, attr) {
+      $element.addClass('_md');     // private md component indicator for styling
+      $mdTheming($element);
+    }
+  };
 }
 
 })();
@@ -9934,22 +9934,6 @@ function iosScrollFix(node) {
     }
   });
 }
-
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
- * @name material.components.datepicker
- * @description Module for the datepicker component.
- */
-
-angular.module('material.components.datepicker', [
-  'material.core',
-  'material.components.icon',
-  'material.components.virtualRepeat'
-]);
 
 })();
 (function(){
@@ -11273,46 +11257,6 @@ function MdDialogProvider($$interimElementProvider) {
 (function(){
 "use strict";
 
-/**
- * @ngdoc module
- * @name material.components.divider
- * @description Divider module!
- */
-MdDividerDirective.$inject = ["$mdTheming"];
-angular.module('material.components.divider', [
-  'material.core'
-])
-  .directive('mdDivider', MdDividerDirective);
-
-/**
- * @ngdoc directive
- * @name mdDivider
- * @module material.components.divider
- * @restrict E
- *
- * @description
- * Dividers group and separate content within lists and page layouts using strong visual and spatial distinctions. This divider is a thin rule, lightweight enough to not distract the user from content.
- *
- * @param {boolean=} md-inset Add this attribute to activate the inset divider style.
- * @usage
- * <hljs lang="html">
- * <md-divider></md-divider>
- *
- * <md-divider md-inset></md-divider>
- * </hljs>
- *
- */
-function MdDividerDirective($mdTheming) {
-  return {
-    restrict: 'E',
-    link: $mdTheming
-  };
-}
-
-})();
-(function(){
-"use strict";
-
 (function() {
   'use strict';
 
@@ -11363,6 +11307,46 @@ function MdDividerDirective($mdTheming) {
   }
 
 })();
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.components.divider
+ * @description Divider module!
+ */
+MdDividerDirective.$inject = ["$mdTheming"];
+angular.module('material.components.divider', [
+  'material.core'
+])
+  .directive('mdDivider', MdDividerDirective);
+
+/**
+ * @ngdoc directive
+ * @name mdDivider
+ * @module material.components.divider
+ * @restrict E
+ *
+ * @description
+ * Dividers group and separate content within lists and page layouts using strong visual and spatial distinctions. This divider is a thin rule, lightweight enough to not distract the user from content.
+ *
+ * @param {boolean=} md-inset Add this attribute to activate the inset divider style.
+ * @usage
+ * <hljs lang="html">
+ * <md-divider></md-divider>
+ *
+ * <md-divider md-inset></md-divider>
+ * </hljs>
+ *
+ */
+function MdDividerDirective($mdTheming) {
+  return {
+    restrict: 'E',
+    link: $mdTheming
+  };
+}
 
 })();
 (function(){
@@ -12929,6 +12913,22 @@ function GridTileCaptionDirective() {
  * Icon
  */
 angular.module('material.components.icon', ['material.core']);
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.components.datepicker
+ * @description Module for the datepicker component.
+ */
+
+angular.module('material.components.datepicker', [
+  'material.core',
+  'material.components.icon',
+  'material.components.virtualRepeat'
+]);
 
 })();
 (function(){
@@ -19623,6 +19623,59 @@ function mdRadioButtonDirective($mdAria, $mdUtil, $mdTheming) {
 
 /**
  * @ngdoc module
+ * @name material.components.showHide
+ */
+
+// Add additional handlers to ng-show and ng-hide that notify directives
+// contained within that they should recompute their size.
+// These run in addition to AngularJS's built-in ng-hide and ng-show directives.
+angular.module('material.components.showHide', [
+  'material.core'
+])
+  .directive('ngShow', createDirective('ngShow', true))
+  .directive('ngHide', createDirective('ngHide', false));
+
+
+function createDirective(name, targetValue) {
+  return ['$mdUtil', '$window', function($mdUtil, $window) {
+    return {
+      restrict: 'A',
+      multiElement: true,
+      link: function($scope, $element, $attr) {
+        var unregister = $scope.$on('$md-resize-enable', function() {
+          unregister();
+
+          var node = $element[0];
+          var cachedTransitionStyles = node.nodeType === $window.Node.ELEMENT_NODE ?
+            $window.getComputedStyle(node) : {};
+
+          $scope.$watch($attr[name], function(value) {
+            if (!!value === targetValue) {
+              $mdUtil.nextTick(function() {
+                $scope.$broadcast('$md-resize');
+              });
+
+              var opts = {
+                cachedTransitionStyles: cachedTransitionStyles
+              };
+
+              $mdUtil.dom.animator.waitTransitionEnd($element, opts).then(function() {
+                $scope.$broadcast('$md-resize');
+              });
+            }
+          });
+        });
+      }
+    };
+  }];
+}
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
  * @name material.components.select
  */
 
@@ -21456,59 +21509,6 @@ function shouldHandleKey(ev, $mdConstant) {
 
 /**
  * @ngdoc module
- * @name material.components.showHide
- */
-
-// Add additional handlers to ng-show and ng-hide that notify directives
-// contained within that they should recompute their size.
-// These run in addition to AngularJS's built-in ng-hide and ng-show directives.
-angular.module('material.components.showHide', [
-  'material.core'
-])
-  .directive('ngShow', createDirective('ngShow', true))
-  .directive('ngHide', createDirective('ngHide', false));
-
-
-function createDirective(name, targetValue) {
-  return ['$mdUtil', '$window', function($mdUtil, $window) {
-    return {
-      restrict: 'A',
-      multiElement: true,
-      link: function($scope, $element, $attr) {
-        var unregister = $scope.$on('$md-resize-enable', function() {
-          unregister();
-
-          var node = $element[0];
-          var cachedTransitionStyles = node.nodeType === $window.Node.ELEMENT_NODE ?
-            $window.getComputedStyle(node) : {};
-
-          $scope.$watch($attr[name], function(value) {
-            if (!!value === targetValue) {
-              $mdUtil.nextTick(function() {
-                $scope.$broadcast('$md-resize');
-              });
-
-              var opts = {
-                cachedTransitionStyles: cachedTransitionStyles
-              };
-
-              $mdUtil.dom.animator.waitTransitionEnd($element, opts).then(function() {
-                $scope.$broadcast('$md-resize');
-              });
-            }
-          });
-        });
-      }
-    };
-  }];
-}
-
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
  * @name material.components.sidenav
  *
  * @description
@@ -23249,6 +23249,132 @@ function MdSubheaderDirective($mdSticky, $compile, $mdTheming, $mdUtil, $mdAria)
 
 /**
  * @ngdoc module
+ * @name material.components.swipe
+ * @description Swipe module!
+ */
+/**
+ * @ngdoc directive
+ * @module material.components.swipe
+ * @name mdSwipeLeft
+ *
+ * @restrict A
+ *
+ * @description
+ * The md-swipe-left directive allows you to specify custom behavior when an element is swiped
+ * left.
+ *
+ * ### Notes
+ * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
+ * reference to the element that actually holds the `md-swipe-left` directive by using `$target.current`
+ *
+ * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
+ *
+ * @usage
+ * <hljs lang="html">
+ * <div md-swipe-left="onSwipeLeft($event, $target)">Swipe me left!</div>
+ * </hljs>
+ */
+/**
+ * @ngdoc directive
+ * @module material.components.swipe
+ * @name mdSwipeRight
+ *
+ * @restrict A
+ *
+ * @description
+ * The md-swipe-right directive allows you to specify custom behavior when an element is swiped
+ * right.
+ *
+ * ### Notes
+ * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
+ * reference to the element that actually holds the `md-swipe-right` directive by using `$target.current`
+ *
+ * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
+ *
+ * @usage
+ * <hljs lang="html">
+ * <div md-swipe-right="onSwipeRight($event, $target)">Swipe me right!</div>
+ * </hljs>
+ */
+/**
+ * @ngdoc directive
+ * @module material.components.swipe
+ * @name mdSwipeUp
+ *
+ * @restrict A
+ *
+ * @description
+ * The md-swipe-up directive allows you to specify custom behavior when an element is swiped
+ * up.
+ *
+ * ### Notes
+ * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
+ * reference to the element that actually holds the `md-swipe-up` directive by using `$target.current`
+ *
+ * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
+ *
+ * @usage
+ * <hljs lang="html">
+ * <div md-swipe-up="onSwipeUp($event, $target)">Swipe me up!</div>
+ * </hljs>
+ */
+/**
+ * @ngdoc directive
+ * @module material.components.swipe
+ * @name mdSwipeDown
+ *
+ * @restrict A
+ *
+ * @description
+ * The md-swipe-down directive allows you to specify custom behavior when an element is swiped
+ * down.
+ *
+ * ### Notes
+ * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
+ * reference to the element that actually holds the `md-swipe-down` directive by using `$target.current`
+ *
+ * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
+ *
+ * @usage
+ * <hljs lang="html">
+ * <div md-swipe-down="onSwipDown($event, $target)">Swipe me down!</div>
+ * </hljs>
+ */
+
+angular.module('material.components.swipe', ['material.core'])
+    .directive('mdSwipeLeft', getDirective('SwipeLeft'))
+    .directive('mdSwipeRight', getDirective('SwipeRight'))
+    .directive('mdSwipeUp', getDirective('SwipeUp'))
+    .directive('mdSwipeDown', getDirective('SwipeDown'));
+
+function getDirective(name) {
+    DirectiveFactory.$inject = ["$parse"];
+  var directiveName = 'md' + name;
+  var eventName = '$md.' + name.toLowerCase();
+
+  return DirectiveFactory;
+
+  /* @ngInject */
+  function DirectiveFactory($parse) {
+      return { restrict: 'A', link: postLink };
+      function postLink(scope, element, attr) {
+        var fn = $parse(attr[directiveName]);
+        element.on(eventName, function(ev) {
+          var currentTarget = ev.currentTarget;
+          scope.$applyAsync(function() { fn(scope, { $event: ev, $target: { current: currentTarget } }); });
+        });
+      }
+    }
+}
+
+
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
  * @name material.components.switch
  */
 
@@ -23433,132 +23559,6 @@ function MdSwitch(mdCheckboxDirective, $mdUtil, $mdConstant, $parse, $$rAF, $mdG
 
 /**
  * @ngdoc module
- * @name material.components.swipe
- * @description Swipe module!
- */
-/**
- * @ngdoc directive
- * @module material.components.swipe
- * @name mdSwipeLeft
- *
- * @restrict A
- *
- * @description
- * The md-swipe-left directive allows you to specify custom behavior when an element is swiped
- * left.
- *
- * ### Notes
- * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
- * reference to the element that actually holds the `md-swipe-left` directive by using `$target.current`
- *
- * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
- *
- * @usage
- * <hljs lang="html">
- * <div md-swipe-left="onSwipeLeft($event, $target)">Swipe me left!</div>
- * </hljs>
- */
-/**
- * @ngdoc directive
- * @module material.components.swipe
- * @name mdSwipeRight
- *
- * @restrict A
- *
- * @description
- * The md-swipe-right directive allows you to specify custom behavior when an element is swiped
- * right.
- *
- * ### Notes
- * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
- * reference to the element that actually holds the `md-swipe-right` directive by using `$target.current`
- *
- * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
- *
- * @usage
- * <hljs lang="html">
- * <div md-swipe-right="onSwipeRight($event, $target)">Swipe me right!</div>
- * </hljs>
- */
-/**
- * @ngdoc directive
- * @module material.components.swipe
- * @name mdSwipeUp
- *
- * @restrict A
- *
- * @description
- * The md-swipe-up directive allows you to specify custom behavior when an element is swiped
- * up.
- *
- * ### Notes
- * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
- * reference to the element that actually holds the `md-swipe-up` directive by using `$target.current`
- *
- * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
- *
- * @usage
- * <hljs lang="html">
- * <div md-swipe-up="onSwipeUp($event, $target)">Swipe me up!</div>
- * </hljs>
- */
-/**
- * @ngdoc directive
- * @module material.components.swipe
- * @name mdSwipeDown
- *
- * @restrict A
- *
- * @description
- * The md-swipe-down directive allows you to specify custom behavior when an element is swiped
- * down.
- *
- * ### Notes
- * - The `$event.currentTarget` of the swiped element will be `null`, but you can get a
- * reference to the element that actually holds the `md-swipe-down` directive by using `$target.current`
- *
- * > You can see this in action on the <a ng-href="demo/swipe">demo page</a> (Look at the Developer Tools console while swiping).
- *
- * @usage
- * <hljs lang="html">
- * <div md-swipe-down="onSwipDown($event, $target)">Swipe me down!</div>
- * </hljs>
- */
-
-angular.module('material.components.swipe', ['material.core'])
-    .directive('mdSwipeLeft', getDirective('SwipeLeft'))
-    .directive('mdSwipeRight', getDirective('SwipeRight'))
-    .directive('mdSwipeUp', getDirective('SwipeUp'))
-    .directive('mdSwipeDown', getDirective('SwipeDown'));
-
-function getDirective(name) {
-    DirectiveFactory.$inject = ["$parse"];
-  var directiveName = 'md' + name;
-  var eventName = '$md.' + name.toLowerCase();
-
-  return DirectiveFactory;
-
-  /* @ngInject */
-  function DirectiveFactory($parse) {
-      return { restrict: 'A', link: postLink };
-      function postLink(scope, element, attr) {
-        var fn = $parse(attr[directiveName]);
-        element.on(eventName, function(ev) {
-          var currentTarget = ev.currentTarget;
-          scope.$applyAsync(function() { fn(scope, { $event: ev, $target: { current: currentTarget } }); });
-        });
-      }
-    }
-}
-
-
-
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
  * @name material.components.tabs
  * @description
  *
@@ -23700,581 +23700,6 @@ function MdTabsPaginationService() {
     return sum;
   }
 
-}
-
-})();
-(function(){
-"use strict";
-
-/**
- * @ngdoc module
- * @name material.components.toast
- * @description
- * Toast and Snackbar component.
- */
-MdToastDirective.$inject = ["$mdToast"];
-MdToastProvider.$inject = ["$$interimElementProvider"];
-angular.module('material.components.toast', [
-  'material.core',
-  'material.components.button'
-])
-  .directive('mdToast', MdToastDirective)
-  .provider('$mdToast', MdToastProvider);
-
-/* @ngInject */
-function MdToastDirective($mdToast) {
-  return {
-    restrict: 'E',
-    link: function postLink(scope, element) {
-      element.addClass('_md');     // private md component indicator for styling
-
-      // When navigation force destroys an interimElement, then
-      // listen and $destroy() that interim instance...
-      scope.$on('$destroy', function() {
-        $mdToast.destroy();
-      });
-    }
-  };
-}
-
-/**
- * @ngdoc service
- * @name $mdToast
- * @module material.components.toast
- *
- * @description
- * `$mdToast` is a service to build a toast notification on any position
- * on the screen with an optional duration, and provides a simple promise API.
- *
- * The toast will be always positioned at the `bottom`, when the screen size is
- * between `600px` and `959px` (`sm` breakpoint)
- *
- * ## Restrictions on custom toasts
- * - The toast's template must have an outer `<md-toast>` element.
- * - For a toast action, use element with class `md-action`.
- * - Add the class `md-capsule` for curved corners.
- *
- * ### Custom Presets
- * Developers are also able to create their own preset, which can be easily used without repeating
- * their options each time.
- *
- * <hljs lang="js">
- *   $mdToastProvider.addPreset('testPreset', {
- *     options: function() {
- *       return {
- *         template:
- *           '<md-toast>' +
- *             '<div class="md-toast-content">' +
- *               'This is a custom preset' +
- *             '</div>' +
- *           '</md-toast>',
- *         controllerAs: 'toast',
- *         bindToController: true
- *       };
- *     }
- *   });
- * </hljs>
- *
- * After you created your preset at config phase, you can easily access it.
- *
- * <hljs lang="js">
- *   $mdToast.show(
- *     $mdToast.testPreset()
- *   );
- * </hljs>
- *
- * ## Parent container notes
- *
- * The toast is positioned using absolute positioning relative to its first non-static parent
- * container. Thus, if the requested parent container uses static positioning, we will temporarily
- * set its positioning to `relative` while the toast is visible and reset it when the toast is
- * hidden.
- *
- * Because of this, it is usually best to ensure that the parent container has a fixed height and
- * prevents scrolling by setting the `overflow: hidden;` style. Since the position is based off of
- * the parent's height, the toast may be mispositioned if you allow the parent to scroll.
- *
- * You can, however, have a scrollable element inside of the container; just make sure the
- * container itself does not scroll.
- *
- * <hljs lang="html">
- * <div layout-fill id="toast-container">
- *   <md-content>
- *     I can have lots of content and scroll!
- *   </md-content>
- * </div>
- * </hljs>
- *
- * @usage
- * <hljs lang="html">
- * <div ng-controller="MyController">
- *   <md-button ng-click="openToast()">
- *     Open a Toast!
- *   </md-button>
- * </div>
- * </hljs>
- *
- * <hljs lang="js">
- * var app = angular.module('app', ['ngMaterial']);
- * app.controller('MyController', function($scope, $mdToast) {
- *   $scope.openToast = function($event) {
- *     $mdToast.show($mdToast.simple().textContent('Hello!'));
- *     // Could also do $mdToast.showSimple('Hello');
- *   };
- * });
- * </hljs>
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#showSimple
- *
- * @param {string} message The message to display inside the toast
- * @description
- * Convenience method which builds and shows a simple toast.
- *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`.
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#simple
- *
- * @description
- * Builds a preconfigured toast.
- *
- * @returns {obj} a `$mdToastPreset` with the following chainable configuration methods.
- *
- * _**Note:** These configuration methods are provided in addition to the methods provided by
- * the `build()` and `show()` methods below._
- *
- * <table class="md-api-table methods">
- *    <thead>
- *      <tr>
- *        <th>Method</th>
- *        <th>Description</th>
- *      </tr>
- *    </thead>
- *    <tbody>
- *      <tr>
- *        <td>`.textContent(string)`</td>
- *        <td>Sets the toast content to the specified string</td>
- *      </tr>
- *      <tr>
- *        <td>`.action(string)`</td>
- *        <td>
- *          Adds an action button. <br/>
- *          If clicked, the promise (returned from `show()`) will resolve with the value `'ok'`;
- *          otherwise, it is resolved with `true` after a `hideDelay` timeout.
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.actionKey(string)`</td>
- *        <td>
- *          Adds a hotkey for the action button to the page. <br/>
- *          If the `actionKey` and `Control` key are pressed, the toast's action will be triggered.
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.actionHint(string)`</td>
- *        <td>
- *          Text that a screen reader will announce to let the user know how to activate the
- *          action. <br>
- *          If an `actionKey` is defined, this defaults to:
- *          'Press Control-"`actionKey`" to ' followed by the `action`.
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.dismissHint(string)`</td>
- *        <td>
- *          Text that a screen reader will announce to let the user know how to dismiss the toast.
- *          <br>Defaults to: "Press Escape to dismiss."
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.highlightAction(boolean)`</td>
- *        <td>
- *          Whether or not the action button will have an additional highlight class.<br/>
- *          By default the `accent` color will be applied to the action button.
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.highlightClass(string)`</td>
- *        <td>
- *          If set, the given class will be applied to the highlighted action button.<br/>
- *          This allows you to specify the highlight color easily. Highlight classes are
- *          `md-primary`, `md-warn`, and `md-accent`
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.capsule(boolean)`</td>
- *        <td>
- *          Whether or not to add the `md-capsule` class to the toast to provide rounded corners
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.theme(string)`</td>
- *        <td>
- *          Sets the theme on the toast to the requested theme. Default is `$mdThemingProvider`'s
- *          default.
- *        </td>
- *      </tr>
- *      <tr>
- *        <td>`.toastClass(string)`</td>
- *        <td>Sets a class on the toast element</td>
- *      </tr>
- *    </tbody>
- * </table>
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#updateTextContent
- *
- * @description
- * Updates the content of an existing toast. Useful for updating things like counts, etc.
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#build
- *
- * @description
- * Creates a custom `$mdToastPreset` that you can configure.
- *
- * @returns {obj} a `$mdToastPreset` with the chainable configuration methods for shows' options
- *   (see below).
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#show
- *
- * @description Shows the toast.
- *
- * @param {object} optionsOrPreset Either provide an `$mdToastPreset` returned from `simple()`
- * and `build()`, or an options object with the following properties:
- *
- *   - `templateUrl` - `{string=}`: The url of an html template file that will
- *     be used as the content of the toast. Restrictions: the template must
- *     have an outer `md-toast` element.
- *   - `template` - `{string=}`: Same as templateUrl, except this is an actual
- *     template string.
- *   - `autoWrap` - `{boolean=}`: Whether or not to automatically wrap the template content with a
- *     `<div class="md-toast-content">` if one is not provided. Defaults to true. Can be disabled
- *     if you provide a custom toast directive.
- *   - `scope` - `{object=}`: the scope to link the template / controller to. If none is specified,
- *     it will create a new child scope. This scope will be destroyed when the toast is removed
- *     unless `preserveScope` is set to true.
- *   - `preserveScope` - `{boolean=}`: whether to preserve the scope when the element is removed.
- *     Default is false
- *   - `hideDelay` - `{number=}`: The number of milliseconds the toast should stay active before
- *     automatically closing. Set to `0` or `false` to have the toast stay open until closed
- *     manually via an action in the toast, a hotkey, or a swipe gesture. For accessibility, toasts
- *     should not automatically close when they contain an action.<br>
- *     Defaults to: `3000`.
- *   - `position` - `{string=}`: Sets the position of the toast. <br/>
- *     Available: any combination of `'bottom'`, `'left'`, `'top'`, `'right'`, `'end'`, and
- *     `'start'`. The properties `'end'` and `'start'` are dynamic and can be used for RTL support.
- *     <br/>
- *     Default combination: `'bottom left'`.
- *   - `toastClass` - `{string=}`: A class to set on the toast element.
- *   - `controller` - `{string=}`: The controller to associate with this toast.
- *     The controller will be injected the local `$mdToast.hide()`, which is a function
- *     used to hide the toast.
- *   - `locals` - `{object=}`: An object containing key/value pairs. The keys will
- *     be used as names of values to inject into the controller. For example,
- *     `locals: {three: 3}` would inject `three` into the controller with the value
- *     of 3.
- *   - `bindToController` - `{boolean=}`: bind the locals to the controller, instead of passing
- *     them in.
- *   - `resolve` - `{object=}`: Similar to locals, except it takes promises as values
- *     and the toast will not open until the promises resolve.
- *   - `controllerAs` - `{string=}`: An alias to assign the controller to on the scope.
- *   - `parent` - `{element=}`: The element to append the toast to. Defaults to appending
- *     to the root element of the application.
- *
- * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
- * rejected with `$mdToast.cancel()`. `$mdToast.hide()` will resolve either with the Boolean
- * value `true` or the value passed as an argument to `$mdToast.hide()`.
- * `$mdToast.cancel()` will resolve the promise with the Boolean value `false`.
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#hide
- *
- * @description
- * Hide an existing toast and resolve the promise returned from `$mdToast.show()`.
- *
- * @param {*=} response An argument for the resolved promise.
- *
- * @returns {promise} A promise that is called when the existing element is removed from the DOM.
- * The promise is resolved with either the Boolean value `true` or the value passed as the
- * argument to `$mdToast.hide()`.
- */
-
-/**
- * @ngdoc method
- * @name $mdToast#cancel
- *
- * @description
- * `DEPRECATED` - The promise returned from opening a toast is used only to notify about the
- * closing of the toast. As such, there isn't any reason to also allow that promise to be rejected,
- * since it's not clear what the difference between resolve and reject would be.
- *
- * Hide the existing toast and reject the promise returned from
- * `$mdToast.show()`.
- *
- * @param {*=} response An argument for the rejected promise.
- *
- * @returns {promise} A promise that is called when the existing element is removed from the DOM
- * The promise is resolved with the Boolean value `false`.
- */
-
-function MdToastProvider($$interimElementProvider) {
-  // Differentiate promise resolves: hide timeout (value == true) and hide action clicks
-  // (value == ok).
-  MdToastController.$inject = ["$mdToast", "$scope", "$log"];
-  toastDefaultOptions.$inject = ["$animate", "$mdToast", "$mdUtil", "$mdMedia", "$document"];
-  var ACTION_RESOLVE = 'ok';
-
-  var activeToastContent;
-  var $mdToast = $$interimElementProvider('$mdToast')
-    .setDefaults({
-      methods: ['position', 'hideDelay', 'capsule', 'parent', 'position', 'toastClass'],
-      options: toastDefaultOptions
-    })
-    .addPreset('simple', {
-      argOption: 'textContent',
-      methods: ['textContent', 'content', 'action', 'actionKey', 'actionHint', 'highlightAction',
-                'highlightClass', 'theme', 'parent', 'dismissHint'],
-      options: /* @ngInject */ ["$mdToast", "$mdTheming", function($mdToast, $mdTheming) {
-        return {
-          template:
-            '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">' +
-            '  <div class="md-toast-content" aria-live="polite" aria-relevant="all">' +
-            '    <span class="md-toast-text">' +
-            '      {{ toast.content }}' +
-            '    </span>' +
-            '    <span class="md-visually-hidden">{{ toast.dismissHint }}</span>' +
-            '    <span class="md-visually-hidden" ng-if="toast.action && toast.actionKey">' +
-            '      {{ toast.actionHint }}' +
-            '    </span>' +
-            '    <md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ' +
-            '               ng-class="highlightClasses">' +
-            '      {{ toast.action }}' +
-            '    </md-button>' +
-            '  </div>' +
-            '</md-toast>',
-          controller: MdToastController,
-          theme: $mdTheming.defaultTheme(),
-          controllerAs: 'toast',
-          bindToController: true
-        };
-      }]
-    })
-    .addMethod('updateTextContent', updateTextContent)
-    // updateContent is deprecated. Use updateTextContent instead.
-    // TODO remove this in 1.2.
-    .addMethod('updateContent', updateTextContent);
-
-    function updateTextContent(newContent) {
-      activeToastContent = newContent;
-    }
-
-    return $mdToast;
-
-  /**
-   * Controller for the Toast interim elements.
-   * @ngInject
-   */
-  function MdToastController($mdToast, $scope, $log) {
-    // For compatibility with AngularJS 1.6+, we should always use the $onInit hook in
-    // interimElements. The $mdCompiler simulates the $onInit hook for all versions.
-    this.$onInit = function() {
-      var self = this;
-
-      if (self.highlightAction) {
-        $scope.highlightClasses = [
-          'md-highlight',
-          self.highlightClass
-        ];
-      }
-
-      // If an action is defined and no actionKey is specified, then log a warning.
-      if (self.action && !self.actionKey) {
-        $log.warn('Toasts with actions should define an actionKey for accessibility.',
-          'Details: https://material.angularjs.org/latest/api/service/$mdToast#mdtoast-simple');
-      }
-
-      if (self.actionKey && !self.actionHint) {
-        self.actionHint = 'Press Control-"' + self.actionKey + '" to ';
-      }
-
-      if (!self.dismissHint) {
-        self.dismissHint = 'Press Escape to dismiss.';
-      }
-
-      $scope.$watch(function() { return activeToastContent; }, function() {
-        self.content = activeToastContent;
-      });
-
-      this.resolve = function() {
-        $mdToast.hide(ACTION_RESOLVE);
-      };
-    };
-  }
-
-  /* @ngInject */
-  function toastDefaultOptions($animate, $mdToast, $mdUtil, $mdMedia, $document) {
-    var SWIPE_EVENTS = '$md.swipeleft $md.swiperight $md.swipeup $md.swipedown';
-    return {
-      onShow: onShow,
-      onRemove: onRemove,
-      toastClass: '',
-      position: 'bottom left',
-      themable: true,
-      hideDelay: 3000,
-      autoWrap: true,
-      transformTemplate: function(template, options) {
-        var shouldAddWrapper = options.autoWrap && template && !/md-toast-content/g.test(template);
-
-        if (shouldAddWrapper) {
-          // Root element of template will be <md-toast>. We need to wrap all of its content inside
-          // of <div class="md-toast-content">. All templates provided here should be static,
-          // developer-controlled content (meaning we're not attempting to guard against XSS).
-          var templateRoot = document.createElement('md-template');
-          templateRoot.innerHTML = template;
-
-          // Iterate through all root children, to detect possible md-toast directives.
-          for (var i = 0; i < templateRoot.children.length; i++) {
-            if (templateRoot.children[i].nodeName === 'MD-TOAST') {
-              var wrapper = angular.element('<div class="md-toast-content">');
-
-              // Wrap the children of the `md-toast` directive in jqLite, to be able to append
-              // multiple nodes with the same execution.
-              wrapper.append(angular.element(templateRoot.children[i].childNodes));
-
-              // Append the new wrapped element to the `md-toast` directive.
-              templateRoot.children[i].appendChild(wrapper[0]);
-            }
-          }
-
-          // We have to return the innerHTMl, because we do not want to have the `md-template`
-          // element to be the root element of our interimElement.
-          return templateRoot.innerHTML;
-        }
-
-        return template || '';
-      }
-    };
-
-    function onShow(scope, element, options) {
-      // support deprecated #content method
-      // TODO remove support for content in 1.2.
-      activeToastContent = options.textContent || options.content;
-
-      var isSmScreen = !$mdMedia('gt-sm');
-
-      element = $mdUtil.extractElementByName(element, 'md-toast', true);
-      options.element = element;
-
-      options.onSwipe = function(ev, gesture) {
-        // Add the relevant swipe class to the element so it can animate correctly
-        var swipe = ev.type.replace('$md.','');
-        var direction = swipe.replace('swipe', '');
-
-        // If the swipe direction is down/up but the toast came from top/bottom don't fade away
-        // Unless the screen is small, then the toast always on bottom
-        if ((direction === 'down' && options.position.indexOf('top') !== -1 && !isSmScreen) ||
-            (direction === 'up' && (options.position.indexOf('bottom') !== -1 || isSmScreen))) {
-          return;
-        }
-
-        if ((direction === 'left' || direction === 'right') && isSmScreen) {
-          return;
-        }
-
-        element.addClass('md-' + swipe);
-        $mdUtil.nextTick($mdToast.cancel);
-      };
-      options.openClass = toastOpenClass(options.position);
-
-      element.addClass(options.toastClass);
-
-      // 'top left' -> 'md-top md-left'
-      options.parent.addClass(options.openClass);
-
-      // static is the default position
-      if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
-        options.parent.css('position', 'relative');
-      }
-
-      setupActionKeyListener(scope.toast && scope.toast.actionKey ?
-        scope.toast.actionKey : undefined);
-
-      element.on(SWIPE_EVENTS, options.onSwipe);
-      element.addClass(isSmScreen ? 'md-bottom' : options.position.split(' ').map(function(pos) {
-        return 'md-' + pos;
-      }).join(' '));
-
-      if (options.parent) {
-        options.parent.addClass('md-toast-animating');
-      }
-      return $animate.enter(element, options.parent).then(function() {
-        if (options.parent) {
-          options.parent.removeClass('md-toast-animating');
-        }
-      });
-    }
-
-    function onRemove(scope, element, options) {
-      if (scope.toast && scope.toast.actionKey) {
-        removeActionKeyListener();
-      }
-      element.off(SWIPE_EVENTS, options.onSwipe);
-      if (options.parent) options.parent.addClass('md-toast-animating');
-      if (options.openClass) options.parent.removeClass(options.openClass);
-
-      return ((options.$destroy === true) ? element.remove() : $animate.leave(element))
-        .then(function () {
-          if (options.parent) options.parent.removeClass('md-toast-animating');
-          if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
-            options.parent.css('position', '');
-          }
-        });
-    }
-
-    function toastOpenClass(position) {
-      // For mobile, always open full-width on bottom
-      if (!$mdMedia('gt-xs')) {
-        return 'md-toast-open-bottom';
-      }
-
-      return 'md-toast-open-' + (position.indexOf('top') > -1 ? 'top' : 'bottom');
-    }
-
-    function setupActionKeyListener(actionKey) {
-      /**
-       * @param {KeyboardEvent} event
-       */
-      var handleKeyDown = function(event) {
-        if (event.key === 'Escape') {
-          $mdToast.hide(false);
-        }
-        if (actionKey && event.key === actionKey && event.ctrlKey) {
-          $mdToast.hide(ACTION_RESOLVE);
-        }
-      };
-      $document.on('keydown', handleKeyDown);
-    }
-
-    function removeActionKeyListener() {
-      $document.off('keydown');
-    }
-  }
 }
 
 })();
@@ -25026,6 +24451,581 @@ function MdTooltipRegistry() {
         useCapture ? window.removeEventListener(type, globalEventHandler, true) :
             ngWindow.off(type, globalEventHandler);
       }
+    }
+  }
+}
+
+})();
+(function(){
+"use strict";
+
+/**
+ * @ngdoc module
+ * @name material.components.toast
+ * @description
+ * Toast and Snackbar component.
+ */
+MdToastDirective.$inject = ["$mdToast"];
+MdToastProvider.$inject = ["$$interimElementProvider"];
+angular.module('material.components.toast', [
+  'material.core',
+  'material.components.button'
+])
+  .directive('mdToast', MdToastDirective)
+  .provider('$mdToast', MdToastProvider);
+
+/* @ngInject */
+function MdToastDirective($mdToast) {
+  return {
+    restrict: 'E',
+    link: function postLink(scope, element) {
+      element.addClass('_md');     // private md component indicator for styling
+
+      // When navigation force destroys an interimElement, then
+      // listen and $destroy() that interim instance...
+      scope.$on('$destroy', function() {
+        $mdToast.destroy();
+      });
+    }
+  };
+}
+
+/**
+ * @ngdoc service
+ * @name $mdToast
+ * @module material.components.toast
+ *
+ * @description
+ * `$mdToast` is a service to build a toast notification on any position
+ * on the screen with an optional duration, and provides a simple promise API.
+ *
+ * The toast will be always positioned at the `bottom`, when the screen size is
+ * between `600px` and `959px` (`sm` breakpoint)
+ *
+ * ## Restrictions on custom toasts
+ * - The toast's template must have an outer `<md-toast>` element.
+ * - For a toast action, use element with class `md-action`.
+ * - Add the class `md-capsule` for curved corners.
+ *
+ * ### Custom Presets
+ * Developers are also able to create their own preset, which can be easily used without repeating
+ * their options each time.
+ *
+ * <hljs lang="js">
+ *   $mdToastProvider.addPreset('testPreset', {
+ *     options: function() {
+ *       return {
+ *         template:
+ *           '<md-toast>' +
+ *             '<div class="md-toast-content">' +
+ *               'This is a custom preset' +
+ *             '</div>' +
+ *           '</md-toast>',
+ *         controllerAs: 'toast',
+ *         bindToController: true
+ *       };
+ *     }
+ *   });
+ * </hljs>
+ *
+ * After you created your preset at config phase, you can easily access it.
+ *
+ * <hljs lang="js">
+ *   $mdToast.show(
+ *     $mdToast.testPreset()
+ *   );
+ * </hljs>
+ *
+ * ## Parent container notes
+ *
+ * The toast is positioned using absolute positioning relative to its first non-static parent
+ * container. Thus, if the requested parent container uses static positioning, we will temporarily
+ * set its positioning to `relative` while the toast is visible and reset it when the toast is
+ * hidden.
+ *
+ * Because of this, it is usually best to ensure that the parent container has a fixed height and
+ * prevents scrolling by setting the `overflow: hidden;` style. Since the position is based off of
+ * the parent's height, the toast may be mispositioned if you allow the parent to scroll.
+ *
+ * You can, however, have a scrollable element inside of the container; just make sure the
+ * container itself does not scroll.
+ *
+ * <hljs lang="html">
+ * <div layout-fill id="toast-container">
+ *   <md-content>
+ *     I can have lots of content and scroll!
+ *   </md-content>
+ * </div>
+ * </hljs>
+ *
+ * @usage
+ * <hljs lang="html">
+ * <div ng-controller="MyController">
+ *   <md-button ng-click="openToast()">
+ *     Open a Toast!
+ *   </md-button>
+ * </div>
+ * </hljs>
+ *
+ * <hljs lang="js">
+ * var app = angular.module('app', ['ngMaterial']);
+ * app.controller('MyController', function($scope, $mdToast) {
+ *   $scope.openToast = function($event) {
+ *     $mdToast.show($mdToast.simple().textContent('Hello!'));
+ *     // Could also do $mdToast.showSimple('Hello');
+ *   };
+ * });
+ * </hljs>
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#showSimple
+ *
+ * @param {string} message The message to display inside the toast
+ * @description
+ * Convenience method which builds and shows a simple toast.
+ *
+ * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
+ * rejected with `$mdToast.cancel()`.
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#simple
+ *
+ * @description
+ * Builds a preconfigured toast.
+ *
+ * @returns {obj} a `$mdToastPreset` with the following chainable configuration methods.
+ *
+ * _**Note:** These configuration methods are provided in addition to the methods provided by
+ * the `build()` and `show()` methods below._
+ *
+ * <table class="md-api-table methods">
+ *    <thead>
+ *      <tr>
+ *        <th>Method</th>
+ *        <th>Description</th>
+ *      </tr>
+ *    </thead>
+ *    <tbody>
+ *      <tr>
+ *        <td>`.textContent(string)`</td>
+ *        <td>Sets the toast content to the specified string</td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.action(string)`</td>
+ *        <td>
+ *          Adds an action button. <br/>
+ *          If clicked, the promise (returned from `show()`) will resolve with the value `'ok'`;
+ *          otherwise, it is resolved with `true` after a `hideDelay` timeout.
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.actionKey(string)`</td>
+ *        <td>
+ *          Adds a hotkey for the action button to the page. <br/>
+ *          If the `actionKey` and `Control` key are pressed, the toast's action will be triggered.
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.actionHint(string)`</td>
+ *        <td>
+ *          Text that a screen reader will announce to let the user know how to activate the
+ *          action. <br>
+ *          If an `actionKey` is defined, this defaults to:
+ *          'Press Control-"`actionKey`" to ' followed by the `action`.
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.dismissHint(string)`</td>
+ *        <td>
+ *          Text that a screen reader will announce to let the user know how to dismiss the toast.
+ *          <br>Defaults to: "Press Escape to dismiss."
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.highlightAction(boolean)`</td>
+ *        <td>
+ *          Whether or not the action button will have an additional highlight class.<br/>
+ *          By default the `accent` color will be applied to the action button.
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.highlightClass(string)`</td>
+ *        <td>
+ *          If set, the given class will be applied to the highlighted action button.<br/>
+ *          This allows you to specify the highlight color easily. Highlight classes are
+ *          `md-primary`, `md-warn`, and `md-accent`
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.capsule(boolean)`</td>
+ *        <td>
+ *          Whether or not to add the `md-capsule` class to the toast to provide rounded corners
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.theme(string)`</td>
+ *        <td>
+ *          Sets the theme on the toast to the requested theme. Default is `$mdThemingProvider`'s
+ *          default.
+ *        </td>
+ *      </tr>
+ *      <tr>
+ *        <td>`.toastClass(string)`</td>
+ *        <td>Sets a class on the toast element</td>
+ *      </tr>
+ *    </tbody>
+ * </table>
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#updateTextContent
+ *
+ * @description
+ * Updates the content of an existing toast. Useful for updating things like counts, etc.
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#build
+ *
+ * @description
+ * Creates a custom `$mdToastPreset` that you can configure.
+ *
+ * @returns {obj} a `$mdToastPreset` with the chainable configuration methods for shows' options
+ *   (see below).
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#show
+ *
+ * @description Shows the toast.
+ *
+ * @param {object} optionsOrPreset Either provide an `$mdToastPreset` returned from `simple()`
+ * and `build()`, or an options object with the following properties:
+ *
+ *   - `templateUrl` - `{string=}`: The url of an html template file that will
+ *     be used as the content of the toast. Restrictions: the template must
+ *     have an outer `md-toast` element.
+ *   - `template` - `{string=}`: Same as templateUrl, except this is an actual
+ *     template string.
+ *   - `autoWrap` - `{boolean=}`: Whether or not to automatically wrap the template content with a
+ *     `<div class="md-toast-content">` if one is not provided. Defaults to true. Can be disabled
+ *     if you provide a custom toast directive.
+ *   - `scope` - `{object=}`: the scope to link the template / controller to. If none is specified,
+ *     it will create a new child scope. This scope will be destroyed when the toast is removed
+ *     unless `preserveScope` is set to true.
+ *   - `preserveScope` - `{boolean=}`: whether to preserve the scope when the element is removed.
+ *     Default is false
+ *   - `hideDelay` - `{number=}`: The number of milliseconds the toast should stay active before
+ *     automatically closing. Set to `0` or `false` to have the toast stay open until closed
+ *     manually via an action in the toast, a hotkey, or a swipe gesture. For accessibility, toasts
+ *     should not automatically close when they contain an action.<br>
+ *     Defaults to: `3000`.
+ *   - `position` - `{string=}`: Sets the position of the toast. <br/>
+ *     Available: any combination of `'bottom'`, `'left'`, `'top'`, `'right'`, `'end'`, and
+ *     `'start'`. The properties `'end'` and `'start'` are dynamic and can be used for RTL support.
+ *     <br/>
+ *     Default combination: `'bottom left'`.
+ *   - `toastClass` - `{string=}`: A class to set on the toast element.
+ *   - `controller` - `{string=}`: The controller to associate with this toast.
+ *     The controller will be injected the local `$mdToast.hide()`, which is a function
+ *     used to hide the toast.
+ *   - `locals` - `{object=}`: An object containing key/value pairs. The keys will
+ *     be used as names of values to inject into the controller. For example,
+ *     `locals: {three: 3}` would inject `three` into the controller with the value
+ *     of 3.
+ *   - `bindToController` - `{boolean=}`: bind the locals to the controller, instead of passing
+ *     them in.
+ *   - `resolve` - `{object=}`: Similar to locals, except it takes promises as values
+ *     and the toast will not open until the promises resolve.
+ *   - `controllerAs` - `{string=}`: An alias to assign the controller to on the scope.
+ *   - `parent` - `{element=}`: The element to append the toast to. Defaults to appending
+ *     to the root element of the application.
+ *
+ * @returns {promise} A promise that can be resolved with `$mdToast.hide()` or
+ * rejected with `$mdToast.cancel()`. `$mdToast.hide()` will resolve either with the Boolean
+ * value `true` or the value passed as an argument to `$mdToast.hide()`.
+ * `$mdToast.cancel()` will resolve the promise with the Boolean value `false`.
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#hide
+ *
+ * @description
+ * Hide an existing toast and resolve the promise returned from `$mdToast.show()`.
+ *
+ * @param {*=} response An argument for the resolved promise.
+ *
+ * @returns {promise} A promise that is called when the existing element is removed from the DOM.
+ * The promise is resolved with either the Boolean value `true` or the value passed as the
+ * argument to `$mdToast.hide()`.
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdToast#cancel
+ *
+ * @description
+ * `DEPRECATED` - The promise returned from opening a toast is used only to notify about the
+ * closing of the toast. As such, there isn't any reason to also allow that promise to be rejected,
+ * since it's not clear what the difference between resolve and reject would be.
+ *
+ * Hide the existing toast and reject the promise returned from
+ * `$mdToast.show()`.
+ *
+ * @param {*=} response An argument for the rejected promise.
+ *
+ * @returns {promise} A promise that is called when the existing element is removed from the DOM
+ * The promise is resolved with the Boolean value `false`.
+ */
+
+function MdToastProvider($$interimElementProvider) {
+  // Differentiate promise resolves: hide timeout (value == true) and hide action clicks
+  // (value == ok).
+  MdToastController.$inject = ["$mdToast", "$scope", "$log"];
+  toastDefaultOptions.$inject = ["$animate", "$mdToast", "$mdUtil", "$mdMedia", "$document"];
+  var ACTION_RESOLVE = 'ok';
+
+  var activeToastContent;
+  var $mdToast = $$interimElementProvider('$mdToast')
+    .setDefaults({
+      methods: ['position', 'hideDelay', 'capsule', 'parent', 'position', 'toastClass'],
+      options: toastDefaultOptions
+    })
+    .addPreset('simple', {
+      argOption: 'textContent',
+      methods: ['textContent', 'content', 'action', 'actionKey', 'actionHint', 'highlightAction',
+                'highlightClass', 'theme', 'parent', 'dismissHint'],
+      options: /* @ngInject */ ["$mdToast", "$mdTheming", function($mdToast, $mdTheming) {
+        return {
+          template:
+            '<md-toast md-theme="{{ toast.theme }}" ng-class="{\'md-capsule\': toast.capsule}">' +
+            '  <div class="md-toast-content" aria-live="polite" aria-relevant="all">' +
+            '    <span class="md-toast-text">' +
+            '      {{ toast.content }}' +
+            '    </span>' +
+            '    <span class="md-visually-hidden">{{ toast.dismissHint }}</span>' +
+            '    <span class="md-visually-hidden" ng-if="toast.action && toast.actionKey">' +
+            '      {{ toast.actionHint }}' +
+            '    </span>' +
+            '    <md-button class="md-action" ng-if="toast.action" ng-click="toast.resolve()" ' +
+            '               ng-class="highlightClasses">' +
+            '      {{ toast.action }}' +
+            '    </md-button>' +
+            '  </div>' +
+            '</md-toast>',
+          controller: MdToastController,
+          theme: $mdTheming.defaultTheme(),
+          controllerAs: 'toast',
+          bindToController: true
+        };
+      }]
+    })
+    .addMethod('updateTextContent', updateTextContent)
+    // updateContent is deprecated. Use updateTextContent instead.
+    // TODO remove this in 1.2.
+    .addMethod('updateContent', updateTextContent);
+
+    function updateTextContent(newContent) {
+      activeToastContent = newContent;
+    }
+
+    return $mdToast;
+
+  /**
+   * Controller for the Toast interim elements.
+   * @ngInject
+   */
+  function MdToastController($mdToast, $scope, $log) {
+    // For compatibility with AngularJS 1.6+, we should always use the $onInit hook in
+    // interimElements. The $mdCompiler simulates the $onInit hook for all versions.
+    this.$onInit = function() {
+      var self = this;
+
+      if (self.highlightAction) {
+        $scope.highlightClasses = [
+          'md-highlight',
+          self.highlightClass
+        ];
+      }
+
+      // If an action is defined and no actionKey is specified, then log a warning.
+      if (self.action && !self.actionKey) {
+        $log.warn('Toasts with actions should define an actionKey for accessibility.',
+          'Details: https://material.angularjs.org/latest/api/service/$mdToast#mdtoast-simple');
+      }
+
+      if (self.actionKey && !self.actionHint) {
+        self.actionHint = 'Press Control-"' + self.actionKey + '" to ';
+      }
+
+      if (!self.dismissHint) {
+        self.dismissHint = 'Press Escape to dismiss.';
+      }
+
+      $scope.$watch(function() { return activeToastContent; }, function() {
+        self.content = activeToastContent;
+      });
+
+      this.resolve = function() {
+        $mdToast.hide(ACTION_RESOLVE);
+      };
+    };
+  }
+
+  /* @ngInject */
+  function toastDefaultOptions($animate, $mdToast, $mdUtil, $mdMedia, $document) {
+    var SWIPE_EVENTS = '$md.swipeleft $md.swiperight $md.swipeup $md.swipedown';
+    return {
+      onShow: onShow,
+      onRemove: onRemove,
+      toastClass: '',
+      position: 'bottom left',
+      themable: true,
+      hideDelay: 3000,
+      autoWrap: true,
+      transformTemplate: function(template, options) {
+        var shouldAddWrapper = options.autoWrap && template && !/md-toast-content/g.test(template);
+
+        if (shouldAddWrapper) {
+          // Root element of template will be <md-toast>. We need to wrap all of its content inside
+          // of <div class="md-toast-content">. All templates provided here should be static,
+          // developer-controlled content (meaning we're not attempting to guard against XSS).
+          var templateRoot = document.createElement('md-template');
+          templateRoot.innerHTML = template;
+
+          // Iterate through all root children, to detect possible md-toast directives.
+          for (var i = 0; i < templateRoot.children.length; i++) {
+            if (templateRoot.children[i].nodeName === 'MD-TOAST') {
+              var wrapper = angular.element('<div class="md-toast-content">');
+
+              // Wrap the children of the `md-toast` directive in jqLite, to be able to append
+              // multiple nodes with the same execution.
+              wrapper.append(angular.element(templateRoot.children[i].childNodes));
+
+              // Append the new wrapped element to the `md-toast` directive.
+              templateRoot.children[i].appendChild(wrapper[0]);
+            }
+          }
+
+          // We have to return the innerHTMl, because we do not want to have the `md-template`
+          // element to be the root element of our interimElement.
+          return templateRoot.innerHTML;
+        }
+
+        return template || '';
+      }
+    };
+
+    function onShow(scope, element, options) {
+      // support deprecated #content method
+      // TODO remove support for content in 1.2.
+      activeToastContent = options.textContent || options.content;
+
+      var isSmScreen = !$mdMedia('gt-sm');
+
+      element = $mdUtil.extractElementByName(element, 'md-toast', true);
+      options.element = element;
+
+      options.onSwipe = function(ev, gesture) {
+        // Add the relevant swipe class to the element so it can animate correctly
+        var swipe = ev.type.replace('$md.','');
+        var direction = swipe.replace('swipe', '');
+
+        // If the swipe direction is down/up but the toast came from top/bottom don't fade away
+        // Unless the screen is small, then the toast always on bottom
+        if ((direction === 'down' && options.position.indexOf('top') !== -1 && !isSmScreen) ||
+            (direction === 'up' && (options.position.indexOf('bottom') !== -1 || isSmScreen))) {
+          return;
+        }
+
+        if ((direction === 'left' || direction === 'right') && isSmScreen) {
+          return;
+        }
+
+        element.addClass('md-' + swipe);
+        $mdUtil.nextTick($mdToast.cancel);
+      };
+      options.openClass = toastOpenClass(options.position);
+
+      element.addClass(options.toastClass);
+
+      // 'top left' -> 'md-top md-left'
+      options.parent.addClass(options.openClass);
+
+      // static is the default position
+      if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
+        options.parent.css('position', 'relative');
+      }
+
+      setupActionKeyListener(scope.toast && scope.toast.actionKey ?
+        scope.toast.actionKey : undefined);
+
+      element.on(SWIPE_EVENTS, options.onSwipe);
+      element.addClass(isSmScreen ? 'md-bottom' : options.position.split(' ').map(function(pos) {
+        return 'md-' + pos;
+      }).join(' '));
+
+      if (options.parent) {
+        options.parent.addClass('md-toast-animating');
+      }
+      return $animate.enter(element, options.parent).then(function() {
+        if (options.parent) {
+          options.parent.removeClass('md-toast-animating');
+        }
+      });
+    }
+
+    function onRemove(scope, element, options) {
+      if (scope.toast && scope.toast.actionKey) {
+        removeActionKeyListener();
+      }
+      element.off(SWIPE_EVENTS, options.onSwipe);
+      if (options.parent) options.parent.addClass('md-toast-animating');
+      if (options.openClass) options.parent.removeClass(options.openClass);
+
+      return ((options.$destroy === true) ? element.remove() : $animate.leave(element))
+        .then(function () {
+          if (options.parent) options.parent.removeClass('md-toast-animating');
+          if ($mdUtil.hasComputedStyle(options.parent, 'position', 'static')) {
+            options.parent.css('position', '');
+          }
+        });
+    }
+
+    function toastOpenClass(position) {
+      // For mobile, always open full-width on bottom
+      if (!$mdMedia('gt-xs')) {
+        return 'md-toast-open-bottom';
+      }
+
+      return 'md-toast-open-' + (position.indexOf('top') > -1 ? 'top' : 'bottom');
+    }
+
+    function setupActionKeyListener(actionKey) {
+      /**
+       * @param {KeyboardEvent} event
+       */
+      var handleKeyDown = function(event) {
+        if (event.key === 'Escape') {
+          $mdToast.hide(false);
+        }
+        if (actionKey && event.key === actionKey && event.ctrlKey) {
+          $mdToast.hide(ACTION_RESOLVE);
+        }
+      };
+      $document.on('keydown', handleKeyDown);
+    }
+
+    function removeActionKeyListener() {
+      $document.off('keydown');
     }
   }
 }
@@ -30366,6 +30366,1043 @@ function MdContactChips($mdTheming, $mdUtil) {
 (function(){
 "use strict";
 
+angular
+  .module('material.components.icon')
+  .directive('mdIcon', ['$mdIcon', '$mdTheming', '$mdAria', '$sce', mdIconDirective]);
+
+/**
+ * @ngdoc directive
+ * @name mdIcon
+ * @module material.components.icon
+ *
+ * @restrict E
+ *
+ * @description
+ * The `md-icon` directive makes it easier to use vector-based icons in your app (as opposed to
+ * raster-based icons types like PNG). The directive supports both icon fonts and SVG icons.
+ *
+ * Icons should be considered view-only elements that should not be used directly as buttons; instead nest a `<md-icon>`
+ * inside a `md-button` to add hover and click features.
+ *
+ * ### Icon fonts
+ * Icon fonts are a technique in which you use a font where the glyphs in the font are
+ * your icons instead of text. Benefits include a straightforward way to bundle everything into a
+ * single HTTP request, simple scaling, easy color changing, and more.
+ *
+ * `md-icon` lets you consume an icon font by letting you reference specific icons in that font
+ * by name rather than character code.
+ *
+ * When using font-icons, developers must follow three (3) simple steps:
+ *
+ * <ol>
+ * <li>Load the font library. e.g.<br/>
+ *    `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
+ * </li>
+ * <li>
+ *   Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
+ *   using its textual name _or_ numerical character reference. Note that `material-icons` is the default fontset when
+ *   none is specified.
+ * </li>
+ * <li> Use any of the following templates: <br/>
+ *   <ul>
+ *     <li>`<md-icon md-font-icon="classname"></md-icon>`</li>
+ *     <li>`<md-icon md-font-set="font library classname or alias">textual_name</md-icon>`</li>
+ *     <li>`<md-icon> numerical_character_reference </md-icon>`</li>
+ *     <li>`<md-icon ng_bind="'textual_name'"></md-icon>`</li>
+ *     <li>`<md-icon ng-bind="scopeVariable"></md-icon>`</li>
+ *   </ul>
+ * </li>
+ * </ol>
+ *
+ * Full details for these steps can be found in the
+ * <a href="http://google.github.io/material-design-icons/#icon-font-for-the-web" target="_blank">
+ * Material Design Icon font for the web docs</a>.
+ *
+ * You can browse and search the Material Design icon style <code>.material-icons</code>
+ * in the <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
+ *
+ * ### SVG
+ * For SVGs, the problem with using `<img>` or a CSS `background-image` is that you can't take
+ * advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
+ * animation.
+ *
+ * `md-icon` makes it easier to use SVG icons by *inlining* the SVG into an `<svg>` element in the
+ * document. The most straightforward way of referencing an SVG icon is via URL, just like a
+ * traditional `<img>`. `$mdIconProvider`, as a convenience, lets you _name_ an icon so you can
+ * reference it by name instead of URL throughout your templates.
+ *
+ * Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
+ * your SVG icons together and pre-load them with `$mdIconProvider` as an icon set. An icon set can
+ * also be given a name, which acts as a namespace for individual icons, so you can reference them
+ * like `"social:cake"`.
+ *
+ * When using SVGs, both external SVGs (via URLs) or sets of SVGs (from icon sets) can be
+ * easily loaded and used.
+ *
+ * ### Localization
+ *
+ * Because an `md-icon` element's text content is not intended to be translated, it is recommended
+ * to declare the text content for an `md-icon` element in its start tag. Instead of using the HTML
+ * text content, consider using `ng-bind` with a scope variable or literal string.
+ *
+ * Examples:
+ *
+ * <ul>
+ *   <li>`<md-icon ng-bind="myIconVariable"></md-icon>`</li>
+ *   <li>`<md-icon ng-bind="'menu'"></md-icon>`
+ * </ul>
+ *
+ * <h2 id="material_design_icons">Material Design Icons tool</h2>
+ * Using the Material Design Icons tool, developers can easily and quickly search for a specific
+ * open source Material Design icon. The search is in the top left. Below search, you can select
+ * from the new icon themes or filter by icon category.
+ *
+ * <a href="https://material.io/tools/icons/" target="_blank" style="border-bottom:none;">
+ * <img src="https://user-images.githubusercontent.com/3506071/41942584-ef0695d0-796d-11e8-9436-44f25023a111.png"
+ *      aria-label="Material Design Icons tool" style="max-width:95%">
+ * </a>
+ *
+ * <div class="md-caption" style="text-align: center; margin-bottom: 24px">
+ *  Click on the image above to open the
+ *  <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
+ * </div>
+ *
+ * Click on any icon, then click on the "Selected Icon" chevron to see the slide-up
+ * information panel with details regarding a SVG download and information on the font-icon's
+ * textual name. This panel also allows you to select a black on transparent or white on transparent
+ * icon and to change the icon size. These settings only affect the downloaded icons.
+ *
+ * @param {string} md-font-icon String name of CSS icon associated with the font-face will be used
+ * to render the icon. Requires the fonts and the named CSS styles to be preloaded.
+ * @param {string} md-font-set CSS style name associated with the font library; which will be assigned as
+ * the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
+ * internally use `$mdIconProvider.fontSet(<alias>)` to determine the style name.
+ * @param {string} md-svg-src String URL (or expression) used to load, cache, and display an
+ *     external SVG.
+ * @param {string} md-svg-icon md-svg-icon String name used for lookup of the icon from the internal cache;
+ *     interpolated strings or expressions may also be used. Specific set names can be used with
+ *     the syntax `<set name>:<icon name>`.<br/><br/>
+ * To use icon sets, developers are required to pre-register the sets using the `$mdIconProvider` service.
+ * @param {string=} aria-label Labels icon for accessibility. If an empty string is provided, icon
+ * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no aria-label on the icon
+ * nor a label on the parent element, a warning will be logged to the console.
+ * @param {string=} alt Labels icon for accessibility. If an empty string is provided, icon
+ * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no alt on the icon
+ * nor a label on the parent element, a warning will be logged to the console.
+ *
+ * @usage
+ * When using SVGs:
+ * <hljs lang="html">
+ *
+ *<!-- Icon ID; may contain optional icon set prefix.
+ *     Icons must be registered using $mdIconProvider. -->
+ *<md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
+ *
+ *<!-- Icon urls; may be preloaded in templateCache -->
+ *<md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
+ *<md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
+ *
+ * </hljs>
+ *
+ * Use the <code>$mdIconProvider</code> to configure your application with
+ * SVG icon sets.
+ *
+ * <hljs lang="js">
+ * angular.module('appSvgIconSets', ['ngMaterial'])
+ *   .controller('DemoCtrl', function($scope) {})
+ *   .config(function($mdIconProvider) {
+ *     $mdIconProvider
+ *       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+ *       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+ *    });
+ * </hljs>
+ *
+ *
+ * When using Font Icons with classnames:
+ * <hljs lang="html">
+ *
+ * <md-icon md-font-icon="android" aria-label="android" ></md-icon>
+ * <md-icon class="icon_home" aria-label="Home"></md-icon>
+ *
+ * </hljs>
+ *
+ * When using Material Font Icons with ligatures:
+ * <hljs lang="html">
+ *  <!--
+ *  For Material Design Icons
+ *  The class '.material-icons' is auto-added if a style has NOT been specified
+ *  since `material-icons` is the default fontset. So your markup:
+ *  -->
+ *  <md-icon> face </md-icon>
+ *  <!-- becomes this at runtime: -->
+ *  <md-icon md-font-set="material-icons"> face </md-icon>
+ *  <!-- If the fontset does not support ligature names, then we need to use the ligature unicode.-->
+ *  <md-icon> &#xE87C; </md-icon>
+ *  <!-- The class '.material-icons' must be manually added if other styles are also specified-->
+ *  <md-icon class="material-icons md-light md-48"> face </md-icon>
+ * </hljs>
+ *
+ * When using other Font-Icon libraries:
+ *
+ * <hljs lang="js">
+ *  // Specify a font-icon style alias
+ *  angular.config(function($mdIconProvider) {
+ *    $mdIconProvider.fontSet('md', 'material-icons');
+ *  });
+ * </hljs>
+ *
+ * <hljs lang="html">
+ *  <md-icon md-font-set="md">favorite</md-icon>
+ * </hljs>
+ *
+ */
+function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
+
+  return {
+    restrict: 'E',
+    link : postLink
+  };
+
+
+  /**
+   * Directive postLink
+   * Supports embedded SVGs, font-icons, & external SVGs
+   */
+  function postLink(scope, element, attr) {
+    $mdTheming(element);
+    var lastFontIcon = attr.mdFontIcon;
+    var lastFontSet = $mdIcon.fontSet(attr.mdFontSet);
+
+    prepareForFontIcon();
+
+    attr.$observe('mdFontIcon', fontIconChanged);
+    attr.$observe('mdFontSet', fontIconChanged);
+
+    // Keep track of the content of the svg src so we can compare against it later to see if the
+    // attribute is static (and thus safe).
+    var originalSvgSrc = element[0].getAttribute(attr.$attr.mdSvgSrc);
+
+    // If using a font-icon, then the textual name of the icon itself
+    // provides the aria-label.
+
+    var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
+
+    /* Provide a default accessibility role of img */
+    if (!attr.role) {
+      $mdAria.expect(element, 'role', 'img');
+      /* manually update attr variable */
+      attr.role = 'img';
+    }
+
+    /* Don't process ARIA if already valid */
+    if (attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element)) {
+      var iconName;
+      if (attr.alt) {
+        /* Use alt text by default if available */
+        $mdAria.expect(element, 'aria-label', attr.alt);
+      } else if ($mdAria.parentHasAriaLabel(element, 2)) {
+        /* Parent has ARIA so we will assume it will describe the image */
+        $mdAria.expect(element, 'aria-hidden', 'true');
+      } else if (iconName = (attr.mdFontIcon || attr.mdSvgIcon || element.text())) {
+        /* Use icon name as aria-label */
+        $mdAria.expect(element, 'aria-label', iconName);
+      } else {
+        /* No label found */
+        $mdAria.expect(element, 'aria-hidden', 'true');
+      }
+    }
+
+    if (attrName) {
+      // Use either pre-configured SVG or URL source, respectively.
+      attr.$observe(attrName, function(attrVal) {
+        element.empty();
+        if (attrVal) {
+          $mdIcon(attrVal)
+            .then(function(svg) {
+            element.empty();
+            element.append(svg);
+          });
+        }
+      });
+    }
+
+    function prepareForFontIcon() {
+      if (!attr.mdSvgIcon && !attr.mdSvgSrc) {
+        if (attr.mdFontIcon) {
+          element.addClass('md-font ' + attr.mdFontIcon);
+        }
+
+        element.addClass(lastFontSet);
+      }
+    }
+
+    function fontIconChanged() {
+      if (!attr.mdSvgIcon && !attr.mdSvgSrc) {
+        if (attr.mdFontIcon) {
+          element.removeClass(lastFontIcon);
+          element.addClass(attr.mdFontIcon);
+
+          lastFontIcon = attr.mdFontIcon;
+        }
+
+        var fontSet = $mdIcon.fontSet(attr.mdFontSet);
+
+        if (lastFontSet !== fontSet) {
+          element.removeClass(lastFontSet);
+          element.addClass(fontSet);
+
+          lastFontSet = fontSet;
+        }
+      }
+    }
+  }
+}
+
+})();
+(function(){
+"use strict";
+
+  
+MdIconService.$inject = ["config", "$templateRequest", "$q", "$log", "$mdUtil", "$sce"];angular
+    .module('material.components.icon')
+    .constant('$$mdSvgRegistry', {
+        'mdTabsArrow':   'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwb2x5Z29uIHBvaW50cz0iMTUuNCw3LjQgMTQsNiA4LDEyIDE0LDE4IDE1LjQsMTYuNiAxMC44LDEyICIvPjwvZz48L3N2Zz4=',
+        'mdClose':       'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik0xOSA2LjQxbC0xLjQxLTEuNDEtNS41OSA1LjU5LTUuNTktNS41OS0xLjQxIDEuNDEgNS41OSA1LjU5LTUuNTkgNS41OSAxLjQxIDEuNDEgNS41OS01LjU5IDUuNTkgNS41OSAxLjQxLTEuNDEtNS41OS01LjU5eiIvPjwvZz48L3N2Zz4=',
+        'mdCancel':      'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik0xMiAyYy01LjUzIDAtMTAgNC40Ny0xMCAxMHM0LjQ3IDEwIDEwIDEwIDEwLTQuNDcgMTAtMTAtNC40Ny0xMC0xMC0xMHptNSAxMy41OWwtMS40MSAxLjQxLTMuNTktMy41OS0zLjU5IDMuNTktMS40MS0xLjQxIDMuNTktMy41OS0zLjU5LTMuNTkgMS40MS0xLjQxIDMuNTkgMy41OSAzLjU5LTMuNTkgMS40MSAxLjQxLTMuNTkgMy41OSAzLjU5IDMuNTl6Ii8+PC9nPjwvc3ZnPg==',
+        'mdMenu':        'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0zLDZIMjFWOEgzVjZNMywxMUgyMVYxM0gzVjExTTMsMTZIMjFWMThIM1YxNloiIC8+PC9zdmc+',
+        'mdToggleArrow': 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDggNDgiPjxwYXRoIGQ9Ik0yNCAxNmwtMTIgMTIgMi44MyAyLjgzIDkuMTctOS4xNyA5LjE3IDkuMTcgMi44My0yLjgzeiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==',
+        'mdCalendar':    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgM2gtMVYxaC0ydjJIOFYxSDZ2Mkg1Yy0xLjExIDAtMS45OS45LTEuOTkgMkwzIDE5YzAgMS4xLjg5IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMTZINVY4aDE0djExek03IDEwaDV2NUg3eiIvPjwvc3ZnPg==',
+        'mdChecked':     'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik05IDE2LjE3TDQuODMgMTJsLTEuNDIgMS40MUw5IDE5IDIxIDdsLTEuNDEtMS40MXoiLz48L2c+PC9zdmc+'
+    })
+    .provider('$mdIcon', MdIconProvider);
+
+/**
+ * @ngdoc service
+ * @name $mdIconProvider
+ * @module material.components.icon
+ *
+ * @description
+ * `$mdIconProvider` is used only to register icon IDs with URLs. These configuration features allow
+ * icons and icon sets to be pre-registered and associated with source URLs **before** the `<md-icon />`
+ * directives are compiled.
+ *
+ * If using font-icons, the developer is responsible for loading the fonts.
+ *
+ * If using SVGs, loading of the actual svg files are deferred to on-demand requests and are loaded
+ * internally by the `$mdIcon` service using the `$templateRequest` service. When an SVG is
+ * requested by name/ID, the `$mdIcon` service searches its registry for the associated source URL;
+ * that URL is used to on-demand load and parse the SVG dynamically.
+ *
+ * The `$templateRequest` service expects the icons source to be loaded over trusted URLs.<br/>
+ * This means, when loading icons from an external URL, you have to trust the URL in the `$sceDelegateProvider`.
+ *
+ * <hljs lang="js">
+ *   app.config(function($sceDelegateProvider) {
+ *     $sceDelegateProvider.resourceUrlWhitelist([
+ *       // Adding 'self' to the whitelist, will allow requests from the current origin.
+ *       'self',
+ *       // Using double asterisks here, will allow all URLs to load.
+ *       // We recommend to only specify the given domain you want to allow.
+ *       '**'
+ *     ]);
+ *   });
+ * </hljs>
+ *
+ * Read more about the [$sceDelegateProvider](https://docs.angularjs.org/api/ng/provider/$sceDelegateProvider).
+ *
+ * **Notice:** Most font-icons libraries do not support ligatures (for example `fontawesome`).<br/>
+ *  In such cases you are not able to use the icon's ligature name - Like so:
+ *
+ *  <hljs lang="html">
+ *    <md-icon md-font-set="fa">fa-bell</md-icon>
+ *  </hljs>
+ *
+ * You should instead use the given unicode, instead of the ligature name.
+ *
+ * <p ng-hide="true"> ##// Notice we can't use a hljs element here, because the characters will be escaped.</p>
+ *  ```html
+ *    <md-icon md-font-set="fa">&#xf0f3</md-icon>
+ *  ```
+ *
+ * All unicode ligatures are prefixed with the `&#x` string.
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Configure URLs for icons specified by [set:]id.
+    *
+    *     $mdIconProvider
+    *          .defaultFontSet( 'fa' )                   // This sets our default fontset className.
+    *          .defaultIconSet('my/app/icons.svg')       // Register a default set of SVG icons
+    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set of SVGs
+    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
+    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
+    *   });
+ * </hljs>
+ *
+ * SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
+ * **startup** process (shown below):
+ *
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Register a default set of SVG icon definitions
+    *     $mdIconProvider.defaultIconSet('my/app/icons.svg')
+    *
+    *   })
+ *   .run(function($templateRequest){
+    *
+    *     // Pre-fetch icons sources by URL and cache in the $templateCache...
+    *     // subsequent $templateRequest calls will look there first.
+    *
+    *     var urls = [ 'imy/app/icons.svg', 'img/icons/android.svg'];
+    *
+    *     angular.forEach(urls, function(url) {
+    *       $templateRequest(url);
+    *     });
+    *
+    *   });
+ *
+ * </hljs>
+ *
+ * > <b>Note:</b> The loaded SVG data is subsequently cached internally for future requests.
+ *
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#icon
+ *
+ * @description
+ * Register a source URL for a specific icon name; the name may include optional 'icon set' name prefix.
+ * These icons  will later be retrieved from the cache using `$mdIcon( <icon name> )`
+ *
+ * @param {string} id Icon name/id used to register the icon
+ * @param {string} url specifies the external location for the data file. Used internally by
+ * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
+ * was configured.
+ * @param {number=} viewBoxSize Sets the width and height the icon's viewBox.
+ * It is ignored for icons with an existing viewBox. Default size is 24.
+ *
+ * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Configure URLs for icons specified by [set:]id.
+    *
+    *     $mdIconProvider
+    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
+    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
+    *   });
+ * </hljs>
+ *
+ */
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#iconSet
+ *
+ * @description
+ * Register a source URL for a 'named' set of icons; group of SVG definitions where each definition
+ * has an icon id. Individual icons can be subsequently retrieved from this cached set using
+ * `$mdIcon(<icon set name>:<icon name>)`
+ *
+ * @param {string} id Icon name/id used to register the iconset
+ * @param {string} url specifies the external location for the data file. Used internally by
+ * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
+ * was configured.
+ * @param {number=} viewBoxSize Sets the width and height of the viewBox of all icons in the set.
+ * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+ * Default value is 24.
+ *
+ * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ *
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Configure URLs for icons specified by [set:]id.
+    *
+    *     $mdIconProvider
+    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set
+    *   });
+ * </hljs>
+ *
+ */
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#defaultIconSet
+ *
+ * @description
+ * Register a source URL for the default 'named' set of icons. Unless explicitly registered,
+ * subsequent lookups of icons will failover to search this 'default' icon set.
+ * Icon can be retrieved from this cached, default set using `$mdIcon(<name>)`
+ *
+ * @param {string} url specifies the external location for the data file. Used internally by
+ * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
+ * was configured.
+ * @param {number=} viewBoxSize Sets the width and height of the viewBox of all icons in the set.
+ * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
+ * Default value is 24.
+ *
+ * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Configure URLs for icons specified by [set:]id.
+    *
+    *     $mdIconProvider
+    *          .defaultIconSet( 'my/app/social.svg' )   // Register a default icon set
+    *   });
+ * </hljs>
+ *
+ */
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#defaultFontSet
+ *
+ * @description
+ * When using Font-Icons, AngularJS Material assumes the the Material Design icons will be used and automatically
+ * configures the default font-set == 'material-icons'. Note that the font-set references the font-icon library
+ * class style that should be applied to the `<md-icon>`.
+ *
+ * Configuring the default means that the attributes
+ * `md-font-set="material-icons"` or `class="material-icons"` do not need to be explicitly declared on the
+ * `<md-icon>` markup. For example:
+ *
+ *  `<md-icon> face </md-icon>`
+ *  will render as
+ *  `<span class="material-icons"> face </span>`, and
+ *
+ *  `<md-icon md-font-set="fa"> face </md-icon>`
+ *  will render as
+ *  `<span class="fa"> face </span>`
+ *
+ * @param {string} name of the font-library style that should be applied to the md-icon DOM element
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+   *     $mdIconProvider.defaultFontSet( 'fa' );
+   *   });
+ * </hljs>
+ *
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#fontSet
+ *
+ * @description
+ * When using a font set for `<md-icon>` you must specify the correct font classname in the `md-font-set`
+ * attribute. If the fonset className is really long, your markup may become cluttered... an easy
+ * solution is to define an `alias` for your fontset:
+ *
+ * @param {string} alias of the specified fontset.
+ * @param {string} className of the fontset.
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+   *     // In this case, we set an alias for the `material-icons` fontset.
+   *     $mdIconProvider.fontSet('md', 'material-icons');
+   *   });
+ * </hljs>
+ *
+ */
+
+/**
+ * @ngdoc method
+ * @name $mdIconProvider#defaultViewBoxSize
+ *
+ * @description
+ * While `<md-icon />` markup can also be style with sizing CSS, this method configures
+ * the default width **and** height used for all icons; unless overridden by specific CSS.
+ * The default sizing is (24px, 24px).
+ * @param {number=} viewBoxSize Sets the width and height of the viewBox for an icon or an icon set.
+ * All icons in a set should be the same size. The default value is 24.
+ *
+ * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
+ *
+ * @usage
+ * <hljs lang="js">
+ *   app.config(function($mdIconProvider) {
+    *
+    *     // Configure URLs for icons specified by [set:]id.
+    *
+    *     $mdIconProvider
+    *          .defaultViewBoxSize(36)   // Register a default icon size (width == height)
+    *   });
+ * </hljs>
+ *
+ */
+
+var config = {
+  defaultViewBoxSize: 24,
+  defaultFontSet: 'material-icons',
+  fontSets: []
+};
+
+function MdIconProvider() {
+}
+
+MdIconProvider.prototype = {
+  icon: function(id, url, viewBoxSize) {
+    if (id.indexOf(':') == -1) id = '$default:' + id;
+
+    config[id] = new ConfigurationItem(url, viewBoxSize);
+    return this;
+  },
+
+  iconSet: function(id, url, viewBoxSize) {
+    config[id] = new ConfigurationItem(url, viewBoxSize);
+    return this;
+  },
+
+  defaultIconSet: function(url, viewBoxSize) {
+    var setName = '$default';
+
+    if (!config[setName]) {
+      config[setName] = new ConfigurationItem(url, viewBoxSize);
+    }
+
+    config[setName].viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
+
+    return this;
+  },
+
+  defaultViewBoxSize: function(viewBoxSize) {
+    config.defaultViewBoxSize = viewBoxSize;
+    return this;
+  },
+
+  /**
+   * Register an alias name associated with a font-icon library style ;
+   */
+  fontSet: function fontSet(alias, className) {
+    config.fontSets.push({
+      alias: alias,
+      fontSet: className || alias
+    });
+    return this;
+  },
+
+  /**
+   * Specify a default style name associated with a font-icon library
+   * fallback to Material Icons.
+   *
+   */
+  defaultFontSet: function defaultFontSet(className) {
+    config.defaultFontSet = !className ? '' : className;
+    return this;
+  },
+
+  defaultIconSize: function defaultIconSize(iconSize) {
+    config.defaultIconSize = iconSize;
+    return this;
+  },
+
+  $get: ['$templateRequest', '$q', '$log', '$mdUtil', '$sce', function($templateRequest, $q, $log, $mdUtil, $sce) {
+    return MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce);
+  }]
+};
+
+  /**
+   * Configuration item stored in the Icon registry; used for lookups
+   * to load if not already cached in the `loaded` cache
+   * @param {string} url
+   * @param {=number} viewBoxSize
+   * @constructor
+   */
+  function ConfigurationItem(url, viewBoxSize) {
+    this.url = url;
+    this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
+  }
+
+/**
+ * @ngdoc service
+ * @name $mdIcon
+ * @module material.components.icon
+ *
+ * @description
+ * The `$mdIcon` service is a function used to lookup SVG icons.
+ *
+ * @param {string} id Query value for a unique Id or URL. If the argument is a URL, then the service will retrieve the icon element
+ * from its internal cache or load the icon and cache it first. If the value is not a URL-type string, then an ID lookup is
+ * performed. The Id may be a unique icon ID or may include an iconSet ID prefix.
+ *
+ * For the **id** query to work properly, this means that all id-to-URL mappings must have been previously configured
+ * using the `$mdIconProvider`.
+ *
+ * @returns {angular.$q.Promise} A promise that gets resolved to a clone of the initial SVG DOM element; which was
+ * created from the SVG markup in the SVG data file. If an error occurs (e.g. the icon cannot be found) the promise
+ * will get rejected.
+ *
+ * @usage
+ * <hljs lang="js">
+ * function SomeDirective($mdIcon) {
+  *
+  *   // See if the icon has already been loaded, if not
+  *   // then lookup the icon from the registry cache, load and cache
+  *   // it for future requests.
+  *   // NOTE: ID queries require configuration with $mdIconProvider
+  *
+  *   $mdIcon('android').then(function(iconEl)    { element.append(iconEl); });
+  *   $mdIcon('work:chair').then(function(iconEl) { element.append(iconEl); });
+  *
+  *   // Load and cache the external SVG using a URL
+  *
+  *   $mdIcon('img/icons/android.svg').then(function(iconEl) {
+  *     element.append(iconEl);
+  *   });
+  * };
+ * </hljs>
+ *
+ * > <b>Note:</b> The `<md-icon>` directive internally uses the `$mdIcon` service to query, load,
+ *   and instantiate SVG DOM elements.
+ */
+
+/* @ngInject */
+function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
+  var iconCache = {};
+  var svgCache = {};
+  var urlRegex = /[-\w@:%+.~#?&//=]{2,}\.[a-z]{2,4}\b(\/[-\w@:%+.~#?&//=]*)?/i;
+  var dataUrlRegex = /^data:image\/svg\+xml[\s*;\w\-=]*?(base64)?,(.*)$/i;
+
+  Icon.prototype = {clone: cloneSVG, prepare: prepareAndStyle};
+  getIcon.fontSet = findRegisteredFontSet;
+
+  // Publish service...
+  return getIcon;
+
+  /**
+   * Actual $mdIcon service is essentially a lookup function
+   * @param {*} id $sce trust wrapper over a URL string, URL, icon registry id, or icon set id
+   * @returns {angular.$q.Promise}
+   */
+  function getIcon(id) {
+    id = id || '';
+
+    // If the "id" provided is not a string, the only other valid value is a $sce trust wrapper
+    // over a URL string. If the value is not trusted, this will intentionally throw an error
+    // because the user is attempted to use an unsafe URL, potentially opening themselves up
+    // to an XSS attack.
+    if (!angular.isString(id)) {
+      id = $sce.getTrustedUrl(id);
+    }
+
+    // If already loaded and cached, use a clone of the cached icon.
+    // Otherwise either load by URL, or lookup in the registry and then load by URL, and cache.
+
+    if (iconCache[id]) {
+      return $q.when(transformClone(iconCache[id]));
+    }
+
+    if (urlRegex.test(id) || dataUrlRegex.test(id)) {
+      return loadByURL(id).then(cacheIcon(id));
+    }
+
+    if (id.indexOf(':') === -1) {
+      id = '$default:' + id;
+    }
+
+    var load = config[id] ? loadByID : loadFromIconSet;
+    return load(id)
+      .then(cacheIcon(id));
+  }
+
+  /**
+   * Lookup a registered fontSet style using its alias.
+   * @param {string} alias used to lookup the alias in the array of fontSets
+   * @returns {*} matching fontSet or the defaultFontSet if that alias does not match
+   */
+  function findRegisteredFontSet(alias) {
+    var useDefault = angular.isUndefined(alias) || !(alias && alias.length);
+    if (useDefault) {
+      return config.defaultFontSet;
+    }
+
+    var result = alias;
+    angular.forEach(config.fontSets, function(fontSet) {
+      if (fontSet.alias === alias) {
+        result = fontSet.fontSet || result;
+      }
+    });
+
+    return result;
+  }
+
+  /**
+   * @param {!Icon} cacheElement cached icon from the iconCache
+   * @returns {Icon} cloned Icon element with unique ids
+   */
+  function transformClone(cacheElement) {
+    var clone = cacheElement.clone();
+    var newUid = $mdUtil.nextUid();
+    var cacheSuffix, svgUrlQuerySelector, i, xlinkHrefValue;
+    // These are SVG attributes that can reference element ids.
+    var svgUrlAttributes = [
+      'clip-path', 'color-profile', 'cursor', 'fill', 'filter', 'href', 'marker-start',
+      'marker-mid', 'marker-end', 'mask', 'stroke', 'style', 'vector-effect'
+    ];
+    var isIeSvg = clone.innerHTML === undefined;
+
+    // Verify that the newUid only contains a number and not some XSS content.
+    if (!isFinite(Number(newUid))) {
+      throw new Error('Unsafe and unexpected non-number result from $mdUtil.nextUid().');
+    }
+    cacheSuffix = '_cache' + newUid;
+
+    // For each cached icon, we need to modify the id attributes and references.
+    // This is needed because SVG ids are treated as normal DOM ids and should not be duplicated on
+    // the page.
+    if (clone.id) {
+      clone.id += cacheSuffix;
+    }
+
+    // Do as much as possible with querySelectorAll as it provides much greater performance
+    // than RegEx against serialized DOM.
+    angular.forEach(clone.querySelectorAll('[id]'), function(descendantElem) {
+      svgUrlQuerySelector = '';
+      for (i = 0; i < svgUrlAttributes.length; i++) {
+        svgUrlQuerySelector += '[' + svgUrlAttributes[i] + '="url(#' + descendantElem.id + ')"]';
+        if (i + 1 < svgUrlAttributes.length) {
+          svgUrlQuerySelector += ', ';
+        }
+      }
+      // Append the cacheSuffix to references of the element's id within url(#id) calls.
+      angular.forEach(clone.querySelectorAll(svgUrlQuerySelector), function(refItem) {
+        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
+      });
+      // Handle usages of url(#id) in the SVG's stylesheets
+      angular.forEach(clone.querySelectorAll('style'), function(refItem) {
+        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
+      });
+
+      // Update ids referenced by the deprecated (in SVG v2) xlink:href XML attribute. The now
+      // preferred href attribute is handled above. However, this non-standard XML namespaced
+      // attribute cannot be handled in the same way. Explanation of this query selector here:
+      // https://stackoverflow.com/q/23034283/633107.
+      angular.forEach(clone.querySelectorAll('[*|href]:not([href])'), function(refItem) {
+        xlinkHrefValue = refItem.getAttribute('xlink:href');
+        if (xlinkHrefValue) {
+          xlinkHrefValue = xlinkHrefValue.replace("#" + descendantElem.id, "#" + descendantElem.id + cacheSuffix);
+          refItem.setAttribute('xlink:href', xlinkHrefValue);
+        }
+      });
+
+      descendantElem.id += cacheSuffix;
+    });
+
+    return clone;
+  }
+
+  /**
+   * @param {Element} referencedElement element w/ id that needs to be updated
+   * @param {Element} referencingElement element that references the original id
+   * @param {boolean} isIeSvg true if we're dealing with an SVG in IE11, false otherwise
+   * @param {string} newUid the cache id to add as part of the cache suffix
+   */
+  function updateSvgIdReferences(referencedElement, referencingElement, isIeSvg, newUid) {
+    var svgElement, cacheSuffix;
+
+    // Verify that the newUid only contains a number and not some XSS content.
+    if (!isFinite(Number(newUid))) {
+      throw new Error('Unsafe and unexpected non-number result for newUid.');
+    }
+    cacheSuffix = '_cache' + newUid;
+
+    // outerHTML of SVG elements is not supported by IE11
+    if (isIeSvg) {
+      svgElement = $mdUtil.getOuterHTML(referencingElement);
+      svgElement = svgElement.replace("url(#" + referencedElement.id + ")",
+        "url(#" + referencedElement.id + cacheSuffix + ")");
+      referencingElement.textContent = angular.element(svgElement)[0].innerHTML;
+    } else {
+      // This use of outerHTML should be safe from XSS attack since we are only injecting the
+      // cacheSuffix with content from $mdUtil.nextUid which we verify is a finite number above.
+      referencingElement.outerHTML = referencingElement.outerHTML.replace(
+        "url(#" + referencedElement.id + ")",
+        "url(#" + referencedElement.id + cacheSuffix + ")");
+    }
+  }
+
+  /**
+   * Prepare and cache the loaded icon for the specified `id`.
+   * @param {string} id icon cache id
+   * @returns {function(*=): *}
+   */
+  function cacheIcon(id) {
+
+    return function updateCache(icon) {
+      iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
+
+      return iconCache[id].clone();
+    };
+  }
+
+  /**
+   * Lookup the configuration in the registry, if !registered throw an error
+   * otherwise load the icon [on-demand] using the registered URL.
+   * @param {string} id icon registry id
+   * @returns {angular.$q.Promise}
+   */
+  function loadByID(id) {
+    var iconConfig = config[id];
+    return loadByURL(iconConfig.url).then(function(icon) {
+      return new Icon(icon, iconConfig);
+    });
+  }
+
+  /**
+   * Loads the file as XML and uses querySelector( <id> ) to find the desired node...
+   * @param {string} id icon id in icon set
+   * @returns {angular.$q.Promise}
+   */
+  function loadFromIconSet(id) {
+    var setName = id.substring(0, id.lastIndexOf(':')) || '$default';
+    var iconSetConfig = config[setName];
+
+    return !iconSetConfig ? announceIdNotFound(id) : loadByURL(iconSetConfig.url).then(extractFromSet);
+
+    function extractFromSet(set) {
+      var iconName = id.slice(id.lastIndexOf(':') + 1);
+      var icon = set.querySelector('#' + iconName);
+      return icon ? new Icon(icon, iconSetConfig) : announceIdNotFound(id);
+    }
+
+    function announceIdNotFound(id) {
+      var msg = 'icon ' + id + ' not found';
+      $log.warn(msg);
+
+      return $q.reject(msg || id);
+    }
+  }
+
+  /**
+   * Load the icon by URL (may use the $templateCache).
+   * Extract the data for later conversion to Icon
+   * @param {string} url icon URL
+   * @returns {angular.$q.Promise}
+   */
+  function loadByURL(url) {
+    /* Load the icon from embedded data URL. */
+    function loadByDataUrl(url) {
+      var results = dataUrlRegex.exec(url);
+      var isBase64 = /base64/i.test(url);
+      var data = isBase64 ? window.atob(results[2]) : results[2];
+
+      return $q.when(angular.element(data)[0]);
+    }
+
+    /* Load the icon by URL using HTTP. */
+    function loadByHttpUrl(url) {
+      return $q(function(resolve, reject) {
+        // Catch HTTP or generic errors not related to incorrect icon IDs.
+        var announceAndReject = function(err) {
+            var msg = angular.isString(err) ? err : (err.message || err.data || err.statusText);
+            $log.warn(msg);
+            reject(err);
+          },
+          extractSvg = function(response) {
+            if (!svgCache[url]) {
+              svgCache[url] = angular.element('<div>').append(response)[0].querySelector('svg');
+            }
+            resolve(svgCache[url]);
+          };
+
+        $templateRequest(url, true).then(extractSvg, announceAndReject);
+      });
+    }
+
+    return dataUrlRegex.test(url)
+      ? loadByDataUrl(url)
+      : loadByHttpUrl(url);
+  }
+
+  /**
+   * Check target signature to see if it is an Icon instance.
+   * @param {Icon|Element} target
+   * @returns {boolean} true if the specified target is an Icon object, false otherwise.
+   */
+  function isIcon(target) {
+    return angular.isDefined(target.element) && angular.isDefined(target.config);
+  }
+
+  /**
+   * Define the Icon class
+   * @param {Element} el
+   * @param {=ConfigurationItem} config
+   * @constructor
+   */
+  function Icon(el, config) {
+    var elementContents;
+    // If the node is a <symbol>, it won't be rendered so we have to convert it into <svg>.
+    if (el && el.tagName.toLowerCase() === 'symbol') {
+      var viewbox = el.getAttribute('viewBox');
+      // Check if innerHTML is supported as IE11 does not support innerHTML on SVG elements.
+      if (el.innerHTML) {
+        elementContents = el.innerHTML;
+      } else {
+        elementContents = $mdUtil.getInnerHTML(el);
+      }
+      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(elementContents)[0];
+      if (viewbox) el.setAttribute('viewBox', viewbox);
+    }
+
+    if (el && el.tagName.toLowerCase() !== 'svg') {
+      el = angular.element(
+        '<svg xmlns="http://www.w3.org/2000/svg">').append(el.cloneNode(true))[0];
+    }
+
+    // Inject the namespace if not available...
+    if (!el.getAttribute('xmlns')) {
+      el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
+    }
+
+    this.element = el;
+    this.config = config;
+    this.prepare();
+  }
+
+  /**
+   *  Prepare the DOM element that will be cached in the
+   *  loaded iconCache store.
+   */
+  function prepareAndStyle() {
+    var viewBoxSize = this.config ? this.config.viewBoxSize : config.defaultViewBoxSize;
+    angular.forEach({
+      'fit': '',
+      'height': '100%',
+      'width': '100%',
+      'preserveAspectRatio': 'xMidYMid meet',
+      'viewBox': this.element.getAttribute('viewBox') || ('0 0 ' + viewBoxSize + ' ' + viewBoxSize),
+      'focusable': false // Disable IE11s default behavior to make SVGs focusable
+    }, function(val, attr) {
+      this.element.setAttribute(attr, val);
+    }, this);
+  }
+
+  /**
+   * Clone the Icon DOM element.
+   */
+  function cloneSVG() {
+    // If the element or any of its children have a style attribute, then a CSP policy without
+    // 'unsafe-inline' in the style-src directive, will result in a violation.
+    return this.element.cloneNode(true);
+  }
+
+}
+
+})();
+(function(){
+"use strict";
+
 (function() {
   'use strict';
 
@@ -33535,1043 +34572,6 @@ function MdContactChips($mdTheming, $mdUtil) {
     this.updateErrorState();
   };
 })();
-
-})();
-(function(){
-"use strict";
-
-angular
-  .module('material.components.icon')
-  .directive('mdIcon', ['$mdIcon', '$mdTheming', '$mdAria', '$sce', mdIconDirective]);
-
-/**
- * @ngdoc directive
- * @name mdIcon
- * @module material.components.icon
- *
- * @restrict E
- *
- * @description
- * The `md-icon` directive makes it easier to use vector-based icons in your app (as opposed to
- * raster-based icons types like PNG). The directive supports both icon fonts and SVG icons.
- *
- * Icons should be considered view-only elements that should not be used directly as buttons; instead nest a `<md-icon>`
- * inside a `md-button` to add hover and click features.
- *
- * ### Icon fonts
- * Icon fonts are a technique in which you use a font where the glyphs in the font are
- * your icons instead of text. Benefits include a straightforward way to bundle everything into a
- * single HTTP request, simple scaling, easy color changing, and more.
- *
- * `md-icon` lets you consume an icon font by letting you reference specific icons in that font
- * by name rather than character code.
- *
- * When using font-icons, developers must follow three (3) simple steps:
- *
- * <ol>
- * <li>Load the font library. e.g.<br/>
- *    `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
- * </li>
- * <li>
- *   Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
- *   using its textual name _or_ numerical character reference. Note that `material-icons` is the default fontset when
- *   none is specified.
- * </li>
- * <li> Use any of the following templates: <br/>
- *   <ul>
- *     <li>`<md-icon md-font-icon="classname"></md-icon>`</li>
- *     <li>`<md-icon md-font-set="font library classname or alias">textual_name</md-icon>`</li>
- *     <li>`<md-icon> numerical_character_reference </md-icon>`</li>
- *     <li>`<md-icon ng_bind="'textual_name'"></md-icon>`</li>
- *     <li>`<md-icon ng-bind="scopeVariable"></md-icon>`</li>
- *   </ul>
- * </li>
- * </ol>
- *
- * Full details for these steps can be found in the
- * <a href="http://google.github.io/material-design-icons/#icon-font-for-the-web" target="_blank">
- * Material Design Icon font for the web docs</a>.
- *
- * You can browse and search the Material Design icon style <code>.material-icons</code>
- * in the <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
- *
- * ### SVG
- * For SVGs, the problem with using `<img>` or a CSS `background-image` is that you can't take
- * advantage of some SVG features, such as styling specific parts of the icon with CSS or SVG
- * animation.
- *
- * `md-icon` makes it easier to use SVG icons by *inlining* the SVG into an `<svg>` element in the
- * document. The most straightforward way of referencing an SVG icon is via URL, just like a
- * traditional `<img>`. `$mdIconProvider`, as a convenience, lets you _name_ an icon so you can
- * reference it by name instead of URL throughout your templates.
- *
- * Additionally, you may not want to make separate HTTP requests for every icon, so you can bundle
- * your SVG icons together and pre-load them with `$mdIconProvider` as an icon set. An icon set can
- * also be given a name, which acts as a namespace for individual icons, so you can reference them
- * like `"social:cake"`.
- *
- * When using SVGs, both external SVGs (via URLs) or sets of SVGs (from icon sets) can be
- * easily loaded and used.
- *
- * ### Localization
- *
- * Because an `md-icon` element's text content is not intended to be translated, it is recommended
- * to declare the text content for an `md-icon` element in its start tag. Instead of using the HTML
- * text content, consider using `ng-bind` with a scope variable or literal string.
- *
- * Examples:
- *
- * <ul>
- *   <li>`<md-icon ng-bind="myIconVariable"></md-icon>`</li>
- *   <li>`<md-icon ng-bind="'menu'"></md-icon>`
- * </ul>
- *
- * <h2 id="material_design_icons">Material Design Icons tool</h2>
- * Using the Material Design Icons tool, developers can easily and quickly search for a specific
- * open source Material Design icon. The search is in the top left. Below search, you can select
- * from the new icon themes or filter by icon category.
- *
- * <a href="https://material.io/tools/icons/" target="_blank" style="border-bottom:none;">
- * <img src="https://user-images.githubusercontent.com/3506071/41942584-ef0695d0-796d-11e8-9436-44f25023a111.png"
- *      aria-label="Material Design Icons tool" style="max-width:95%">
- * </a>
- *
- * <div class="md-caption" style="text-align: center; margin-bottom: 24px">
- *  Click on the image above to open the
- *  <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
- * </div>
- *
- * Click on any icon, then click on the "Selected Icon" chevron to see the slide-up
- * information panel with details regarding a SVG download and information on the font-icon's
- * textual name. This panel also allows you to select a black on transparent or white on transparent
- * icon and to change the icon size. These settings only affect the downloaded icons.
- *
- * @param {string} md-font-icon String name of CSS icon associated with the font-face will be used
- * to render the icon. Requires the fonts and the named CSS styles to be preloaded.
- * @param {string} md-font-set CSS style name associated with the font library; which will be assigned as
- * the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
- * internally use `$mdIconProvider.fontSet(<alias>)` to determine the style name.
- * @param {string} md-svg-src String URL (or expression) used to load, cache, and display an
- *     external SVG.
- * @param {string} md-svg-icon md-svg-icon String name used for lookup of the icon from the internal cache;
- *     interpolated strings or expressions may also be used. Specific set names can be used with
- *     the syntax `<set name>:<icon name>`.<br/><br/>
- * To use icon sets, developers are required to pre-register the sets using the `$mdIconProvider` service.
- * @param {string=} aria-label Labels icon for accessibility. If an empty string is provided, icon
- * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no aria-label on the icon
- * nor a label on the parent element, a warning will be logged to the console.
- * @param {string=} alt Labels icon for accessibility. If an empty string is provided, icon
- * will be hidden from accessibility layer with `aria-hidden="true"`. If there's no alt on the icon
- * nor a label on the parent element, a warning will be logged to the console.
- *
- * @usage
- * When using SVGs:
- * <hljs lang="html">
- *
- *<!-- Icon ID; may contain optional icon set prefix.
- *     Icons must be registered using $mdIconProvider. -->
- *<md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
- *
- *<!-- Icon urls; may be preloaded in templateCache -->
- *<md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
- *<md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
- *
- * </hljs>
- *
- * Use the <code>$mdIconProvider</code> to configure your application with
- * SVG icon sets.
- *
- * <hljs lang="js">
- * angular.module('appSvgIconSets', ['ngMaterial'])
- *   .controller('DemoCtrl', function($scope) {})
- *   .config(function($mdIconProvider) {
- *     $mdIconProvider
- *       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
- *       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
- *    });
- * </hljs>
- *
- *
- * When using Font Icons with classnames:
- * <hljs lang="html">
- *
- * <md-icon md-font-icon="android" aria-label="android" ></md-icon>
- * <md-icon class="icon_home" aria-label="Home"></md-icon>
- *
- * </hljs>
- *
- * When using Material Font Icons with ligatures:
- * <hljs lang="html">
- *  <!--
- *  For Material Design Icons
- *  The class '.material-icons' is auto-added if a style has NOT been specified
- *  since `material-icons` is the default fontset. So your markup:
- *  -->
- *  <md-icon> face </md-icon>
- *  <!-- becomes this at runtime: -->
- *  <md-icon md-font-set="material-icons"> face </md-icon>
- *  <!-- If the fontset does not support ligature names, then we need to use the ligature unicode.-->
- *  <md-icon> &#xE87C; </md-icon>
- *  <!-- The class '.material-icons' must be manually added if other styles are also specified-->
- *  <md-icon class="material-icons md-light md-48"> face </md-icon>
- * </hljs>
- *
- * When using other Font-Icon libraries:
- *
- * <hljs lang="js">
- *  // Specify a font-icon style alias
- *  angular.config(function($mdIconProvider) {
- *    $mdIconProvider.fontSet('md', 'material-icons');
- *  });
- * </hljs>
- *
- * <hljs lang="html">
- *  <md-icon md-font-set="md">favorite</md-icon>
- * </hljs>
- *
- */
-function mdIconDirective($mdIcon, $mdTheming, $mdAria, $sce) {
-
-  return {
-    restrict: 'E',
-    link : postLink
-  };
-
-
-  /**
-   * Directive postLink
-   * Supports embedded SVGs, font-icons, & external SVGs
-   */
-  function postLink(scope, element, attr) {
-    $mdTheming(element);
-    var lastFontIcon = attr.mdFontIcon;
-    var lastFontSet = $mdIcon.fontSet(attr.mdFontSet);
-
-    prepareForFontIcon();
-
-    attr.$observe('mdFontIcon', fontIconChanged);
-    attr.$observe('mdFontSet', fontIconChanged);
-
-    // Keep track of the content of the svg src so we can compare against it later to see if the
-    // attribute is static (and thus safe).
-    var originalSvgSrc = element[0].getAttribute(attr.$attr.mdSvgSrc);
-
-    // If using a font-icon, then the textual name of the icon itself
-    // provides the aria-label.
-
-    var attrName = attr.$normalize(attr.$attr.mdSvgIcon || attr.$attr.mdSvgSrc || '');
-
-    /* Provide a default accessibility role of img */
-    if (!attr.role) {
-      $mdAria.expect(element, 'role', 'img');
-      /* manually update attr variable */
-      attr.role = 'img';
-    }
-
-    /* Don't process ARIA if already valid */
-    if (attr.role === "img" && !attr.ariaHidden && !$mdAria.hasAriaLabel(element)) {
-      var iconName;
-      if (attr.alt) {
-        /* Use alt text by default if available */
-        $mdAria.expect(element, 'aria-label', attr.alt);
-      } else if ($mdAria.parentHasAriaLabel(element, 2)) {
-        /* Parent has ARIA so we will assume it will describe the image */
-        $mdAria.expect(element, 'aria-hidden', 'true');
-      } else if (iconName = (attr.mdFontIcon || attr.mdSvgIcon || element.text())) {
-        /* Use icon name as aria-label */
-        $mdAria.expect(element, 'aria-label', iconName);
-      } else {
-        /* No label found */
-        $mdAria.expect(element, 'aria-hidden', 'true');
-      }
-    }
-
-    if (attrName) {
-      // Use either pre-configured SVG or URL source, respectively.
-      attr.$observe(attrName, function(attrVal) {
-        element.empty();
-        if (attrVal) {
-          $mdIcon(attrVal)
-            .then(function(svg) {
-            element.empty();
-            element.append(svg);
-          });
-        }
-      });
-    }
-
-    function prepareForFontIcon() {
-      if (!attr.mdSvgIcon && !attr.mdSvgSrc) {
-        if (attr.mdFontIcon) {
-          element.addClass('md-font ' + attr.mdFontIcon);
-        }
-
-        element.addClass(lastFontSet);
-      }
-    }
-
-    function fontIconChanged() {
-      if (!attr.mdSvgIcon && !attr.mdSvgSrc) {
-        if (attr.mdFontIcon) {
-          element.removeClass(lastFontIcon);
-          element.addClass(attr.mdFontIcon);
-
-          lastFontIcon = attr.mdFontIcon;
-        }
-
-        var fontSet = $mdIcon.fontSet(attr.mdFontSet);
-
-        if (lastFontSet !== fontSet) {
-          element.removeClass(lastFontSet);
-          element.addClass(fontSet);
-
-          lastFontSet = fontSet;
-        }
-      }
-    }
-  }
-}
-
-})();
-(function(){
-"use strict";
-
-  
-MdIconService.$inject = ["config", "$templateRequest", "$q", "$log", "$mdUtil", "$sce"];angular
-    .module('material.components.icon')
-    .constant('$$mdSvgRegistry', {
-        'mdTabsArrow':   'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwb2x5Z29uIHBvaW50cz0iMTUuNCw3LjQgMTQsNiA4LDEyIDE0LDE4IDE1LjQsMTYuNiAxMC44LDEyICIvPjwvZz48L3N2Zz4=',
-        'mdClose':       'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik0xOSA2LjQxbC0xLjQxLTEuNDEtNS41OSA1LjU5LTUuNTktNS41OS0xLjQxIDEuNDEgNS41OSA1LjU5LTUuNTkgNS41OSAxLjQxIDEuNDEgNS41OS01LjU5IDUuNTkgNS41OSAxLjQxLTEuNDEtNS41OS01LjU5eiIvPjwvZz48L3N2Zz4=',
-        'mdCancel':      'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik0xMiAyYy01LjUzIDAtMTAgNC40Ny0xMCAxMHM0LjQ3IDEwIDEwIDEwIDEwLTQuNDcgMTAtMTAtNC40Ny0xMC0xMC0xMHptNSAxMy41OWwtMS40MSAxLjQxLTMuNTktMy41OS0zLjU5IDMuNTktMS40MS0xLjQxIDMuNTktMy41OS0zLjU5LTMuNTkgMS40MS0xLjQxIDMuNTkgMy41OSAzLjU5LTMuNTkgMS40MSAxLjQxLTMuNTkgMy41OSAzLjU5IDMuNTl6Ii8+PC9nPjwvc3ZnPg==',
-        'mdMenu':        'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxwYXRoIGQ9Ik0zLDZIMjFWOEgzVjZNMywxMUgyMVYxM0gzVjExTTMsMTZIMjFWMThIM1YxNloiIC8+PC9zdmc+',
-        'mdToggleArrow': 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgNDggNDgiPjxwYXRoIGQ9Ik0yNCAxNmwtMTIgMTIgMi44MyAyLjgzIDkuMTctOS4xNyA5LjE3IDkuMTcgMi44My0yLjgzeiIvPjxwYXRoIGQ9Ik0wIDBoNDh2NDhoLTQ4eiIgZmlsbD0ibm9uZSIvPjwvc3ZnPg==',
-        'mdCalendar':    'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0Ij48cGF0aCBkPSJNMTkgM2gtMVYxaC0ydjJIOFYxSDZ2Mkg1Yy0xLjExIDAtMS45OS45LTEuOTkgMkwzIDE5YzAgMS4xLjg5IDIgMiAyaDE0YzEuMSAwIDItLjkgMi0yVjVjMC0xLjEtLjktMi0yLTJ6bTAgMTZINVY4aDE0djExek03IDEwaDV2NUg3eiIvPjwvc3ZnPg==',
-        'mdChecked':     'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMjQgMjQiPjxnPjxwYXRoIGQ9Ik05IDE2LjE3TDQuODMgMTJsLTEuNDIgMS40MUw5IDE5IDIxIDdsLTEuNDEtMS40MXoiLz48L2c+PC9zdmc+'
-    })
-    .provider('$mdIcon', MdIconProvider);
-
-/**
- * @ngdoc service
- * @name $mdIconProvider
- * @module material.components.icon
- *
- * @description
- * `$mdIconProvider` is used only to register icon IDs with URLs. These configuration features allow
- * icons and icon sets to be pre-registered and associated with source URLs **before** the `<md-icon />`
- * directives are compiled.
- *
- * If using font-icons, the developer is responsible for loading the fonts.
- *
- * If using SVGs, loading of the actual svg files are deferred to on-demand requests and are loaded
- * internally by the `$mdIcon` service using the `$templateRequest` service. When an SVG is
- * requested by name/ID, the `$mdIcon` service searches its registry for the associated source URL;
- * that URL is used to on-demand load and parse the SVG dynamically.
- *
- * The `$templateRequest` service expects the icons source to be loaded over trusted URLs.<br/>
- * This means, when loading icons from an external URL, you have to trust the URL in the `$sceDelegateProvider`.
- *
- * <hljs lang="js">
- *   app.config(function($sceDelegateProvider) {
- *     $sceDelegateProvider.resourceUrlWhitelist([
- *       // Adding 'self' to the whitelist, will allow requests from the current origin.
- *       'self',
- *       // Using double asterisks here, will allow all URLs to load.
- *       // We recommend to only specify the given domain you want to allow.
- *       '**'
- *     ]);
- *   });
- * </hljs>
- *
- * Read more about the [$sceDelegateProvider](https://docs.angularjs.org/api/ng/provider/$sceDelegateProvider).
- *
- * **Notice:** Most font-icons libraries do not support ligatures (for example `fontawesome`).<br/>
- *  In such cases you are not able to use the icon's ligature name - Like so:
- *
- *  <hljs lang="html">
- *    <md-icon md-font-set="fa">fa-bell</md-icon>
- *  </hljs>
- *
- * You should instead use the given unicode, instead of the ligature name.
- *
- * <p ng-hide="true"> ##// Notice we can't use a hljs element here, because the characters will be escaped.</p>
- *  ```html
- *    <md-icon md-font-set="fa">&#xf0f3</md-icon>
- *  ```
- *
- * All unicode ligatures are prefixed with the `&#x` string.
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultFontSet( 'fa' )                   // This sets our default fontset className.
-    *          .defaultIconSet('my/app/icons.svg')       // Register a default set of SVG icons
-    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set of SVGs
-    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
-    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
-    *   });
- * </hljs>
- *
- * SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
- * **startup** process (shown below):
- *
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Register a default set of SVG icon definitions
-    *     $mdIconProvider.defaultIconSet('my/app/icons.svg')
-    *
-    *   })
- *   .run(function($templateRequest){
-    *
-    *     // Pre-fetch icons sources by URL and cache in the $templateCache...
-    *     // subsequent $templateRequest calls will look there first.
-    *
-    *     var urls = [ 'imy/app/icons.svg', 'img/icons/android.svg'];
-    *
-    *     angular.forEach(urls, function(url) {
-    *       $templateRequest(url);
-    *     });
-    *
-    *   });
- *
- * </hljs>
- *
- * > <b>Note:</b> The loaded SVG data is subsequently cached internally for future requests.
- *
- */
-
-/**
- * @ngdoc method
- * @name $mdIconProvider#icon
- *
- * @description
- * Register a source URL for a specific icon name; the name may include optional 'icon set' name prefix.
- * These icons  will later be retrieved from the cache using `$mdIcon( <icon name> )`
- *
- * @param {string} id Icon name/id used to register the icon
- * @param {string} url specifies the external location for the data file. Used internally by
- * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
- * was configured.
- * @param {number=} viewBoxSize Sets the width and height the icon's viewBox.
- * It is ignored for icons with an existing viewBox. Default size is 24.
- *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .icon('android', 'my/app/android.svg')    // Register a specific icon (by name)
-    *          .icon('work:chair', 'my/app/chair.svg');  // Register icon in a specific set
-    *   });
- * </hljs>
- *
- */
-/**
- * @ngdoc method
- * @name $mdIconProvider#iconSet
- *
- * @description
- * Register a source URL for a 'named' set of icons; group of SVG definitions where each definition
- * has an icon id. Individual icons can be subsequently retrieved from this cached set using
- * `$mdIcon(<icon set name>:<icon name>)`
- *
- * @param {string} id Icon name/id used to register the iconset
- * @param {string} url specifies the external location for the data file. Used internally by
- * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
- * was configured.
- * @param {number=} viewBoxSize Sets the width and height of the viewBox of all icons in the set.
- * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
- * Default value is 24.
- *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
- *
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .iconSet('social', 'my/app/social.svg')   // Register a named icon set
-    *   });
- * </hljs>
- *
- */
-/**
- * @ngdoc method
- * @name $mdIconProvider#defaultIconSet
- *
- * @description
- * Register a source URL for the default 'named' set of icons. Unless explicitly registered,
- * subsequent lookups of icons will failover to search this 'default' icon set.
- * Icon can be retrieved from this cached, default set using `$mdIcon(<name>)`
- *
- * @param {string} url specifies the external location for the data file. Used internally by
- * `$templateRequest` to load the data or as part of the lookup in `$templateCache` if pre-loading
- * was configured.
- * @param {number=} viewBoxSize Sets the width and height of the viewBox of all icons in the set.
- * It is ignored for icons with an existing viewBox. All icons in the icon set should be the same size.
- * Default value is 24.
- *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultIconSet( 'my/app/social.svg' )   // Register a default icon set
-    *   });
- * </hljs>
- *
- */
-/**
- * @ngdoc method
- * @name $mdIconProvider#defaultFontSet
- *
- * @description
- * When using Font-Icons, AngularJS Material assumes the the Material Design icons will be used and automatically
- * configures the default font-set == 'material-icons'. Note that the font-set references the font-icon library
- * class style that should be applied to the `<md-icon>`.
- *
- * Configuring the default means that the attributes
- * `md-font-set="material-icons"` or `class="material-icons"` do not need to be explicitly declared on the
- * `<md-icon>` markup. For example:
- *
- *  `<md-icon> face </md-icon>`
- *  will render as
- *  `<span class="material-icons"> face </span>`, and
- *
- *  `<md-icon md-font-set="fa"> face </md-icon>`
- *  will render as
- *  `<span class="fa"> face </span>`
- *
- * @param {string} name of the font-library style that should be applied to the md-icon DOM element
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-   *     $mdIconProvider.defaultFontSet( 'fa' );
-   *   });
- * </hljs>
- *
- */
-
-/**
- * @ngdoc method
- * @name $mdIconProvider#fontSet
- *
- * @description
- * When using a font set for `<md-icon>` you must specify the correct font classname in the `md-font-set`
- * attribute. If the fonset className is really long, your markup may become cluttered... an easy
- * solution is to define an `alias` for your fontset:
- *
- * @param {string} alias of the specified fontset.
- * @param {string} className of the fontset.
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-   *     // In this case, we set an alias for the `material-icons` fontset.
-   *     $mdIconProvider.fontSet('md', 'material-icons');
-   *   });
- * </hljs>
- *
- */
-
-/**
- * @ngdoc method
- * @name $mdIconProvider#defaultViewBoxSize
- *
- * @description
- * While `<md-icon />` markup can also be style with sizing CSS, this method configures
- * the default width **and** height used for all icons; unless overridden by specific CSS.
- * The default sizing is (24px, 24px).
- * @param {number=} viewBoxSize Sets the width and height of the viewBox for an icon or an icon set.
- * All icons in a set should be the same size. The default value is 24.
- *
- * @returns {obj} an `$mdIconProvider` reference; used to support method call chains for the API
- *
- * @usage
- * <hljs lang="js">
- *   app.config(function($mdIconProvider) {
-    *
-    *     // Configure URLs for icons specified by [set:]id.
-    *
-    *     $mdIconProvider
-    *          .defaultViewBoxSize(36)   // Register a default icon size (width == height)
-    *   });
- * </hljs>
- *
- */
-
-var config = {
-  defaultViewBoxSize: 24,
-  defaultFontSet: 'material-icons',
-  fontSets: []
-};
-
-function MdIconProvider() {
-}
-
-MdIconProvider.prototype = {
-  icon: function(id, url, viewBoxSize) {
-    if (id.indexOf(':') == -1) id = '$default:' + id;
-
-    config[id] = new ConfigurationItem(url, viewBoxSize);
-    return this;
-  },
-
-  iconSet: function(id, url, viewBoxSize) {
-    config[id] = new ConfigurationItem(url, viewBoxSize);
-    return this;
-  },
-
-  defaultIconSet: function(url, viewBoxSize) {
-    var setName = '$default';
-
-    if (!config[setName]) {
-      config[setName] = new ConfigurationItem(url, viewBoxSize);
-    }
-
-    config[setName].viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
-
-    return this;
-  },
-
-  defaultViewBoxSize: function(viewBoxSize) {
-    config.defaultViewBoxSize = viewBoxSize;
-    return this;
-  },
-
-  /**
-   * Register an alias name associated with a font-icon library style ;
-   */
-  fontSet: function fontSet(alias, className) {
-    config.fontSets.push({
-      alias: alias,
-      fontSet: className || alias
-    });
-    return this;
-  },
-
-  /**
-   * Specify a default style name associated with a font-icon library
-   * fallback to Material Icons.
-   *
-   */
-  defaultFontSet: function defaultFontSet(className) {
-    config.defaultFontSet = !className ? '' : className;
-    return this;
-  },
-
-  defaultIconSize: function defaultIconSize(iconSize) {
-    config.defaultIconSize = iconSize;
-    return this;
-  },
-
-  $get: ['$templateRequest', '$q', '$log', '$mdUtil', '$sce', function($templateRequest, $q, $log, $mdUtil, $sce) {
-    return MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce);
-  }]
-};
-
-  /**
-   * Configuration item stored in the Icon registry; used for lookups
-   * to load if not already cached in the `loaded` cache
-   * @param {string} url
-   * @param {=number} viewBoxSize
-   * @constructor
-   */
-  function ConfigurationItem(url, viewBoxSize) {
-    this.url = url;
-    this.viewBoxSize = viewBoxSize || config.defaultViewBoxSize;
-  }
-
-/**
- * @ngdoc service
- * @name $mdIcon
- * @module material.components.icon
- *
- * @description
- * The `$mdIcon` service is a function used to lookup SVG icons.
- *
- * @param {string} id Query value for a unique Id or URL. If the argument is a URL, then the service will retrieve the icon element
- * from its internal cache or load the icon and cache it first. If the value is not a URL-type string, then an ID lookup is
- * performed. The Id may be a unique icon ID or may include an iconSet ID prefix.
- *
- * For the **id** query to work properly, this means that all id-to-URL mappings must have been previously configured
- * using the `$mdIconProvider`.
- *
- * @returns {angular.$q.Promise} A promise that gets resolved to a clone of the initial SVG DOM element; which was
- * created from the SVG markup in the SVG data file. If an error occurs (e.g. the icon cannot be found) the promise
- * will get rejected.
- *
- * @usage
- * <hljs lang="js">
- * function SomeDirective($mdIcon) {
-  *
-  *   // See if the icon has already been loaded, if not
-  *   // then lookup the icon from the registry cache, load and cache
-  *   // it for future requests.
-  *   // NOTE: ID queries require configuration with $mdIconProvider
-  *
-  *   $mdIcon('android').then(function(iconEl)    { element.append(iconEl); });
-  *   $mdIcon('work:chair').then(function(iconEl) { element.append(iconEl); });
-  *
-  *   // Load and cache the external SVG using a URL
-  *
-  *   $mdIcon('img/icons/android.svg').then(function(iconEl) {
-  *     element.append(iconEl);
-  *   });
-  * };
- * </hljs>
- *
- * > <b>Note:</b> The `<md-icon>` directive internally uses the `$mdIcon` service to query, load,
- *   and instantiate SVG DOM elements.
- */
-
-/* @ngInject */
-function MdIconService(config, $templateRequest, $q, $log, $mdUtil, $sce) {
-  var iconCache = {};
-  var svgCache = {};
-  var urlRegex = /[-\w@:%+.~#?&//=]{2,}\.[a-z]{2,4}\b(\/[-\w@:%+.~#?&//=]*)?/i;
-  var dataUrlRegex = /^data:image\/svg\+xml[\s*;\w\-=]*?(base64)?,(.*)$/i;
-
-  Icon.prototype = {clone: cloneSVG, prepare: prepareAndStyle};
-  getIcon.fontSet = findRegisteredFontSet;
-
-  // Publish service...
-  return getIcon;
-
-  /**
-   * Actual $mdIcon service is essentially a lookup function
-   * @param {*} id $sce trust wrapper over a URL string, URL, icon registry id, or icon set id
-   * @returns {angular.$q.Promise}
-   */
-  function getIcon(id) {
-    id = id || '';
-
-    // If the "id" provided is not a string, the only other valid value is a $sce trust wrapper
-    // over a URL string. If the value is not trusted, this will intentionally throw an error
-    // because the user is attempted to use an unsafe URL, potentially opening themselves up
-    // to an XSS attack.
-    if (!angular.isString(id)) {
-      id = $sce.getTrustedUrl(id);
-    }
-
-    // If already loaded and cached, use a clone of the cached icon.
-    // Otherwise either load by URL, or lookup in the registry and then load by URL, and cache.
-
-    if (iconCache[id]) {
-      return $q.when(transformClone(iconCache[id]));
-    }
-
-    if (urlRegex.test(id) || dataUrlRegex.test(id)) {
-      return loadByURL(id).then(cacheIcon(id));
-    }
-
-    if (id.indexOf(':') === -1) {
-      id = '$default:' + id;
-    }
-
-    var load = config[id] ? loadByID : loadFromIconSet;
-    return load(id)
-      .then(cacheIcon(id));
-  }
-
-  /**
-   * Lookup a registered fontSet style using its alias.
-   * @param {string} alias used to lookup the alias in the array of fontSets
-   * @returns {*} matching fontSet or the defaultFontSet if that alias does not match
-   */
-  function findRegisteredFontSet(alias) {
-    var useDefault = angular.isUndefined(alias) || !(alias && alias.length);
-    if (useDefault) {
-      return config.defaultFontSet;
-    }
-
-    var result = alias;
-    angular.forEach(config.fontSets, function(fontSet) {
-      if (fontSet.alias === alias) {
-        result = fontSet.fontSet || result;
-      }
-    });
-
-    return result;
-  }
-
-  /**
-   * @param {!Icon} cacheElement cached icon from the iconCache
-   * @returns {Icon} cloned Icon element with unique ids
-   */
-  function transformClone(cacheElement) {
-    var clone = cacheElement.clone();
-    var newUid = $mdUtil.nextUid();
-    var cacheSuffix, svgUrlQuerySelector, i, xlinkHrefValue;
-    // These are SVG attributes that can reference element ids.
-    var svgUrlAttributes = [
-      'clip-path', 'color-profile', 'cursor', 'fill', 'filter', 'href', 'marker-start',
-      'marker-mid', 'marker-end', 'mask', 'stroke', 'style', 'vector-effect'
-    ];
-    var isIeSvg = clone.innerHTML === undefined;
-
-    // Verify that the newUid only contains a number and not some XSS content.
-    if (!isFinite(Number(newUid))) {
-      throw new Error('Unsafe and unexpected non-number result from $mdUtil.nextUid().');
-    }
-    cacheSuffix = '_cache' + newUid;
-
-    // For each cached icon, we need to modify the id attributes and references.
-    // This is needed because SVG ids are treated as normal DOM ids and should not be duplicated on
-    // the page.
-    if (clone.id) {
-      clone.id += cacheSuffix;
-    }
-
-    // Do as much as possible with querySelectorAll as it provides much greater performance
-    // than RegEx against serialized DOM.
-    angular.forEach(clone.querySelectorAll('[id]'), function(descendantElem) {
-      svgUrlQuerySelector = '';
-      for (i = 0; i < svgUrlAttributes.length; i++) {
-        svgUrlQuerySelector += '[' + svgUrlAttributes[i] + '="url(#' + descendantElem.id + ')"]';
-        if (i + 1 < svgUrlAttributes.length) {
-          svgUrlQuerySelector += ', ';
-        }
-      }
-      // Append the cacheSuffix to references of the element's id within url(#id) calls.
-      angular.forEach(clone.querySelectorAll(svgUrlQuerySelector), function(refItem) {
-        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
-      });
-      // Handle usages of url(#id) in the SVG's stylesheets
-      angular.forEach(clone.querySelectorAll('style'), function(refItem) {
-        updateSvgIdReferences(descendantElem, refItem, isIeSvg, newUid);
-      });
-
-      // Update ids referenced by the deprecated (in SVG v2) xlink:href XML attribute. The now
-      // preferred href attribute is handled above. However, this non-standard XML namespaced
-      // attribute cannot be handled in the same way. Explanation of this query selector here:
-      // https://stackoverflow.com/q/23034283/633107.
-      angular.forEach(clone.querySelectorAll('[*|href]:not([href])'), function(refItem) {
-        xlinkHrefValue = refItem.getAttribute('xlink:href');
-        if (xlinkHrefValue) {
-          xlinkHrefValue = xlinkHrefValue.replace("#" + descendantElem.id, "#" + descendantElem.id + cacheSuffix);
-          refItem.setAttribute('xlink:href', xlinkHrefValue);
-        }
-      });
-
-      descendantElem.id += cacheSuffix;
-    });
-
-    return clone;
-  }
-
-  /**
-   * @param {Element} referencedElement element w/ id that needs to be updated
-   * @param {Element} referencingElement element that references the original id
-   * @param {boolean} isIeSvg true if we're dealing with an SVG in IE11, false otherwise
-   * @param {string} newUid the cache id to add as part of the cache suffix
-   */
-  function updateSvgIdReferences(referencedElement, referencingElement, isIeSvg, newUid) {
-    var svgElement, cacheSuffix;
-
-    // Verify that the newUid only contains a number and not some XSS content.
-    if (!isFinite(Number(newUid))) {
-      throw new Error('Unsafe and unexpected non-number result for newUid.');
-    }
-    cacheSuffix = '_cache' + newUid;
-
-    // outerHTML of SVG elements is not supported by IE11
-    if (isIeSvg) {
-      svgElement = $mdUtil.getOuterHTML(referencingElement);
-      svgElement = svgElement.replace("url(#" + referencedElement.id + ")",
-        "url(#" + referencedElement.id + cacheSuffix + ")");
-      referencingElement.textContent = angular.element(svgElement)[0].innerHTML;
-    } else {
-      // This use of outerHTML should be safe from XSS attack since we are only injecting the
-      // cacheSuffix with content from $mdUtil.nextUid which we verify is a finite number above.
-      referencingElement.outerHTML = referencingElement.outerHTML.replace(
-        "url(#" + referencedElement.id + ")",
-        "url(#" + referencedElement.id + cacheSuffix + ")");
-    }
-  }
-
-  /**
-   * Prepare and cache the loaded icon for the specified `id`.
-   * @param {string} id icon cache id
-   * @returns {function(*=): *}
-   */
-  function cacheIcon(id) {
-
-    return function updateCache(icon) {
-      iconCache[id] = isIcon(icon) ? icon : new Icon(icon, config[id]);
-
-      return iconCache[id].clone();
-    };
-  }
-
-  /**
-   * Lookup the configuration in the registry, if !registered throw an error
-   * otherwise load the icon [on-demand] using the registered URL.
-   * @param {string} id icon registry id
-   * @returns {angular.$q.Promise}
-   */
-  function loadByID(id) {
-    var iconConfig = config[id];
-    return loadByURL(iconConfig.url).then(function(icon) {
-      return new Icon(icon, iconConfig);
-    });
-  }
-
-  /**
-   * Loads the file as XML and uses querySelector( <id> ) to find the desired node...
-   * @param {string} id icon id in icon set
-   * @returns {angular.$q.Promise}
-   */
-  function loadFromIconSet(id) {
-    var setName = id.substring(0, id.lastIndexOf(':')) || '$default';
-    var iconSetConfig = config[setName];
-
-    return !iconSetConfig ? announceIdNotFound(id) : loadByURL(iconSetConfig.url).then(extractFromSet);
-
-    function extractFromSet(set) {
-      var iconName = id.slice(id.lastIndexOf(':') + 1);
-      var icon = set.querySelector('#' + iconName);
-      return icon ? new Icon(icon, iconSetConfig) : announceIdNotFound(id);
-    }
-
-    function announceIdNotFound(id) {
-      var msg = 'icon ' + id + ' not found';
-      $log.warn(msg);
-
-      return $q.reject(msg || id);
-    }
-  }
-
-  /**
-   * Load the icon by URL (may use the $templateCache).
-   * Extract the data for later conversion to Icon
-   * @param {string} url icon URL
-   * @returns {angular.$q.Promise}
-   */
-  function loadByURL(url) {
-    /* Load the icon from embedded data URL. */
-    function loadByDataUrl(url) {
-      var results = dataUrlRegex.exec(url);
-      var isBase64 = /base64/i.test(url);
-      var data = isBase64 ? window.atob(results[2]) : results[2];
-
-      return $q.when(angular.element(data)[0]);
-    }
-
-    /* Load the icon by URL using HTTP. */
-    function loadByHttpUrl(url) {
-      return $q(function(resolve, reject) {
-        // Catch HTTP or generic errors not related to incorrect icon IDs.
-        var announceAndReject = function(err) {
-            var msg = angular.isString(err) ? err : (err.message || err.data || err.statusText);
-            $log.warn(msg);
-            reject(err);
-          },
-          extractSvg = function(response) {
-            if (!svgCache[url]) {
-              svgCache[url] = angular.element('<div>').append(response)[0].querySelector('svg');
-            }
-            resolve(svgCache[url]);
-          };
-
-        $templateRequest(url, true).then(extractSvg, announceAndReject);
-      });
-    }
-
-    return dataUrlRegex.test(url)
-      ? loadByDataUrl(url)
-      : loadByHttpUrl(url);
-  }
-
-  /**
-   * Check target signature to see if it is an Icon instance.
-   * @param {Icon|Element} target
-   * @returns {boolean} true if the specified target is an Icon object, false otherwise.
-   */
-  function isIcon(target) {
-    return angular.isDefined(target.element) && angular.isDefined(target.config);
-  }
-
-  /**
-   * Define the Icon class
-   * @param {Element} el
-   * @param {=ConfigurationItem} config
-   * @constructor
-   */
-  function Icon(el, config) {
-    var elementContents;
-    // If the node is a <symbol>, it won't be rendered so we have to convert it into <svg>.
-    if (el && el.tagName.toLowerCase() === 'symbol') {
-      var viewbox = el.getAttribute('viewBox');
-      // Check if innerHTML is supported as IE11 does not support innerHTML on SVG elements.
-      if (el.innerHTML) {
-        elementContents = el.innerHTML;
-      } else {
-        elementContents = $mdUtil.getInnerHTML(el);
-      }
-      el = angular.element('<svg xmlns="http://www.w3.org/2000/svg">').append(elementContents)[0];
-      if (viewbox) el.setAttribute('viewBox', viewbox);
-    }
-
-    if (el && el.tagName.toLowerCase() !== 'svg') {
-      el = angular.element(
-        '<svg xmlns="http://www.w3.org/2000/svg">').append(el.cloneNode(true))[0];
-    }
-
-    // Inject the namespace if not available...
-    if (!el.getAttribute('xmlns')) {
-      el.setAttribute('xmlns', "http://www.w3.org/2000/svg");
-    }
-
-    this.element = el;
-    this.config = config;
-    this.prepare();
-  }
-
-  /**
-   *  Prepare the DOM element that will be cached in the
-   *  loaded iconCache store.
-   */
-  function prepareAndStyle() {
-    var viewBoxSize = this.config ? this.config.viewBoxSize : config.defaultViewBoxSize;
-    angular.forEach({
-      'fit': '',
-      'height': '100%',
-      'width': '100%',
-      'preserveAspectRatio': 'xMidYMid meet',
-      'viewBox': this.element.getAttribute('viewBox') || ('0 0 ' + viewBoxSize + ' ' + viewBoxSize),
-      'focusable': false // Disable IE11s default behavior to make SVGs focusable
-    }, function(val, attr) {
-      this.element.setAttribute(attr, val);
-    }, this);
-  }
-
-  /**
-   * Clone the Icon DOM element.
-   */
-  function cloneSVG() {
-    // If the element or any of its children have a style attribute, then a CSP policy without
-    // 'unsafe-inline' in the style-src directive, will result in a violation.
-    return this.element.cloneNode(true);
-  }
-
-}
 
 })();
 (function(){
@@ -38286,7 +38286,7 @@ function MdTabsTemplate ($compile, $mdUtil) {
 
 })();
 (function(){ 
-angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-THEME_NAME-theme{background:\"{{background-hue-1}}\"}md-autocomplete.md-THEME_NAME-theme[disabled]:not([md-floating-label]){background:\"{{background-hue-2}}\"}md-autocomplete.md-THEME_NAME-theme button md-icon path{fill:\"{{background-600}}\"}md-autocomplete.md-THEME_NAME-theme button:after{background:\"{{background-600-0.3}}\"}md-autocomplete.md-THEME_NAME-theme input{color:\"{{foreground-1}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused .md-input{border-color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused label,md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused md-icon{color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-progress-linear .md-container{background-color:\"{{accent-100}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-progress-linear .md-bar{background-color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused .md-input{border-color:\"{{warn-A700}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused label,md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused md-icon{color:\"{{warn-A700}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-progress-linear .md-container{background-color:\"{{warn-100}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-progress-linear .md-bar{background-color:\"{{warn-color}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme,.md-autocomplete-suggestions-container.md-THEME_NAME-theme{background:\"{{background-hue-1}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme li,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li{color:\"{{foreground-1}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme li#selected_option,.md-autocomplete-standard-list-container.md-THEME_NAME-theme li:hover,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li#selected_option,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li:hover{background:\"{{background-500-0.18}}\"}md-backdrop{background-color:\"{{background-900-0.0}}\"}md-backdrop.md-opaque.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-bottom-sheet.md-THEME_NAME-theme{background-color:\"{{background-color}}\";border-top-color:\"{{background-hue-3}}\"}md-bottom-sheet.md-THEME_NAME-theme.md-list md-list-item{color:\"{{foreground-1}}\"}md-bottom-sheet.md-THEME_NAME-theme .md-subheader{background-color:\"{{background-color}}\";color:\"{{foreground-1}}\"}md-card.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-hue-1}}\";border-radius:2px}md-card.md-THEME_NAME-theme .md-card-image{border-radius:2px 2px 0 0}md-card.md-THEME_NAME-theme md-card-header md-card-avatar md-icon{color:\"{{background-color}}\";background-color:\"{{foreground-3}}\"}md-card.md-THEME_NAME-theme md-card-header md-card-header-text .md-subhead,md-card.md-THEME_NAME-theme md-card-title md-card-title-text:not(:only-child) .md-subhead{color:\"{{foreground-2}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme:not([disabled]):hover{background-color:\"{{background-500-0.2}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-icon-button:hover{background-color:transparent}.md-button.md-THEME_NAME-theme.md-fab md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab,.md-button.md-THEME_NAME-theme.md-primary.md-raised{color:\"{{primary-contrast}}\";background-color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]) md-icon{color:\"{{primary-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover{background-color:\"{{primary-600}}\"}.md-button.md-THEME_NAME-theme.md-primary:not([disabled]) md-icon{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-fab{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]) .md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-raised{color:\"{{background-900}}\";background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]) md-icon{color:\"{{background-900}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover{background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]).md-focused{background-color:\"{{background-200}}\"}.md-button.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab,.md-button.md-THEME_NAME-theme.md-warn.md-raised{color:\"{{warn-contrast}}\";background-color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]) md-icon{color:\"{{warn-contrast}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover{background-color:\"{{warn-600}}\"}.md-button.md-THEME_NAME-theme.md-warn:not([disabled]) md-icon{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab,.md-button.md-THEME_NAME-theme.md-accent.md-raised{color:\"{{accent-contrast}}\";background-color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]) md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-accent:not([disabled]) md-icon{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent[disabled],.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled],.md-button.md-THEME_NAME-theme.md-warn[disabled],.md-button.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\";cursor:default}.md-button.md-THEME_NAME-theme.md-accent[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-fab[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-raised[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-warn[disabled] md-icon,.md-button.md-THEME_NAME-theme[disabled] md-icon{color:\"{{foreground-3}}\"}.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled]{background-color:\"{{foreground-4}}\"}.md-button.md-THEME_NAME-theme[disabled]{background-color:transparent}._md a.md-THEME_NAME-theme:not(.md-button).md-primary{color:\"{{primary-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-primary:hover{color:\"{{primary-700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent{color:\"{{accent-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent:hover{color:\"{{accent-A700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn{color:\"{{warn-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn:hover{color:\"{{warn-700}}\"}md-checkbox.md-THEME_NAME-theme .md-ripple{color:\"{{accent-A700}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme.md-checked.md-focused .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon{background-color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after{border-color:\"{{accent-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple{color:\"{{primary-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon{background-color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked.md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple{color:\"{{warn-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon{background-color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked.md-focused:not([disabled]) .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled]:not(.md-checked) .md-icon{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon{background-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-icon:after{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-label{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips{box-shadow:0 1px \"{{foreground-4}}\"}md-chips.md-THEME_NAME-theme .md-chips.md-focused{box-shadow:0 2px \"{{primary-color}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input{color:\"{{foreground-1}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-moz-placeholder,md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-moz-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme md-chip{background:\"{{background-300}}\";color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip md-icon{color:\"{{background-700}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused{background:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused md-icon{color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip._md-chip-editing{background:transparent;color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip-remove .md-button md-icon path{fill:\"{{background-500}}\"}.md-contact-suggestion span.md-contact-email{color:\"{{background-400}}\"}md-content.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-default}}\"}.md-THEME_NAME-theme .md-calendar{background:\"{{background-hue-1}}\";color:\"{{foreground-1-0.87}}\"}.md-THEME_NAME-theme .md-calendar tr:last-child td{border-bottom-color:\"{{background-hue-2}}\"}.md-THEME_NAME-theme .md-calendar-day-header{background:\"{{background-500-0.32}}\";color:\"{{foreground-1-0.87}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{border:1px solid \"{{primary-500}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today.md-calendar-date-disabled{color:\"{{primary-500-0.6}}\"}.md-calendar-date.md-focus .md-THEME_NAME-theme .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date-selection-indicator:hover{background:\"{{background-500-0.32}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{background:\"{{primary-500}}\";color:\"{{primary-500-contrast}}\";border-color:transparent}.md-THEME_NAME-theme .md-calendar-date-disabled,.md-THEME_NAME-theme .md-calendar-month-label-disabled{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-calendar-month-label md-icon,.md-THEME_NAME-theme .md-datepicker-input{color:\"{{foreground-1}}\"}.md-THEME_NAME-theme .md-datepicker-input:-moz-placeholder,.md-THEME_NAME-theme .md-datepicker-input::-moz-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input-container{border-bottom-color:\"{{foreground-4}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-invalid,.md-warn .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar-pane{border-color:\"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-triangle-button .md-datepicker-expand-triangle{border-top-color:\"{{foreground-2}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon,.md-THEME_NAME-theme .md-datepicker-open.md-accent .md-datepicker-calendar-icon{color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-open.md-warn .md-datepicker-calendar-icon,.md-warn .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar{background:\"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-input-mask-opaque{box-shadow:0 0 0 9999px \"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-input-container{background:\"{{background-hue-1}}\"}md-dialog.md-THEME_NAME-theme{border-radius:4px;background-color:\"{{background-hue-1}}\";color:\"{{foreground-1}}\"}md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions,md-dialog.md-THEME_NAME-theme.md-content-overflow md-dialog-actions,md-divider.md-THEME_NAME-theme{border-top-color:\"{{foreground-4}}\"}.layout-gt-lg-row>md-divider.md-THEME_NAME-theme,.layout-gt-md-row>md-divider.md-THEME_NAME-theme,.layout-gt-sm-row>md-divider.md-THEME_NAME-theme,.layout-gt-xs-row>md-divider.md-THEME_NAME-theme,.layout-lg-row>md-divider.md-THEME_NAME-theme,.layout-md-row>md-divider.md-THEME_NAME-theme,.layout-row>md-divider.md-THEME_NAME-theme,.layout-sm-row>md-divider.md-THEME_NAME-theme,.layout-xl-row>md-divider.md-THEME_NAME-theme,.layout-xs-row>md-divider.md-THEME_NAME-theme{border-right-color:\"{{foreground-4}}\"}md-icon.md-THEME_NAME-theme{color:\"{{foreground-2}}\"}md-icon.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}md-icon.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}md-icon.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}md-input-container.md-THEME_NAME-theme .md-input{color:\"{{foreground-1}}\";border-color:\"{{foreground-4}}\"}md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme>md-icon{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme .md-placeholder,md-input-container.md-THEME_NAME-theme label{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme label.md-required:after{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation,md-input-container.md-THEME_NAME-theme .md-input-messages-animation{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation .md-char-counter,md-input-container.md-THEME_NAME-theme .md-input-messages-animation .md-char-counter{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-moz-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-ms-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-webkit-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-resized .md-input{border-color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon{color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input{border-color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent md-icon{color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn md-icon{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter,md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input-message-animation,md-input-container.md-THEME_NAME-theme.md-input-invalid label{color:\"{{warn-A700}}\"}[disabled] md-input-container.md-THEME_NAME-theme .md-input,md-input-container.md-THEME_NAME-theme .md-input[disabled]{border-bottom-color:transparent;color:\"{{foreground-3}}\";background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h4,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h4{color:\"{{foreground-1}}\"}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text p,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text p{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme .md-proxy-focus.md-focused div.md-no-style{background-color:\"{{background-100}}\"}md-list.md-THEME_NAME-theme md-list-item .md-avatar-icon{background-color:\"{{foreground-3}}\";color:\"{{background-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight{color:\"{{primary-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight.md-accent{color:\"{{accent-color}}\"}md-menu-content.md-THEME_NAME-theme{background-color:\"{{background-hue-1}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item{color:\"{{foreground-1}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item md-icon{color:\"{{foreground-2}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled],md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled] md-icon{color:\"{{foreground-3}}\"}md-menu-content.md-THEME_NAME-theme md-menu-divider{background-color:\"{{foreground-4}}\"}md-menu-bar.md-THEME_NAME-theme>button.md-button{color:\"{{foreground-1}}\";border-radius:2px}md-menu-bar.md-THEME_NAME-theme md-menu>button{color:\"{{foreground-1}}\"}md-menu-bar.md-THEME_NAME-theme md-menu.md-open>button,md-menu-bar.md-THEME_NAME-theme md-menu>button:focus{outline:none;background-color:\"{{ background-500-0.18}}\"}md-menu-bar.md-THEME_NAME-theme.md-open:not(.md-keyboard-mode) md-menu:hover>button{background-color:\"{{ background-500-0.18}}\"}md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:focus,md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:hover{background:transparent}md-menu-content.md-THEME_NAME-theme .md-menu>.md-button:after{color:\"{{foreground-2}}\"}md-menu-content.md-THEME_NAME-theme .md-menu.md-open>.md-button{background-color:\"{{ background-500-0.18}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar{background-color:\"{{background-hue-1}}\";color:\"{{foreground-1}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler{background-color:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler md-icon{color:\"{{primary-contrast}}\"}md-nav-bar.md-THEME_NAME-theme .md-nav-bar{background-color:transparent;border-color:\"{{foreground-4}}\"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button.md-unselected{color:\"{{foreground-2}}\"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button[disabled]{color:\"{{foreground-3}}\"}md-nav-bar.md-THEME_NAME-theme md-nav-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar{background-color:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar{background-color:\"{{warn-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar{background-color:\"{{primary-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{primary-color}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}._md-panel-backdrop.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-progress-circular.md-THEME_NAME-theme path{stroke:\"{{primary-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-warn path{stroke:\"{{warn-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-accent path{stroke:\"{{accent-color}}\"}md-progress-linear.md-THEME_NAME-theme .md-container{background-color:\"{{primary-100}}\"}md-progress-linear.md-THEME_NAME-theme .md-bar{background-color:\"{{primary-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-container{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar{background-color:\"{{warn-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-container{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar{background-color:\"{{accent-color}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-primary .md-bar1{background-color:\"{{primary-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-primary .md-dashed:before{background:radial-gradient(\"{{primary-100}}\" 0,\"{{primary-100}}\" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before{background:radial-gradient(\"{{warn-100}}\" 0,\"{{warn-100}}\" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before{background:radial-gradient(\"{{accent-100}}\" 0,\"{{accent-100}}\" 16%,transparent 42%)}md-radio-button.md-THEME_NAME-theme .md-off{border-color:\"{{foreground-2}}\"}md-radio-button.md-THEME_NAME-theme .md-on{background-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-off{border-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme .md-container .md-ripple{color:\"{{accent-A700}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on{background-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off{border-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple{color:\"{{primary-600}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on{background-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off{border-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple{color:\"{{warn-600}}\"}md-radio-button.md-THEME_NAME-theme[disabled],md-radio-group.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\"}md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-on{border-color:\"{{foreground-3}}\"}md-radio-group.md-THEME_NAME-theme .md-checked .md-ink-ripple{color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme .md-checked:not([disabled]).md-primary .md-ink-ripple,md-radio-group.md-THEME_NAME-theme.md-primary .md-checked:not([disabled]) .md-ink-ripple{color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused.ng-empty>md-radio-button:first-child .md-container:before{background-color:\"{{foreground-3-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-primary .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-primary .md-checked .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-warn .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-warn .md-checked .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-input-container md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{foreground-3}}\"}md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value,md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{primary-color}}\"}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-input-container:not(.md-input-invalid).md-input-focused.md-accent .md-select-value{border-color:\"{{accent-color}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-accent .md-select-value span{color:\"{{accent-color}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-warn .md-select-value{border-color:\"{{warn-A700}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-warn .md-select-value span{color:\"{{warn-A700}}\"}md-select.md-THEME_NAME-theme[disabled] .md-select-value{border-bottom-color:transparent;background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-select.md-THEME_NAME-theme .md-select-value{border-bottom-color:\"{{foreground-4}}\"}md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value{border-bottom-color:\"{{primary-color}}\";color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value.md-select-placeholder{color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-value{border-bottom-color:\"{{accent-color}}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-value{border-bottom-color:\"{{warn-color}}\"}md-select.md-THEME_NAME-theme[disabled] .md-select-icon,md-select.md-THEME_NAME-theme[disabled] .md-select-value,md-select.md-THEME_NAME-theme[disabled] .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-icon{color:\"{{foreground-2}}\"}md-select-menu.md-THEME_NAME-theme md-content{background-color:\"{{background-hue-1}}\"}md-select-menu.md-THEME_NAME-theme md-content md-optgroup{color:\"{{foreground-2}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option{color:\"{{foreground-1}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[disabled] .md-text{color:\"{{foreground-3}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):focus,md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):hover{background-color:\"{{background-500-0.18}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]{color:\"{{primary-500}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]:focus{color:\"{{primary-600}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent{color:\"{{accent-color}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent:focus{color:\"{{accent-A700}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ripple{color:\"{{primary-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ripple{color:\"{{background-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ink-ripple{color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon{background-color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected].md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}.md-checkbox-enabled.md-THEME_NAME-theme md-option .md-text{color:\"{{foreground-1}}\"}md-sidenav.md-THEME_NAME-theme,md-sidenav.md-THEME_NAME-theme md-content{background-color:\"{{background-hue-1}}\"}md-slider.md-THEME_NAME-theme .md-track{background-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme .md-track-ticks{color:\"{{background-contrast}}\"}md-slider.md-THEME_NAME-theme .md-focus-ring{background-color:\"{{accent-A200-0.2}}\"}md-slider.md-THEME_NAME-theme .md-disabled-thumb{border-color:\"{{background-color}}\";background-color:\"{{background-color}}\"}md-slider.md-THEME_NAME-theme.md-min .md-thumb:after{background-color:\"{{background-color}}\";border-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme.md-min .md-focus-ring{background-color:\"{{foreground-3-0.38}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-thumb:after{background-color:\"{{background-contrast}}\";border-color:transparent}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme .md-track.md-track-fill{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb:after{border-color:\"{{accent-color}}\";background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign:after{border-top-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb-text{color:\"{{accent-contrast}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-focus-ring{background-color:\"{{warn-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after{border-color:\"{{warn-color}}\";background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign:after{border-top-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text{color:\"{{warn-contrast}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-focus-ring{background-color:\"{{primary-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after{border-color:\"{{primary-color}}\";background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign:after{border-top-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text{color:\"{{primary-contrast}}\"}md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after{border-color:transparent}md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after,md-slider.md-THEME_NAME-theme[disabled][md-discrete] .md-thumb:after{background-color:\"{{foreground-3}}\";border-color:transparent}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-disabled-thumb{border-color:transparent;background-color:transparent}md-slider-container[disabled]>:first-child:not(md-slider),md-slider-container[disabled]>:last-child:not(md-slider){color:\"{{foreground-3}}\"}.md-subheader.md-THEME_NAME-theme{color:\"{{ foreground-2-0.23 }}\";background-color:\"{{background-default}}\"}.md-subheader.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-subheader.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-subheader.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme .md-ink-ripple{color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme .md-thumb{background-color:\"{{background-50}}\"}md-switch.md-THEME_NAME-theme .md-bar{background-color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme.md-focused:not(.md-checked) .md-thumb:before,md-switch.md-THEME_NAME-theme.md-focused[disabled] .md-thumb:before{background-color:\"{{foreground-4}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-ink-ripple{color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-thumb{background-color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-bar{background-color:\"{{accent-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-focused .md-thumb:before{background-color:\"{{accent-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-ink-ripple{color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-thumb{background-color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-bar{background-color:\"{{primary-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary.md-focused .md-thumb:before{background-color:\"{{primary-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-ink-ripple{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-thumb{background-color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-bar{background-color:\"{{warn-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn.md-focused .md-thumb:before{background-color:\"{{warn-color-0.26}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-thumb{background-color:\"{{background-400}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-bar{background-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme md-tabs-wrapper{background-color:transparent;border-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme .md-paginator md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme md-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab{color:\"{{foreground-2}}\"}md-tabs.md-THEME_NAME-theme .md-tab[disabled],md-tabs.md-THEME_NAME-theme .md-tab[disabled] md-icon{color:\"{{foreground-3}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-active,md-tabs.md-THEME_NAME-theme .md-tab.md-active md-icon,md-tabs.md-THEME_NAME-theme .md-tab.md-focused,md-tabs.md-THEME_NAME-theme .md-tab.md-focused md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-focused{background:\"{{primary-color-0.1}}\"}md-tabs.md-THEME_NAME-theme .md-tab .md-ripple-container{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toast.md-THEME_NAME-theme .md-toast-content{background-color:#323232;color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button{color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight{color:\"{{accent-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-primary{color:\"{{primary-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-warn{color:\"{{warn-color}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar){background-color:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) md-icon{color:\"{{primary-contrast}}\";fill:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) .md-button[disabled] md-icon{color:\"{{primary-contrast-0.26}}\";fill:\"{{primary-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-ink-ripple{color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent md-icon{color:\"{{accent-contrast}}\";fill:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-button[disabled] md-icon{color:\"{{accent-contrast-0.26}}\";fill:\"{{accent-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-warn{background-color:\"{{warn-color}}\";color:\"{{warn-contrast}}\"}.md-panel.md-tooltip.md-THEME_NAME-theme{color:\"{{background-700-contrast}}\";background-color:\"{{background-700}}\"}body.md-THEME_NAME-theme,html.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-color}}\"}"); 
+angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-THEME_NAME-theme{background:\"{{background-hue-1}}\"}md-autocomplete.md-THEME_NAME-theme[disabled]:not([md-floating-label]){background:\"{{background-hue-2}}\"}md-autocomplete.md-THEME_NAME-theme button md-icon path{fill:\"{{background-600}}\"}md-autocomplete.md-THEME_NAME-theme button:after{background:\"{{background-600-0.3}}\"}md-autocomplete.md-THEME_NAME-theme input{color:\"{{foreground-1}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused .md-input{border-color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused label,md-autocomplete.md-THEME_NAME-theme.md-accent md-input-container.md-input-focused md-icon{color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-progress-linear .md-container{background-color:\"{{accent-100}}\"}md-autocomplete.md-THEME_NAME-theme.md-accent md-progress-linear .md-bar{background-color:\"{{accent-color}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused .md-input{border-color:\"{{warn-A700}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused label,md-autocomplete.md-THEME_NAME-theme.md-warn md-input-container.md-input-focused md-icon{color:\"{{warn-A700}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-progress-linear .md-container{background-color:\"{{warn-100}}\"}md-autocomplete.md-THEME_NAME-theme.md-warn md-progress-linear .md-bar{background-color:\"{{warn-color}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme,.md-autocomplete-suggestions-container.md-THEME_NAME-theme{background:\"{{background-hue-1}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme li,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li{color:\"{{foreground-1}}\"}.md-autocomplete-standard-list-container.md-THEME_NAME-theme li#selected_option,.md-autocomplete-standard-list-container.md-THEME_NAME-theme li:hover,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li#selected_option,.md-autocomplete-suggestions-container.md-THEME_NAME-theme li:hover{background:\"{{background-500-0.18}}\"}md-backdrop{background-color:\"{{background-900-0.0}}\"}md-backdrop.md-opaque.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-bottom-sheet.md-THEME_NAME-theme{background-color:\"{{background-color}}\";border-top-color:\"{{background-hue-3}}\"}md-bottom-sheet.md-THEME_NAME-theme.md-list md-list-item{color:\"{{foreground-1}}\"}md-bottom-sheet.md-THEME_NAME-theme .md-subheader{background-color:\"{{background-color}}\";color:\"{{foreground-1}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme:not([disabled]):hover{background-color:\"{{background-500-0.2}}\"}.md-button.md-THEME_NAME-theme:not([disabled]).md-icon-button:hover{background-color:transparent}.md-button.md-THEME_NAME-theme.md-fab md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab,.md-button.md-THEME_NAME-theme.md-primary.md-raised{color:\"{{primary-contrast}}\";background-color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]) md-icon{color:\"{{primary-contrast}}\"}.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-primary.md-raised:not([disabled]):hover{background-color:\"{{primary-600}}\"}.md-button.md-THEME_NAME-theme.md-primary:not([disabled]) md-icon{color:\"{{primary-color}}\"}.md-button.md-THEME_NAME-theme.md-fab{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]) .md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-fab:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-raised{color:\"{{background-900}}\";background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]) md-icon{color:\"{{background-900}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]):hover{background-color:\"{{background-50}}\"}.md-button.md-THEME_NAME-theme.md-raised:not([disabled]).md-focused{background-color:\"{{background-200}}\"}.md-button.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab,.md-button.md-THEME_NAME-theme.md-warn.md-raised{color:\"{{warn-contrast}}\";background-color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]) md-icon{color:\"{{warn-contrast}}\"}.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-warn.md-raised:not([disabled]):hover{background-color:\"{{warn-600}}\"}.md-button.md-THEME_NAME-theme.md-warn:not([disabled]) md-icon{color:\"{{warn-color}}\"}.md-button.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab,.md-button.md-THEME_NAME-theme.md-accent.md-raised{color:\"{{accent-contrast}}\";background-color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]) md-icon,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]) md-icon{color:\"{{accent-contrast}}\"}.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-fab:not([disabled]):hover,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]).md-focused,.md-button.md-THEME_NAME-theme.md-accent.md-raised:not([disabled]):hover{background-color:\"{{accent-A700}}\"}.md-button.md-THEME_NAME-theme.md-accent:not([disabled]) md-icon{color:\"{{accent-color}}\"}.md-button.md-THEME_NAME-theme.md-accent[disabled],.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled],.md-button.md-THEME_NAME-theme.md-warn[disabled],.md-button.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\";cursor:default}.md-button.md-THEME_NAME-theme.md-accent[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-fab[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-raised[disabled] md-icon,.md-button.md-THEME_NAME-theme.md-warn[disabled] md-icon,.md-button.md-THEME_NAME-theme[disabled] md-icon{color:\"{{foreground-3}}\"}.md-button.md-THEME_NAME-theme.md-fab[disabled],.md-button.md-THEME_NAME-theme.md-raised[disabled]{background-color:\"{{foreground-4}}\"}.md-button.md-THEME_NAME-theme[disabled]{background-color:transparent}._md a.md-THEME_NAME-theme:not(.md-button).md-primary{color:\"{{primary-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-primary:hover{color:\"{{primary-700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent{color:\"{{accent-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-accent:hover{color:\"{{accent-A700}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn{color:\"{{warn-color}}\"}._md a.md-THEME_NAME-theme:not(.md-button).md-warn:hover{color:\"{{warn-700}}\"}md-card.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-hue-1}}\";border-radius:2px}md-card.md-THEME_NAME-theme .md-card-image{border-radius:2px 2px 0 0}md-card.md-THEME_NAME-theme md-card-header md-card-avatar md-icon{color:\"{{background-color}}\";background-color:\"{{foreground-3}}\"}md-card.md-THEME_NAME-theme md-card-header md-card-header-text .md-subhead,md-card.md-THEME_NAME-theme md-card-title md-card-title-text:not(:only-child) .md-subhead{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme .md-ripple{color:\"{{accent-A700}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme.md-checked.md-focused .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon{background-color:\"{{accent-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme.md-checked .md-icon:after{border-color:\"{{accent-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ripple{color:\"{{primary-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ripple{color:\"{{background-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon{background-color:\"{{primary-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked.md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-primary .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ripple{color:\"{{warn-600}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn .md-ink-ripple{color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon{background-color:\"{{warn-color-0.87}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked.md-focused:not([disabled]) .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-checkbox.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled]:not(.md-checked) .md-icon{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon{background-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled].md-checked .md-icon:after{border-color:\"{{background-200}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-icon:after{border-color:\"{{foreground-3}}\"}md-checkbox.md-THEME_NAME-theme[disabled] .md-label{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips{box-shadow:0 1px \"{{foreground-4}}\"}md-chips.md-THEME_NAME-theme .md-chips.md-focused{box-shadow:0 2px \"{{primary-color}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input{color:\"{{foreground-1}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-moz-placeholder,md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-moz-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme .md-chips .md-chip-input-container input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-chips.md-THEME_NAME-theme md-chip{background:\"{{background-300}}\";color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip md-icon{color:\"{{background-700}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused{background:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip.md-focused md-icon{color:\"{{primary-contrast}}\"}md-chips.md-THEME_NAME-theme md-chip._md-chip-editing{background:transparent;color:\"{{background-800}}\"}md-chips.md-THEME_NAME-theme md-chip-remove .md-button md-icon path{fill:\"{{background-500}}\"}.md-contact-suggestion span.md-contact-email{color:\"{{background-400}}\"}md-content.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-default}}\"}md-dialog.md-THEME_NAME-theme{border-radius:4px;background-color:\"{{background-hue-1}}\";color:\"{{foreground-1}}\"}md-dialog.md-THEME_NAME-theme.md-content-overflow .md-actions,md-dialog.md-THEME_NAME-theme.md-content-overflow md-dialog-actions,md-divider.md-THEME_NAME-theme{border-top-color:\"{{foreground-4}}\"}.layout-gt-lg-row>md-divider.md-THEME_NAME-theme,.layout-gt-md-row>md-divider.md-THEME_NAME-theme,.layout-gt-sm-row>md-divider.md-THEME_NAME-theme,.layout-gt-xs-row>md-divider.md-THEME_NAME-theme,.layout-lg-row>md-divider.md-THEME_NAME-theme,.layout-md-row>md-divider.md-THEME_NAME-theme,.layout-row>md-divider.md-THEME_NAME-theme,.layout-sm-row>md-divider.md-THEME_NAME-theme,.layout-xl-row>md-divider.md-THEME_NAME-theme,.layout-xs-row>md-divider.md-THEME_NAME-theme{border-right-color:\"{{foreground-4}}\"}md-icon.md-THEME_NAME-theme{color:\"{{foreground-2}}\"}md-icon.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}md-icon.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}md-icon.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}.md-THEME_NAME-theme .md-calendar{background:\"{{background-hue-1}}\";color:\"{{foreground-1-0.87}}\"}.md-THEME_NAME-theme .md-calendar tr:last-child td{border-bottom-color:\"{{background-hue-2}}\"}.md-THEME_NAME-theme .md-calendar-day-header{background:\"{{background-500-0.32}}\";color:\"{{foreground-1-0.87}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today .md-calendar-date-selection-indicator{border:1px solid \"{{primary-500}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-date-today.md-calendar-date-disabled{color:\"{{primary-500-0.6}}\"}.md-calendar-date.md-focus .md-THEME_NAME-theme .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date-selection-indicator:hover{background:\"{{background-500-0.32}}\"}.md-THEME_NAME-theme .md-calendar-date.md-calendar-selected-date .md-calendar-date-selection-indicator,.md-THEME_NAME-theme .md-calendar-date.md-focus.md-calendar-selected-date .md-calendar-date-selection-indicator{background:\"{{primary-500}}\";color:\"{{primary-500-contrast}}\";border-color:transparent}.md-THEME_NAME-theme .md-calendar-date-disabled,.md-THEME_NAME-theme .md-calendar-month-label-disabled{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-calendar-month-label md-icon,.md-THEME_NAME-theme .md-datepicker-input{color:\"{{foreground-1}}\"}.md-THEME_NAME-theme .md-datepicker-input:-moz-placeholder,.md-THEME_NAME-theme .md-datepicker-input::-moz-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}.md-THEME_NAME-theme .md-datepicker-input-container{border-bottom-color:\"{{foreground-4}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-invalid,.md-warn .md-THEME_NAME-theme .md-datepicker-input-container.md-datepicker-focused{border-bottom-color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar-pane{border-color:\"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-triangle-button .md-datepicker-expand-triangle{border-top-color:\"{{foreground-2}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{primary-color}}\"}.md-accent .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon,.md-THEME_NAME-theme .md-datepicker-open.md-accent .md-datepicker-calendar-icon{color:\"{{accent-color}}\"}.md-THEME_NAME-theme .md-datepicker-open.md-warn .md-datepicker-calendar-icon,.md-warn .md-THEME_NAME-theme .md-datepicker-open .md-datepicker-calendar-icon{color:\"{{warn-A700}}\"}.md-THEME_NAME-theme .md-datepicker-calendar{background:\"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-input-mask-opaque{box-shadow:0 0 0 9999px \"{{background-hue-1}}\"}.md-THEME_NAME-theme .md-datepicker-open .md-datepicker-input-container{background:\"{{background-hue-1}}\"}md-input-container.md-THEME_NAME-theme .md-input{color:\"{{foreground-1}}\";border-color:\"{{foreground-4}}\"}md-input-container.md-THEME_NAME-theme .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme .md-input::-moz-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input:-ms-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme .md-input::-webkit-input-placeholder{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme>md-icon{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme .md-placeholder,md-input-container.md-THEME_NAME-theme label{color:\"{{foreground-3}}\"}md-input-container.md-THEME_NAME-theme label.md-required:after{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-focused):not(.md-input-invalid) label.md-required:after{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation,md-input-container.md-THEME_NAME-theme .md-input-messages-animation{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme .md-input-message-animation .md-char-counter,md-input-container.md-THEME_NAME-theme .md-input-messages-animation .md-char-counter{color:\"{{foreground-1}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-moz-placeholder,md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-moz-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input:-ms-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme.md-input-focused .md-input::-webkit-input-placeholder{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-has-value label{color:\"{{foreground-2}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused .md-input,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-resized .md-input{border-color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused md-icon{color:\"{{primary-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent .md-input{border-color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-accent md-icon{color:\"{{accent-color}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn label,md-input-container.md-THEME_NAME-theme:not(.md-input-invalid).md-input-focused.md-warn md-icon{color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input{border-color:\"{{warn-A700}}\"}md-input-container.md-THEME_NAME-theme.md-input-invalid .md-char-counter,md-input-container.md-THEME_NAME-theme.md-input-invalid .md-input-message-animation,md-input-container.md-THEME_NAME-theme.md-input-invalid label{color:\"{{warn-A700}}\"}[disabled] md-input-container.md-THEME_NAME-theme .md-input,md-input-container.md-THEME_NAME-theme .md-input[disabled]{border-bottom-color:transparent;color:\"{{foreground-3}}\";background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text h4,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h3,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text h4{color:\"{{foreground-1}}\"}md-list.md-THEME_NAME-theme md-list-item.md-2-line .md-list-item-text p,md-list.md-THEME_NAME-theme md-list-item.md-3-line .md-list-item-text p{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme .md-proxy-focus.md-focused div.md-no-style{background-color:\"{{background-100}}\"}md-list.md-THEME_NAME-theme md-list-item .md-avatar-icon{background-color:\"{{foreground-3}}\";color:\"{{background-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon{color:\"{{foreground-2}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight{color:\"{{primary-color}}\"}md-list.md-THEME_NAME-theme md-list-item>md-icon.md-highlight.md-accent{color:\"{{accent-color}}\"}md-menu-content.md-THEME_NAME-theme{background-color:\"{{background-hue-1}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item{color:\"{{foreground-1}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item md-icon{color:\"{{foreground-2}}\"}md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled],md-menu-content.md-THEME_NAME-theme md-menu-item .md-button[disabled] md-icon{color:\"{{foreground-3}}\"}md-menu-content.md-THEME_NAME-theme md-menu-divider{background-color:\"{{foreground-4}}\"}md-menu-bar.md-THEME_NAME-theme>button.md-button{color:\"{{foreground-1}}\";border-radius:2px}md-menu-bar.md-THEME_NAME-theme md-menu>button{color:\"{{foreground-1}}\"}md-menu-bar.md-THEME_NAME-theme md-menu.md-open>button,md-menu-bar.md-THEME_NAME-theme md-menu>button:focus{outline:none;background-color:\"{{ background-500-0.18}}\"}md-menu-bar.md-THEME_NAME-theme.md-open:not(.md-keyboard-mode) md-menu:hover>button{background-color:\"{{ background-500-0.18}}\"}md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:focus,md-menu-bar.md-THEME_NAME-theme:not(.md-keyboard-mode):not(.md-open) md-menu button:hover{background:transparent}md-menu-content.md-THEME_NAME-theme .md-menu>.md-button:after{color:\"{{foreground-2}}\"}md-menu-content.md-THEME_NAME-theme .md-menu.md-open>.md-button{background-color:\"{{ background-500-0.18}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar{background-color:\"{{background-hue-1}}\";color:\"{{foreground-1}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler{background-color:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme.md-menu-toolbar md-toolbar-filler md-icon{color:\"{{primary-contrast}}\"}md-nav-bar.md-THEME_NAME-theme .md-nav-bar{background-color:transparent;border-color:\"{{foreground-4}}\"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button.md-unselected{color:\"{{foreground-2}}\"}md-nav-bar.md-THEME_NAME-theme .md-button._md-nav-button[disabled]{color:\"{{foreground-3}}\"}md-nav-bar.md-THEME_NAME-theme md-nav-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar{background-color:\"{{accent-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-accent>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar{background-color:\"{{warn-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-warn>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar{background-color:\"{{primary-color}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-active,md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-nav-bar.md-THEME_NAME-theme.md-primary>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{primary-color}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{primary-100}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{primary-contrast}}\"}md-toolbar>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar md-nav-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-active,md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-nav-bar.md-THEME_NAME-theme>.md-nav-bar .md-button._md-nav-button.md-focused{background:\"{{warn-contrast-0.1}}\"}._md-panel-backdrop.md-THEME_NAME-theme{background-color:\"{{background-900-1.0}}\"}md-progress-circular.md-THEME_NAME-theme path{stroke:\"{{primary-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-warn path{stroke:\"{{warn-color}}\"}md-progress-circular.md-THEME_NAME-theme.md-accent path{stroke:\"{{accent-color}}\"}md-progress-linear.md-THEME_NAME-theme .md-container{background-color:\"{{primary-100}}\"}md-progress-linear.md-THEME_NAME-theme .md-bar{background-color:\"{{primary-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-container{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-warn .md-bar{background-color:\"{{warn-color}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-container{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme.md-accent .md-bar{background-color:\"{{accent-color}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-primary .md-bar1{background-color:\"{{primary-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-primary .md-dashed:before{background:radial-gradient(\"{{primary-100}}\" 0,\"{{primary-100}}\" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-bar1{background-color:\"{{warn-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-warn .md-dashed:before{background:radial-gradient(\"{{warn-100}}\" 0,\"{{warn-100}}\" 16%,transparent 42%)}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-bar1{background-color:\"{{accent-100}}\"}md-progress-linear.md-THEME_NAME-theme[md-mode=buffer].md-accent .md-dashed:before{background:radial-gradient(\"{{accent-100}}\" 0,\"{{accent-100}}\" 16%,transparent 42%)}md-radio-button.md-THEME_NAME-theme .md-off{border-color:\"{{foreground-2}}\"}md-radio-button.md-THEME_NAME-theme .md-on{background-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-off{border-color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme.md-checked .md-ink-ripple{color:\"{{accent-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme .md-container .md-ripple{color:\"{{accent-A700}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-on{background-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-off{border-color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-checked .md-ink-ripple{color:\"{{primary-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-primary .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-primary .md-container .md-ripple{color:\"{{primary-600}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-on,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-on{background-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-off,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-off{border-color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn.md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-checked .md-ink-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-checked .md-ink-ripple{color:\"{{warn-color-0.87}}\"}md-radio-button.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-button.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]).md-warn .md-container .md-ripple,md-radio-group.md-THEME_NAME-theme:not([disabled]) .md-warn .md-container .md-ripple{color:\"{{warn-600}}\"}md-radio-button.md-THEME_NAME-theme[disabled],md-radio-group.md-THEME_NAME-theme[disabled]{color:\"{{foreground-3}}\"}md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-button.md-THEME_NAME-theme[disabled] .md-container .md-on,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-off,md-radio-group.md-THEME_NAME-theme[disabled] .md-container .md-on{border-color:\"{{foreground-3}}\"}md-radio-group.md-THEME_NAME-theme .md-checked .md-ink-ripple{color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme .md-checked:not([disabled]).md-primary .md-ink-ripple,md-radio-group.md-THEME_NAME-theme.md-primary .md-checked:not([disabled]) .md-ink-ripple{color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused.ng-empty>md-radio-button:first-child .md-container:before{background-color:\"{{foreground-3-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked .md-container:before{background-color:\"{{accent-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-primary .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-primary .md-checked .md-container:before{background-color:\"{{primary-color-0.26}}\"}md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty) .md-checked.md-warn .md-container:before,md-radio-group.md-THEME_NAME-theme.md-focused:not(:empty).md-warn .md-checked .md-container:before{background-color:\"{{warn-color-0.26}}\"}md-input-container md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-input-container:not(.md-input-focused):not(.md-input-invalid) md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{foreground-3}}\"}md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value,md-input-container.md-input-focused:not(.md-input-has-value) md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{primary-color}}\"}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-input-container.md-input-invalid md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-input-container:not(.md-input-invalid).md-input-focused.md-accent .md-select-value{border-color:\"{{accent-color}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-accent .md-select-value span{color:\"{{accent-color}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-warn .md-select-value{border-color:\"{{warn-A700}}\"}md-input-container:not(.md-input-invalid).md-input-focused.md-warn .md-select-value span{color:\"{{warn-A700}}\"}md-select.md-THEME_NAME-theme[disabled] .md-select-value{border-bottom-color:transparent;background-image:linear-gradient(90deg,\"{{foreground-3}}\" 0,\"{{foreground-3}}\" 33%,transparent 0);background-image:-ms-linear-gradient(left,transparent 0,\"{{foreground-3}}\" 100%)}md-select.md-THEME_NAME-theme .md-select-value{border-bottom-color:\"{{foreground-4}}\"}md-select.md-THEME_NAME-theme .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-value span:first-child:after{color:\"{{warn-A700}}\"}md-select.md-THEME_NAME-theme.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched .md-select-value{color:\"{{warn-A700}}\"!important;border-bottom-color:\"{{warn-A700}}\"!important}md-select.md-THEME_NAME-theme.ng-invalid.ng-touched.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value{border-bottom-color:\"{{primary-color}}\";color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus .md-select-value.md-select-placeholder{color:\"{{ foreground-1 }}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-no-underline .md-select-value{border-bottom-color:transparent!important}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-accent .md-select-value{border-bottom-color:\"{{accent-color}}\"}md-select.md-THEME_NAME-theme:not([disabled]):focus.md-warn .md-select-value{border-bottom-color:\"{{warn-color}}\"}md-select.md-THEME_NAME-theme[disabled] .md-select-icon,md-select.md-THEME_NAME-theme[disabled] .md-select-value,md-select.md-THEME_NAME-theme[disabled] .md-select-value.md-select-placeholder{color:\"{{foreground-3}}\"}md-select.md-THEME_NAME-theme .md-select-icon{color:\"{{foreground-2}}\"}md-select-menu.md-THEME_NAME-theme md-content{background-color:\"{{background-hue-1}}\"}md-select-menu.md-THEME_NAME-theme md-content md-optgroup{color:\"{{foreground-2}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option{color:\"{{foreground-1}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[disabled] .md-text{color:\"{{foreground-3}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):focus,md-select-menu.md-THEME_NAME-theme md-content md-option:not([disabled]):hover{background-color:\"{{background-500-0.18}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]{color:\"{{primary-500}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected]:focus{color:\"{{primary-600}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent{color:\"{{accent-color}}\"}md-select-menu.md-THEME_NAME-theme md-content md-option[selected].md-accent:focus{color:\"{{accent-A700}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ripple{color:\"{{primary-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ripple{color:\"{{background-600}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-ink-ripple{color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-ink-ripple{color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme:not(.md-checked) .md-icon{border-color:\"{{foreground-2}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon{background-color:\"{{primary-color-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected].md-focused .md-container:before{background-color:\"{{primary-color-0.26}}\"}.md-checkbox-enabled.md-THEME_NAME-theme[selected] .md-icon:after{border-color:\"{{primary-contrast-0.87}}\"}.md-checkbox-enabled.md-THEME_NAME-theme .md-indeterminate[disabled] .md-container{color:\"{{foreground-3}}\"}.md-checkbox-enabled.md-THEME_NAME-theme md-option .md-text{color:\"{{foreground-1}}\"}md-sidenav.md-THEME_NAME-theme,md-sidenav.md-THEME_NAME-theme md-content{background-color:\"{{background-hue-1}}\"}md-slider.md-THEME_NAME-theme .md-track{background-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme .md-track-ticks{color:\"{{background-contrast}}\"}md-slider.md-THEME_NAME-theme .md-focus-ring{background-color:\"{{accent-A200-0.2}}\"}md-slider.md-THEME_NAME-theme .md-disabled-thumb{border-color:\"{{background-color}}\";background-color:\"{{background-color}}\"}md-slider.md-THEME_NAME-theme.md-min .md-thumb:after{background-color:\"{{background-color}}\";border-color:\"{{foreground-3}}\"}md-slider.md-THEME_NAME-theme.md-min .md-focus-ring{background-color:\"{{foreground-3-0.38}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-thumb:after{background-color:\"{{background-contrast}}\";border-color:transparent}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme.md-min[md-discrete][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme .md-track.md-track-fill{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb:after{border-color:\"{{accent-color}}\";background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign{background-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-sign:after{border-top-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{accent-color}}\"}md-slider.md-THEME_NAME-theme .md-thumb-text{color:\"{{accent-contrast}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-focus-ring{background-color:\"{{warn-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-track.md-track-fill{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb:after{border-color:\"{{warn-color}}\";background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign{background-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-sign:after{border-top-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{warn-color}}\"}md-slider.md-THEME_NAME-theme.md-warn .md-thumb-text{color:\"{{warn-contrast}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-focus-ring{background-color:\"{{primary-200-0.38}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-track.md-track-fill{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb:after{border-color:\"{{primary-color}}\";background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign{background-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-sign:after{border-top-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary[md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{primary-color}}\"}md-slider.md-THEME_NAME-theme.md-primary .md-thumb-text{color:\"{{primary-contrast}}\"}md-slider.md-THEME_NAME-theme[disabled] .md-thumb:after{border-color:transparent}md-slider.md-THEME_NAME-theme[disabled]:not(.md-min) .md-thumb:after,md-slider.md-THEME_NAME-theme[disabled][md-discrete] .md-thumb:after{background-color:\"{{foreground-3}}\";border-color:transparent}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign{background-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-sign:after{border-top-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly][md-vertical] .md-sign:after{border-top-color:transparent;border-left-color:\"{{background-400}}\"}md-slider.md-THEME_NAME-theme[disabled][readonly] .md-disabled-thumb{border-color:transparent;background-color:transparent}md-slider-container[disabled]>:first-child:not(md-slider),md-slider-container[disabled]>:last-child:not(md-slider){color:\"{{foreground-3}}\"}.md-subheader.md-THEME_NAME-theme{color:\"{{ foreground-2-0.23 }}\";background-color:\"{{background-default}}\"}.md-subheader.md-THEME_NAME-theme.md-primary{color:\"{{primary-color}}\"}.md-subheader.md-THEME_NAME-theme.md-accent{color:\"{{accent-color}}\"}.md-subheader.md-THEME_NAME-theme.md-warn{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme .md-ink-ripple{color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme .md-thumb{background-color:\"{{background-50}}\"}md-switch.md-THEME_NAME-theme .md-bar{background-color:\"{{background-500}}\"}md-switch.md-THEME_NAME-theme.md-focused:not(.md-checked) .md-thumb:before,md-switch.md-THEME_NAME-theme.md-focused[disabled] .md-thumb:before{background-color:\"{{foreground-4}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-ink-ripple{color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-thumb{background-color:\"{{accent-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]) .md-bar{background-color:\"{{accent-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-focused .md-thumb:before{background-color:\"{{accent-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-ink-ripple{color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-thumb{background-color:\"{{primary-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary .md-bar{background-color:\"{{primary-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-primary.md-focused .md-thumb:before{background-color:\"{{primary-color-0.26}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-ink-ripple{color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-thumb{background-color:\"{{warn-color}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn .md-bar{background-color:\"{{warn-color-0.5}}\"}md-switch.md-THEME_NAME-theme.md-checked:not([disabled]).md-warn.md-focused .md-thumb:before{background-color:\"{{warn-color-0.26}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-thumb{background-color:\"{{background-400}}\"}md-switch.md-THEME_NAME-theme[disabled] .md-bar{background-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme md-tabs-wrapper{background-color:transparent;border-color:\"{{foreground-4}}\"}md-tabs.md-THEME_NAME-theme .md-paginator md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme md-ink-bar{color:\"{{accent-color}}\";background:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab{color:\"{{foreground-2}}\"}md-tabs.md-THEME_NAME-theme .md-tab[disabled],md-tabs.md-THEME_NAME-theme .md-tab[disabled] md-icon{color:\"{{foreground-3}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-active,md-tabs.md-THEME_NAME-theme .md-tab.md-active md-icon,md-tabs.md-THEME_NAME-theme .md-tab.md-focused,md-tabs.md-THEME_NAME-theme .md-tab.md-focused md-icon{color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme .md-tab.md-focused{background:\"{{primary-color-0.1}}\"}md-tabs.md-THEME_NAME-theme .md-tab .md-ripple-container{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-accent>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-primary>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-tabs.md-THEME_NAME-theme.md-warn>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{primary-color}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{primary-100}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{primary-contrast}}\"}md-toolbar>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{primary-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{accent-color}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{accent-A100}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{accent-contrast}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{accent-contrast-0.1}}\"}md-toolbar.md-accent>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-ink-bar{color:\"{{primary-600-1}}\";background:\"{{primary-600-1}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper{background-color:\"{{warn-color}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]),md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]) md-icon{color:\"{{warn-100}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-active md-icon,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused,md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused md-icon{color:\"{{warn-contrast}}\"}md-toolbar.md-warn>md-tabs.md-THEME_NAME-theme>md-tabs-wrapper>md-tabs-canvas>md-pagination-wrapper>md-tab-item:not([disabled]).md-focused{background:\"{{warn-contrast-0.1}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar){background-color:\"{{primary-color}}\";color:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) md-icon{color:\"{{primary-contrast}}\";fill:\"{{primary-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar) .md-button[disabled] md-icon{color:\"{{primary-contrast-0.26}}\";fill:\"{{primary-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent{background-color:\"{{accent-color}}\";color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-ink-ripple{color:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent md-icon{color:\"{{accent-contrast}}\";fill:\"{{accent-contrast}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-accent .md-button[disabled] md-icon{color:\"{{accent-contrast-0.26}}\";fill:\"{{accent-contrast-0.26}}\"}md-toolbar.md-THEME_NAME-theme:not(.md-menu-toolbar).md-warn{background-color:\"{{warn-color}}\";color:\"{{warn-contrast}}\"}.md-panel.md-tooltip.md-THEME_NAME-theme{color:\"{{background-700-contrast}}\";background-color:\"{{background-700}}\"}md-toast.md-THEME_NAME-theme .md-toast-content{background-color:#323232;color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button{color:\"{{background-50}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight{color:\"{{accent-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-primary{color:\"{{primary-color}}\"}md-toast.md-THEME_NAME-theme .md-toast-content .md-button.md-highlight.md-warn{color:\"{{warn-color}}\"}body.md-THEME_NAME-theme,html.md-THEME_NAME-theme{color:\"{{foreground-1}}\";background-color:\"{{background-color}}\"}"); 
 })();
 
 

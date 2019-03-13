@@ -667,150 +667,6 @@ md-bottom-sheet {
   md-bottom-sheet {
     border: 1px solid #fff; } }
 
-md-card {
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  margin: 8px;
-  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
-  md-card md-card-header {
-    padding: 16px;
-    display: flex;
-    flex-direction: row; }
-    md-card md-card-header:first-child md-card-avatar {
-      margin-right: 12px; }
-      [dir=rtl] md-card md-card-header:first-child md-card-avatar {
-        margin-right: auto;
-        margin-left: 12px; }
-    md-card md-card-header:last-child md-card-avatar {
-      margin-left: 12px; }
-      [dir=rtl] md-card md-card-header:last-child md-card-avatar {
-        margin-left: auto;
-        margin-right: 12px; }
-    md-card md-card-header md-card-avatar {
-      width: 40px;
-      height: 40px; }
-      md-card md-card-header md-card-avatar .md-user-avatar,
-      md-card md-card-header md-card-avatar md-icon {
-        border-radius: 50%; }
-      md-card md-card-header md-card-avatar md-icon {
-        padding: 8px; }
-        md-card md-card-header md-card-avatar md-icon > svg {
-          height: inherit;
-          width: inherit; }
-      md-card md-card-header md-card-avatar + md-card-header-text {
-        max-height: 40px; }
-        md-card md-card-header md-card-avatar + md-card-header-text .md-title {
-          font-size: 14px; }
-    md-card md-card-header md-card-header-text {
-      display: flex;
-      flex: 1;
-      flex-direction: column; }
-      md-card md-card-header md-card-header-text .md-subhead {
-        font-size: 14px; }
-  md-card > img,
-  md-card > md-card-header img,
-  md-card md-card-title-media img {
-    box-sizing: border-box;
-    display: flex;
-    flex: 0 0 auto;
-    width: 100%;
-    height: auto; }
-  md-card md-card-title {
-    padding: 24px 16px 16px;
-    display: flex;
-    flex: 1 1 auto;
-    flex-direction: row; }
-    md-card md-card-title + md-card-content {
-      padding-top: 0; }
-    md-card md-card-title md-card-title-text {
-      flex: 1;
-      flex-direction: column;
-      display: flex; }
-      md-card md-card-title md-card-title-text .md-subhead {
-        padding-top: 0;
-        font-size: 14px; }
-      md-card md-card-title md-card-title-text:only-child .md-subhead {
-        padding-top: 12px; }
-    md-card md-card-title md-card-title-media {
-      margin-top: -8px; }
-      md-card md-card-title md-card-title-media .md-media-sm {
-        height: 80px;
-        width: 80px; }
-      md-card md-card-title md-card-title-media .md-media-md {
-        height: 112px;
-        width: 112px; }
-      md-card md-card-title md-card-title-media .md-media-lg {
-        height: 152px;
-        width: 152px; }
-  md-card md-card-content {
-    display: block;
-    padding: 16px; }
-    md-card md-card-content > p:first-child {
-      margin-top: 0; }
-    md-card md-card-content > p:last-child {
-      margin-bottom: 0; }
-    md-card md-card-content .md-media-xl {
-      height: 240px;
-      width: 240px; }
-  md-card .md-actions, md-card md-card-actions {
-    margin: 8px; }
-    md-card .md-actions.layout-column .md-button:not(.md-icon-button), md-card md-card-actions.layout-column .md-button:not(.md-icon-button) {
-      margin: 2px 0; }
-      md-card .md-actions.layout-column .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions.layout-column .md-button:not(.md-icon-button):first-of-type {
-        margin-top: 0; }
-      md-card .md-actions.layout-column .md-button:not(.md-icon-button):last-of-type, md-card md-card-actions.layout-column .md-button:not(.md-icon-button):last-of-type {
-        margin-bottom: 0; }
-    md-card .md-actions.layout-column .md-button.md-icon-button, md-card md-card-actions.layout-column .md-button.md-icon-button {
-      margin-top: 6px;
-      margin-bottom: 6px; }
-    md-card .md-actions md-card-icon-actions, md-card md-card-actions md-card-icon-actions {
-      flex: 1;
-      justify-content: flex-start;
-      display: flex;
-      flex-direction: row; }
-    md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button), md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button) {
-      margin: 0 4px; }
-      md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
-        margin-left: 0; }
-        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
-          margin-left: auto;
-          margin-right: 0; }
-      md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type {
-        margin-right: 0; }
-        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type {
-          margin-right: auto;
-          margin-left: 0; }
-    md-card .md-actions:not(.layout-column) .md-button.md-icon-button, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button {
-      margin-left: 6px;
-      margin-right: 6px; }
-      md-card .md-actions:not(.layout-column) .md-button.md-icon-button:first-of-type, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:first-of-type {
-        margin-left: 12px; }
-        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button.md-icon-button:first-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:first-of-type {
-          margin-left: auto;
-          margin-right: 12px; }
-      md-card .md-actions:not(.layout-column) .md-button.md-icon-button:last-of-type, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:last-of-type {
-        margin-right: 12px; }
-        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button.md-icon-button:last-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:last-of-type {
-          margin-right: auto;
-          margin-left: 12px; }
-    md-card .md-actions:not(.layout-column) .md-button + md-card-icon-actions, md-card md-card-actions:not(.layout-column) .md-button + md-card-icon-actions {
-      flex: 1;
-      justify-content: flex-end;
-      display: flex;
-      flex-direction: row; }
-  md-card md-card-footer {
-    margin-top: auto;
-    padding: 16px; }
-
-@media screen and (-ms-high-contrast: active) {
-  md-card {
-    border: 1px solid #fff; } }
-
-.md-image-no-fill > img {
-  width: auto;
-  height: auto; }
-
 button.md-button::-moz-focus-inner {
   border: 0; }
 
@@ -985,6 +841,150 @@ button.md-button.md-fab md-icon {
   .md-button.md-raised,
   .md-button.md-fab {
     border: 1px solid #fff; } }
+
+md-card {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin: 8px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12); }
+  md-card md-card-header {
+    padding: 16px;
+    display: flex;
+    flex-direction: row; }
+    md-card md-card-header:first-child md-card-avatar {
+      margin-right: 12px; }
+      [dir=rtl] md-card md-card-header:first-child md-card-avatar {
+        margin-right: auto;
+        margin-left: 12px; }
+    md-card md-card-header:last-child md-card-avatar {
+      margin-left: 12px; }
+      [dir=rtl] md-card md-card-header:last-child md-card-avatar {
+        margin-left: auto;
+        margin-right: 12px; }
+    md-card md-card-header md-card-avatar {
+      width: 40px;
+      height: 40px; }
+      md-card md-card-header md-card-avatar .md-user-avatar,
+      md-card md-card-header md-card-avatar md-icon {
+        border-radius: 50%; }
+      md-card md-card-header md-card-avatar md-icon {
+        padding: 8px; }
+        md-card md-card-header md-card-avatar md-icon > svg {
+          height: inherit;
+          width: inherit; }
+      md-card md-card-header md-card-avatar + md-card-header-text {
+        max-height: 40px; }
+        md-card md-card-header md-card-avatar + md-card-header-text .md-title {
+          font-size: 14px; }
+    md-card md-card-header md-card-header-text {
+      display: flex;
+      flex: 1;
+      flex-direction: column; }
+      md-card md-card-header md-card-header-text .md-subhead {
+        font-size: 14px; }
+  md-card > img,
+  md-card > md-card-header img,
+  md-card md-card-title-media img {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 auto;
+    width: 100%;
+    height: auto; }
+  md-card md-card-title {
+    padding: 24px 16px 16px;
+    display: flex;
+    flex: 1 1 auto;
+    flex-direction: row; }
+    md-card md-card-title + md-card-content {
+      padding-top: 0; }
+    md-card md-card-title md-card-title-text {
+      flex: 1;
+      flex-direction: column;
+      display: flex; }
+      md-card md-card-title md-card-title-text .md-subhead {
+        padding-top: 0;
+        font-size: 14px; }
+      md-card md-card-title md-card-title-text:only-child .md-subhead {
+        padding-top: 12px; }
+    md-card md-card-title md-card-title-media {
+      margin-top: -8px; }
+      md-card md-card-title md-card-title-media .md-media-sm {
+        height: 80px;
+        width: 80px; }
+      md-card md-card-title md-card-title-media .md-media-md {
+        height: 112px;
+        width: 112px; }
+      md-card md-card-title md-card-title-media .md-media-lg {
+        height: 152px;
+        width: 152px; }
+  md-card md-card-content {
+    display: block;
+    padding: 16px; }
+    md-card md-card-content > p:first-child {
+      margin-top: 0; }
+    md-card md-card-content > p:last-child {
+      margin-bottom: 0; }
+    md-card md-card-content .md-media-xl {
+      height: 240px;
+      width: 240px; }
+  md-card .md-actions, md-card md-card-actions {
+    margin: 8px; }
+    md-card .md-actions.layout-column .md-button:not(.md-icon-button), md-card md-card-actions.layout-column .md-button:not(.md-icon-button) {
+      margin: 2px 0; }
+      md-card .md-actions.layout-column .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions.layout-column .md-button:not(.md-icon-button):first-of-type {
+        margin-top: 0; }
+      md-card .md-actions.layout-column .md-button:not(.md-icon-button):last-of-type, md-card md-card-actions.layout-column .md-button:not(.md-icon-button):last-of-type {
+        margin-bottom: 0; }
+    md-card .md-actions.layout-column .md-button.md-icon-button, md-card md-card-actions.layout-column .md-button.md-icon-button {
+      margin-top: 6px;
+      margin-bottom: 6px; }
+    md-card .md-actions md-card-icon-actions, md-card md-card-actions md-card-icon-actions {
+      flex: 1;
+      justify-content: flex-start;
+      display: flex;
+      flex-direction: row; }
+    md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button), md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button) {
+      margin: 0 4px; }
+      md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
+        margin-left: 0; }
+        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):first-of-type {
+          margin-left: auto;
+          margin-right: 0; }
+      md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type, md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type {
+        margin-right: 0; }
+        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button:not(.md-icon-button):last-of-type {
+          margin-right: auto;
+          margin-left: 0; }
+    md-card .md-actions:not(.layout-column) .md-button.md-icon-button, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button {
+      margin-left: 6px;
+      margin-right: 6px; }
+      md-card .md-actions:not(.layout-column) .md-button.md-icon-button:first-of-type, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:first-of-type {
+        margin-left: 12px; }
+        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button.md-icon-button:first-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:first-of-type {
+          margin-left: auto;
+          margin-right: 12px; }
+      md-card .md-actions:not(.layout-column) .md-button.md-icon-button:last-of-type, md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:last-of-type {
+        margin-right: 12px; }
+        [dir=rtl] md-card .md-actions:not(.layout-column) .md-button.md-icon-button:last-of-type, [dir=rtl] md-card md-card-actions:not(.layout-column) .md-button.md-icon-button:last-of-type {
+          margin-right: auto;
+          margin-left: 12px; }
+    md-card .md-actions:not(.layout-column) .md-button + md-card-icon-actions, md-card md-card-actions:not(.layout-column) .md-button + md-card-icon-actions {
+      flex: 1;
+      justify-content: flex-end;
+      display: flex;
+      flex-direction: row; }
+  md-card md-card-footer {
+    margin-top: auto;
+    padding: 16px; }
+
+@media screen and (-ms-high-contrast: active) {
+  md-card {
+    border: 1px solid #fff; } }
+
+.md-image-no-fill > img {
+  width: auto;
+  height: auto; }
 
 .md-inline-form md-checkbox {
   margin: 19px 0 18px; }
@@ -1324,307 +1324,6 @@ md-content {
   @media print {
     md-content {
       overflow: visible !important; } }
-
-/** Styles for mdCalendar. */
-md-calendar {
-  font-size: 13px;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none; }
-
-.md-calendar-scroll-mask {
-  display: inline-block;
-  overflow: hidden;
-  height: 308px; }
-  .md-calendar-scroll-mask .md-virtual-repeat-scroller {
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch; }
-    .md-calendar-scroll-mask .md-virtual-repeat-scroller::-webkit-scrollbar {
-      display: none; }
-  .md-calendar-scroll-mask .md-virtual-repeat-offsetter {
-    width: 100%; }
-
-.md-calendar-scroll-container {
-  box-shadow: inset -3px 3px 6px rgba(0, 0, 0, 0.2);
-  display: inline-block;
-  height: 308px;
-  width: 346px; }
-
-.md-calendar-date {
-  height: 44px;
-  width: 44px;
-  text-align: center;
-  padding: 0;
-  border: none;
-  box-sizing: content-box; }
-  .md-calendar-date:first-child {
-    padding-left: 16px; }
-    [dir=rtl] .md-calendar-date:first-child {
-      padding-left: 0;
-      padding-right: 16px; }
-  .md-calendar-date:last-child {
-    padding-right: 16px; }
-    [dir=rtl] .md-calendar-date:last-child {
-      padding-right: 0;
-      padding-left: 16px; }
-  .md-calendar-date.md-calendar-date-disabled {
-    cursor: default; }
-
-.md-calendar-date-selection-indicator {
-  transition: background-color, color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  border-radius: 50%;
-  display: inline-block;
-  width: 40px;
-  height: 40px;
-  line-height: 40px; }
-  .md-calendar-date:not(.md-disabled) .md-calendar-date-selection-indicator {
-    cursor: pointer; }
-
-.md-calendar-month-label {
-  height: 44px;
-  font-size: 14px;
-  font-weight: 500;
-  padding: 0 0 0 24px; }
-  [dir=rtl] .md-calendar-month-label {
-    padding: 0 24px 0 0; }
-  .md-calendar-month-label.md-calendar-label-clickable {
-    cursor: pointer; }
-  .md-calendar-month-label md-icon {
-    -webkit-transform: rotate(180deg);
-            transform: rotate(180deg); }
-    [dir=rtl] .md-calendar-month-label md-icon {
-      -webkit-transform: none;
-              transform: none; }
-  .md-calendar-month-label span {
-    vertical-align: middle; }
-
-.md-calendar-day-header {
-  table-layout: fixed;
-  border-spacing: 0;
-  border-collapse: collapse; }
-  .md-calendar-day-header th {
-    height: 40px;
-    width: 44px;
-    text-align: center;
-    padding: 0;
-    border: none;
-    box-sizing: content-box;
-    font-weight: normal; }
-    .md-calendar-day-header th:first-child {
-      padding-left: 16px; }
-      [dir=rtl] .md-calendar-day-header th:first-child {
-        padding-left: 0;
-        padding-right: 16px; }
-    .md-calendar-day-header th:last-child {
-      padding-right: 16px; }
-      [dir=rtl] .md-calendar-day-header th:last-child {
-        padding-right: 0;
-        padding-left: 16px; }
-
-.md-calendar {
-  table-layout: fixed;
-  border-spacing: 0;
-  border-collapse: collapse; }
-  .md-calendar tr:last-child td {
-    border-bottom-width: 1px;
-    border-bottom-style: solid; }
-  .md-calendar:first-child {
-    border-top: 1px solid transparent; }
-  .md-calendar tbody, .md-calendar td, .md-calendar tr {
-    vertical-align: middle;
-    box-sizing: content-box; }
-
-/** Styles for mdDatepicker. */
-md-datepicker {
-  white-space: nowrap;
-  overflow: hidden;
-  vertical-align: middle; }
-
-.md-inline-form md-datepicker {
-  margin-top: 12px; }
-
-.md-datepicker-button {
-  display: inline-block;
-  box-sizing: border-box;
-  background: none;
-  vertical-align: middle;
-  position: relative; }
-  .md-datepicker-button:before {
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    position: absolute;
-    content: '';
-    speak: none; }
-
-.md-datepicker-input {
-  font-size: 14px;
-  box-sizing: border-box;
-  border: none;
-  box-shadow: none;
-  outline: none;
-  background: transparent;
-  min-width: 120px;
-  max-width: 328px;
-  padding: 0 0 5px; }
-  .md-datepicker-input::-ms-clear {
-    display: none; }
-
-._md-datepicker-floating-label > md-datepicker {
-  overflow: visible; }
-  ._md-datepicker-floating-label > md-datepicker .md-datepicker-input-container {
-    border: none; }
-  ._md-datepicker-floating-label > md-datepicker .md-datepicker-button {
-    float: left;
-    margin-top: -12px;
-    top: 9.5px; }
-    [dir=rtl] ._md-datepicker-floating-label > md-datepicker .md-datepicker-button {
-      float: right; }
-
-._md-datepicker-floating-label .md-input {
-  float: none; }
-
-._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
-  right: 18px;
-  left: auto;
-  width: calc(100% - 84px); }
-  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
-    right: auto; }
-  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
-    left: 18px; }
-
-._md-datepicker-floating-label._md-datepicker-has-calendar-icon .md-input-message-animation {
-  margin-left: 64px; }
-  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon .md-input-message-animation {
-    margin-left: auto;
-    margin-right: 64px; }
-
-._md-datepicker-has-triangle-icon {
-  padding-right: 18px;
-  margin-right: -18px; }
-  [dir=rtl] ._md-datepicker-has-triangle-icon {
-    padding-right: 0;
-    padding-left: 18px; }
-  [dir=rtl] ._md-datepicker-has-triangle-icon {
-    margin-right: auto;
-    margin-left: -18px; }
-
-.md-datepicker-input-container {
-  position: relative;
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  display: inline-block;
-  width: auto; }
-  .md-icon-button + .md-datepicker-input-container {
-    margin-left: 12px; }
-    [dir=rtl] .md-icon-button + .md-datepicker-input-container {
-      margin-left: auto;
-      margin-right: 12px; }
-  .md-datepicker-input-container.md-datepicker-focused {
-    border-bottom-width: 2px; }
-
-.md-datepicker-is-showing .md-scroll-mask {
-  z-index: 99; }
-
-.md-datepicker-calendar-pane {
-  position: absolute;
-  top: 0;
-  left: -100%;
-  z-index: 100;
-  border-width: 1px;
-  border-style: solid;
-  background: transparent;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  -webkit-transform-origin: 0 0;
-          transform-origin: 0 0;
-  transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  .md-datepicker-calendar-pane.md-pane-open {
-    -webkit-transform: scale(1);
-            transform: scale(1); }
-
-.md-datepicker-input-mask {
-  height: 40px;
-  width: 340px;
-  position: relative;
-  overflow: hidden;
-  background: transparent;
-  pointer-events: none;
-  cursor: text; }
-
-.md-datepicker-calendar {
-  opacity: 0;
-  transition: opacity 0.2s cubic-bezier(0.5, 0, 0.25, 1); }
-  .md-pane-open .md-datepicker-calendar {
-    opacity: 1; }
-  .md-datepicker-calendar md-calendar:focus {
-    outline: none; }
-
-.md-datepicker-expand-triangle {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  width: 0;
-  height: 0;
-  border-left: 5px solid transparent;
-  border-right: 5px solid transparent;
-  border-top: 5px solid; }
-
-.md-datepicker-triangle-button {
-  position: absolute;
-  right: 0;
-  bottom: -2.5px;
-  -webkit-transform: translateX(45%);
-          transform: translateX(45%); }
-  [dir=rtl] .md-datepicker-triangle-button {
-    right: auto;
-    left: 0; }
-  [dir=rtl] .md-datepicker-triangle-button {
-    -webkit-transform: translateX(-45%);
-            transform: translateX(-45%); }
-
-.md-datepicker-triangle-button.md-button.md-icon-button {
-  height: 36px;
-  width: 36px;
-  position: absolute;
-  padding: 8px; }
-
-md-datepicker[disabled] .md-datepicker-input-container {
-  border-bottom-color: transparent; }
-
-md-datepicker[disabled] .md-datepicker-triangle-button {
-  display: none; }
-
-.md-datepicker-open {
-  overflow: hidden; }
-  .md-datepicker-open .md-datepicker-input-container,
-  .md-datepicker-open input.md-input {
-    border-bottom-color: transparent; }
-  .md-datepicker-open .md-datepicker-triangle-button,
-  .md-datepicker-open.md-input-has-value > label,
-  .md-datepicker-open.md-input-has-placeholder > label {
-    display: none; }
-
-.md-datepicker-pos-adjusted .md-datepicker-input-mask {
-  display: none; }
-
-.md-datepicker-calendar-pane .md-calendar {
-  -webkit-transform: translateY(-85px);
-          transform: translateY(-85px);
-  transition: -webkit-transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
-  transition-delay: 0.125s; }
-
-.md-datepicker-calendar-pane.md-pane-open .md-calendar {
-  -webkit-transform: translateY(0);
-          transform: translateY(0); }
 
 .md-dialog-is-showing {
   max-height: 100%; }
@@ -2017,6 +1716,307 @@ md-icon {
     line-height: 24px;
     width: auto; }
 
+/** Styles for mdCalendar. */
+md-calendar {
+  font-size: 13px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none; }
+
+.md-calendar-scroll-mask {
+  display: inline-block;
+  overflow: hidden;
+  height: 308px; }
+  .md-calendar-scroll-mask .md-virtual-repeat-scroller {
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; }
+    .md-calendar-scroll-mask .md-virtual-repeat-scroller::-webkit-scrollbar {
+      display: none; }
+  .md-calendar-scroll-mask .md-virtual-repeat-offsetter {
+    width: 100%; }
+
+.md-calendar-scroll-container {
+  box-shadow: inset -3px 3px 6px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  height: 308px;
+  width: 346px; }
+
+.md-calendar-date {
+  height: 44px;
+  width: 44px;
+  text-align: center;
+  padding: 0;
+  border: none;
+  box-sizing: content-box; }
+  .md-calendar-date:first-child {
+    padding-left: 16px; }
+    [dir=rtl] .md-calendar-date:first-child {
+      padding-left: 0;
+      padding-right: 16px; }
+  .md-calendar-date:last-child {
+    padding-right: 16px; }
+    [dir=rtl] .md-calendar-date:last-child {
+      padding-right: 0;
+      padding-left: 16px; }
+  .md-calendar-date.md-calendar-date-disabled {
+    cursor: default; }
+
+.md-calendar-date-selection-indicator {
+  transition: background-color, color 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  border-radius: 50%;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px; }
+  .md-calendar-date:not(.md-disabled) .md-calendar-date-selection-indicator {
+    cursor: pointer; }
+
+.md-calendar-month-label {
+  height: 44px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 0 0 0 24px; }
+  [dir=rtl] .md-calendar-month-label {
+    padding: 0 24px 0 0; }
+  .md-calendar-month-label.md-calendar-label-clickable {
+    cursor: pointer; }
+  .md-calendar-month-label md-icon {
+    -webkit-transform: rotate(180deg);
+            transform: rotate(180deg); }
+    [dir=rtl] .md-calendar-month-label md-icon {
+      -webkit-transform: none;
+              transform: none; }
+  .md-calendar-month-label span {
+    vertical-align: middle; }
+
+.md-calendar-day-header {
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse; }
+  .md-calendar-day-header th {
+    height: 40px;
+    width: 44px;
+    text-align: center;
+    padding: 0;
+    border: none;
+    box-sizing: content-box;
+    font-weight: normal; }
+    .md-calendar-day-header th:first-child {
+      padding-left: 16px; }
+      [dir=rtl] .md-calendar-day-header th:first-child {
+        padding-left: 0;
+        padding-right: 16px; }
+    .md-calendar-day-header th:last-child {
+      padding-right: 16px; }
+      [dir=rtl] .md-calendar-day-header th:last-child {
+        padding-right: 0;
+        padding-left: 16px; }
+
+.md-calendar {
+  table-layout: fixed;
+  border-spacing: 0;
+  border-collapse: collapse; }
+  .md-calendar tr:last-child td {
+    border-bottom-width: 1px;
+    border-bottom-style: solid; }
+  .md-calendar:first-child {
+    border-top: 1px solid transparent; }
+  .md-calendar tbody, .md-calendar td, .md-calendar tr {
+    vertical-align: middle;
+    box-sizing: content-box; }
+
+/** Styles for mdDatepicker. */
+md-datepicker {
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle; }
+
+.md-inline-form md-datepicker {
+  margin-top: 12px; }
+
+.md-datepicker-button {
+  display: inline-block;
+  box-sizing: border-box;
+  background: none;
+  vertical-align: middle;
+  position: relative; }
+  .md-datepicker-button:before {
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    content: '';
+    speak: none; }
+
+.md-datepicker-input {
+  font-size: 14px;
+  box-sizing: border-box;
+  border: none;
+  box-shadow: none;
+  outline: none;
+  background: transparent;
+  min-width: 120px;
+  max-width: 328px;
+  padding: 0 0 5px; }
+  .md-datepicker-input::-ms-clear {
+    display: none; }
+
+._md-datepicker-floating-label > md-datepicker {
+  overflow: visible; }
+  ._md-datepicker-floating-label > md-datepicker .md-datepicker-input-container {
+    border: none; }
+  ._md-datepicker-floating-label > md-datepicker .md-datepicker-button {
+    float: left;
+    margin-top: -12px;
+    top: 9.5px; }
+    [dir=rtl] ._md-datepicker-floating-label > md-datepicker .md-datepicker-button {
+      float: right; }
+
+._md-datepicker-floating-label .md-input {
+  float: none; }
+
+._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
+  right: 18px;
+  left: auto;
+  width: calc(100% - 84px); }
+  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
+    right: auto; }
+  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon > label:not(.md-no-float):not(.md-container-ignore) {
+    left: 18px; }
+
+._md-datepicker-floating-label._md-datepicker-has-calendar-icon .md-input-message-animation {
+  margin-left: 64px; }
+  [dir=rtl] ._md-datepicker-floating-label._md-datepicker-has-calendar-icon .md-input-message-animation {
+    margin-left: auto;
+    margin-right: 64px; }
+
+._md-datepicker-has-triangle-icon {
+  padding-right: 18px;
+  margin-right: -18px; }
+  [dir=rtl] ._md-datepicker-has-triangle-icon {
+    padding-right: 0;
+    padding-left: 18px; }
+  [dir=rtl] ._md-datepicker-has-triangle-icon {
+    margin-right: auto;
+    margin-left: -18px; }
+
+.md-datepicker-input-container {
+  position: relative;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  display: inline-block;
+  width: auto; }
+  .md-icon-button + .md-datepicker-input-container {
+    margin-left: 12px; }
+    [dir=rtl] .md-icon-button + .md-datepicker-input-container {
+      margin-left: auto;
+      margin-right: 12px; }
+  .md-datepicker-input-container.md-datepicker-focused {
+    border-bottom-width: 2px; }
+
+.md-datepicker-is-showing .md-scroll-mask {
+  z-index: 99; }
+
+.md-datepicker-calendar-pane {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  z-index: 100;
+  border-width: 1px;
+  border-style: solid;
+  background: transparent;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: 0 0;
+          transform-origin: 0 0;
+  transition: -webkit-transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.2s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  .md-datepicker-calendar-pane.md-pane-open {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+
+.md-datepicker-input-mask {
+  height: 40px;
+  width: 340px;
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  pointer-events: none;
+  cursor: text; }
+
+.md-datepicker-calendar {
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.5, 0, 0.25, 1); }
+  .md-pane-open .md-datepicker-calendar {
+    opacity: 1; }
+  .md-datepicker-calendar md-calendar:focus {
+    outline: none; }
+
+.md-datepicker-expand-triangle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid; }
+
+.md-datepicker-triangle-button {
+  position: absolute;
+  right: 0;
+  bottom: -2.5px;
+  -webkit-transform: translateX(45%);
+          transform: translateX(45%); }
+  [dir=rtl] .md-datepicker-triangle-button {
+    right: auto;
+    left: 0; }
+  [dir=rtl] .md-datepicker-triangle-button {
+    -webkit-transform: translateX(-45%);
+            transform: translateX(-45%); }
+
+.md-datepicker-triangle-button.md-button.md-icon-button {
+  height: 36px;
+  width: 36px;
+  position: absolute;
+  padding: 8px; }
+
+md-datepicker[disabled] .md-datepicker-input-container {
+  border-bottom-color: transparent; }
+
+md-datepicker[disabled] .md-datepicker-triangle-button {
+  display: none; }
+
+.md-datepicker-open {
+  overflow: hidden; }
+  .md-datepicker-open .md-datepicker-input-container,
+  .md-datepicker-open input.md-input {
+    border-bottom-color: transparent; }
+  .md-datepicker-open .md-datepicker-triangle-button,
+  .md-datepicker-open.md-input-has-value > label,
+  .md-datepicker-open.md-input-has-placeholder > label {
+    display: none; }
+
+.md-datepicker-pos-adjusted .md-datepicker-input-mask {
+  display: none; }
+
+.md-datepicker-calendar-pane .md-calendar {
+  -webkit-transform: translateY(-85px);
+          transform: translateY(-85px);
+  transition: -webkit-transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1), -webkit-transform 0.65s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition-delay: 0.125s; }
+
+.md-datepicker-calendar-pane.md-pane-open .md-calendar {
+  -webkit-transform: translateY(0);
+          transform: translateY(0); }
+
 md-input-container {
   display: inline-block;
   position: relative;
@@ -2139,7 +2139,7 @@ md-input-container {
   md-input-container.md-input-has-value .md-placeholder {
     transition: none;
     opacity: 0; }
-  md-input-container:not(.md-input-has-value) input:not(:focus) {
+  md-input-container:not(.md-input-has-value):not(.md-input-has-placeholder) input:not(:focus) {
     color: transparent; }
   md-input-container:not(.md-input-has-value) input:not(:focus)::-webkit-datetime-edit-ampm-field,
   md-input-container:not(.md-input-has-value) input:not(:focus)::-webkit-datetime-edit-day-field,
@@ -4220,6 +4220,12 @@ md-slider-container {
     z-index: 1;
     position: relative; }
 
+[md-swipe-left], [md-swipe-right] {
+  touch-action: pan-y; }
+
+[md-swipe-up], [md-swipe-down] {
+  touch-action: pan-x; }
+
 .md-inline-form md-switch {
   margin-top: 18px;
   margin-bottom: 19px; }
@@ -4357,12 +4363,6 @@ md-switch {
     background-color: #9E9E9E; }
   md-switch.md-default-theme .md-thumb {
     background-color: #fff; } }
-
-[md-swipe-left], [md-swipe-right] {
-  touch-action: pan-y; }
-
-[md-swipe-up], [md-swipe-down] {
-  touch-action: pan-x; }
 
 @-webkit-keyframes md-tab-content-hide {
   0% {
@@ -4643,160 +4643,6 @@ md-toolbar + md-tabs, md-toolbar + md-dialog-content md-tabs {
   border-top-left-radius: 0;
   border-top-right-radius: 0; }
 
-.md-toast-text {
-  padding: 0 6px; }
-
-md-toast {
-  position: absolute;
-  z-index: 105;
-  box-sizing: border-box;
-  cursor: default;
-  overflow: hidden;
-  padding: 8px;
-  opacity: 1;
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-  /* Transition differently when swiping */
-  /*
-   * When the toast doesn't take up the whole screen,
-   * make it rotate when the user swipes it away
-   */ }
-  md-toast .md-toast-content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    max-height: 168px;
-    max-width: 100%;
-    min-height: 48px;
-    padding: 0 18px;
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
-    border-radius: 2px;
-    font-size: 14px;
-    overflow: hidden;
-    -webkit-transform: translate3d(0, 0, 0) rotateZ(0deg);
-            transform: translate3d(0, 0, 0) rotateZ(0deg);
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-    justify-content: flex-start; }
-    md-toast .md-toast-content::before {
-      content: '';
-      min-height: 48px;
-      visibility: hidden;
-      display: inline-block; }
-    [dir=rtl] md-toast .md-toast-content {
-      justify-content: flex-end; }
-    md-toast .md-toast-content span {
-      flex: 1 1 0%;
-      box-sizing: border-box;
-      min-width: 0; }
-  md-toast.md-capsule {
-    border-radius: 24px; }
-    md-toast.md-capsule .md-toast-content {
-      border-radius: 24px; }
-  md-toast.ng-leave-active .md-toast-content {
-    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2); }
-  md-toast.md-swipeleft .md-toast-content, md-toast.md-swiperight .md-toast-content, md-toast.md-swipeup .md-toast-content, md-toast.md-swipedown .md-toast-content {
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
-  md-toast.ng-enter {
-    opacity: 0; }
-    md-toast.ng-enter .md-toast-content {
-      -webkit-transform: translate3d(0, 100%, 0);
-              transform: translate3d(0, 100%, 0); }
-    md-toast.ng-enter.md-top .md-toast-content {
-      -webkit-transform: translate3d(0, -100%, 0);
-              transform: translate3d(0, -100%, 0); }
-    md-toast.ng-enter.ng-enter-active {
-      opacity: 1; }
-      md-toast.ng-enter.ng-enter-active .md-toast-content {
-        -webkit-transform: translate3d(0, 0, 0);
-                transform: translate3d(0, 0, 0); }
-  md-toast.ng-leave.ng-leave-active .md-toast-content {
-    opacity: 0;
-    -webkit-transform: translate3d(0, 100%, 0);
-            transform: translate3d(0, 100%, 0); }
-  md-toast.ng-leave.ng-leave-active.md-swipeup .md-toast-content {
-    -webkit-transform: translate3d(0, -50%, 0);
-            transform: translate3d(0, -50%, 0); }
-  md-toast.ng-leave.ng-leave-active.md-swipedown .md-toast-content {
-    -webkit-transform: translate3d(0, 50%, 0);
-            transform: translate3d(0, 50%, 0); }
-  md-toast.ng-leave.ng-leave-active.md-top .md-toast-content {
-    -webkit-transform: translate3d(0, -100%, 0);
-            transform: translate3d(0, -100%, 0); }
-  md-toast .md-action {
-    line-height: 19px;
-    margin-left: 24px;
-    margin-right: 0;
-    cursor: pointer;
-    text-transform: uppercase;
-    float: right; }
-  md-toast .md-button {
-    min-width: 0;
-    margin-right: 0;
-    margin-left: 12px; }
-    [dir=rtl] md-toast .md-button {
-      margin-right: 12px; }
-    [dir=rtl] md-toast .md-button {
-      margin-left: 0; }
-
-@media (max-width: 959px) {
-  md-toast {
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-width: 100%;
-    min-width: 0;
-    border-radius: 0;
-    bottom: 0;
-    padding: 0; }
-    md-toast.ng-leave.ng-leave-active.md-swipeup .md-toast-content {
-      -webkit-transform: translate3d(0, -50%, 0);
-              transform: translate3d(0, -50%, 0); }
-    md-toast.ng-leave.ng-leave-active.md-swipedown .md-toast-content {
-      -webkit-transform: translate3d(0, 50%, 0);
-              transform: translate3d(0, 50%, 0); } }
-
-@media (min-width: 960px) {
-  md-toast {
-    min-width: 304px;
-    /*
-   * When the toast doesn't take up the whole screen,
-   * make it rotate when the user swipes it away
-   */ }
-    md-toast.md-bottom {
-      bottom: 0; }
-    md-toast.md-left {
-      left: 0; }
-    md-toast.md-right {
-      right: 0; }
-    md-toast.md-top {
-      top: 0; }
-    md-toast._md-start {
-      left: 0; }
-      [dir=rtl] md-toast._md-start {
-        left: auto;
-        right: 0; }
-    md-toast._md-end {
-      right: 0; }
-      [dir=rtl] md-toast._md-end {
-        right: auto;
-        left: 0; }
-    md-toast.ng-leave.ng-leave-active.md-swipeleft .md-toast-content {
-      -webkit-transform: translate3d(-50%, 0, 0);
-              transform: translate3d(-50%, 0, 0); }
-    md-toast.ng-leave.ng-leave-active.md-swiperight .md-toast-content {
-      -webkit-transform: translate3d(50%, 0, 0);
-              transform: translate3d(50%, 0, 0); } }
-
-@media (min-width: 1920px) {
-  md-toast .md-toast-content {
-    max-width: 568px; } }
-
-@media screen and (-ms-high-contrast: active) {
-  md-toast {
-    border: 1px solid #fff; } }
-
-.md-toast-animating {
-  overflow: hidden !important; }
-
 md-toolbar {
   box-sizing: border-box;
   display: flex;
@@ -4973,6 +4819,160 @@ md-toolbar {
     -webkit-transform: scale(0);
             transform: scale(0);
     opacity: 0; }
+
+.md-toast-text {
+  padding: 0 6px; }
+
+md-toast {
+  position: absolute;
+  z-index: 105;
+  box-sizing: border-box;
+  cursor: default;
+  overflow: hidden;
+  padding: 8px;
+  opacity: 1;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Transition differently when swiping */
+  /*
+   * When the toast doesn't take up the whole screen,
+   * make it rotate when the user swipes it away
+   */ }
+  md-toast .md-toast-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    max-height: 168px;
+    max-width: 100%;
+    min-height: 48px;
+    padding: 0 18px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+    border-radius: 2px;
+    font-size: 14px;
+    overflow: hidden;
+    -webkit-transform: translate3d(0, 0, 0) rotateZ(0deg);
+            transform: translate3d(0, 0, 0) rotateZ(0deg);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    justify-content: flex-start; }
+    md-toast .md-toast-content::before {
+      content: '';
+      min-height: 48px;
+      visibility: hidden;
+      display: inline-block; }
+    [dir=rtl] md-toast .md-toast-content {
+      justify-content: flex-end; }
+    md-toast .md-toast-content span {
+      flex: 1 1 0%;
+      box-sizing: border-box;
+      min-width: 0; }
+  md-toast.md-capsule {
+    border-radius: 24px; }
+    md-toast.md-capsule .md-toast-content {
+      border-radius: 24px; }
+  md-toast.ng-leave-active .md-toast-content {
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2); }
+  md-toast.md-swipeleft .md-toast-content, md-toast.md-swiperight .md-toast-content, md-toast.md-swipeup .md-toast-content, md-toast.md-swipedown .md-toast-content {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); }
+  md-toast.ng-enter {
+    opacity: 0; }
+    md-toast.ng-enter .md-toast-content {
+      -webkit-transform: translate3d(0, 100%, 0);
+              transform: translate3d(0, 100%, 0); }
+    md-toast.ng-enter.md-top .md-toast-content {
+      -webkit-transform: translate3d(0, -100%, 0);
+              transform: translate3d(0, -100%, 0); }
+    md-toast.ng-enter.ng-enter-active {
+      opacity: 1; }
+      md-toast.ng-enter.ng-enter-active .md-toast-content {
+        -webkit-transform: translate3d(0, 0, 0);
+                transform: translate3d(0, 0, 0); }
+  md-toast.ng-leave.ng-leave-active .md-toast-content {
+    opacity: 0;
+    -webkit-transform: translate3d(0, 100%, 0);
+            transform: translate3d(0, 100%, 0); }
+  md-toast.ng-leave.ng-leave-active.md-swipeup .md-toast-content {
+    -webkit-transform: translate3d(0, -50%, 0);
+            transform: translate3d(0, -50%, 0); }
+  md-toast.ng-leave.ng-leave-active.md-swipedown .md-toast-content {
+    -webkit-transform: translate3d(0, 50%, 0);
+            transform: translate3d(0, 50%, 0); }
+  md-toast.ng-leave.ng-leave-active.md-top .md-toast-content {
+    -webkit-transform: translate3d(0, -100%, 0);
+            transform: translate3d(0, -100%, 0); }
+  md-toast .md-action {
+    line-height: 19px;
+    margin-left: 24px;
+    margin-right: 0;
+    cursor: pointer;
+    text-transform: uppercase;
+    float: right; }
+  md-toast .md-button {
+    min-width: 0;
+    margin-right: 0;
+    margin-left: 12px; }
+    [dir=rtl] md-toast .md-button {
+      margin-right: 12px; }
+    [dir=rtl] md-toast .md-button {
+      margin-left: 0; }
+
+@media (max-width: 959px) {
+  md-toast {
+    left: 0;
+    right: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 0;
+    bottom: 0;
+    padding: 0; }
+    md-toast.ng-leave.ng-leave-active.md-swipeup .md-toast-content {
+      -webkit-transform: translate3d(0, -50%, 0);
+              transform: translate3d(0, -50%, 0); }
+    md-toast.ng-leave.ng-leave-active.md-swipedown .md-toast-content {
+      -webkit-transform: translate3d(0, 50%, 0);
+              transform: translate3d(0, 50%, 0); } }
+
+@media (min-width: 960px) {
+  md-toast {
+    min-width: 304px;
+    /*
+   * When the toast doesn't take up the whole screen,
+   * make it rotate when the user swipes it away
+   */ }
+    md-toast.md-bottom {
+      bottom: 0; }
+    md-toast.md-left {
+      left: 0; }
+    md-toast.md-right {
+      right: 0; }
+    md-toast.md-top {
+      top: 0; }
+    md-toast._md-start {
+      left: 0; }
+      [dir=rtl] md-toast._md-start {
+        left: auto;
+        right: 0; }
+    md-toast._md-end {
+      right: 0; }
+      [dir=rtl] md-toast._md-end {
+        right: auto;
+        left: 0; }
+    md-toast.ng-leave.ng-leave-active.md-swipeleft .md-toast-content {
+      -webkit-transform: translate3d(-50%, 0, 0);
+              transform: translate3d(-50%, 0, 0); }
+    md-toast.ng-leave.ng-leave-active.md-swiperight .md-toast-content {
+      -webkit-transform: translate3d(50%, 0, 0);
+              transform: translate3d(50%, 0, 0); } }
+
+@media (min-width: 1920px) {
+  md-toast .md-toast-content {
+    max-width: 568px; } }
+
+@media screen and (-ms-high-contrast: active) {
+  md-toast {
+    border: 1px solid #fff; } }
+
+.md-toast-animating {
+  overflow: hidden !important; }
 
 .md-truncate {
   overflow: hidden;
