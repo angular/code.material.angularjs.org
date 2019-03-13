@@ -10900,9 +10900,10 @@ function MdButtonDirective($mdButtonInkRipple, $mdTheming, $mdAria, $mdInteracti
     // Use async expect to support possible bindings in the button label
     $mdAria.expectWithoutText(element, 'aria-label');
 
-    // For anchor elements, we have to set tabindex manually when the
-    // element is disabled
-    if (isAnchor(attr) && angular.isDefined(attr.ngDisabled)) {
+    // For anchor elements, we have to set tabindex manually when the element is disabled.
+    // We don't do this for md-nav-bar anchors as the component manages its own tabindex values.
+    if (isAnchor(attr) && angular.isDefined(attr.ngDisabled) &&
+        !element.hasClass('_md-nav-button')) {
       scope.$watch(attr.ngDisabled, function(isDisabled) {
         element.attr('tabindex', isDisabled ? -1 : 0);
       });
@@ -25498,7 +25499,7 @@ MdNavItemController.prototype.getButtonEl = function() {
 };
 
 /**
- * Set the selected state of the tab and update the tabindex.
+ * Set the selected state of the tab and updates the tabindex.
  * This function is called for the oldTab and newTab when selection changes.
  * @param {boolean} isSelected true to select the tab, false to deselect the tab
  */
