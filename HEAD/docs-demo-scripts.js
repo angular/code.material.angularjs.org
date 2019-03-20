@@ -87,70 +87,6 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-      return deferred.promise;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -249,6 +185,70 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -1298,6 +1298,45 @@ angular.module('dialogDemo1', ['ngMaterial'])
   }
 });
 
+angular.module('dialogDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope, $mdDialog) {
+  $scope.openFromLeft = function() {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Opening from the left')
+        .textContent('Closing to the right!')
+        .ariaLabel('Left to right demo')
+        .ok('Nice!')
+        // You can specify either sting with query selector
+        .openFrom('#left')
+        // or an element
+        .closeTo(angular.element(document.querySelector('#right')))
+    );
+  };
+
+  $scope.openOffscreen = function() {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Opening from offscreen')
+        .textContent('Closing to offscreen')
+        .ariaLabel('Offscreen Demo')
+        .ok('Amazing!')
+        // Or you can specify the rect to do the transition from
+        .openFrom({
+          top: -50,
+          width: 30,
+          height: 80
+        })
+        .closeTo({
+          left: 1500
+        })
+    );
+  };
+});
+
 angular.module('dialogDemo3', ['ngMaterial'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('red')
@@ -1383,45 +1422,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
       notes: " I'll be in your neighborhood doing errands"
     }];
   });
-
-angular.module('dialogDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope, $mdDialog) {
-  $scope.openFromLeft = function() {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Opening from the left')
-        .textContent('Closing to the right!')
-        .ariaLabel('Left to right demo')
-        .ok('Nice!')
-        // You can specify either sting with query selector
-        .openFrom('#left')
-        // or an element
-        .closeTo(angular.element(document.querySelector('#right')))
-    );
-  };
-
-  $scope.openOffscreen = function() {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Opening from offscreen')
-        .textContent('Closing to offscreen')
-        .ariaLabel('Offscreen Demo')
-        .ok('Amazing!')
-        // Or you can specify the rect to do the transition from
-        .openFrom({
-          top: -50,
-          width: 30,
-          height: 80
-        })
-        .closeTo({
-          left: 1500
-        })
-    );
-  };
-});
 
 (function() {
   'use strict';
@@ -2790,38 +2790,6 @@ angular.module('progressLinearDemo1', ['ngMaterial'])
     }, 7200, 0, true);
   }]);
 
-angular
-  .module('radioDemo2', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
-    var self = this;
-
-    self.contacts = [{
-      'id': 1,
-      'fullName': 'María Guadalupe',
-      'lastName': 'Guadalupe',
-      'title': "CEO, Found"
-    }, {
-      'id': 2,
-      'fullName': 'Gabriel García Márquez',
-      'lastName': 'Márquez',
-      'title': "VP Sales & Marketing"
-    }, {
-      'id': 3,
-      'fullName': 'Miguel de Cervantes',
-      'lastName': 'Cervantes',
-      'title': "Manager, Operations"
-    }, {
-      'id': 4,
-      'fullName': 'Pacorro de Castel',
-      'lastName': 'Castel',
-      'title': "Security"
-    }];
-    self.selectedId = 2;
-    self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
-    };
-  });
-
 
 angular
   .module('radioDemo1', ['ngMaterial'])
@@ -2871,6 +2839,38 @@ angular
   })
   .config(function($mdIconProvider) {
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  });
+
+angular
+  .module('radioDemo2', ['ngMaterial'])
+  .controller('ContactController', function($scope, $filter) {
+    var self = this;
+
+    self.contacts = [{
+      'id': 1,
+      'fullName': 'María Guadalupe',
+      'lastName': 'Guadalupe',
+      'title': "CEO, Found"
+    }, {
+      'id': 2,
+      'fullName': 'Gabriel García Márquez',
+      'lastName': 'Márquez',
+      'title': "VP Sales & Marketing"
+    }, {
+      'id': 3,
+      'fullName': 'Miguel de Cervantes',
+      'lastName': 'Cervantes',
+      'title': "Manager, Operations"
+    }, {
+      'id': 4,
+      'fullName': 'Pacorro de Castel',
+      'lastName': 'Castel',
+      'title': "Security"
+    }];
+    self.selectedId = 2;
+    self.selectedUser = function() {
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    };
   });
 
 (function () {
@@ -3124,40 +3124,6 @@ angular.module('sliderDemo2', ['ngMaterial'])
   $scope.master = Math.floor(Math.random() * 100);
 });
 
-angular.module('demoSwipe', ['ngMaterial'])
-  .controller('demoSwipeCtrl', function($scope, $log) {
-    $scope.onSwipeLeft = function(ev, target) {
-      alert('You swiped left!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeRight = function(ev, target) {
-      alert('You swiped right!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-    $scope.onSwipeUp = function(ev, target) {
-      alert('You swiped up!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-
-    $scope.onSwipeDown = function(ev, target) {
-      alert('You swiped down!!');
-
-      $log.log('Event Target: ', ev.target);
-      $log.log('Event Current Target: ', ev.currentTarget);
-      $log.log('Original Current Target: ', target.current);
-    };
-  });
-
 
 angular.module('subheaderBasicDemo', ['ngMaterial'])
 .config(function($mdThemingProvider) {
@@ -3246,6 +3212,40 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
       },
     ];
 });
+
+angular.module('demoSwipe', ['ngMaterial'])
+  .controller('demoSwipeCtrl', function($scope, $log) {
+    $scope.onSwipeLeft = function(ev, target) {
+      alert('You swiped left!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeRight = function(ev, target) {
+      alert('You swiped right!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+    $scope.onSwipeUp = function(ev, target) {
+      alert('You swiped up!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+
+    $scope.onSwipeDown = function(ev, target) {
+      alert('You swiped down!!');
+
+      $log.log('Event Target: ', ev.target);
+      $log.log('Event Current Target: ', ev.currentTarget);
+      $log.log('Original Current Target: ', target.current);
+    };
+  });
 
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
