@@ -2799,8 +2799,8 @@ angular.module('docsApp').constant('DEMOS', [
     "demos": [
       {
         "ngModule": {
-          "name": "sliderDemo1",
-          "module": "sliderDemo1",
+          "name": "sliderDemoBasic",
+          "module": "sliderDemoBasic",
           "dependencies": [
             "ngMaterial"
           ]
@@ -2828,8 +2828,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "sliderDemo2",
-          "module": "sliderDemo2",
+          "name": "sliderDemoVertical",
+          "module": "sliderDemoVertical",
           "dependencies": [
             "ngMaterial"
           ]
