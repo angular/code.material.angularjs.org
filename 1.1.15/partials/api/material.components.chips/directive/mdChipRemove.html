@@ -1,0 +1,63 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Indicates that the associated element should be used as the delete button template for all chips.
+The associated element must be a child of <code>md-chips</code>.</p>
+<p>The provided button template will be appended to each chip and will remove the associated chip
+on click.</p>
+<p>The button is not styled or themed based on the theme set on the <code>md-chips</code> component. A theme
+class and custom icon can be specified in your template.</p>
+<p>You can also specify the <code>type</code> of the button in your template.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="with-standard-chips">With Standard Chips</h3>
+<hljs lang="html">
+  <md-chips ...>
+    <button md-chip-remove class="md-primary" type="button" aria-label="Remove {{$chip}}">
+      <md-icon md-svg-icon="md-close"></md-icon>
+    </button>
+  </md-chips>
+</hljs>
+
+<h3 id="with-object-chips">With Object Chips</h3>
+<hljs lang="html">
+  <md-chips ...>
+    <button md-chip-remove class="md-primary" type="button" aria-label="Remove {{$chip.name}}">
+      <md-icon md-svg-icon="md-close"></md-icon>
+    </button>
+  </md-chips>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>

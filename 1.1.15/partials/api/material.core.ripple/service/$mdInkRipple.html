@@ -1,0 +1,173 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p><code>$mdInkRipple</code> is a service for adding ripples to any element</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <hljs lang="js">
+app.factory(&#39;$myElementInkRipple&#39;, function($mdInkRipple) {
+  return {
+    attach: function (scope, element, options) {
+      return $mdInkRipple.attach(scope, element, angular.extend({
+        center: false,
+        dimBackground: true
+      }, options));
+    }
+  };
+});
+
+app.controller(&#39;myController&#39;, function ($scope, $element, $myElementInkRipple) {
+  $scope.onClick = function (ev) {
+    $myElementInkRipple.attach($scope, angular.element(ev.target), { center: true });
+  }
+});
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="attach">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdInkRipple.attach([scope], [element], [options]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Attaching given scope, element and options to inkRipple controller</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          scope
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>Scope within the current context</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          element
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>The element the ripple effect should be applied to</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          options
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>(Optional) Configuration options to override the defaultRipple configuration</p>
+<ul>
+<li><code>center</code> -  Whether the ripple should start from the center of the container element</li>
+<li><code>dimBackground</code> - Whether the background should be dimmed with the ripple color</li>
+<li><code>colorElement</code> - The element the ripple should take its color from, defined by css property <code>color</code></li>
+<li><code>fitRipple</code> - Whether the ripple should fill the element</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
