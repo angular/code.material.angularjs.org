@@ -1,0 +1,159 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>In some scenarios on mobile devices (without jQuery), the click events should NOT be hijacked.
+<code>$mdGestureProvider</code> is used to configure the Gesture module to ignore or skip click hijacking on mobile
+devices.</p>
+<p>You can also change the max click distance, <code>6px</code> by default, if you have issues on some touch screens.</p>
+<hljs lang="js">
+  app.config(function($mdGestureProvider) {
+
+    // For mobile devices without jQuery loaded, do not
+    // intercept click events during the capture phase.
+    $mdGestureProvider.skipClickHijack();
+
+    // If hijacking clicks, you may want to change the default click distance
+    $mdGestureProvider.setMaxClickDistance(12);
+  });
+</hljs>
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="disableAll">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdGestureProvider.disableAll();
+</code>
+      </h3>
+      <div class="service-desc"><p>Disable all gesture detection. This can be beneficial to application performance
+and memory usage.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="skipClickHijack">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdGestureProvider.skipClickHijack();
+</code>
+      </h3>
+      <div class="service-desc"><p>Tell the AngularJS Material Gesture module to skip (or ignore) click hijacking on mobile devices.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    
+    <li id="setMaxClickDistance">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdGestureProvider.setMaxClickDistance(clickDistance);
+</code>
+      </h3>
+      <div class="service-desc"><p>Set the max distance from the origin of the touch event to trigger touch handlers.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* clickDistance</b>
+          
+          <span hide show-sm>
+</span>
+        </td>
+        <td style="white-space: nowrap;">
+</td>
+        <td class="description">
+          <p>{string} Distance in pixels. I.e. <code>12px</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
