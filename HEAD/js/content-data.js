@@ -19,6 +19,14 @@ angular.module('docsApp').constant('PAGES', {
       "label": "Typography"
     }
   ],
+  "migration.md": [
+    {
+      "name": "Migration to Angular Material",
+      "outputPath": "partials/migration.html",
+      "url": "/migration",
+      "label": "Migration to Angular Material"
+    }
+  ],
   "performance": [
     {
       "name": "Internet Explorer",

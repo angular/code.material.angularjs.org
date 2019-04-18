@@ -15,10 +15,10 @@
 
 
 <div class="api-profile-description">
-  <p>With only defining themes, one couldn&#39;t get non AngularJS Material elements colored with
-Material colors, <code>$mdColors</code> service is used by the md-color directive to convert the
-1..n color expressions to RGBA values and will apply those values to element as CSS property
-values.</p>
+  <p>By default, defining a theme does not make its colors available for applying to non AngularJS
+Material elements. The <code>$mdColors</code> service is used by the <code>md-color</code> directive to convert a
+set of color expressions to RGBA values and then apply those values to the element as CSS
+property values.</p>
 
 </div>
 
@@ -31,12 +31,25 @@ values.</p>
 
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
-      <hljs lang="js">
+      <p>Getting a color based on a theme</p>
+ <hljs lang="js">
    angular.controller(&#39;myCtrl&#39;, function ($mdColors) {
-     var color = $mdColors.getThemeColor(&#39;myTheme-red-200-0.5&#39;);
+     var color = $mdColors.getThemeColor(&#39;myTheme-primary-900-0.5&#39;);
      ...
    });
  </hljs>
+
+<p>Applying a color from a palette to an element</p>
+<hljs lang="js">
+  app.directive(&#39;myDirective&#39;, function($mdColors) {
+    return {
+      ...
+      link: function (scope, elem) {
+        $mdColors.applyThemeColors(elem, {color: &#39;red-A200-0.2&#39;});
+      }
+   }
+  });
+</hljs>
   </section>
 
 
@@ -52,8 +65,8 @@ values.</p>
         <code class="method-function-syntax">$mdColors.applyThemeColors(element, colorExpression);
 </code>
       </h3>
-      <div class="service-desc"><p>Gets a color json object, keys are css properties and values are string of the wanted color
-Then calculate the rgba() values based on the theme color parts</p>
+      <div class="service-desc"><p>Lookup a set of colors by hue, theme, and palette, then apply those colors
+with the provided opacity (via <code>rgba()</code>) to the specified CSS property.</p>
 </div>
 
       <div class="method-param-table">
@@ -82,7 +95,7 @@ Then calculate the rgba() values based on the theme color parts</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-angular">angular.element</code></td>
         <td class="description">
-          <p>the element to apply the styles on.</p>
+          <p>the element to apply the styles to</p>
 
           
         </td>
@@ -100,8 +113,10 @@ Then calculate the rgba() values based on the theme color parts</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
-          <p>json object, keys are css properties and values are string of
-the wanted color, for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
+          <p>Keys are CSS properties and values are strings representing
+the <code>theme-palette-hue-opacity</code> of the desired color. For example:
+<code>{&#39;color&#39;: &#39;red-A200-0.3&#39;, &#39;background-color&#39;: &#39;myTheme-primary-700-0.8&#39;}</code>. Theme, hue, and
+opacity are optional.</p>
 
           
         </td>
@@ -132,7 +147,8 @@ the wanted color, for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
         <code class="method-function-syntax">$mdColors.getThemeColor(expression);
 </code>
       </h3>
-      <div class="service-desc"><p>Get parsed color from expression</p>
+      <div class="service-desc"><p>Get a parsed RGBA color using a string representing the <code>theme-palette-hue-opacity</code> of the
+desired color.</p>
 </div>
 
       <div class="method-param-table">
@@ -161,7 +177,8 @@ the wanted color, for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>string of a color expression (for instance <code>&#39;red-700-0.8&#39;</code>)</p>
+          <p>color expression like <code>&#39;red-A200-0.3&#39;</code> or
+ <code>&#39;myTheme-primary-700-0.8&#39;</code>. Theme, hue, and opacity are optional.</p>
 
           
         </td>
@@ -191,7 +208,7 @@ the wanted color, for example: <code>{color: &#39;red-A200-0.3&#39;}</code>.</p>
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-string">string</code></td>
-    <td class="description"><p>a css color expression (for instance <code>rgba(211, 47, 47, 0.8)</code>)</p>
+    <td class="description"><p>a CSS color value like <code>rgba(211, 47, 47, 0.8)</code></p>
 </td>
   </tr>
   </tbody>
