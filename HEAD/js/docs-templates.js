@@ -351,16 +351,17 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </p>\n' +
     '    <ul>\n' +
     '      <li>\n' +
-    '        Current AngularJS Material development efforts are focused on bug fixes, accessibility, and\n' +
-    '        minor improvements.\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        The Angular Material library (for Angular v2+) can be found in the\n' +
-    '        <a href="https://github.com/angular/material2" target="_blank" rel="noopener">angular/material2</a>\n' +
-    '        GitHub repository.\n' +
+    '        Current development efforts are focused on bug fixes, accessibility, performance, and minor\n' +
+    '        enhancements.\n' +
     '      </li>\n' +
     '    </ul>\n' +
-    '\n' +
+    '    <br/>\n' +
+    '    <i>\n' +
+    '      The Angular Material and Component Dev Kit (CDK) libraries (for Angular v2+) can be found in the\n' +
+    '      <a href="https://github.com/angular/components" target="_blank" rel="noopener">angular/components</a>\n' +
+    '      GitHub repository.\n' +
+    '    </i>\n' +
+    '    <br/>\n' +
     '    <br/>\n' +
     '    <h2 class="md-headline">The Latest Material Design</h2>\n' +
     '    <p>\n' +
@@ -370,7 +371,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      (<a href="https://design.google/library/io-2018-our-definitive-guide-design/" target="_blank" rel="noopener">recap blog post</a>).\n' +
     '      For an implementation of this new\n' +
     '      <a href="https://material.io/design" target="_blank" rel="noopener">Material Design Specification</a>,\n' +
-    '      please see the <a href="https://github.com/angular/material2" target="_blank" rel="noopener">Angular Material</a>\n' +
+    '      please see the <a href="https://github.com/angular/components" target="_blank" rel="noopener">Angular Material</a>\n' +
     '      project which is built for <a href="https://angular.io" target="_blank" rel="noopener">Angular</a>\n' +
     '      developers.\n' +
     '    </p>\n' +
