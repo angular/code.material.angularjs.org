@@ -84,6 +84,168 @@
   }
 })();
 
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
+
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+})
+
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+
+  $scope.items = [
+    { name: 'Share', icon: 'share' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
+
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/baseline-share-24px.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.selectedItem  = null;
+    self.searchText    = null;
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
+      var deferred = $q.defer();
+      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+      return deferred.promise;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
 (function () {
   'use strict';
   angular
@@ -194,17 +356,41 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
-  function DemoCtrl ($timeout, $q) {
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      });
+    };
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
     var self = this;
 
     // list of `state` value/display objects
     self.states        = loadAll();
-    self.selectedItem  = null;
-    self.searchText    = null;
     self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
 
     // ******************************
     // Internal methods
@@ -215,10 +401,7 @@
      * remote dataservice call.
      */
     function querySearch (query) {
-      var results = query ? self.states.filter(createFilterFor(query)) : self.states;
-      var deferred = $q.defer();
-      $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-      return deferred.promise;
+      return query ? self.states.filter(createFilterFor(query)) : self.states;
     }
 
     /**
@@ -374,188 +557,13 @@
   }
 })();
 
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      });
-    };
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter(createFilterFor(query)) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
-
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-})
-
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
-
-  $scope.items = [
-    { name: 'Share', icon: 'share' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
-
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
-
-    var urls = [
-      'img/icons/baseline-share-24px.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
 
 
 angular.module('cardDemo1', ['ngMaterial'])
@@ -585,14 +593,6 @@ angular.module('cardDemo3', ['ngMaterial'])
 }])
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
-});
-
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
 });
 
 
@@ -1065,6 +1065,125 @@ angular.module('contentDemo1', ['ngMaterial'])
 
 });
 
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
+});
+
+angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() {
+  this.startDate = new Date();
+  this.endDate = new Date();
+  this.endDate.setDate(this.endDate.getDate() + 5);
+});
+
+(function () {
+  'use strict';
+
+  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
+    /**
+     * @param date {Date}
+     * @returns {string} string representation of the provided date
+     */
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('L') : '';
+    };
+
+    /**
+     * @param dateString {string} string that can be converted to a Date
+     * @returns {Date} JavaScript Date object created from the provided dateString
+     */
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
+
+(function () {
+  'use strict';
+
+  angular.module('customDatepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
+    /**
+     * @param date {Date}
+     * @returns {string} string representation of the provided date
+     */
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('M/D') : '';
+    };
+
+    /**
+     * @param dateString {string} string that can be converted to a Date
+     * @returns {Date} JavaScript Date object created from the provided dateString
+     */
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'M/D', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
+    /**
+     * Check if the date string is complete enough to parse. This avoids calls to parseDate
+     * when the user has only typed in the first digit or two of the date.
+     * Allow only a day and month to be specified.
+     * @param dateString {string} date string to evaluate for parsing
+     * @returns {boolean} true if the date string is complete enough to be parsed
+     */
+    $mdDateLocaleProvider.isDateComplete = function(dateString) {
+      dateString = dateString.trim();
+      // Look for two chunks of content (either numbers or text) separated by delimiters.
+      var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
+      return re.test(dateString);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
+
+angular.module('datepickerValidations', ['ngMaterial', 'ngMessages'])
+.controller('AppCtrl', function() {
+  this.myDate = new Date();
+
+  this.minDate = new Date(
+    this.myDate.getFullYear(),
+    this.myDate.getMonth() - 2,
+    this.myDate.getDate()
+  );
+
+  this.maxDate = new Date(
+    this.myDate.getFullYear(),
+    this.myDate.getMonth() + 2,
+    this.myDate.getDate()
+  );
+
+  /**
+   * @param {Date} date
+   * @returns {boolean}
+   */
+  this.onlyWeekendsPredicate = function(date) {
+    var day = date.getDay();
+    return day === 0 || day === 6;
+  };
+
+  /**
+   * @param {Date} date
+   * @returns {boolean} return false to disable all odd numbered months, true for even months
+   */
+  this.filter = function(date) {
+    return date.getMonth() % 2;
+  }
+});
+
 angular.module('dialogDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope, $mdDialog) {
@@ -1265,125 +1384,6 @@ angular.module('dialogDemo3', ['ngMaterial'])
     $scope.answer = function(answer) {
       $mdDialog.hide(answer);
     };
-  }
-});
-
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
-});
-
-angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() {
-  this.startDate = new Date();
-  this.endDate = new Date();
-  this.endDate.setDate(this.endDate.getDate() + 5);
-});
-
-(function () {
-  'use strict';
-
-  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
-    /**
-     * @param date {Date}
-     * @returns {string} string representation of the provided date
-     */
-    $mdDateLocaleProvider.formatDate = function(date) {
-      return date ? moment(date).format('L') : '';
-    };
-
-    /**
-     * @param dateString {string} string that can be converted to a Date
-     * @returns {Date} JavaScript Date object created from the provided dateString
-     */
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-  })
-  .controller("AppCtrl", function($log) {
-    this.myDate = new Date();
-
-    this.onDateChanged = function() {
-      $log.log('Updated Date: ', this.myDate);
-    };
-  });
-})();
-
-(function () {
-  'use strict';
-
-  angular.module('customDatepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
-    /**
-     * @param date {Date}
-     * @returns {string} string representation of the provided date
-     */
-    $mdDateLocaleProvider.formatDate = function(date) {
-      return date ? moment(date).format('M/D') : '';
-    };
-
-    /**
-     * @param dateString {string} string that can be converted to a Date
-     * @returns {Date} JavaScript Date object created from the provided dateString
-     */
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'M/D', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-
-    /**
-     * Check if the date string is complete enough to parse. This avoids calls to parseDate
-     * when the user has only typed in the first digit or two of the date.
-     * Allow only a day and month to be specified.
-     * @param dateString {string} date string to evaluate for parsing
-     * @returns {boolean} true if the date string is complete enough to be parsed
-     */
-    $mdDateLocaleProvider.isDateComplete = function(dateString) {
-      dateString = dateString.trim();
-      // Look for two chunks of content (either numbers or text) separated by delimiters.
-      var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
-      return re.test(dateString);
-    };
-  })
-  .controller("AppCtrl", function($log) {
-    this.myDate = new Date();
-
-    this.onDateChanged = function() {
-      $log.log('Updated Date: ', this.myDate);
-    };
-  });
-})();
-
-angular.module('datepickerValidations', ['ngMaterial', 'ngMessages'])
-.controller('AppCtrl', function() {
-  this.myDate = new Date();
-
-  this.minDate = new Date(
-    this.myDate.getFullYear(),
-    this.myDate.getMonth() - 2,
-    this.myDate.getDate()
-  );
-
-  this.maxDate = new Date(
-    this.myDate.getFullYear(),
-    this.myDate.getMonth() + 2,
-    this.myDate.getDate()
-  );
-
-  /**
-   * @param {Date} date
-   * @returns {boolean}
-   */
-  this.onlyWeekendsPredicate = function(date) {
-    var day = date.getDay();
-    return day === 0 || day === 6;
-  };
-
-  /**
-   * @param {Date} date
-   * @returns {boolean} return false to disable all odd numbered months, true for even months
-   */
-  this.filter = function(date) {
-    return date.getMonth() % 2;
   }
 });
 
@@ -1604,30 +1604,6 @@ angular.module('gridListDemo1', ['ngMaterial'])
 
 
 angular
-  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
-  .controller('DemoCtrl', function($scope) {
-      // Specify a list of font-icons with ligatures and color overrides
-      var iconData = [
-            {name: 'accessibility'  , color: "#777" },
-            {name: 'question_answer', color: "rgb(89, 226, 168)" },
-            {name: 'backup'         , color: "#A00" },
-            {name: 'email'          , color: "#00A" }
-          ];
-
-      $scope.fonts = [].concat(iconData);
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:"md-18",padding:0},
-        {size:"md-24",padding:2},
-        {size:"md-36",padding:6},
-        {size:"md-48",padding:10}
-      ];
-
-  });
-
-
-angular
   .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {
       // Create list of font-icon names with color overrides
@@ -1659,6 +1635,30 @@ angular
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');
+  });
+
+
+angular
+  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {
+      // Specify a list of font-icons with ligatures and color overrides
+      var iconData = [
+            {name: 'accessibility'  , color: "#777" },
+            {name: 'question_answer', color: "rgb(89, 226, 168)" },
+            {name: 'backup'         , color: "#A00" },
+            {name: 'email'          , color: "#00A" }
+          ];
+
+      $scope.fonts = [].concat(iconData);
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:"md-18",padding:0},
+        {size:"md-24",padding:2},
+        {size:"md-36",padding:6},
+        {size:"md-48",padding:10}
+      ];
+
   });
 
 angular.module('appDemoSvgIcons', ['ngMaterial'])
@@ -1741,16 +1741,6 @@ angular
 
   });
 
-angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.project = {
-    description: 'Nuclear Missile Defense System',
-    rate: 500,
-    special: true
-  };
-});
-
 angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
 
   .controller('AppCtrl', function($scope) {
@@ -1763,6 +1753,16 @@ angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
       phone: "N/A"
     };
   });
+
+angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.project = {
+    description: 'Nuclear Missile Defense System',
+    rate: 500,
+    special: true
+  };
+});
 
 angular
   .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
@@ -2169,21 +2169,6 @@ angular
   });
 
 (function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-    };
-  }
-})();
-
-(function() {
 'use strict';
 
 angular.module('panelDemo', ['ngMaterial'])
@@ -2356,6 +2341,21 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
   }
 };
 
+})();
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
+  }
 })();
 
 (function() {
@@ -3243,6 +3243,11 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
+(function () {
+  'use strict';
+  angular.module('tabsDemoCenterTabs', ['ngMaterial']);
+})();
+
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
   $scope.data = {
@@ -3257,11 +3262,6 @@ angular.module('switchDemo1', ['ngMaterial'])
     $scope.message = cbState;
   };
 });
-
-(function () {
-  'use strict';
-  angular.module('tabsDemoCenterTabs', ['ngMaterial']);
-})();
 
 angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
