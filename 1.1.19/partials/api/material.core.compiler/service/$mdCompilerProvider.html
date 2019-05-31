@@ -1,0 +1,240 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>$mdCompiler</code> is able to respect the AngularJS <code>$compileProvider.preAssignBindingsEnabled</code>
+state when using AngularJS versions greater than or equal to 1.5.10 and less than 1.7.0.
+See the <a href="https://code.angularjs.org/1.6.10/docs/api/ng/provider/$compileProvider#preAssignBindingsEnabled">AngularJS documentation for <code>$compileProvider.preAssignBindingsEnabled</code>
+</a>
+for more information.</p>
+<p>To enable/disable whether the controllers of dynamic AngularJS Material components
+(i.e. dialog, panel, toast, bottomsheet) respect the AngularJS
+<code>$compileProvider.preAssignBindingsEnabled</code> flag, call the AngularJS Material method:
+<code>$mdCompilerProvider.respectPreAssignBindingsEnabled(boolean)</code>.</p>
+<p>This AngularJS Material <em>flag</em> doesn&#39;t affect directives/components created via regular
+AngularJS methods. These constitute the majority of AngularJS Material and user-created
+components. Only dynamic construction of elements such as Dialogs, Panels, Toasts, BottomSheets,
+etc. may be affected. Invoking <code>$mdCompilerProvider.respectPreAssignBindingsEnabled(true)</code>
+will effect <strong>bindings</strong> in controllers created by AngularJS Material&#39;s services like
+<code>$mdDialog</code>, <code>$mdPanel</code>, <code>$mdToast</code>, or <code>$mdBottomSheet</code>.</p>
+<p>See <a href="#mdcompilerprovider-respectpreassignbindingsenabled-respected">$mdCompilerProvider.respectPreAssignBindingsEnabled</a>
+for the details of how the different versions and settings of AngularJS affect this behavior.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+      <p>Respect the AngularJS Compiler Setting</p>
+<hljs lang="js">
+  app.config(function($mdCompilerProvider) {
+    $mdCompilerProvider.respectPreAssignBindingsEnabled(true);
+  });
+</hljs>
+  </section>
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="respectPreAssignBindingsEnabled">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdCompilerProvider.respectPreAssignBindingsEnabled([respected]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Call this method to enable/disable whether Material-specific (dialog/panel/toast/bottomsheet)
+controllers respect the AngularJS <code>$compileProvider.preAssignBindingsEnabled</code> flag. Note that
+this doesn&#39;t affect directives/components created via regular AngularJS methods which
+constitute most Material and user-created components.</p>
+<p>If disabled (<code>false</code>), the compiler assigns the value of each of the bindings to the
+properties of the controller object before the constructor of this object is called.
+The ability to disable this settings is <strong>deprecated</strong> and will be removed in
+AngularJS Material 1.2.0.</p>
+<p>If enabled (<code>true</code>) the behavior depends on the AngularJS version used:</p>
+<ul>
+<li><code>&lt;1.5.10</code><ul>
+<li>Bindings are pre-assigned.</li>
+</ul>
+</li>
+<li><code>&gt;=1.5.10 &lt;1.7</code><ul>
+<li>Respects whatever <code>$compileProvider.preAssignBindingsEnabled()</code> reports. If the
+<code>preAssignBindingsEnabled</code> flag wasn&#39;t set manually, it defaults to pre-assigning bindings
+with AngularJS <code>1.5</code> and to calling the constructor first with AngularJS <code>1.6</code>.</li>
+</ul>
+</li>
+<li><code>&gt;=1.7</code><ul>
+<li>The compiler calls the constructor first before assigning bindings and
+<code>$compileProvider.preAssignBindingsEnabled()</code> no longer exists.</li>
+</ul>
+</li>
+</ul>
+<p>Defaults</p>
+<ul>
+<li>The default value is <code>false</code> in AngularJS 1.6 and earlier.<ul>
+<li>It is planned to fix this value to <code>true</code> and not allow the <code>false</code> value in
+AngularJS Material 1.2.0.</li>
+</ul>
+</li>
+</ul>
+<p>It is recommended to set this flag to <code>true</code> when using AngularJS Material 1.1.x with
+AngularJS versions &gt;= 1.5.10. The only reason it&#39;s not set that way by default is backwards
+compatibility.</p>
+<p>By not setting the flag to <code>true</code> when AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled()</code>
+is set to <code>false</code> (i.e. default behavior in AngularJS 1.6 or newer), unit testing of
+Material Dialog/Panel/Toast/BottomSheet controllers using the <code>$controller</code> helper
+is problematic as it always follows AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled()</code>
+value.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          respected
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>update the <code>respectPreAssignBindingsEnabled</code> state if provided,
+ otherwise just return the current Material <code>respectPreAssignBindingsEnabled</code> state.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-boolean">boolean</code><code class="api-type label type-hint type-hint-mdcompilerprovider">MdCompilerProvider</code></td>
+    <td class="description"><p>current value, if used as a getter, or itself (chaining)
+ if used as a setter.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+  <section class="api-section">
+    <h2 id="example">Example</h2><p>Using the default (backwards compatible) values for AngularJS 1.6</p>
+<ul>
+<li>AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled(false)</code></li>
+<li>AngularJS Material&#39;s <code>$mdCompilerProvider.respectPreAssignBindingsEnabled(false)</code>
+<br><br></li>
+</ul>
+<hljs lang="js">
+$mdDialog.show({
+  locals: {
+    myVar: true
+  },
+  controller: MyController,
+  bindToController: true
+}
+
+function MyController() {
+  // Locals from Angular Material are available. e.g myVar is true.
+}
+
+MyController.prototype.$onInit = function() {
+  // Bindings are also available in the $onInit lifecycle hook.
+}
+</hljs>
+
+<p>Recommended Settings for AngularJS 1.6</p>
+<ul>
+<li>AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled(false)</code></li>
+<li>AngularJS Material&#39;s <code>$mdCompilerProvider.respectPreAssignBindingsEnabled(true)</code>
+<br><br></li>
+</ul>
+<hljs lang="js">
+$mdDialog.show({
+  locals: {
+    myVar: true
+  },
+  controller: MyController,
+  bindToController: true
+}
+
+function MyController() {
+  // No locals from Angular Material are available. e.g myVar is undefined.
+}
+
+MyController.prototype.$onInit = function() {
+  // Bindings are now available in the $onInit lifecycle hook.
+}
+</hljs></section>
+  
+</div>
+
+
+</div>
