@@ -29063,7 +29063,7 @@ MdPanelAnimation.prototype.animateOpen = function(panelEl) {
 
       var openScale = animator.calculateZoomToOrigin(
               panelEl, this._openFrom) || '';
-      openFrom = animator.toTransformCss(openScale + ' ' + panelTransform);
+      openFrom = animator.toTransformCss(panelTransform + ' ' + openScale);
       break;
 
     case MdPanelAnimation.animation.FADE:
@@ -29128,7 +29128,7 @@ MdPanelAnimation.prototype.animateClose = function(panelEl) {
 
       var closeScale = animator.calculateZoomToOrigin(
               panelEl, this._closeTo) || '';
-      closeTo = animator.toTransformCss(closeScale + ' ' + panelTransform);
+      closeTo = animator.toTransformCss(panelTransform + ' ' + closeScale);
       break;
 
     case MdPanelAnimation.animation.FADE:
