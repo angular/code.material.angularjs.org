@@ -87,6 +87,113 @@
 (function () {
   'use strict';
   angular
+      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    self.repos         = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for repos... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.repos.filter(createFilterFor(query)) : self.repos,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `components` list of key/value pairs
+     */
+    function loadAll() {
+      var repos = [
+        {
+          'name'      : 'AngularJS',
+          'url'       : 'https://github.com/angular/angular.js',
+          'watchers'  : '3,623',
+          'forks'     : '16,175',
+        },
+        {
+          'name'      : 'Angular',
+          'url'       : 'https://github.com/angular/angular',
+          'watchers'  : '469',
+          'forks'     : '760',
+        },
+        {
+          'name'      : 'AngularJS Material',
+          'url'       : 'https://github.com/angular/material',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Angular Material',
+          'url'       : 'https://github.com/angular/components',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Bower Material',
+          'url'       : 'https://github.com/angular/bower-material',
+          'watchers'  : '42',
+          'forks'     : '84',
+        },
+        {
+          'name'      : 'Material Start',
+          'url'       : 'https://github.com/angular/material-start',
+          'watchers'  : '81',
+          'forks'     : '303',
+        }
+      ];
+      return repos.map(function (repo) {
+        repo.value = repo.name.toLowerCase();
+        return repo;
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(item) {
+        return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('autocompleteFloatingLabelDemo', ['ngMaterial', 'ngMessages'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -352,112 +459,13 @@
   }
 })();
 
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    self.repos         = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for repos... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.repos.filter(createFilterFor(query)) : self.repos,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `components` list of key/value pairs
-     */
-    function loadAll() {
-      var repos = [
-        {
-          'name'      : 'AngularJS',
-          'url'       : 'https://github.com/angular/angular.js',
-          'watchers'  : '3,623',
-          'forks'     : '16,175',
-        },
-        {
-          'name'      : 'Angular',
-          'url'       : 'https://github.com/angular/angular',
-          'watchers'  : '469',
-          'forks'     : '760',
-        },
-        {
-          'name'      : 'AngularJS Material',
-          'url'       : 'https://github.com/angular/material',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Angular Material',
-          'url'       : 'https://github.com/angular/components',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Bower Material',
-          'url'       : 'https://github.com/angular/bower-material',
-          'watchers'  : '42',
-          'forks'     : '84',
-        },
-        {
-          'name'      : 'Material Start',
-          'url'       : 'https://github.com/angular/material-start',
-          'watchers'  : '81',
-          'forks'     : '303',
-        }
-      ];
-      return repos.map(function (repo) {
-        repo.value = repo.name.toLowerCase();
-        return repo;
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(item) {
-        return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
 
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
@@ -557,58 +565,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
   });
 
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
-
-angular.module('cardDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-})
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
-});
-
-
-angular.module('cardDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('cardDemo3', ['ngMaterial'])
-
-.config(['$mdIconProvider', function($mdIconProvider) {
-  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
-}])
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
-
-});
-
 
 angular.module('checkboxDemo3', ['ngMaterial'])
 
@@ -648,6 +604,33 @@ angular.module('checkboxDemo3', ['ngMaterial'])
 });
 
 
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
+
+angular.module('cardDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+})
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+});
+
+
 angular.module('checkboxDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -668,6 +651,23 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       $scope.exists = function (item, list) {
         return list.indexOf(item) > -1;
       };
+});
+
+
+angular.module('cardDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo3', ['ngMaterial'])
+
+.config(['$mdIconProvider', function($mdIconProvider) {
+  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+}])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
 });
 
 (function () {
@@ -1604,30 +1604,6 @@ angular.module('gridListDemo1', ['ngMaterial'])
 
 
 angular
-  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
-  .controller('DemoCtrl', function($scope) {
-      // Specify a list of font-icons with ligatures and color overrides
-      var iconData = [
-            {name: 'accessibility'  , color: "#777" },
-            {name: 'question_answer', color: "rgb(89, 226, 168)" },
-            {name: 'backup'         , color: "#A00" },
-            {name: 'email'          , color: "#00A" }
-          ];
-
-      $scope.fonts = [].concat(iconData);
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:"md-18",padding:0},
-        {size:"md-24",padding:2},
-        {size:"md-36",padding:6},
-        {size:"md-48",padding:10}
-      ];
-
-  });
-
-
-angular
   .module('appDemoFontIconsWithClassnames', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {
       // Create list of font-icon names with color overrides
@@ -1659,6 +1635,30 @@ angular
           .primaryPalette("red")
           .accentPalette('green')
           .warnPalette('blue');
+  });
+
+
+angular
+  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {
+      // Specify a list of font-icons with ligatures and color overrides
+      var iconData = [
+            {name: 'accessibility'  , color: "#777" },
+            {name: 'question_answer', color: "rgb(89, 226, 168)" },
+            {name: 'backup'         , color: "#A00" },
+            {name: 'email'          , color: "#00A" }
+          ];
+
+      $scope.fonts = [].concat(iconData);
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:"md-18",padding:0},
+        {size:"md-24",padding:2},
+        {size:"md-36",padding:6},
+        {size:"md-48",padding:10}
+      ];
+
   });
 
 angular.module('appDemoSvgIcons', ['ngMaterial'])
@@ -1776,6 +1776,165 @@ angular
     };
   });
 
+
+angular.module('listDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
+})
+.controller('AppCtrl', function($scope) {
+    var imagePath = 'img/list/60.jpeg';
+
+    $scope.phones = [
+      {
+        type: 'Home',
+        number: '(555) 251-1234',
+        options: {
+          icon: 'communication:phone'
+        }
+      },
+      {
+        type: 'Cell',
+        number: '(555) 786-9841',
+        options: {
+          icon: 'communication:phone',
+          avatarIcon: true
+        }
+      },
+      {
+        type: 'Office',
+        number: '(555) 314-1592',
+        options: {
+          face : imagePath
+        }
+      },
+      {
+        type: 'Offset',
+        number: '(555) 192-2010',
+        options: {
+          offset: true,
+          actionIcon: 'communication:phone'
+        }
+      }
+    ];
+    $scope.todos = [
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+      {
+        face : imagePath,
+        what: 'Brunch this weekend?',
+        who: 'Min Li Chan',
+        when: '3:08PM',
+        notes: " I'll be in your neighborhood doing errands"
+      },
+    ];
+});
+
+angular.module('listDemo2', ['ngMaterial'])
+.config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
+    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
+    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+})
+.controller('ListCtrl', function($scope, $mdDialog) {
+  $scope.toppings = [
+    { name: 'Pepperoni', wanted: true },
+    { name: 'Sausage', wanted: false },
+    { name: 'Black Olives', wanted: true },
+    { name: 'Green Peppers', wanted: false }
+  ];
+
+  $scope.settings = [
+    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
+    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
+  ];
+
+  $scope.messages = [
+    {id: 1, title: "Message A", selected: false},
+    {id: 2, title: "Message B", selected: true},
+    {id: 3, title: "Message C", selected: true},
+  ];
+
+  $scope.people = [
+    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
+    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
+    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
+  ];
+
+  $scope.goToPerson = function(person, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Inspect ' + person)
+        .ariaLabel('Person inspect demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.navigateTo = function(to, event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Navigating')
+        .textContent('Imagine being taken to ' + to)
+        .ariaLabel('Navigation demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doPrimaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Primary Action')
+        .textContent('Primary actions can be used for one click actions')
+        .ariaLabel('Primary click demo')
+        .ok('Awesome!')
+        .targetEvent(event)
+    );
+  };
+
+  $scope.doSecondaryAction = function(event) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('Secondary Action')
+        .textContent('Secondary actions can be used for one click actions')
+        .ariaLabel('Secondary click demo')
+        .ok('Neat!')
+        .targetEvent(event)
+    );
+  };
+
+});
+
 angular
   .module('menuDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -1887,86 +2046,6 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
   };
 });
 
-
-angular.module('listDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24);
-})
-.controller('AppCtrl', function($scope) {
-    var imagePath = 'img/list/60.jpeg';
-
-    $scope.phones = [
-      {
-        type: 'Home',
-        number: '(555) 251-1234',
-        options: {
-          icon: 'communication:phone'
-        }
-      },
-      {
-        type: 'Cell',
-        number: '(555) 786-9841',
-        options: {
-          icon: 'communication:phone',
-          avatarIcon: true
-        }
-      },
-      {
-        type: 'Office',
-        number: '(555) 314-1592',
-        options: {
-          face : imagePath
-        }
-      },
-      {
-        type: 'Offset',
-        number: '(555) 192-2010',
-        options: {
-          offset: true,
-          actionIcon: 'communication:phone'
-        }
-      }
-    ];
-    $scope.todos = [
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-      {
-        face : imagePath,
-        what: 'Brunch this weekend?',
-        who: 'Min Li Chan',
-        when: '3:08PM',
-        notes: " I'll be in your neighborhood doing errands"
-      },
-    ];
-});
-
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -2011,85 +2090,6 @@ angular
     };
   });
 
-
-angular.module('listDemo2', ['ngMaterial'])
-.config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-    .iconSet('device', 'img/icons/sets/device-icons.svg', 24)
-    .iconSet('communication', 'img/icons/sets/communication-icons.svg', 24)
-    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
-})
-.controller('ListCtrl', function($scope, $mdDialog) {
-  $scope.toppings = [
-    { name: 'Pepperoni', wanted: true },
-    { name: 'Sausage', wanted: false },
-    { name: 'Black Olives', wanted: true },
-    { name: 'Green Peppers', wanted: false }
-  ];
-
-  $scope.settings = [
-    { name: 'Wi-Fi', extraScreen: 'Wi-fi menu', icon: 'device:network-wifi', enabled: true },
-    { name: 'Bluetooth', extraScreen: 'Bluetooth menu', icon: 'device:bluetooth', enabled: false },
-  ];
-
-  $scope.messages = [
-    {id: 1, title: "Message A", selected: false},
-    {id: 2, title: "Message B", selected: true},
-    {id: 3, title: "Message C", selected: true},
-  ];
-
-  $scope.people = [
-    { name: 'Janet Perkins', img: 'img/100-0.jpeg', newMessage: true },
-    { name: 'Mary Johnson', img: 'img/100-1.jpeg', newMessage: false },
-    { name: 'Peter Carlsson', img: 'img/100-2.jpeg', newMessage: false }
-  ];
-
-  $scope.goToPerson = function(person, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Inspect ' + person)
-        .ariaLabel('Person inspect demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.navigateTo = function(to, event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Navigating')
-        .textContent('Imagine being taken to ' + to)
-        .ariaLabel('Navigation demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doPrimaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Primary Action')
-        .textContent('Primary actions can be used for one click actions')
-        .ariaLabel('Primary click demo')
-        .ok('Awesome!')
-        .targetEvent(event)
-    );
-  };
-
-  $scope.doSecondaryAction = function(event) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('Secondary Action')
-        .textContent('Secondary actions can be used for one click actions')
-        .ariaLabel('Secondary click demo')
-        .ok('Neat!')
-        .targetEvent(event)
-    );
-  };
-
-});
 
 angular
   .module('menuBarDemoDynamicNestedMenus', ['ngMaterial'])
@@ -2167,6 +2167,21 @@ angular
       $log.log(item);
     };
   });
+
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
+  }
+})();
 
 (function() {
 'use strict';
@@ -2484,113 +2499,6 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
 })();
 
 (function() {
-  'use strict';
-
-  angular
-      .module('panelProviderDemo', ['ngMaterial'])
-      .config(PanelProviderConfig)
-      .controller('PanelProviderCtrl', PanelProviderCtrl)
-      .controller('PanelMenuCtrl', PanelMenuCtrl);
-
-  /**
-   * Configuration method that is used to define a preset for the upcoming panel
-   * element. Each parameter in the preset is an available parameter in the
-   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
-   * defined here, they overwrite the default parameters for any panel that the
-   * preset is requested for.
-   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
-   *     API.
-   */
-  function PanelProviderConfig($mdPanelProvider) {
-    $mdPanelProvider.definePreset('demoPreset', {
-      attachTo: angular.element(document.body),
-      controller: PanelMenuCtrl,
-      controllerAs: 'ctrl',
-      template: '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>',
-      panelClass: 'menu-panel-container',
-      focusOnOpen: false,
-      zIndex: 100,
-      propagateContainerEvents: true,
-      groupName: 'menus'
-    });
-  }
-
-  function PanelProviderCtrl($mdPanel) {
-    this.navigation = {
-      name: 'navigation',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-    this.favorites = {
-      name: 'favorites',
-      items: [
-        'Add to Favorites'
-      ]
-    };
-    this.more = {
-      name: 'more',
-      items: [
-        'Account',
-        'Sign Out'
-      ]
-    };
-
-    $mdPanel.newPanelGroup('menus', {
-      maxOpen: 2
-    });
-
-    this.showMenu = function($event, menu) {
-      /**
-       * The request to open the panel has two arguments passed into it. The
-       * first is a preset name passed in as a string. This will request a
-       * cached preset and apply its configuration parameters. The second is an
-       * object containing parameters that can only be filled through a
-       * controller. These parameters represent configuration needs associated
-       * with user interaction, panel position, panel animation, and other
-       * miscellaneous needs.
-       */
-      $mdPanel.open('demoPreset', {
-        id: 'menu_' + menu.name,
-        position: $mdPanel.newPanelPosition()
-            .relativeTo($event.target)
-            .addPanelPosition(
-              $mdPanel.xPosition.ALIGN_START,
-              $mdPanel.yPosition.BELOW
-            ),
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event
-      });
-    };
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
-    this.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    };
-  }
-})();
-
-(function() {
 'use strict';
 
 angular.module('panelAnimationsDemo', ['ngMaterial'])
@@ -2702,14 +2610,106 @@ DialogCtrl.prototype.closeDialog = function() {
 (function() {
   'use strict';
 
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
+  angular
+      .module('panelProviderDemo', ['ngMaterial'])
+      .config(PanelProviderConfig)
+      .controller('PanelProviderCtrl', PanelProviderCtrl)
+      .controller('PanelMenuCtrl', PanelMenuCtrl);
 
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
+  /**
+   * Configuration method that is used to define a preset for the upcoming panel
+   * element. Each parameter in the preset is an available parameter in the
+   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
+   * defined here, they overwrite the default parameters for any panel that the
+   * preset is requested for.
+   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
+   *     API.
+   */
+  function PanelProviderConfig($mdPanelProvider) {
+    $mdPanelProvider.definePreset('demoPreset', {
+      attachTo: angular.element(document.body),
+      controller: PanelMenuCtrl,
+      controllerAs: 'ctrl',
+      template: '' +
+          '<div class="menu-panel" md-whiteframe="4">' +
+          '  <div class="menu-content">' +
+          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
+          '      <button class="md-button">' +
+          '        <span>{{item}}</span>' +
+          '      </button>' +
+          '    </div>' +
+          '    <md-divider></md-divider>' +
+          '    <div class="menu-item">' +
+          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
+          '        <span>Close Menu</span>' +
+          '      </button>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>',
+      panelClass: 'menu-panel-container',
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: 'menus'
+    });
+  }
 
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
+  function PanelProviderCtrl($mdPanel) {
+    this.navigation = {
+      name: 'navigation',
+      items: [
+        'Home',
+        'About',
+        'Contact'
+      ]
+    };
+    this.favorites = {
+      name: 'favorites',
+      items: [
+        'Add to Favorites'
+      ]
+    };
+    this.more = {
+      name: 'more',
+      items: [
+        'Account',
+        'Sign Out'
+      ]
+    };
+
+    $mdPanel.newPanelGroup('menus', {
+      maxOpen: 2
+    });
+
+    this.showMenu = function($event, menu) {
+      /**
+       * The request to open the panel has two arguments passed into it. The
+       * first is a preset name passed in as a string. This will request a
+       * cached preset and apply its configuration parameters. The second is an
+       * object containing parameters that can only be filled through a
+       * controller. These parameters represent configuration needs associated
+       * with user interaction, panel position, panel animation, and other
+       * miscellaneous needs.
+       */
+      $mdPanel.open('demoPreset', {
+        id: 'menu_' + menu.name,
+        position: $mdPanel.newPanelPosition()
+            .relativeTo($event.target)
+            .addPanelPosition(
+              $mdPanel.xPosition.ALIGN_START,
+              $mdPanel.yPosition.BELOW
+            ),
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event
+      });
+    };
+  }
+
+  function PanelMenuCtrl(mdPanelRef) {
+    this.closeMenu = function() {
+      mdPanelRef && mdPanelRef.close();
     };
   }
 })();
@@ -2885,6 +2885,28 @@ angular
       });
 })();
 
+angular.module('selectDemoOptionsAsync', ['ngMaterial'])
+.controller('SelectAsyncController', function($timeout, $scope) {
+  $scope.user = null;
+  $scope.users = null;
+
+  $scope.loadUsers = function() {
+
+    // Use timeout to simulate a 650ms request.
+    return $timeout(function() {
+
+      $scope.users =  $scope.users  || [
+        { id: 1, name: 'Scooby Doo' },
+        { id: 2, name: 'Shaggy Rodgers' },
+        { id: 3, name: 'Fred Jones' },
+        { id: 4, name: 'Daphne Blake' },
+        { id: 5, name: 'Velma Dinkley' }
+      ];
+
+    }, 650);
+  };
+});
+
 angular
     .module('selectDemoOptGroups', ['ngMaterial'])
     .controller('SelectOptGroupController', function($scope) {
@@ -2922,28 +2944,6 @@ angular
         return this.selectedToppings.join('');
       };
     });
-
-angular.module('selectDemoOptionsAsync', ['ngMaterial'])
-.controller('SelectAsyncController', function($timeout, $scope) {
-  $scope.user = null;
-  $scope.users = null;
-
-  $scope.loadUsers = function() {
-
-    // Use timeout to simulate a 650ms request.
-    return $timeout(function() {
-
-      $scope.users =  $scope.users  || [
-        { id: 1, name: 'Scooby Doo' },
-        { id: 2, name: 'Shaggy Rodgers' },
-        { id: 3, name: 'Fred Jones' },
-        { id: 4, name: 'Daphne Blake' },
-        { id: 5, name: 'Velma Dinkley' }
-      ];
-
-    }, 650);
-  };
-});
 
 angular
     .module('selectDemoSelectHeader', ['ngMaterial'])
@@ -3066,9 +3066,9 @@ angular
   });
 
 angular
-  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
+  .module('customSidenavDemo', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
+    $scope.toggleLeft = buildToggler('left');
 
     function buildToggler(componentId) {
       return function() {
@@ -3078,9 +3078,9 @@ angular
   });
 
 angular
-  .module('customSidenavDemo', ['ngMaterial'])
+  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
   .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleLeft = buildToggler('left');
+    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
 
     function buildToggler(componentId) {
       return function() {
