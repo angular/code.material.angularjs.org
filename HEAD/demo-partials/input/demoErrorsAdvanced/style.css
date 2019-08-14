@@ -12,7 +12,7 @@
     line-height: 14px;
     transition: all 0.3s cubic-bezier(0.55, 0, 0.55, 0.2);
     /* Set our own color */
-    color: grey; }
+    color: rgba(0, 0, 0, 0.54); }
   .inputdemoErrorsAdvanced .hint.ng-hide,
   .inputdemoErrorsAdvanced .hint.ng-enter,
   .inputdemoErrorsAdvanced .hint.ng-leave.ng-leave-active {
