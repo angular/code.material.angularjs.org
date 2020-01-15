@@ -203,6 +203,7 @@ demo-include {
   z-index: 2;
 }
 [ng-panel] {
+  -webkit-transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   position: absolute;
   left: 0;
@@ -278,6 +279,7 @@ body.docs-body {
   -webkit-transform: scale(0);
 
           transform: scale(0);
+  -webkit-transition: -webkit-transform 0.2s;
   transition: -webkit-transform 0.2s;
   transition: transform 0.2s;
   transition: transform 0.2s, -webkit-transform 0.2s;
@@ -316,6 +318,7 @@ body.docs-body {
 a {
   text-decoration: none;
   font-weight: 400;
+  -webkit-transition: border-bottom 0.35s;
   transition: border-bottom 0.35s;
   color: #1565C0;
 }
@@ -524,7 +527,8 @@ ul.docs-menu li {
   color: white;
   cursor: pointer;
   display: block;
-  align-items: inherit;
+  -webkit-box-align: inherit;
+          align-items: inherit;
   line-height: 40px;
   margin: 0;
   max-height: 40px;
@@ -560,7 +564,8 @@ body[dir=rtl] .docs-menu .md-button {
 }
 
 .docs-menu md-select md-select-label {
-  justify-content: flex-end;
+  -webkit-box-pack: end;
+          justify-content: flex-end;
   padding-top: 10px;
 }
 
@@ -624,6 +629,7 @@ body[dir=rtl] .menu-heading {
   vertical-align: middle;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.3s ease-in-out;
   transition: -webkit-transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out;
   transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
@@ -637,9 +643,13 @@ body[dir=rtl] .menu-heading {
 
 .docs-logo {
   text-align: center;
+  display: -webkit-box;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  -webkit-box-align: center;
+          align-items: center;
   padding: 0 0 16px;
   margin: 0 auto;
 }
@@ -658,6 +668,7 @@ body[dir=rtl] .menu-heading {
 }
 .nav-header {
   background-color: #106CC8;
+  background: -webkit-gradient(linear, left top, left bottom, from(#185694), to(#106cc8));
   background: linear-gradient(#185694, #106cc8);
   border-bottom: 1px solid #1D77D5;
   flex-shrink: 0;
@@ -723,12 +734,14 @@ docs-demo {
 .demo-container {
   border-radius: 4px;
   margin-bottom: 16px;
+  -webkit-transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   position: relative;
   padding-bottom: 0;
 }
 .demo-source-tabs {
   z-index: 1;
+  -webkit-transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   height: 448px;
   background: #fff;
@@ -763,6 +776,7 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 .demo-content {
   position: relative;
+  display: -webkit-box;
   display: flex;
   overflow: hidden;
 }
@@ -774,10 +788,12 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 
 .doc-content > * {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
 }
 .demo-content > * {
-  flex: 1 1 0%;
+  -webkit-box-flex: 1;
+          flex: 1 1 0%;
 }
 
 .demo-content > div[layout-fill] {
@@ -820,6 +836,7 @@ md-toolbar.demo-toolbar .md-button.active, md-toolbar.demo-toolbar .md-button.ac
 }
 
 md-toolbar.demo-toolbar .md-button {
+  -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #616161;
 }
@@ -882,6 +899,7 @@ ul.buckets li a {
 ul.buckets li a,
 ul.buckets li a md-icon {
   color: #666 !important;
+  -webkit-transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
 }
 ul.buckets li a:hover,
@@ -1077,6 +1095,7 @@ docs-demo .doc-demo-content {
 }
 
 .no-transition {
+  -webkit-transition: none !important;
   transition: none !important;
 }
 

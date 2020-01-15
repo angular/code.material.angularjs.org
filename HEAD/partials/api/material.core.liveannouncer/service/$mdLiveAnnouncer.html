@@ -20,14 +20,15 @@
 <p>The <code>$mdLiveAnnouncer</code> service is internally used for components to provide proper accessibility.</p>
 </blockquote>
 <hljs lang="js">
-  module.controller(&#39;AppCtrl&#39;, function($mdLiveAnnouncer) {
+  module.controller('AppCtrl', function($mdLiveAnnouncer) {
     // Basic announcement (Polite Mode)
-    $mdLiveAnnouncer.announce(&#39;Hey Google&#39;);
+    $mdLiveAnnouncer.announce('Hey Google');
 
-    // Custom announcement (Assertive Mode)
-    $mdLiveAnnouncer.announce(&#39;Hey Google&#39;, &#39;assertive&#39;);
-  });
-</hljs>
+<pre><code>// Custom announcement (Assertive Mode)
+$mdLiveAnnouncer.announce(&#39;Hey Google&#39;, &#39;assertive&#39;);</code></pre>
+<p>  });
+</hljs></p>
+
 </div>
 
 

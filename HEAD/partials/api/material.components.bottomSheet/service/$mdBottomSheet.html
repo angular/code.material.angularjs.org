@@ -42,45 +42,42 @@
 </div>
 </hljs>
 <hljs lang="js">
-var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
-app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
+var app = angular.module('app', ['ngMaterial']);
+app.controller('MyController', function($scope, $mdBottomSheet) {
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
-      template: &#39;<md-bottom-sheet>&#39; +
-      &#39;Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>&#39; +
-      &#39;</md-bottom-sheet>&#39;
+      template: '<md-bottom-sheet>' +
+      'Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>' +
+      '</md-bottom-sheet>'
     })
 
-    // Fires when the hide() method is used
-    .then(function() {
-      console.log(&#39;You clicked the button to close the bottom sheet!&#39;);
-    })
+<pre><code>// Fires when the hide() method is used
+.then(function() {
+  console.log(&#39;You clicked the button to close the bottom sheet!&#39;);
+})
 
-    // Fires when the cancel() method is used
-    .catch(function() {
-      console.log(&#39;You hit escape or clicked the backdrop to close.&#39;);
-    });
-  };
-
-  $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
+// Fires when the cancel() method is used
+.catch(function() {
+  console.log(&#39;You hit escape or clicked the backdrop to close.&#39;);
+});</code></pre>
+<p>  };</p>
+<p>  $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
     $mdBottomSheet.hide();
-  }
-
-});
-</hljs>
-
+  }</p>
+<p>});
+</hljs></p>
 <h3 id="custom-presets">Custom Presets</h3>
 <p>Developers are also able to create their own preset, which can be easily used without repeating
 their options each time.</p>
 <hljs lang="js">
-  $mdBottomSheetProvider.addPreset(&#39;testPreset&#39;, {
+  $mdBottomSheetProvider.addPreset('testPreset', {
     options: function() {
       return {
         template:
-          &#39;<md-bottom-sheet>&#39; +
-            &#39;This is a custom preset&#39; +
-          &#39;</md-bottom-sheet>&#39;,
-        controllerAs: &#39;bottomSheet&#39;,
+          '<md-bottom-sheet>' +
+            'This is a custom preset' +
+          '</md-bottom-sheet>',
+        controllerAs: 'bottomSheet',
         bindToController: true,
         clickOutsideToClose: true,
         escapeToClose: true

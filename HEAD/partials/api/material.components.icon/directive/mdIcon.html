@@ -26,20 +26,20 @@ by name rather than character code.</p>
 <p>When using font-icons, developers must follow three (3) simple steps:</p>
 <ol>
 <li>Load the font library. e.g.<br/>
-   <code>&lt;link href=&quot;https://fonts.googleapis.com/icon?family=Material+Icons&quot; rel=&quot;stylesheet&quot;&gt;</code>
+   `<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">`
 </li>
 <li>
   Use either (a) font-icon class names or (b) a fontset and a font ligature to render the font glyph by
-  using its textual name <em>or</em> numerical character reference. Note that <code>material-icons</code> is the default fontset when
+  using its textual name _or_ numerical character reference. Note that `material-icons` is the default fontset when
   none is specified.
 </li>
 <li> Use any of the following templates: <br/>
   <ul>
-    <li><code>&lt;md-icon md-font-icon=&quot;classname&quot;&gt;&lt;/md-icon&gt;</code></li>
-    <li><code>&lt;md-icon md-font-set=&quot;font library classname or alias&quot;&gt;textual_name&lt;/md-icon&gt;</code></li>
-    <li><code>&lt;md-icon&gt; numerical_character_reference &lt;/md-icon&gt;</code></li>
-    <li><code>&lt;md-icon ng_bind=&quot;&#39;textual_name&#39;&quot;&gt;&lt;/md-icon&gt;</code></li>
-    <li><code>&lt;md-icon ng-bind=&quot;scopeVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
+    <li>`<md-icon md-font-icon="classname"></md-icon>`</li>
+    <li>`<md-icon md-font-set="font library classname or alias">textual_name</md-icon>`</li>
+    <li>`<md-icon> numerical_character_reference </md-icon>`</li>
+    <li>`<md-icon ng_bind="'textual_name'"></md-icon>`</li>
+    <li>`<md-icon ng-bind="scopeVariable"></md-icon>`</li>
   </ul>
 </li>
 </ol>
@@ -69,18 +69,20 @@ to declare the text content for an <code>md-icon</code> element in its start tag
 text content, consider using <code>ng-bind</code> with a scope variable or literal string.</p>
 <p>Examples:</p>
 <ul>
-  <li><code>&lt;md-icon ng-bind=&quot;myIconVariable&quot;&gt;&lt;/md-icon&gt;</code></li>
-  <li><code>&lt;md-icon ng-bind=&quot;&#39;menu&#39;&quot;&gt;&lt;/md-icon&gt;</code>
+  <li>`<md-icon ng-bind="myIconVariable"></md-icon>`</li>
+  <li>`<md-icon ng-bind="'menu'"></md-icon>`
 </ul>
 
-<p><h2 id="material_design_icons">Material Design Icons tool</h2>
+<h2 id="material_design_icons">Material Design Icons tool</h2>
 Using the Material Design Icons tool, developers can easily and quickly search for a specific
 open source Material Design icon. The search is in the top left. Below search, you can select
-from the new icon themes or filter by icon category.</p>
-<p><a href="https://material.io/tools/icons/" target="_blank" style="border-bottom:none;">
+from the new icon themes or filter by icon category.
+
+<a href="https://material.io/tools/icons/" target="_blank" style="border-bottom:none;">
 <img src="https://user-images.githubusercontent.com/3506071/41942584-ef0695d0-796d-11e8-9436-44f25023a111.png"
      aria-label="Material Design Icons tool" style="max-width:95%">
-</a></p>
+</a>
+
 <div class="md-caption" style="text-align: center; margin-bottom: 24px">
  Click on the image above to open the
  <a href="https://material.io/tools/icons/" target="_blank">Material Design Icons tool</a>.
@@ -103,41 +105,36 @@ icon and to change the icon size. These settings only affect the downloaded icon
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
   
-    <p>When using SVGs:</p>
-<hljs lang="html">
-
+    <p>When using SVGs:
+<hljs lang="html"></p>
 <!-- Icon ID; may contain optional icon set prefix.
     Icons must be registered using $mdIconProvider. -->
-<md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon>
-
+<p><md-icon md-svg-icon="social:android"    aria-label="android " ></md-icon></p>
 <!-- Icon urls; may be preloaded in templateCache -->
-<md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
-<md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon>
-
+<p><md-icon md-svg-src="/android.svg"       aria-label="android " ></md-icon>
+<md-icon md-svg-src="{{ getAndroid() }}" aria-label="android " ></md-icon></p>
 </hljs>
 
 <p>Use the <code>$mdIconProvider</code> to configure your application with
 SVG icon sets.</p>
 <hljs lang="js">
-angular.module(&#39;appSvgIconSets&#39;, [&#39;ngMaterial&#39;])
-  .controller(&#39;DemoCtrl&#39;, function($scope) {})
+angular.module('appSvgIconSets', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {})
   .config(function($mdIconProvider) {
     $mdIconProvider
-      .iconSet(&#39;social&#39;, &#39;img/icons/sets/social-icons.svg&#39;, 24)
-      .defaultIconSet(&#39;img/icons/sets/core-icons.svg&#39;, 24);
+      .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+      .defaultIconSet('img/icons/sets/core-icons.svg', 24);
    });
 </hljs>
 
 
-<p>When using Font Icons with classnames:</p>
-<hljs lang="html">
-
-<md-icon md-font-icon="android" aria-label="android" ></md-icon>
-<md-icon class="icon_home" aria-label="Home"></md-icon>
-
+<p>When using Font Icons with classnames:
+<hljs lang="html"></p>
+<p><md-icon md-font-icon="android" aria-label="android" ></md-icon>
+<md-icon class="icon_home" aria-label="Home"></md-icon></p>
 </hljs>
 
-<p>When using Material Font Icons with ligatures:</p>
+<p>When using Material Font Icons with ligatures:
 <hljs lang="html">
  <!--
  For Material Design Icons
@@ -151,13 +148,12 @@ angular.module(&#39;appSvgIconSets&#39;, [&#39;ngMaterial&#39;])
  <md-icon> &#xE87C; </md-icon>
  <!-- The class '.material-icons' must be manually added if other styles are also specified-->
  <md-icon class="material-icons md-light md-48"> face </md-icon>
-</hljs>
-
+</hljs></p>
 <p>When using other Font-Icon libraries:</p>
 <hljs lang="js">
  // Specify a font-icon style alias
  angular.config(function($mdIconProvider) {
-   $mdIconProvider.fontSet(&#39;md&#39;, &#39;material-icons&#39;);
+   $mdIconProvider.fontSet('md', 'material-icons');
  });
 </hljs>
 

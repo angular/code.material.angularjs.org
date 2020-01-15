@@ -28,11 +28,11 @@ This means, when loading icons from an external URL, you have to trust the URL i
 <hljs lang="js">
   app.config(function($sceDelegateProvider) {
     $sceDelegateProvider.resourceUrlWhitelist([
-      // Adding &#39;self&#39; to the whitelist, will allow requests from the current origin.
-      &#39;self&#39;,
+      // Adding 'self' to the whitelist, will allow requests from the current origin.
+      'self',
       // Using double asterisks here, will allow all URLs to load.
       // We recommend to only specify the given domain you want to allow.
-      &#39;**&#39;
+      '**'
     ]);
   });
 </hljs>
@@ -45,9 +45,11 @@ This means, when loading icons from an external URL, you have to trust the URL i
  </hljs>
 
 <p>You should instead use the given unicode, instead of the ligature name.</p>
-<p><p ng-hide="true"> ##// Notice we can&#39;t use a hljs element here, because the characters will be escaped.</p></p>
-<pre><code class="lang-html">&lt;md-icon md-font-set=&quot;fa&quot;&gt;&amp;#xf0f3&lt;/md-icon&gt;
-</code></pre>
+<p ng-hide="true"> ##// Notice we can't use a hljs element here, because the characters will be escaped.</p>
+ ```html
+   <md-icon md-font-set="fa">&#xf0f3</md-icon>
+ ```
+
 <p>All unicode ligatures are prefixed with the <code>&amp;#x</code> string.</p>
 
 </div>
@@ -64,39 +66,34 @@ This means, when loading icons from an external URL, you have to trust the URL i
       <hljs lang="js">
   app.config(function($mdIconProvider) {
 
-    // Configure URLs for icons specified by [set:]id.
+<pre><code>// Configure URLs for icons specified by [set:]id.
 
-    $mdIconProvider
-         .defaultFontSet( &#39;fa&#39; )                   // This sets our default fontset className.
-         .defaultIconSet(&#39;my/app/icons.svg&#39;)       // Register a default set of SVG icons
-         .iconSet(&#39;social&#39;, &#39;my/app/social.svg&#39;)   // Register a named icon set of SVGs
-         .icon(&#39;android&#39;, &#39;my/app/android.svg&#39;)    // Register a specific icon (by name)
-         .icon(&#39;work:chair&#39;, &#39;my/app/chair.svg&#39;);  // Register icon in a specific set
-  });
-</hljs>
-
+$mdIconProvider
+     .defaultFontSet( &#39;fa&#39; )                   // This sets our default fontset className.
+     .defaultIconSet(&#39;my/app/icons.svg&#39;)       // Register a default set of SVG icons
+     .iconSet(&#39;social&#39;, &#39;my/app/social.svg&#39;)   // Register a named icon set of SVGs
+     .icon(&#39;android&#39;, &#39;my/app/android.svg&#39;)    // Register a specific icon (by name)
+     .icon(&#39;work:chair&#39;, &#39;my/app/chair.svg&#39;);  // Register icon in a specific set</code></pre>
+<p>  });
+</hljs></p>
 <p>SVG icons and icon sets can be easily pre-loaded and cached using either (a) a build process or (b) a runtime
 <strong>startup</strong> process (shown below):</p>
 <hljs lang="js">
   app.config(function($mdIconProvider) {
 
-    // Register a default set of SVG icon definitions
-    $mdIconProvider.defaultIconSet(&#39;my/app/icons.svg&#39;)
+<pre><code>// Register a default set of SVG icon definitions
+$mdIconProvider.defaultIconSet(&#39;my/app/icons.svg&#39;)</code></pre>
+<p>  })
+  .run(function($templateRequest){</p>
+<pre><code>// Pre-fetch icons sources by URL and cache in the $templateCache...
+// subsequent $templateRequest calls will look there first.
 
-  })
-  .run(function($templateRequest){
+var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
 
-    // Pre-fetch icons sources by URL and cache in the $templateCache...
-    // subsequent $templateRequest calls will look there first.
-
-    var urls = [ &#39;imy/app/icons.svg&#39;, &#39;img/icons/android.svg&#39;];
-
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
-
-  });
-
+angular.forEach(urls, function(url) {
+  $templateRequest(url);
+});</code></pre>
+<p>  });</p>
 </hljs>
 
 <blockquote>

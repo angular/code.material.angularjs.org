@@ -33,15 +33,14 @@ user can request the preset by passing it as the first parameter in the
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
 (function(angular, undefined) {
-  &#39;use strict&#39;;
+  'use strict';
 
-  angular
+<p>  angular
       .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
       .config(DemoConfig)
       .controller(&#39;DemoCtrl&#39;, DemoCtrl)
-      .controller(&#39;DemoMenuCtrl&#39;, DemoMenuCtrl);
-
-  function DemoConfig($mdPanelProvider) {
+      .controller(&#39;DemoMenuCtrl&#39;, DemoMenuCtrl);</p>
+<p>  function DemoConfig($mdPanelProvider) {
     $mdPanelProvider.definePreset(&#39;demoPreset&#39;, {
       attachTo: angular.element(document.body),
       controller: DemoMenuCtrl,
@@ -68,9 +67,8 @@ user can request the preset by passing it as the first parameter in the
       propagateContainerEvents: true,
       groupName: &#39;menus&#39;
     });
-  }
-
-  function PanelProviderCtrl($mdPanel) {
+  }</p>
+<p>  function PanelProviderCtrl($mdPanel) {
     this.navigation = {
       name: &#39;navigation&#39;,
       items: [
@@ -91,30 +89,28 @@ user can request the preset by passing it as the first parameter in the
         &#39;Account&#39;,
         &#39;Sign Out&#39;
       ]
-    };
+    };</p>
+<pre><code>$mdPanel.newPanelGroup(&#39;menus&#39;, {
+  maxOpen: 2
+});
 
-    $mdPanel.newPanelGroup(&#39;menus&#39;, {
-      maxOpen: 2
-    });
-
-    this.showMenu = function($event, menu) {
-      $mdPanel.open(&#39;demoPreset&#39;, {
-        id: &#39;menu_&#39; + menu.name,
-        position: $mdPanel.newPanelPosition()
-            .relativeTo($event.target)
-            .addPanelPosition(
-              $mdPanel.xPosition.ALIGN_START,
-              $mdPanel.yPosition.BELOW
-            ),
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event
-      });
-    };
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
+this.showMenu = function($event, menu) {
+  $mdPanel.open(&#39;demoPreset&#39;, {
+    id: &#39;menu_&#39; + menu.name,
+    position: $mdPanel.newPanelPosition()
+        .relativeTo($event.target)
+        .addPanelPosition(
+          $mdPanel.xPosition.ALIGN_START,
+          $mdPanel.yPosition.BELOW
+        ),
+    locals: {
+      items: menu.items
+    },
+    openFrom: $event
+  });
+};</code></pre>
+<p>  }</p>
+<p>  function PanelMenuCtrl(mdPanelRef) {
     // &#39;mdPanelRef&#39; is injected in the controller.
     this.closeMenu = function() {
       if (mdPanelRef) {
@@ -123,7 +119,8 @@ user can request the preset by passing it as the first parameter in the
     };
   }
 })(angular);
-</hljs>
+</hljs></p>
+
   </section>
 
 

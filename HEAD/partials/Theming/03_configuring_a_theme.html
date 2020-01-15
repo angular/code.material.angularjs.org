@@ -16,20 +16,20 @@ during application configuration.</p>
 appropriate configuration method (<code>theme.primaryPalette</code>, <code>theme.accentPalette</code>,
 <code>theme.warnPalette</code>, <code>theme.backgroundPalette</code>).</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme(&#39;default&#39;)
-    .primaryPalette(&#39;pink&#39;)
-    .accentPalette(&#39;orange&#39;);
+  $mdThemingProvider.theme('default')
+    .primaryPalette('pink')
+    .accentPalette('orange');
 });
 </hljs>
 
 <h3 id="specifying-dark-themes">Specifying Dark Themes</h3>
 <p>You can mark a theme as dark by calling <code>theme.dark()</code>. </p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme(&#39;default&#39;)
+  $mdThemingProvider.theme('default')
     .dark();
 });
 </hljs>
@@ -40,10 +40,10 @@ by default and for the <code>md-hue-1</code>, <code>md-hue-2</code>, <code>md-hu
 <p>By default, shades <code>500</code>, <code>300</code> <code>800</code> and <code>A100</code> are used for <code>primary</code> and
 <code>warn</code> intentions, while <code>A200</code>, <code>A100</code>, <code>A400</code> and <code>A700</code> are used for <code>accent</code>.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
 
-  $mdThemingProvider.theme(&#39;default&#39;)
+<p>  $mdThemingProvider.theme(&#39;default&#39;)
     .primaryPalette(&#39;pink&#39;, {
       &#39;default&#39;: &#39;400&#39;, // by default use shade 400 from the pink palette for primary intentions
       &#39;hue-1&#39;: &#39;100&#39;, // use shade 100 for the <code>md-hue-1</code> class
@@ -54,21 +54,19 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
     // default shades
     .accentPalette(&#39;purple&#39;, {
       &#39;default&#39;: &#39;200&#39; // use shade 200 for default, and keep all other shades the same
-    });
-
-});
-</hljs>
-
+    });</p>
+<p>});
+</hljs></p>
 <h3 id="defining-custom-palettes">Defining Custom Palettes</h3>
 <p>As mentioned before, AngularJS Material ships with the Material Design
 Spec&#39;s color palettes built in. In the event that you need to define a custom color palette, you can use <code>$mdThemingProvider</code> to define it, thereby making 
 it available to your theme for use in its intention groups. Note that you must
 specify all hues in the definition map.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
 
-  $mdThemingProvider.definePalette(&#39;amazingPaletteName&#39;, {
+<p>  $mdThemingProvider.definePalette(&#39;amazingPaletteName&#39;, {
     &#39;50&#39;: &#39;ffebee&#39;,
     &#39;100&#39;: &#39;ffcdd2&#39;,
     &#39;200&#39;: &#39;ef9a9a&#39;,
@@ -84,48 +82,40 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
     &#39;A400&#39;: &#39;ff1744&#39;,
     &#39;A700&#39;: &#39;d50000&#39;,
     &#39;contrastDefaultColor&#39;: &#39;light&#39;,    // whether, by default, text (contrast) 
-                                        // on this palette should be dark or light
-
-    &#39;contrastDarkColors&#39;: [&#39;50&#39;, &#39;100&#39;, //hues which contrast should be &#39;dark&#39; by default
-     &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;],
-    &#39;contrastLightColors&#39;: undefined    // could also specify this if default was &#39;dark&#39;
-  });
-
-  $mdThemingProvider.theme(&#39;default&#39;)
-    .primaryPalette(&#39;amazingPaletteName&#39;)
-
-});
-</hljs>
-
+                                        // on this palette should be dark or light</p>
+<pre><code>&#39;contrastDarkColors&#39;: [&#39;50&#39;, &#39;100&#39;, //hues which contrast should be &#39;dark&#39; by default
+ &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;],
+&#39;contrastLightColors&#39;: undefined    // could also specify this if default was &#39;dark&#39;</code></pre>
+<p>  });</p>
+<p>  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;amazingPaletteName&#39;)</p>
+<p>});
+</hljs></p>
 <h3 id="extending-existing-palettes">Extending Existing Palettes</h3>
 <p>Sometimes it is easier to extend an existing color palette to change a few properties
 than to define a whole new palette. You can use <code>$mdThemingProvider.extendPalette</code> 
 to quickly extend an existing color palette.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
 
-  // Extend the red theme with a different color and make the contrast color black instead of white.
+<p>  // Extend the red theme with a different color and make the contrast color black instead of white.
   // For example: raised button text will be black instead of white.
   var neonRedMap = $mdThemingProvider.extendPalette(&#39;red&#39;, {
     &#39;500&#39;: &#39;#ff0000&#39;,
     &#39;contrastDefaultColor&#39;: &#39;dark&#39;
-  });
-
-  // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette(&#39;neonRed&#39;, neonRedMap);
-
-  // Use that theme for the primary intentions
+  });</p>
+<p>  // Register the new color palette map with the name <code>neonRed</code>
+  $mdThemingProvider.definePalette(&#39;neonRed&#39;, neonRedMap);</p>
+<p>  // Use that theme for the primary intentions
   $mdThemingProvider.theme(&#39;default&#39;)
-    .primaryPalette(&#39;neonRed&#39;);
-
-});
-</hljs>
-
+    .primaryPalette(&#39;neonRed&#39;);</p>
+<p>});
+</hljs></p>
 <h3 id="disable-theming">Disable Theming</h3>
 <p>You can disable theming by calling <code>disableTheming()</code>.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.disableTheming();
 });

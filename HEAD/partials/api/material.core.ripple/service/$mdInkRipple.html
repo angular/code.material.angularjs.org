@@ -29,7 +29,7 @@
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
-app.factory(&#39;$myElementInkRipple&#39;, function($mdInkRipple) {
+app.factory('$myElementInkRipple', function($mdInkRipple) {
   return {
     attach: function (scope, element, options) {
       return $mdInkRipple.attach(scope, element, angular.extend({
@@ -40,12 +40,13 @@ app.factory(&#39;$myElementInkRipple&#39;, function($mdInkRipple) {
   };
 });
 
-app.controller(&#39;myController&#39;, function ($scope, $element, $myElementInkRipple) {
+<p>app.controller(&#39;myController&#39;, function ($scope, $element, $myElementInkRipple) {
   $scope.onClick = function (ev) {
     $myElementInkRipple.attach($scope, angular.element(ev.target), { center: true });
   }
 });
-</hljs>
+</hljs></p>
+
   </section>
 
 
