@@ -15,3 +15,7 @@ Disallow: /0.11.1/
 Disallow: /0.11.2/
 Disallow: /0.11.3/
 Disallow: /0.11.4/
+Disallow: /1.1.0-rc.4/
+Disallow: /1.1.0-rc.5/
+Disallow: /1.1.15/
+Disallow: /1.1.16/
