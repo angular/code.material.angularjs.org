@@ -2666,6 +2666,43 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "selectDemoTrackBy",
+          "module": "selectDemoTrackBy",
+          "dependencies": [
+            "ngMaterial",
+            "ngMessages"
+          ]
+        },
+        "id": "selectdemoTrackBy",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/select/demoTrackBy/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/select/demoTrackBy/script.js"
+          }
+        ],
+        "moduleName": "material.components.select",
+        "name": "demoTrackBy",
+        "label": "Track By",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/select/demoTrackBy/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "selectDemoValidation",
           "module": "selectDemoValidation",
           "dependencies": [
