@@ -102,7 +102,12 @@ automatically become clickable and executes the associated action of the proxy e
   </md-list-item>
 </hljs>
 
-<p>The <code>md-checkbox</code> element will be automatically detected as a proxy element and will toggle on click.</p>
+<p>The <code>md-checkbox</code> element will be automatically detected as a proxy element and will toggle on
+click.</p>
+<p>If not provided, an <code>aria-label</code> will be applied using the text of the list item.
+In this case, the following will be applied to the <code>md-checkbox</code>:
+<code>aria-label=&quot;Toggle First Line&quot;</code>.
+When localizing your application, you should supply a localized <code>aria-label</code>.</p>
 <hljs lang="html">
   <md-list-item>
     <span>First Line</span>
@@ -175,10 +180,11 @@ an overlaying button, which will will execute the given actions (like <code>ng-h
 <p>We create an overlaying button, instead of wrapping all content inside of the button,
 because otherwise some elements may not be clickable inside of the button.</p>
 <hr>
-<p>When using a secondary item inside of your list item, the <code>md-list-item</code> component will automatically create
-a secondary container at the end of the <code>md-list-item</code>, which contains all secondary items.</p>
-<p>The secondary item container is not static, because otherwise the overflow will not work properly on the
-list item.</p>
+<p>When using a secondary item inside of your list item, the <code>md-list-item</code> component will
+automatically create a secondary container at the end of the <code>md-list-item</code>, which contains all
+secondary items.</p>
+<p>The secondary item container is not static, because that would cause issues with the overflow
+of the list item.</p>
 
   
   </section>
