@@ -374,91 +374,6 @@
   }
 })();
 
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      });
-    };
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter(createFilterFor(query)) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -557,14 +472,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
   });
 
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.title1 = 'Button';
-  $scope.title4 = 'Warn';
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
 
 angular.module('cardDemo1', ['ngMaterial'])
 
@@ -577,6 +484,91 @@ angular.module('cardDemo1', ['ngMaterial'])
   $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
   $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
 });
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      });
+    };
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter(createFilterFor(query)) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
 
 
 angular.module('cardDemo2', ['ngMaterial'])
@@ -670,91 +662,13 @@ angular.module('checkboxDemo2', ['ngMaterial'])
       };
 });
 
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
-
-    $mdIconProvider
-      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    };
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    };
-  });
-
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette);
-
-    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
-        };
-      }
-    };
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.title1 = 'Button';
+  $scope.title4 = 'Warn';
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
 
 (function () {
   'use strict';
@@ -1057,6 +971,92 @@ angular
     };
   }
 })();
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette);
+
+    $scope.mdURL = 'https://material.google.com/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
+        };
+      }
+    };
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
+
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
+
+    $mdIconProvider
+      .defaultIconSet('img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    };
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    };
+  });
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -2499,6 +2499,113 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
 })();
 
 (function() {
+  'use strict';
+
+  angular
+      .module('panelProviderDemo', ['ngMaterial'])
+      .config(PanelProviderConfig)
+      .controller('PanelProviderCtrl', PanelProviderCtrl)
+      .controller('PanelMenuCtrl', PanelMenuCtrl);
+
+  /**
+   * Configuration method that is used to define a preset for the upcoming panel
+   * element. Each parameter in the preset is an available parameter in the
+   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
+   * defined here, they overwrite the default parameters for any panel that the
+   * preset is requested for.
+   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
+   *     API.
+   */
+  function PanelProviderConfig($mdPanelProvider) {
+    $mdPanelProvider.definePreset('demoPreset', {
+      attachTo: angular.element(document.body),
+      controller: PanelMenuCtrl,
+      controllerAs: 'ctrl',
+      template: '' +
+          '<div class="menu-panel" md-whiteframe="4">' +
+          '  <div class="menu-content">' +
+          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
+          '      <button class="md-button">' +
+          '        <span>{{item}}</span>' +
+          '      </button>' +
+          '    </div>' +
+          '    <md-divider></md-divider>' +
+          '    <div class="menu-item">' +
+          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
+          '        <span>Close Menu</span>' +
+          '      </button>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>',
+      panelClass: 'menu-panel-container',
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: 'menus'
+    });
+  }
+
+  function PanelProviderCtrl($mdPanel) {
+    this.navigation = {
+      name: 'navigation',
+      items: [
+        'Home',
+        'About',
+        'Contact'
+      ]
+    };
+    this.favorites = {
+      name: 'favorites',
+      items: [
+        'Add to Favorites'
+      ]
+    };
+    this.more = {
+      name: 'more',
+      items: [
+        'Account',
+        'Sign Out'
+      ]
+    };
+
+    $mdPanel.newPanelGroup('menus', {
+      maxOpen: 2
+    });
+
+    this.showMenu = function($event, menu) {
+      /**
+       * The request to open the panel has two arguments passed into it. The
+       * first is a preset name passed in as a string. This will request a
+       * cached preset and apply its configuration parameters. The second is an
+       * object containing parameters that can only be filled through a
+       * controller. These parameters represent configuration needs associated
+       * with user interaction, panel position, panel animation, and other
+       * miscellaneous needs.
+       */
+      $mdPanel.open('demoPreset', {
+        id: 'menu_' + menu.name,
+        position: $mdPanel.newPanelPosition()
+            .relativeTo($event.target)
+            .addPanelPosition(
+              $mdPanel.xPosition.ALIGN_START,
+              $mdPanel.yPosition.BELOW
+            ),
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event
+      });
+    };
+  }
+
+  function PanelMenuCtrl(mdPanelRef) {
+    this.closeMenu = function() {
+      mdPanelRef && mdPanelRef.close();
+    };
+  }
+})();
+
+(function() {
 'use strict';
 
 angular.module('panelAnimationsDemo', ['ngMaterial'])
@@ -2605,113 +2712,6 @@ DialogCtrl.prototype.closeDialog = function() {
   this._mdPanelRef && this._mdPanelRef.close();
 };
 
-})();
-
-(function() {
-  'use strict';
-
-  angular
-      .module('panelProviderDemo', ['ngMaterial'])
-      .config(PanelProviderConfig)
-      .controller('PanelProviderCtrl', PanelProviderCtrl)
-      .controller('PanelMenuCtrl', PanelMenuCtrl);
-
-  /**
-   * Configuration method that is used to define a preset for the upcoming panel
-   * element. Each parameter in the preset is an available parameter in the
-   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
-   * defined here, they overwrite the default parameters for any panel that the
-   * preset is requested for.
-   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
-   *     API.
-   */
-  function PanelProviderConfig($mdPanelProvider) {
-    $mdPanelProvider.definePreset('demoPreset', {
-      attachTo: angular.element(document.body),
-      controller: PanelMenuCtrl,
-      controllerAs: 'ctrl',
-      template: '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>',
-      panelClass: 'menu-panel-container',
-      focusOnOpen: false,
-      zIndex: 100,
-      propagateContainerEvents: true,
-      groupName: 'menus'
-    });
-  }
-
-  function PanelProviderCtrl($mdPanel) {
-    this.navigation = {
-      name: 'navigation',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-    this.favorites = {
-      name: 'favorites',
-      items: [
-        'Add to Favorites'
-      ]
-    };
-    this.more = {
-      name: 'more',
-      items: [
-        'Account',
-        'Sign Out'
-      ]
-    };
-
-    $mdPanel.newPanelGroup('menus', {
-      maxOpen: 2
-    });
-
-    this.showMenu = function($event, menu) {
-      /**
-       * The request to open the panel has two arguments passed into it. The
-       * first is a preset name passed in as a string. This will request a
-       * cached preset and apply its configuration parameters. The second is an
-       * object containing parameters that can only be filled through a
-       * controller. These parameters represent configuration needs associated
-       * with user interaction, panel position, panel animation, and other
-       * miscellaneous needs.
-       */
-      $mdPanel.open('demoPreset', {
-        id: 'menu_' + menu.name,
-        position: $mdPanel.newPanelPosition()
-            .relativeTo($event.target)
-            .addPanelPosition(
-              $mdPanel.xPosition.ALIGN_START,
-              $mdPanel.yPosition.BELOW
-            ),
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event
-      });
-    };
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
-    this.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    };
-  }
 })();
 
 angular

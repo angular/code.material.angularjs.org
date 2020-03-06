@@ -2028,6 +2028,16 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
       if (path.indexOf(window) === -1)
         path.push(window);
       return path;
+    },
+
+    /**
+     * Gets the string the user has entered and removes Regex identifiers
+     * @param {string} term
+     * @returns {string} sanitized string
+     */
+    sanitize: function(term) {
+      if (!term) return term;
+      return term.replace(/[\\^$*+?.()|{}[]]/g, '\\$&');
     }
   };
 
@@ -10379,14 +10389,15 @@ function MdAutocompleteItemScopeDirective($compile, $mdUtil) {
 "use strict";
 
 
-MdHighlightCtrl.$inject = ["$scope", "$element", "$attrs"];angular
+MdHighlightCtrl.$inject = ["$scope", "$element", "$attrs", "$mdUtil"];angular
     .module('material.components.autocomplete')
     .controller('MdHighlightCtrl', MdHighlightCtrl);
 
-function MdHighlightCtrl ($scope, $element, $attrs) {
+function MdHighlightCtrl ($scope, $element, $attrs, $mdUtil) {
   this.$scope = $scope;
   this.$element = $element;
   this.$attrs = $attrs;
+  this.$mdUtil = $mdUtil;
 
   // Cache the Regex to avoid rebuilding each time.
   this.regex = null;
@@ -10485,17 +10496,12 @@ MdHighlightCtrl.prototype.resolveTokens = function(string) {
 /** Creates a regex for the specified text with the given flags. */
 MdHighlightCtrl.prototype.createRegex = function(term, flags) {
   var startFlag = '', endFlag = '';
-  var regexTerm = this.sanitizeRegex(term);
+  var regexTerm = this.$mdUtil.sanitize(term);
 
   if (flags.indexOf('^') >= 0) startFlag = '^';
   if (flags.indexOf('$') >= 0) endFlag = '$';
 
   return new RegExp(startFlag + regexTerm + endFlag, flags.replace(/[$^]/g, ''));
-};
-
-/** Sanitizes a regex by removing all common RegExp identifiers */
-MdHighlightCtrl.prototype.sanitizeRegex = function(term) {
-  return term && term.toString().replace(/[\\^$*+?.()|{}[\]]/g, '\\$&');
 };
 
 })();
@@ -31216,7 +31222,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdConstant, $mdTheming) {
       }, CLEAR_SEARCH_AFTER);
 
       searchStr += e.key;
-      var search = new RegExp('^' + searchStr, 'i');
+      var search = new RegExp('^' + $mdUtil.sanitize(searchStr), 'i');
       if (!optNodes) {
         optNodes = $element.find('md-option');
         optText = new Array(optNodes.length);
@@ -31229,6 +31235,7 @@ function SelectMenuDirective($parse, $mdUtil, $mdConstant, $mdTheming) {
           return optNodes[i];
         }
       }
+
     };
 
     self.init = function(ngModel, binding) {
