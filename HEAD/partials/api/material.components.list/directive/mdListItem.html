@@ -116,7 +116,7 @@ When localizing your application, you should supply a localized <code>aria-label
 </hljs>
 
 <p>The recognized <code>md-switch</code> will toggle its state, when the user clicks on the <code>md-list-item</code>.</p>
-<p>It is also possible to have a <code>md-menu</code> inside of a <code>md-list-item</code>.
+<p>It is also possible to have a <code>md-menu</code> inside of a <code>md-list-item</code>.</p>
 <hljs lang="html">
   <md-list-item>
     <p>Click anywhere to fire the secondary action</p>
@@ -144,28 +144,31 @@ When localizing your application, you should supply a localized <code>aria-label
       </md-menu-content>
     </md-menu>
   </md-list-item>
-</hljs></p>
+</hljs>
+
 <p>The menu will automatically open, when the users clicks on the <code>md-list-item</code>.<br/></p>
-<p>If the developer didn&#39;t specify any position mode on the menu, the <code>md-list-item</code> will automatically detect the
-position mode and applies it to the <code>md-menu</code>.</p>
+<p>If the developer didn&#39;t specify any position mode on the menu, the <code>md-list-item</code> will
+automatically detect the position mode and apply it to the <code>md-menu</code>.</p>
 <h3 id="avatars">Avatars</h3>
-<p>Sometimes you may want to have some avatars inside of the <code>md-list-item</code>.<br/>
-You are able to create a optimized icon for the list item, by applying the <code>.md-avatar</code> class on the <code>&lt;img&gt;</code> element.</p>
+<p>Sometimes you may want to have avatars inside of the <code>md-list-item</code>.<br/>
+You are able to create an optimized icon for the list item, by applying the <code>.md-avatar</code> class on
+the <code>&lt;img&gt;</code> element.</p>
 <hljs lang="html">
   <md-list-item>
     <img src="my-avatar.png" class="md-avatar">
     <span>Alan Turing</span>
 </hljs>
 
-<p>When using <code>&lt;md-icon&gt;</code> for an avatar, you have to use the <code>.md-avatar-icon</code> class.
+<p>When using <code>&lt;md-icon&gt;</code> for an avatar, you have to use the <code>.md-avatar-icon</code> class.</p>
 <hljs lang="html">
   <md-list-item>
     <md-icon class="md-avatar-icon" md-svg-icon="social:person"></md-icon>
     <span>Timothy Kopra</span>
   </md-list-item>
-</hljs></p>
-<p>In cases, you have a <code>md-list-item</code>, which doesn&#39;t have any avatar,
-but you want to align it with the other avatar items, you have to use the <code>.md-offset</code> class.</p>
+</hljs>
+
+<p>In cases where you have a <code>md-list-item</code>, which doesn&#39;t have an avatar,
+but you want to align it with the other avatar items, you need to use the <code>.md-offset</code> class.</p>
 <hljs lang="html">
   <md-list-item class="md-offset">
     <span>Jon Doe</span>
@@ -176,7 +179,7 @@ but you want to align it with the other avatar items, you have to use the <code>
 <p>The <code>md-list-item</code> component automatically detects if the list item should be clickable.</p>
 <hr>
 <p>If the <code>md-list-item</code> is clickable, we wrap all content inside of a <code>&lt;div&gt;</code> and create
-an overlaying button, which will will execute the given actions (like <code>ng-href</code>, <code>ng-click</code>)</p>
+an overlaying button, which will will execute the given actions (like <code>ng-href</code>, <code>ng-click</code>).</p>
 <p>We create an overlaying button, instead of wrapping all content inside of the button,
 because otherwise some elements may not be clickable inside of the button.</p>
 <hr>
