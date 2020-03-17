@@ -201,13 +201,15 @@ $mdDialog.show({
   bindToController: true
 }
 
-<p>function MyController() {
+function MyController() {
   // Locals from Angular Material are available. e.g myVar is true.
-}</p>
-<p>MyController.prototype.$onInit = function() {
+}
+
+MyController.prototype.$onInit = function() {
   // Bindings are also available in the $onInit lifecycle hook.
 }
-</hljs></p>
+</hljs>
+
 <p>Recommended Settings for AngularJS 1.6</p>
 <ul>
 <li>AngularJS&#39; <code>$compileProvider.preAssignBindingsEnabled(false)</code></li>
@@ -223,14 +225,14 @@ $mdDialog.show({
   bindToController: true
 }
 
-<p>function MyController() {
+function MyController() {
   // No locals from Angular Material are available. e.g myVar is undefined.
-}</p>
-<p>MyController.prototype.$onInit = function() {
+}
+
+MyController.prototype.$onInit = function() {
   // Bindings are now available in the $onInit lifecycle hook.
 }
-</hljs></p>
-</section>
+</hljs></section>
   
 </div>
 

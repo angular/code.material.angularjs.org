@@ -35,7 +35,7 @@ defined.</p>
 <li><code>&lt;md-option ng-value=&quot;&#39;&#39;&quot;&gt;</code></li>
 <li><code>&lt;md-option ng-value=&quot;undefined&quot;&gt;</code></li>
 <li><code>&lt;md-option value=&quot;undefined&quot;&gt;</code> (this evaluates to the string <code>&quot;undefined&quot;</code>)</li>
-<li><code ng-non-bindable>&lt;md-option ng-value="{{someValueThatMightBeUndefined}}"&gt;</code></li>
+<li><code ng-non-bindable>&lt;md-option ng-value=&quot;{{someValueThatMightBeUndefined}}&quot;&gt;</code></li>
 </ul>
 <p><strong>Note:</strong> A value of <code>undefined</code> <strong><em>is considered a valid value</em></strong> (and does not auto-apply this
 attribute) since you may wish this to be your &quot;Not Available&quot; or &quot;None&quot; option.</p>
@@ -72,13 +72,12 @@ using objects with <code>md-select</code></a> for additional guidance on using t
 </md-select>
 </hljs>
 
-<p>With <code>ng-repeat</code>:
+<p>With <code>ng-repeat</code>:</p>
 <hljs lang="html">
 <md-select ng-model="currentState" placeholder="Select a state">
   <md-option ng-value="state" ng-repeat="state in states">{{ state }}</md-option>
 </md-select>
-</hljs></p>
-
+</hljs>
   
   </section>
   
@@ -159,8 +158,9 @@ using objects with <code>md-select</code></a> for additional guidance on using t
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <a ng-href="https://docs.angularjs.org/api/ng/directive/ngRepeat">
- AngularJS directive</a> that instantiates a template once per item from a collection.
+          <p><a ng-href="https://docs.angularjs.org/api/ng/directive/ngRepeat">
+ AngularJS directive</a> that instantiates a template once per item from a collection.</p>
+
           
         </td>
       </tr>

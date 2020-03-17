@@ -65,7 +65,7 @@ migration. This document provides additional guidance specific to AngularJS Mate
 application for the migration. In addition to this preparation work, you should use the content of
 this document in order to make migration plans based on how features and components have changed
 between AngularJS Material and Angular Material.</p>
-<h3 id="a-namecdka-angular-cdk"><a name="cdk"></a> Angular CDK</h3>
+<h3 id="-a-name-cdk-a-angular-cdk"><a name="cdk"></a> Angular CDK</h3>
 <p>Some of the features of AngularJS Material have been made more generic and moved into the <a href="https://material.angular.io/cdk">Angular
 CDK</a>. </p>
 <p>These include:</p>
@@ -76,7 +76,8 @@ CDK</a>. </p>
 <th>CDK</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td><a href="https://material.angularjs.org/latest/api/service/$mdPanel"><code>$mdPanel</code></a></td>
 <td><a href="https://material.angular.io/cdk/overlay/overview"><code>Overlay</code></a></td>
 </tr>
@@ -104,8 +105,9 @@ CDK</a>. </p>
 <td><a href="https://material.angularjs.org/latest/layout/introduction">layout</a> system</td>
 <td>Covered in <a href="#cdk-layout">separate section</a> of this guide</td>
 </tr>
-</tbody></table>
-<h3 id="a-nametheminga-theming"><a name="theming"></a> Theming</h3>
+</tbody>
+</table>
+<h3 id="-a-name-theming-a-theming"><a name="theming"></a> Theming</h3>
 <p>AngularJS Material performs most theming at <em>run-time</em>. While this allows developers to configure
 themes dynamically in JavaScript, it also incurs substantial performance cost to generate
 CSS during application load.</p>
@@ -187,7 +189,7 @@ learn more about the specific <code>&lt;meta&gt;</code> tags.</p>
 <h5 id="note-about-css-variables">Note about CSS variables</h5>
 <p>Once the team begins phasing out support for IE11, the theming system will be revisited with
 <a href="https://caniuse.com/#feat=css-variables">CSS Variables</a> (also known as CSS Custom Properties) in mind.</p>
-<h3 id="a-namelayouta-changes-to-layout-features"><a name="layout"></a> Changes to Layout Features</h3>
+<h3 id="-a-name-layout-a-changes-to-layout-features"><a name="layout"></a> Changes to Layout Features</h3>
 <p>The AngularJS Material <a href="https://material.angularjs.org/latest/layout/introduction">layout</a> system includes includes attributes and classes like <code>layout</code>,
 <code>flex</code>, <code>show</code>, <code>hide</code>, etc.</p>
 <p>Since AngularJS Material&#39;s inception, browser support for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">CSS Flexbox</a> has <a href="https://caniuse.com/#feat=flexbox">broadly
@@ -205,7 +207,7 @@ alternatives when choosing an approach to layout.</p>
 <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a></li>
 <li><a href="https://learncssgrid.com/">Learn CSS Grid</a></li>
 </ul>
-<h4 id="a-nameflex-layouta-flex-layout"><a name="flex-layout"></a> Flex Layout</h4>
+<h4 id="-a-name-flex-layout-a-flex-layout"><a name="flex-layout"></a> Flex Layout</h4>
 <p>This comprehensive layout system was moved into its <a href="https://github.com/angular/flex-layout">own project</a> (beta).</p>
 <p>The package contains the following:</p>
 <ul>
@@ -227,7 +229,7 @@ AngularJS Material.</li>
 </ul>
 </li>
 </ul>
-<h4 id="a-namecdk-layouta-angular-cdk-layout"><a name="cdk-layout"></a> Angular CDK Layout</h4>
+<h4 id="-a-name-cdk-layout-a-angular-cdk-layout"><a name="cdk-layout"></a> Angular CDK Layout</h4>
 <p>The CDK&#39;s layout capabilities offer a lightweight alternative (or complement) to larger,
 full-blown layout systems. This capability adds <code>3.06 KB</code> as reported by <code>source-map-explorer</code>
 with Angular CDK <code>v7.3.7</code>.</p>
@@ -238,7 +240,7 @@ with Angular CDK <code>v7.3.7</code>.</p>
 <li>A <code>BreakpointObserver</code> service that offers APIs for responding to changes in viewport size based
 on predefined breakpoints.</li>
 </ul>
-<h3 id="a-nametypographya-typography"><a name="typography"></a> Typography</h3>
+<h3 id="-a-name-typography-a-typography"><a name="typography"></a> Typography</h3>
 <p>AngularJS Material <a href="https://material.angularjs.org/latest/CSS/typography">typography classes</a> align with the Angular Material
 <a href="https://material.angular.io/guide/typography">typography classes</a>.</p>
 <p>Angular Material also adds the following typography features:</p>
@@ -246,7 +248,7 @@ on predefined breakpoints.</li>
 <li><a href="https://material.angular.io/guide/typography#customization">Customization via Sass mixins</a> that are similar to the theme configuration mixins</li>
 <li>Utility Sass mixins and functions for use in <a href="https://material.angular.io/guide/typography#material-typography-in-your-custom-css">styling your custom components</a></li>
 </ul>
-<h2 id="a-namecomparisona-comparison-of-features-and-migration-tips"><a name="comparison"></a> Comparison of Features and Migration Tips</h2>
+<h2 id="-a-name-comparison-a-comparison-of-features-and-migration-tips"><a name="comparison"></a> Comparison of Features and Migration Tips</h2>
 <p>Angular Material introduces a number of <a href="#new-components">new components</a> and features that do not
 exist in AngularJS Material. Angular Material also makes greater use of semantic HTML and native
 elements to improve accessibility.</p>
@@ -264,7 +266,8 @@ directives, for instance <code>&lt;md-subheader&gt;</code> changed to <code>matS
 <th>Special Notes</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>autocomplete</td>
 <td><a href="https://material.angularjs.org/latest/api/directive/mdAutocomplete">Docs</a></td>
 <td><a href="https://material.angular.io/components/autocomplete/overview">Docs</a></td>
@@ -558,7 +561,8 @@ directives, for instance <code>&lt;md-subheader&gt;</code> changed to <code>matS
 <td><a href="https://material.angular.io/guide/elevation">Guide</a></td>
 <td>Based on classes and mixins</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h4 id="component-and-directive-migration-notes">Component and Directive Migration Notes</h4>
 <ol>
 <li><code>md-slider-container</code> helped style and position a <code>span</code> and <code>input</code> along with the <code>md-slider</code>.
@@ -575,7 +579,8 @@ desired.</li>
 <th>Special Notes</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>$mdAriaProvider</td>
 <td><a href="https://material.angularjs.org/latest/api/service/$mdAriaProvider">Docs</a></td>
 <td>-</td>
@@ -713,7 +718,8 @@ desired.</li>
 <td><a href="https://material.angular.io/components/snack-bar/overview">Docs</a></td>
 <td><code>MatSnackBar</code></td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 <h4 id="service-migration-notes">Service Migration Notes</h4>
 <ol>
 <li><a href="https://medium.com/myplanet-musings/comparing-3-top-automated-accessibility-testing-tools-wave-tenon-io-and-google-lighthouse-d3897d7bb311">This article</a>
@@ -737,7 +743,7 @@ when supported and only supplies a workaround for browsers like IE11 that do not
 sticky positioning. For Angular Material, you should use the native <code>position: sticky</code> and
 provide your own solution for IE11.</li>
 </ol>
-<h3 id="a-namenew-componentsa-new-components"><a name="new-components"></a> New Components</h3>
+<h3 id="-a-name-new-components-a-new-components"><a name="new-components"></a> New Components</h3>
 <p>These are new components found in Angular Material and the Angular CDK that do not exist in
 AngularJS Material.</p>
 <p>The <code>mat-</code> and <code>cdk-</code> prefixes have been omitted to make this table more readable.</p>
@@ -749,7 +755,8 @@ AngularJS Material.</p>
 <th>Special Notes</th>
 </tr>
 </thead>
-<tbody><tr>
+<tbody>
+<tr>
 <td>badge</td>
 <td><a href="https://material.angular.io/components/badge/overview">Docs</a></td>
 <td></td>
@@ -794,7 +801,8 @@ AngularJS Material.</p>
 <td><a href="https://material.angular.io/components/tree/overview">Docs</a></td>
 <td>Unstyled CDK and Material versions available.</td>
 </tr>
-</tbody></table>
+</tbody>
+</table>
 
     
 </div>

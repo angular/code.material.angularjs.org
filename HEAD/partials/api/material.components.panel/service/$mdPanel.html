@@ -38,53 +38,54 @@ injected in the panel&#39;s controller</li>
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
 (function(angular, undefined) {
-  'use strict';
+  &#39;use strict&#39;;
 
-<p>  angular
+  angular
       .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
       .controller(&#39;DemoDialogController&#39;, DialogController)
-      .controller(&#39;DemoCtrl&#39;, function($mdPanel) {</p>
-<pre><code>var panelRef;
+      .controller(&#39;DemoCtrl&#39;, function($mdPanel) {
 
-function showPanel($event) {
-  var panelPosition = $mdPanel.newPanelPosition()
-      .absolute()
-      .top(&#39;50%&#39;)
-      .left(&#39;50%&#39;);
+    var panelRef;
 
-  var panelAnimation = $mdPanel.newPanelAnimation()
-      .openFrom($event)
-      .duration(200)
-      .closeTo(&#39;.show-button&#39;)
-      .withAnimation($mdPanel.animation.SCALE);
+    function showPanel($event) {
+      var panelPosition = $mdPanel.newPanelPosition()
+          .absolute()
+          .top(&#39;50%&#39;)
+          .left(&#39;50%&#39;);
 
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: DialogController,
-    controllerAs: &#39;ctrl&#39;,
-    position: panelPosition,
-    animation: panelAnimation,
-    targetEvent: $event,
-    templateUrl: &#39;dialog-template.html&#39;,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: true
-  };
+      var panelAnimation = $mdPanel.newPanelAnimation()
+          .openFrom($event)
+          .duration(200)
+          .closeTo(&#39;.show-button&#39;)
+          .withAnimation($mdPanel.animation.SCALE);
 
-  $mdPanel.open(config)
-      .then(function(result) {
-        panelRef = result;
-      });
-}</code></pre>
-<p>  }</p>
-<p>  function DialogController(MdPanelRef) {
+      var config = {
+        attachTo: angular.element(document.body),
+        controller: DialogController,
+        controllerAs: &#39;ctrl&#39;,
+        position: panelPosition,
+        animation: panelAnimation,
+        targetEvent: $event,
+        templateUrl: &#39;dialog-template.html&#39;,
+        clickOutsideToClose: true,
+        escapeToClose: true,
+        focusOnOpen: true
+      };
+
+      $mdPanel.open(config)
+          .then(function(result) {
+            panelRef = result;
+          });
+    }
+  }
+
+  function DialogController(MdPanelRef) {
     function closeDialog() {
       if (MdPanelRef) MdPanelRef.close();
     }
   }
 })(angular);
-</hljs></p>
-
+</hljs>
   </section>
 
 

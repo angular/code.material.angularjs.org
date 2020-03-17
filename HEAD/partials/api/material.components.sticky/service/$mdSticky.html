@@ -20,27 +20,27 @@
 use the native browser stickiness.</p>
 <p>By default the <code>$mdSticky</code> service compiles the cloned element, when not specified through the <code>elementClone</code>
 parameter, in the same scope as the actual element lives.</p>
-<h3>Notes</h3>
+<p><h3>Notes</h3>
 When using an element which is containing a compiled directive, which changed its DOM structure during compilation,
 you should compile the clone yourself using the plain template.<br/><br/>
-See the right usage below:
+See the right usage below:</p>
 <hljs lang="js">
-  angular.module('myModule')
-    .directive('stickySelect', function($mdSticky, $compile) {
+  angular.module(&#39;myModule&#39;)
+    .directive(&#39;stickySelect&#39;, function($mdSticky, $compile) {
       var SELECT_TEMPLATE =
-        '<md-select ng-model="selected">' +
-          '<md-option>Option 1</md-option>' +
-        '</md-select>';
+        &#39;<md-select ng-model="selected">&#39; +
+          &#39;<md-option>Option 1</md-option>&#39; +
+        &#39;</md-select>&#39;;
 
-<pre><code>  return {
-    restrict: &#39;E&#39;,
-    replace: true,
-    template: SELECT_TEMPLATE,
-    link: function(scope,element) {
-      $mdSticky(scope, element, $compile(SELECT_TEMPLATE)(scope));
-    }
-  };
-});</code></pre>
+      return {
+        restrict: &#39;E&#39;,
+        replace: true,
+        template: SELECT_TEMPLATE,
+        link: function(scope,element) {
+          $mdSticky(scope, element, $compile(SELECT_TEMPLATE)(scope));
+        }
+      };
+    });
 </hljs>
 </div>
 
@@ -54,11 +54,11 @@ See the right usage below:
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
-  angular.module('myModule')
-    .directive('stickyText', function($mdSticky, $compile) {
+  angular.module(&#39;myModule&#39;)
+    .directive(&#39;stickyText&#39;, function($mdSticky, $compile) {
       return {
-        restrict: 'E',
-        template: '<span>Sticky Text</span>',
+        restrict: &#39;E&#39;,
+        template: &#39;<span>Sticky Text</span>&#39;,
         link: function(scope,element) {
           $mdSticky(scope, element);
         }

@@ -36,8 +36,8 @@ Like the <code>$mdPanel</code> or <code>$mdDialog</code>.</p>
       <p>Basic Usage with a template</p>
 <hljs lang="js">
   $mdCompiler.compile({
-    templateUrl: 'modal.html',
-    controller: 'ModalCtrl',
+    templateUrl: &#39;modal.html&#39;,
+    controller: &#39;ModalCtrl&#39;,
     locals: {
       modal: myModalInstance;
     }
@@ -50,16 +50,18 @@ Like the <code>$mdPanel</code> or <code>$mdDialog</code>.</p>
 <p>Example with a content element</p>
 <hljs lang="js">
 
-<p>  // Create a virtual element and link it manually.
+  // Create a virtual element and link it manually.
   // The compiler doesn&#39;t need to recompile the element each time.
-  var myElement = $compile(&#39;<span>Test</span>&#39;)(myScope);</p>
-<p>  $mdCompiler.compile({
+  var myElement = $compile(&#39;<span>Test</span>&#39;)(myScope);
+
+  $mdCompiler.compile({
     contentElement: myElement
   }).then(function (compileData) {
     compileData.element // Content Element (same as above)
     compileData.link // This does nothing when using a contentElement.
   });
-</hljs></p>
+</hljs>
+
 <blockquote>
 <p>Content Element is a significant performance improvement when the developer already knows that the
 compiled element will be always the same and the scope will not change either.</p>
@@ -67,19 +69,20 @@ compiled element will be always the same and the scope will not change either.</
 <p>The <code>contentElement</code> option also supports DOM elements which will be temporary removed and restored
 at its old position.</p>
 <hljs lang="js">
-  var domElement = document.querySelector('#myElement');
+  var domElement = document.querySelector(&#39;#myElement&#39;);
 
-<p>  $mdCompiler.compile({
+  $mdCompiler.compile({
     contentElement: myElement
   }).then(function (compileData) {
     compileData.element // Content Element (same as above)
     compileData.link // This does nothing when using a contentElement.
   });
-</hljs></p>
+</hljs>
+
 <p>The <code>$mdCompiler</code> can also query for the element in the DOM itself.</p>
 <hljs lang="js">
   $mdCompiler.compile({
-    contentElement: '#myElement'
+    contentElement: &#39;#myElement&#39;
   }).then(function (compileData) {
     compileData.element // Content Element (same as above)
     compileData.link // This does nothing when using a contentElement.

@@ -43,7 +43,7 @@ It can be overridden with the <code>md-autofocus</code> directive on the child e
     </md-button>
   </md-content>
 
-<p>  <md-sidenav md-component-id="right"
+  <md-sidenav md-component-id="right"
     md-is-locked-open="$mdMedia('min-width: 333px')"
     class="md-sidenav-right">
     <form>
@@ -53,15 +53,15 @@ It can be overridden with the <code>md-autofocus</code> directive on the child e
                ng-model="data" md-autofocus>
       </md-input-container>
     </form>
-  </md-sidenav></p>
+  </md-sidenav>
 </div>
 </hljs>
 
 <hljs lang="js">
-var app = angular.module('myApp', ['ngMaterial']);
-app.controller('MyController', function($scope, $mdSidenav) {
+var app = angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;]);
+app.controller(&#39;MyController&#39;, function($scope, $mdSidenav) {
   $scope.openLeftMenu = function() {
-    $mdSidenav('left').toggle();
+    $mdSidenav(&#39;left&#39;).toggle();
   };
 });
 </hljs>

@@ -3,9 +3,8 @@
     <h1 id="md-button">&lt;md-button&gt;</h1>
 <p>Below is a snapshot of the AngularJS Material <strong>button</strong> component demos with the default themes and standard options:</p>
 <p><img src="https://cloud.githubusercontent.com/assets/210413/7947020/fafde934-093f-11e5-9584-27eb2deedd0f.png" alt="buttonsdemo"></p>
-<br/>
-### CSS Styles
-
+<p><br/></p>
+<h3 id="css-styles">CSS Styles</h3>
 <p>The base CSS class for all <code>&lt;md-button&gt;</code> components is <code>.md-button</code>: </p>
 <hljs lang="css">
 .md-button {
@@ -33,9 +32,8 @@
   <md-button class="btn1" ng-click="acceptOffer();"> Accept </md-button>
 </hljs>
 
-<br/>
-### Theme Requirements
-
+<p><br/></p>
+<h3 id="theme-requirements">Theme Requirements</h3>
 <p>All AngularJS Material components have specific CSS rules constructed using the theme name and theme-class overrides. For the <strong>Default</strong> theme, however, these rules are added to the components styles using the <code>.md-default-theme</code> class. If, however, you have configured a custom theme called <code>companyX</code> that is <strong>NOT</strong> the default theme, then any CSS overrides <strong>must</strong> use fully-specified classname. For <code>&lt;md-button&gt;</code> the <strong>fully-specified classname</strong> will be <code>.md-button.md-companyX-theme.btn1</code>.</p>
 <hljs lang="css">
 .md-button.md-companyX-theme.btn1            {  }
@@ -45,9 +43,8 @@
 </hljs>
 
 
-<br/>
-## Flat Buttons
-
+<p><br/></p>
+<h2 id="flat-buttons">Flat Buttons</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/210413/7945984/bda14884-0939-11e5-9196-131ded20ca77.png" alt="mdbuttonflatdefault3"></p>
 <hljs lang="html">
 <md-button> Button </md-button>
@@ -58,16 +55,17 @@
   color : currentColor;
 }
 
-<p>.md-button:not([disabled]):hover {
+.md-button:not([disabled]):hover {
   background-color: rgba(158, 158, 158, 0.2);
-}</p>
-<p>.md-button[disabled] {
+}
+
+.md-button[disabled] {
   color : rgba(0, 0, 0, 0.26);
   background-color: transparent;
 }
-</hljs></p>
-<br/>
+</hljs>
 
+<p><br/></p>
 <h4 id="custom-css-overrides">Custom CSS Overrides</h4>
 <p><img src="https://cloud.githubusercontent.com/assets/210413/7945987/c1b1c700-0939-11e5-879c-ba804ca03267.png" alt="mdbuttonflatdefault_overrides2"></p>
 <hljs lang="html"> 
@@ -81,18 +79,19 @@
   font-size: 16px;
 }
 
-<p>.btn1:not([disabled]):hover { 
+.btn1:not([disabled]):hover { 
   background-color: rgba(107, 103, 91, 0.96);
   color: white;
-}</p>
-<p>.btn1[disabled] { 
+}
+
+.btn1[disabled] { 
   color : rgb(187, 187, 187);
   background-color: rgba(230, 230, 229, 0.96);
 }
-</hljs></p>
-<br/>
-## Raised Buttons
+</hljs>
 
+<p><br/></p>
+<h2 id="raised-buttons">Raised Buttons</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7254163/fe898728-e849-11e4-943b-a9cd88ec9573.PNG" alt="raisedbutton"></p>
 <p>Add the <code>.md-raised</code> class to create a raised button:</p>
 <hljs lang="html">
@@ -105,9 +104,8 @@
 }
 </hljs>
 
-<br/>
-## Cornered buttons
-
+<p><br/></p>
+<h2 id="cornered-buttons">Cornered buttons</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7254379/682592ac-e84b-11e4-8d33-78314cea8bda.PNG" alt="corneredbutton"></p>
 <p>Add the <code>.md-cornered</code> class to create a button with corners:</p>
 <hljs lang="html">
@@ -120,9 +118,8 @@
 }
 </hljs>
 
-<br/>
-## Default FAB Button
-
+<p><br/></p>
+<h2 id="default-fab-button">Default FAB Button</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7254736/8fec7ee8-e84d-11e4-9cf9-58ea9221c3c2.PNG" alt="floatingbutton"></p>
 <p>Add the <code>.md-fab</code> class in order to create a floating action button (aka FAB):</p>
 <hljs lang="html">
@@ -140,9 +137,8 @@
 }
 </hljs>
 
-<br/>
-## Mini FAB Button
-
+<p><br/></p>
+<h2 id="mini-fab-button">Mini FAB Button</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7273617/1fcca280-e8fe-11e4-9588-231a9e860be1.PNG" alt="minibutton"></p>
 <p>Add the <code>.md-mini</code> class in order to create small, mini-FAB buttons: </p>
 <hljs lang="html">
@@ -159,9 +155,8 @@
 }
 </hljs>
 
-<br/>
-## Icon button using SVGs
-
+<p><br/></p>
+<h2 id="icon-button-using-svgs">Icon button using SVGs</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7273908/d701bd8a-e900-11e4-84c7-44c580c7372d.PNG" alt="iconbutton"></p>
 <p>Create icon buttons by adding the <code>.md-icon-button</code> class and the <code>&lt;md-icon ...&gt;</code> component:</p>
 <hljs lang="html">
@@ -181,10 +176,8 @@
 }
 </hljs>
 
-<br/>
-## Icon button using Font-icons
-
-
+<p><br/></p>
+<h2 id="icon-button-using-font-icons">Icon button using Font-icons</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/1292882/7670414/f57721ba-fcab-11e4-9a22-67970063797c.PNG" alt="fonticonbutton"></p>
 <p>Here is another example of a button with font icons:</p>
 <hljs lang="html">
@@ -196,9 +189,8 @@
 </hljs>
 
 
-<br/>
-## Grouping with CSS Overrides
-
+<p><br/></p>
+<h2 id="grouping-with-css-overrides">Grouping with CSS Overrides</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/210413/7961138/1b48bb16-09cb-11e5-9283-bdda28b8bb66.png" alt="mdbuttongroup"></p>
 <p>Using the customization approaches documented above, we can easily create a mdButtonGroup:</p>
 <hljs lang="html">
@@ -207,7 +199,7 @@
   <md-button class="groupX left">Apple</md-button>
   <md-button class="groupX middle">Samsung</md-button>
   <md-button class="groupX middle">Sony</md-button>
-  <md-button class="groupX right">B&O</md-button>
+  <md-button class="groupX right">B&amp;O</md-button>
 </section>
 </hljs>
 
@@ -223,23 +215,25 @@
     min-width:100px;
 }
 
-<p>.md-button.left {
+.md-button.left {
     border-radius: 10px 0 0 10px;
-}</p>
-<p>.md-button.middle {
+}
+
+.md-button.middle {
     border-radius: 0;
     border-left: 1px solid rgba(230, 230, 230, 0.96);
     border-right: 1px solid rgba(230, 230, 230, 0.96);
-}</p>
-<p>.md-button.right {
+}
+
+.md-button.right {
     border-radius: 0 10px 10px 0;
-}</p>
-<p>.md-button:not([disabled]):hover {
+}
+
+.md-button:not([disabled]):hover {
     background-color: rgba(193, 193, 193, 0.96);
     color: rgba(44, 65, 164, 0.96);
     transition: 0.3s;
 }
-</hljs></p>
-
+</hljs>
     
 </div>

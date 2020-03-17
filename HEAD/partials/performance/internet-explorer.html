@@ -28,10 +28,10 @@ The following steps should be performed:</p>
 </ul>
 <hljs lang="js">
 copy([].slice.call(document.styleSheets)
-  .map(e => e.ownerNode)
-  .filter(e => e.hasAttribute('md-theme-style'))
-  .map(e => e.textContent)
-  .join('\n');
+  .map(e =&gt; e.ownerNode)
+  .filter(e =&gt; e.hasAttribute(&#39;md-theme-style&#39;))
+  .map(e =&gt; e.textContent)
+  .join(&#39;\n&#39;);
 );
 </hljs>
 
@@ -42,14 +42,13 @@ the injection of styles:</li>
 </ul>
 <hljs lang="js">
 angular
-  .module('myApp', ['ngMaterial'])
+  .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
   .config(function($mdThemingProvider) {
     $mdThemingProvider.disableTheming();
 });
 </hljs>
 
-<br>
-
+<p><br></p>
 <h1 id="directives-that-can-help">Directives that can help</h1>
 <h2 id="virtual-repeat">Virtual Repeat</h2>
 <p>One of the greatest issues with Internet Explorer, is the slow layout calculation. 
@@ -124,8 +123,7 @@ app has an example of this.</p>
 <li>It was refactored to move to using a single external productGrid outside the tabs (aka navBar)</li>
 <li>It now uses <code>md-on-select</code> or data binding to update the productGrid content.</li>
 </ul>
-<br>
-
+<p><br></p>
 <h1 id="bells-and-whistles">Bells and whistles</h1>
 <p>AngularJS Material comes with all of the bells and whistles turned on by default. 
 These can be switched off selectively for Internet Explorer.</p>
@@ -134,28 +132,28 @@ These can be switched off selectively for Internet Explorer.</p>
 <hljs lang="js">
 var isIE = window.document.documentMode;
 
-<p>angular
+angular
   .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
   .config( function($mdGestureProvider) {
     if (isIE) {
       $mdGestureProvider.disableAll();
     }
   });
-</hljs></p>
+</hljs>
+
 <h2 id="ink-ripples">Ink ripples</h2>
 <p>The material ink ripple animation effects can be turned off using the <code>$mdInkRippleProvider</code>.</p>
 <h3 id="example">Example</h3>
 <hljs lang="js">
 var isIE = window.document.documentMode;
 
-<p>angular
+angular
   .module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
   .config( function($mdInkRippleProvider) {
     if (isIE) {
       $mdInkRippleProvider.disableInkRipple();
     }
   });
-</hljs></p>
-
+</hljs>
     
 </div>

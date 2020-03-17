@@ -31,14 +31,13 @@ desired properties, then pass the object as part of $mdPanel creation.</p>
 var panelAnimation = new MdPanelAnimation()
     .openFrom(myButtonEl)
     .duration(1337)
-    .closeTo('.my-button')
+    .closeTo(&#39;.my-button&#39;)
     .withAnimation($mdPanel.animation.SCALE);
 
-<p>$mdPanel.create({
+$mdPanel.create({
   animation: panelAnimation
 });
-</hljs></p>
-
+</hljs>
   </section>
 
 
