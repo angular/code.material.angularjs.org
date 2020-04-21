@@ -404,8 +404,9 @@ their options each time.</p>
         <code class="method-function-syntax">$mdDialog.confirm();
 </code>
       </h3>
-      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message. You can call show and the promise returned
-will be resolved only if the user clicks the confirm action on the dialog.</p>
+      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message. You can call show and the promise
+returned will be resolved if the user clicks the confirm action on the dialog. The promise will
+be rejected if the user clicks the cancel action or dismisses the dialog.</p>
 </div>
 
       <div class="method-param-table">
@@ -455,8 +456,10 @@ will be resolved only if the user clicks the confirm action on the dialog.</p>
         <code class="method-function-syntax">$mdDialog.prompt();
 </code>
       </h3>
-      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message and input box. You can call show and the promise returned
-will be resolved only if the user clicks the prompt action on the dialog, passing the input value as the first argument.</p>
+      <div class="service-desc"><p>Builds a preconfigured dialog with the specified message and input box. You can call show and the
+promise returned will be resolved, if the user clicks the prompt action on the dialog, passing
+the input value as the first argument. The promise will be rejected if the user clicks the cancel
+action or dismisses the dialog.</p>
 </div>
 
       <div class="method-param-table">
