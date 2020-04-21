@@ -228,11 +228,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h3>Installing the AngularJS Material Libraries</h3>\n' +
     '\n' +
     '    <p>\n' +
-    '      You can\n' +
+    '      You can install the AngularJS Material library (and its dependent libraries) in your local\n' +
+    '      project using either\n' +
     '      <a href="https://github.com/angular/bower-material/#installing-angularjs-material"\n' +
-    '         target="_blank">install the AngularJS Material library</a>\n' +
-    '      (and its dependent libraries) in your local project using\n' +
-    '      <a href="https://www.npmjs.com/" target="_blank">NPM</a>.\n' +
+    '         target="_blank">NPM, JSPM, or Bower</a>.\n' +
     '    </p>\n' +
     '\n' +
     '    <p>\n' +
