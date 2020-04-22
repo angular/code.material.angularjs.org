@@ -141,71 +141,38 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2>How do I start with AngularJS Material?</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
     '      <li>\n' +
-    '        Get jump started with a free course: <a\n' +
+    '        Get jump started with a free 30 minute video course: <a\n' +
     '          href="https://egghead.io/courses/introduction-to-angular-material" target="_blank"\n' +
     '          title="AngularJS Framework">Introduction to AngularJS Material</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
-    '        Visit the <a href="https://codepen.io/team/AngularMaterial/" target="_blank"\n' +
-    '                       title="CodePen Material Community">CodePen Community for AngularJS Material</a>\n' +
+    '        <a href="https://stackblitz.com/edit/angularjs-material-blank?file=app%2Fapp.template.html"\n' +
+    '           target="_blank" title="Blank AngularJS Material StackBlitz Demo">\n' +
+    '          Start with a blank application on StackBlitz</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
-    '        <a href="https://codepen.io/team/AngularMaterial/pen/RrbXyW" target="_blank">Start with a\n' +
-    '        blank CodePen Material Application</a>\n' +
+    '        Test drive AngularJS Material examples on\n' +
+    '        <a href="https://codepen.io/team/AngularMaterial/"\n' +
+    '           target="_blank" title="AngularJS Material CodePen Examples">\n' +
+    '          CodePen</a>\n' +
     '      </li>\n' +
     '      <li>\n' +
-    '        <a href="https://github.com/angular/material-start/tree/es6-tutorial" target="_blank"\n' +
-    '             title="Material-Start Tutorial">Learn with Material-Start: 10-step Tutorial (es6)</a>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a href="https://github.com/angular/material-start/tree/es6" target="_blank"\n' +
-    '             title="Material Start - ES6">Learn with Material-Start: Completed (es6)</a>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a href="https://github.com/angular/material-start/tree/typescript" target="_blank"\n' +
-    '           title="Material Start - Typescript">Learn with Material-Start: Completed (Typescript)</a>\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        <a href="https://github.com/angular/material-start/tree/master" target="_blank"\n' +
-    '           title="Material-Start - ES5">Learn with Material-Start: Completed (es5)</a>\n' +
+    '        Checkout our\n' +
+    '        <a href="https://github.com/Splaktar/angularjs-angular-material-hybrid-demo" target="_blank"\n' +
+    '           title="AngularJS Material, Angular Material, TypeScript, Angular CLI repository">\n' +
+    '        AngularJS Material + Angular Material + TypeScript + Angular CLI</a> repository\n' +
     '      </li>\n' +
     '      <li style="margin-bottom: 30px;">\n' +
-    '        <a href="https://github.com/angular/material-start" target="_blank"\n' +
-    '           title="GitHub Starter Project">Use the Github Starter Project</a>\n' +
+    '        Checkout the <a href="https://github.com/angular/material-start/tree/typescript" target="_blank"\n' +
+    '           title="Material Start - Typescript and SystemJS">AngularJS Material TypeScript + SystemJS</a>\n' +
+    '        repository\n' +
     '      </li>\n' +
     '      <li>Use the "Edit on CodePen" button on any of our Demos<br/>\n' +
     '        <img\n' +
     '            src="https://cloud.githubusercontent.com/assets/210413/11568997/ed86795a-99b4-11e5-898e-1da172be80da.png"\n' +
-    '            style="width:75%;margin: 10px 30px 0 0" alt="Image with arrow to Edit on CodePen button">\n' +
+    '            style="width:75%; margin: 10px 30px 0 0" alt="Image with arrow to Edit on CodePen button">\n' +
     '      </li>\n' +
     '    </ul>\n' +
-    '\n' +
-    '    <h3>Build a Material Application (blank shell)</h3>\n' +
-    '\n' +
-    '    <p>\n' +
-    '      See this example application on CodePen that loads\n' +
-    '      the AngularJS Material library from the Google CDN:\n' +
-    '    </p>\n' +
-    '\n' +
-    '    <iframe height=\'777\' scrolling=\'no\' title="AngularJS Material - Blank Starter"\n' +
-    '            src=\'https://codepen.io/team/AngularMaterial/embed/RrbXyW/?height=777&theme-id=21180&default-tab=html\'\n' +
-    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
-    '      See the Pen <a\n' +
-    '        href=\'https://codepen.io/team/AngularMaterial/pen/RrbXyW/\'>AngularJS Material - Blank\n' +
-    '      Starter</a> by AngularJS\n' +
-    '      Material (<a href=\'https://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a\n' +
-    '        href=\'https://codepen.io\'>CodePen</a>.\n' +
-    '    </iframe>\n' +
-    '\n' +
-    '    <p>\n' +
-    '      Now just your add your AngularJS Material components and other HTML content to your Blank\n' +
-    '      starter app.\n' +
-    '    </p>\n' +
-    '\n' +
-    '    <br/>\n' +
-    '\n' +
-    '    <hr>\n' +
-    '\n' +
     '    <h3>Our CodePen Community</h3>\n' +
     '    <p>\n' +
     '      You can also visit our\n' +
@@ -223,15 +190,15 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '\n' +
     '    <br/><br/>\n' +
-    '    <hr>\n' +
     '\n' +
     '    <h3>Installing the AngularJS Material Libraries</h3>\n' +
     '\n' +
     '    <p>\n' +
-    '      You can install the AngularJS Material library (and its dependent libraries) in your local\n' +
-    '      project using either\n' +
+    '      You can\n' +
     '      <a href="https://github.com/angular/bower-material/#installing-angularjs-material"\n' +
-    '         target="_blank">NPM, JSPM, or Bower</a>.\n' +
+    '         target="_blank">install the AngularJS Material library</a>\n' +
+    '      (and its dependent libraries) in your local project using\n' +
+    '      <a href="https://www.npmjs.com/" target="_blank">NPM</a>.\n' +
     '    </p>\n' +
     '\n' +
     '    <p>\n' +
@@ -258,7 +225,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <hr>\n' +
     '\n' +
     '    <h3>Unsupported Integrations</h3>\n' +
     '    <p>\n' +
@@ -282,30 +248,31 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2>Contributing to AngularJS Material</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
     '      <li>\n' +
-    '        Please read our <a href="https://github.com/angular/material#contributing">contributor\n' +
-    '        guidelines</a>.\n' +
+    '        Start by reading our <a href="https://github.com/angular/material#contributing">Contributor\n' +
+    '        Guidelines</a>.\n' +
     '      </li>\n' +
-    '\n' +
     '      <li>\n' +
-    '        To contribute, fork our GitHub <a href="https://github.com/angular/material">repository</a>.\n' +
-    '      </li>\n' +
-    '\n' +
-    '      <li>\n' +
-    '        For bug reports,\n' +
+    '        For bug reports, search our\n' +
     '        <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen"\n' +
-    '           target="_blank">search the GitHub Issues</a> and/or\n' +
-    '        <a href="https://github.com/angular/material/issues/new"\n' +
-    '           target="_blank">create a New Issue</a>.\n' +
+    '           target="_blank" title="AngularJS Material GitHub Issues">GitHub Issues</a>\n' +
+    '        for existing issues that match your bug.\n' +
     '      </li>\n' +
-    '\n' +
-    '      <li>For questions and troubleshooting,\n' +
+    '      <li style="margin-left: 40px">If none are found, please open a new issue.</li>\n' +
+    '      <li>For questions and troubleshooting, search the\n' +
     '        <a href="https://groups.google.com/forum/#!forum/ngmaterial"\n' +
-    '           target="_blank">search the Forum</a> and/or\n' +
-    '        <a href="https://groups.google.com/forum/#!newtopic/ngmaterial">post a New Question</a>.\n' +
+    '           target="_blank" title="AngularJS Material Forums">AngularJS Material Forums</a>\n' +
+    '        for related discussions.\n' +
     '      </li>\n' +
-    '\n' +
+    '      <li style="margin-left: 40px">If none are found, please post a new question.</li>\n' +
+    '      <li>StackOverflow\'s\n' +
+    '        <a href="https://stackoverflow.com/questions/tagged/angularjs-material" target="_blank"\n' +
+    '           title="AngularJS Material tag on StackOverflow">\n' +
+    '          [angularjs-material] tag</a> is another good resources for solving problems.\n' +
+    '      </li>\n' +
     '      <li>\n' +
-    '        Join the <a href="https://gitter.im/angular/material" target="_blank">Gitter Chat</a>.\n' +
+    '        You can also ask questions in our\n' +
+    '        <a href="https://gitter.im/angular/material" target="_blank" title="Gitter Chat">\n' +
+    '          Gitter Chat</a>.\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '  </md-content>\n' +
@@ -450,7 +417,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Safari\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          11.x<br>12.x\n' +
+    '          12.x<br>13.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -458,12 +425,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          iOS\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          11.x<br>12.x\n' +
+    '          12.x<br>13.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          Firefox for Android<br/>UC<br/>QQ<br/>Baidu\n' +
+    '          Firefox for Android<br/>UC\n' +
     '        </td>\n' +
     '        <td>\n' +
     '          latest version\n' +
@@ -471,18 +438,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          Android Browser\n' +
-    '        </td>\n' +
-    '        <td>\n' +
-    '          4.4.3-4.4.4<br>latest version\n' +
-    '        </td>\n' +
-    '      </tr>\n' +
-    '      <tr>\n' +
-    '        <td>\n' +
     '          Samsung Internet\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          4<br>6.2<br>7.2\n' +
+    '          10.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -519,14 +478,16 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
-    '\n' +
     '    <br/>\n' +
     '    <h2 class="md-headline">Conference Presentations:</h2>\n' +
     '    <p>\n' +
-    '      Here are some conference presentations that will provide overviews for your development with AngularJS Material.\n' +
+    '      Here are some conference presentations that will provide overviews for your development with\n' +
+    '      AngularJS Material.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
+    '        { href: \'https://www.youtube.com/watch?v=rRiV_b3WsoY\', icon: \'ondemand_video\', text: \'AngularJS Material v1.1.0 Updates\', site : \'ng-conf\',  date: \'2016\'},\n' +
+    '        { href: \'https://www.youtube.com/watch?v=6PMe_wc0SjI\', icon: \'ondemand_video\', text: \'Adaptive UI with AngularJS Material\', site : \'DevFest NC\',  date: \'2015\'},\n' +
     '        { href: \'https://www.youtube.com/watch?v=Qi31oO5u33U\', icon: \'ondemand_video\', text: \'Building with AngularJS Material\', site : \'ng-conf\',  date: \'2015\'},\n' +
     '        { href: \'https://www.youtube.com/watch?v=363o4i0rdvU\', icon: \'ondemand_video\', text: \'AngularJS Material in Practice\', site : \'AngularConnect\', date:\'2015\'}\n' +
     '      ]">\n' +
@@ -537,29 +498,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            ng-href="{{link.href}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          <span class="training_site">{{link.site}}</span> | <span class="training_link">{{link.text}}</span> | <span class="training_info">{{link.date}}</span>\n' +
-    '        </md-button>\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '\n' +
-    '\n' +
-    '    <br/>\n' +
-    '    <h2 class="md-headline">Google\'s Material Design</h2>\n' +
-    '    <p>\n' +
-    '      Material Design is a specification for a unified system of visual, motion, and interaction\n' +
-    '      design that adapts across different devices and different screen sizes.\n' +
-    '    </p>\n' +
-    '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
-    '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
-    '        { href: \'https://www.youtube.com/watch?v=Q8TXgCzxEnw\', icon: \'ondemand_video\', text: \'Watch a video\', site : \'Google\' },\n' +
-    '        { href: \'https://material.io/archive/guidelines/\', icon: \'launch\', text: \'Learn More\', site : \'Google\' }\n' +
-    '      ]">\n' +
-    '        <md-button\n' +
-    '            class="md-primary md-raised"\n' +
-    '            target="_blank"\n' +
-    '            aria-label="{{link.text}}"\n' +
-    '            ng-href="{{link.href}}">\n' +
-    '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
-    '          {{link.site}} | <span class="training_link"> {{link.text}} </span>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -1973,15 +1911,13 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    as expected due to CSS specificity rules.\n' +
     '  </p>\n' +
     '\n' +
-    '  <div class="md-whiteframe-3dp">\n' +
-    '\n' +
+    '  <div class="md-whiteframe-3dp" style="height: 700px">\n' +
     '    <iframe height=\'700\' scrolling=\'no\'\n' +
     '            src=\'//codepen.io/team/AngularMaterial/embed/obgapg/?height=700&theme-id=21180&default-tab=result\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>See the Pen <a\n' +
     '        href=\'http://codepen.io/team/AngularMaterial/pen/obgapg/\'>Card Layouts (corrected)</a> by AngularJS Material (<a\n' +
     '        href=\'http://codepen.io/AngularMaterial\'>@AngularMaterial</a>) on <a href=\'http://codepen.io\'>CodePen</a>.\n' +
     '    </iframe>\n' +
-    '\n' +
     '  </div>\n' +
     '\n' +
     '    <p>\n' +
@@ -2094,7 +2030,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    it will prevent the content from scrolling correctly, instead scrolling the entire body.\n' +
     '  </p>\n' +
     '\n' +
-    '  <div class="md-whiteframe-3dp">\n' +
+    '  <div class="md-whiteframe-3dp" style="height: 376px">\n' +
     '    <iframe height=\'376\' scrolling=\'no\'\n' +
     '            src=\'//codepen.io/team/AngularMaterial/embed/NxKBwW/?height=376&theme-id=0&default-tab=result\'\n' +
     '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
