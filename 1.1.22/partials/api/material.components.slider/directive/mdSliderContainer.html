@@ -1,0 +1,52 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-slider-container&gt;</code> can hold the slider with two other elements.
+In this case, the other elements are a <code>span</code> for the label and an <code>input</code> for displaying
+the model value.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+ <md-slider-container>
+   <span>Red</span>
+   <md-slider min="0" max="255" ng-model="color.red" aria-label="red" id="red-slider">
+   </md-slider>
+   <md-input-container>
+     <input type="number" ng-model="color.red" aria-label="Red" aria-controls="red-slider">
+   </md-input-container>
+ </md-slider-container>
+</hljs>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
