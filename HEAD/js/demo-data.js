@@ -2328,6 +2328,49 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/panel/demoPanelProvider/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "panelReuseDemo",
+          "module": "panelReuseDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "paneldemoReuse",
+        "css": [
+          {
+            "name": "style.global.css",
+            "label": "style.global.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/panel/demoReuse/style.global.css"
+          }
+        ],
+        "html": [
+          {
+            "name": "panel.tmpl.html",
+            "label": "panel.tmpl.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/panel/demoReuse/panel.tmpl.html"
+          }
+        ],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/panel/demoReuse/script.js"
+          }
+        ],
+        "moduleName": "material.components.panel",
+        "name": "demoReuse",
+        "label": "Reuse",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/panel/demoReuse/index.html"
+        }
       }
     ],
     "url": "demo/panel"
