@@ -115,6 +115,8 @@ Supported attributes are:</p>
   
     
   
+    
+  
   
     
   
@@ -279,7 +281,28 @@ Supported attributes are:</p>
 <code class="api-type label type-hint type-hint-function">function(Date): boolean</code></td>
         <td class="description">
           <p>Function expecting a date and returning a
- boolean whether it can be selected or not.</p>
+ boolean whether it can be selected in &quot;day&quot; mode or not. Returning false will also trigger a
+ <code>filtered</code> model validation error.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-month-filter
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-function">function(Date): boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-function">function(Date): boolean</code></td>
+        <td class="description">
+          <p>Function expecting a date and returning a
+ boolean whether it can be selected in &quot;month&quot; mode or not. Returning false will also trigger a
+ <code>filtered</code> model validation error.</p>
 
           
         </td>
@@ -419,7 +442,7 @@ Can be either &quot;month&quot; or &quot;day&quot;. <strong>Note</strong> that t
 <code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
           <p>Allows for the values from the <code>$mdDateLocaleProvider</code> to be
-ovewritten on a per-element basis (e.g. <code>msgOpenCalendar</code> can be overwritten with
+overwritten on a per-element basis (e.g. <code>msgOpenCalendar</code> can be overwritten with
 <code>md-date-locale=&quot;{ msgOpenCalendar: &#39;Open a special calendar&#39; }&quot;</code>).</p>
 
           
