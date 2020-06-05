@@ -161,6 +161,8 @@ Here is a table showing when stretching will occur:</p>
   
     
   
+    
+  
   
     
       <tr class="api-params-item">
@@ -168,10 +170,10 @@ Here is a table showing when stretching will occur:</p>
           md-selected
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-integer">integer</code></span>
+<code class="api-type label type-hint type-hint-number">number</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-integer">integer</code></td>
+<code class="api-type label type-hint type-hint-number">number</code></td>
         <td class="description">
           <p>Index of the active/selected tab.</p>
 
@@ -186,12 +188,12 @@ Here is a table showing when stretching will occur:</p>
           md-no-ink-bar
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>If present, disables the selection ink bar.</p>
+          <p>If <code>true</code> or no value, disables the selection ink bar.</p>
 
           
         </td>
@@ -242,13 +244,13 @@ Here is a table showing when stretching will occur:</p>
           md-dynamic-height
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
-          <p>When enabled, the tab wrapper will resize based on the
- contents of the selected tab.</p>
+          <p>If <code>true</code> or no value, the tab wrapper will resize based
+ on the contents of the selected tab.</p>
 
           
         </td>
@@ -266,8 +268,8 @@ Here is a table showing when stretching will occur:</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If present, shows a solid <code>1px</code> border between the tabs and
- their content.</p>
+          <p>If the attribute is present, shows a solid <code>1px</code> border
+ between the tabs and their content.</p>
 
           
         </td>
@@ -285,8 +287,8 @@ Here is a table showing when stretching will occur:</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>If defined, tabs will be centered provided there is no need
- for pagination.</p>
+          <p>If the attribute is present, tabs will be centered provided
+ there is no need for pagination.</p>
 
           
         </td>
@@ -304,7 +306,7 @@ Here is a table showing when stretching will occur:</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When enabled, pagination will remain off.</p>
+          <p>If the attribute is present, pagination will remain off.</p>
 
           
         </td>
@@ -317,10 +319,10 @@ Here is a table showing when stretching will occur:</p>
           md-swipe-content
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>When enabled, swipe gestures will be enabled for the content
  area to allow swiping between tabs.</p>
@@ -353,6 +355,26 @@ Here is a table showing when stretching will occur:</p>
     
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
+          md-no-disconnect
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p><strong>Deprecated</strong>: If your tab content has background tasks
+ (ie. event listeners), you will want to include this to prevent the scope from being
+ disconnected.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
           md-autoselect
           
           <span hide show-sm>
@@ -361,8 +383,8 @@ Here is a table showing when stretching will occur:</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-boolean">boolean</code></td>
         <td class="description">
-          <p>When present, any tabs added after the initial load will be
- automatically selected.</p>
+          <p>If the attribute is present, any tabs added after the initial
+ load will be automatically selected.</p>
 
           
         </td>
