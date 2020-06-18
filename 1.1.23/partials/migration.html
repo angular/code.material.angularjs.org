@@ -1,0 +1,808 @@
+<div class="doc-content theming">
+    
+    <style>
+  table {
+    margin: 24px 2px;
+    box-shadow: 0 1px 2px rgba(10, 16, 20, 0.24), 0 0 2px rgba(10, 16, 20, 0.12);
+    border-radius: 2px;
+    background-color: white;
+    color: rgba(0,0,0,0.87);
+    border-spacing: 0;
+  }
+  table thead > {
+    vertical-align: middle;
+    border-color: inherit;
+  }
+  table thead > tr {
+    vertical-align: inherit;
+    border-color: inherit;
+  }
+  table thead > tr > th {
+    background-color: white;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    color: #333;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 8px 24px;
+    text-align: left;
+    line-height: 31px;
+    min-width: 64px;
+  }
+  table tbody > tr > th,
+  table tbody > tr > td {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    padding: 16px;
+    text-align: left;
+    line-height: 15px;
+    vertical-align: top;
+  }
+  h1>a, h2>a, h3>a, h4>a {
+    font-weight: 500;
+  }
+</style>
+
+<h1 id="migration-to-angular-material-and-the-angular-cdk">Migration to Angular Material and the Angular CDK</h1>
+<p>While AngularJS Material has not yet entered Long Term Support (LTS) mode like <a href="https://blog.angular.io/stable-angularjs-and-long-term-support-7e077635ee9c">AngularJS has</a>,
+the Angular Components team&#39;s resources are focused on <a href="https://material.angular.io/">Angular Material</a> and the Angular
+<a href="https://material.angular.io/cdk">Component Dev Kit (CDK)</a>. </p>
+<p>For applications with long-term development and support plans, consideration should be made for
+migration to the latest version of <a href="https://angular.io/">Angular</a>, Angular Material, and the CDK.</p>
+<p>The official <a href="https://angular.io/guide/upgrade-performance">ngUpgrade guide</a> covers general practices around AngularJS to Angular
+migration. This document provides additional guidance specific to AngularJS Material (<code>v1.1.9+</code>).</p>
+<h2 id="table-of-contents">Table of Contents</h2>
+<ul>
+<li><a href="#cdk">AngularJS Material features that have moved to the Angular CDK</a></li>
+<li><a href="#theming">Changes to the theming system</a></li>
+<li><a href="#flex-layout">The extraction of the AngularJS Material layout system into a separate library</a></li>
+<li><a href="#cdk-layout">Alternative, light-weight layout options available in the Angular CDK</a></li>
+<li><a href="#typography">Typography</a></li>
+<li><a href="#comparison">A comparison of AngularJS Material to Angular Material features</a></li>
+<li><a href="#new-components">New components in Angular Material</a>
+<br><br></li>
+</ul>
+<h2 id="key-concepts">Key Concepts</h2>
+<p>The <a href="https://angular.io/guide/upgrade#preparation">ngUpgrade Preparation Guide</a> covers a number of important steps for preparing your
+application for the migration. In addition to this preparation work, you should use the content of
+this document in order to make migration plans based on how features and components have changed
+between AngularJS Material and Angular Material.</p>
+<h3 id="-a-name-cdk-a-angular-cdk"><a name="cdk"></a> Angular CDK</h3>
+<p>Some of the features of AngularJS Material have been made more generic and moved into the <a href="https://material.angular.io/cdk">Angular
+CDK</a>. </p>
+<p>These include:</p>
+<table>
+<thead>
+<tr>
+<th>AngularJS Material</th>
+<th>CDK</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdPanel"><code>$mdPanel</code></a></td>
+<td><a href="https://material.angular.io/cdk/overlay/overview"><code>Overlay</code></a></td>
+</tr>
+<tr>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdVirtualRepeat"><code>md-virtual-repeat</code></a></td>
+<td><a href="https://material.angular.io/cdk/scrolling/overview#virtual-scrolling"><code>*cdkVirtualFor</code></a></td>
+</tr>
+<tr>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdVirtualRepeatContainer"><code>md-virtual-repeat-container</code></a></td>
+<td><a href="https://material.angular.io/cdk/scrolling/overview#virtual-scrolling"><code>cdk-virtual-scroll-viewport</code></a></td>
+</tr>
+<tr>
+<td><a href="https://github.com/angular/material/blob/v1.1.17/src/core/services/liveAnnouncer/live-announcer.js"><code>$mdLiveAnnouncer</code></a></td>
+<td><a href="https://material.angular.io/cdk/a11y/api#LiveAnnouncer"><code>LiveAnnouncer</code></a></td>
+</tr>
+<tr>
+<td><code>$mdUtil</code>&#39;s <a href="https://github.com/angular/material/blob/v1.1.17/src/core/util/util.js#L86-L105"><code>bidi()</code></a> function</td>
+<td><a href="https://material.angular.io/cdk/bidi/api#Directionality"><code>Directionality</code> service</a> and <a href="https://material.angular.io/cdk/bidi/api#Dir"><code>Dir</code> directive</a></td>
+</tr>
+<tr>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdInput"><code>md-input</code></a>&#39;s <code>md-no-autogrow</code> and <code>max-rows</code></td>
+<td><a href="https://material.angular.io/cdk/text-field/api#CdkTextareaAutosize"><code>CdkTextareaAutosize</code></a></td>
+</tr>
+<tr>
+<td><a href="https://material.angularjs.org/latest/layout/introduction">layout</a> system</td>
+<td>Covered in <a href="#cdk-layout">separate section</a> of this guide</td>
+</tr>
+</tbody>
+</table>
+<h3 id="-a-name-theming-a-theming"><a name="theming"></a> Theming</h3>
+<p>AngularJS Material performs most theming at <em>run-time</em>. While this allows developers to configure
+themes dynamically in JavaScript, it also incurs substantial performance cost to generate
+CSS during application load.</p>
+<p>Angular Material performs theming at <em>compile-time</em> with <a href="https://sass-lang.com/">Sass</a>. While this approach
+requires more up-front set-up, it completely removes all JavaScript execution cost associated
+with theming. The use of Sass also moves the theming system to a more well-supported and
+broadly-understood toolchain.</p>
+<h4 id="defining-palettes">Defining palettes</h4>
+<p>AngularJS Material supports defining <a href="https://material.angularjs.org/latest/Theming/03_configuring_a_theme#defining-custom-palettes">custom palettes</a> or <a href="https://material.angularjs.org/latest/Theming/03_configuring_a_theme#extending-existing-palettes">extending existing palettes</a>.</p>
+<p>In Angular Material, custom palette creation, including definition of hues and contrast colors, can
+be accomplished by copying one of the <a href="https://github.com/angular/components/blob/7.3.6/src/lib/core/theming/_palette.scss#L72-L103">provided palettes</a>, modifying it, and then using it in
+your <a href="https://material.angular.io/guide/theming#defining-a-custom-theme">custom theme creation</a>.</p>
+<h4 id="defining-themes">Defining themes</h4>
+<p>AngularJS Material uses a provider, <a href="https://material.angularjs.org/latest/api/service/$mdThemingProvider"><code>$mdThemingProvider</code></a>, to define the theme configuration
+used to generate styles during application loading. This provider also includes a default theme for
+cases when no custom palettes are provided.</p>
+<p>Angular Material has no default theme; a theme CSS file must <em>always</em> be included. You can either
+use one of the <a href="https://material.angular.io/guide/theming#using-a-pre-built-theme">pre-built theme files</a>, or define a <a href="https://material.angular.io/guide/theming#defining-a-custom-theme">custom theme</a> with Sass mixins,
+including the output in your application just like any other CSS asset.</p>
+<h5 id="defining-themes-at-run-time">Defining themes at run-time</h5>
+<p>AngularJS Material uses a service, <a href="https://material.angularjs.org/latest/api/service/$mdTheming"><code>$mdTheming</code></a>, to define themes and generate CSS styles at
+run-time.</p>
+<p>Defining and generating theme CSS at run-time is not supported by Angular Material. However,
+loading additional theme CSS into your application (or modifying an existing theme&#39;s <code>link</code> node
+to <a href="https://material.angular.io/guide/theming#swapping-css-files">swap theme CSS files</a>) at run-time is supported.</p>
+<p>Your application can choose to generate additional themes at compile-time or build an API to
+dynamically generate theme CSS on-demand. In either case, it is possible to <a href="https://material.angular.io/guide/theming#multiple-themes">lazy load</a> the
+theme CSS at run-time.</p>
+<h4 id="applying-themes-to-your-application">Applying themes to your application</h4>
+<p>AngularJS Material has a custom directive, <a href="https://material.angularjs.org/latest/Theming/04_multiple_themes#via-a-directive"><code>md-theme</code></a>, to apply a theme to a specific
+component and its children.</p>
+<p>Rather than providing a special directive API, Angular Material&#39;s Sass-based theming system relies
+on standard Sass mixins and vanilla CSS selectors. For example, you can customize an individual
+button (or set of buttons) by defining a class and applying it to a parent element:</p>
+<hljs lang="scss">
+// Create a CSS class to use an alternate button theme, $alternate-theme, which you have
+// already defined.
+.alternate-button  {
+  @include mat-button-theme($alternate-theme);
+}
+</hljs>
+<hljs lang="html">
+<!-- You can use normal Angular class bindings to toggle the alternate styles. -->
+<div [class.alternate-button]="isAlternateMode">
+  <button mat-button>Save changes</button>
+</div>
+</hljs>
+
+<p>Just like any other CSS, these classes can be applied to any element in your application and can
+be added/removed/toggled to swap colors at run-time.</p>
+<p><a href="https://material.angular.io/guide/theming">See the full documentation</a> for details on themes,
+including examples of multiple themes.</p>
+<h5 id="dynamically-applying-themes">Dynamically applying themes</h5>
+<p>AngularJS Material&#39;s <a href="https://material.angularjs.org/latest/Theming/04_multiple_themes#via-a-directive"><code>md-theme</code></a> and <a href="https://material.angularjs.org/latest/Theming/04_multiple_themes#dynamic-themes"><code>md-theme-watch</code></a> directives support data binding
+like <code>md-theme=&quot;{{ dynamicTheme }}&quot; md-theme-watch</code>.</p>
+<p>With Angular Material, you can make use of Angular&#39;s <a href="https://angular.io/api/common/NgClass">ngClass</a> API to dynamically apply classes
+associated with specific theming configurations like <code>[ngClass]=&quot;dynamicThemeClass&quot;</code>. You can also
+use normal Angular class bindings to toggle classes like
+<code>[class.my-dark-theme]=&quot;isDarkMode&quot;</code>.</p>
+<h4 id="applying-theming-to-custom-components">Applying theming to custom components</h4>
+<p>AngularJS Material&#39;s <a href="https://material.angularjs.org/latest/api/directive/mdColors"><code>md-colors</code></a> directive and <a href="https://material.angularjs.org/latest/api/service/$mdColors"><code>$mdColors</code></a> service support looking up
+and <a href="https://material.angularjs.org/latest/api/directive/mdColors">dynamically applying <code>theme-palette-hue-opacity</code> color combinations</a> as CSS properties to
+your application&#39;s custom components.</p>
+<p>Angular Material uses the <a href="https://material.angular.io/guide/theming-your-components#note-using-the-code-mat-color-code-function-to-extract-colors-from-a-palette"><code>mat-color</code></a> Sass function to lookup theme colors and 
+Sass mixins with CSS selectors (see <code>alternate-button</code> example of a class above) to
+<a href="https://material.angular.io/guide/theming-your-components">style application or library components</a>.</p>
+<h5 id="accessing-hues">Accessing Hues</h5>
+<p>AngularJS Material&#39;s <a href="https://material.angularjs.org/latest/Theming/03_configuring_a_theme#specifying-custom-hues-for-color-intentions">Hue classes</a> (<code>md-hue-1</code>, <code>md-hue-2</code>, <code>md-hue-3</code>) are used to modify a
+component&#39;s hues.</p>
+<p>These classes are not supported out of the box with Angular Material, but you can use the
+<a href="https://material.angular.io/guide/theming-your-components#note-using-the-code-mat-color-code-function-to-extract-colors-from-a-palette"><code>mat-color</code></a> Sass function to lookup the desired Hues and assign them to all of the appropriate
+CSS selectors and CSS properties, for a specific component, in a theme mixin. </p>
+<h4 id="browser-header-and-system-status-bar-coloring-on-mobile">Browser header and system status bar coloring on mobile</h4>
+<p>AngularJS Material&#39;s theme system supports modifying the
+<a href="https://material.angularjs.org/latest/Theming/06_browser_color">browser header and system status bar colors</a>.</p>
+<p>Angular&#39;s <a href="https://angular.io/api/platform-browser/Meta">Meta service</a> can be used to dynamically modify <code>&lt;meta&gt;</code> tags that affect browser
+header and status bar colors. The <a href="https://material.angularjs.org/latest/Theming/06_browser_color">AngularJS Material docs</a> for this feature have links to
+learn more about the specific <code>&lt;meta&gt;</code> tags.</p>
+<h5 id="note-about-css-variables">Note about CSS variables</h5>
+<p>Once the team begins phasing out support for IE11, the theming system will be revisited with
+<a href="https://caniuse.com/#feat=css-variables">CSS Variables</a> (also known as CSS Custom Properties) in mind.</p>
+<h3 id="-a-name-layout-a-changes-to-layout-features"><a name="layout"></a> Changes to Layout Features</h3>
+<p>The AngularJS Material <a href="https://material.angularjs.org/latest/layout/introduction">layout</a> system includes includes attributes and classes like <code>layout</code>,
+<code>flex</code>, <code>show</code>, <code>hide</code>, etc.</p>
+<p>Since AngularJS Material&#39;s inception, browser support for <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">CSS Flexbox</a> has <a href="https://caniuse.com/#feat=flexbox">broadly
+improved</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid</a> has become <a href="https://caniuse.com/#feat=css-grid">widely available</a>. Application developers should
+carefully consider the the costs of additional JavaScript run-time dependencies versus native
+alternatives when choosing an approach to layout.</p>
+<p>Many of the AngularJS Material layout APIs map to straightforward, vanilla CSS using Flexbox and
+<a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries">media queries</a>. We recommend checking out the following documentation and tutorials:</p>
+<ul>
+<li>MDN <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">Flexbox</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">Grid</a> documentation</li>
+<li><a href="https://scotch.io/tutorials/a-visual-guide-to-css3-flexbox-properties">A Visual Guide to CSS3 Flexbox Properties</a></li>
+<li><a href="https://mastery.games/p/flexbox-zombies">Flexbox Zombies</a></li>
+<li><a href="https://flexboxfroggy.com">Flexbox Froggy</a></li>
+<li><a href="https://gridbyexample.com/">Grid by Example</a></li>
+<li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a></li>
+<li><a href="https://learncssgrid.com/">Learn CSS Grid</a></li>
+</ul>
+<h4 id="-a-name-flex-layout-a-flex-layout"><a name="flex-layout"></a> Flex Layout</h4>
+<p>This comprehensive layout system was moved into its <a href="https://github.com/angular/flex-layout">own project</a> (beta).</p>
+<p>The package contains the following:</p>
+<ul>
+<li>A <a href="https://github.com/angular/flex-layout/wiki/Declarative-API-Overview">Declarative API</a> that includes attributes like <code>fxLayout</code>, <code>fxFlex</code>, <code>fxHide</code>, <code>fxShow</code>,
+and more.</li>
+<li>A <a href="https://github.com/angular/flex-layout/wiki/Responsive-API">Responsive API</a> that includes attributes like <code>fxLayout.lt-md</code>, <code>fxFlex.gt-sm</code>,
+<code>fxHide.gt-xs</code>, <code>[ngClass.sm]</code>, <code>[ngStyle.xs]</code>, and more.</li>
+<li>Both APIs include <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout">CSS Grid</a> features in addition to the <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">CSS Flexbox</a> features from
+AngularJS Material.</li>
+<li>The ability to define <a href="https://github.com/angular/flex-layout/wiki/Breakpoints">Custom Breakpoints</a></li>
+<li>A <a href="https://github.com/angular/flex-layout/wiki/API-Documentation#javascript-api-imperative">MediaObserver service</a> that allows subscribing to <code>MediaQuery</code> activation changes</li>
+</ul>
+<p>This library adds a nontrivial payload cost as reported by <code>source-map-explorer</code> in
+<code>v7.0.0-beta.24</code></p>
+<ul>
+<li>When using Flexbox only: up to <code>~46 KB</code></li>
+<li>When using Flexbox and Grid: up to <code>~60 KB</code><ul>
+<li>Core: <code>~23 KB</code>, Flex: <code>~17 KB</code>, Grid: <code>~14 KB</code>, Extended: <code>~6 KB</code></li>
+</ul>
+</li>
+</ul>
+<h4 id="-a-name-cdk-layout-a-angular-cdk-layout"><a name="cdk-layout"></a> Angular CDK Layout</h4>
+<p>The CDK&#39;s layout capabilities offer a lightweight alternative (or complement) to larger,
+full-blown layout systems. This capability adds <code>3.06 KB</code> as reported by <code>source-map-explorer</code>
+with Angular CDK <code>v7.3.7</code>.</p>
+<p>The CDK&#39;s <a href="https://material.angular.io/cdk/layout/overview">Layout</a> capability offers:</p>
+<ul>
+<li>A <code>MediaMatcher</code> service that provides access to the low level, native <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaQueryList"><code>MediaQueryList</code></a></li>
+<li>A set of <code>Breakpoints</code> that match the <a href="https://material.io/design/layout/responsive-layout-grid.html#breakpoints">Material Design</a> responsive layout grid breakpoints</li>
+<li>A <code>BreakpointObserver</code> service that offers APIs for responding to changes in viewport size based
+on predefined breakpoints.</li>
+</ul>
+<h3 id="-a-name-typography-a-typography"><a name="typography"></a> Typography</h3>
+<p>AngularJS Material <a href="https://material.angularjs.org/latest/CSS/typography">typography classes</a> align with the Angular Material
+<a href="https://material.angular.io/guide/typography">typography classes</a>.</p>
+<p>Angular Material also adds the following typography features:</p>
+<ul>
+<li><a href="https://material.angular.io/guide/typography#customization">Customization via Sass mixins</a> that are similar to the theme configuration mixins</li>
+<li>Utility Sass mixins and functions for use in <a href="https://material.angular.io/guide/typography#material-typography-in-your-custom-css">styling your custom components</a></li>
+</ul>
+<h2 id="-a-name-comparison-a-comparison-of-features-and-migration-tips"><a name="comparison"></a> Comparison of Features and Migration Tips</h2>
+<p>Angular Material introduces a number of <a href="#new-components">new components</a> and features that do not
+exist in AngularJS Material. Angular Material also makes greater use of semantic HTML and native
+elements to improve accessibility.</p>
+<h3 id="directives">Directives</h3>
+<p>Most components use the same name between the two libraries, changing the <code>md-</code> prefix to <code>mat-</code>.
+For example, <code>&lt;md-card&gt;</code> becomes <code>&lt;mat-card&gt;</code>. Some element directives changed to attribute
+directives, for instance <code>&lt;md-subheader&gt;</code> changed to <code>matSubheader</code>.</p>
+<h4 id="component-and-directive-comparison-reference">Component and Directive comparison reference</h4>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>Old (<code>md-</code>)</th>
+<th>New (<code>mat-</code>)</th>
+<th>Special Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>autocomplete</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdAutocomplete">Docs</a></td>
+<td><a href="https://material.angular.io/components/autocomplete/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>autofocus</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdAutofocus">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/a11y/overview#regions">Docs</a></td>
+<td><code>cdkFocusInitial</code></td>
+</tr>
+<tr>
+<td>button</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdButton">Docs</a></td>
+<td><a href="https://material.angular.io/components/button/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>calendar</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdCalendar">Docs</a></td>
+<td>-</td>
+<td>The <a href="https://material.angular.io/components/datepicker/overview">datepicker</a> has a <code>mat-calendar</code> component, but it cannot be used in stand-alone mode.</td>
+</tr>
+<tr>
+<td>card</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdCard">Docs</a></td>
+<td><a href="https://material.angular.io/components/card/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>checkbox</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdCheckbox">Docs</a></td>
+<td><a href="https://material.angular.io/components/checkbox/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>chip</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdChip">Docs</a></td>
+<td><a href="https://material.angular.io/components/chips/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>chip-remove</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdChipRemove">Docs</a></td>
+<td><a href="https://material.angular.io/components/chips/overview">Docs</a></td>
+<td><code>matChipRemove</code></td>
+</tr>
+<tr>
+<td>chips</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdChips">Docs</a></td>
+<td><a href="https://material.angular.io/components/chips/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>colors</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdColors">Docs</a></td>
+<td>-</td>
+<td><a href="https://material.angular.io/guide/theming-your-components#note-using-the-code-mat-color-code-function-to-extract-colors-from-a-palette"><code>mat-color</code> mixin</a> supports static theme color lookups.</td>
+</tr>
+<tr>
+<td>contact-chips</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdContactChips">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>content</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdContent">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/scrolling/overview#cdkscrollable-and-scrolldispatcher">Docs</a></td>
+<td><code>cdkScrollable</code></td>
+</tr>
+<tr>
+<td>datepicker</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdDatepicker">Docs</a></td>
+<td><a href="https://material.angular.io/components/datepicker/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>divider</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdDivider">Docs</a></td>
+<td><a href="https://material.angular.io/components/divider/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>fab-speed-dial</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdFabSpeedDial">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>fab-toolbar</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdFabToolbar">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>grid-list</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdGridList">Docs</a></td>
+<td><a href="https://material.angular.io/components/grid-list/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>highlight-text</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdHighlightText">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>icon</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdIcon">Docs</a></td>
+<td><a href="https://material.angular.io/components/icon/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>ink-ripple</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdInkRipple">Docs</a></td>
+<td><a href="https://material.angular.io/components/ripple/overview">Docs</a></td>
+<td><code>matRipple</code></td>
+</tr>
+<tr>
+<td>input</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdInput">Docs</a></td>
+<td><a href="https://material.angular.io/components/input/overview">Docs</a></td>
+<td><code>matInput</code></td>
+</tr>
+<tr>
+<td>input-container</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdInputContainer">Docs</a></td>
+<td><a href="https://material.angular.io/components/form-field/overview">Docs</a></td>
+<td><code>mat-form-field</code></td>
+</tr>
+<tr>
+<td>list</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdList">Docs</a></td>
+<td><a href="https://material.angular.io/components/list/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>menu</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdMenu">Docs</a></td>
+<td><a href="https://material.angular.io/components/menu/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>menu-bar</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdMenuBar">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>nav-bar</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdNavBar">Docs</a></td>
+<td><a href="https://material.angular.io/components/tabs/overview#tabs-and-navigation">Docs</a></td>
+<td><code>mat-tab-nav-bar</code></td>
+</tr>
+<tr>
+<td>nav-item</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdNavItem">Docs</a></td>
+<td><a href="https://material.angular.io/components/tabs/api#MatTabLink">Docs</a></td>
+<td><code>mat-tab-link</code></td>
+</tr>
+<tr>
+<td>optgroup</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdOptgroup">Docs</a></td>
+<td><a href="https://material.angular.io/components/select/overview#creating-groups-of-options">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>option</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdOption">Docs</a></td>
+<td><a href="https://material.angular.io/components/select/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>progress-linear</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdProgressLinear">Docs</a></td>
+<td><a href="https://material.angular.io/components/progress-bar/overview">Docs</a></td>
+<td><code>mat-progress-bar</code></td>
+</tr>
+<tr>
+<td>progress-circular</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdProgressCircular">Docs</a></td>
+<td><a href="https://material.angular.io/components/progress-spinner/overview">Docs</a></td>
+<td><code>mat-progress-spinner</code></td>
+</tr>
+<tr>
+<td>radio-button</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdRadioButton">Docs</a></td>
+<td><a href="https://material.angular.io/components/radio/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>radio-group</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdRadioGroup">Docs</a></td>
+<td><a href="https://material.angular.io/components/radio/overview#radio-groups">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>select</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSelect">Docs</a></td>
+<td><a href="https://material.angular.io/components/select/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>select-on-focus</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSelectOnFocus">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>sidenav</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSidenav">Docs</a></td>
+<td><a href="https://material.angular.io/components/sidenav/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sidenav-focus</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSidenavFocus">Docs</a></td>
+<td>-</td>
+<td><a href="https://material.angular.io/components/sidenav/api#MatSidenav">autofocus</a> only supports focusing the first focusable element.</td>
+</tr>
+<tr>
+<td>switch</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSwitch">Docs</a></td>
+<td><a href="https://material.angular.io/components/slide-toggle/overview">Docs</a></td>
+<td><code>mat-slide-toggle</code></td>
+</tr>
+<tr>
+<td>slider</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSlider">Docs</a></td>
+<td><a href="https://material.angular.io/components/slider/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>slider-container</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSliderContainer">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>subheader</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSubheader">Docs</a></td>
+<td><a href="https://material.angular.io/components/list/overview#lists-with-multiple-sections">Docs</a></td>
+<td><code>matSubheader</code></td>
+</tr>
+<tr>
+<td>swipe</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdSwipeDown">Docs</a></td>
+<td>-</td>
+<td>See <a href="https://material.angular.io/guide/getting-started#step-5-gesture-support">HammerJS setup</a> and <a href="http://hammerjs.github.io/recognizer-swipe/">Hammer.Swipe</a></td>
+</tr>
+<tr>
+<td>tabs</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdTabs">Docs</a></td>
+<td><a href="https://material.angular.io/components/tabs/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>textarea</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdInput">Docs</a></td>
+<td><a href="https://material.angular.io/components/input/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>toolbar</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdToolbar">Docs</a></td>
+<td><a href="https://material.angular.io/components/toolbar/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>tooltip</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdTooltip">Docs</a></td>
+<td><a href="https://material.angular.io/components/tooltip/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>truncate</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdTruncate">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>virtual-repeat</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdVirtualRepeat">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/scrolling/overview#virtual-scrolling">Docs</a></td>
+<td><code>cdk-virtual-scroll-viewport</code> and <code>*cdkVirtualFor</code></td>
+</tr>
+<tr>
+<td>whiteframe</td>
+<td><a href="https://material.angularjs.org/latest/api/directive/mdWhiteframe">Docs</a></td>
+<td><a href="https://material.angular.io/guide/elevation">Guide</a></td>
+<td>Based on classes and mixins</td>
+</tr>
+</tbody>
+</table>
+<h4 id="component-and-directive-migration-notes">Component and Directive Migration Notes</h4>
+<ol>
+<li><code>md-slider-container</code> helped style and position a <code>span</code> and <code>input</code> along with the <code>md-slider</code>.
+You can add elements or components next to your <code>mat-slider</code>, then position and style them as
+desired.</li>
+</ol>
+<h3 id="service-comparison-reference">Service comparison reference</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>Old</th>
+<th>New</th>
+<th>Special Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$mdAriaProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdAriaProvider">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdBottomSheet</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdBottomSheet">Docs</a></td>
+<td><a href="https://material.angular.io/components/bottom-sheet/overview">Docs</a></td>
+<td><code>MatBottomSheet</code></td>
+</tr>
+<tr>
+<td>$mdColors</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdColors">Docs</a></td>
+<td>-</td>
+<td><a href="https://material.angular.io/guide/theming-your-components#note-using-the-code-mat-color-code-function-to-extract-colors-from-a-palette"><code>mat-color</code> mixin</a> supports static theme color lookups.</td>
+</tr>
+<tr>
+<td>$mdCompiler</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdCompiler">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdCompilerProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdCompilerProvider">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdDateLocaleProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdDateLocaleProvider">Docs</a></td>
+<td><a href="https://material.angular.io/components/datepicker/overview#internationalization">Docs</a></td>
+<td><code>MomentDateAdapter</code></td>
+</tr>
+<tr>
+<td>$mdDialog</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdDialog">Docs</a></td>
+<td><a href="https://material.angular.io/components/dialog/overview">Docs</a></td>
+<td><code>MatDialog</code></td>
+</tr>
+<tr>
+<td>$mdGestureProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdGestureProvider">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdIcon</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdIcon">Docs</a></td>
+<td><a href="https://material.angular.io/components/icon/api#MatIcon">Docs</a></td>
+<td><code>svgIcon</code></td>
+</tr>
+<tr>
+<td>$mdIconProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdIconProvider">Docs</a></td>
+<td><a href="https://material.angular.io/components/icon/api#MatIconRegistry">Docs</a></td>
+<td><code>MatIconRegistry</code></td>
+</tr>
+<tr>
+<td>$mdInkRipple</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdInkRipple">Docs</a></td>
+<td><a href="https://material.angular.io/components/ripple/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>$mdInkRippleProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdInkRippleProvider">Docs</a></td>
+<td><a href="https://material.angular.io/components/ripple/overview#global-options">Docs</a></td>
+<td><code>MAT_RIPPLE_GLOBAL_OPTIONS</code></td>
+</tr>
+<tr>
+<td>$mdInteraction</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdMedia">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>$mdLiveAnnouncer</td>
+<td><a href="https://github.com/angular/material/blob/v1.1.17/src/core/services/liveAnnouncer/live-announcer.js">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/a11y/api#LiveAnnouncer">Docs</a></td>
+<td>CDK <code>LiveAnnouncer</code></td>
+</tr>
+<tr>
+<td>$mdMedia</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdMedia">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/layout/overview#breakpointobserver">Docs</a></td>
+<td>CDK <code>BreakpointObserver.isMatched()</code> or Flex Layout&#39;s <a href="https://github.com/angular/flex-layout/wiki/API-Documentation#javascript-api-imperative">MediaObserver service</a></td>
+</tr>
+<tr>
+<td>$mdPanel</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdPanel">Docs</a></td>
+<td><a href="https://material.angular.io/cdk/overlay/overview">Docs</a></td>
+<td>CDK <code>Overlay</code></td>
+</tr>
+<tr>
+<td>$mdPanelProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdPanelProvider">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>$mdProgressCircularProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdProgressCircular">Docs</a></td>
+<td>-</td>
+<td>Not implemented</td>
+</tr>
+<tr>
+<td>$mdSidenav</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdSidenav">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdSticky</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdSticky">Docs</a></td>
+<td>-</td>
+<td>See Migration Notes below</td>
+</tr>
+<tr>
+<td>$mdTheming</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdTheming">Docs</a></td>
+<td>-</td>
+<td><a href="https://material.angular.io/guide/theming-your-components">Sass mixins</a> support custom component theming.</td>
+</tr>
+<tr>
+<td>$mdThemingProvider</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdThemingProvider">Docs</a></td>
+<td>-</td>
+<td><a href="https://material.angular.io/guide/theming#defining-a-custom-theme">Sass mixins</a> support static, custom theme creation. Use Angular&#39;s <a href="https://angular.io/api/platform-browser/Meta">Meta service</a> for browser coloring features.</td>
+</tr>
+<tr>
+<td>$mdToast</td>
+<td><a href="https://material.angularjs.org/latest/api/service/$mdToast">Docs</a></td>
+<td><a href="https://material.angular.io/components/snack-bar/overview">Docs</a></td>
+<td><code>MatSnackBar</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="service-migration-notes">Service Migration Notes</h4>
+<ol>
+<li><a href="https://medium.com/myplanet-musings/comparing-3-top-automated-accessibility-testing-tools-wave-tenon-io-and-google-lighthouse-d3897d7bb311">This article</a>
+covers <a href="https://developers.google.com/web/tools/lighthouse/">Chrome DevTools&#39; Lighthouse</a>
+Accessibility Auditing Tool. It provides guidance and two additional options for accessibility
+testing. Also note that the documentation for every Angular Material component includes a section
+with accessibility recommendations.</li>
+<li><code>$mdCompiler</code> and the related <code>$mdCompilerProvider</code> are AngularJS-specific solutions.
+Similar tools and APIs are not needed when working with Angular.</li>
+<li>Angular Material uses <a href="https://material.angular.io/guide/getting-started#step-5-gesture-support">HammerJS</a>. To disable gesture detection, do not import HammerJS
+in your project. Angular Material does not do click hijacking, so the APIs related to
+that feature aren&#39;t needed.</li>
+<li><code>$mdSidenav</code> is a convenience to allow calling <code>$mdSidenav(&#39;right&#39;).toggle()</code> or
+<code>$mdSidenav(&#39;left&#39;).close()</code> from components, without the need to have an actual reference to each
+<code>md-sidenav</code> instance. If you need functionality like this with Angular Material, you can use
+Angular&#39;s <a href="https://angular.io/api/core/ViewChild">@ViewChild Decorator</a> to get a reference to the
+<code>MatDrawer</code> or <code>MatSidenav</code> instance. Then you can store that reference in a service for use from
+multiple components.</li>
+<li><code>$mdSticky</code> uses the browser&#39;s native <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#Sticky_positioning">position: sticky</a>
+when supported and only supplies a workaround for browsers like IE11 that do not support native
+sticky positioning. For Angular Material, you should use the native <code>position: sticky</code> and
+provide your own solution for IE11.</li>
+</ol>
+<h3 id="-a-name-new-components-a-new-components"><a name="new-components"></a> New Components</h3>
+<p>These are new components found in Angular Material and the Angular CDK that do not exist in
+AngularJS Material.</p>
+<p>The <code>mat-</code> and <code>cdk-</code> prefixes have been omitted to make this table more readable.</p>
+<table>
+<thead>
+<tr>
+<th>Directive</th>
+<th>New</th>
+<th>Special Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>badge</td>
+<td><a href="https://material.angular.io/components/badge/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>button-toggle</td>
+<td><a href="https://material.angular.io/components/button-toggle/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>drag-drop</td>
+<td><a href="https://material.angular.io/cdk/drag-drop/overview">Docs</a></td>
+<td>CDK</td>
+</tr>
+<tr>
+<td>expansion-panel</td>
+<td><a href="https://material.angular.io/components/expansion/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>paginator</td>
+<td><a href="https://material.angular.io/components/paginator/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>sort-header</td>
+<td><a href="https://material.angular.io/components/sort/overview">Docs</a></td>
+<td></td>
+</tr>
+<tr>
+<td>stepper</td>
+<td><a href="https://material.angular.io/components/stepper/overview">Docs</a></td>
+<td>Unstyled CDK and Material versions available.</td>
+</tr>
+<tr>
+<td>table</td>
+<td><a href="https://material.angular.io/components/table/overview">Docs</a></td>
+<td>Unstyled CDK and Material versions available.</td>
+</tr>
+<tr>
+<td>tree</td>
+<td><a href="https://material.angular.io/components/tree/overview">Docs</a></td>
+<td>Unstyled CDK and Material versions available.</td>
+</tr>
+</tbody>
+</table>
+
+    
+</div>
