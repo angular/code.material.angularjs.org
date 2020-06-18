@@ -340,7 +340,9 @@ This disables all dynamic theme style sheet generations and injections.</p>
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>The nonce to be added as an attribute to the theme style tags.
-Setting a value allows the use of CSP policy without using the unsafe-inline directive.</p>
+Setting a value allows the use of CSP policy without using the <code>&#39;unsafe-inline&#39;</code> directive.
+The string must already be base64 encoded. You can use <code>btoa(string)</code> to do this encoding.
+In your CSP&#39;s <code>style-src</code>, you would then add an entry for <code>&#39;nonce-nonceValue&#39;</code>.</p>
 
           
         </td>

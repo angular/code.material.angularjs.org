@@ -22,10 +22,10 @@ when a panel was interacted with.</li>
 create.</li>
 <li><code>isAttached</code> - <code>{boolean}</code>: Whether the panel is attached to the DOM.
 Visibility to the user does not factor into isAttached.</li>
-<li><code>panelContainer</code> - <code>{angular.JQLite}</code>: The wrapper element containing the
+<li><code>panelContainer</code> - <code>{JQLite}</code>: The wrapper element containing the
 panel. This property is added in order to have access to the <code>addClass</code>,
 <code>removeClass</code>, <code>toggleClass</code>, etc methods.</li>
-<li><code>panelEl</code> - <code>{angular.JQLite}</code>: The panel element. This property is added
+<li><code>panelEl</code> - <code>{JQLite}</code>: The panel element. This property is added
 in order to have access to the <code>addClass</code>, <code>removeClass</code>, <code>toggleClass</code>,
 etc methods.</li>
 </ul>
@@ -72,7 +72,7 @@ etc methods.</li>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
     opened.</p>
 </td>
@@ -111,7 +111,7 @@ If you don&#39;t intend on using the panel again, call the <a href="#destroy">de
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
     closed.</p>
 </td>
@@ -150,7 +150,7 @@ hidden by default.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
     attached.</p>
 </td>
@@ -189,7 +189,7 @@ it.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel is
     detached.</p>
 </td>
@@ -227,7 +227,7 @@ it.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel has
     shown and animations are completed.</p>
 </td>
@@ -265,7 +265,7 @@ it.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-angular">angular.$q.Promise</code></td>
+<code class="api-type label type-hint type-hint-q">Q.IPromise</code></td>
     <td class="description"><p>A promise that is resolved when the panel has
     hidden and animations are completed.</p>
 </td>
@@ -766,10 +766,10 @@ values available on <code>$mdPanel.interceptorTypes</code>:</p>
           <b>* callback</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;any&gt;</code></span>
+<code class="api-type label type-hint type-hint-object">!Q.IPromise&lt;any&gt;</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;any&gt;</code></td>
+<code class="api-type label type-hint type-hint-object">!Q.IPromise&lt;any&gt;</code></td>
         <td class="description">
           <p>Callback to be registered.</p>
 
@@ -860,10 +860,10 @@ values available on <code>$mdPanel.interceptorTypes</code>:</p>
           <b>* callback</b>
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-function">function(): !angular.$q.Promise&lt;any&gt;</code></span>
+<code class="api-type label type-hint type-hint-function">function(): !Q.IPromise&lt;any&gt;</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-function">function(): !angular.$q.Promise&lt;any&gt;</code></td>
+<code class="api-type label type-hint type-hint-function">function(): !Q.IPromise&lt;any&gt;</code></td>
         <td class="description">
           <p>Interceptor to be removed.</p>
 

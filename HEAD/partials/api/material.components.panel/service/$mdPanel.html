@@ -19,9 +19,9 @@
 the screen. It can be used to implement tooltips, dialogs, pop-ups, etc.</p>
 <p>The following types, referenced below, have separate documentation:</p>
 <ul>
-<li><a href="api/type/MdPanelAnimation">MdPanelAnimation</a> from <code>$mdPanel.newPanelAnimation()</code></li>
-<li><a href="api/type/MdPanelPosition">MdPanelPosition</a> from <code>$mdPanel.newPanelPosition()</code></li>
-<li><a href="api/type/MdPanelRef">MdPanelRef</a> from the <code>$mdPanel.open()</code> Promise or
+<li><a ng-href="api/type/MdPanelAnimation">MdPanelAnimation</a> from <code>$mdPanel.newPanelAnimation()</code></li>
+<li><a ng-href="api/type/MdPanelPosition">MdPanelPosition</a> from <code>$mdPanel.newPanelPosition()</code></li>
+<li><a ng-href="api/type/MdPanelRef">MdPanelRef</a> from the <code>$mdPanel.open()</code> Promise or
 injected in the panel&#39;s controller</li>
 </ul>
 
@@ -144,7 +144,7 @@ to an arbitrary string that is not tracked.</li>
 <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.</li>
 <li><code>templateUrl</code> - <code>{string=}</code>: The URL that will be used as the content of
 the panel.</li>
-<li><code>contentElement</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: Pre-compiled
+<li><code>contentElement</code> - <code>{(string|!JQLite|!Element)=}</code>: Pre-compiled
 element to be used as the panel&#39;s content.</li>
 <li><code>controller</code> - <code>{(function|string)=}</code>: The controller to associate with
 the panel. The controller can inject a reference to the returned
@@ -163,7 +163,7 @@ with the value 3. &#39;mdPanelRef&#39; is a reserved key, and will always
 be set to the created MdPanelRef instance.</li>
 <li><code>resolve</code> - <code>{Object=}</code>: Similar to locals, except it takes promises as
 values. The panel will not open until all of the promises resolve.</li>
-<li><code>attachTo</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to
+<li><code>attachTo</code> - <code>{(string|!JQLite|!Element)=}</code>: The element to
 attach the panel to. Defaults to appending to the root element of the
 application.</li>
 <li><code>propagateContainerEvents</code> - <code>{boolean=}</code>: Whether pointer or touch
@@ -211,7 +211,7 @@ when the open() action is finished.</li>
 close/hide() action is starting.</li>
 <li><code>onDomRemoved</code> - <code>{function=}</code>: Callback function used to announce when
 the panel is removed from the DOM.</li>
-<li><code>origin</code> - <code>{(string|!angular.JQLite|!Element)=}</code>: The element to focus
+<li><code>origin</code> - <code>{(string|!JQLite|!Element)=}</code>: The element to focus
 on when the panel closes. This is commonly the element which triggered
 the opening of the panel. If you do not use <code>origin</code>, you need to control
 the focus manually.</li>
@@ -329,7 +329,7 @@ methods, and call open from the returned panelRef.</p>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-object">!angular.$q.Promise&lt;!MdPanelRef&gt;</code></td>
+<code class="api-type label type-hint type-hint-object">!Q.IPromise&lt;!MdPanelRef&gt;</code></td>
     <td class="description"><p>panelRef A promise that resolves
     to an instance of the panel.</p>
 </td>
