@@ -1,7 +1,7 @@
 angular.module('docsApp').constant('BUILDCONFIG', {
   "ngVersion": "1.8.0",
-  "version": "1.1.22",
+  "version": "1.1.23",
   "repository": "https://github.com/angular/material",
-  "commit": "000a023022b676dacf302f0a62cb58e42491c4c3",
-  "date": "2020-06-18 14:51:37 -0400"
+  "commit": "0f9d111894c6bcbcb05bfe478194f977086ac733",
+  "date": "2020-06-18 16:39:24 -0700"
 });
