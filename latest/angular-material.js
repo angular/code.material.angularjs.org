@@ -2,7 +2,7 @@
  * AngularJS Material Design
  * https://github.com/angular/material
  * @license MIT
- * v1.1.23
+ * v1.1.24
  */
 (function( window, angular, undefined ){
 "use strict";
@@ -349,6 +349,10 @@ function MdConstantFactory() {
   var isWebkit = /webkit/i.test(vendorPrefix);
   var SPECIAL_CHARS_REGEXP = /([:\-_]+(.))/g;
 
+  /**
+   * @param {string} name CSS property name
+   * @return {string} the property name supported by the browser
+   */
   function vendorProperty(name) {
     // Add a dash between the prefix and name, to be able to transform the string into camelcase.
     var prefixedName = vendorPrefix + '-' + name;
@@ -364,6 +368,10 @@ function MdConstantFactory() {
     return angular.isDefined(testElement.style[property]);
   }
 
+  /**
+   * @param {!string} input value to convert to camelCase
+   * @return {string} camelCased version of the input string
+   */
   function camelCase(input) {
     return input.replace(SPECIAL_CHARS_REGEXP, function(matches, separator, letter, offset) {
       return offset ? letter.toUpperCase() : letter;
@@ -1116,7 +1124,7 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
      * which supports the breaking changes in the AngularJS snapshot (SHA 87a2ff76af5d0a9268d8eb84db5755077d27c84c).
      * @param {!ngModel.NgModelController} ngModelCtrl
      * @param {!string} optionName
-     * @returns {Object|undefined}
+     * @returns {string|number|boolean|Object|undefined}
      */
     getModelOption: function (ngModelCtrl, optionName) {
       if (!ngModelCtrl.$options) {
@@ -1125,8 +1133,8 @@ function UtilFactory($document, $timeout, $compile, $rootScope, $$mdAnimate, $in
 
       var $options = ngModelCtrl.$options;
 
-      // The newer versions of AngularJS introduced a `getOption function and made the option values no longer
-      // visible on the $options object.
+      // The newer versions of AngularJS introduced a getOption function and made the option values
+      // no longer visible on the $options object.
       return $options.getOption ? $options.getOption(optionName) : $options[optionName];
     },
 
@@ -2128,7 +2136,7 @@ function AnimateDomUtils($mdUtil, $q, $timeout, $mdConstant, $animateCss) {
         duration: options.duration
       })
       .start()
-      .then(function(){
+      .then(function() {
           // Resolve with reverser function...
           return reverseTranslate;
       });
@@ -2298,6 +2306,10 @@ function AnimateDomUtils($mdUtil, $q, $timeout, $mdConstant, $animateCss) {
 
     /**
      * Convert the translate CSS value to key/value pair(s).
+     * @param {string} transform
+     * @param {boolean=} addTransition
+     * @param {string=} transition
+     * @return {Object} object containing CSS translate key/value pair(s)
      */
     toTransformCss: function (transform, addTransition, transition) {
       var css = {};
@@ -14732,17 +14744,14 @@ angular.module('material.components.datepicker', [
     }, this.$attrs, [ngModelCtrl]);
 
     ngModelCtrl.$render = function() {
-      var value = this.$viewValue;
-      var parsedValue, convertedValue;
+      var value = this.$viewValue, convertedDate;
 
       // In the case where a conversion is needed, the $viewValue here will be a string like
       // "2020-05-10" instead of a Date object.
       if (!self.dateUtil.isValidDate(value)) {
-        parsedValue = self.$mdDateLocale.parseDate(this.$viewValue);
-        convertedValue =
-          new Date(parsedValue.getTime() + 60000 * parsedValue.getTimezoneOffset());
-        if (self.dateUtil.isValidDate(convertedValue)) {
-          value = convertedValue;
+        convertedDate = self.dateUtil.removeLocalTzAndReparseDate(new Date(this.$viewValue));
+        if (self.dateUtil.isValidDate(convertedDate)) {
+          value = convertedDate;
         }
       }
 
@@ -15093,7 +15102,8 @@ angular.module('material.components.datepicker', [
     this.cellClickHandler = function() {
       var timestamp = $$mdDateUtil.getTimestampFromNode(this);
       self.$scope.$apply(function() {
-        self.calendarCtrl.setNgModelValue(self.dateLocale.parseDate(timestamp));
+        // The timestamp has to be converted to a valid date.
+        self.calendarCtrl.setNgModelValue(new Date(timestamp));
       });
     };
 
@@ -15817,7 +15827,8 @@ angular.module('material.components.datepicker', [
 
     if (calendarCtrl.mode) {
       this.$mdUtil.nextTick(function() {
-        calendarCtrl.setNgModelValue(calendarCtrl.$mdDateLocale.parseDate(timestamp));
+        // The timestamp has to be converted to a valid date.
+        calendarCtrl.setNgModelValue(new Date(timestamp));
       });
     } else {
       calendarCtrl.setCurrentView('month', timestamp);
@@ -16365,7 +16376,7 @@ angular.module('material.components.datepicker', [
    * Utility for performing date calculations to facilitate operation of the calendar and
    * datepicker.
    */
-  angular.module('material.components.datepicker').factory('$$mdDateUtil', function() {
+  angular.module('material.components.datepicker').factory('$$mdDateUtil', ["$mdDateLocale", function($mdDateLocale) {
     return {
       getFirstDateOfMonth: getFirstDateOfMonth,
       getNumberOfDaysInMonth: getNumberOfDaysInMonth,
@@ -16389,7 +16400,8 @@ angular.module('material.components.datepicker', [
       getYearDistance: getYearDistance,
       clampDate: clampDate,
       getTimestampFromNode: getTimestampFromNode,
-      isMonthWithinRange: isMonthWithinRange
+      isMonthWithinRange: isMonthWithinRange,
+      removeLocalTzAndReparseDate: removeLocalTzAndReparseDate
     };
 
     /**
@@ -16667,7 +16679,20 @@ angular.module('material.components.datepicker', [
        return (!minDate || minDate.getFullYear() < year || minDate.getMonth() <= month) &&
         (!maxDate || maxDate.getFullYear() > year || maxDate.getMonth() >= month);
      }
-  });
+
+    /**
+     * @param {Date} value
+     * @return {boolean|boolean}
+     */
+    function removeLocalTzAndReparseDate(value) {
+      var dateValue, formattedDate;
+      // Remove the local timezone offset before calling formatDate.
+      dateValue = new Date(value.getTime() + 60000 * value.getTimezoneOffset());
+      formattedDate = $mdDateLocale.formatDate(dateValue);
+      // parseDate only works with a date formatted by formatDate when using Moment validation.
+      return $mdDateLocale.parseDate(formattedDate);
+    }
+  }]);
 })();
 
 })();
@@ -16763,6 +16788,7 @@ angular.module('material.components.datepicker', [
         // may be confusing.
         var hiddenIcons = tAttrs.mdHideIcons;
         var ariaLabelValue = tAttrs.ariaLabel || tAttrs.mdPlaceholder;
+        var ngModelOptions = tAttrs.ngModelOptions;
 
         var calendarButton = (hiddenIcons === 'all' || hiddenIcons === 'calendar') ? '' :
           '<md-button class="md-datepicker-button md-icon-button" type="button" ' +
@@ -16810,6 +16836,7 @@ angular.module('material.components.datepicker', [
                 'md-max-date="ctrl.maxDate" ' +
                 'md-date-filter="ctrl.dateFilter" ' +
                 'md-month-filter="ctrl.monthFilter" ' +
+                (ngModelOptions ? 'ng-model-options="' + ngModelOptions + '" ' : '') +
                 'ng-model="ctrl.date" ng-if="ctrl.isCalendarOpen">' +
             '</md-calendar>' +
           '</div>' +
@@ -16858,7 +16885,8 @@ angular.module('material.components.datepicker', [
           mdInputContainer.input = element;
           mdInputContainer.element
             .addClass(INPUT_CONTAINER_CLASS)
-            .toggleClass(HAS_CALENDAR_ICON_CLASS, attr.mdHideIcons !== 'calendar' && attr.mdHideIcons !== 'all');
+            .toggleClass(HAS_CALENDAR_ICON_CLASS,
+              attr.mdHideIcons !== 'calendar' && attr.mdHideIcons !== 'all');
 
           if (!mdInputContainer.label) {
             $mdAria.expect(element, 'aria-label', attr.mdPlaceholder);
@@ -16869,7 +16897,8 @@ angular.module('material.components.datepicker', [
           }
 
           scope.$watch(mdInputContainer.isErrorGetter || function() {
-            return ngModelCtrl.$invalid && (ngModelCtrl.$touched || (parentForm && parentForm.$submitted));
+            return ngModelCtrl.$invalid && (ngModelCtrl.$touched ||
+              (parentForm && parentForm.$submitted));
           }, mdInputContainer.setInvalid);
         } else if (parentForm) {
           // If invalid, highlights the input when the parent form is submitted.
@@ -17102,8 +17131,8 @@ angular.module('material.components.datepicker', [
       });
     }
 
-    // For AngularJS 1.4 and older, where there are no lifecycle hooks but bindings are pre-assigned,
-    // manually call the $onInit hook.
+    // For AngularJS 1.4 and older, where there are no lifecycle hooks but bindings are
+    // pre-assigned, manually call the $onInit hook.
     if (angular.version.major === 1 && angular.version.minor <= 4) {
       this.$onInit();
     }
@@ -17111,7 +17140,8 @@ angular.module('material.components.datepicker', [
 
   /**
    * AngularJS Lifecycle hook for newer AngularJS versions.
-   * Bindings are not guaranteed to have been assigned in the controller, but they are in the $onInit hook.
+   * Bindings are not guaranteed to have been assigned in the controller, but they are in the
+   * $onInit hook.
    */
   DatePickerCtrl.prototype.$onInit = function() {
 
@@ -17120,7 +17150,8 @@ angular.module('material.components.datepicker', [
      * the user to override specific ones from the $mdDateLocale provider.
      * @type {!Object}
      */
-    this.locale = this.dateLocale ? angular.extend({}, this.$mdDateLocale, this.dateLocale) : this.$mdDateLocale;
+    this.locale = this.dateLocale ? angular.extend({}, this.$mdDateLocale, this.dateLocale)
+      : this.$mdDateLocale;
 
     this.installPropertyInterceptors();
     this.attachChangeListeners();
@@ -17421,7 +17452,9 @@ angular.module('material.components.datepicker', [
     var bodyRect = body.getBoundingClientRect();
 
     if (!this.topMargin || this.topMargin < 0) {
-      this.topMargin = (this.inputMask.parent().prop('clientHeight') - this.ngInputElement.prop('clientHeight')) / 2;
+      this.topMargin =
+        (this.inputMask.parent().prop('clientHeight')
+          - this.ngInputElement.prop('clientHeight')) / 2;
     }
 
     // Check to see if the calendar pane would go off the screen. If so, adjust position
@@ -17671,7 +17704,11 @@ angular.module('material.components.datepicker', [
     var self = this;
     var timezone = this.$mdUtil.getModelOption(this.ngModelCtrl, 'timezone');
 
-    this.date = value;
+    if (this.dateUtil.isValidDate(value)) {
+      this.date = this.dateUtil.removeLocalTzAndReparseDate(value);
+    } else {
+      this.date = value;
+    }
     this.inputElement.value = this.locale.formatDate(value, timezone);
     this.mdInputContainer && this.mdInputContainer.setHasValue(!!value);
     this.resizeInputElement();
@@ -27725,7 +27762,7 @@ MdPanelRef.prototype.destroy = function() {
   this.config.onDomRemoved = null;
   this.config.onRemoving = null;
   this.config.onOpenComplete = null;
-  this._interceptors = null;
+  this._interceptors = undefined;
 };
 
 
@@ -27799,7 +27836,7 @@ MdPanelRef.prototype.hide = function() {
     };
     var removeFromGroupOpen = function() {
       if (self.config.groupName) {
-        var group, index;
+        var index;
         angular.forEach(self.config.groupName, function(group) {
           group = self._$mdPanel._groups[group];
           index = group.openPanels.indexOf(self);
@@ -28117,6 +28154,7 @@ MdPanelRef.prototype._updatePosition = function(init) {
     // Hide the panel now that position is known.
     if (init) {
       this.panelEl.removeClass('_md-panel-offscreen');
+      this.innerWrapper.removeClass('_md-panel-offscreen');
       this.panelContainer.addClass(MD_PANEL_HIDDEN);
     }
 
@@ -28413,34 +28451,34 @@ MdPanelRef.prototype._animateOpen = function() {
 
 /**
  * Animate the panel closing.
- * @returns {!Q.IPromise} A promise that is resolved when the panel has
- *     animated closed.
+ * @returns {!Q.IPromise} A promise that is resolved when the panel has animated closed.
  * @private
  */
 MdPanelRef.prototype._animateClose = function() {
+  var self = this;
   var animationConfig = this.config['animation'];
+
   if (!animationConfig) {
     this.panelContainer.removeClass('md-panel-is-showing');
     this.panelContainer.removeClass('_md-panel-shown');
     return this._$q.when(this);
+  } else {
+    return this._$q(function (resolve) {
+      var done = function () {
+        self.panelContainer.removeClass('md-panel-is-showing');
+        // Remove the transform so that re-used panels don't accumulate transforms.
+        self.panelEl.css('transform', '');
+        resolve(self);
+      };
+      var warnAndClose = function () {
+        self._$log.warn(
+          'mdPanel: MdPanel Animations failed. Hiding panel without animating.');
+        done();
+      };
+
+      animationConfig.animateClose(self.panelEl).then(done, warnAndClose);
+    });
   }
-
-  var self = this;
-  return this._$q(function(resolve) {
-    var done = function() {
-      self.panelContainer.removeClass('md-panel-is-showing');
-      resolve(self);
-    };
-    var warnAndClose = function() {
-      self._$log.warn(
-          'mdPanel: MdPanel Animations failed. ' +
-          'Hiding panel without animating.');
-      done();
-    };
-
-    animationConfig.animateClose(self.panelEl)
-        .then(done, warnAndClose);
-  });
 };
 
 
@@ -28561,7 +28599,7 @@ MdPanelRef.prototype._simpleBind = function(callback, self) {
 
 
 /**
- * @param {function} callback
+ * @param {function|IQResolveReject} callback
  * @param {!Object} self
  * @return {function} Callback function with a self param.
  */
@@ -28976,7 +29014,7 @@ MdPanelPosition.prototype.getRight = function() {
 
 /**
  * Gets the value of `transform` for the panel.
- * @returns {string}
+ * @returns {string} representation of the translateX and translateY rules and values
  */
 MdPanelPosition.prototype.getTransform = function() {
   var translateX = this._reduceTranslateValues('translateX', this._translateX);
@@ -29463,8 +29501,7 @@ MdPanelAnimation.prototype.animateOpen = function(panelEl) {
 /**
  * Animate the panel close.
  * @param {!JQLite} panelEl
- * @returns {!Q.IPromise} A promise that resolves when the close
- *     animation is complete.
+ * @returns {!Q.IPromise} A promise that resolves when the close animation is complete.
  */
 MdPanelAnimation.prototype.animateClose = function(panelEl) {
   var animator = this._$mdUtil.dom.animator;
@@ -29485,8 +29522,7 @@ MdPanelAnimation.prototype.animateClose = function(panelEl) {
         transitionOutClass: '_md-panel-animate-enter _md-panel-animate-leave'
       };
 
-      var closeSlide = animator.calculateSlideToOrigin(
-              panelEl, this._closeTo) || '';
+      var closeSlide = animator.calculateSlideToOrigin(panelEl, this._closeTo) || '';
       closeTo = animator.toTransformCss(closeSlide + ' ' + panelTransform);
       break;
 
@@ -29496,8 +29532,7 @@ MdPanelAnimation.prototype.animateClose = function(panelEl) {
         transitionOutClass: '_md-panel-animate-scale-out _md-panel-animate-enter _md-panel-animate-leave'
       };
 
-      var closeScale = animator.calculateZoomToOrigin(
-              panelEl, this._closeTo) || '';
+      var closeScale = animator.calculateZoomToOrigin(panelEl, this._closeTo) || '';
       closeTo = animator.toTransformCss(panelTransform + ' ' + closeScale);
       break;
 
@@ -29586,9 +29621,9 @@ function getElement(el) {
 
 /**
  * Gets the computed values for an element's translateX and translateY in px.
- * @param {!JQLite|!Element} el
+ * @param {!JQLite|!Element} el the element to evaluate
  * @param {string} property
- * @return {{x: number, y: number}}
+ * @return {{x: number, y: number}} an element's translateX and translateY in px
  */
 function getComputedTranslations(el, property) {
   // The transform being returned by `getComputedStyle` is in the format:
@@ -39184,4 +39219,4 @@ angular.module("material.core").constant("$MD_THEME_CSS", "md-autocomplete.md-TH
 })();
 
 
-})(window, window.angular);;window.ngMaterial={version:{full: "1.1.23"}};
+})(window, window.angular);;window.ngMaterial={version:{full: "1.1.24"}};
