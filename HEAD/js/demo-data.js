@@ -1007,6 +1007,36 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "ngModelTimezoneUsage",
+          "module": "ngModelTimezoneUsage",
+          "dependencies": [
+            "ngMaterial",
+            "ngMessages"
+          ]
+        },
+        "id": "datepickerdemoNgModelOptionsTimezone",
+        "css": [],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/datepicker/demoNgModelOptionsTimezone/script.js"
+          }
+        ],
+        "moduleName": "material.components.datepicker",
+        "name": "demoNgModelOptionsTimezone",
+        "label": "Ng Model Options Timezone",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/datepicker/demoNgModelOptionsTimezone/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "datepickerValidations",
           "module": "datepickerValidations",
           "dependencies": [
