@@ -426,6 +426,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "checkboxDemo1",
+          "module": "checkboxDemo1",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "checkboxdemoLabels",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/checkbox/demoLabels/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/checkbox/demoLabels/script.js"
+          }
+        ],
+        "moduleName": "material.components.checkbox",
+        "name": "demoLabels",
+        "label": "Labels",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/checkbox/demoLabels/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "checkboxDemo3",
           "module": "checkboxDemo3",
           "dependencies": [
