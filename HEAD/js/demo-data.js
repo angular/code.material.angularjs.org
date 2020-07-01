@@ -3446,6 +3446,42 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
+          "name": "inputsInToolbarDemo",
+          "module": "inputsInToolbarDemo",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "toolbardemoInputsInToolbar",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/toolbar/demoInputsInToolbar/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/toolbar/demoInputsInToolbar/script.js"
+          }
+        ],
+        "moduleName": "material.components.toolbar",
+        "name": "demoInputsInToolbar",
+        "label": "Inputs In Toolbar",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/toolbar/demoInputsInToolbar/index.html"
+        }
+      },
+      {
+        "ngModule": {
           "name": "toolbarDemo2",
           "module": "toolbarDemo2",
           "dependencies": [
