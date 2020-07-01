@@ -15,8 +15,8 @@
 
 .colorsdemoThemePicker p.footnote {
   font-size: 0.85em;
-  margin: 30px;
-  padding: 5px;
+  margin: 30px 8px;
+  padding: 16px;
   background-color: rgba(205, 205, 205, 0.45); }
 
 .colorsdemoThemePicker .componentTag {

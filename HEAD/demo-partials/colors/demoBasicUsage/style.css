@@ -11,9 +11,8 @@
   height: 40px;
   color: rgba(255, 255, 255, 0.87); }
 
-.colorsdemoBasicUsage span.card-title {
-  padding-left: 15px;
-  margin-top: 20px; }
+.colorsdemoBasicUsage h4.card-title {
+  margin: 24px 8px 0; }
 
 .colorsdemoBasicUsage code.css {
   background-color: #fffcc2; }
@@ -23,6 +22,6 @@
 
 .colorsdemoBasicUsage p.footnote {
   font-size: 0.85em;
-  margin: 30px;
-  padding: 5px;
+  margin: 30px 8px;
+  padding: 16px;
   background-color: rgba(205, 205, 205, 0.45); }
