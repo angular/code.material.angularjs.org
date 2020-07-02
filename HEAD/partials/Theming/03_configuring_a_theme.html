@@ -1,7 +1,7 @@
 <div class="doc-content theming">
     
     <h2 id="configuring-a-theme">Configuring a theme</h2>
-<p>By default your AngularJS Material application will use the default theme, a theme
+<p>By default, your AngularJS Material application will use the default theme, a theme
 that is pre-configured with the following palettes for intention groups:</p>
 <ul>
 <li><em>primary</em> - indigo</li>
@@ -60,15 +60,22 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 </hljs>
 
 <h3 id="defining-custom-palettes">Defining Custom Palettes</h3>
-<p>As mentioned before, AngularJS Material ships with the Material Design
-Spec&#39;s color palettes built in. In the event that you need to define a custom color palette, you can use <code>$mdThemingProvider</code> to define it, thereby making 
-it available to your theme for use in its intention groups. Note that you must
-specify all hues in the definition map.</p>
+<p>As mentioned before, AngularJS Material ships with the Material Design Spec&#39;s color palettes built
+in. In the event that you need to define a custom color palette, you can use <code>$mdThemingProvider</code>
+to define it. This makes the palette available to your theme for use in its intention groups.
+Note that you must specify all hues in the definition map. If you only want to override a few hues,
+please extend a palette (above).</p>
+<p>For a dark colored, custom palette, you should specify the default contrast color as  <code>light</code>.
+For lighter hues in the palette, you may need to add them to the list of <code>contrastDarkColors</code> to
+meet contrast guidelines. Similarly, you may need to add darker hues to <code>contrastStrongLightColors</code>,
+which has been updated to the latest Material Design guidelines for
+<a href="https://material.io/archive/guidelines/style/color.html#color-usability">Color Usability</a>.
+The update to the guidelines changed primary text on dark backgrounds from 87% to 100% opacity.</p>
 <hljs lang="js">
 angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
 
-  $mdThemingProvider.definePalette(&#39;amazingPaletteName&#39;, {
+  $mdThemingProvider.definePalette(&#39;amazingDarkPaletteName&#39;, {
     &#39;50&#39;: &#39;ffebee&#39;,
     &#39;100&#39;: &#39;ffcdd2&#39;,
     &#39;200&#39;: &#39;ef9a9a&#39;,
@@ -83,17 +90,48 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
     &#39;A200&#39;: &#39;ff5252&#39;,
     &#39;A400&#39;: &#39;ff1744&#39;,
     &#39;A700&#39;: &#39;d50000&#39;,
-    &#39;contrastDefaultColor&#39;: &#39;light&#39;,    // whether, by default, text (contrast) 
-                                        // on this palette should be dark or light
-
-    &#39;contrastDarkColors&#39;: [&#39;50&#39;, &#39;100&#39;, //hues which contrast should be &#39;dark&#39; by default
-     &#39;200&#39;, &#39;300&#39;, &#39;400&#39;, &#39;A100&#39;],
-    &#39;contrastLightColors&#39;: undefined    // could also specify this if default was &#39;dark&#39;
+    // By default, text (contrast) on this palette should be white with 87% opacity.
+    &#39;contrastDefaultColor&#39;: &#39;light&#39;,
+    // By default, for these lighter hues, text (contrast) should be &#39;dark&#39;.
+    &#39;contrastDarkColors&#39;: &#39;50 100 200 300 400 500 600 A100 A200 A400&#39;,
+    // By default, for these darker hues, text (contrast) should be white with 100% opacity.
+    &#39;contrastStrongLightColors&#39;: &#39;700 800 900 A700&#39;
   });
 
   $mdThemingProvider.theme(&#39;default&#39;)
-    .primaryPalette(&#39;amazingPaletteName&#39;)
+    .primaryPalette(&#39;amazingDarkPaletteName&#39;)
+});
+</hljs>
 
+<p>For a light colored, custom palette, you should specify the default contrast color as <code>dark</code>.
+Then <code>contrastStrongLightColors</code> can be used if any hues are too dark for dark text.</p>
+<hljs lang="js">
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+.config(function($mdThemingProvider) {
+
+  $mdThemingProvider.definePalette(&#39;amazingLightPaletteName&#39;, {
+    &#39;50&#39;: &#39;#f1f8e9&#39;,
+    &#39;100&#39;: &#39;#dcedc8&#39;,
+    &#39;200&#39;: &#39;#c5e1a5&#39;,
+    &#39;300&#39;: &#39;#aed581&#39;,
+    &#39;400&#39;: &#39;#9ccc65&#39;,
+    &#39;500&#39;: &#39;#8bc34a&#39;,
+    &#39;600&#39;: &#39;#7cb342&#39;,
+    &#39;700&#39;: &#39;#689f38&#39;,
+    &#39;800&#39;: &#39;#558b2f&#39;,
+    &#39;900&#39;: &#39;#33691e&#39;,
+    &#39;A100&#39;: &#39;#ccff90&#39;,
+    &#39;A200&#39;: &#39;#b2ff59&#39;,
+    &#39;A400&#39;: &#39;#76ff03&#39;,
+    &#39;A700&#39;: &#39;#64dd17&#39;,
+    // By default, text (contrast) on this palette should be dark with 87% opacity.
+    &#39;contrastDefaultColor&#39;: &#39;dark&#39;,
+    // By default, for these darker hues, text (contrast) should be white with 100% opacity.
+    &#39;contrastStrongLightColors&#39;: &#39;800 900&#39;
+  });
+
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .accentPalette(&#39;amazingLightPaletteName&#39;)
 });
 </hljs>
 
