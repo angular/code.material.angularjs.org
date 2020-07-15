@@ -98,7 +98,7 @@ injected in the panel&#39;s controller</li>
   <ul class="methods">
     <li id="create">
       <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.create(config);
+        <code class="method-function-syntax">$mdPanel.create([config]);
 </code>
       </h3>
       <div class="service-desc"><p>Creates a panel with the specified options.</p>
@@ -120,17 +120,20 @@ injected in the panel&#39;s controller</li>
   
   
     
+  
+  
+    
       <tr class="api-params-item">
         <td style="white-space: nowrap;">
-          <b>* config</b>
+          config
           
           <span hide show-sm>
-</span>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
         </td>
         <td style="white-space: nowrap;">
-</td>
+<code class="api-type label type-hint type-hint-object">Object</code></td>
         <td class="description">
-          <p>{!Object=} Specific configuration object that may contain the
+          <p>Specific configuration object that may contain the
     following properties:</p>
 <ul>
 <li><code>id</code> - <code>{string=}</code>: An ID to track the panel by. When an ID is provided,
@@ -225,9 +228,6 @@ identified using the same groupName.</li>
           
         </td>
       </tr>
-    
-  
-  
     
   
 
@@ -418,106 +418,6 @@ the animation config object.</p>
 
     </li>
     
-    <li id="newPanelGroup">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdPanel.newPanelGroup(groupName, [config]);
-</code>
-      </h3>
-      <div class="service-desc"><p>Creates a panel group and adds it to a tracked list of panel groups.</p>
-</div>
-
-      <div class="method-param-table">
-
-      
-      
-<table class="md-api-table">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          <b>* groupName</b>
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">string</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">string</code></td>
-        <td class="description">
-          <p>Name of the group to create.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-    
-  
-  
-    
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          config
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">Object</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">Object</code></td>
-        <td class="description">
-          <p>Specific configuration object that may contain the
-    following properties:</p>
-<ul>
-<li><code>maxOpen</code> - <code>{number=}</code>: The maximum number of panels that are allowed to
-be open within a defined panel group.</li>
-</ul>
-
-          
-        </td>
-      </tr>
-    
-  
-
-  </tbody>
-</table>
-
-      
-
-      
-
-      
-      <table class="md-api-table">
-  <thead>
-  <tr>
-    <th>Returns</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>
-<code class="api-type label type-hint type-hint-object">!Object&lt;string, {panels: !Array&lt;!MdPanelRef&gt;, openPanels: !Array&lt;!MdPanelRef&gt;, maxOpen: number}&gt;</code></td>
-    <td class="description"><p>panelGroup</p>
-</td>
-  </tr>
-  </tbody>
-</table>
-      
-
-      </div>
-
-    </li>
-    
     <li id="setGroupMaxOpen">
       <h3 class="method-function-syntax">
         <code class="method-function-syntax">$mdPanel.setGroupMaxOpen(groupName, maxOpen);
@@ -592,6 +492,105 @@ time.</p>
 
       
 
+      
+
+      </div>
+
+    </li>
+    
+    <li id="newPanelGroup">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$mdPanel.newPanelGroup(groupName, [config]);
+</code>
+      </h3>
+      <div class="service-desc"><p>Creates a panel group and adds it to a tracked list of panel groups.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* groupName</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>Name of the group to create.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          config
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">{maxOpen: number}=</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">{maxOpen: number}=</code></td>
+        <td class="description">
+          <p>Configuration object that may contain the following
+ properties:</p>
+<ul>
+<li><code>maxOpen</code>: The maximum number of panels that are allowed open within a defined panel group.</li>
+</ul>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-object">!{panels: !Array&lt;!MdPanelRef&gt;, openPanels: !Array&lt;!MdPanelRef&gt;, maxOpen: number}</code></td>
+    <td class="description"><p>the new panel group</p>
+</td>
+  </tr>
+  </tbody>
+</table>
       
 
       </div>
