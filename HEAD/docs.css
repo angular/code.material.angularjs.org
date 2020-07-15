@@ -782,16 +782,14 @@ md-tabs.demo-source-tabs .active md-tab-label {
 .small-demo .demo-content {
   min-height: 128px;
 }
-
 .doc-content > * {
   -webkit-box-flex: 1;
           flex: 1 1 auto;
 }
 .demo-content > * {
   -webkit-box-flex: 1;
-          flex: 1 1 0;
+          flex: 1 1 100%;
 }
-
 .demo-content > div[layout-fill] {
   min-height: 448px;
 }
