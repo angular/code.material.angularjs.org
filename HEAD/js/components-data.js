@@ -1545,16 +1545,6 @@ angular.module('docsApp').constant('COMPONENTS', [
     "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/compiler/compiler.js",
     "docs": [
       {
-        "name": "$mdCompilerProvider",
-        "type": "service",
-        "outputPath": "partials/api/material.core.compiler/service/$mdCompilerProvider.html",
-        "url": "api/service/$mdCompilerProvider",
-        "label": "$mdCompilerProvider",
-        "module": "material.core",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/core/services/compiler/compiler.js",
-        "hasDemo": false
-      },
-      {
         "name": "$mdCompiler",
         "type": "service",
         "outputPath": "partials/api/material.core.compiler/service/$mdCompiler.html",
