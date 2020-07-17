@@ -203,7 +203,6 @@ demo-include {
   z-index: 2;
 }
 [ng-panel] {
-  -webkit-transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   position: absolute;
   left: 0;
@@ -212,20 +211,17 @@ demo-include {
   height: 100%;
 }
 [ng-panel].ng-enter {
-  -webkit-transform: translate3d(0, -15%, 0);
-          transform: translate3d(0, -15%, 0);
+  transform: translate3d(0, -15%, 0);
   opacity: 0.1;
   z-index: 1;
 }
 [ng-panel].ng-enter.ng-enter-active,
 [ng-panel].ng-leave {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   opacity: 1;
 }
 [ng-panel].ng-leave.ng-leave-active {
-  -webkit-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   opacity: 0.5;
 }
 [ng-panel] .demo-content {
@@ -276,18 +272,12 @@ body.docs-body {
 .md-fab.docs-scroll-fab {
   position: fixed !important;
 
-  -webkit-transform: scale(0);
-
-          transform: scale(0);
-  -webkit-transition: -webkit-transform 0.2s;
-  transition: -webkit-transform 0.2s;
+  transform: scale(0);
   transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
 }
 
 .docs-scroll-fab.scrolling {
-  -webkit-transform: scale(1);
-          transform: scale(1);
+  transform: scale(1);
 }
 
 #license-footer {
@@ -318,7 +308,6 @@ body.docs-body {
 a {
   text-decoration: none;
   font-weight: 400;
-  -webkit-transition: border-bottom 0.35s;
   transition: border-bottom 0.35s;
   color: #1565C0;
 }
@@ -527,8 +516,7 @@ ul.docs-menu li {
   color: white;
   cursor: pointer;
   display: block;
-  -webkit-box-align: inherit;
-          align-items: inherit;
+  align-items: inherit;
   line-height: 40px;
   margin: 0;
   max-height: 40px;
@@ -564,8 +552,7 @@ body[dir=rtl] .docs-menu .md-button {
 }
 
 .docs-menu md-select md-select-label {
-  -webkit-box-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
   padding-top: 10px;
 }
 
@@ -627,29 +614,20 @@ body[dir=rtl] .menu-heading {
   margin-left: auto;
   speak: none;
   vertical-align: middle;
-  -webkit-transform: rotate(180deg);
-          transform: rotate(180deg);
-  -webkit-transition: -webkit-transform 0.3s ease-in-out;
-  transition: -webkit-transform 0.3s ease-in-out;
+  transform: rotate(180deg);
   transition: transform 0.3s ease-in-out;
-  transition: transform 0.3s ease-in-out, -webkit-transform 0.3s ease-in-out;
 }
 .md-button-toggle .md-toggle-icon.toggled {
-  -webkit-transform: rotate(0deg);
-          transform: rotate(0deg);
+  transform: rotate(0deg);
 }
 
 /* End Docs Menu */
 
 .docs-logo {
   text-align: center;
-  display: -webkit-box;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-          flex-direction: column;
-  -webkit-box-align: center;
-          align-items: center;
+  flex-direction: column;
+  align-items: center;
   padding: 0 0 16px;
   margin: 0 auto;
 }
@@ -661,14 +639,11 @@ body[dir=rtl] .menu-heading {
   height: 120px;
   width: auto;
   display: block;
-  -webkit-transform-origin: 50% 0;
-          transform-origin: 50% 0;
-  -webkit-transform: scale(1.2);
-          transform: scale(1.2);
+  transform-origin: 50% 0;
+  transform: scale(1.2);
 }
 .nav-header {
   background-color: #106CC8;
-  background: -webkit-gradient(linear, left top, left bottom, from(#185694), to(#106cc8));
   background: linear-gradient(#185694, #106cc8);
   border-bottom: 1px solid #1D77D5;
   flex-shrink: 0;
@@ -730,14 +705,12 @@ docs-demo {
 .demo-container {
   border-radius: 4px;
   margin-bottom: 16px;
-  -webkit-transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   transition: 0.02s padding cubic-bezier(0.35, 0, 0.25, 1);
   position: relative;
   padding-bottom: 0;
 }
 .demo-source-tabs {
   z-index: 1;
-  -webkit-transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.45s cubic-bezier(0.35, 0, 0.25, 1);
   height: 448px;
   background: #fff;
@@ -772,7 +745,6 @@ md-tabs.demo-source-tabs .active md-tab-label {
 }
 .demo-content {
   position: relative;
-  display: -webkit-box;
   display: flex;
   overflow: hidden;
 }
@@ -783,12 +755,10 @@ md-tabs.demo-source-tabs .active md-tab-label {
   min-height: 128px;
 }
 .doc-content > * {
-  -webkit-box-flex: 1;
-          flex: 1 1 auto;
+  flex: 1 1 auto;
 }
 .demo-content > * {
-  -webkit-box-flex: 1;
-          flex: 1 1 100%;
+  flex: 1 1 100%;
 }
 .demo-content > div[layout-fill] {
   min-height: 448px;
@@ -829,7 +799,6 @@ md-toolbar.demo-toolbar .md-button.active, md-toolbar.demo-toolbar .md-button.ac
 }
 
 md-toolbar.demo-toolbar .md-button {
-  -webkit-transition: all 0.3s linear;
   transition: all 0.3s linear;
   color: #616161;
 }
@@ -892,7 +861,6 @@ main .doc-content ul.buckets li a {
 main .doc-content ul.buckets li a,
 main .doc-content ul.buckets li a md-icon {
   color: #666 !important;
-  -webkit-transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
   transition: all 0.15s cubic-bezier(0.35, 0, 0.25, 1);
 }
 main .doc-content ul.buckets li a:hover,
@@ -1088,7 +1056,6 @@ docs-demo .doc-demo-content {
 }
 
 .no-transition {
-  -webkit-transition: none !important;
   transition: none !important;
 }
 
