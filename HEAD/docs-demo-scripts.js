@@ -99,113 +99,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    self.repos         = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for repos... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.repos.filter(createFilterFor(query)) : self.repos,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `components` list of key/value pairs
-     */
-    function loadAll() {
-      var repos = [
-        {
-          'name'      : 'AngularJS',
-          'url'       : 'https://github.com/angular/angular.js',
-          'watchers'  : '3,623',
-          'forks'     : '16,175',
-        },
-        {
-          'name'      : 'Angular',
-          'url'       : 'https://github.com/angular/angular',
-          'watchers'  : '469',
-          'forks'     : '760',
-        },
-        {
-          'name'      : 'AngularJS Material',
-          'url'       : 'https://github.com/angular/material',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Angular Material',
-          'url'       : 'https://github.com/angular/components',
-          'watchers'  : '727',
-          'forks'     : '1,241',
-        },
-        {
-          'name'      : 'Bower Material',
-          'url'       : 'https://github.com/angular/bower-material',
-          'watchers'  : '42',
-          'forks'     : '84',
-        },
-        {
-          'name'      : 'Material Start',
-          'url'       : 'https://github.com/angular/material-start',
-          'watchers'  : '81',
-          'forks'     : '303',
-        }
-      ];
-      return repos.map(function (repo) {
-        repo.value = repo.name.toLowerCase();
-        return repo;
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(item) {
-        return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -356,6 +249,198 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 (function () {
   'use strict';
   angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      });
+    };
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter(createFilterFor(query)) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    self.repos         = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for repos... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.repos.filter(createFilterFor(query)) : self.repos,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `components` list of key/value pairs
+     */
+    function loadAll() {
+      var repos = [
+        {
+          'name'      : 'AngularJS',
+          'url'       : 'https://github.com/angular/angular.js',
+          'watchers'  : '3,623',
+          'forks'     : '16,175',
+        },
+        {
+          'name'      : 'Angular',
+          'url'       : 'https://github.com/angular/angular',
+          'watchers'  : '469',
+          'forks'     : '760',
+        },
+        {
+          'name'      : 'AngularJS Material',
+          'url'       : 'https://github.com/angular/material',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Angular Material',
+          'url'       : 'https://github.com/angular/components',
+          'watchers'  : '727',
+          'forks'     : '1,241',
+        },
+        {
+          'name'      : 'Bower Material',
+          'url'       : 'https://github.com/angular/bower-material',
+          'watchers'  : '42',
+          'forks'     : '84',
+        },
+        {
+          'name'      : 'Material Start',
+          'url'       : 'https://github.com/angular/material-start',
+          'watchers'  : '81',
+          'forks'     : '303',
+        }
+      ];
+      return repos.map(function (repo) {
+        repo.value = repo.name.toLowerCase();
+        return repo;
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(item) {
+        return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
       .module('autocompleteRepeatModeDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -472,118 +557,34 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   }
 })();
 
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
 
-  function DemoCtrl($mdDialog) {
-    var self = this;
+angular.module('cardDemo2', ['ngMaterial'])
 
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      });
-    };
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter(createFilterFor(query)) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-angular.module('buttonsDemoBasic', ['ngMaterial'])
 .controller('AppCtrl', function($scope) {
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
+  $scope.imagePath = 'img/washedout.png';
 });
 
 
-angular.module('checkboxDemo2', ['ngMaterial'])
+angular.module('cardDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+})
+.config(function($mdThemingProvider) {
+  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
+  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
+  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
+  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+});
 
-    $scope.items = [1,2,3,4,5];
-      $scope.selected = [];
 
-      $scope.toggle = function (item, list) {
-        var idx = list.indexOf(item);
-        if (idx > -1) {
-          list.splice(idx, 1);
-        }
-        else {
-          list.push(item);
-        }
-      };
+angular.module('cardDemo3', ['ngMaterial'])
 
-      $scope.exists = function (item, list) {
-        return list.indexOf(item) > -1;
-      };
+.config(['$mdIconProvider', function($mdIconProvider) {
+  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+}])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
 });
 
 
@@ -598,6 +599,12 @@ angular.module('checkboxDemo1', ['ngMaterial'])
   $scope.data.cb4 = false;
   $scope.data.cb5 = false;
 
+});
+
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
 });
 
 angular.module('checkboxDemo1', ['ngMaterial'])
@@ -650,34 +657,250 @@ angular.module('checkboxDemo3', ['ngMaterial'])
 });
 
 
-angular.module('cardDemo1', ['ngMaterial'])
+angular.module('checkboxDemo2', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-})
-.config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('dark-grey').backgroundPalette('grey').dark();
-  $mdThemingProvider.theme('dark-orange').backgroundPalette('orange').dark();
-  $mdThemingProvider.theme('dark-purple').backgroundPalette('deep-purple').dark();
-  $mdThemingProvider.theme('dark-blue').backgroundPalette('blue').dark();
+
+    $scope.items = [1,2,3,4,5];
+      $scope.selected = [];
+
+      $scope.toggle = function (item, list) {
+        var idx = list.indexOf(item);
+        if (idx > -1) {
+          list.splice(idx, 1);
+        }
+        else {
+          list.push(item);
+        }
+      };
+
+      $scope.exists = function (item, list) {
+        return list.indexOf(item) > -1;
+      };
 });
 
+angular.module('colorsDemo', ['ngMaterial'])
+  .config(function ($mdThemingProvider, $mdIconProvider) {
+    $mdThemingProvider.theme('forest')
+      .primaryPalette('brown')
+      .accentPalette('green');
 
-angular.module('cardDemo3', ['ngMaterial'])
+    $mdIconProvider
+      .iconSet('social', 'img/icons/sets/social-icons.svg', 24);
+  })
+  .directive('regularCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'regularCard.tmpl.html',
+      scope: {
+        name: '@',
+      }
+    };
+  })
+  .directive('userCard', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'userCard.tmpl.html',
+      scope: {
+        name: '@',
+        theme: '@'
+      },
+      controller: function ($scope) {
+        $scope.theme = $scope.theme || 'default';
+      }
+    };
+  });
 
-.config(['$mdIconProvider', function($mdIconProvider) {
-  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
-}])
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
+(function () {
+  'use strict';
+  angular
+      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
+      .config(['$mdIconProvider', function($mdIconProvider) {
+        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
+      }])
+      .controller('BasicDemoCtrl', DemoCtrl);
 
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
 
-angular.module('cardDemo2', ['ngMaterial'])
+    self.readonly = false;
 
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
+    // Lists of fruit names and Vegetable objects
+    self.fruitNames = ['Apple', 'Banana', 'Orange'];
+    self.ngChangeFruitNames = angular.copy(self.fruitNames);
+    self.roFruitNames = angular.copy(self.fruitNames);
+    self.editableFruitNames = angular.copy(self.fruitNames);
+
+    self.tags = [];
+    self.vegObjs = [
+      {
+        'name' : 'Broccoli',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Cabbage',
+        'type' : 'Brassica'
+      },
+      {
+        'name' : 'Carrot',
+        'type' : 'Umbelliferous'
+      }
+    ];
+
+    self.newVeg = function(chip) {
+      return {
+        name: chip,
+        type: 'unknown'
+      };
+    };
+
+    self.onModelChange = function(newModel) {
+      $log.log('The model has changed to ' + newModel + '.');
+    };
+  }
+})();
+
+angular
+  .module('colorsThemePickerDemo', ['ngMaterial'])
+  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
+    $scope.colors = Object.keys($mdColorPalette);
+
+    $scope.mdURL = 'https://material.io/archive/guidelines/style/color.html#color-color-palette';
+    $scope.primary = 'purple';
+    $scope.accent = 'green';
+
+    $scope.isPrimary = true;
+
+    $scope.selectTheme = function (color) {
+      if ($scope.isPrimary) {
+        $scope.primary = color;
+
+        $scope.isPrimary = false;
+      }
+      else {
+        $scope.accent = color;
+
+        $scope.isPrimary = true;
+      }
+    };
+  })
+  .directive('themePreview', function () {
+    return {
+      restrict: 'E',
+      templateUrl: 'themePreview.tmpl.html',
+      scope: {
+        primary: '=',
+        accent: '='
+      },
+      controller: function ($scope, $mdColors, $mdColorUtil) {
+        $scope.getColor = function (color) {
+          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
+        };
+      }
+    };
+  })
+  .directive('mdJustified', function() {
+    return {
+      restrict : 'A',
+      compile : function(element, attrs)  {
+        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
+
+        element.removeAttr('md-justified');
+        element.addClass(layoutDirection);
+        element.addClass("layout-align-space-between-stretch");
+
+        return angular.noop;
+      }
+    };
+  });
+
+(function () {
+  'use strict';
+  angular
+      .module('chipsCustomInputDemo', ['ngMaterial'])
+      .controller('CustomInputDemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q) {
+    var self = this;
+
+    self.readonly = false;
+    self.selectedItem = null;
+    self.searchText = null;
+    self.querySearch = querySearch;
+    self.vegetables = loadVegetables();
+    self.selectedVegetables = [];
+    self.numberChips = [];
+    self.numberChips2 = [];
+    self.numberBuffer = '';
+    self.autocompleteDemoRequireMatch = true;
+    self.transformChip = transformChip;
+
+    /**
+     * Return the proper object when the append is called.
+     */
+    function transformChip(chip) {
+      // If it is an object, it's already a known chip
+      if (angular.isObject(chip)) {
+        return chip;
+      }
+
+      // Otherwise, create a new one
+      return { name: chip, type: 'new' };
+    }
+
+    /**
+     * Search for vegetables.
+     */
+    function querySearch (query) {
+      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
+      return results;
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(vegetable) {
+        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
+            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+
+    function loadVegetables() {
+      var veggies = [
+        {
+          'name': 'Broccoli',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Cabbage',
+          'type': 'Brassica'
+        },
+        {
+          'name': 'Carrot',
+          'type': 'Umbelliferous'
+        },
+        {
+          'name': 'Lettuce',
+          'type': 'Composite'
+        },
+        {
+          'name': 'Spinach',
+          'type': 'Goosefoot'
+        }
+      ];
+
+      return veggies.map(function (veg) {
+        veg._lowername = veg.name.toLowerCase();
+        veg._lowertype = veg.type.toLowerCase();
+        return veg;
+      });
+    }
+  }
+})();
 
 (function () {
   'use strict';
@@ -803,154 +1026,6 @@ angular.module('cardDemo2', ['ngMaterial'])
 (function () {
   'use strict';
   angular
-      .module('chipsDemo', ['ngMaterial', 'ngMessages'])
-      .config(['$mdIconProvider', function($mdIconProvider) {
-        $mdIconProvider.icon('md-close', 'img/icons/ic_close_24px.svg', 24);
-      }])
-      .controller('BasicDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.readonly = false;
-
-    // Lists of fruit names and Vegetable objects
-    self.fruitNames = ['Apple', 'Banana', 'Orange'];
-    self.ngChangeFruitNames = angular.copy(self.fruitNames);
-    self.roFruitNames = angular.copy(self.fruitNames);
-    self.editableFruitNames = angular.copy(self.fruitNames);
-
-    self.tags = [];
-    self.vegObjs = [
-      {
-        'name' : 'Broccoli',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Cabbage',
-        'type' : 'Brassica'
-      },
-      {
-        'name' : 'Carrot',
-        'type' : 'Umbelliferous'
-      }
-    ];
-
-    self.newVeg = function(chip) {
-      return {
-        name: chip,
-        type: 'unknown'
-      };
-    };
-
-    self.onModelChange = function(newModel) {
-      $log.log('The model has changed to ' + newModel + '.');
-    };
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('chipsCustomInputDemo', ['ngMaterial'])
-      .controller('CustomInputDemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    var self = this;
-
-    self.readonly = false;
-    self.selectedItem = null;
-    self.searchText = null;
-    self.querySearch = querySearch;
-    self.vegetables = loadVegetables();
-    self.selectedVegetables = [];
-    self.numberChips = [];
-    self.numberChips2 = [];
-    self.numberBuffer = '';
-    self.autocompleteDemoRequireMatch = true;
-    self.transformChip = transformChip;
-
-    /**
-     * Return the proper object when the append is called.
-     */
-    function transformChip(chip) {
-      // If it is an object, it's already a known chip
-      if (angular.isObject(chip)) {
-        return chip;
-      }
-
-      // Otherwise, create a new one
-      return { name: chip, type: 'new' };
-    }
-
-    /**
-     * Search for vegetables.
-     */
-    function querySearch (query) {
-      var results = query ? self.vegetables.filter(createFilterFor(query)) : [];
-      return results;
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(vegetable) {
-        return (vegetable._lowername.indexOf(lowercaseQuery) === 0) ||
-            (vegetable._lowertype.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-
-    function loadVegetables() {
-      var veggies = [
-        {
-          'name': 'Broccoli',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Cabbage',
-          'type': 'Brassica'
-        },
-        {
-          'name': 'Carrot',
-          'type': 'Umbelliferous'
-        },
-        {
-          'name': 'Lettuce',
-          'type': 'Composite'
-        },
-        {
-          'name': 'Spinach',
-          'type': 'Goosefoot'
-        }
-      ];
-
-      return veggies.map(function (veg) {
-        veg._lowername = veg.name.toLowerCase();
-        veg._lowertype = veg.type.toLowerCase();
-        return veg;
-      });
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('staticChipsDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q) {
-    this.chipText = 'Football';
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('chipsCustomSeparatorDemo', ['ngMaterial'])
       .controller('CustomSeparatorCtrl', DemoCtrl);
 
@@ -981,91 +1056,21 @@ angular.module('cardDemo2', ['ngMaterial'])
   }
 })();
 
-angular.module('colorsDemo', ['ngMaterial'])
-  .config(function ($mdThemingProvider, $mdIconProvider) {
-    $mdThemingProvider.theme('forest')
-      .primaryPalette('brown')
-      .accentPalette('green');
+(function () {
+  'use strict';
+  angular
+      .module('staticChipsDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
 
-    $mdIconProvider
-      .iconSet('social', 'img/icons/sets/social-icons.svg', 24);
-  })
-  .directive('regularCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'regularCard.tmpl.html',
-      scope: {
-        name: '@',
-      }
-    };
-  })
-  .directive('userCard', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'userCard.tmpl.html',
-      scope: {
-        name: '@',
-        theme: '@'
-      },
-      controller: function ($scope) {
-        $scope.theme = $scope.theme || 'default';
-      }
-    };
-  });
+  function DemoCtrl ($timeout, $q) {
+    this.chipText = 'Football';
+  }
+})();
 
-angular
-  .module('colorsThemePickerDemo', ['ngMaterial'])
-  .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
-    $scope.colors = Object.keys($mdColorPalette);
-
-    $scope.mdURL = 'https://material.io/archive/guidelines/style/color.html#color-color-palette';
-    $scope.primary = 'purple';
-    $scope.accent = 'green';
-
-    $scope.isPrimary = true;
-
-    $scope.selectTheme = function (color) {
-      if ($scope.isPrimary) {
-        $scope.primary = color;
-
-        $scope.isPrimary = false;
-      }
-      else {
-        $scope.accent = color;
-
-        $scope.isPrimary = true;
-      }
-    };
-  })
-  .directive('themePreview', function () {
-    return {
-      restrict: 'E',
-      templateUrl: 'themePreview.tmpl.html',
-      scope: {
-        primary: '=',
-        accent: '='
-      },
-      controller: function ($scope, $mdColors, $mdColorUtil) {
-        $scope.getColor = function (color) {
-          return $mdColorUtil.rgbaToHex($mdColors.getThemeColor(color));
-        };
-      }
-    };
-  })
-  .directive('mdJustified', function() {
-    return {
-      restrict : 'A',
-      compile : function(element, attrs)  {
-        var layoutDirection = 'layout-'+ (attrs.mdJustified || "row");
-
-        element.removeAttr('md-justified');
-        element.addClass(layoutDirection);
-        element.addClass("layout-align-space-between-stretch");
-
-        return angular.noop;
-      }
-    };
-  });
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
+});
 
 
 angular.module('contentDemo1', ['ngMaterial'])
@@ -1079,41 +1084,6 @@ angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() 
   this.endDate = new Date();
   this.endDate.setDate(this.endDate.getDate() + 5);
 });
-
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
-});
-
-(function () {
-  'use strict';
-
-  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
-    /**
-     * @param date {Date}
-     * @returns {string} string representation of the provided date
-     */
-    $mdDateLocaleProvider.formatDate = function(date) {
-      return date ? moment(date).format('L') : '';
-    };
-
-    /**
-     * @param dateString {string} string that can be converted to a Date
-     * @returns {Date} JavaScript Date object created from the provided dateString
-     */
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-  })
-  .controller("AppCtrl", function($log) {
-    this.myDate = new Date();
-
-    this.onDateChanged = function() {
-      $log.log('Updated Date: ', this.myDate);
-    };
-  });
-})();
 
 (function () {
   'use strict';
@@ -1148,6 +1118,36 @@ angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller(
       // Look for two chunks of content (either numbers or text) separated by delimiters.
       var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
       return re.test(dateString);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
+
+(function () {
+  'use strict';
+
+  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
+    /**
+     * @param date {Date}
+     * @returns {string} string representation of the provided date
+     */
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('L') : '';
+    };
+
+    /**
+     * @param dateString {string} string that can be converted to a Date
+     * @returns {Date} JavaScript Date object created from the provided dateString
+     */
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
     };
   })
   .controller("AppCtrl", function($log) {
@@ -1316,6 +1316,63 @@ angular.module('dialogDemo1', ['ngMaterial'])
   }
 });
 
+angular.module('dialogDemo2', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope, $mdDialog) {
+  $scope.openFromLeft = function() {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Opening from the left')
+        .textContent('Closing to the right!')
+        .ariaLabel('Left to right demo')
+        .ok('Nice!')
+        // You can specify either sting with query selector
+        .openFrom('#left')
+        // or an element
+        .closeTo(angular.element(document.querySelector('#right')))
+    );
+  };
+
+  $scope.openOffscreen = function() {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .clickOutsideToClose(true)
+        .title('Opening from offscreen')
+        .textContent('Closing to offscreen')
+        .ariaLabel('Offscreen Demo')
+        .ok('Amazing!')
+        // Or you can specify the rect to do the transition from
+        .openFrom({
+          top: -50,
+          width: 30,
+          height: 80
+        })
+        .closeTo({
+          left: 1500
+        })
+    );
+  };
+});
+
+(function() {
+  'use strict';
+
+  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
+    .controller('DemoCtrl', function() {
+      this.topDirections = ['left', 'up'];
+      this.bottomDirections = ['down', 'right'];
+
+      this.isOpen = false;
+
+      this.availableModes = ['md-fling', 'md-scale'];
+      this.selectedMode = 'md-fling';
+
+      this.availableDirections = ['up', 'down', 'left', 'right'];
+      this.selectedDirection = 'up';
+    });
+})();
+
 angular.module('dialogDemo3', ['ngMaterial'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('red')
@@ -1365,99 +1422,6 @@ angular.module('dialogDemo3', ['ngMaterial'])
     };
   }
 });
-
-angular.module('dialogDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope, $mdDialog) {
-  $scope.openFromLeft = function() {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Opening from the left')
-        .textContent('Closing to the right!')
-        .ariaLabel('Left to right demo')
-        .ok('Nice!')
-        // You can specify either sting with query selector
-        .openFrom('#left')
-        // or an element
-        .closeTo(angular.element(document.querySelector('#right')))
-    );
-  };
-
-  $scope.openOffscreen = function() {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .clickOutsideToClose(true)
-        .title('Opening from offscreen')
-        .textContent('Closing to offscreen')
-        .ariaLabel('Offscreen Demo')
-        .ok('Amazing!')
-        // Or you can specify the rect to do the transition from
-        .openFrom({
-          top: -50,
-          width: 30,
-          height: 80
-        })
-        .closeTo({
-          left: 1500
-        })
-    );
-  };
-});
-
-angular.module('dividerDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-    var imagePath = 'img/60.jpeg';
-    $scope.messages = [{
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }];
-  });
-
-(function() {
-  'use strict';
-
-  angular.module('fabSpeedDialDemoBasicUsage', ['ngMaterial'])
-    .controller('DemoCtrl', function() {
-      this.topDirections = ['left', 'up'];
-      this.bottomDirections = ['down', 'right'];
-
-      this.isOpen = false;
-
-      this.availableModes = ['md-fling', 'md-scale'];
-      this.selectedMode = 'md-fling';
-
-      this.availableDirections = ['up', 'down', 'left', 'right'];
-      this.selectedDirection = 'up';
-    });
-})();
 
 (function() {
   'use strict';
@@ -1527,10 +1491,6 @@ angular.module('dividerDemo1', ['ngMaterial'])
     });
 })();
 
-angular.module('gridListDemo1', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {});
-
-
 angular
   .module('gridListDemoApp', ['ngMaterial'])
   .controller('gridListDemoCtrl', function($scope) {
@@ -1585,6 +1545,46 @@ angular
   .config(function($mdIconProvider){
     $mdIconProvider.iconSet("avatar", 'icons/avatar-icons.svg', 128);
   });
+
+angular.module('dividerDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+    var imagePath = 'img/60.jpeg';
+    $scope.messages = [{
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }];
+  });
+
+
+angular.module('gridListDemo1', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {});
 
 
 angular.module('gridListDemo1', ['ngMaterial'])
@@ -1655,6 +1655,30 @@ angular
           .warnPalette('blue');
   });
 
+
+angular
+  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
+  .controller('DemoCtrl', function($scope) {
+      // Specify a list of font-icons with ligatures and color overrides
+      var iconData = [
+            {name: 'accessibility'  , color: "#777" },
+            {name: 'question_answer', color: "rgb(89, 226, 168)" },
+            {name: 'backup'         , color: "#A00" },
+            {name: 'email'          , color: "#00A" }
+          ];
+
+      $scope.fonts = [].concat(iconData);
+
+      // Create a set of sizes...
+      $scope.sizes = [
+        {size:"md-18",padding:0},
+        {size:"md-24",padding:2},
+        {size:"md-36",padding:6},
+        {size:"md-48",padding:10}
+      ];
+
+  });
+
 angular.module('appDemoSvgIcons', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {
     $scope.insertDriveIconURL = 'img/icons/ic_insert_drive_file_24px.svg';
@@ -1680,72 +1704,6 @@ angular.module('appSvgIconSets', ['ngMaterial'])
       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
   });
 
-
-angular
-  .module('appDemoFontIconsWithLigatures', ['ngMaterial'])
-  .controller('DemoCtrl', function($scope) {
-      // Specify a list of font-icons with ligatures and color overrides
-      var iconData = [
-            {name: 'accessibility'  , color: "#777" },
-            {name: 'question_answer', color: "rgb(89, 226, 168)" },
-            {name: 'backup'         , color: "#A00" },
-            {name: 'email'          , color: "#00A" }
-          ];
-
-      $scope.fonts = [].concat(iconData);
-
-      // Create a set of sizes...
-      $scope.sizes = [
-        {size:"md-18",padding:0},
-        {size:"md-24",padding:2},
-        {size:"md-36",padding:6},
-        {size:"md-48",padding:10}
-      ];
-
-  });
-
-angular
-  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      title: 'Developer',
-      email: 'ipsum@lorem.com',
-      firstName: '',
-      lastName: '',
-      company: 'Google',
-      address: '1600 Amphitheatre Pkwy',
-      city: 'Mountain View',
-      state: 'CA',
-      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
-      postalCode: '94043'
-    };
-
-    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
-    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
-    'WY').split(' ').map(function(state) {
-        return {abbrev: state};
-      });
-  })
-  .config(function($mdThemingProvider) {
-
-    // Configure a dark theme with primary foreground yellow
-
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
-
-  });
-
-angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.project = {
-    description: 'Nuclear Missile Defense System',
-    rate: 500,
-    special: true
-  };
-});
-
 angular.module('appUsingTemplateCache', ['ngMaterial'])
   .controller('DemoCtrl', function($scope) {})
   .config(function($mdIconProvider) {
@@ -1769,28 +1727,42 @@ angular.module('appUsingTemplateCache', ['ngMaterial'])
     });
   });
 
-angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
-
-  .controller('AppCtrl', function($scope) {
-    $scope.showHints = true;
-
-    $scope.user = {
-      name: "",
-      email: "",
-      social: "123456789",
-      phone: "N/A"
-    };
-  });
-
 angular
-  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      name: 'John Doe',
-      email: '',
-      phone: '',
-      address: 'Mountain View, CA',
-      donation: 19.99
+  .module('menuDemoBasic', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.notificationsEnabled = true;
+    this.toggleNotifications = function() {
+      this.notificationsEnabled = !this.notificationsEnabled;
+    };
+
+    this.redial = function() {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .targetEvent(originatorEv)
+          .clickOutsideToClose(true)
+          .parent('body')
+          .title('Suddenly, a redial')
+          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
+          .ok('That was easy')
+      );
+
+      originatorEv = null;
+    };
+
+    this.checkVoicemail = function() {
+      // This never happens.
     };
   });
 
@@ -1954,45 +1926,6 @@ angular.module('listDemo2', ['ngMaterial'])
 });
 
 angular
-  .module('menuDemoBasic', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('BasicDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
-
-    this.notificationsEnabled = true;
-    this.toggleNotifications = function() {
-      this.notificationsEnabled = !this.notificationsEnabled;
-    };
-
-    this.redial = function() {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .targetEvent(originatorEv)
-          .clickOutsideToClose(true)
-          .parent('body')
-          .title('Suddenly, a redial')
-          .textContent('You just called a friend; who told you the most amazing story. Have a cookie!')
-          .ok('That was easy')
-      );
-
-      originatorEv = null;
-    };
-
-    this.checkVoicemail = function() {
-      // This never happens.
-    };
-  });
-
-angular
   .module('menuDemoCustomTrigger', ['ngMaterial'])
   .config(function($mdIconProvider) {
     $mdIconProvider
@@ -2016,6 +1949,120 @@ angular.module('menuDemoDensity', ['ngMaterial']).config(function($mdIconProvide
     );
   };
 });
+
+angular
+  .module('inputBasicDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      title: 'Developer',
+      email: 'ipsum@lorem.com',
+      firstName: '',
+      lastName: '',
+      company: 'Google',
+      address: '1600 Amphitheatre Pkwy',
+      city: 'Mountain View',
+      state: 'CA',
+      biography: 'Loves kittens, snowboarding, and can type at 130 WPM.\n\nAnd rumor has it she bouldered up Castle Craig!',
+      postalCode: '94043'
+    };
+
+    $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS ' +
+    'MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI ' +
+    'WY').split(' ').map(function(state) {
+        return {abbrev: state};
+      });
+  })
+  .config(function($mdThemingProvider) {
+
+    // Configure a dark theme with primary foreground yellow
+
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+
+  });
+
+angular
+  .module('menuDemoPosition', ['ngMaterial'])
+  .config(function($mdIconProvider) {
+    $mdIconProvider
+      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+  })
+  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
+    var originatorEv;
+
+    this.openMenu = function($mdMenu, ev) {
+      originatorEv = ev;
+      $mdMenu.open(ev);
+    };
+
+    this.announceClick = function(index) {
+      $mdDialog.show(
+        $mdDialog.alert()
+          .title('You clicked!')
+          .textContent('You clicked the menu item at index ' + index)
+          .ok('Nice')
+          .targetEvent(originatorEv)
+      );
+      originatorEv = null;
+    };
+  });
+
+
+
+angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
+  $mdIconProvider
+    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
+    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
+}).controller('WidthDemoCtrl', function($mdDialog) {
+  var ctrl = this;
+  ctrl.menuHref = "https://material.io/archive/guidelines/components/menus.html#menus-specs";
+
+  this.announceClick = function(index) {
+    $mdDialog.show(
+      $mdDialog.alert()
+        .title('You clicked!')
+        .textContent('You clicked the menu item at index ' + index)
+        .ok('Nice')
+    );
+  };
+});
+
+angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.project = {
+    description: 'Nuclear Missile Defense System',
+    rate: 500,
+    special: true
+  };
+});
+
+angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
+
+  .controller('AppCtrl', function($scope) {
+    $scope.showHints = true;
+
+    $scope.user = {
+      name: "",
+      email: "",
+      social: "123456789",
+      phone: "N/A"
+    };
+  });
+
+angular
+  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      name: 'John Doe',
+      email: '',
+      phone: '',
+      address: 'Mountain View, CA',
+      donation: 19.99
+    };
+  });
 
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
@@ -2060,35 +2107,6 @@ angular
       );
     };
   });
-
-
-angular
-  .module('menuDemoPosition', ['ngMaterial'])
-  .config(function($mdIconProvider) {
-    $mdIconProvider
-      .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-      .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-  })
-  .controller('PositionDemoCtrl', function DemoCtrl($mdDialog) {
-    var originatorEv;
-
-    this.openMenu = function($mdMenu, ev) {
-      originatorEv = ev;
-      $mdMenu.open(ev);
-    };
-
-    this.announceClick = function(index) {
-      $mdDialog.show(
-        $mdDialog.alert()
-          .title('You clicked!')
-          .textContent('You clicked the menu item at index ' + index)
-          .ok('Nice')
-          .targetEvent(originatorEv)
-      );
-      originatorEv = null;
-    };
-  });
-
 
 
 angular
@@ -2168,24 +2186,6 @@ angular
     };
   });
 
-angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider) {
-  $mdIconProvider
-    .iconSet("call", 'img/icons/sets/communication-icons.svg', 24)
-    .iconSet("social", 'img/icons/sets/social-icons.svg', 24);
-}).controller('WidthDemoCtrl', function($mdDialog) {
-  var ctrl = this;
-  ctrl.menuHref = "https://material.io/archive/guidelines/components/menus.html#menus-specs";
-
-  this.announceClick = function(index) {
-    $mdDialog.show(
-      $mdDialog.alert()
-        .title('You clicked!')
-        .textContent('You clicked the menu item at index ' + index)
-        .ok('Nice')
-    );
-  };
-});
-
 (function() {
   'use strict';
 
@@ -2197,6 +2197,219 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
 
     $scope.goto = function(page) {
       $scope.status = "Goto " + page;
+    };
+  }
+})();
+
+(function() {
+'use strict';
+
+angular.module('panelAnimationsDemo', ['ngMaterial'])
+    .controller('AnimationCtrl', AnimationCtrl)
+    .controller('DialogCtrl', DialogCtrl);
+
+
+function AnimationCtrl($mdPanel) {
+  this._mdPanel = $mdPanel;
+  this.openFrom = 'button';
+  this.closeTo = 'button';
+  this.animationType = 'scale';
+  this.duration = 300;
+  this.separateDurations = {
+    open: this.duration,
+    close: this.duration
+  };
+}
+
+
+AnimationCtrl.prototype.showDialog = function() {
+  var position = this._mdPanel.newPanelPosition()
+      .absolute()
+      .right()
+      .top();
+
+  var animation = this._mdPanel.newPanelAnimation();
+
+  animation.duration(this.duration || this.separateDurations);
+
+  switch (this.openFrom) {
+    case 'button':
+      animation.openFrom('.animation-target');
+      break;
+    case 'corner':
+      animation.openFrom({top:0, left:0});
+      break;
+    case 'bottom':
+      animation.openFrom({
+        top: document.documentElement.clientHeight,
+        left: document.documentElement.clientWidth / 2 - 250
+      });
+  }
+  switch (this.closeTo) {
+    case 'button':
+      animation.closeTo('.animation-target');
+      break;
+    case 'corner':
+      animation.closeTo({top:0, left:0});
+      break;
+    case 'bottom':
+      animation.closeTo({
+        top: document.documentElement.clientHeight,
+        left: document.documentElement.clientWidth / 2 - 250
+      });
+  }
+
+  switch (this.animationType) {
+    case 'custom':
+      animation.withAnimation({
+        open: 'demo-dialog-custom-animation-open',
+        close: 'demo-dialog-custom-animation-close'
+      });
+      break;
+    case 'slide':
+      animation.withAnimation(this._mdPanel.animation.SLIDE);
+      break;
+    case 'scale':
+      animation.withAnimation(this._mdPanel.animation.SCALE);
+      break;
+    case 'fade':
+      animation.withAnimation(this._mdPanel.animation.FADE);
+      break;
+    case 'none':
+      animation = undefined;
+      break;
+  }
+
+  var config = {
+    animation: animation,
+    attachTo: angular.element(document.body),
+    controller: DialogCtrl,
+    controllerAs: 'ctrl',
+    templateUrl: 'panel.tmpl.html',
+    panelClass: 'demo-dialog-example',
+    position: position,
+    trapFocus: true,
+    zIndex: 150,
+    clickOutsideToClose: true,
+    clickEscapeToClose: true,
+    hasBackdrop: true,
+  };
+
+  this._mdPanel.open(config);
+};
+
+function DialogCtrl(mdPanelRef) {
+  this._mdPanelRef = mdPanelRef;
+}
+
+DialogCtrl.prototype.closeDialog = function() {
+  this._mdPanelRef && this._mdPanelRef.close();
+};
+
+})();
+
+(function() {
+  'use strict';
+
+  angular
+      .module('panelProviderDemo', ['ngMaterial'])
+      .config(PanelProviderConfig)
+      .controller('PanelProviderCtrl', PanelProviderCtrl)
+      .controller('PanelMenuCtrl', PanelMenuCtrl);
+
+  /**
+   * Configuration method that is used to define a preset for the upcoming panel
+   * element. Each parameter in the preset is an available parameter in the
+   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
+   * defined here, they overwrite the default parameters for any panel that the
+   * preset is requested for.
+   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel API.
+   */
+  function PanelProviderConfig($mdPanelProvider) {
+    $mdPanelProvider.definePreset('demoPreset', {
+      attachTo: angular.element(document.body),
+      controller: PanelMenuCtrl,
+      controllerAs: 'ctrl',
+      template: '' +
+          '<div class="menu-panel" md-whiteframe="4">' +
+          '  <div class="menu-content">' +
+          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
+          '      <button class="md-button">' +
+          '        <span>{{item}}</span>' +
+          '      </button>' +
+          '    </div>' +
+          '    <md-divider></md-divider>' +
+          '    <div class="menu-item">' +
+          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
+          '        <span>Close Menu</span>' +
+          '      </button>' +
+          '    </div>' +
+          '  </div>' +
+          '</div>',
+      panelClass: 'menu-panel-container',
+      focusOnOpen: false,
+      zIndex: 100,
+      propagateContainerEvents: true,
+      groupName: 'menus'
+    });
+  }
+
+  function PanelProviderCtrl($mdPanel) {
+    this.navigation = {
+      name: 'navigation',
+      items: [
+        'Home',
+        'About',
+        'Contact'
+      ]
+    };
+    this.favorites = {
+      name: 'favorites',
+      items: [
+        'Add to Favorites'
+      ]
+    };
+    this.more = {
+      name: 'more',
+      items: [
+        'Account',
+        'Sign Out'
+      ]
+    };
+
+    $mdPanel.newPanelGroup('menus', {
+      maxOpen: 2
+    });
+
+    this.showMenu = function($event, menu) {
+      /**
+       * The request to open the panel has two arguments passed into it. The
+       * first is a preset name passed in as a string. This will request a
+       * cached preset and apply its configuration parameters. The second is an
+       * object containing parameters that can only be filled through a
+       * controller. These parameters represent configuration needs associated
+       * with user interaction, panel position, panel animation, and other
+       * miscellaneous needs.
+       */
+      $mdPanel.open('demoPreset', {
+        id: 'menu_' + menu.name,
+        position: $mdPanel.newPanelPosition()
+            .relativeTo($event.target)
+            .addPanelPosition(
+              $mdPanel.xPosition.ALIGN_START,
+              $mdPanel.yPosition.BELOW
+            ),
+        locals: {
+          items: menu.items
+        },
+        openFrom: $event
+      });
+    };
+  }
+
+  function PanelMenuCtrl(mdPanelRef) {
+    this.closeMenu = function() {
+      mdPanelRef && mdPanelRef.close();
     };
   }
 })();
@@ -2390,7 +2603,6 @@ BasicDemoCtrl.prototype.showDialog = function() {
   this._mdPanel.open(config);
 };
 
-
 BasicDemoCtrl.prototype.showMenu = function(ev) {
   var position = this._mdPanel.newPanelPosition()
       .relativeTo('.demo-menu-open-button')
@@ -2436,7 +2648,6 @@ function PanelDialogCtrl(mdPanelRef) {
   this._mdPanelRef = mdPanelRef;
 }
 
-
 PanelDialogCtrl.prototype.closeDialog = function() {
   var panelRef = this._mdPanelRef;
 
@@ -2446,12 +2657,14 @@ PanelDialogCtrl.prototype.closeDialog = function() {
   });
 };
 
-
-
 function PanelMenuCtrl(mdPanelRef, $timeout) {
   this._mdPanelRef = mdPanelRef;
+  this.$timeout = $timeout;
+}
+
+PanelMenuCtrl.prototype.$onInit = function() {
   this.favoriteDessert = this.selected.favoriteDessert;
-  $timeout(function() {
+  this.$timeout(function() {
     var selected = document.querySelector('.demo-menu-item.selected');
     if (selected) {
       angular.element(selected).focus();
@@ -2459,8 +2672,7 @@ function PanelMenuCtrl(mdPanelRef, $timeout) {
       angular.element(document.querySelectorAll('.demo-menu-item')[0]).focus();
     }
   });
-}
-
+};
 
 PanelMenuCtrl.prototype.selectDessert = function(dessert) {
   this.selected.favoriteDessert = dessert;
@@ -2514,222 +2726,6 @@ PanelMenuCtrl.prototype.onKeydown = function($event, dessert) {
   }
 };
 
-})();
-
-(function() {
-'use strict';
-
-angular.module('panelAnimationsDemo', ['ngMaterial'])
-    .controller('AnimationCtrl', AnimationCtrl)
-    .controller('DialogCtrl', DialogCtrl);
-
-
-function AnimationCtrl($mdPanel) {
-  this._mdPanel = $mdPanel;
-  this.openFrom = 'button';
-  this.closeTo = 'button';
-  this.animationType = 'scale';
-  this.duration = 300;
-  this.separateDurations = {
-    open: this.duration,
-    close: this.duration
-  };
-}
-
-
-AnimationCtrl.prototype.showDialog = function() {
-  var position = this._mdPanel.newPanelPosition()
-      .absolute()
-      .right()
-      .top();
-
-  var animation = this._mdPanel.newPanelAnimation();
-
-  animation.duration(this.duration || this.separateDurations);
-
-  switch (this.openFrom) {
-    case 'button':
-      animation.openFrom('.animation-target');
-      break;
-    case 'corner':
-      animation.openFrom({top:0, left:0});
-      break;
-    case 'bottom':
-      animation.openFrom({
-        top: document.documentElement.clientHeight,
-        left: document.documentElement.clientWidth / 2 - 250
-      });
-  }
-  switch (this.closeTo) {
-    case 'button':
-      animation.closeTo('.animation-target');
-      break;
-    case 'corner':
-      animation.closeTo({top:0, left:0});
-      break;
-    case 'bottom':
-      animation.closeTo({
-        top: document.documentElement.clientHeight,
-        left: document.documentElement.clientWidth / 2 - 250
-      });
-  }
-
-  switch (this.animationType) {
-    case 'custom':
-      animation.withAnimation({
-        open: 'demo-dialog-custom-animation-open',
-        close: 'demo-dialog-custom-animation-close'
-      });
-      break;
-    case 'slide':
-      animation.withAnimation(this._mdPanel.animation.SLIDE);
-      break;
-    case 'scale':
-      animation.withAnimation(this._mdPanel.animation.SCALE);
-      break;
-    case 'fade':
-      animation.withAnimation(this._mdPanel.animation.FADE);
-      break;
-    case 'none':
-      animation = undefined;
-      break;
-  }
-
-  var config = {
-    animation: animation,
-    attachTo: angular.element(document.body),
-    controller: DialogCtrl,
-    controllerAs: 'ctrl',
-    templateUrl: 'panel.tmpl.html',
-    panelClass: 'demo-dialog-example',
-    position: position,
-    trapFocus: true,
-    zIndex: 150,
-    clickOutsideToClose: true,
-    clickEscapeToClose: true,
-    hasBackdrop: true,
-  };
-
-  this._mdPanel.open(config);
-};
-
-
-// Necessary to pass locals to the dialog template.
-function DialogCtrl(mdPanelRef) {
-  this._mdPanelRef = mdPanelRef;
-}
-
-DialogCtrl.prototype.closeDialog = function() {
-  this._mdPanelRef && this._mdPanelRef.close();
-};
-
-})();
-
-(function() {
-  'use strict';
-
-  angular
-      .module('panelProviderDemo', ['ngMaterial'])
-      .config(PanelProviderConfig)
-      .controller('PanelProviderCtrl', PanelProviderCtrl)
-      .controller('PanelMenuCtrl', PanelMenuCtrl);
-
-  /**
-   * Configuration method that is used to define a preset for the upcoming panel
-   * element. Each parameter in the preset is an available parameter in the
-   * `$mdPanel.create` and `$mdPanel.open` methods. When the parameters are
-   * defined here, they overwrite the default parameters for any panel that the
-   * preset is requested for.
-   * @param {!MdPanelProvider} $mdPanelProvider Provider method of the MdPanel
-   *     API.
-   */
-  function PanelProviderConfig($mdPanelProvider) {
-    $mdPanelProvider.definePreset('demoPreset', {
-      attachTo: angular.element(document.body),
-      controller: PanelMenuCtrl,
-      controllerAs: 'ctrl',
-      template: '' +
-          '<div class="menu-panel" md-whiteframe="4">' +
-          '  <div class="menu-content">' +
-          '    <div class="menu-item" ng-repeat="item in ctrl.items">' +
-          '      <button class="md-button">' +
-          '        <span>{{item}}</span>' +
-          '      </button>' +
-          '    </div>' +
-          '    <md-divider></md-divider>' +
-          '    <div class="menu-item">' +
-          '      <button class="md-button" ng-click="ctrl.closeMenu()">' +
-          '        <span>Close Menu</span>' +
-          '      </button>' +
-          '    </div>' +
-          '  </div>' +
-          '</div>',
-      panelClass: 'menu-panel-container',
-      focusOnOpen: false,
-      zIndex: 100,
-      propagateContainerEvents: true,
-      groupName: 'menus'
-    });
-  }
-
-  function PanelProviderCtrl($mdPanel) {
-    this.navigation = {
-      name: 'navigation',
-      items: [
-        'Home',
-        'About',
-        'Contact'
-      ]
-    };
-    this.favorites = {
-      name: 'favorites',
-      items: [
-        'Add to Favorites'
-      ]
-    };
-    this.more = {
-      name: 'more',
-      items: [
-        'Account',
-        'Sign Out'
-      ]
-    };
-
-    $mdPanel.newPanelGroup('menus', {
-      maxOpen: 2
-    });
-
-    this.showMenu = function($event, menu) {
-      /**
-       * The request to open the panel has two arguments passed into it. The
-       * first is a preset name passed in as a string. This will request a
-       * cached preset and apply its configuration parameters. The second is an
-       * object containing parameters that can only be filled through a
-       * controller. These parameters represent configuration needs associated
-       * with user interaction, panel position, panel animation, and other
-       * miscellaneous needs.
-       */
-      $mdPanel.open('demoPreset', {
-        id: 'menu_' + menu.name,
-        position: $mdPanel.newPanelPosition()
-            .relativeTo($event.target)
-            .addPanelPosition(
-              $mdPanel.xPosition.ALIGN_START,
-              $mdPanel.yPosition.BELOW
-            ),
-        locals: {
-          items: menu.items
-        },
-        openFrom: $event
-      });
-    };
-  }
-
-  function PanelMenuCtrl(mdPanelRef) {
-    this.closeMenu = function() {
-      mdPanelRef && mdPanelRef.close();
-    };
-  }
 })();
 
 (function() {
@@ -2813,95 +2809,20 @@ ReuseDemoCtrl.prototype.showDialog = function($event, text) {
 };
 
 
-function ReusePanelCtrl(mdPanelRef, _demoCtrl) {
+function ReusePanelCtrl(mdPanelRef) {
   this._mdPanelRef = mdPanelRef;
-
-  // Register the controller for this panel with the parent controller.
-  _demoCtrl._mdPanelRefCtrl = this;
 }
+
+ReusePanelCtrl.prototype.$onInit = function() {
+  // Register the controller for this panel with the parent controller.
+  this._demoCtrl._mdPanelRefCtrl = this;
+};
 
 ReusePanelCtrl.prototype.closeDialog = function() {
   this._mdPanelRef && this._mdPanelRef.hide();
 };
 
 })();
-
-angular
-  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
-    $mdThemingProvider.theme('docs-dark', 'default')
-      .primaryPalette('yellow')
-      .dark();
-  })
-  .controller('AppCtrl', ['$interval',
-    function($interval) {
-      var self = this;
-
-      self.activated = true;
-      self.determinateValue = 30;
-
-      // Iterate every 100ms, non-stop and increment
-      // the Determinate loader.
-      $interval(function() {
-
-        self.determinateValue += 1;
-        if (self.determinateValue > 100) {
-          self.determinateValue = 30;
-        }
-
-      }, 100);
-    }
-  ]);
-
-
-angular
-  .module('radioDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-
-    $scope.data = {
-      group1 : 'Banana',
-      group2 : '2',
-      group3 : 'avatar-1'
-    };
-
-    $scope.avatarData = [{
-        id: "avatars:svg-1",
-        title: 'avatar 1',
-        value: 'avatar-1'
-      },{
-        id: "avatars:svg-2",
-        title: 'avatar 2',
-        value: 'avatar-2'
-      },{
-        id: "avatars:svg-3",
-        title: 'avatar 3',
-        value: 'avatar-3'
-    }];
-
-    $scope.radioData = [
-      { label: '1', value: 1 },
-      { label: '2', value: 2 },
-      { label: '3', value: '3', isDisabled: true },
-      { label: '4', value: '4' }
-    ];
-
-
-    $scope.submit = function() {
-      alert('submit');
-    };
-
-    $scope.addItem = function() {
-      var r = Math.ceil(Math.random() * 1000);
-      $scope.radioData.push({ label: r, value: r });
-    };
-
-    $scope.removeItem = function() {
-      $scope.radioData.pop();
-    };
-
-  })
-  .config(function($mdIconProvider) {
-    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
-  });
 
 angular.module('progressLinearDemo1', ['ngMaterial'])
   .config(function($mdThemingProvider) {
@@ -2985,6 +2906,32 @@ angular
     };
   });
 
+angular
+  .module('progressCircularDemo1', ['ngMaterial'], function($mdThemingProvider) {
+    $mdThemingProvider.theme('docs-dark', 'default')
+      .primaryPalette('yellow')
+      .dark();
+  })
+  .controller('AppCtrl', ['$interval',
+    function($interval) {
+      var self = this;
+
+      self.activated = true;
+      self.determinateValue = 30;
+
+      // Iterate every 100ms, non-stop and increment
+      // the Determinate loader.
+      $interval(function() {
+
+        self.determinateValue += 1;
+        if (self.determinateValue > 100) {
+          self.determinateValue = 30;
+        }
+
+      }, 100);
+    }
+  ]);
+
 (function () {
   'use strict';
   angular
@@ -2997,6 +2944,57 @@ angular
       'WY').split(' ').map(function (state) { return { abbrev: state }; });
   });
 })();
+
+
+angular
+  .module('radioDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+
+    $scope.data = {
+      group1 : 'Banana',
+      group2 : '2',
+      group3 : 'avatar-1'
+    };
+
+    $scope.avatarData = [{
+        id: "avatars:svg-1",
+        title: 'avatar 1',
+        value: 'avatar-1'
+      },{
+        id: "avatars:svg-2",
+        title: 'avatar 2',
+        value: 'avatar-2'
+      },{
+        id: "avatars:svg-3",
+        title: 'avatar 3',
+        value: 'avatar-3'
+    }];
+
+    $scope.radioData = [
+      { label: '1', value: 1 },
+      { label: '2', value: 2 },
+      { label: '3', value: '3', isDisabled: true },
+      { label: '4', value: '4' }
+    ];
+
+
+    $scope.submit = function() {
+      alert('submit');
+    };
+
+    $scope.addItem = function() {
+      var r = Math.ceil(Math.random() * 1000);
+      $scope.radioData.push({ label: r, value: r });
+    };
+
+    $scope.removeItem = function() {
+      $scope.radioData.pop();
+    };
+
+  })
+  .config(function($mdIconProvider) {
+    $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
+  });
 
 angular
     .module('selectDemoOptGroups', ['ngMaterial'])
@@ -3050,6 +3048,21 @@ angular
           ev.stopPropagation();
       });
     });
+
+angular
+  .module('selectDemoSelectedText', ['ngMaterial'])
+  .controller('SelectedTextController', function ($scope) {
+    $scope.items = [1, 2, 3, 4, 5, 6, 7];
+    $scope.selectedItem = undefined;
+
+    $scope.getSelectedText = function () {
+      if ($scope.selectedItem !== undefined) {
+        return "You have selected: Item " + $scope.selectedItem;
+      } else {
+        return "Please select an item";
+      }
+    };
+  });
 
 angular.module('selectDemoOptionsAsync', ['ngMaterial'])
 .controller('SelectAsyncController', function($timeout, $scope) {
@@ -3119,18 +3132,15 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
 });
 
 angular
-  .module('selectDemoSelectedText', ['ngMaterial'])
-  .controller('SelectedTextController', function ($scope) {
-    $scope.items = [1, 2, 3, 4, 5, 6, 7];
-    $scope.selectedItem = undefined;
+  .module('customSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
 
-    $scope.getSelectedText = function () {
-      if ($scope.selectedItem !== undefined) {
-        return "You have selected: Item " + $scope.selectedItem;
-      } else {
-        return "Please select an item";
-      }
-    };
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
   });
 
 angular
@@ -3205,49 +3215,6 @@ angular
         });
     };
   });
-
-angular
-  .module('customSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleLeft = buildToggler('left');
-
-    function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      };
-    }
-  });
-
-angular.module('sliderDemoBasic', ['ngMaterial'])
-  .config(function ($mdIconProvider) {
-    $mdIconProvider.iconSet('device', 'img/icons/sets/device-icons.svg', 24);
-  })
-  .controller('AppCtrl', function ($scope) {
-    $scope.color = {
-      red: Math.floor(Math.random() * 255),
-      green: Math.floor(Math.random() * 255),
-      blue: Math.floor(Math.random() * 255)
-    };
-
-    $scope.rating1 = 3;
-    $scope.rating2 = 2;
-    $scope.rating3 = 4;
-
-    $scope.disabled1 = Math.floor(Math.random() * 100);
-    $scope.disabled2 = 0;
-    $scope.disabled3 = 70;
-
-    $scope.invert = Math.floor(Math.random() * 100);
-
-    $scope.isDisabled = true;
-  });
-
-angular.module('sliderDemoVertical', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.vol = Math.floor(Math.random() * 100);
-  $scope.bass = 40;
-  $scope.master = 80;
-});
 
 angular
   .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
@@ -3350,6 +3317,30 @@ angular.module('subheaderBasicDemo', ['ngMaterial'])
     ];
 });
 
+angular.module('sliderDemoBasic', ['ngMaterial'])
+  .config(function ($mdIconProvider) {
+    $mdIconProvider.iconSet('device', 'img/icons/sets/device-icons.svg', 24);
+  })
+  .controller('AppCtrl', function ($scope) {
+    $scope.color = {
+      red: Math.floor(Math.random() * 255),
+      green: Math.floor(Math.random() * 255),
+      blue: Math.floor(Math.random() * 255)
+    };
+
+    $scope.rating1 = 3;
+    $scope.rating2 = 2;
+    $scope.rating3 = 4;
+
+    $scope.disabled1 = Math.floor(Math.random() * 100);
+    $scope.disabled2 = 0;
+    $scope.disabled3 = 70;
+
+    $scope.invert = Math.floor(Math.random() * 100);
+
+    $scope.isDisabled = true;
+  });
+
 angular.module('switchDemo1', ['ngMaterial'])
 .controller('SwitchDemoCtrl', function($scope) {
   $scope.data = {
@@ -3365,7 +3356,18 @@ angular.module('switchDemo1', ['ngMaterial'])
   };
 });
 
-angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
+angular.module('sliderDemoVertical', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.vol = Math.floor(Math.random() * 100);
+  $scope.bass = 40;
+  $scope.master = 80;
+});
+
+(function () {
+  'use strict';
+  angular.module('tabsDemoCenterTabs', ['ngMaterial']);
+})();
+
 angular.module('demoSwipe', ['ngMaterial'])
   .controller('demoSwipeCtrl', function($scope, $log) {
     $scope.onSwipeLeft = function(ev, target) {
@@ -3400,9 +3402,33 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   });
 
+angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
 (function () {
   'use strict';
-  angular.module('tabsDemoCenterTabs', ['ngMaterial']);
+
+  angular
+      .module('tabsDemoIconTabs', ['ngMaterial'])
+      .config(function($mdIconProvider) {
+        $mdIconProvider
+          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
+          .icon('favorite', 'img/icons/favorite.svg');
+      })
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl ($scope) {
+    $scope.data = {
+      selectedIndex: 0,
+      secondLocked:  true,
+      secondLabel:   "Item Two",
+      bottom:        false
+    };
+    $scope.next = function() {
+      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
+    };
+    $scope.previous = function() {
+      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
+    };
+  }
 })();
 
 (function () {
@@ -3456,34 +3482,6 @@ angular.module('demoSwipe', ['ngMaterial'])
     $scope.removeTab = function(tab) {
       var index = tabs.indexOf(tab);
       tabs.splice(index, 1);
-    };
-  }
-})();
-
-(function () {
-  'use strict';
-
-  angular
-      .module('tabsDemoIconTabs', ['ngMaterial'])
-      .config(function($mdIconProvider) {
-        $mdIconProvider
-          .iconSet('communication', 'img/icons/sets/communication-icons.svg')
-          .icon('favorite', 'img/icons/favorite.svg');
-      })
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl ($scope) {
-    $scope.data = {
-      selectedIndex: 0,
-      secondLocked:  true,
-      secondLabel:   "Item Two",
-      bottom:        false
-    };
-    $scope.next = function() {
-      $scope.data.selectedIndex = Math.min($scope.data.selectedIndex + 1, 2) ;
-    };
-    $scope.previous = function() {
-      $scope.data.selectedIndex = Math.max($scope.data.selectedIndex - 1, 0);
     };
   }
 })();
@@ -3573,12 +3571,6 @@ angular.module('demoSwipe', ['ngMaterial'])
     };
   }
 })();
-
-angular.module('toolbarDemoBasic', ['ngMaterial'])
-
-.controller('BasicDemoCtrl', function($scope) {
-
-});
 
 (function() {
   var isDlgOpen;
@@ -3689,23 +3681,14 @@ angular.module('toolbarDemoBasic', ['ngMaterial'])
   }
 })();
 
+angular.module('toolbarDemoBasic', ['ngMaterial'])
+
+.controller('BasicDemoCtrl', function($scope) {
+
+});
+
 angular.module('inputsInToolbarDemo', ['ngMaterial'])
 .controller('DemoCtrl', function($scope) {});
-
-angular.module('tooltipDemo', ['ngMaterial'])
-    .controller('AppCtrl', AppCtrl);
-
-function AppCtrl($scope) {
-  $scope.demo = {
-    showTooltip: false,
-    tipDirection: 'bottom'
-  };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip', function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
-}
 
 angular.module('toolbarDemo2', ['ngMaterial'])
 
@@ -3725,6 +3708,43 @@ angular.module('toolbarDemo2', ['ngMaterial'])
     });
   }
 });
+
+angular.module('tooltipDemo', ['ngMaterial'])
+    .controller('AppCtrl', AppCtrl);
+
+function AppCtrl($scope) {
+  $scope.demo = {
+    showTooltip: false,
+    tipDirection: 'bottom'
+  };
+
+  $scope.demo.delayTooltip = undefined;
+  $scope.$watch('demo.delayTooltip', function(val) {
+    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+  });
+}
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
+    .controller('DemoCtrl', function($interval) {
+      this.elevation = 1;
+      this.showFrame = 3;
+
+      this.nextElevation = function() {
+        if (++this.elevation == 25) {
+          this.elevation = 1;
+        }
+      };
+
+      $interval(this.nextElevation.bind(this), 500);
+
+      this.toggleFrame = function() {
+        this.showFrame = this.showFrame == 3 ? -1 : 3;
+      };
+    });
+
+angular.module('whiteframeBasicUsage', ['ngMaterial']);
+
+angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
 
 (function () {
   'use strict';
@@ -3815,42 +3835,6 @@ angular.module('toolbarDemo2', ['ngMaterial'])
   'use strict';
 
     angular
-      .module('virtualRepeatScrollToDemo', ['ngMaterial'])
-      .controller('AppCtrl', function($scope) {
-        this.selectedYear = 0;
-        this.years = [];
-        this.items = [];
-        var currentYear = new Date().getFullYear();
-        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
-          'July', 'August', 'September', 'October', 'November', 'December'];
-        // Build a list of months over 20 years
-        for (var y = currentYear; y >= (currentYear-20); y--) {
-          this.years.push(y);
-          this.items.push({year: y, text: y, header: true});
-          for (var m = 11; m >= 0; m--) {
-            this.items.push({year: y, month: m, text: monthNames[m]});
-          }
-        }
-        // Whenever a different year is selected, scroll to that year
-        $scope.$watch('ctrl.selectedYear', angular.bind(this, function(yearIndex) {
-          var scrollYear = Math.floor(this.topIndex / 13);
-          if (scrollYear !== yearIndex) {
-            this.topIndex = yearIndex * 13;
-          }
-        }));
-        // The selected year should follow the year that is at the top of the scroll container
-        $scope.$watch('ctrl.topIndex', angular.bind(this, function(topIndex) {
-          var scrollYear = Math.floor(topIndex / 13);
-          this.selectedYear = scrollYear;
-        }));
-      });
-
-})();
-
-(function () {
-  'use strict';
-
-    angular
       .module('virtualRepeatInfiniteScrollDemo', ['ngMaterial'])
       .controller('AppCtrl', function($timeout) {
 
@@ -3899,6 +3883,42 @@ angular.module('toolbarDemo2', ['ngMaterial'])
   'use strict';
 
     angular
+      .module('virtualRepeatScrollToDemo', ['ngMaterial'])
+      .controller('AppCtrl', function($scope) {
+        this.selectedYear = 0;
+        this.years = [];
+        this.items = [];
+        var currentYear = new Date().getFullYear();
+        var monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+          'July', 'August', 'September', 'October', 'November', 'December'];
+        // Build a list of months over 20 years
+        for (var y = currentYear; y >= (currentYear-20); y--) {
+          this.years.push(y);
+          this.items.push({year: y, text: y, header: true});
+          for (var m = 11; m >= 0; m--) {
+            this.items.push({year: y, month: m, text: monthNames[m]});
+          }
+        }
+        // Whenever a different year is selected, scroll to that year
+        $scope.$watch('ctrl.selectedYear', angular.bind(this, function(yearIndex) {
+          var scrollYear = Math.floor(this.topIndex / 13);
+          if (scrollYear !== yearIndex) {
+            this.topIndex = yearIndex * 13;
+          }
+        }));
+        // The selected year should follow the year that is at the top of the scroll container
+        $scope.$watch('ctrl.topIndex', angular.bind(this, function(topIndex) {
+          var scrollYear = Math.floor(topIndex / 13);
+          this.selectedYear = scrollYear;
+        }));
+      });
+
+})();
+
+(function () {
+  'use strict';
+
+    angular
       .module('virtualRepeatVerticalDemo', ['ngMaterial'])
       .controller('AppCtrl', function() {
         this.items = [];
@@ -3908,25 +3928,3 @@ angular.module('toolbarDemo2', ['ngMaterial'])
       });
 
 })();
-
-angular.module('whiteframeBasicUsage', ['ngMaterial']);
-
-angular.module('whiteframeDirectiveUsage', ['ngMaterial']);
-
-angular.module('whiteframeDirectiveUsage', ['ngMaterial'])
-    .controller('DemoCtrl', function($interval) {
-      this.elevation = 1;
-      this.showFrame = 3;
-
-      this.nextElevation = function() {
-        if (++this.elevation == 25) {
-          this.elevation = 1;
-        }
-      };
-
-      $interval(this.nextElevation.bind(this), 500);
-
-      this.toggleFrame = function() {
-        this.showFrame = this.showFrame == 3 ? -1 : 3;
-      };
-    });
