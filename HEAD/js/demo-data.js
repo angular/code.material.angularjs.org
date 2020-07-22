@@ -277,6 +277,42 @@ angular.module('docsApp').constant('DEMOS', [
           "fileType": "html",
           "outputPath": "demo-partials/button/demoBasicUsage/index.html"
         }
+      },
+      {
+        "ngModule": {
+          "name": "buttonsDemoDense",
+          "module": "buttonsDemoDense",
+          "dependencies": [
+            "ngMaterial"
+          ]
+        },
+        "id": "buttondemoDense",
+        "css": [
+          {
+            "name": "style.css",
+            "label": "style.css",
+            "fileType": "css",
+            "outputPath": "demo-partials/button/demoDense/style.css"
+          }
+        ],
+        "html": [],
+        "js": [
+          {
+            "name": "script.js",
+            "label": "script.js",
+            "fileType": "js",
+            "outputPath": "demo-partials/button/demoDense/script.js"
+          }
+        ],
+        "moduleName": "material.components.button",
+        "name": "demoDense",
+        "label": "Dense",
+        "index": {
+          "name": "index.html",
+          "label": "index.html",
+          "fileType": "html",
+          "outputPath": "demo-partials/button/demoDense/index.html"
+        }
       }
     ],
     "url": "demo/button"
