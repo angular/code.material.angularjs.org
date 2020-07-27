@@ -1043,22 +1043,6 @@ angular.module('docsApp').constant('COMPONENTS', [
         "hasDemo": false
       },
       {
-        "name": "mdSidenavFocus",
-        "type": "directive",
-        "restrict": {
-          "element": false,
-          "attribute": true,
-          "cssClass": false,
-          "comment": false
-        },
-        "outputPath": "partials/api/material.components.sidenav/directive/mdSidenavFocus.html",
-        "url": "api/directive/mdSidenavFocus",
-        "label": "mdSidenavFocus",
-        "module": "material.components",
-        "githubUrl": "https://github.com/angular/material/blob/master/src/components/sidenav/sidenav.js",
-        "hasDemo": true
-      },
-      {
         "name": "mdSidenav",
         "type": "directive",
         "restrict": {

@@ -171,8 +171,7 @@ app.controller(&#39;MyController&#39;, function($scope, $mdToast) {
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
-rejected with <code>$mdToast.cancel()</code>.</p>
+    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code>.</p>
 </td>
   </tr>
   </tbody>
@@ -460,10 +459,9 @@ to the root element of the application.</li>
   <tr>
     <td>
 <code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code> or
-rejected with <code>$mdToast.cancel()</code>. <code>$mdToast.hide()</code> will resolve either with the Boolean
-value <code>true</code> or the value passed as an argument to <code>$mdToast.hide()</code>.
-<code>$mdToast.cancel()</code> will resolve the promise with the Boolean value <code>false</code>.</p>
+    <td class="description"><p>A promise that can be resolved with <code>$mdToast.hide()</code>. <code>$mdToast.hide()</code> will
+resolve either with the boolean value <code>true</code> or the value passed as an argument to
+<code>$mdToast.hide()</code>.</p>
 </td>
   </tr>
   </tbody>
@@ -541,86 +539,6 @@ value <code>true</code> or the value passed as an argument to <code>$mdToast.hid
     <td class="description"><p>A promise that is called when the existing element is removed from the DOM.
 The promise is resolved with either the Boolean value <code>true</code> or the value passed as the
 argument to <code>$mdToast.hide()</code>.</p>
-</td>
-  </tr>
-  </tbody>
-</table>
-      
-
-      </div>
-
-    </li>
-    
-    <li id="cancel">
-      <h3 class="method-function-syntax">
-        <code class="method-function-syntax">$mdToast.cancel([response]);
-</code>
-      </h3>
-      <div class="service-desc"><p><code>DEPRECATED</code> - The promise returned from opening a toast is used only to notify about the
-closing of the toast. As such, there isn&#39;t any reason to also allow that promise to be rejected,
-since it&#39;s not clear what the difference between resolve and reject would be.</p>
-<p>Hide the existing toast and reject the promise returned from
-<code>$mdToast.show()</code>.</p>
-</div>
-
-      <div class="method-param-table">
-
-      
-      
-<table class="md-api-table">
-  <thead>
-    <tr>
-      <th>Parameter</th>
-      <th>Type</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-  
-  
-    
-  
-  
-    
-      <tr class="api-params-item">
-        <td style="white-space: nowrap;">
-          response
-          
-          <span hide show-sm>
-<code class="api-type label type-hint type-hint-object">*</code></span>
-        </td>
-        <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-object">*</code></td>
-        <td class="description">
-          <p>An argument for the rejected promise.</p>
-
-          
-        </td>
-      </tr>
-    
-  
-
-  </tbody>
-</table>
-
-      
-
-      
-
-      
-      <table class="md-api-table">
-  <thead>
-  <tr>
-    <th>Returns</th>
-    <th>Description</th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr>
-    <td>
-<code class="api-type label type-hint type-hint-promise">promise</code></td>
-    <td class="description"><p>A promise that is called when the existing element is removed from the DOM
-The promise is resolved with the Boolean value <code>false</code>.</p>
 </td>
   </tr>
   </tbody>

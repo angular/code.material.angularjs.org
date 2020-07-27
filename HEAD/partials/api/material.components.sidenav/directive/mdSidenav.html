@@ -186,8 +186,17 @@ app.controller(&#39;MyController&#39;, function($scope, $mdSidenav) {
 <code class="api-type label type-hint type-hint-expression">expression</code></td>
         <td class="description">
           <p>When this expression evaluates to true,
-the sidenav &#39;locks open&#39;: it falls into the content&#39;s flow instead
-of appearing over it. This overrides the <code>md-is-open</code> attribute.</p>
+the sidenav &quot;locks open&quot;: it falls into the content&#39;s flow instead of appearing over it. This
+overrides the <code>md-is-open</code> attribute.</p>
+<p>The <code>$mdMedia()</code> service is exposed to the <code>md-is-locked-open</code> attribute, which
+can be given a media query or one of the <code>sm</code>, <code>gt-sm</code>, <code>md</code>, <code>gt-md</code>, <code>lg</code> or <code>gt-lg</code> presets.
+<br><br>Examples:</p>
+<p>  Lock open when <code>true</code>:<br>
+  <code>&lt;md-sidenav md-is-locked-open=&quot;shouldLockOpen&quot;&gt;&lt;/md-sidenav&gt;</code></p>
+<p>  Lock open when the width is <code>1000px</code> or greater:<br>
+  <code>&lt;md-sidenav md-is-locked-open=&quot;$mdMedia(&#39;min-width: 1000px&#39;)&quot;&gt;&lt;/md-sidenav&gt;</code></p>
+<p>  Lock open on small screens:<br>
+  <code>&lt;md-sidenav md-is-locked-open=&quot;$mdMedia(&#39;sm&#39;)&quot;&gt;&lt;/md-sidenav&gt;</code></p>
 
           
         </td>
@@ -207,14 +216,6 @@ of appearing over it. This overrides the <code>md-is-open</code> attribute.</p>
         <td class="description">
           <p>Selector, pointing to an element, whose scrolling will
 be disabled when the sidenav is opened. By default this is the sidenav&#39;s direct parent.</p>
-<p>The $mdMedia() service is exposed to the is-locked-open attribute, which
-can be given a media query or one of the <code>sm</code>, <code>gt-sm</code>, <code>md</code>, <code>gt-md</code>, <code>lg</code> or <code>gt-lg</code> presets.
-Examples:</p>
-<ul>
-<li><code>&lt;md-sidenav md-is-locked-open=&quot;shouldLockOpen&quot;&gt;&lt;/md-sidenav&gt;</code></li>
-<li><code>&lt;md-sidenav md-is-locked-open=&quot;$mdMedia(&#39;min-width: 1000px&#39;)&quot;&gt;&lt;/md-sidenav&gt;</code></li>
-<li><code>&lt;md-sidenav md-is-locked-open=&quot;$mdMedia(&#39;sm&#39;)&quot;&gt;&lt;/md-sidenav&gt;</code> (locks open on small screens)</li>
-</ul>
 
           
         </td>

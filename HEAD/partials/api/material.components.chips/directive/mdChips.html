@@ -631,8 +631,11 @@ on our custom validators.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p><strong>Deprecated</strong> A label for the delete button.
-   Used to be read by screen readers.</p>
+          <p>Text for the <code>aria-label</code> of the button with the
+   <code>md-chip-remove</code> class. If the chip is an Object, then this will be the only text in the
+   label. Otherwise, this is prepended to the string representation of the chip. Defaults to
+   &quot;Remove&quot;, which would be &quot;Remove Apple&quot; for a chip that contained the string &quot;Apple&quot;.
+   You will want to use this to override the default when in a non-English locale.</p>
 
           
         </td>
