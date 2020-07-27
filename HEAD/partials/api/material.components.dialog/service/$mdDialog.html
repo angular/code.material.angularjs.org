@@ -510,12 +510,12 @@ action or dismisses the dialog.</p>
 <code>prompt()</code>, or <code>confirm()</code>; or an options object with the following properties:</p>
 <ul>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
-of the dialog.</li>
+ of the dialog.</li>
 <li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This <strong>must</strong> be trusted HTML
  with respect to Angular&#39;s <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
  This template should <strong>never</strong> be constructed with any kind of user input or user data.</li>
 <li><code>contentElement</code> - <code>{string|Element}</code>: Instead of using a template, which will be compiled
-each time a dialog opens, you can also use a DOM element.<br/><ul>
+ each time a dialog opens, you can also use a DOM element.<br/><ul>
 <li>When specifying an element, which is present on the DOM, <code>$mdDialog</code> will temporary fetch
 the element into the dialog and restores it at the old DOM position upon close.</li>
 <li>When specifying a string, the string be used as a CSS selector, to lookup for the element
@@ -551,7 +551,7 @@ Default true.</li>
 <li><code>focusOnOpen</code> - <code>{boolean=}</code>: An option to override focus behavior on open. Only disable if
 focusing some other way, as focus management is required for dialogs to be accessible.
 Defaults to true.</li>
-<li><code>controller</code> - <code>{function|string=}</code>: The controller to associate with the dialog. The
+<li><code>controller</code> - <code>{Function|string=}</code>: The controller to associate with the dialog. The
 controller will be injected with the local <code>$mdDialog</code>, which passes along a scope for the
 dialog.</li>
 <li><code>locals</code> - <code>{Object=}</code>: An object containing key/value pairs. The keys will be used as names
@@ -559,17 +559,16 @@ of values to inject into the controller. For example, <code>locals: {three: 3}</
 <code>three</code> into the controller, with the value 3. If <code>bindToController</code> is true, they will be
 copied to the controller instead.</li>
 <li><code>bindToController</code> - <code>bool</code>: bind the locals to the controller, instead of passing them in.</li>
-<li><code>resolve</code> - <code>{function=}</code>: Similar to locals, except it takes as values functions that return
-promises, and the
- dialog will not open until all of the promises resolve.</li>
+<li><code>resolve</code> - <code>{Function=}</code>: Similar to locals, except it takes as values functions that return
+promises, and the dialog will not open until all of the promises resolve.</li>
 <li><code>controllerAs</code> - <code>{string=}</code>: An alias to assign the controller to on the scope.</li>
 <li><code>parent</code> - <code>{element=}</code>: The element to append the dialog to. Defaults to appending
 to the root element of the application.</li>
-<li><code>onShowing</code> - <code>function(scope, element)</code>: Callback function used to announce the show()
-action is starting.</li>
-<li><code>onComplete</code> - <code>function(scope, element)</code>: Callback function used to announce when the show()
-action is finished.</li>
-<li><code>onRemoving</code> - <code>function(element, removePromise)</code>: Callback function used to announce the
+<li><code>onShowing</code> - <code>Function(scope, element, options: Object=, controller: Object)=</code>: Callback
+function used to notify the show() animation is starting.</li>
+<li><code>onComplete</code> - <code>Function(scope, element, options: Object=)=</code>: Callback function used to
+notify when the show() animation is finished.</li>
+<li><code>onRemoving</code> - <code>Function(element, removePromise)</code>: Callback function used to announce the
  close/hide() action is starting. This allows developers to run custom animations
  in parallel with the close animations.</li>
 <li><code>fullscreen</code> <code>{boolean=}</code>: An option to toggle whether the dialog should show in fullscreen

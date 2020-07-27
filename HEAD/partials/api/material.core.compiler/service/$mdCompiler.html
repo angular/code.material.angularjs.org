@@ -187,11 +187,11 @@ injected into the controller.</li>
   <tbody>
   <tr>
     <td>
-<code class="api-type label type-hint type-hint-object">Object</code></td>
+<code class="api-type label type-hint type-hint-q">Q.Promise&lt;{element: JQLite, link: Function, locals: Object, cleanup: any, controller: Object=}&gt;</code></td>
     <td class="description"><p>promise A promise, which will be resolved with a <code>compileData</code> object.
-<code>compileData</code> has the following properties:</p>
+ <code>compileData</code> has the following properties:</p>
 <ul>
-<li><code>element</code> - <code>{Element}</code>: an uncompiled element matching the provided template.</li>
+<li><code>element</code> - <code>{JQLite}</code>: an uncompiled element matching the provided template.</li>
 <li><code>link</code> - <code>{function(scope)}</code>: A link function, which, when called, will compile
 the element and instantiate the provided controller (if given).</li>
 <li><code>locals</code> - <code>{Object}</code>: The locals which will be passed into the controller once <code>link</code> is
