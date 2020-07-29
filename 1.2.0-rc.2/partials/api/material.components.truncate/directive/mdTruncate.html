@@ -1,0 +1,80 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>md-truncate</code> component displays a label that will automatically clip text which is wider
+than the component. By default, it displays an ellipsis, but you may apply the <code>md-clip</code> CSS
+class to override this default and use a standard &quot;clipping&quot; approach.</p>
+<p><i><b>Note:</b> The <code>md-truncate</code> component does not automatically adjust it&#39;s width. You must
+provide the <code>flex</code> attribute, or some other CSS-based width management. See the
+<a ng-href="./demo/truncate">demos</a> for examples.</i></p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <h3 id="as-an-element">As an Element</h3>
+<hljs lang="html">
+  <div layout="row">
+    <md-button>Back</md-button>
+
+    <md-truncate flex>Chapter 1 - The Way of the Old West</md-truncate>
+
+    <md-button>Forward</md-button>
+  </div>
+</hljs>
+
+<h3 id="as-an-attribute">As an Attribute</h3>
+<hljs lang="html">
+  <h2 md-truncate style="max-width: 100px;">Some Title With a Lot of Text</h2>
+</hljs>
+
+<h2 id="css-styles">CSS &amp; Styles</h2>
+<p><code>&lt;md-truncate&gt;</code> provides two CSS classes that you may use to control the type of clipping.</p>
+<p><i><b>Note:</b> The <code>md-truncate</code> also applies a setting of <code>width: 0;</code> when used with the <code>flex</code>
+attribute to fix an issue with the flex element not shrinking properly.</i></p>
+<div>
+<docs-css-api-table>
+
+  <docs-css-selector code=".md-ellipsis">
+    Assigns the &quot;ellipsis&quot; behavior (default) which will cut off mid-word and append an ellipsis
+    (&hellip;) to the end of the text.
+  </docs-css-selector>
+
+  <docs-css-selector code=".md-clip">
+    Assigns the &quot;clipping&quot; behavior which will simply chop off the text. This may happen
+    mid-word or even mid-character.
+  </docs-css-selector>
+
+</docs-css-api-table>
+</div>
+  
+  </section>
+  
+  
+
+
+  
+</div>
+
+
+</div>
