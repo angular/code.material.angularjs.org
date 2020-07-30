@@ -2645,8 +2645,8 @@ angular.module('docsApp').constant('DEMOS', [
       },
       {
         "ngModule": {
-          "name": "radioDemo2",
-          "module": "radioDemo2",
+          "name": "radioMultiColumnDemo",
+          "module": "radioMultiColumnDemo",
           "dependencies": [
             "ngMaterial"
           ]

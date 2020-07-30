@@ -11,14 +11,13 @@
 .radioButtondemoBasicUsage p:last-child {
   padding-bottom: 50px; }
 
-.radioButtondemoBasicUsage [ng-controller] {
+.radioButtondemoBasicUsage form {
   padding: 0 20px; }
 
 .radioButtondemoBasicUsage .radioValue {
   margin-left: 5px;
   color: #0f9d58;
-  font-weight: bold;
-  padding: 5px; }
+  font-weight: bold; }
 
 .radioButtondemoBasicUsage md-icon {
   margin: 0 20px 20px;
@@ -28,3 +27,6 @@
 .radioButtondemoBasicUsage .ipsum {
   color: saddlebrown;
   font-size: 0.9em; }
+
+.radioButtondemoBasicUsage .demo-description {
+  margin-bottom: 0; }
