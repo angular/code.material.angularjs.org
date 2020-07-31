@@ -35,17 +35,34 @@ button.</p>
 </ol>
 <p><strong>Tabs-only</strong> support is useful when tab buttons are used for custom navigation regardless of any
 other components, content, or views.</p>
-<p><i><b>Note:</b> If you are using the Tabs component for page-level navigation, please use
-the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead. It handles this
-case a more natively and more performantly.</i></p>
+<blockquote><b>Note:</b> If you are using the Tabs component for page-level navigation, please
+use the <a ng-href="./api/directive/mdNavBar">NavBar component</a> instead. It handles this
+case a more natively and more performantly.</blockquote>
+
 <p><strong>Tabs with internal views</strong> are the traditional usage where each tab has associated view
 content and the view switching is managed internally by the Tabs component.</p>
 <p><strong>Tabs with external view content</strong> is often useful when content associated with each tab is
 independently managed and data-binding notifications announce tab selection changes.</p>
-<p>Additional features also include:</p>
+<p>Additional features include:</p>
 <ul>
 <li>Content can include any markup.</li>
 <li>If a tab is disabled while active/selected, then the next tab will be auto-selected.</li>
+</ul>
+<h3 id="theming">Theming</h3>
+<p>By default, tabs use your app&#39;s accent color for the selected tab&#39;s text and ink bar.</p>
+<p>You can use the theming classes to change the color of the <code>md-tabs</code> background:</p>
+<ul>
+<li>Applying <code>class=&quot;md-primary&quot;</code> will use your app&#39;s primary color for the background, your
+accent color for the ink bar, and your primary palette&#39;s contrast color for the text of the
+selected tab.<ul>
+<li>When using the <code>md-primary</code> class, you can add the <code>md-no-ink-bar-color</code> class to make the
+ink bar use your theme&#39;s primary contrast color instead of the accent color.</li>
+</ul>
+</li>
+<li>Applying <code>class=&quot;md-accent&quot;</code> will use your app&#39;s accent color for the background and your
+accent palette&#39;s contrast color for the text and ink bar of the selected tab.</li>
+<li>Applying <code>class=&quot;md-warn&quot;</code> will use your app&#39;s warn color for the background and your
+warn palette&#39;s contrast color for the text and ink bar of the selected tab.</li>
 </ul>
 <h3 id="explanation-of-tab-stretching">Explanation of tab stretching</h3>
 <p>Initially, tabs will have an inherent size.  This size will either be defined by how much space
@@ -96,8 +113,8 @@ Here is a table showing when stretching will occur:</p>
     <h2 id="Usage">Usage</h2>
   
     <hljs lang="html">
-<md-tabs md-selected="selectedIndex" >
-  <img ng-src="img/angular.png" class="centered">
+<md-tabs md-selected="selectedIndex">
+  <img ng-src="img/angular.png" class="centered" alt="Angular icon">
   <md-tab
       ng-repeat="tab in tabs | orderBy:predicate:reversed"
       md-on-select="onTabSelected(tab)"
@@ -105,7 +122,7 @@ Here is a table showing when stretching will occur:</p>
       ng-disabled="tab.disabled">
     <md-tab-label>
       {{tab.title}}
-      <img src="img/removeTab.png" ng-click="removeTab(tab)" class="delete">
+      <img src="img/removeTab.png" ng-click="removeTab(tab)" class="delete" alt="Remove tab">
     </md-tab-label>
     <md-tab-body>
       {{tab.content}}

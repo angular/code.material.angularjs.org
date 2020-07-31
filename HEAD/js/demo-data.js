@@ -3238,7 +3238,14 @@ angular.module('docsApp').constant('DEMOS', [
             "outputPath": "demo-partials/tabs/demoCenterTabs/style.css"
           }
         ],
-        "html": [],
+        "html": [
+          {
+            "name": "readme.html",
+            "label": "readme.html",
+            "fileType": "html",
+            "outputPath": "demo-partials/tabs/demoCenterTabs/readme.html"
+          }
+        ],
         "js": [
           {
             "name": "script.js",
