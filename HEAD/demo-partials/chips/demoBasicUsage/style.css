@@ -4,36 +4,29 @@
   margin-top: 10px; }
 
 .chipsdemoBasicUsage .custom-chips md-chip {
-  position: relative; }
+  position: relative;
+  padding-right: 24px; }
   .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container {
     position: absolute;
     right: 4px;
     top: 4px;
     margin-right: 0;
-    height: 24px; }
-    .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.vegetablechip {
+    height: 26px;
+    display: none; }
+    .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.demo-remove-vegetable-chip {
       position: relative;
       height: 24px;
       width: 24px;
       line-height: 30px;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.3);
-      border-radius: 50%;
+      background: transparent;
       border: none;
-      box-shadow: none;
-      padding: 0;
-      margin: 0;
-      transition: background 0.15s linear;
-      display: block; }
-      .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.vegetablechip md-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate3d(-50%, -50%, 0) scale(0.7);
-        color: white;
-        fill: white; }
-      .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.vegetablechip:hover, .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.vegetablechip:focus {
-        background: rgba(255, 0, 0, 0.8); }
-
-.chipsdemoBasicUsage .custom-chips md-chips-wrap.md-removable md-chip md-chip-template {
-  padding-right: 5px; }
+      padding: 0; }
+      .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.demo-remove-vegetable-chip md-icon {
+        transform: translate(0, -3px) scale(0.75);
+        fill: rgba(0, 0, 0, 0.33); }
+  .chipsdemoBasicUsage .custom-chips md-chip:hover:not(.md-readonly) .md-chip-remove-container {
+    display: block; }
+  .chipsdemoBasicUsage .custom-chips md-chip.md-focused:not(.md-readonly) .md-chip-remove-container {
+    display: block; }
+    .chipsdemoBasicUsage .custom-chips md-chip.md-focused:not(.md-readonly) .md-chip-remove-container button.demo-remove-vegetable-chip md-icon {
+      fill: rgba(255, 255, 255, 0.87); }
