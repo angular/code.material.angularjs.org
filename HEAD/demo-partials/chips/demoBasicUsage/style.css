@@ -3,6 +3,9 @@
   color: #dd2c00;
   margin-top: 10px; }
 
+.chipsdemoBasicUsage .demo-long-fruit-input {
+  min-width: 340px; }
+
 .chipsdemoBasicUsage .custom-chips md-chip {
   position: relative;
   padding-right: 24px; }
