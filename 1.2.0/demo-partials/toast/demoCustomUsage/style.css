@@ -1,0 +1,9 @@
+.toastdemoCustomUsage #custom-toast-container {
+  height: 300px;
+  padding: 25px; }
+  .toastdemoCustomUsage #custom-toast-container .md-button.md-raised {
+    padding-left: 10px;
+    padding-right: 10px; }
+
+.toastdemoCustomUsage .md-toast-text {
+  flex: 1 0 88px; }
