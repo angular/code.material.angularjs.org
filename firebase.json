@@ -205,6 +205,10 @@
       {
         "source": "/1.2.0-rc.2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
         "destination": "/1.2.0-rc.2/index.html"
+      },
+      {
+        "source": "/1.2.0/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.2.0/index.html"
       }
     ],
     "redirects": [
