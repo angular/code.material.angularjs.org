@@ -3543,7 +3543,8 @@ md-select {
   md-select:not([disabled]):hover {
     cursor: pointer; }
   md-select:not([disabled]):focus .md-select-value {
-    border-bottom: 2px solid;
+    border-bottom-style: solid;
+    border-bottom-width: 2px;
     padding-bottom: 0px; }
 
 md-input-container md-select:not([disabled]):focus .md-select-value {
