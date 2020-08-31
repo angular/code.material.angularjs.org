@@ -16626,8 +16626,8 @@ angular.module('material.components.datepicker', [
      }
 
     /**
-     * @param {Date} value
-     * @return {boolean|boolean}
+     * @param {Date} value date in local timezone
+     * @return {Date} date with local timezone removed
      */
     function removeLocalTzAndReparseDate(value) {
       var dateValue, formattedDate;
@@ -17649,7 +17649,7 @@ angular.module('material.components.datepicker', [
     var self = this;
     var timezone = this.$mdUtil.getModelOption(this.ngModelCtrl, 'timezone');
 
-    if (this.dateUtil.isValidDate(value)) {
+    if (this.dateUtil.isValidDate(value) && timezone != null) {
       this.date = this.dateUtil.removeLocalTzAndReparseDate(value);
     } else {
       this.date = value;
