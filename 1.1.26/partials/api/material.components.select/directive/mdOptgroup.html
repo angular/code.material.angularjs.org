@@ -1,0 +1,121 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>Displays a label separating groups of
+<a ng-href="api/directive/mdOption">md-option</a> element directives in a
+<a ng-href="api/directive/mdSelect">md-select</a> box&#39;s dropdown menu.</p>
+<p><strong>Note:</strong> When using <code>md-select-header</code> element directives within a <code>md-select</code>, the labels that
+would normally be added to the <a ng-href="api/directive/mdOptgroup">md-optgroup</a> directives
+are omitted, allowing the <code>md-select-header</code> to represent the option group label
+(and possibly more).</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <p>With label attributes</p>
+<hljs lang="html">
+<md-select ng-model="currentState" placeholder="Select a state">
+  <md-optgroup label="Southern">
+    <md-option ng-value="AL">Alabama</md-option>
+    <md-option ng-value="FL">Florida</md-option>
+  </md-optgroup>
+  <md-optgroup label="Northern">
+    <md-option ng-value="AK">Alaska</md-option>
+    <md-option ng-value="MA">Massachusetts</md-option>
+  </md-optgroup>
+</md-select>
+</hljs>
+
+<p>With label elements</p>
+<hljs lang="html">
+<md-select ng-model="currentState" placeholder="Select a state">
+  <md-optgroup>
+    <label>Southern</label>
+    <md-option ng-value="AL">Alabama</md-option>
+    <md-option ng-value="FL">Florida</md-option>
+  </md-optgroup>
+  <md-optgroup>
+    <label>Northern</label>
+    <md-option ng-value="AK">Alaska</md-option>
+    <md-option ng-value="MA">Massachusetts</md-option>
+  </md-optgroup>
+</md-select>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The option group&#39;s label.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

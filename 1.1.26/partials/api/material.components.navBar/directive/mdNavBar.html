@@ -1,0 +1,174 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-nav-bar&gt;</code> directive renders a list of material tabs that can be used
+for top-level page navigation. Unlike <code>&lt;md-tabs&gt;</code>, it has no concept of a tab
+body and no bar pagination.</p>
+<p>Because it deals with page navigation, certain routing concepts are built-in.
+Route changes via <code>ng-href</code>, <code>ui-sref</code>, or <code>ng-click</code> events are supported.
+Alternatively, the user could simply watch the value of <code>md-selected-nav-item</code>
+(<code>currentNavItem</code> in the below example) for changes.</p>
+<p>Accessibility functionality is implemented as a
+<a href="https://www.w3.org/TR/wai-aria-1.0/complete#tablist">
+  tablist</a> with
+<a href="https://www.w3.org/TR/wai-aria-1.0/complete#tab">tabs</a>.
+We&#39;ve kept the <code>role=&quot;navigation&quot;</code> on the <code>&lt;nav&gt;</code>, for backwards compatibility, even though
+ it is not required in the
+<a href="https://www.w3.org/TR/wai-aria-practices/#aria_lh_navigation">
+  latest Working Group Note from December 2017</a>.</p>
+<p><h3>Keyboard Navigation</h3></p>
+<ul>
+<li><code>Tab</code>/<code>Shift+Tab</code> moves the focus to the next/previous interactive element on the page</li>
+<li><code>Enter</code>/<code>Space</code> selects the focused nav item and navigates to display the item&#39;s contents</li>
+<li><code>Right</code>/<code>Down</code> moves focus to the next nav item, wrapping at the end</li>
+<li><code>Left</code>/<code>Up</code> moves focus to the previous nav item, wrapping at the end</li>
+<li><code>Home</code>/<code>End</code> moves the focus to the first/last nav item</li>
+</ul>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+ <md-nav-bar md-selected-nav-item="currentNavItem">
+   <md-nav-item md-nav-click="goto('page1')" name="page1">
+     Page One
+   </md-nav-item>
+   <md-nav-item md-nav-href="#page2" name="page3">Page Two</md-nav-item>
+   <md-nav-item md-nav-sref="page3" name="page2">Page Three</md-nav-item>
+   <md-nav-item
+     md-nav-sref="app.page4"
+     sref-opts="{reload: true, notify: true}"
+     name="page4">
+     Page Four
+   </md-nav-item>
+ </md-nav-bar>
+</hljs>
+<hljs lang="js">
+(function() {
+  &#39;use strict&#39;;
+
+   $rootScope.$on(&#39;$routeChangeSuccess&#39;, function(event, current) {
+     $scope.currentLink = getCurrentLinkFromRoute(current);
+   });
+});
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+  
+    
+  
+    
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-selected-nav-item
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>The name of the current tab; this must
+    match the <code>name</code> attribute of <code>&lt;md-nav-item&gt;</code>.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-no-ink-bar
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-boolean">boolean</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-boolean">boolean</code></td>
+        <td class="description">
+          <p>If set to true, the ink bar will be hidden.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          nav-bar-aria-label
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>An <code>aria-label</code> applied to the <code>md-nav-bar</code>&#39;s tablist
+for accessibility.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>

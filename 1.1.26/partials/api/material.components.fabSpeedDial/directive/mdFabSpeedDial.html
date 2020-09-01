@@ -1,0 +1,151 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-fab-speed-dial&gt;</code> directive is used to present a series of popup elements (usually
+<code>&lt;md-button&gt;</code>s) for quick access to common actions.</p>
+<p>There are currently two animations available by applying one of the following classes to
+the component:</p>
+<ul>
+<li><code>md-fling</code> - The speed dial items appear from underneath the trigger and move into their
+appropriate positions.</li>
+<li><code>md-scale</code> - The speed dial items appear in their proper places by scaling from 0% to 100%.</li>
+</ul>
+<p>You may also easily position the trigger by applying one one of the following classes to the
+<code>&lt;md-fab-speed-dial&gt;</code> element:</p>
+<ul>
+<li><code>md-fab-top-left</code></li>
+<li><code>md-fab-top-right</code></li>
+<li><code>md-fab-bottom-left</code></li>
+<li><code>md-fab-bottom-right</code></li>
+</ul>
+<p>These CSS classes use <code>position: absolute</code>, so you need to ensure that the container element
+also uses <code>position: absolute</code> or <code>position: relative</code> in order for them to work.</p>
+<p>Additionally, you may use the standard <code>ng-mouseenter</code> and <code>ng-mouseleave</code> directives to
+open or close the speed dial. However, if you wish to allow users to hover over the empty
+space where the actions will appear, you must also add the <code>md-hover-full</code> class to the speed
+dial element. Without this, the hover effect will only occur on top of the trigger.</p>
+<p>See the demos for more information.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If your speed dial shows the closing animation upon launch, you may need to use <code>ng-cloak</code> on
+the parent container to ensure that it is only visible once ready. We have plans to remove this
+necessity in the future.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-fab-speed-dial md-direction="up" class="md-fling">
+  <md-fab-trigger>
+    <md-button aria-label="Add..."><md-icon md-svg-src="/img/icons/plus.svg"></md-icon></md-button>
+  </md-fab-trigger>
+
+  <md-fab-actions>
+    <md-button aria-label="Add User">
+      <md-icon md-svg-src="/img/icons/user.svg"></md-icon>
+    </md-button>
+
+    <md-button aria-label="Add Group">
+      <md-icon md-svg-src="/img/icons/group.svg"></md-icon>
+    </md-button>
+  </md-fab-actions>
+</md-fab-speed-dial>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-direction</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>From which direction you would like the speed dial to appear
+relative to the trigger element.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-open
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Programmatically control whether or not the speed-dial is visible.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
