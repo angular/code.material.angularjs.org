@@ -1,0 +1,138 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>The <code>&lt;md-fab-toolbar&gt;</code> directive is used to present a toolbar of elements (usually <code>&lt;md-button&gt;</code>s)
+for quick access to common actions when a floating action button is activated (via click or
+keyboard navigation).</p>
+<p>You may also easily position the trigger by applying one one of the following classes to the
+<code>&lt;md-fab-toolbar&gt;</code> element:</p>
+<ul>
+<li><code>md-fab-top-left</code></li>
+<li><code>md-fab-top-right</code></li>
+<li><code>md-fab-bottom-left</code></li>
+<li><code>md-fab-bottom-right</code></li>
+</ul>
+<p>These CSS classes use <code>position: absolute</code>, so you need to ensure that the container element
+also uses <code>position: absolute</code> or <code>position: relative</code> in order for them to work.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+  
+  <section class="api-section">
+    <h2 id="Usage">Usage</h2>
+  
+    <hljs lang="html">
+<md-fab-toolbar md-direction='left'>
+  <md-fab-trigger>
+    <md-button aria-label="Add..."><md-icon md-svg-src="/img/icons/plus.svg"></md-icon></md-button>
+  </md-fab-trigger>
+
+  <md-toolbar>
+   <md-fab-actions>
+     <md-button aria-label="Add User">
+       <md-icon md-svg-src="/img/icons/user.svg"></md-icon>
+     </md-button>
+
+     <md-button aria-label="Add Group">
+       <md-icon md-svg-src="/img/icons/group.svg"></md-icon>
+     </md-button>
+   </md-fab-actions>
+  </md-toolbar>
+</md-fab-toolbar>
+</hljs>
+  
+  </section>
+  
+  <div class="api-param-section">
+    <h2>
+      
+        Attributes
+      
+    </h2>
+    <div class="api-param-table">
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* md-direction</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>From which direction you would like the toolbar items to appear
+relative to the trigger element. Supports <code>left</code> and <code>right</code> directions.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+  
+  
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          md-open
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-expression">expression</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-expression">expression</code></td>
+        <td class="description">
+          <p>Programmatically control whether or not the toolbar is visible.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+
+  </tbody>
+</table>
+
+    </div>
+  </div>
+  
+
+
+  
+</div>
+
+
+</div>
