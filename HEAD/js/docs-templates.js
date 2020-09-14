@@ -414,15 +414,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          Safari\n' +
-    '        </td>\n' +
-    '        <td>\n' +
-    '          12.x<br>13.x\n' +
-    '        </td>\n' +
-    '      </tr>\n' +
-    '      <tr>\n' +
-    '        <td>\n' +
-    '          iOS\n' +
+    '          Safari macOS & iOS\n' +
     '        </td>\n' +
     '        <td>\n' +
     '          12.x<br>13.x\n' +
@@ -441,7 +433,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Samsung Internet\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          10.x\n' +
+    '          12.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -450,6 +442,75 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        </td>\n' +
     '        <td>\n' +
     '          Mini all\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      </tbody>\n' +
+    '    </table>\n' +
+    '\n' +
+    '    <h2 class="md-headline">Screen Reader Support</h2>\n' +
+    '    <p>\n' +
+    '      AngularJS Material is built based on the\n' +
+    '      <a href="https://www.w3.org/TR/wai-aria-1.0/" target="_blank" rel="noopener"> WAI-ARIA 1.0 W3C Recommendation</a>.\n' +
+    '    </p>\n' +
+    '    <h3>\n' +
+    '      AngularJS Material supports the following screen readers:\n' +
+    '    </h3>\n' +
+    '    <table class="custom-table">\n' +
+    '      <tbody>\n' +
+    '      <tr>\n' +
+    '        <th>\n' +
+    '          Screen Reader\n' +
+    '        </th>\n' +
+    '        <th>\n' +
+    '          Supported Versions\n' +
+    '        </th>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          NVDA\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          2019.x<br>2020.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          JAWS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          2019.x<br>2020.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Android Accessibility Suite\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          8.1.x<br>8.2.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          VoiceOver macOS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          Mojave<br>Catalina\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          VoiceOver iOS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          12.x<br>13.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          ChromeVox on Chrome OS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          last 2 versions\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      </tbody>\n' +
