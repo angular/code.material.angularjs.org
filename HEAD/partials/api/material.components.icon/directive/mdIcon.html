@@ -198,7 +198,7 @@ angular.module(&#39;appSvgIconSets&#39;, [&#39;ngMaterial&#39;])
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>String name of CSS icon associated with the font-face will be used
-to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
+ to render the icon. Requires the fonts and the named CSS styles to be preloaded.</p>
 
           
         </td>
@@ -217,8 +217,8 @@ to render the icon. Requires the fonts and the named CSS styles to be preloaded.
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>CSS style name associated with the font library; which will be assigned as
-the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
-internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine the style name.</p>
+ the class for the font-icon ligature. This value may also be an alias that is used to lookup the classname;
+ internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine the style name.</p>
 
           
         </td>
@@ -237,7 +237,7 @@ internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine 
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>String URL (or expression) used to load, cache, and display an
-    external SVG.</p>
+ external SVG.</p>
 
           
         </td>
@@ -256,9 +256,9 @@ internally use <code>$mdIconProvider.fontSet(&lt;alias&gt;)</code> to determine 
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>md-svg-icon String name used for lookup of the icon from the internal cache;
-    interpolated strings or expressions may also be used. Specific set names can be used with
-    the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
-To use icon sets, developers are required to pre-register the sets using the <code>$mdIconProvider</code> service.</p>
+ interpolated strings or expressions may also be used. Specific set names can be used with
+ the syntax <code>&lt;set name&gt;:&lt;icon name&gt;</code>.<br/><br/>
+ To use icon sets, developers are required to pre-register the sets using the <code>$mdIconProvider</code> service.</p>
 
           
         </td>
@@ -289,9 +289,12 @@ To use icon sets, developers are required to pre-register the sets using the <co
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Labels icon for accessibility. If an empty string is provided, icon
-will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no aria-label on the icon
-nor a label on the parent element, a warning will be logged to the console.</p>
+          <p>Labels the icon for accessibility. If an empty string is provided,
+ the icon will be hidden from the accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there is no
+ <code>aria-label</code> attribute on the icon, we check the following, in order: the <code>alt</code> attribute, the
+ <code>aria-label</code> from the parent element, the icon&#39;s <code>md-font-icon</code> or <code>md-svg-icon</code> string, and the
+ text content inside <code>&lt;md-icon&gt;&lt;/md-icon&gt;</code>. If none of these have any text, the icon is hidden
+ from the accessibility layer with <code>aria-hidden=&quot;true&quot;</code>.</p>
 
           
         </td>
@@ -309,9 +312,9 @@ nor a label on the parent element, a warning will be logged to the console.</p>
         <td style="white-space: nowrap;">
 <code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
-          <p>Labels icon for accessibility. If an empty string is provided, icon
-will be hidden from accessibility layer with <code>aria-hidden=&quot;true&quot;</code>. If there&#39;s no alt on the icon
-nor a label on the parent element, a warning will be logged to the console.</p>
+          <p>Labels the icon for accessibility. If an empty string is provided and the
+ icon has no <code>aria-label</code>, then the icon will be hidden from accessibility layer with
+ <code>aria-hidden=&quot;true&quot;</code>.</p>
 
           
         </td>
