@@ -372,7 +372,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    </p>\n' +
     '    <ul>\n' +
     '      <li>Greater than 0.5% global usage</li>\n' +
-    '      <li>Last two major versions of Evergreen browsers</li>\n' +
+    '      <li>Last two versions of Evergreen browsers</li>\n' +
     '      <li>Firefox ESR</li>\n' +
     '      <li>Not considered "dead" browsers</li>\n' +
     '    </ul>\n' +
@@ -390,10 +390,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          Chrome<br/>Chrome for Android<br/>Edge<br/>Safari<br/>Opera\n' +
+    '          Chrome<br/>Chrome for Android<br/>Edge<br/>Opera\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          last 2 major versions\n' +
+    '          last 2 versions\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -401,7 +401,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Firefox\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          last 2 major versions<br/>ESR\n' +
+    '          last 2 versions<br/>ESR\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -410,6 +410,14 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '        </td>\n' +
     '        <td>\n' +
     '          11\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          Safari macOS & iOS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          12.x<br>13.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -459,10 +467,18 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          NVDA<br/>JAWS\n' +
+    '          NVDA\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          2019.x<br/>2020.x\n' +
+    '          2019.x<br>2020.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          JAWS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          2019.x<br>2020.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
@@ -470,15 +486,31 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '          Android Accessibility Suite\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          8.1.x<br/>8.2.x\n' +
+    '          8.1.x<br>8.2.x\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      <tr>\n' +
     '        <td>\n' +
-    '          ChromeVox on Chrome OS<br/>VoiceOver on macOS/iOS\n' +
+    '          VoiceOver macOS\n' +
     '        </td>\n' +
     '        <td>\n' +
-    '          last 2 major versions\n' +
+    '          Mojave<br>Catalina\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          VoiceOver iOS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          12.x<br>13.x\n' +
+    '        </td>\n' +
+    '      </tr>\n' +
+    '      <tr>\n' +
+    '        <td>\n' +
+    '          ChromeVox on Chrome OS\n' +
+    '        </td>\n' +
+    '        <td>\n' +
+    '          last 2 versions\n' +
     '        </td>\n' +
     '      </tr>\n' +
     '      </tbody>\n' +
