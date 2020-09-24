@@ -1,0 +1,7 @@
+.toolbardemoInputsInToolbar md-toolbar header {
+  margin-top: 16px; }
+  .toolbardemoInputsInToolbar md-toolbar header > span {
+    height: 58px;
+    margin: 18px 0; }
+  .toolbardemoInputsInToolbar md-toolbar header md-input-container {
+    width: 160px; }
