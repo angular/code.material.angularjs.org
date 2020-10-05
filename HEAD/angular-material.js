@@ -17669,7 +17669,7 @@ angular.module('material.components.datepicker', [
     var timezone = this.$mdUtil.getModelOption(this.ngModelCtrl, 'timezone');
     // Using the timezone when the offset is negative (GMT+X) causes the previous day to be
     // set as the model value here. This check avoids that.
-    if (timezone == null || value.getTimezoneOffset() < 0) {
+    if (timezone == null || value == null || value.getTimezoneOffset() < 0) {
       this.ngModelCtrl.$setViewValue(this.ngDateFilter(value, 'yyyy-MM-dd'), 'default');
     } else {
       this.ngModelCtrl.$setViewValue(this.ngDateFilter(value, 'yyyy-MM-dd', timezone), 'default');
@@ -17691,7 +17691,7 @@ angular.module('material.components.datepicker', [
     }
     // Using the timezone when the offset is negative (GMT+X) causes the previous day to be
     // used here. This check avoids that.
-    if (timezone == null || value.getTimezoneOffset() < 0) {
+    if (timezone == null || value == null || value.getTimezoneOffset() < 0) {
       this.inputElement.value = this.locale.formatDate(value);
     } else {
       this.inputElement.value = this.locale.formatDate(value, timezone);
