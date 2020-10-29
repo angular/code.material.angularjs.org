@@ -28,7 +28,7 @@ This means, when loading icons from an external URL, you have to trust the URL i
 <code>$sceDelegateProvider</code>.</p>
 <hljs lang="js">
   app.config(function($sceDelegateProvider) {
-    $sceDelegateProvider.resourceUrlWhitelist([
+    $sceDelegateProvider.trustedResourceUrlList([
       // Adding &#39;self&#39; to the allow-list, will allow requests from the current origin.
       &#39;self&#39;,
       // Using double asterisks here, will allow all URLs to load.
