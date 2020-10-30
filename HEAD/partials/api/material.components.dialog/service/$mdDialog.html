@@ -285,7 +285,7 @@ their options each time.</p>
 
     ctrl.closeDialog = function() {
       // Hides the most recent dialog shown.
-      // Mo specific dialog instance reference is needed.
+      // No specific dialog instance reference is needed.
       $mdDialog.hide();
     };
   }
@@ -338,7 +338,7 @@ their options each time.</p>
 <li><code>title(string)</code> - Sets the alert title.</li>
 <li><code>textContent(string)</code> - Sets the alert message.</li>
 <li><code>htmlContent(string)</code> - Sets the alert message as HTML. Requires the <code>ngSanitize</code>
-  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+  module to be loaded. HTML is not run through AngularJS&#39; compiler.</li>
 <li><code>ok(string)</code> - Sets the alert &quot;Okay&quot; button text.</li>
 <li><code>theme(string)</code> - Sets the theme of the alert dialog.</li>
 <li><code>targetEvent(DOMClickEvent=)</code> - A click&#39;s event object. When passed in as an
@@ -389,7 +389,7 @@ be rejected if the user clicks the cancel action or dismisses the dialog.</p>
 <li><code>title(string)</code> - Sets the confirm title.</li>
 <li><code>textContent(string)</code> - Sets the confirm message.</li>
 <li><code>htmlContent(string)</code> - Sets the confirm message as HTML. Requires the <code>ngSanitize</code>
-  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+  module to be loaded. HTML is not run through AngularJS&#39; compiler.</li>
 <li><code>ok(string)</code> - Sets the confirm &quot;Okay&quot; button text.</li>
 <li><code>cancel(string)</code> - Sets the confirm &quot;Cancel&quot; button text.</li>
 <li><code>theme(string)</code> - Sets the theme of the confirm dialog.</li>
@@ -442,7 +442,7 @@ action or dismisses the dialog.</p>
 <li><code>title(string)</code> - Sets the prompt title.</li>
 <li><code>textContent(string)</code> - Sets the prompt message.</li>
 <li><code>htmlContent(string)</code> - Sets the prompt message as HTML. Requires the <code>ngSanitize</code>
-  module to be loaded. HTML is not run through Angular&#39;s compiler.</li>
+  module to be loaded. HTML is not run through AngularJS&#39; compiler.</li>
 <li><code>placeholder(string)</code> - Sets the placeholder text for the input.</li>
 <li><code>required(boolean)</code> - Sets the input required value.</li>
 <li><code>initialValue(string)</code> - Sets the initial value for the prompt input.</li>
@@ -503,7 +503,7 @@ action or dismisses the dialog.</p>
 <li><code>templateUrl</code> - <code>{string=}</code>: The url of a template that will be used as the content
  of the dialog.</li>
 <li><code>template</code> - <code>{string=}</code>: HTML template to show in the dialog. This <strong>must</strong> be trusted HTML
- with respect to Angular&#39;s <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
+ with respect to AngularJS&#39; <a href="https://docs.angularjs.org/api/ng/service/$sce">$sce service</a>.
  This template should <strong>never</strong> be constructed with any kind of user input or user data.</li>
 <li><code>contentElement</code> - <code>{string|Element}</code>: Instead of using a template, which will be compiled
  each time a dialog opens, you can also use a DOM element.<br/><ul>
