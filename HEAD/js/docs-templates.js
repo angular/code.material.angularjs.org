@@ -292,6 +292,10 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      This project provides a set of reusable, well-tested, and accessible UI components for\n' +
     '      <a href="https://angularjs.org" target="_blank" rel="noopener">AngularJS</a> developers.\n' +
     '    </p>\n' +
+    '    <p>\n' +
+    '      AngularJS Material has entered the Long Term Support (LTS) period.\n' +
+    '      <a href="#long-term-support">Find out more</a>.\n' +
+    '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="50" flex-gt-md="25" ng-repeat="(index, link) in [\n' +
     '        { href: \'./getting-started\', icon: \'school\', text: \'Getting Started\' },\n' +
@@ -312,9 +316,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '\n' +
     '    <h2 class="md-headline">AngularJS versus Angular?</h2>\n' +
     '    <p>\n' +
-    '      The AngularJS Material library is a mature and stable product that is ready for production use.\n' +
-    '      Developers should note that AngularJS Material works only with\n' +
+    '      The AngularJS Material library is a mature and stable product that is ready for production\n' +
+    '      use. Developers should note that AngularJS Material works only with\n' +
     '      <a href="https://angularjs.org/" target="_blank" rel="noopener">AngularJS 1.x</a>.\n' +
+    '      AngularJS 1.x is now in\n' +
+    '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
+    '      Long Term Support (LTS) mode</a>.\n' +
     '    </p>\n' +
     '    <ul>\n' +
     '      <li>\n' +
@@ -342,10 +349,40 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      project which is built for <a href="https://angular.io" target="_blank" rel="noopener">Angular</a>\n' +
     '      developers.\n' +
     '    </p>\n' +
-    '\n' +
+    '    <h2 id="long-term-support" class="md-headline">Long Term Support</h2>\n' +
+    '    <p>\n' +
+    '      AngularJS Material has entered a Long Term Support (LTS) period which ends on December 31st,\n' +
+    '      2021. This date aligns with the\n' +
+    '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
+    '        AngularJS LTS</a> period.\n' +
+    '    </p>\n' +
+    '    <p>\n' +
+    '      We now focus exclusively on providing fixes to bugs, in the 1.2.x branch of the library, that\n' +
+    '      satisfy at least one of the following criteria:\n' +
+    '    </p>\n' +
+    '    <ul>\n' +
+    '      <li>We receive a report of, or detect, a security weakness which is then verified</li>\n' +
+    '      <li>\n' +
+    '        A major browser releases a version that will cause current production applications\n' +
+    '        to stop working\n' +
+    '      </li>\n' +
+    '      <li>\n' +
+    '        The <a href="https://jquery.com/">jQuery library</a> releases a version that will cause\n' +
+    '        current production applications to stop working\n' +
+    '      </li>\n' +
+    '    </ul>\n' +
+    '    <p>\n' +
+    '      AngularJS Material 1.1.x will get a new version, if and only if, we verify a new severe\n' +
+    '      security weakness.\n' +
+    '    </p>\n' +
+    '    <p>\n' +
+    '      Learn how to report security issues\n' +
+    '      <a href="https://github.com/angular/material/blob/master/SECURITY.md">here</a>.\n' +
+    '    </p>\n' +
     '    <h2 class="md-headline">Change Log</h2>\n' +
     '    <p>\n' +
-    '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking changes.\n' +
+    '      Please refer to our changelog for up-to-date listings of all v1.x improvements and breaking\n' +
+    '      changes.\n' +
     '    </p>\n' +
     '     <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
     '      <li flex="100" flex-gt-xs="50" ng-repeat="(index, link) in [\n' +
@@ -361,7 +398,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '            aria-label="{{link.text}}">\n' +
     '          <md-icon class="block" md-svg-src="img/icons/ic_{{link.icon}}_24px.svg"></md-icon>\n' +
     '          {{link.text}}<br/>\n' +
-    '          <div style="text-transform: none;margin-top:-15px;font-size:1.0em;">AngularJS Material v1.x </div>\n' +
+    '          <div style="text-transform: none;margin-top:-15px;font-size:1.0em;">\n' +
+    '            AngularJS Material v1.x\n' +
+    '          </div>\n' +
     '        </md-button>\n' +
     '      </li>\n' +
     '    </ul>\n' +
@@ -442,7 +481,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2 class="md-headline">Screen Reader Support</h2>\n' +
     '    <p>\n' +
     '      AngularJS Material is built based on the\n' +
-    '      <a href="https://www.w3.org/TR/wai-aria-1.0/" target="_blank" rel="noopener"> WAI-ARIA 1.0 W3C Recommendation</a>.\n' +
+    '      <a href="https://www.w3.org/TR/wai-aria-1.0/" target="_blank" rel="noopener">\n' +
+    '        WAI-ARIA 1.0 W3C Recommendation</a>.\n' +
     '    </p>\n' +
     '    <h3>\n' +
     '      AngularJS Material supports the following screen readers:\n' +
