@@ -2946,7 +2946,7 @@ function MdAriaService($$rAF, $log, $window, $interpolate) {
    */
   function getText(element) {
     element = element[0] || element;
-    var walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null);
+    var walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT, null, false);
     var text = '';
 
     var node;
