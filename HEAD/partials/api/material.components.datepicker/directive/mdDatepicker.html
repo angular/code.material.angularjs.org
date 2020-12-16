@@ -117,6 +117,10 @@ Supported attributes are:</p>
   
     
   
+    
+  
+    
+  
   
     
   
@@ -315,10 +319,10 @@ Supported attributes are:</p>
           md-placeholder
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>The date input placeholder value.</p>
 
@@ -333,10 +337,10 @@ Supported attributes are:</p>
           md-open-on-focus
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>When present, the calendar will be opened when the input
  is focused.</p>
@@ -371,10 +375,10 @@ Supported attributes are:</p>
           md-current-view
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Default open view of the calendar pane. Can be either
  &quot;month&quot; or &quot;year&quot;.</p>
@@ -390,10 +394,10 @@ Supported attributes are:</p>
           md-mode
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Restricts the user to only selecting a value from a particular view.
  This option can be used if the user is only supposed to choose from a certain date type
@@ -411,10 +415,10 @@ Can be either &quot;month&quot; or &quot;day&quot;. <strong>Note</strong> that t
           md-hide-icons
           
           <span hide show-sm>
-<code class="api-type label type-hint type-hint-string">String</code></span>
+<code class="api-type label type-hint type-hint-string">string</code></span>
         </td>
         <td style="white-space: nowrap;">
-<code class="api-type label type-hint type-hint-string">String</code></td>
+<code class="api-type label type-hint type-hint-string">string</code></td>
         <td class="description">
           <p>Determines which datepicker icons should be hidden. Note that
  this may cause the datepicker to not align properly with other components.
@@ -444,6 +448,51 @@ Can be either &quot;month&quot; or &quot;day&quot;. <strong>Note</strong> that t
           <p>Allows for the values from the <code>$mdDateLocaleProvider</code> to be
 overwritten on a per-element basis (e.g. <code>msgOpenCalendar</code> can be overwritten with
 <code>md-date-locale=&quot;{ msgOpenCalendar: &#39;Open a special calendar&#39; }&quot;</code>).</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-describedby
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A space-separated list of element IDs. This should
+ contain the IDs of any elements that describe this datepicker. Screen readers will read the
+ content of these elements at the end of announcing that the datepicker has been selected
+ and describing its current state. The descriptive elements do not need to be visible on the
+ page.</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          input-aria-labelledby
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-string">string</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-string">string</code></td>
+        <td class="description">
+          <p>A space-separated list of element IDs. The ideal use
+ case is that this would contain the ID of a <code>&lt;label&gt;</code> element should be associated with this
+ datepicker. This is necessary when using <code>md-datepicker</code> inside of an <code>md-input-container</code>
+ with a <code>&lt;label&gt;</code>.<br><br>
+ For <code>&lt;label id=&quot;start-date&quot;&gt;Start Date&lt;/label&gt;</code>, you would set this to
+ <code>input-aria-labelledby=&quot;start-date&quot;</code>.</p>
 
           
         </td>
