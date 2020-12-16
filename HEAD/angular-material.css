@@ -3472,7 +3472,7 @@ md-input-container:not([md-no-float]) .md-select-placeholder span:first-child {
   [dir=rtl] md-input-container:not([md-no-float]) .md-select-placeholder span:first-child {
     transform-origin: right top; }
 
-md-input-container.md-input-focused:not([md-no-float]) .md-select-placeholder span:first-child {
+md-input-container.md-input-focused:not([md-no-float]) md-select:not([placeholder]) .md-select-placeholder span:first-child {
   transform: translate(-2px, -22px) scale(0.75); }
 
 .md-select-menu-container {
