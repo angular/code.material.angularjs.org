@@ -1,100 +1,88 @@
-angular.module('bottomSheetDemo1', ['ngMaterial'])
-.config(function($mdIconProvider) {
-    $mdIconProvider
-      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
-      .icon('upload', 'img/icons/upload.svg', 24)
-      .icon('copy', 'img/icons/copy.svg', 24)
-      .icon('print', 'img/icons/print.svg', 24)
-      .icon('hangout', 'img/icons/hangout.svg', 24)
-      .icon('mail', 'img/icons/mail.svg', 24)
-      .icon('message', 'img/icons/message.svg', 24)
-      .icon('copy2', 'img/icons/copy2.svg', 24)
-      .icon('facebook', 'img/icons/facebook.svg', 24)
-      .icon('twitter', 'img/icons/twitter.svg', 24);
-  })
-.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
-  $scope.alert = '';
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
 
-  $scope.showListBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-list-template.html',
-      controller: 'ListBottomSheetCtrl'
-    }).then(function(clickedItem) {
-      $scope.alert = clickedItem['name'] + ' clicked!';
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
 
-  $scope.showGridBottomSheet = function() {
-    $scope.alert = '';
-    $mdBottomSheet.show({
-      templateUrl: 'bottom-sheet-grid-template.html',
-      controller: 'GridBottomSheetCtrl',
-      clickOutsideToClose: false
-    }).then(function(clickedItem) {
-      $mdToast.show(
-            $mdToast.simple()
-              .textContent(clickedItem['name'] + ' clicked!')
-              .position('top right')
-              .hideDelay(1500)
-          );
-    }).catch(function(error) {
-      // User clicked outside or hit escape
-    });
-  };
-})
+    self.simulateQuery = false;
+    self.isDisabled    = false;
 
-.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
 
-  $scope.items = [
-    { name: 'Share', icon: 'share' },
-    { name: 'Upload', icon: 'upload' },
-    { name: 'Copy', icon: 'copy' },
-    { name: 'Print this page', icon: 'print' },
-  ];
+    self.newState = newState;
 
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
-  $scope.items = [
-    { name: 'Hangout', icon: 'hangout' },
-    { name: 'Mail', icon: 'mail' },
-    { name: 'Message', icon: 'message' },
-    { name: 'Copy', icon: 'copy2' },
-    { name: 'Facebook', icon: 'facebook' },
-    { name: 'Twitter', icon: 'twitter' },
-  ];
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
 
-  $scope.listItemClick = function($index) {
-    var clickedItem = $scope.items[$index];
-    $mdBottomSheet.hide(clickedItem);
-  };
-})
-.run(function($templateRequest) {
+    // ******************************
+    // Internal methods
+    // ******************************
 
-    var urls = [
-      'img/icons/baseline-share-24px.svg',
-      'img/icons/upload.svg',
-      'img/icons/copy.svg',
-      'img/icons/print.svg',
-      'img/icons/hangout.svg',
-      'img/icons/mail.svg',
-      'img/icons/message.svg',
-      'img/icons/copy2.svg',
-      'img/icons/facebook.svg',
-      'img/icons/twitter.svg'
-    ];
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter(createFilterFor(query)) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
 
-    angular.forEach(urls, function(url) {
-      $templateRequest(url);
-    });
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
 
-  });
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
 
 (function () {
   'use strict';
@@ -197,92 +185,6 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter(createFilterFor(query)) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -438,6 +340,20 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   }
 })();
 
+
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = false;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+
+});
+
 (function () {
   'use strict';
   angular
@@ -557,31 +473,103 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
   }
 })();
 
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
+angular.module('bottomSheetDemo1', ['ngMaterial'])
+.config(function($mdIconProvider) {
+    $mdIconProvider
+      .icon('share', 'img/icons/baseline-share-24px.svg', 24)
+      .icon('upload', 'img/icons/upload.svg', 24)
+      .icon('copy', 'img/icons/copy.svg', 24)
+      .icon('print', 'img/icons/print.svg', 24)
+      .icon('hangout', 'img/icons/hangout.svg', 24)
+      .icon('mail', 'img/icons/mail.svg', 24)
+      .icon('message', 'img/icons/message.svg', 24)
+      .icon('copy2', 'img/icons/copy2.svg', 24)
+      .icon('facebook', 'img/icons/facebook.svg', 24)
+      .icon('twitter', 'img/icons/twitter.svg', 24);
+  })
+.controller('BottomSheetExample', function($scope, $timeout, $mdBottomSheet, $mdToast) {
+  $scope.alert = '';
 
-angular.module('buttonsDemoDense', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
+  $scope.showListBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-list-template.html',
+      controller: 'ListBottomSheetCtrl'
+    }).then(function(clickedItem) {
+      $scope.alert = clickedItem['name'] + ' clicked!';
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
 
+  $scope.showGridBottomSheet = function() {
+    $scope.alert = '';
+    $mdBottomSheet.show({
+      templateUrl: 'bottom-sheet-grid-template.html',
+      controller: 'GridBottomSheetCtrl',
+      clickOutsideToClose: false
+    }).then(function(clickedItem) {
+      $mdToast.show(
+            $mdToast.simple()
+              .textContent(clickedItem['name'] + ' clicked!')
+              .position('top right')
+              .hideDelay(1500)
+          );
+    }).catch(function(error) {
+      // User clicked outside or hit escape
+    });
+  };
+})
 
-angular.module('checkboxDemo1', ['ngMaterial'])
+.controller('ListBottomSheetCtrl', function($scope, $mdBottomSheet) {
 
-.controller('AppCtrl', function($scope) {
+  $scope.items = [
+    { name: 'Share', icon: 'share' },
+    { name: 'Upload', icon: 'upload' },
+    { name: 'Copy', icon: 'copy' },
+    { name: 'Print this page', icon: 'print' },
+  ];
 
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = false;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.controller('GridBottomSheetCtrl', function($scope, $mdBottomSheet) {
+  $scope.items = [
+    { name: 'Hangout', icon: 'hangout' },
+    { name: 'Mail', icon: 'mail' },
+    { name: 'Message', icon: 'message' },
+    { name: 'Copy', icon: 'copy2' },
+    { name: 'Facebook', icon: 'facebook' },
+    { name: 'Twitter', icon: 'twitter' },
+  ];
 
-});
+  $scope.listItemClick = function($index) {
+    var clickedItem = $scope.items[$index];
+    $mdBottomSheet.hide(clickedItem);
+  };
+})
+.run(function($templateRequest) {
+
+    var urls = [
+      'img/icons/baseline-share-24px.svg',
+      'img/icons/upload.svg',
+      'img/icons/copy.svg',
+      'img/icons/print.svg',
+      'img/icons/hangout.svg',
+      'img/icons/mail.svg',
+      'img/icons/message.svg',
+      'img/icons/copy2.svg',
+      'img/icons/facebook.svg',
+      'img/icons/twitter.svg'
+    ];
+
+    angular.forEach(urls, function(url) {
+      $templateRequest(url);
+    });
+
+  });
 
 angular.module('checkboxDemo1', ['ngMaterial'])
 
@@ -632,6 +620,18 @@ angular.module('checkboxDemo3', ['ngMaterial'])
   };
 });
 
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
+
+angular.module('buttonsDemoDense', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
+
 
 angular.module('checkboxDemo2', ['ngMaterial'])
 
@@ -669,18 +669,18 @@ angular.module('cardDemo1', ['ngMaterial'])
 });
 
 
-angular.module('cardDemo2', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
-});
-
-
 angular.module('cardDemo3', ['ngMaterial'])
 
 .config(['$mdIconProvider', function($mdIconProvider) {
   $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
 }])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
+angular.module('cardDemo2', ['ngMaterial'])
+
 .controller('AppCtrl', function($scope) {
   $scope.imagePath = 'img/washedout.png';
 });
@@ -1019,6 +1019,11 @@ angular.module('colorsDemo', ['ngMaterial'])
     };
   });
 
+angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
+  this.myDate = new Date();
+  this.isOpen = false;
+});
+
 angular
   .module('colorsThemePickerDemo', ['ngMaterial'])
   .controller('ThemeDemoCtrl', function ($scope, $mdColorPalette) {
@@ -1080,16 +1085,41 @@ angular.module('contentDemo1', ['ngMaterial'])
 
 });
 
-angular.module('datepickerBasicUsage', ['ngMaterial', 'ngMessages']).controller('AppCtrl', function() {
-  this.myDate = new Date();
-  this.isOpen = false;
-});
-
 angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() {
   this.startDate = new Date();
   this.endDate = new Date();
   this.endDate.setDate(this.endDate.getDate() + 5);
 });
+
+(function () {
+  'use strict';
+
+  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
+    /**
+     * @param date {Date}
+     * @returns {string} string representation of the provided date
+     */
+    $mdDateLocaleProvider.formatDate = function(date) {
+      return date ? moment(date).format('L') : '';
+    };
+
+    /**
+     * @param dateString {string} string that can be converted to a Date
+     * @returns {Date} JavaScript Date object created from the provided dateString
+     */
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+      var m = moment(dateString, 'L', true);
+      return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+  })
+  .controller("AppCtrl", function($log) {
+    this.myDate = new Date();
+
+    this.onDateChanged = function() {
+      $log.log('Updated Date: ', this.myDate);
+    };
+  });
+})();
 
 (function () {
   'use strict';
@@ -1135,35 +1165,14 @@ angular.module('calendarDemo', ['ngMaterial']).controller('AppCtrl', function() 
   });
 })();
 
-(function () {
-  'use strict';
+angular.module('ngModelTimezoneUsage', ['ngMaterial', 'ngMessages'])
+.controller('AppCtrl', function() {
+  this.datepickerDate = new Date(0);
+  this.datepickerDate.setUTCFullYear(2020, 5, 19);
 
-  angular.module('datepickerMoment', ['ngMaterial']).config(function($mdDateLocaleProvider) {
-    /**
-     * @param date {Date}
-     * @returns {string} string representation of the provided date
-     */
-    $mdDateLocaleProvider.formatDate = function(date) {
-      return date ? moment(date).format('L') : '';
-    };
-
-    /**
-     * @param dateString {string} string that can be converted to a Date
-     * @returns {Date} JavaScript Date object created from the provided dateString
-     */
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, 'L', true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
-  })
-  .controller("AppCtrl", function($log) {
-    this.myDate = new Date();
-
-    this.onDateChanged = function() {
-      $log.log('Updated Date: ', this.myDate);
-    };
-  });
-})();
+  this.calendarDate = new Date(0);
+  this.calendarDate.setUTCFullYear(2020, 5, 19);
+});
 
 angular.module('datepickerValidations', ['ngMaterial', 'ngMessages'])
 .controller('AppCtrl', function() {
@@ -1197,15 +1206,6 @@ angular.module('datepickerValidations', ['ngMaterial', 'ngMessages'])
   this.evenMonthsPredicate = function(date) {
     return date.getMonth() % 2 !== 0;
   };
-});
-
-angular.module('ngModelTimezoneUsage', ['ngMaterial', 'ngMessages'])
-.controller('AppCtrl', function() {
-  this.datepickerDate = new Date(0);
-  this.datepickerDate.setUTCFullYear(2020, 5, 19);
-
-  this.calendarDate = new Date(0);
-  this.calendarDate.setUTCFullYear(2020, 5, 19);
 });
 
 angular.module('dialogDemo1', ['ngMaterial'])
@@ -1360,6 +1360,42 @@ angular.module('dialogDemo2', ['ngMaterial'])
   };
 });
 
+angular.module('dividerDemo1', ['ngMaterial'])
+  .controller('AppCtrl', function($scope) {
+    var imagePath = 'img/60.jpeg';
+    $scope.messages = [{
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }, {
+      face : imagePath,
+      what: 'Brunch this weekend?',
+      who: 'Min Li Chan',
+      when: '3:08PM',
+      notes: " I'll be in your neighborhood doing errands"
+    }];
+  });
+
 angular.module('dialogDemo3', ['ngMaterial'])
   .config(function ($mdThemingProvider) {
     $mdThemingProvider.theme('red')
@@ -1409,42 +1445,6 @@ angular.module('dialogDemo3', ['ngMaterial'])
     };
   }
 });
-
-angular.module('dividerDemo1', ['ngMaterial'])
-  .controller('AppCtrl', function($scope) {
-    var imagePath = 'img/60.jpeg';
-    $scope.messages = [{
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }, {
-      face : imagePath,
-      what: 'Brunch this weekend?',
-      who: 'Min Li Chan',
-      when: '3:08PM',
-      notes: " I'll be in your neighborhood doing errands"
-    }];
-  });
 
 (function() {
   'use strict';
@@ -2092,6 +2092,21 @@ angular.module('menuDemoWidth', ['ngMaterial']).config(function($mdIconProvider)
   };
 });
 
+(function() {
+  'use strict';
+
+  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
+      .controller('AppCtrl', AppCtrl);
+
+  function AppCtrl($scope) {
+    $scope.currentNavItem = 'page1';
+
+    $scope.goto = function(page) {
+      $scope.status = "Goto " + page;
+    };
+  }
+})();
+
 angular
   .module('menuBarDemoBasic', ['ngMaterial'])
   .config(function($mdIconProvider) {
@@ -2213,21 +2228,6 @@ angular
       $log.log(item);
     };
   });
-
-(function() {
-  'use strict';
-
-  angular.module('navBarDemoBasicUsage', ['ngMaterial'])
-      .controller('AppCtrl', AppCtrl);
-
-  function AppCtrl($scope) {
-    $scope.currentNavItem = 'page1';
-
-    $scope.goto = function(page) {
-      $scope.status = "Goto " + page;
-    };
-  }
-})();
 
 (function() {
 'use strict';
@@ -3009,103 +3009,6 @@ angular
     };
   });
 
-angular
-  .module('basicUsageSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.toggleLeft = buildDelayedToggler('left');
-    $scope.toggleRight = buildToggler('right');
-    $scope.isOpenRight = function(){
-      return $mdSidenav('right').isOpen();
-    };
-
-    /**
-     * Supplies a function that will continue to operate until the
-     * time is up.
-     */
-    function debounce(func, wait, context) {
-      var timer;
-
-      return function debounced() {
-        var context = $scope,
-            args = Array.prototype.slice.call(arguments);
-        $timeout.cancel(timer);
-        timer = $timeout(function() {
-          timer = undefined;
-          func.apply(context, args);
-        }, wait || 10);
-      };
-    }
-
-    /**
-     * Build handler to open/close a SideNav; when animation finishes
-     * report completion in console
-     */
-    function buildDelayedToggler(navID) {
-      return debounce(function() {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
-          });
-      }, 200);
-    }
-
-    function buildToggler(navID) {
-      return function() {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
-          });
-      };
-    }
-  })
-  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('left').close()
-        .then(function () {
-          $log.debug("close LEFT is done");
-        });
-
-    };
-  })
-  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('right').close()
-        .then(function () {
-          $log.debug("close RIGHT is done");
-        });
-    };
-  });
-
-angular
-  .module('customSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleLeft = buildToggler('left');
-
-    function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      };
-    }
-  });
-
-angular
-  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
-
-    function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      };
-    }
-  });
-
 (function () {
   'use strict';
   angular
@@ -3255,6 +3158,103 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
     }
   };
 });
+
+angular
+  .module('basicUsageSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.toggleLeft = buildDelayedToggler('left');
+    $scope.toggleRight = buildToggler('right');
+    $scope.isOpenRight = function(){
+      return $mdSidenav('right').isOpen();
+    };
+
+    /**
+     * Supplies a function that will continue to operate until the
+     * time is up.
+     */
+    function debounce(func, wait, context) {
+      var timer;
+
+      return function debounced() {
+        var context = $scope,
+            args = Array.prototype.slice.call(arguments);
+        $timeout.cancel(timer);
+        timer = $timeout(function() {
+          timer = undefined;
+          func.apply(context, args);
+        }, wait || 10);
+      };
+    }
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildDelayedToggler(navID) {
+      return debounce(function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
+
+    function buildToggler(navID) {
+      return function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      };
+    }
+  })
+  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+        });
+
+    };
+  })
+  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('right').close()
+        .then(function () {
+          $log.debug("close RIGHT is done");
+        });
+    };
+  });
+
+angular
+  .module('customSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
+
+angular
+  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
 
 angular.module('sliderDemoBasic', ['ngMaterial'])
   .config(function ($mdIconProvider) {
@@ -3709,14 +3709,29 @@ angular.module('tabsDemoDynamicHeight', ['ngMaterial']);
   }
 })();
 
+angular.module('tooltipDemo', ['ngMaterial'])
+    .controller('AppCtrl', AppCtrl);
+
+function AppCtrl($scope) {
+  $scope.demo = {
+    showTooltip: false,
+    tipDirection: 'bottom'
+  };
+
+  $scope.demo.delayTooltip = undefined;
+  $scope.$watch('demo.delayTooltip', function(val) {
+    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
+  });
+}
+
+angular.module('inputsInToolbarDemo', ['ngMaterial'])
+.controller('DemoCtrl', function($scope) {});
+
 angular.module('toolbarDemoBasic', ['ngMaterial'])
 
 .controller('BasicDemoCtrl', function($scope) {
 
 });
-
-angular.module('inputsInToolbarDemo', ['ngMaterial'])
-.controller('DemoCtrl', function($scope) {});
 
 angular.module('toolbarDemo2', ['ngMaterial'])
 
@@ -3736,21 +3751,6 @@ angular.module('toolbarDemo2', ['ngMaterial'])
     });
   }
 });
-
-angular.module('tooltipDemo', ['ngMaterial'])
-    .controller('AppCtrl', AppCtrl);
-
-function AppCtrl($scope) {
-  $scope.demo = {
-    showTooltip: false,
-    tipDirection: 'bottom'
-  };
-
-  $scope.demo.delayTooltip = undefined;
-  $scope.$watch('demo.delayTooltip', function(val) {
-    $scope.demo.delayTooltip = parseInt(val, 10) || 0;
-  });
-}
 
 (function () {
   'use strict';
