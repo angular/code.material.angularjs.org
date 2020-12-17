@@ -9541,6 +9541,7 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
 
   /**
    * Handles input blur event, determines if the dropdown should hide.
+   * @param {Event=} $event
    */
   function blur($event) {
     hasFocus = false;
@@ -9548,6 +9549,8 @@ function MdAutocompleteCtrl ($scope, $element, $mdUtil, $mdConstant, $mdTheming,
     if (!noBlur) {
       ctrl.hidden = shouldHide();
       evalAttr('ngBlur', { $event: $event });
+    } else if (angular.isObject($event)) {
+      $event.stopImmediatePropagation();
     }
   }
 
