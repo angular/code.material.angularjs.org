@@ -19530,8 +19530,14 @@ function MdDividerDirective($mdTheming) {
 
       compile: function(element, attributes) {
         var children = element.children();
-
+        var actionItemButtons;
         var hasNgRepeat = $mdUtil.prefixer().hasAttribute(children, 'ng-repeat');
+
+        // Action item buttons should not be in the tab order when the speed dial is closed.
+        actionItemButtons = element.find('md-button');
+        angular.forEach(actionItemButtons, function(button) {
+          button.setAttribute('tabindex', -1);
+        });
 
         // Support both ng-repeat and static content
         if (hasNgRepeat) {
@@ -19543,7 +19549,6 @@ function MdDividerDirective($mdTheming) {
       }
     };
   }
-
 })();
 
 })();
