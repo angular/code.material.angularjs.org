@@ -1,0 +1,48 @@
+.errors {
+  font-size: 12px;
+  color: rgb(221,44,0);
+  margin-top: 10px;
+}
+.demo-long-fruit-input {
+  min-width: 340px;
+}
+.custom-chips {
+  md-chip {
+    position: relative;
+    padding-right: 24px;
+
+    .md-chip-remove-container {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      margin-right: 0;
+      height: 26px;
+      display: none;
+
+      button.demo-remove-vegetable-chip {
+        position: relative;
+        height: 24px;
+        width: 24px;
+        line-height: 30px;
+        background: transparent;
+        border: none;
+        padding: 0;
+
+        md-icon {
+          transform: translate(0, -3px) scale(0.75);
+          fill: rgba(0, 0, 0, 0.33);
+        }
+      }
+    }
+    &:hover:not(.md-readonly) .md-chip-remove-container {
+      display: block;
+    }
+    &.md-focused:not(.md-readonly) .md-chip-remove-container {
+      display: block;
+
+      button.demo-remove-vegetable-chip md-icon {
+        fill: rgba(255, 255, 255, 0.87);
+      }
+    }
+  }
+}

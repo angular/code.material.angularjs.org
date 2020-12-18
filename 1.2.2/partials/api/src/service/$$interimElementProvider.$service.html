@@ -1,0 +1,336 @@
+<div class="doc-content">
+
+
+
+<header class="api-profile-header" >
+  <h2 class="md-display-1" >{{currentDoc.name}} API Documentation</h2>
+  
+  
+
+</header>
+
+
+
+<div layout="row" class="api-options-bar with-icon"></div>
+
+
+<div class="api-profile-description">
+  <p>A service used to control inserting and removing of an element from the DOM.
+It is used by $mdBottomSheet, $mdDialog, $mdToast, $mdMenu, $mdPanel, and $mdSelect.</p>
+
+</div>
+
+
+<div>
+  
+
+  
+
+
+
+  
+
+  
+<section class="api-section">
+  <h2>Methods</h2>
+  <br/>
+  <ul class="methods">
+    <li id="show">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$interimElementProvider.$service.show(options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Adds the <code>$interimElement</code> to the DOM and returns a special promise that will be resolved
+or rejected with hide or cancel, respectively.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">Object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">Object</code></td>
+        <td class="description">
+          <p>map of options and values</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">Promise</code></td>
+    <td class="description"><p>a Promise that will be resolved when hide() is called or rejected when
+ cancel() is called.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="hide">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$interimElementProvider.$service.hide(reason, options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes the <code>$interimElement</code> from the DOM and resolves the Promise returned from <code>show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* reason</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>Data used to resolve the Promise</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>map of options and values</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">Promise</code></td>
+    <td class="description"><p>a Promise that will be resolved after the element has been removed
+ from the DOM.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="cancel">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$interimElementProvider.$service.cancel(reason, options);
+</code>
+      </h3>
+      <div class="service-desc"><p>Removes the <code>$interimElement</code> from the DOM and rejects the Promise returned from <code>show()</code>.</p>
+</div>
+
+      <div class="method-param-table">
+
+      
+      
+<table class="md-api-table">
+  <thead>
+    <tr>
+      <th>Parameter</th>
+      <th>Type</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+  
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* reason</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">*</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">*</code></td>
+        <td class="description">
+          <p>Data used to resolve the Promise</p>
+
+          
+        </td>
+      </tr>
+    
+  
+    
+      <tr class="api-params-item">
+        <td style="white-space: nowrap;">
+          <b>* options</b>
+          
+          <span hide show-sm>
+<code class="api-type label type-hint type-hint-object">object</code></span>
+        </td>
+        <td style="white-space: nowrap;">
+<code class="api-type label type-hint type-hint-object">object</code></td>
+        <td class="description">
+          <p>map of options and values</p>
+
+          
+        </td>
+      </tr>
+    
+  
+  
+    
+  
+    
+  
+
+  </tbody>
+</table>
+
+      
+
+      
+
+      
+      <table class="md-api-table">
+  <thead>
+  <tr>
+    <th>Returns</th>
+    <th>Description</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+<code class="api-type label type-hint type-hint-promise">Promise</code></td>
+    <td class="description"><p>Promise that will be resolved after the element has been removed
+ from the DOM.</p>
+</td>
+  </tr>
+  </tbody>
+</table>
+      
+
+      </div>
+
+    </li>
+    
+    <li id="destroy">
+      <h3 class="method-function-syntax">
+        <code class="method-function-syntax">$$interimElementProvider.$service.destroy();
+</code>
+      </h3>
+      <div class="service-desc"></div>
+
+      <div class="method-param-table">
+
+      
+
+      
+
+      
+
+      </div>
+
+    </li>
+    </ul>
+</section>
+  
+  
+
+
+
+  
+</div>
+
+
+</div>
