@@ -221,6 +221,10 @@
       {
         "source": "/1.2.1/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
         "destination": "/1.2.1/index.html"
+      },
+      {
+        "source": "/1.2.2/**/!(*.@(js|html|css|json|svg|png|jpg|jpeg))",
+        "destination": "/1.2.2/index.html"
       }
     ],
     "redirects": [
