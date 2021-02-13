@@ -323,13 +323,6 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
     '      Long Term Support (LTS) mode</a>.\n' +
     '    </p>\n' +
-    '    <ul>\n' +
-    '      <li>\n' +
-    '        Current development efforts are focused on bug fixes, accessibility, performance, and minor\n' +
-    '        enhancements.\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '    <br/>\n' +
     '    <i>\n' +
     '      The Angular Material and Component Dev Kit (CDK) libraries (for Angular v2+) can be found in the\n' +
     '      <a href="https://github.com/angular/components" target="_blank" rel="noopener">angular/components</a>\n' +
