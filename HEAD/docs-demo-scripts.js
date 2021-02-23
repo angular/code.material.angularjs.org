@@ -258,91 +258,6 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl($mdDialog) {
-    var self = this;
-
-    self.openDialog = function($event) {
-      $mdDialog.show({
-        controller: DialogCtrl,
-        controllerAs: 'ctrl',
-        templateUrl: 'dialog.tmpl.html',
-        parent: angular.element(document.body),
-        targetEvent: $event,
-        clickOutsideToClose:true
-      });
-    };
-  }
-
-  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
-    var self = this;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-
-    // ******************************
-    // Template methods
-    // ******************************
-
-    self.cancel = function($event) {
-      $mdDialog.cancel();
-    };
-    self.finish = function($event) {
-      $mdDialog.hide();
-    };
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      return query ? self.states.filter(createFilterFor(query)) : self.states;
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteRepeatModeDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -453,6 +368,91 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemoInsideDialog', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl($mdDialog) {
+    var self = this;
+
+    self.openDialog = function($event) {
+      $mdDialog.show({
+        controller: DialogCtrl,
+        controllerAs: 'ctrl',
+        templateUrl: 'dialog.tmpl.html',
+        parent: angular.element(document.body),
+        targetEvent: $event,
+        clickOutsideToClose:true
+      });
+    };
+  }
+
+  function DialogCtrl ($timeout, $q, $scope, $mdDialog) {
+    var self = this;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+
+    // ******************************
+    // Template methods
+    // ******************************
+
+    self.cancel = function($event) {
+      $mdDialog.cancel();
+    };
+    self.finish = function($event) {
+      $mdDialog.hide();
+    };
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      return query ? self.states.filter(createFilterFor(query)) : self.states;
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -590,6 +590,16 @@ angular.module('cardDemo2', ['ngMaterial'])
 });
 
 
+angular.module('cardDemo3', ['ngMaterial'])
+
+.config(['$mdIconProvider', function($mdIconProvider) {
+  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
+}])
+.controller('AppCtrl', function($scope) {
+  $scope.imagePath = 'img/washedout.png';
+});
+
+
 angular.module('checkboxDemo1', ['ngMaterial'])
 
 .controller('AppCtrl', function($scope) {
@@ -612,16 +622,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
   $scope.data.cb3 = false;
   $scope.data.cb4 = false;
   $scope.data.cb5 = false;
-});
-
-
-angular.module('cardDemo3', ['ngMaterial'])
-
-.config(['$mdIconProvider', function($mdIconProvider) {
-  $mdIconProvider.icon('md-toggle-arrow', 'img/icons/toggle-arrow.svg', 48);
-}])
-.controller('AppCtrl', function($scope) {
-  $scope.imagePath = 'img/washedout.png';
 });
 
 
@@ -1771,6 +1771,18 @@ angular.module('inputErrorsApp', ['ngMaterial', 'ngMessages'])
   };
 });
 
+angular
+  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
+  .controller('DemoCtrl', function($scope) {
+    $scope.user = {
+      name: 'John Doe',
+      email: '',
+      phone: '',
+      address: 'Mountain View, CA',
+      donation: 19.99
+    };
+  });
+
 angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
 
   .controller('AppCtrl', function($scope) {
@@ -1781,18 +1793,6 @@ angular.module('inputErrorsAdvancedApp', ['ngMaterial', 'ngMessages'])
       email: "",
       social: "123456789",
       phone: "N/A"
-    };
-  });
-
-angular
-  .module('inputIconDemo', ['ngMaterial', 'ngMessages'])
-  .controller('DemoCtrl', function($scope) {
-    $scope.user = {
-      name: 'John Doe',
-      email: '',
-      phone: '',
-      address: 'Mountain View, CA',
-      donation: 19.99
     };
   });
 
@@ -2878,37 +2878,55 @@ angular
     }
   ]);
 
-angular
-  .module('radioMultiColumnDemo', ['ngMaterial'])
-  .controller('ContactController', function($scope, $filter) {
-    var self = this;
+angular.module('progressLinearDemo1', ['ngMaterial'])
+  .config(function($mdThemingProvider) {
+  })
+  .controller('AppCtrl', ['$scope', '$interval', function($scope, $interval) {
+    var self = this, j= 0, counter = 0;
 
-    self.contacts = [{
-      'id': 1,
-      'fullName': 'María Guadalupe',
-      'lastName': 'Guadalupe',
-      'title': "CEO, Found"
-    }, {
-      'id': 2,
-      'fullName': 'Gabriel García Márquez',
-      'lastName': 'Márquez',
-      'title': "VP Sales & Marketing"
-    }, {
-      'id': 3,
-      'fullName': 'Miguel de Cervantes',
-      'lastName': 'Cervantes',
-      'title': "Manager, Operations"
-    }, {
-      'id': 4,
-      'fullName': 'Pacorro de Castel',
-      'lastName': 'Castel',
-      'title': "Security"
-    }];
-    self.selectedId = 2;
-    self.selectedUser = function() {
-      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    self.mode = 'query';
+    self.activated = true;
+    self.determinateValue = 30;
+    self.determinateValue2 = 30;
+
+    self.showList = [];
+
+    /**
+     * Turn off or on the 5 themed loaders
+     */
+    self.toggleActivation = function() {
+        if (!self.activated) self.showList = [];
+        if (self.activated) {
+          j = counter = 0;
+          self.determinateValue = 30;
+          self.determinateValue2 = 30;
+        }
     };
-  });
+
+    $interval(function() {
+      self.determinateValue += 1;
+      self.determinateValue2 += 1.5;
+
+      if (self.determinateValue > 100) self.determinateValue = 30;
+      if (self.determinateValue2 > 100) self.determinateValue2 = 30;
+
+        // Incrementally start animation the five (5) Indeterminate,
+        // themed progress circular bars
+
+        if ((j < 2) && !self.showList[j] && self.activated) {
+          self.showList[j] = true;
+        }
+        if (counter++ % 4 === 0) j++;
+
+        // Show the indicator in the "Used within Containers" after 200ms delay
+        if (j == 2) self.contained = "indeterminate";
+
+    }, 100, 0, true);
+
+    $interval(function() {
+      self.mode = (self.mode == 'query' ? 'determinate' : 'query');
+    }, 7200, 0, true);
+  }]);
 
 angular
   .module('radioDemo1', ['ngMaterial'])
@@ -2959,6 +2977,38 @@ angular
     $mdIconProvider.iconSet("avatars", 'icons/avatar-icons.svg',128);
   });
 
+angular
+  .module('radioMultiColumnDemo', ['ngMaterial'])
+  .controller('ContactController', function($scope, $filter) {
+    var self = this;
+
+    self.contacts = [{
+      'id': 1,
+      'fullName': 'María Guadalupe',
+      'lastName': 'Guadalupe',
+      'title': "CEO, Found"
+    }, {
+      'id': 2,
+      'fullName': 'Gabriel García Márquez',
+      'lastName': 'Márquez',
+      'title': "VP Sales & Marketing"
+    }, {
+      'id': 3,
+      'fullName': 'Miguel de Cervantes',
+      'lastName': 'Cervantes',
+      'title': "Manager, Operations"
+    }, {
+      'id': 4,
+      'fullName': 'Pacorro de Castel',
+      'lastName': 'Castel',
+      'title': "Security"
+    }];
+    self.selectedId = 2;
+    self.selectedUser = function() {
+      return $filter('filter')(self.contacts, { id: self.selectedId })[0].lastName;
+    };
+  });
+
 (function () {
   'use strict';
   angular
@@ -2971,56 +3021,6 @@ angular
       'WY').split(' ').map(function (state) { return { abbrev: state }; });
   });
 })();
-
-angular.module('progressLinearDemo1', ['ngMaterial'])
-  .config(function($mdThemingProvider) {
-  })
-  .controller('AppCtrl', ['$scope', '$interval', function($scope, $interval) {
-    var self = this, j= 0, counter = 0;
-
-    self.mode = 'query';
-    self.activated = true;
-    self.determinateValue = 30;
-    self.determinateValue2 = 30;
-
-    self.showList = [];
-
-    /**
-     * Turn off or on the 5 themed loaders
-     */
-    self.toggleActivation = function() {
-        if (!self.activated) self.showList = [];
-        if (self.activated) {
-          j = counter = 0;
-          self.determinateValue = 30;
-          self.determinateValue2 = 30;
-        }
-    };
-
-    $interval(function() {
-      self.determinateValue += 1;
-      self.determinateValue2 += 1.5;
-
-      if (self.determinateValue > 100) self.determinateValue = 30;
-      if (self.determinateValue2 > 100) self.determinateValue2 = 30;
-
-        // Incrementally start animation the five (5) Indeterminate,
-        // themed progress circular bars
-
-        if ((j < 2) && !self.showList[j] && self.activated) {
-          self.showList[j] = true;
-        }
-        if (counter++ % 4 === 0) j++;
-
-        // Show the indicator in the "Used within Containers" after 200ms delay
-        if (j == 2) self.contained = "indeterminate";
-
-    }, 100, 0, true);
-
-    $interval(function() {
-      self.mode = (self.mode == 'query' ? 'determinate' : 'query');
-    }, 7200, 0, true);
-  }]);
 
 angular
     .module('selectDemoOptGroups', ['ngMaterial'])
