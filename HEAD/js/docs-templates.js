@@ -164,7 +164,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '      <li style="margin-bottom: 30px;">\n' +
     '        Checkout the <a href="https://github.com/angular/material-start/tree/typescript" target="_blank"\n' +
-    '           title="Material Start - Typescript and SystemJS">AngularJS Material TypeScript + SystemJS</a>\n' +
+    '           title="Material Start - Typescript and SystemJS">AngularJS Material + TypeScript + SystemJS</a>\n' +
     '        repository\n' +
     '      </li>\n' +
     '      <li>Use the "Edit on CodePen" button on any of our Demos<br/>\n' +
@@ -179,17 +179,9 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <a href="https://codepen.io/team/AngularMaterial/" target="_blank"\n' +
     '         title="Codepen Community">CodePen Community</a> to explore more\n' +
     '      <a href="https://codepen.io/team/AngularMaterial/pens/public/" target="_blank">samples</a>,\n' +
-    '      <a href="https://codepen.io/team/AngularMaterial/collections/public/" target="_blank">Collections</a>, and ideas.\n' +
+    '      <a href="https://codepen.io/team/AngularMaterial/collections/public/" target="_blank">collections</a>, and ideas.\n' +
     '    </p>\n' +
-    '    <div layout-align="center" style="width: 100%">\n' +
-    '      <iframe height=\'777\' scrolling=\'no\' title="Our CodePen Community"\n' +
-    '            src=\'https://codepen.io/collection/XExqGz/\'\n' +
-    '            frameborder=\'no\' allowtransparency=\'true\' allowfullscreen=\'true\' style=\'width: 100%;\'>\n' +
-    '      </iframe>\n' +
-    '    </div>\n' +
-    '\n' +
-    '\n' +
-    '    <br/><br/>\n' +
+    '    <br/>\n' +
     '\n' +
     '    <h3>Installing the AngularJS Material Libraries</h3>\n' +
     '\n' +
