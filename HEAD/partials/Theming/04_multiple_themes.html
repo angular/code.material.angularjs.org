@@ -10,10 +10,10 @@ By default all themes will inherit from the <code>default</code> theme. Once you
 registered the second theme, you can configure it with the same chainable
 interface used on the default theme.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme(&#39;altTheme&#39;)
-    .primaryPalette(&#39;purple&#39;) // specify primary color, all
+  $mdThemingProvider.theme('altTheme')
+    .primaryPalette('purple') // specify primary color, all
                             // other color intentions will be inherited
                             // from default
 });
@@ -24,7 +24,7 @@ angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 <p>You can change the default theme to be used across your entire application using
 the provider:</p>
 <hljs lang="js">
-$mdThemingProvider.setDefaultTheme(&#39;altTheme&#39;);
+$mdThemingProvider.setDefaultTheme('altTheme');
 </hljs>
 
 <h4 id="via-a-directive">Via a Directive</h4>
@@ -51,7 +51,7 @@ need to use the <code>md-theme-watch</code> directive.</p>
   <md-button ng-click="dynamicTheme = 'default'">Default</md-button>
   <md-button ng-click="dynamicTheme = 'altTheme'">altTheme</md-button>
   <div md-theme="{{ dynamicTheme }}" md-theme-watch>
-    <md-button class="md-primary">I&#39;m dynamic</md-button>
+    <md-button class="md-primary">I'm dynamic</md-button>
   </div>
 </div>
 </hljs>
@@ -66,22 +66,21 @@ $mdThemingProvider.alwaysWatchTheme(true);
 <p>By default, every theme is generated when defined. You can disable this in the
 configuration section using the <code>$mdThemingProvider</code>.</p>
 <hljs lang="js">
-angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
+angular.module('myApp', ['ngMaterial'])
 .config(function($mdThemingProvider) {
   //disable theme generation
   $mdThemingProvider.generateThemesOnDemand(true);
 
-  //themes are still defined in config, but the css is not generated
+<p>  //themes are still defined in config, but the css is not generated
   $mdThemingProvider.theme(&#39;altTheme&#39;)
     .primaryPalette(&#39;purple&#39;)
     .accentPalette(&#39;green&#39;);
 });
-</hljs>
-
+</hljs></p>
 <p>If you do this, you must generate the theme before using it using <code>$mdTheming</code>.</p>
 <hljs lang="js">
 //generate the predefined theme named altTheme
-$mdTheming.generateTheme(&#39;altTheme&#39;);
+$mdTheming.generateTheme('altTheme');
 </hljs>
 
 <p>The theme name that is passed in must match the name of the theme that was

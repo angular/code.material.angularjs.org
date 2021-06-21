@@ -1,92 +1,6 @@
 (function () {
   'use strict';
   angular
-      .module('autocompleteDemo', ['ngMaterial'])
-      .controller('DemoCtrl', DemoCtrl);
-
-  function DemoCtrl ($timeout, $q, $log) {
-    var self = this;
-
-    self.simulateQuery = false;
-    self.isDisabled    = false;
-
-    // list of `state` value/display objects
-    self.states        = loadAll();
-    self.querySearch   = querySearch;
-    self.selectedItemChange = selectedItemChange;
-    self.searchTextChange   = searchTextChange;
-
-    self.newState = newState;
-
-    function newState(state) {
-      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
-    }
-
-    // ******************************
-    // Internal methods
-    // ******************************
-
-    /**
-     * Search for states... use $timeout to simulate
-     * remote dataservice call.
-     */
-    function querySearch (query) {
-      var results = query ? self.states.filter(createFilterFor(query)) : self.states,
-          deferred;
-      if (self.simulateQuery) {
-        deferred = $q.defer();
-        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
-        return deferred.promise;
-      } else {
-        return results;
-      }
-    }
-
-    function searchTextChange(text) {
-      $log.info('Text changed to ' + text);
-    }
-
-    function selectedItemChange(item) {
-      $log.info('Item changed to ' + JSON.stringify(item));
-    }
-
-    /**
-     * Build `states` list of key/value pairs
-     */
-    function loadAll() {
-      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
-              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
-              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
-              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
-              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
-              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
-              Wisconsin, Wyoming';
-
-      return allStates.split(/, +/g).map(function (state) {
-        return {
-          value: state.toLowerCase(),
-          display: state
-        };
-      });
-    }
-
-    /**
-     * Create filter function for a query string
-     */
-    function createFilterFor(query) {
-      var lowercaseQuery = query.toLowerCase();
-
-      return function filterFn(state) {
-        return (state.value.indexOf(lowercaseQuery) === 0);
-      };
-
-    }
-  }
-})();
-
-(function () {
-  'use strict';
-  angular
       .module('autocompleteCustomTemplateDemo', ['ngMaterial'])
       .controller('DemoCtrl', DemoCtrl);
 
@@ -185,6 +99,92 @@
 
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
+      };
+
+    }
+  }
+})();
+
+(function () {
+  'use strict';
+  angular
+      .module('autocompleteDemo', ['ngMaterial'])
+      .controller('DemoCtrl', DemoCtrl);
+
+  function DemoCtrl ($timeout, $q, $log) {
+    var self = this;
+
+    self.simulateQuery = false;
+    self.isDisabled    = false;
+
+    // list of `state` value/display objects
+    self.states        = loadAll();
+    self.querySearch   = querySearch;
+    self.selectedItemChange = selectedItemChange;
+    self.searchTextChange   = searchTextChange;
+
+    self.newState = newState;
+
+    function newState(state) {
+      alert("Sorry! You'll need to create a Constitution for " + state + " first!");
+    }
+
+    // ******************************
+    // Internal methods
+    // ******************************
+
+    /**
+     * Search for states... use $timeout to simulate
+     * remote dataservice call.
+     */
+    function querySearch (query) {
+      var results = query ? self.states.filter(createFilterFor(query)) : self.states,
+          deferred;
+      if (self.simulateQuery) {
+        deferred = $q.defer();
+        $timeout(function () { deferred.resolve(results); }, Math.random() * 1000, false);
+        return deferred.promise;
+      } else {
+        return results;
+      }
+    }
+
+    function searchTextChange(text) {
+      $log.info('Text changed to ' + text);
+    }
+
+    function selectedItemChange(item) {
+      $log.info('Item changed to ' + JSON.stringify(item));
+    }
+
+    /**
+     * Build `states` list of key/value pairs
+     */
+    function loadAll() {
+      var allStates = 'Alabama, Alaska, Arizona, Arkansas, California, Colorado, Connecticut, Delaware,\
+              Florida, Georgia, Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana,\
+              Maine, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana,\
+              Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina,\
+              North Dakota, Ohio, Oklahoma, Oregon, Pennsylvania, Rhode Island, South Carolina,\
+              South Dakota, Tennessee, Texas, Utah, Vermont, Virginia, Washington, West Virginia,\
+              Wisconsin, Wyoming';
+
+      return allStates.split(/, +/g).map(function (state) {
+        return {
+          value: state.toLowerCase(),
+          display: state
+        };
+      });
+    }
+
+    /**
+     * Create filter function for a query string
+     */
+    function createFilterFor(query) {
+      var lowercaseQuery = query.toLowerCase();
+
+      return function filterFn(state) {
+        return (state.value.indexOf(lowercaseQuery) === 0);
       };
 
     }
@@ -459,18 +459,6 @@
   }
 })();
 
-angular.module('buttonsDemoBasic', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
-angular.module('buttonsDemoDense', ['ngMaterial'])
-.controller('AppCtrl', function($scope) {
-  $scope.isDisabled = true;
-  $scope.googleUrl = 'http://google.com';
-});
-
 angular.module('bottomSheetDemo1', ['ngMaterial'])
 .config(function($mdIconProvider) {
     $mdIconProvider
@@ -569,6 +557,18 @@ angular.module('bottomSheetDemo1', ['ngMaterial'])
 
   });
 
+angular.module('buttonsDemoBasic', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
+
+angular.module('buttonsDemoDense', ['ngMaterial'])
+.controller('AppCtrl', function($scope) {
+  $scope.isDisabled = true;
+  $scope.googleUrl = 'http://google.com';
+});
+
 
 angular.module('cardDemo1', ['ngMaterial'])
 
@@ -599,6 +599,17 @@ angular.module('cardDemo3', ['ngMaterial'])
   $scope.imagePath = 'img/washedout.png';
 });
 
+angular.module('checkboxDemo1', ['ngMaterial'])
+
+.controller('AppCtrl', function($scope) {
+  $scope.data = {};
+  $scope.data.cb1 = true;
+  $scope.data.cb2 = true;
+  $scope.data.cb3 = false;
+  $scope.data.cb4 = false;
+  $scope.data.cb5 = false;
+});
+
 
 angular.module('checkboxDemo1', ['ngMaterial'])
 
@@ -611,17 +622,6 @@ angular.module('checkboxDemo1', ['ngMaterial'])
   $scope.data.cb4 = false;
   $scope.data.cb5 = false;
 
-});
-
-angular.module('checkboxDemo1', ['ngMaterial'])
-
-.controller('AppCtrl', function($scope) {
-  $scope.data = {};
-  $scope.data.cb1 = true;
-  $scope.data.cb2 = true;
-  $scope.data.cb3 = false;
-  $scope.data.cb4 = false;
-  $scope.data.cb5 = false;
 });
 
 
@@ -3009,6 +3009,103 @@ angular
     };
   });
 
+angular
+  .module('basicUsageSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.toggleLeft = buildDelayedToggler('left');
+    $scope.toggleRight = buildToggler('right');
+    $scope.isOpenRight = function(){
+      return $mdSidenav('right').isOpen();
+    };
+
+    /**
+     * Supplies a function that will continue to operate until the
+     * time is up.
+     */
+    function debounce(func, wait, context) {
+      var timer;
+
+      return function debounced() {
+        var context = $scope,
+            args = Array.prototype.slice.call(arguments);
+        $timeout.cancel(timer);
+        timer = $timeout(function() {
+          timer = undefined;
+          func.apply(context, args);
+        }, wait || 10);
+      };
+    }
+
+    /**
+     * Build handler to open/close a SideNav; when animation finishes
+     * report completion in console
+     */
+    function buildDelayedToggler(navID) {
+      return debounce(function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      }, 200);
+    }
+
+    function buildToggler(navID) {
+      return function() {
+        // Component lookup should always be available since we are not using `ng-if`
+        $mdSidenav(navID)
+          .toggle()
+          .then(function () {
+            $log.debug("toggle " + navID + " is done");
+          });
+      };
+    }
+  })
+  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('left').close()
+        .then(function () {
+          $log.debug("close LEFT is done");
+        });
+
+    };
+  })
+  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
+    $scope.close = function () {
+      // Component lookup should always be available since we are not using `ng-if`
+      $mdSidenav('right').close()
+        .then(function () {
+          $log.debug("close RIGHT is done");
+        });
+    };
+  });
+
+angular
+  .module('customSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleLeft = buildToggler('left');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
+
+angular
+  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
+  .controller('AppCtrl', function ($scope, $mdSidenav) {
+    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
+
+    function buildToggler(componentId) {
+      return function() {
+        $mdSidenav(componentId).toggle();
+      };
+    }
+  });
+
 (function () {
   'use strict';
   angular
@@ -3158,103 +3255,6 @@ angular.module('selectDemoValidation', ['ngMaterial', 'ngMessages'])
     }
   };
 });
-
-angular
-  .module('basicUsageSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.toggleLeft = buildDelayedToggler('left');
-    $scope.toggleRight = buildToggler('right');
-    $scope.isOpenRight = function(){
-      return $mdSidenav('right').isOpen();
-    };
-
-    /**
-     * Supplies a function that will continue to operate until the
-     * time is up.
-     */
-    function debounce(func, wait, context) {
-      var timer;
-
-      return function debounced() {
-        var context = $scope,
-            args = Array.prototype.slice.call(arguments);
-        $timeout.cancel(timer);
-        timer = $timeout(function() {
-          timer = undefined;
-          func.apply(context, args);
-        }, wait || 10);
-      };
-    }
-
-    /**
-     * Build handler to open/close a SideNav; when animation finishes
-     * report completion in console
-     */
-    function buildDelayedToggler(navID) {
-      return debounce(function() {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
-          });
-      }, 200);
-    }
-
-    function buildToggler(navID) {
-      return function() {
-        // Component lookup should always be available since we are not using `ng-if`
-        $mdSidenav(navID)
-          .toggle()
-          .then(function () {
-            $log.debug("toggle " + navID + " is done");
-          });
-      };
-    }
-  })
-  .controller('LeftCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('left').close()
-        .then(function () {
-          $log.debug("close LEFT is done");
-        });
-
-    };
-  })
-  .controller('RightCtrl', function ($scope, $timeout, $mdSidenav, $log) {
-    $scope.close = function () {
-      // Component lookup should always be available since we are not using `ng-if`
-      $mdSidenav('right').close()
-        .then(function () {
-          $log.debug("close RIGHT is done");
-        });
-    };
-  });
-
-angular
-  .module('customSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleLeft = buildToggler('left');
-
-    function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      };
-    }
-  });
-
-angular
-  .module('disableCloseEventsSidenavDemo', ['ngMaterial'])
-  .controller('AppCtrl', function ($scope, $mdSidenav) {
-    $scope.toggleSidenav = buildToggler('closeEventsDisabled');
-
-    function buildToggler(componentId) {
-      return function() {
-        $mdSidenav(componentId).toggle();
-      };
-    }
-  });
 
 angular.module('sliderDemoBasic', ['ngMaterial'])
   .config(function ($mdIconProvider) {

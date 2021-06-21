@@ -158,7 +158,7 @@ results.</p>
   function AppController($scope, $http) {
     $scope.query = function(searchText) {
       return $http
-        .get(BACKEND_URL + &#39;/items/&#39; + searchText)
+        .get(BACKEND_URL + '/items/' + searchText)
         .then(function(data) {
           // Map the response object to the data object.
           return data;

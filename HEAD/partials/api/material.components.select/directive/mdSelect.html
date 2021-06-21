@@ -33,7 +33,7 @@ disabled by applying the <code>md-no-underline</code> CSS class.</p>
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
   
-    <p>With a placeholder (label and aria-label are added dynamically)</p>
+    <p>With a placeholder (label and aria-label are added dynamically)
 <hljs lang="html">
   <md-input-container>
     <md-select
@@ -42,9 +42,8 @@ disabled by applying the <code>md-no-underline</code> CSS class.</p>
       <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
     </md-select>
   </md-input-container>
-</hljs>
-
-<p>With an explicit label</p>
+</hljs></p>
+<p>With an explicit label
 <hljs lang="html">
   <md-input-container>
     <label>State</label>
@@ -53,8 +52,7 @@ disabled by applying the <code>md-no-underline</code> CSS class.</p>
       <md-option ng-value="opt" ng-repeat="opt in neighborhoods2">{{ opt }}</md-option>
     </md-select>
   </md-input-container>
-</hljs>
-
+</hljs></p>
 <p>Using the <code>md-select-header</code> element directive</p>
 <p>When a developer needs to put more than just a text label in the <code>md-select-menu</code>, they should
 use one or more <code>md-select-header</code>s. These elements can contain custom HTML which can be styled
@@ -73,7 +71,7 @@ labels.</p>
 
 <h2 id="selects-and-object-equality">Selects and object equality</h2>
 <p>When using a <code>md-select</code> to pick from a list of objects, it is important to realize how javascript handles
-equality. Consider the following example:</p>
+equality. Consider the following example:
 <hljs lang="js">
 angular.controller(&#39;MyCtrl&#39;, function($scope) {
   $scope.users = [
@@ -84,7 +82,7 @@ angular.controller(&#39;MyCtrl&#39;, function($scope) {
   $scope.selectedUser = { id: 1, name: &#39;Bob&#39; };
 });
 </hljs>
-<hljs lang="html">
+<hljs lang="html"></p>
 <div ng-controller="MyCtrl">
   <md-select ng-model="selectedUser">
     <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
@@ -107,8 +105,8 @@ different expression which will be used for the equality operator. As such, we c
 which results in Bob being selected as desired.</p>
 <p><strong>Note:</strong> We do not support AngularJS&#39;s <code>track by</code> syntax. For instance
  <code>ng-options=&quot;user in users track by user.id&quot;</code> will not work with <code>md-select</code>.</p>
-<p>Working HTML:</p>
-<hljs lang="html">
+<p>Working HTML:
+<hljs lang="html"></p>
 <div ng-controller="MyCtrl">
   <md-select ng-model="selectedUser" ng-model-options="{trackBy: '$value.id'}">
     <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>

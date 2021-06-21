@@ -46,13 +46,12 @@ in another digest.</p>
   DynamicItems.prototype.loadPage = function(index) {
     var self = this;
 
-    // Trigger a new digest by using $timeout
-    $timeout(function() {
-      self.pages[index] = Data;
-    });
-  };
-</hljs>
-
+<pre><code>// Trigger a new digest by using $timeout
+$timeout(function() {
+  self.pages[index] = Data;
+});</code></pre>
+<p>  };
+</hljs></p>
 <blockquote>
 <p><b>Note:</b> Please also review the
   <a ng-href="api/directive/mdVirtualRepeatContainer">VirtualRepeatContainer</a> documentation

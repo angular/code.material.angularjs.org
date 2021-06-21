@@ -47,38 +47,36 @@ following convention: <code>{base-attribute-name}-{media-query-name}=&quot;{valu
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
   
-    <p>Basic:</p>
+    <p>Basic:
 <hljs lang="html">
 <md-grid-list md-cols="5" md-gutter="1em" md-row-height="4:3">
   <md-grid-tile></md-grid-tile>
 </md-grid-list>
-</hljs>
-
-<p>Fixed-height rows:</p>
+</hljs></p>
+<p>Fixed-height rows:
 <hljs lang="html">
-<md-grid-list md-cols="4" md-row-height="200px" ...>
+&lt;md-grid-list md-cols=&quot;4&quot; md-row-height=&quot;200px&quot; ...&gt;
   <md-grid-tile></md-grid-tile>
 </md-grid-list>
-</hljs>
-
-<p>Fit rows:</p>
+</hljs></p>
+<p>Fit rows:
 <hljs lang="html">
-<md-grid-list md-cols="4" md-row-height="fit" style="height: 400px;" ...>
+&lt;md-grid-list md-cols=&quot;4&quot; md-row-height=&quot;fit&quot; style=&quot;height: 400px;&quot; ...&gt;
   <md-grid-tile></md-grid-tile>
 </md-grid-list>
-</hljs>
-
-<p>Using responsive attributes:</p>
+</hljs></p>
+<p>Using responsive attributes:
 <hljs lang="html">
-<md-grid-list
-    md-cols-sm="2"
-    md-cols-md="4"
-    md-cols-lg="8"
-    md-cols-gt-lg="12"
-    ...>
+&lt;md-grid-list
+    md-cols-sm=&quot;2&quot;
+    md-cols-md=&quot;4&quot;
+    md-cols-lg=&quot;8&quot;
+    md-cols-gt-lg=&quot;12&quot;
+    ...&gt;
   <md-grid-tile></md-grid-tile>
 </md-grid-list>
-</hljs>
+</hljs></p>
+
   
   </section>
   
@@ -132,10 +130,10 @@ following convention: <code>{base-attribute-name}-{media-query-name}=&quot;{valu
         <td class="description">
           <p>One of</p>
 <ul>
-  <li>CSS length - Fixed height rows (eg. <code>8px</code> or <code>1rem</code>)</li>
-  <li><code>{width}:{height}</code> - Ratio of width to height (eg.
-  <code>md-row-height=&quot;16:9&quot;</code>)</li>
-  <li><code>&quot;fit&quot;</code> - Height will be determined by subdividing the available
+  <li>CSS length - Fixed height rows (eg. `8px` or `1rem`)</li>
+  <li>`{width}:{height}` - Ratio of width to height (eg.
+  `md-row-height="16:9"`)</li>
+  <li>`"fit"` - Height will be determined by subdividing the available
   height by the number of rows</li>
 </ul>
           

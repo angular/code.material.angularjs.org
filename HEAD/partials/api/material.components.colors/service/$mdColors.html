@@ -33,13 +33,13 @@ property values.</p>
     <h2 id="Usage">Usage</h2>
       <p>Getting a color based on a theme</p>
  <hljs lang="js">
-   angular.controller(&#39;myCtrl&#39;, function ($mdColors) {
-     var color = $mdColors.getThemeColor(&#39;myTheme-primary-900-0.5&#39;);
+   angular.controller('myCtrl', function ($mdColors) {
+     var color = $mdColors.getThemeColor('myTheme-primary-900-0.5');
      ...
    });
  </hljs>
 
-<p>Applying a color from a palette to an element</p>
+<p>Applying a color from a palette to an element
 <hljs lang="js">
   app.directive(&#39;myDirective&#39;, function($mdColors) {
     return {
@@ -49,7 +49,8 @@ property values.</p>
       }
    }
   });
-</hljs>
+</hljs></p>
+
   </section>
 
 

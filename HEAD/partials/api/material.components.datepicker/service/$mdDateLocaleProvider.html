@@ -35,58 +35,59 @@ components that deal with dates
       <hljs lang="js">
 myAppModule.config(function($mdDateLocaleProvider) {
 
-    // Example of a French localization.
-    $mdDateLocaleProvider.months = [&#39;janvier&#39;, &#39;février&#39;, &#39;mars&#39;, ...];
-    $mdDateLocaleProvider.shortMonths = [&#39;janv&#39;, &#39;févr&#39;, &#39;mars&#39;, ...];
-    $mdDateLocaleProvider.days = [&#39;dimanche&#39;, &#39;lundi&#39;, &#39;mardi&#39;, ...];
-    $mdDateLocaleProvider.shortDays = [&#39;Di&#39;, &#39;Lu&#39;, &#39;Ma&#39;, ...];
+<pre><code>// Example of a French localization.
+$mdDateLocaleProvider.months = [&#39;janvier&#39;, &#39;février&#39;, &#39;mars&#39;, ...];
+$mdDateLocaleProvider.shortMonths = [&#39;janv&#39;, &#39;févr&#39;, &#39;mars&#39;, ...];
+$mdDateLocaleProvider.days = [&#39;dimanche&#39;, &#39;lundi&#39;, &#39;mardi&#39;, ...];
+$mdDateLocaleProvider.shortDays = [&#39;Di&#39;, &#39;Lu&#39;, &#39;Ma&#39;, ...];
 
-    // Can change week display to start on Monday.
-    $mdDateLocaleProvider.firstDayOfWeek = 1;
+// Can change week display to start on Monday.
+$mdDateLocaleProvider.firstDayOfWeek = 1;
 
-    // Optional.
-    $mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
+// Optional.
+$mdDateLocaleProvider.dates = [1, 2, 3, 4, 5, 6, ...];
 
-    // Example uses moment.js to parse and format dates.
-    $mdDateLocaleProvider.parseDate = function(dateString) {
-      var m = moment(dateString, &#39;L&#39;, true);
-      return m.isValid() ? m.toDate() : new Date(NaN);
-    };
+// Example uses moment.js to parse and format dates.
+$mdDateLocaleProvider.parseDate = function(dateString) {
+  var m = moment(dateString, &#39;L&#39;, true);
+  return m.isValid() ? m.toDate() : new Date(NaN);
+};
 
-    $mdDateLocaleProvider.formatDate = function(date) {
-      var m = moment(date);
-      return m.isValid() ? m.format(&#39;L&#39;) : &#39;&#39;;
-    };
+$mdDateLocaleProvider.formatDate = function(date) {
+  var m = moment(date);
+  return m.isValid() ? m.format(&#39;L&#39;) : &#39;&#39;;
+};
 
-    // Allow only a day and month to be specified.
-    // This is required if using the &#39;M/D&#39; format with moment.js.
-    $mdDateLocaleProvider.isDateComplete = function(dateString) {
-      dateString = dateString.trim();
+// Allow only a day and month to be specified.
+// This is required if using the &#39;M/D&#39; format with moment.js.
+$mdDateLocaleProvider.isDateComplete = function(dateString) {
+  dateString = dateString.trim();
 
-      // Look for two chunks of content (either numbers or text) separated by delimiters.
-      var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
-      return re.test(dateString);
-    };
+  // Look for two chunks of content (either numbers or text) separated by delimiters.
+  var re = /^(([a-zA-Z]{3,}|[0-9]{1,4})([ .,]+|[/-]))([a-zA-Z]{3,}|[0-9]{1,4})/;
+  return re.test(dateString);
+};
 
-    $mdDateLocaleProvider.monthHeaderFormatter = function(date) {
-      return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
-    };
+$mdDateLocaleProvider.monthHeaderFormatter = function(date) {
+  return myShortMonths[date.getMonth()] + &#39; &#39; + date.getFullYear();
+};
 
-    // In addition to date display, date components also need localized messages
-    // for aria-labels for screen-reader users.
+// In addition to date display, date components also need localized messages
+// for aria-labels for screen-reader users.
 
-    $mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
-      return &#39;Semaine &#39; + weekNumber;
-    };
+$mdDateLocaleProvider.weekNumberFormatter = function(weekNumber) {
+  return &#39;Semaine &#39; + weekNumber;
+};
 
-    $mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
-    $mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
+$mdDateLocaleProvider.msgCalendar = &#39;Calendrier&#39;;
+$mdDateLocaleProvider.msgOpenCalendar = &#39;Ouvrir le calendrier&#39;;
 
-    // You can also set when your calendar begins and ends.
-    $mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
-    $mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);
-});
-</hljs>
+// You can also set when your calendar begins and ends.
+$mdDateLocaleProvider.firstRenderableDate = new Date(1776, 6, 4);
+$mdDateLocaleProvider.lastRenderableDate = new Date(2012, 11, 21);</code></pre>
+<p>});
+</hljs></p>
+
   </section>
 
 

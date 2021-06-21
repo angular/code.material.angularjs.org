@@ -34,11 +34,11 @@ the native browser&#39;s sticky functionality.</p>
   <section class="api-section">
     <h2 id="Usage">Usage</h2>
       <hljs lang="js">
-  angular.module(&#39;myModule&#39;)
-    .directive(&#39;stickyText&#39;, function($mdSticky) {
+  angular.module('myModule')
+    .directive('stickyText', function($mdSticky) {
       return {
-        restrict: &#39;E&#39;,
-        template: &#39;<span>Sticky Text</span>&#39;,
+        restrict: 'E',
+        template: '<span>Sticky Text</span>',
         link: function(scope, element) {
           $mdSticky(scope, element);
         }
@@ -46,27 +46,27 @@ the native browser&#39;s sticky functionality.</p>
     });
 </hljs>
 
-<p><h3>Notes</h3>
+<h3>Notes</h3>
 When using an element which contains a compiled directive that changes the DOM structure
-during compilation, you should compile the clone yourself.</p>
-<p>An example of this usage can be found below:</p>
+during compilation, you should compile the clone yourself.
+
+<p>An example of this usage can be found below:
 <hljs lang="js">
   angular.module(&#39;myModule&#39;)
     .directive(&#39;stickySelect&#39;, function($mdSticky, $compile) {
       var SELECT_TEMPLATE =
         &#39;<md-select ng-model="selected">&#39; +
         &#39;  <md-option>Option 1</md-option>&#39; +
-        &#39;</md-select>&#39;;
-
-      return {
-        restrict: &#39;E&#39;,
-        replace: true,
-        template: SELECT_TEMPLATE,
-        link: function(scope, element) {
-          $mdSticky(scope, element, $compile(SELECT_TEMPLATE)(scope));
-        }
-      };
-    });
+        &#39;</md-select>&#39;;</p>
+<pre><code>  return {
+    restrict: &#39;E&#39;,
+    replace: true,
+    template: SELECT_TEMPLATE,
+    link: function(scope, element) {
+      $mdSticky(scope, element, $compile(SELECT_TEMPLATE)(scope));
+    }
+  };
+});</code></pre>
 </hljs>
   </section>
 

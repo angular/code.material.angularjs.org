@@ -42,45 +42,42 @@
 </div>
 </hljs>
 <hljs lang="js">
-var app = angular.module(&#39;app&#39;, [&#39;ngMaterial&#39;]);
-app.controller(&#39;MyController&#39;, function($scope, $mdBottomSheet) {
+var app = angular.module('app', ['ngMaterial']);
+app.controller('MyController', function($scope, $mdBottomSheet) {
   $scope.openBottomSheet = function() {
     $mdBottomSheet.show({
-      template: &#39;<md-bottom-sheet>&#39; +
-      &#39;Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>&#39; +
-      &#39;</md-bottom-sheet>&#39;
+      template: '<md-bottom-sheet>' +
+      'Hello! <md-button ng-click="closeBottomSheet()">Close</md-button>' +
+      '</md-bottom-sheet>'
     })
 
-    // Fires when the hide() method is used
-    .then(function() {
-      console.log(&#39;You clicked the button to close the bottom sheet!&#39;);
-    })
+<pre><code>// Fires when the hide() method is used
+.then(function() {
+  console.log(&#39;You clicked the button to close the bottom sheet!&#39;);
+})
 
-    // Fires when the cancel() method is used
-    .catch(function() {
-      console.log(&#39;You hit escape or clicked the backdrop to close.&#39;);
-    });
-  };
-
-  $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
+// Fires when the cancel() method is used
+.catch(function() {
+  console.log(&#39;You hit escape or clicked the backdrop to close.&#39;);
+});</code></pre>
+<p>  };</p>
+<p>  $scope.closeBottomSheet = function($scope, $mdBottomSheet) {
     $mdBottomSheet.hide();
-  }
-
-});
-</hljs>
-
+  }</p>
+<p>});
+</hljs></p>
 <h3 id="custom-presets">Custom Presets</h3>
 <p>Developers are also able to create their own preset, which can be easily used without repeating
 their options each time.</p>
 <hljs lang="js">
-  $mdBottomSheetProvider.addPreset(&#39;testPreset&#39;, {
+  $mdBottomSheetProvider.addPreset('testPreset', {
     options: function() {
       return {
         template:
-          &#39;<md-bottom-sheet>&#39; +
-            &#39;This is a custom preset&#39; +
-          &#39;</md-bottom-sheet>&#39;,
-        controllerAs: &#39;bottomSheet&#39;,
+          '<md-bottom-sheet>' +
+            'This is a custom preset' +
+          '</md-bottom-sheet>',
+        controllerAs: 'bottomSheet',
         bindToController: true,
         clickOutsideToClose: true,
         escapeToClose: true
@@ -169,8 +166,8 @@ controller instance and available in it&#39;s $onInit function.</li>
 <li><code>disableBackdrop</code> - <code>{boolean=}</code>: When set to true, the bottomsheet will not show a backdrop.</li>
 <li><code>escapeToClose</code> - <code>{boolean=}</code>: Whether the user can press escape to close the bottom sheet.
 Default true.</li>
-<li><code>isLockedOpen</code> - <code>{boolean=}</code>: Disables all default ways of closing the bottom sheet.
-<strong>Note:</strong> this will override the <code>clickOutsideToClose</code> and <code>escapeToClose</code> options, leaving
+<li><code>isLockedOpen</code> - <code>{boolean=}</code>: Disables all default ways of closing the bottom sheet.</li>
+<li><em>Note:*</em> this will override the <code>clickOutsideToClose</code> and <code>escapeToClose</code> options, leaving
 only the <code>hide</code> and <code>cancel</code> methods as ways of closing the bottom sheet. Defaults to false.</li>
 <li><code>resolve</code> - <code>{Object=}</code>: Similar to locals, except it takes promises as values
 and the bottom sheet will not open until the promises resolve.</li>
