@@ -1,0 +1,35 @@
+.chipsdemoBasicUsage .errors {
+  font-size: 12px;
+  color: #dd2c00;
+  margin-top: 10px; }
+
+.chipsdemoBasicUsage .demo-long-fruit-input {
+  min-width: 340px; }
+
+.chipsdemoBasicUsage .custom-chips md-chip {
+  position: relative;
+  padding-right: 24px; }
+  .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container {
+    position: absolute;
+    right: 4px;
+    top: 4px;
+    margin-right: 0;
+    height: 26px;
+    display: none; }
+    .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.demo-remove-vegetable-chip {
+      position: relative;
+      height: 24px;
+      width: 24px;
+      line-height: 30px;
+      background: transparent;
+      border: none;
+      padding: 0; }
+      .chipsdemoBasicUsage .custom-chips md-chip .md-chip-remove-container button.demo-remove-vegetable-chip md-icon {
+        transform: translate(0, -3px) scale(0.75);
+        fill: rgba(0, 0, 0, 0.33); }
+  .chipsdemoBasicUsage .custom-chips md-chip:hover:not(.md-readonly) .md-chip-remove-container {
+    display: block; }
+  .chipsdemoBasicUsage .custom-chips md-chip.md-focused:not(.md-readonly) .md-chip-remove-container {
+    display: block; }
+    .chipsdemoBasicUsage .custom-chips md-chip.md-focused:not(.md-readonly) .md-chip-remove-container button.demo-remove-vegetable-chip md-icon {
+      fill: rgba(255, 255, 255, 0.87); }
