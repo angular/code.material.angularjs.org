@@ -56,7 +56,7 @@
 
     var LINK_FONTS_ROBOTO = '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">';
 
-    var ASSET_CACHE_JS = 'http://ngmaterial.assets.s3.amazonaws.com/svg-assets-cache.js';
+    var ASSET_CACHE_JS = '';
 
 
     return {
