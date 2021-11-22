@@ -1,7 +1,7 @@
 <div class="doc-content theming">
     
     <div class="layout_note">
-  <span>This feature is for **mobile** devices only.</span>
+  <span>This feature is for <strong>mobile</strong> devices only.</span>
 </div>
 
 <p><img src="https://cloud.githubusercontent.com/assets/6004537/18006666/50519c7e-6ba9-11e6-905b-c3751c20549c.png" alt="browser color"></p>
@@ -18,9 +18,9 @@ and the AngularJS Material theming system. For API details, please visit the
     .config(function($mdThemingProvider) {
       // Enable browser color
       $mdThemingProvider.enableBrowserColor({
-        theme: 'myTheme', // Default is 'default'
-        palette: 'accent', // Default is 'primary', any basic material palette and extended palettes are available
-        hue: '200' // Default is '800'
+        theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+        palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+        hue: &#39;200&#39; // Default is &#39;800&#39;
       });
     });
 </hljs>
@@ -28,17 +28,17 @@ and the AngularJS Material theming system. For API details, please visit the
 <h3 id="runtime">Runtime</h3>
 <hljs lang="js">
   myAppModule
-    .controller('myCtrl', function($scope, $mdTheming) {
+    .controller(&#39;myCtrl&#39;, function($scope, $mdTheming) {
       var removeFunction = $mdTheming.setBrowserColor({
-        theme: 'myTheme', // Default is 'default'
-        palette: 'accent', // Default is 'primary', any basic material palette and extended palettes are available
-        hue: '200' // Default is '800'
+        theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+        palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+        hue: &#39;200&#39; // Default is &#39;800&#39;
       });
 
-<pre><code>  $scope.$on(&#39;$destroy&#39;, function () {
-    removeFunction(); // COMPLETELY removes the browser color
-  })
-})</code></pre>
+      $scope.$on(&#39;$destroy&#39;, function () {
+        removeFunction(); // COMPLETELY removes the browser color
+      })
+    })
 </hljs>
     
 </div>

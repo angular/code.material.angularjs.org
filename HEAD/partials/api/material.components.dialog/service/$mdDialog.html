@@ -66,67 +66,70 @@ Use the <code>parent</code> option to change where dialogs are appended.</li>
 <h3 id="javascript-object-syntax">JavaScript: object syntax</h3>
 <hljs lang="js">
 (function(angular, undefined) {
-  "use strict";
+  &quot;use strict&quot;;
 
-<p>  angular
+  angular
    .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
-   .controller(&#39;AppCtrl&#39;, AppController);</p>
-<p>  function AppController($mdDialog) {
+   .controller(&#39;AppCtrl&#39;, AppController);
+
+  function AppController($mdDialog) {
     var alert;
     var ctrl = this;
     ctrl.showAlert = showAlert;
     ctrl.showDialog = showDialog;
-    ctrl.items = [1, 2, 3];</p>
-<pre><code>// Internal method
-function showAlert() {
-  alert = $mdDialog.alert({
-    title: &#39;Attention&#39;,
-    textContent: &#39;This is an example of how simple dialogs can be!&#39;,
-    ok: &#39;Close&#39;
-  });
+    ctrl.items = [1, 2, 3];
 
-  $mdDialog
-    .show( alert )
-    .finally(function() {
-      alert = undefined;
-    });
-}
+    // Internal method
+    function showAlert() {
+      alert = $mdDialog.alert({
+        title: &#39;Attention&#39;,
+        textContent: &#39;This is an example of how simple dialogs can be!&#39;,
+        ok: &#39;Close&#39;
+      });
 
-function showDialog($event) {
-   var parentEl = angular.element(document.body);
-   $mdDialog.show({
-     parent: parentEl,
-     targetEvent: $event,
-     template:
-       &#39;&lt;md-dialog aria-label=&quot;List dialog&quot;&gt;&#39; +
-       &#39;  &lt;md-dialog-content&gt;&#39;+
-       &#39;    &lt;md-list&gt;&#39;+
-       &#39;      &lt;md-list-item ng-repeat=&quot;item in ctrl.items&quot;&gt;&#39;+
-       &#39;       &lt;p&gt;Number {{item}}&lt;/p&gt;&#39; +
-       &#39;      &lt;/md-item&gt;&#39;+
-       &#39;    &lt;/md-list&gt;&#39;+
-       &#39;  &lt;/md-dialog-content&gt;&#39; +
-       &#39;  &lt;md-dialog-actions&gt;&#39; +
-       &#39;    &lt;md-button ng-click=&quot;ctrl.closeDialog()&quot; class=&quot;md-primary&quot;&gt;&#39; +
-       &#39;      Close Dialog&#39; +
-       &#39;    &lt;/md-button&gt;&#39; +
-       &#39;  &lt;/md-dialog-actions&gt;&#39; +
-       &#39;&lt;/md-dialog&gt;&#39;,
-     locals: {
-       items: ctrl.items
-     },
-     controller: DialogController
-     controllerAs: &#39;ctrl&#39;
-  });
-  function DialogController($mdDialog) {
-    this.closeDialog = function() {
-      $mdDialog.hide();
+      $mdDialog
+        .show( alert )
+        .finally(function() {
+          alert = undefined;
+        });
+    }
+
+    function showDialog($event) {
+       var parentEl = angular.element(document.body);
+       $mdDialog.show({
+         parent: parentEl,
+         targetEvent: $event,
+         template:
+           &#39;<md-dialog aria-label="List dialog">&#39; +
+           &#39;  <md-dialog-content>&#39;+
+           &#39;    <md-list>&#39;+
+           &#39;      <md-list-item ng-repeat="item in ctrl.items">&#39;+
+           &#39;       <p>Number {{item}}</p>&#39; +
+           &#39;      </md-item>&#39;+
+           &#39;    </md-list>&#39;+
+           &#39;  </md-dialog-content>&#39; +
+           &#39;  <md-dialog-actions>&#39; +
+           &#39;    <md-button ng-click="ctrl.closeDialog()" class="md-primary">&#39; +
+           &#39;      Close Dialog&#39; +
+           &#39;    </md-button>&#39; +
+           &#39;  </md-dialog-actions>&#39; +
+           &#39;</md-dialog>&#39;,
+         locals: {
+           items: ctrl.items
+         },
+         controller: DialogController
+         controllerAs: &#39;ctrl&#39;
+      });
+      function DialogController($mdDialog) {
+        this.closeDialog = function() {
+          $mdDialog.hide();
+        }
+      }
     }
   }
-}</code></pre>
-<p>  }
 })(angular);
-</hljs></p>
+</hljs>
+
 <h3 id="multiple-dialogs">Multiple Dialogs</h3>
 <p>Using the <code>multiple</code> option for the <code>$mdDialog</code> service allows developers to show multiple
 dialogs at the same time.</p>
@@ -136,12 +139,13 @@ dialogs at the same time.</p>
     multiple: true
   });
 
-<p>  // From a dialog preset
+  // From a dialog preset
   $mdDialog.show(
     $mdDialog
       .alert()
       .multiple(true)
-  );</p>
+  );
+
 </hljs>
 
 <h3 id="pre-rendered-dialogs">Pre-Rendered Dialogs</h3>
@@ -156,7 +160,7 @@ You can manually link the elements to a scope or instantiate a controller from t
 <hljs lang="js">
   function showPrerenderedDialog() {
     $mdDialog.show({
-      contentElement: '#myStaticDialog',
+      contentElement: &#39;#myStaticDialog&#39;,
       parent: angular.element(document.body)
     });
   }
@@ -187,14 +191,14 @@ This allows you to compile the element yourself and use it each time the dialog 
 <p>Developers are also able to create their own preset, which can be used without repeating
 their options each time.</p>
 <hljs lang="js">
-  $mdDialogProvider.addPreset('testPreset', {
+  $mdDialogProvider.addPreset(&#39;testPreset&#39;, {
     options: function() {
       return {
         template:
-          '<md-dialog>' +
-            'This is a custom preset' +
-          '</md-dialog>',
-        controllerAs: 'dialog',
+          &#39;<md-dialog>&#39; +
+            &#39;This is a custom preset&#39; +
+          &#39;</md-dialog>&#39;,
+        controllerAs: &#39;dialog&#39;,
         bindToController: true,
         clickOutsideToClose: true,
         escapeToClose: true
@@ -213,80 +217,86 @@ their options each time.</p>
 <h3 id="javascript-promise-api-syntax-custom-dialog-template">JavaScript: promise API syntax, custom dialog template</h3>
 <hljs lang="js">
 (function(angular, undefined) {
-  "use strict";
+  &quot;use strict&quot;;
 
-<p>  angular
+  angular
     .module(&#39;demoApp&#39;, [&#39;ngMaterial&#39;])
     .controller(&#39;EmployeeController&#39;, EmployeeController)
-    .controller(&#39;GreetingController&#39;, GreetingController);</p>
-<p>  // Fictitious Employee Editor to show how to use simple and complex dialogs.</p>
-<p>  function EmployeeController($mdDialog) {
+    .controller(&#39;GreetingController&#39;, GreetingController);
+
+  // Fictitious Employee Editor to show how to use simple and complex dialogs.
+
+  function EmployeeController($mdDialog) {
     var alert;
-    var ctrl = this;</p>
-<pre><code>ctrl.showAlert = showAlert;
-ctrl.showGreeting = showCustomGreeting;
+    var ctrl = this;
 
-ctrl.hasAlert = function() { return !!alert };
-ctrl.userName = ctrl.userName || &#39;Bobby&#39;;
+    ctrl.showAlert = showAlert;
+    ctrl.showGreeting = showCustomGreeting;
 
-// Dialog #1 - Show simple alert dialog and cache reference to dialog instance
+    ctrl.hasAlert = function() { return !!alert };
+    ctrl.userName = ctrl.userName || &#39;Bobby&#39;;
 
-function showAlert() {
-  alert = $mdDialog.alert()
-    .title(&#39;Attention, &#39; + ctrl.userName)
-    .textContent(&#39;This is an example of how simple dialogs can be!&#39;)
-    .ok(&#39;Close&#39;);
+    // Dialog #1 - Show simple alert dialog and cache reference to dialog instance
 
-  $mdDialog
-    .show(alert)
-    .finally(function() {
-      alert = undefined;
-    });
-}
+    function showAlert() {
+      alert = $mdDialog.alert()
+        .title(&#39;Attention, &#39; + ctrl.userName)
+        .textContent(&#39;This is an example of how simple dialogs can be!&#39;)
+        .ok(&#39;Close&#39;);
 
-// Dialog #2 - Demonstrate more complex dialogs construction and popup.
+      $mdDialog
+        .show(alert)
+        .finally(function() {
+          alert = undefined;
+        });
+    }
 
-function showCustomGreeting($event) {
-  $mdDialog.show({
-    targetEvent: $event,
-    template:
-      &#39;&lt;md-dialog&gt;&#39; +
-      &#39;  &lt;md-dialog-content&gt;Hello {{ ctrl.employee }}!&lt;/md-dialog-content&gt;&#39; +
-      &#39;  &lt;md-dialog-actions&gt;&#39; +
-      &#39;    &lt;md-button ng-click=&quot;ctrl.closeDialog()&quot; class=&quot;md-primary&quot;&gt;&#39; +
-      &#39;      Close Greeting&#39; +
-      &#39;    &lt;/md-button&gt;&#39; +
-      &#39;  &lt;/md-dialog-actions&gt;&#39; +
-      &#39;&lt;/md-dialog&gt;&#39;,
-    controller: GreetingController,
-    controllerAs: &#39;ctrl&#39;,
-    onComplete: afterShowAnimation,
-    locals: { employee: ctrl.userName }
-  });
+    // Dialog #2 - Demonstrate more complex dialogs construction and popup.
 
-  // When the &#39;enter&#39; animation finishes...
-  function afterShowAnimation(scope, element, options) {
-    // post-show code here: DOM element focus, etc.
+    function showCustomGreeting($event) {
+      $mdDialog.show({
+        targetEvent: $event,
+        template:
+          &#39;<md-dialog>&#39; +
+          &#39;  <md-dialog-content>Hello {{ ctrl.employee }}!</md-dialog-content>&#39; +
+          &#39;  <md-dialog-actions>&#39; +
+          &#39;    <md-button ng-click="ctrl.closeDialog()" class="md-primary">&#39; +
+          &#39;      Close Greeting&#39; +
+          &#39;    </md-button>&#39; +
+          &#39;  </md-dialog-actions>&#39; +
+          &#39;</md-dialog>&#39;,
+        controller: GreetingController,
+        controllerAs: &#39;ctrl&#39;,
+        onComplete: afterShowAnimation,
+        locals: { employee: ctrl.userName }
+      });
+
+      // When the &#39;enter&#39; animation finishes...
+      function afterShowAnimation(scope, element, options) {
+        // post-show code here: DOM element focus, etc.
+      }
+    }
   }
-}</code></pre>
-<p>  }</p>
-<p>  // Greeting controller used with the &#39;showCustomGreeting()&#39; custom dialog
+
+  // Greeting controller used with the &#39;showCustomGreeting()&#39; custom dialog
   function GreetingController($mdDialog, $log) {
     var ctrl = this;
-    this.$log = $log;</p>
-<pre><code>ctrl.closeDialog = function() {
-  // Hides the most recent dialog shown.
-  // No specific dialog instance reference is needed.
-  $mdDialog.hide();
-};</code></pre>
-<p>  }</p>
-<p>  GreetingController.prototype.$onInit = function() {
+    this.$log = $log;
+
+    ctrl.closeDialog = function() {
+      // Hides the most recent dialog shown.
+      // No specific dialog instance reference is needed.
+      $mdDialog.hide();
+    };
+  }
+
+  GreetingController.prototype.$onInit = function() {
     // Assigned from the locals options passed to $mdDialog.show.
     this.$log.log(&#39;Employee Name: &#39;, ctrl.employee);
-  };</p>
-<p>})(angular);
-</hljs></p>
+  };
 
+})(angular);
+</hljs>
   </section>
 
 

@@ -16,20 +16,20 @@ during application configuration.</p>
 appropriate configuration method (<code>theme.primaryPalette</code>, <code>theme.accentPalette</code>,
 <code>theme.warnPalette</code>, <code>theme.backgroundPalette</code>).</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
-    .primaryPalette('pink')
-    .accentPalette('orange');
+  $mdThemingProvider.theme(&#39;default&#39;)
+    .primaryPalette(&#39;pink&#39;)
+    .accentPalette(&#39;orange&#39;);
 });
 </hljs>
 
 <h3 id="specifying-dark-themes">Specifying Dark Themes</h3>
 <p>You can mark a theme as dark by calling <code>theme.dark()</code>. </p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
-  $mdThemingProvider.theme('default')
+  $mdThemingProvider.theme(&#39;default&#39;)
     .dark();
 });
 </hljs>
@@ -40,10 +40,10 @@ by default and for the <code>md-hue-1</code>, <code>md-hue-2</code>, <code>md-hu
 <p>By default, shades <code>500</code>, <code>300</code> <code>800</code> and <code>A100</code> are used for <code>primary</code> and
 <code>warn</code> intentions, while <code>A200</code>, <code>A100</code>, <code>A400</code> and <code>A700</code> are used for <code>accent</code>.</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
 
-<p>  $mdThemingProvider.theme(&#39;default&#39;)
+  $mdThemingProvider.theme(&#39;default&#39;)
     .primaryPalette(&#39;pink&#39;, {
       &#39;default&#39;: &#39;400&#39;, // by default use shade 400 from the pink palette for primary intentions
       &#39;hue-1&#39;: &#39;100&#39;, // use shade 100 for the <code>md-hue-1</code> class
@@ -54,9 +54,11 @@ angular.module('myApp', ['ngMaterial'])
     // default shades
     .accentPalette(&#39;purple&#39;, {
       &#39;default&#39;: &#39;200&#39; // use shade 200 for default, and keep all other shades the same
-    });</p>
-<p>});
-</hljs></p>
+    });
+
+});
+</hljs>
+
 <h3 id="defining-custom-palettes">Defining Custom Palettes</h3>
 <p>As mentioned before, AngularJS Material ships with the Material Design Spec&#39;s color palettes built
 in. In the event that you need to define a custom color palette, you can use <code>$mdThemingProvider</code>
@@ -70,10 +72,10 @@ which has been updated to the latest Material Design guidelines for
 <a href="https://material.io/archive/guidelines/style/color.html#color-usability">Color Usability</a>.
 The update to the guidelines changed primary text on dark backgrounds from 87% to 100% opacity.</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
 
-<p>  $mdThemingProvider.definePalette(&#39;amazingDarkPaletteName&#39;, {
+  $mdThemingProvider.definePalette(&#39;amazingDarkPaletteName&#39;, {
     &#39;50&#39;: &#39;ffebee&#39;,
     &#39;100&#39;: &#39;ffcdd2&#39;,
     &#39;200&#39;: &#39;ef9a9a&#39;,
@@ -94,18 +96,20 @@ angular.module('myApp', ['ngMaterial'])
     &#39;contrastDarkColors&#39;: &#39;50 100 200 300 400 500 600 A100 A200 A400&#39;,
     // By default, for these darker hues, text (contrast) should be white with 100% opacity.
     &#39;contrastStrongLightColors&#39;: &#39;700 800 900 A700&#39;
-  });</p>
-<p>  $mdThemingProvider.theme(&#39;default&#39;)
+  });
+
+  $mdThemingProvider.theme(&#39;default&#39;)
     .primaryPalette(&#39;amazingDarkPaletteName&#39;)
 });
-</hljs></p>
+</hljs>
+
 <p>For a light colored, custom palette, you should specify the default contrast color as <code>dark</code>.
 Then <code>contrastStrongLightColors</code> can be used if any hues are too dark for dark text.</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
 
-<p>  $mdThemingProvider.definePalette(&#39;amazingLightPaletteName&#39;, {
+  $mdThemingProvider.definePalette(&#39;amazingLightPaletteName&#39;, {
     &#39;50&#39;: &#39;#f1f8e9&#39;,
     &#39;100&#39;: &#39;#dcedc8&#39;,
     &#39;200&#39;: &#39;#c5e1a5&#39;,
@@ -124,36 +128,42 @@ angular.module('myApp', ['ngMaterial'])
     &#39;contrastDefaultColor&#39;: &#39;dark&#39;,
     // By default, for these darker hues, text (contrast) should be white with 100% opacity.
     &#39;contrastStrongLightColors&#39;: &#39;800 900&#39;
-  });</p>
-<p>  $mdThemingProvider.theme(&#39;default&#39;)
+  });
+
+  $mdThemingProvider.theme(&#39;default&#39;)
     .accentPalette(&#39;amazingLightPaletteName&#39;)
 });
-</hljs></p>
+</hljs>
+
 <h3 id="extending-existing-palettes">Extending Existing Palettes</h3>
 <p>Sometimes it is easier to extend an existing color palette to change a few properties
 than to define a whole new palette. You can use <code>$mdThemingProvider.extendPalette</code> 
 to quickly extend an existing color palette.</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
 
-<p>  // Extend the red theme with a different color and make the contrast color black instead of white.
+  // Extend the red theme with a different color and make the contrast color black instead of white.
   // For example: raised button text will be black instead of white.
   var neonRedMap = $mdThemingProvider.extendPalette(&#39;red&#39;, {
     &#39;500&#39;: &#39;#ff0000&#39;,
     &#39;contrastDefaultColor&#39;: &#39;dark&#39;
-  });</p>
-<p>  // Register the new color palette map with the name <code>neonRed</code>
-  $mdThemingProvider.definePalette(&#39;neonRed&#39;, neonRedMap);</p>
-<p>  // Use that theme for the primary intentions
+  });
+
+  // Register the new color palette map with the name <code>neonRed</code>
+  $mdThemingProvider.definePalette(&#39;neonRed&#39;, neonRedMap);
+
+  // Use that theme for the primary intentions
   $mdThemingProvider.theme(&#39;default&#39;)
-    .primaryPalette(&#39;neonRed&#39;);</p>
-<p>});
-</hljs></p>
+    .primaryPalette(&#39;neonRed&#39;);
+
+});
+</hljs>
+
 <h3 id="disable-theming">Disable Theming</h3>
 <p>You can disable theming by calling <code>disableTheming()</code>.</p>
 <hljs lang="js">
-angular.module('myApp', ['ngMaterial'])
+angular.module(&#39;myApp&#39;, [&#39;ngMaterial&#39;])
 .config(function($mdThemingProvider) {
   $mdThemingProvider.disableTheming();
 });

@@ -19,7 +19,7 @@
 <p>Note: This is intended only for use with dynamic meta tags such as browser color and title.
 Tags that are only processed when the page is rendered (such as <code>charset</code>, and <code>http-equiv</code>)
 will not work since <code>$$mdMeta</code> adds the tags after the page has already been loaded.</p>
-<pre><code class="language-js">app.config(function($$mdMetaProvider) {
+<pre><code class="lang-js">app.config(function($$mdMetaProvider) {
   var removeMeta = $$mdMetaProvider.setMeta(&#39;meta-name&#39;, &#39;content&#39;);
   var metaValue  = $$mdMetaProvider.getMeta(&#39;meta-name&#39;); // -&gt; &#39;content&#39;
 
@@ -31,7 +31,8 @@ app.controller(&#39;myController&#39;, function($$mdMeta) {
   var metaValue  = $$mdMeta.getMeta(&#39;meta-name&#39;); // -&gt; &#39;content&#39;
 
   removeMeta();
-});</code></pre>
+});
+</code></pre>
 
 </div>
 

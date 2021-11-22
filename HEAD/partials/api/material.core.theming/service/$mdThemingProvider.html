@@ -30,11 +30,11 @@ This can be done by using the following markup.</p>
 <hljs lang="js">
   myAppModule.config(function($mdThemingProvider) {
     $mdThemingProvider
-      .theme('default')
-      .primaryPalette('blue')
-      .accentPalette('teal')
-      .warnPalette('red')
-      .backgroundPalette('grey');
+      .theme(&#39;default&#39;)
+      .primaryPalette(&#39;blue&#39;)
+      .accentPalette(&#39;teal&#39;)
+      .warnPalette(&#39;red&#39;)
+      .backgroundPalette(&#39;grey&#39;);
   });
 </hljs>
 
@@ -66,7 +66,7 @@ like <a href="https://github.com/webpack/raw-loader">raw-loader</a> for <code>we
 <hljs lang="js">
   myAppModule.config(function($mdThemingProvider) {
     // Register your custom stylesheet into the theming provider.
-    $mdThemingProvider.registerStyles(require('../styles/my-component.theme.css'));
+    $mdThemingProvider.registerStyles(require(&#39;../styles/my-component.theme.css&#39;));
   });
 </hljs>
 
@@ -83,9 +83,9 @@ for more info please visit:
   myAppModule.config(function($mdThemingProvider) {
     // Enable browser color
     $mdThemingProvider.enableBrowserColor({
-      theme: 'myTheme', // Default is 'default'
-      palette: 'accent', // Default is 'primary', any basic material palette and extended palettes are available
-      hue: '200' // Default is '800'
+      theme: &#39;myTheme&#39;, // Default is &#39;default&#39;
+      palette: &#39;accent&#39;, // Default is &#39;primary&#39;, any basic material palette and extended palettes are available
+      hue: &#39;200&#39; // Default is &#39;800&#39;
     });
   });
 </hljs>

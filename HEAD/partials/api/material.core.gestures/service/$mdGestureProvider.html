@@ -23,15 +23,14 @@ screens.</p>
 <hljs lang="js">
   app.config(function($mdGestureProvider) {
 
-<pre><code>// For mobile devices without jQuery loaded, do not
-// intercept click events during the capture phase.
-$mdGestureProvider.skipClickHijack();
+    // For mobile devices without jQuery loaded, do not
+    // intercept click events during the capture phase.
+    $mdGestureProvider.skipClickHijack();
 
-// If hijacking clicks, you may want to change the default click distance
-$mdGestureProvider.setMaxClickDistance(12);</code></pre>
-<p>  });
-</hljs></p>
-
+    // If hijacking clicks, you may want to change the default click distance
+    $mdGestureProvider.setMaxClickDistance(12);
+  });
+</hljs>
 </div>
 
 

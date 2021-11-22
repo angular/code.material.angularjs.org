@@ -50,10 +50,11 @@ value to enable conditional activation of the autofocus.</p>
  <md-list>
    <md-list-item ng-repeat="item in items">
 
-<pre><code>&lt;md-button md-autofocus=&quot;$index == 2&quot;&gt;
-  &lt;md-icon md-svg-src=&quot;{{item.icon}}&quot;&gt;&lt;/md-icon&gt;
-  &lt;span class=&quot;md-inline-list-icon-label&quot;&gt;{{ item.name }}&lt;/span&gt;
-&lt;/md-button&gt;</code></pre>
+     <md-button md-autofocus="$index == 2">
+       <md-icon md-svg-src="{{item.icon}}"></md-icon>
+       <span class="md-inline-list-icon-label">{{ item.name }}</span>
+     </md-button>
+
    </md-list-item>
  </md-list>
 </md-bottom-sheet>
@@ -85,7 +86,7 @@ value to enable conditional activation of the autofocus.</p>
     </md-button>
   </md-content>
 
-<p>  <md-sidenav md-component-id="right"
+  <md-sidenav md-component-id="right"
     md-is-locked-open="$mdMedia('min-width: 333px')"
     class="md-sidenav-right">
     <form>
@@ -95,7 +96,7 @@ value to enable conditional activation of the autofocus.</p>
                ng-model="data" md-autofocus>
       </md-input-container>
     </form>
-  </md-sidenav></p>
+  </md-sidenav>
 </div>
 </hljs>
   

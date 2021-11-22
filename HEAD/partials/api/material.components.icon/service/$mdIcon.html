@@ -31,17 +31,19 @@
       <hljs lang="js">
 function SomeDirective($mdIcon) {
 
-<p>  // See if the icon has already been loaded, if not then lookup the icon from the
+  // See if the icon has already been loaded, if not then lookup the icon from the
   // registry cache, load and cache it for future requests.
   // NOTE: Non-URL queries require configuration with $mdIconProvider.
   $mdIcon(&#39;android&#39;).then(function(iconEl)    { element.append(iconEl); });
-  $mdIcon(&#39;work:chair&#39;).then(function(iconEl) { element.append(iconEl); });</p>
-<p>  // Load and cache the external SVG using a URL.
+  $mdIcon(&#39;work:chair&#39;).then(function(iconEl) { element.append(iconEl); });
+
+  // Load and cache the external SVG using a URL.
   $mdIcon(&#39;img/icons/android.svg&#39;).then(function(iconEl) {
     element.append(iconEl);
   });
 };
-</hljs></p>
+</hljs>
+
 <blockquote>
 <p><b>Note:</b> The <code>&lt;md-icon&gt;</code> directive internally uses the <code>$mdIcon</code> service to query, load,
   and instantiate SVG DOM elements.</p>
