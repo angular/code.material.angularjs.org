@@ -1,8 +1,10 @@
 .toolbardemoBasicUsage md-toolbar .md-button.md-icon-button .favorite-icon {
-  fill: #DE3641; }
-
+  fill: #DE3641;
+}
 .toolbardemoBasicUsage md-toolbar md-toolbar-filler {
   display: flex;
-  background-color: #e0e0e0; }
-  .toolbardemoBasicUsage md-toolbar md-toolbar-filler #filler-icon {
-    fill: #4C9EF1; }
+  background-color: #e0e0e0;
+}
+.toolbardemoBasicUsage md-toolbar md-toolbar-filler #filler-icon {
+  fill: #4C9EF1;
+}

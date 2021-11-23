@@ -1,9 +1,10 @@
 .contentdemoBasicUsage div.demo-content {
-  height: 450px; }
-
+  height: 450px;
+}
 .contentdemoBasicUsage div[ng-controller] {
   height: 100%;
-  padding-bottom: 15px; }
-
+  padding-bottom: 15px;
+}
 .contentdemoBasicUsage md-content {
-  padding: 24px; }
+  padding: 24px;
+}

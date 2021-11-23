@@ -1,10 +1,10 @@
 .listdemoListControls md-divider {
   margin-top: 0;
-  margin-bottom: 0; }
-
+  margin-bottom: 0;
+}
 .listdemoListControls md-list {
-  padding-top: 0; }
-
+  padding-top: 0;
+}
 .listdemoListControls md-list-item > p,
 .listdemoListControls md-list-item > .md-list-item-inner > p,
 .listdemoListControls md-list-item .md-list-item-inner > p,
@@ -16,4 +16,5 @@
   -ms-user-select: none;
   /* IE 10+ */
   user-select: none;
-  /* Likely future */ }
+  /* Likely future */
+}

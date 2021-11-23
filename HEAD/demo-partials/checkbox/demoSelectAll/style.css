@@ -1,9 +1,10 @@
 .checkboxdemoSelectAll legend {
-  color: #3F51B5; }
-
+  color: #3F51B5;
+}
 .checkboxdemoSelectAll fieldset {
   border-style: solid;
-  border-width: 1px; }
-
+  border-width: 1px;
+}
 .checkboxdemoSelectAll .demo-select-all-checkboxes {
-  padding-left: 30px; }
+  padding-left: 30px;
+}

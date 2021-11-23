@@ -1,27 +1,28 @@
 .colorsdemoBasicUsage .card-media {
   margin-right: 16px;
   border-radius: 50%;
-  overflow: hidden; }
-
+  overflow: hidden;
+}
 .colorsdemoBasicUsage .md-subhead.description {
-  color: rgba(255, 255, 255, 0.7); }
-
+  color: rgba(255, 255, 255, 0.7);
+}
 .colorsdemoBasicUsage .card-media md-icon {
   width: 40px;
   height: 40px;
-  color: rgba(255, 255, 255, 0.87); }
-
+  color: rgba(255, 255, 255, 0.87);
+}
 .colorsdemoBasicUsage h4.card-title {
-  margin: 24px 8px 0; }
-
+  margin: 24px 8px 0;
+}
 .colorsdemoBasicUsage code.css {
-  background-color: #fffcc2; }
-
+  background-color: #fffcc2;
+}
 .colorsdemoBasicUsage p.footnote code {
-  font-size: 0.85em; }
-
+  font-size: 0.85em;
+}
 .colorsdemoBasicUsage p.footnote {
   font-size: 0.85em;
   margin: 30px 8px;
   padding: 16px;
-  background-color: rgba(205, 205, 205, 0.45); }
+  background-color: rgba(205, 205, 205, 0.45);
+}

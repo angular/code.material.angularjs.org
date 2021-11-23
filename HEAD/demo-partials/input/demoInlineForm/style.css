@@ -1,5 +1,7 @@
 .inputdemoInlineForm .demo-inline-form-container {
-  padding: 16px; }
-  .inputdemoInlineForm .demo-inline-form-container .demo-radio-button-label {
-    margin: 18px 16px;
-    padding-top: 6px; }
+  padding: 16px;
+}
+.inputdemoInlineForm .demo-inline-form-container .demo-radio-button-label {
+  margin: 18px 16px;
+  padding-top: 6px;
+}
