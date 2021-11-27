@@ -1,0 +1,52 @@
+# Find the latest version here: https://hub.docker.com/r/circleci/node/tags
+var_1: &docker_image circleci/node:16.13.0-browsers
+
+# Settings common to each job
+var_2: &job_defaults
+  working_directory: ~/ng
+  docker:
+    - image: *docker_image
+
+var_3: &npm_install
+  run: npm i
+
+# Branch filter that we can specify for jobs that should only run on publish branches. This filter
+# is used to ensure that not all upstream branches will be published as GitHub builds
+# (e.g. revert branches, feature branches).
+var_4: &publish_branches_filter
+  branches:
+    only:
+      - master
+
+# -----------------------------
+# Container version of CircleCI
+# -----------------------------
+version: 2.1
+
+# -----------------------------------------------------------------------------------------
+# Job definitions. Jobs which are defined just here, will not run automatically. Each job
+# must be part of a workflow definition in order to run for PRs and push builds.
+# -----------------------------------------------------------------------------------------
+jobs:
+
+  deploy_docs_site:
+    <<: *job_defaults
+    steps:
+      - checkout
+      - *npm_install
+      - run: npm run firebase use firebase-angular-material
+      - run: npm run firebase -- deploy --non-interactive --token "$FIREBASE_TOKEN"
+
+# ----------------------------------------------------------------------------------------
+# Workflow definitions. A workflow usually groups multiple jobs together. This is useful if
+# one job depends on another.
+# ----------------------------------------------------------------------------------------
+workflows:
+  version: 2
+
+  # Build and test workflow. A workflow includes multiple jobs that run in parallel. All jobs
+  # that build and test source code should be part of this workflow.
+  deploy_docs_site:
+    jobs:
+      - deploy_docs_site:
+          filters: *publish_branches_filter

@@ -3,3 +3,4 @@
 /.idea/
 .iml
 .firebase
+node_modules/

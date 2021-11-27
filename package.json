@@ -1,0 +1,23 @@
+{
+  "name": "code.material.angularjs.org",
+  "version": "1.0.0",
+  "description": "AngularJS Material Documentation Site deployment files",
+  "scripts": {
+    "firebase": "firebase"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:angular/code.material.angularjs.org.git"
+  },
+  "keywords": [
+    "angularjs",
+    "material",
+    "documentation"
+  ],
+  "author": "Angular Components Team",
+  "license": "MIT",
+  "homepage": "https://material.angularjs.org/",
+  "devDependencies": {
+    "firebase-tools": "^9.23.0"
+  }
+}
