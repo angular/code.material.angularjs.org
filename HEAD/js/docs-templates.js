@@ -339,7 +339,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      AngularJS Material has entered a Long Term Support (LTS) period which ends on December 31st,\n' +
     '      2021. This date aligns with the\n' +
     '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
-    '        AngularJS LTS</a> period.\n' +
+    '      AngularJS LTS</a> period. Explore End Of Life (EOL) options\n' +
+    '      <a href="https://blog.angular.io/finding-a-path-forward-with-angularjs-7e186fdd4429" target="_blank" rel="noopener">here</a>.\n' +
     '    </p>\n' +
     '    <p>\n' +
     '      We now focus exclusively on providing fixes to bugs, in the 1.2.x branch of the library, that\n' +
