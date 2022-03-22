@@ -202,7 +202,8 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <li>\n' +
     '        <a href="https://docs.angularjs.org/api/ngMessages">ngMessages</a>\n' +
     '        - Provides a consistent mechanism for displaying form errors and other messages.\n' +
-    '          <b>Required</b> for some AngularJS Material components like <code>md-input</code>.\n' +
+    '          <strong>Required</strong> for some AngularJS Material components like\n' +
+    '          <code>md-input</code>.\n' +
     '      </li>\n' +
     '      <li>\n' +
     '        <a href="https://docs.angularjs.org/api/ngSanitize">ngSanitize</a>\n' +
@@ -263,7 +264,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      <a href="https://angularjs.org" target="_blank" rel="noopener">AngularJS</a> developers.\n' +
     '    </p>\n' +
     '    <p>\n' +
-    '      AngularJS Material has entered the Long Term Support (LTS) period.\n' +
+    '      AngularJS Material Long Term Support (LTS) has officially ended as of January 2022.\n' +
     '      <a href="#long-term-support">Find out more</a>.\n' +
     '    </p>\n' +
     '    <ul class="buckets" layout layout-align="center center" layout-wrap>\n' +
@@ -289,12 +290,12 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      The AngularJS Material library is a mature and stable product that is ready for production\n' +
     '      use. Developers should note that AngularJS Material works only with\n' +
     '      <a href="https://angularjs.org/" target="_blank" rel="noopener">AngularJS 1.x</a>.\n' +
-    '      AngularJS 1.x is now in\n' +
+    '      AngularJS 1.x\n' +
     '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
-    '      Long Term Support (LTS) mode</a>.\n' +
+    '      Long Term Support (LTS)</a> has ended as of January 2022.\n' +
     '    </p>\n' +
     '    <i>\n' +
-    '      The Angular Material and Component Dev Kit (CDK) libraries (for Angular v2+) can be found in the\n' +
+    '      The Angular Material and Angular Component Dev Kit (CDK) libraries (for Angular v2+) can be found in the\n' +
     '      <a href="https://github.com/angular/components" target="_blank" rel="noopener">angular/components</a>\n' +
     '      GitHub repository.\n' +
     '    </i>\n' +
@@ -304,7 +305,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <p>\n' +
     '      The latest update to Material Design\n' +
     '      (<a href="https://www.youtube.com/playlist?list=PLJ21zHI2TNh-rX-Xr_xi9KIEcbdee_1Ah" target="_blank" rel="noopener">video playlist</a>)\n' +
-    '      was announced at Google I/O in May, 2018\n' +
+    '      was announced at Google I/O in May 2018\n' +
     '      (<a href="https://design.google/library/io-2018-our-definitive-guide-design/" target="_blank" rel="noopener">recap blog post</a>).\n' +
     '      For an implementation of this new\n' +
     '      <a href="https://material.io/design" target="_blank" rel="noopener">Material Design Specification</a>,\n' +
@@ -312,35 +313,16 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      project which is built for <a href="https://angular.io" target="_blank" rel="noopener">Angular</a>\n' +
     '      developers.\n' +
     '    </p>\n' +
-    '    <h2 id="long-term-support" class="md-headline">Long Term Support</h2>\n' +
+    '    <h2 id="long-term-support" class="md-headline">End-Of-Life</h2>\n' +
     '    <p>\n' +
-    '      AngularJS Material has entered a Long Term Support (LTS) period which ends on December 31st,\n' +
-    '      2021. This date aligns with the\n' +
-    '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">\n' +
-    '      AngularJS LTS</a> period. Explore End Of Life (EOL) options\n' +
-    '      <a href="https://blog.angular.io/finding-a-path-forward-with-angularjs-7e186fdd4429" target="_blank" rel="noopener">here</a>.\n' +
+    '      <strong>AngularJS Material support has officially ended as of January 2022.</strong>\n' +
+    '      <a href="https://docs.angularjs.org/misc/version-support-status" target="_blank" rel="noopener">See what ending support means</a>\n' +
+    '      and <a href="https://goo.gle/angularjs-end-of-life" target="_blank" rel="noopener">read the end of life announcement</a>.\n' +
+    '      Visit <a href="https://material.angular.io" target="_blank" rel="noopener">material.angular.io</a>\n' +
+    '      for the actively supported Angular Material.\n' +
     '    </p>\n' +
     '    <p>\n' +
-    '      We now focus exclusively on providing fixes to bugs, in the 1.2.x branch of the library, that\n' +
-    '      satisfy at least one of the following criteria:\n' +
-    '    </p>\n' +
-    '    <ul>\n' +
-    '      <li>We receive a report of, or detect, a security weakness which is then verified</li>\n' +
-    '      <li>\n' +
-    '        A major browser releases a version that will cause current production applications\n' +
-    '        to stop working\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        The <a href="https://jquery.com/">jQuery library</a> releases a version that will cause\n' +
-    '        current production applications to stop working\n' +
-    '      </li>\n' +
-    '    </ul>\n' +
-    '    <p>\n' +
-    '      AngularJS Material 1.1.x will get a new version, if and only if, we verify a new severe\n' +
-    '      security weakness.\n' +
-    '    </p>\n' +
-    '    <p>\n' +
-    '      Learn how to report security issues\n' +
+    '      Find details on reporting security issues\n' +
     '      <a href="https://github.com/angular/material/blob/master/SECURITY.md">here</a>.\n' +
     '    </p>\n' +
     '    <h2 class="md-headline">Change Log</h2>\n' +
