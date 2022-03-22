@@ -141,7 +141,7 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '    <h2>How do I start with AngularJS Material?</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
     '      <li>\n' +
-    '        Get jump started with a free 30 minute video course: <a\n' +
+    '        Get jump started with a free 30-minute video course: <a\n' +
     '          href="https://egghead.io/courses/introduction-to-angular-material" target="_blank"\n' +
     '          title="AngularJS Framework">Introduction to AngularJS Material</a>\n' +
     '      </li>\n' +
@@ -230,41 +230,19 @@ angular.module('docsApp').run(['$templateCache', function($templateCache) {
     '      </li>\n' +
     '\n' +
     '      <li>\n' +
-    '        <a href="http://legacy.docs.ionic.io/v1.0">Ionic v1</a>\n' +
+    '        <a href="https://ionicframework.com/docs/v1/overview/">Ionic v1</a>\n' +
     '        - Has built-in touch support that interferes with AngularJS Material\'s mobile gesture features.\n' +
     '          Ionic v1 is no longer officially supported by the Ionic team.\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '\n' +
     '    <br/>\n' +
-    '    <h2>Contributing to AngularJS Material</h2>\n' +
+    '    <h2>Getting help with AngularJS Material</h2>\n' +
     '    <ul style="margin-bottom: 2em;">\n' +
-    '      <li>\n' +
-    '        Start by reading our <a href="https://github.com/angular/material#contributing">Contributor\n' +
-    '        Guidelines</a>.\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        For bug reports, search our\n' +
-    '        <a href="https://github.com/angular/material/issues?q=is%3Aissue+is%3Aopen"\n' +
-    '           target="_blank" title="AngularJS Material GitHub Issues">GitHub Issues</a>\n' +
-    '        for existing issues that match your bug.\n' +
-    '      </li>\n' +
-    '      <li style="margin-left: 40px">If none are found, please open a new issue.</li>\n' +
-    '      <li>For questions and troubleshooting, search the\n' +
-    '        <a href="https://groups.google.com/forum/#!forum/ngmaterial"\n' +
-    '           target="_blank" title="AngularJS Material Forums">AngularJS Material Forums</a>\n' +
-    '        for related discussions.\n' +
-    '      </li>\n' +
-    '      <li style="margin-left: 40px">If none are found, please post a new question.</li>\n' +
     '      <li>StackOverflow\'s\n' +
     '        <a href="https://stackoverflow.com/questions/tagged/angularjs-material" target="_blank"\n' +
     '           title="AngularJS Material tag on StackOverflow">\n' +
-    '          [angularjs-material] tag</a> is another good resources for solving problems.\n' +
-    '      </li>\n' +
-    '      <li>\n' +
-    '        You can also ask questions in our\n' +
-    '        <a href="https://gitter.im/angular/material" target="_blank" title="Gitter Chat">\n' +
-    '          Gitter Chat</a>.\n' +
+    '          [angularjs-material] tag</a> is a good resources for solving problems.\n' +
     '      </li>\n' +
     '    </ul>\n' +
     '  </md-content>\n' +
