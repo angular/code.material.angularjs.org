@@ -1,0 +1,23 @@
+<div ng-controller="ContactController as ctrl" class="demo-bidi">
+  <h2>Contact List</h2>
+  <md-divider></md-divider>
+
+  <md-radio-group ng-model="ctrl.selectedId" aria-labelledby="selectedUser">
+    <div ng-repeat="person in ctrl.contacts" class="demo-row">
+      <div flex layout="row" layout-padding layout-align="start center">
+
+        <div id="{{'demoTitle-' + person.id}}" class="demo-title">
+          {{person.title}}
+        </div>
+        <md-radio-button flex ng-value="person.id" class="md-primary" aria-describedby="{{'demoTitle-' + person.id}}">
+          {{person.fullName}}
+        </md-radio-button>
+      </div>
+    </div>
+  </md-radio-group>
+
+  <md-divider></md-divider>
+  <p class="md-padding md-margin">
+    <label id="selectedUser">Selected User:</label> <span class="demo-checked">{{ctrl.selectedUser()}}</span>
+  </p>
+</div>
